@@ -16,7 +16,7 @@
 	<script src="../vendor/jquery/jquery.min.js"></script>
 	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 	<jsp:include page="header.jsp"></jsp:include>
-	<jsp:include page="home.jsp"></jsp:include>
+	<jsp:include page="${main_jsp }"></jsp:include>
 	<jsp:include page="footer.jsp"></jsp:include>
 	<script src="../assets/js/isotope.min.js"></script>
 	<script src="../assets/js/owl-carousel.js"></script>
