@@ -28,6 +28,11 @@
 									Profile <img src="../assets/images/profile-header.jpg" alt="">
 								</a></li>
 						</ul>
+						<ul class="nav" style="width: 300px;"></ul>
+						<ul class="nav">
+							<li><a href="#">SIGN UP</a></li>
+							<li><a href="#">SIGN IN</a></li>
+						</ul>
 						<a class='menu-trigger'>
 							<span>Menu</span>
 						</a>

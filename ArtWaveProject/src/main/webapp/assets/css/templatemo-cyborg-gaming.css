@@ -402,7 +402,6 @@ Header Style
 
 .header-area .main-nav .logo {
   border-right: 1px solid #27292a;
-  flex-basis: 25%;
   margin-right: 5%;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
@@ -424,9 +423,8 @@ Header Style
 
 .header-area .main-nav .nav {
   display: inline-flex;
-  flex-basis: 70%;
   justify-content: left;
-  vertical-align: middle;
+  vertical-align: bottom;
   text-align: right;
   margin-top: 0px;
   margin-right: 0px;
@@ -436,6 +434,9 @@ Header Style
   transition: all 0.3s ease 0s;
   position: relative;
   z-index: 999;
+}
+.header-area .main-nav .navbar-right{
+	text-align: right;
 }
 
 .header-area .main-nav .nav li {
@@ -462,7 +463,6 @@ Header Style
 
 .header-area .main-nav .nav li:last-child a {
   background-color: #27292a;
-  padding: 8px 10px 8px 20px;
   border-radius: 23px;
 }
 
@@ -622,7 +622,7 @@ Header Style
   color: #fff;
 }
 
-@media (max-width: 1200px) {
+/*@media (max-width: 1200px) {
   .header-area .main-nav .nav li {
     padding-left: 10px;
     padding-right: 10px;
@@ -764,7 +764,7 @@ Header Style
   .header-area .main-nav .nav li.submenu:hover ul, .header-area .main-nav .nav li.submenu:focus ul {
     height: 0px;
   }
-}
+}*/
 
 /* 
 ---------------------------------------------
@@ -1641,7 +1641,7 @@ body {
   overflow-x: hidden;
 }
 
-@media (max-width: 767px) {
+/*@media (max-width: 767px) {
   body .page-content {
     padding: 0px 30px;
   }
@@ -1732,4 +1732,4 @@ body {
   .gaming-library .item ul li {
     width: 16%;
   }
-}
+}*/
