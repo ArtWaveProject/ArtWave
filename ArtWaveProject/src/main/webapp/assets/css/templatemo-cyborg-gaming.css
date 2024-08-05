@@ -422,7 +422,7 @@ Header Style
   width: 180px;
 }
 
-.header-area .main-nav .nav {
+.header-area .main-nav .nav{
   display: inline-flex;
   flex-basis: 70%;
   justify-content: left;
