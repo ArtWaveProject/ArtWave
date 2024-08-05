@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0" version="24.7.6">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="4858" dy="1369" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3868" dy="798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -64,7 +64,7 @@
             <mxPoint x="-434.99999999999955" y="400" as="targetPoint" />
             <Array as="points">
               <mxPoint x="-445" y="280" />
-              <mxPoint x="-1135" y="280" />
+              <mxPoint x="-1265" y="280" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -146,7 +146,7 @@
           <mxGeometry x="-997" y="322" width="170" height="23" as="geometry" />
         </mxCell>
         <mxCell id="ooVw9LdMY0Mfpqag8ppf-52" value="도서" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;labelBackgroundColor=none;fontStyle=1;fontSize=14;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-1220" y="320" width="170" height="23" as="geometry" />
+          <mxGeometry x="-1350" y="320" width="170" height="23" as="geometry" />
         </mxCell>
         <mxCell id="ooVw9LdMY0Mfpqag8ppf-64" value="공지사항" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;labelBackgroundColor=none;fontStyle=1;fontSize=14;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-400" y="418" width="170" height="23" as="geometry" />
