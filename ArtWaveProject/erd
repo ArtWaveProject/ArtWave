@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36" version="24.7.6">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
-    <mxGraphModel dx="1434" dy="833" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <mxGraphModel dx="1434" dy="788" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2879,7 +2879,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4wM-m_1K8RFLc86n8T05-234" value="&lt;div style=&quot;font-size: 12px;&quot;&gt;신고 기록&lt;/div&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;REPORT&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="4wM-m_1K8RFLc86n8T05-234" value="&lt;div style=&quot;font-size: 12px;&quot;&gt;신고 기록&lt;/div&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;REPORT&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="1757" y="615" width="300" height="130" as="geometry" />
         </mxCell>
         <mxCell id="4wM-m_1K8RFLc86n8T05-235" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="4wM-m_1K8RFLc86n8T05-234" vertex="1">
@@ -2947,7 +2947,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4wM-m_1K8RFLc86n8T05-259" value="&lt;div style=&quot;font-size: 12px;&quot;&gt;카테고리&lt;/div&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;CATEGORY&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="4wM-m_1K8RFLc86n8T05-259" value="&lt;div style=&quot;font-size: 12px;&quot;&gt;카테고리&lt;/div&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;CATEGORY&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="2080" y="615" width="300" height="90" as="geometry" />
         </mxCell>
         <mxCell id="4wM-m_1K8RFLc86n8T05-260" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="4wM-m_1K8RFLc86n8T05-259" vertex="1">
@@ -2989,7 +2989,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4wM-m_1K8RFLc86n8T05-291" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;공지게시판&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;NOTICEBOARD&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="4wM-m_1K8RFLc86n8T05-291" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;공지게시판&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;NOTICEBOARD&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="2080" y="860" width="300" height="170" as="geometry" />
         </mxCell>
         <mxCell id="4wM-m_1K8RFLc86n8T05-292" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="4wM-m_1K8RFLc86n8T05-291" vertex="1">
@@ -3083,7 +3083,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4wM-m_1K8RFLc86n8T05-319" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;질답게시판&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;CSBOARD&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="4wM-m_1K8RFLc86n8T05-319" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;질답게시판&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;CSBOARD&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="2390" y="615" width="300" height="230" as="geometry" />
         </mxCell>
         <mxCell id="4wM-m_1K8RFLc86n8T05-320" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="4wM-m_1K8RFLc86n8T05-319" vertex="1">
@@ -3216,7 +3216,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4wM-m_1K8RFLc86n8T05-350" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;결제&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;PAYMENT&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="4wM-m_1K8RFLc86n8T05-350" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;결제&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;PAYMENT&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="2390" y="863" width="300" height="230" as="geometry" />
         </mxCell>
         <mxCell id="4wM-m_1K8RFLc86n8T05-351" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="4wM-m_1K8RFLc86n8T05-350" vertex="1">
