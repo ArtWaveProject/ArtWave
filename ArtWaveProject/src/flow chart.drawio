@@ -1,17 +1,22 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0" version="24.7.6">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="5415" dy="737" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="7463" dy="1916" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="oJDhNyeH8wBqLmoe7c0t-114" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="oJDhNyeH8wBqLmoe7c0t-115">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-1339" y="2410" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="oJDhNyeH8wBqLmoe7c0t-108" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.875;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="oJDhNyeH8wBqLmoe7c0t-98">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="-1188.46" y="2398" as="sourcePoint" />
             <mxPoint x="-1136.46" y="2090" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-1189" y="2390" />
-              <mxPoint x="-1170" y="2390" />
-              <mxPoint x="-1170" y="2090" />
+              <mxPoint x="-1188" y="2390" />
+              <mxPoint x="-1180" y="2390" />
+              <mxPoint x="-1180" y="2090" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -20,6 +25,11 @@
             <mxPoint x="-1523" y="2180" as="sourcePoint" />
             <mxPoint x="-1522.9999999999995" y="2257.12" as="targetPoint" />
             <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oJDhNyeH8wBqLmoe7c0t-126" value="클릭" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1;fontSize=14;" vertex="1" connectable="0" parent="oJDhNyeH8wBqLmoe7c0t-91">
+          <mxGeometry x="0.3407" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="oJDhNyeH8wBqLmoe7c0t-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.005;entryY=0.651;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="E3FHki-WwOboz5_hfV8X-302" target="E3FHki-WwOboz5_hfV8X-217">
@@ -1655,9 +1665,6 @@
         <mxCell id="oJDhNyeH8wBqLmoe7c0t-90" value="1:1 문의 답변 작성 페이지" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-1612.5" y="2257.12" width="175" height="23" as="geometry" />
         </mxCell>
-        <mxCell id="oJDhNyeH8wBqLmoe7c0t-92" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1538.5599999999995" y="2210" width="70" height="40" as="geometry" />
-        </mxCell>
         <mxCell id="oJDhNyeH8wBqLmoe7c0t-93" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span id=&quot;docs-internal-guid-8923abfa-7fff-761e-ea08-dbda35ff8330&quot; style=&quot;font-weight:normal;&quot;&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;카테고리 선택 버튼&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;&amp;nbsp;제목&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;&amp;nbsp;글 작성 영역&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span id=&quot;docs-internal-guid-3c8c850c-7fff-f8e7-fc3a-7203f5d4957f&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;&amp;nbsp;사진 첨부 버튼&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;&lt;/h4&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#23445d;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-1612.5" y="2290" width="170" height="90" as="geometry" />
         </mxCell>
@@ -1683,14 +1690,16 @@
             <Array as="points" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="oJDhNyeH8wBqLmoe7c0t-123" value="&lt;b style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/b&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=14;" vertex="1" connectable="0" parent="oJDhNyeH8wBqLmoe7c0t-100">
+          <mxGeometry x="0.5128" y="-1" relative="1" as="geometry">
+            <mxPoint y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="oJDhNyeH8wBqLmoe7c0t-101" value="제목" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#ecf3f9;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#23445d;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-1330.1399999999994" y="2140" width="88.16" height="56" as="geometry" />
         </mxCell>
         <mxCell id="oJDhNyeH8wBqLmoe7c0t-102" value="공지사항 상세 페이지" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-1363" y="2239" width="166" height="23" as="geometry" />
-        </mxCell>
-        <mxCell id="oJDhNyeH8wBqLmoe7c0t-103" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1299.6199999999994" y="2190" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="oJDhNyeH8wBqLmoe7c0t-104" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span id=&quot;docs-internal-guid-8923abfa-7fff-761e-ea08-dbda35ff8330&quot; style=&quot;font-weight:normal;&quot;&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;게시글 번호&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;카테고리 선택 버튼&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;제목&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;등록일&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span id=&quot;docs-internal-guid-b7c9eaea-7fff-09c1-4f44-1606a4d53c5d&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;공지 내용&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;&lt;/h4&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#23445d;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-1363.5" y="2270" width="170" height="100" as="geometry" />
@@ -1718,6 +1727,28 @@
         </mxCell>
         <mxCell id="oJDhNyeH8wBqLmoe7c0t-113" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span id=&quot;docs-internal-guid-8923abfa-7fff-761e-ea08-dbda35ff8330&quot; style=&quot;font-weight:normal;&quot;&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;카테고리 선택 버튼&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;background-color: transparent; font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; font-weight: 700;&quot;&gt;펼치기 버튼&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;제목&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;등록일&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span id=&quot;docs-internal-guid-91f4f8d7-7fff-4151-dc48-ec682911b0e2&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;공지 내용&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;&lt;/h4&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#23445d;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-909.55" y="2041" width="170" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="oJDhNyeH8wBqLmoe7c0t-115" value="공지사항 작성 페이지" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-1410" y="2438.25" width="137.18" height="23.5" as="geometry" />
+        </mxCell>
+        <mxCell id="oJDhNyeH8wBqLmoe7c0t-119" value="등록" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#ecf3f9;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#23445d;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-1416.6" y="2540" width="80.55" height="54.75" as="geometry" />
+        </mxCell>
+        <mxCell id="oJDhNyeH8wBqLmoe7c0t-120" value="취소" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#ecf3f9;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#23445d;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-1341.06" y="2540" width="80.55" height="54.75" as="geometry" />
+        </mxCell>
+        <mxCell id="oJDhNyeH8wBqLmoe7c0t-124" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span id=&quot;docs-internal-guid-8923abfa-7fff-761e-ea08-dbda35ff8330&quot; style=&quot;font-weight:normal;&quot;&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;background-color: transparent; font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; font-weight: 700;&quot;&gt;카테고리 선택 버튼&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;제목&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span id=&quot;docs-internal-guid-b7c9eaea-7fff-09c1-4f44-1606a4d53c5d&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;공지 내용&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;&lt;/h4&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#23445d;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-1412.59" y="2470" width="142.35" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="oJDhNyeH8wBqLmoe7c0t-125" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.875;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;strokeColor=#23445d;exitPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="oJDhNyeH8wBqLmoe7c0t-120" target="oJDhNyeH8wBqLmoe7c0t-98">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-1185.6000000000001" y="2518" as="sourcePoint" />
+            <mxPoint x="-1197.14" y="2210" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-1170" y="2567" />
+              <mxPoint x="-1170" y="2065" />
+            </Array>
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
