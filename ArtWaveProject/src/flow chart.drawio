@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36" version="24.7.6">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="5330" dy="643" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="5822" dy="908" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -1108,7 +1108,7 @@
           <mxGeometry x="-1966.99" y="1500.68" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-234" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot;&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;기사 썸네일&lt;/font&gt;&lt;/h4&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;기사 제목&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;기사 내용 일부&lt;/font&gt;&lt;/div&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2446.99" y="1158.93" width="170" height="60" as="geometry" />
+          <mxGeometry x="-2446.99" y="1128.18" width="170" height="60" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-236" value="좋아요" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-1815.07" y="1520.68" width="88.16" height="56" as="geometry" />
