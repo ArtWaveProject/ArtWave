@@ -1,9 +1,19 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36" version="24.7.6">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="4818" dy="368" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="5330" dy="643" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="E3FHki-WwOboz5_hfV8X-309" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;exitX=0.16;exitY=0.55;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#23445d;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="E3FHki-WwOboz5_hfV8X-289">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-2430" y="960" as="sourcePoint" />
+            <mxPoint x="-2520" y="931" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-2490" y="960" />
+              <mxPoint x="-2490" y="568" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-295" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;exitX=0.498;exitY=0.925;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="E3FHki-WwOboz5_hfV8X-296">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="-2320" y="575.5" as="sourcePoint" />
@@ -11,27 +21,27 @@
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-262" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;exitX=0.498;exitY=0.897;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-1155.2399999999998" y="1562.3400000000001" as="sourcePoint" />
-            <mxPoint x="-1155.2399999999998" y="1604.3400000000001" as="targetPoint" />
+            <mxPoint x="-1032.2299999999998" y="1627.68" as="sourcePoint" />
+            <mxPoint x="-1032.2299999999998" y="1669.68" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-230" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;exitX=0.55;exitY=0.95;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#23445d;entryX=1.013;entryY=0.538;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="E3FHki-WwOboz5_hfV8X-227" target="E3FHki-WwOboz5_hfV8X-169">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-2120" y="1488.3400000000001" as="sourcePoint" />
-            <mxPoint x="-1670" y="1375.3400000000001" as="targetPoint" />
+            <mxPoint x="-1996.9899999999998" y="1553.68" as="sourcePoint" />
+            <mxPoint x="-1546.99" y="1440.68" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-2189" y="1590" />
-              <mxPoint x="-1600" y="1590" />
-              <mxPoint x="-1600" y="1375" />
+              <mxPoint x="-2065.99" y="1655.34" />
+              <mxPoint x="-1476.99" y="1655.34" />
+              <mxPoint x="-1476.99" y="1440.34" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-203" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;strokeColor=#23445d;exitX=0.515;exitY=0.924;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="E3FHki-WwOboz5_hfV8X-195" target="E3FHki-WwOboz5_hfV8X-201">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-2080" y="1215.3400000000001" as="sourcePoint" />
-            <mxPoint x="-2080" y="1250.3400000000001" as="targetPoint" />
+            <mxPoint x="-1956.99" y="1280.68" as="sourcePoint" />
+            <mxPoint x="-1956.99" y="1315.68" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-2068" y="1207.3400000000001" />
+              <mxPoint x="-1944.99" y="1272.68" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -192,29 +202,29 @@
         <mxCell id="E3FHki-WwOboz5_hfV8X-72" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="ooVw9LdMY0Mfpqag8ppf-51" target="E3FHki-WwOboz5_hfV8X-71">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="-1820" y="1015.34" />
-              <mxPoint x="-1160" y="1015.34" />
+              <mxPoint x="-1696.99" y="1080.68" />
+              <mxPoint x="-1036.99" y="1080.68" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-74" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="ooVw9LdMY0Mfpqag8ppf-51" target="E3FHki-WwOboz5_hfV8X-73">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="-1820" y="1015.34" />
-              <mxPoint x="-2490" y="1015.34" />
+              <mxPoint x="-1696.99" y="1080.68" />
+              <mxPoint x="-2366.99" y="1080.68" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-157" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="ooVw9LdMY0Mfpqag8ppf-51" target="E3FHki-WwOboz5_hfV8X-155">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="-1820" y="1044.0300000000002" />
-              <mxPoint x="-1820" y="1044.0300000000002" />
+              <mxPoint x="-1696.99" y="1109.3700000000001" />
+              <mxPoint x="-1696.99" y="1109.3700000000001" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="ooVw9LdMY0Mfpqag8ppf-51" value="음악" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-1904" y="974.66" width="170" height="23" as="geometry" />
+          <mxGeometry x="-1780.99" y="1039.9999999999998" width="170" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-88" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="ooVw9LdMY0Mfpqag8ppf-52" target="E3FHki-WwOboz5_hfV8X-87">
           <mxGeometry relative="1" as="geometry" />
@@ -711,42 +721,42 @@
             <mxPoint x="-1819.1800000000003" y="974.6600000000001" as="targetPoint" />
             <Array as="points">
               <mxPoint x="-1820" y="970" />
-              <mxPoint x="-1820" y="970" />
+              <mxPoint x="-1697" y="970" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-71" value="음악 스토어" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1240" y="1062.8400000000001" width="170" height="23" as="geometry" />
+          <mxGeometry x="-1116.99" y="1128.18" width="170" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-73" value="뉴스" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2570" y="1062.2800000000002" width="170" height="23" as="geometry" />
+          <mxGeometry x="-2446.99" y="1127.6200000000001" width="170" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-75" value="인기 차트" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1658.48" y="1062.8400000000001" width="170" height="23" as="geometry" />
+          <mxGeometry x="-1535.47" y="1128.18" width="170" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-77" value="플레이리스트" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1440" y="1061.8400000000001" width="170" height="23" as="geometry" />
+          <mxGeometry x="-1316.99" y="1127.18" width="170" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-78" value="뮤비 목록" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2120" y="1062.2800000000002" width="170" height="23" as="geometry" />
+          <mxGeometry x="-1996.9899999999998" y="1127.6200000000001" width="170" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-79" value="앨범 목록" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2360" y="1061.5900000000001" width="170" height="23" as="geometry" />
+          <mxGeometry x="-2236.99" y="1126.93" width="170" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-80" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#23445d;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-1355.25" y="1015.34" as="sourcePoint" />
-            <mxPoint x="-1355.25" y="1061.8400000000001" as="targetPoint" />
+            <mxPoint x="-1232.24" y="1080.68" as="sourcePoint" />
+            <mxPoint x="-1232.24" y="1127.18" as="targetPoint" />
             <Array as="points" />
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-82" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#23445d;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="E3FHki-WwOboz5_hfV8X-75">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-1573.48" y="1015.59" as="sourcePoint" />
-            <mxPoint x="-1573.77" y="1064.5900000000001" as="targetPoint" />
+            <mxPoint x="-1450.47" y="1080.93" as="sourcePoint" />
+            <mxPoint x="-1450.76" y="1129.93" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-1573.48" y="1035.5900000000001" />
-              <mxPoint x="-1573.48" y="1035.5900000000001" />
+              <mxPoint x="-1450.47" y="1100.93" />
+              <mxPoint x="-1450.47" y="1100.93" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -843,7 +853,7 @@
           <mxGeometry x="-1019.75" y="922.75" width="84.1" height="45.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-137" value="결제 페이지" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1109.17" y="1002.7499999999999" width="112.95" height="23" as="geometry" />
+          <mxGeometry x="-1109.17" y="1017" width="112.95" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-140" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-1066.2199999999998" y="965" width="70" height="40" as="geometry" />
@@ -897,280 +907,280 @@
           <mxGeometry x="-1712" y="653" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-155" value="음악 목록 추천" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1904" y="1062.2800000000002" width="170" height="23" as="geometry" />
+          <mxGeometry x="-1780.99" y="1127.6200000000001" width="170" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-158" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#23445d;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-2035.2800000000002" y="1015.2800000000001" as="sourcePoint" />
-            <mxPoint x="-2035.2800000000002" y="1062.2800000000002" as="targetPoint" />
+            <mxPoint x="-1912.2700000000002" y="1080.6200000000001" as="sourcePoint" />
+            <mxPoint x="-1912.2700000000002" y="1127.6200000000001" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-2035.2800000000002" y="1035.2800000000002" />
-              <mxPoint x="-2035.2800000000002" y="1035.2800000000002" />
+              <mxPoint x="-1912.2700000000002" y="1100.6200000000001" />
+              <mxPoint x="-1912.2700000000002" y="1100.6200000000001" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-159" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#23445d;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-2275.2799999999997" y="1014.59" as="sourcePoint" />
-            <mxPoint x="-2275.2799999999997" y="1061.5900000000001" as="targetPoint" />
+            <mxPoint x="-2152.2699999999995" y="1079.93" as="sourcePoint" />
+            <mxPoint x="-2152.2699999999995" y="1126.93" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-2275.2799999999997" y="1034.5900000000001" />
-              <mxPoint x="-2275.2799999999997" y="1034.5900000000001" />
+              <mxPoint x="-2152.2699999999995" y="1099.93" />
+              <mxPoint x="-2152.2699999999995" y="1099.93" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-160" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot;&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;앨범 아트&lt;/font&gt;&lt;/h4&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;제목&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;아티스트&lt;/font&gt;&lt;/div&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1904" y="1093.0300000000002" width="170" height="60" as="geometry" />
+          <mxGeometry x="-1780.99" y="1158.3700000000001" width="170" height="60" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-162" value="음악 상세 페이지" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1814" y="1250.3400000000001" width="140" height="23" as="geometry" />
+          <mxGeometry x="-1690.99" y="1315.68" width="140" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-165" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot;&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;앨범 아트&lt;/font&gt;&lt;/h4&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;제목&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;아티스트&lt;/font&gt;&lt;/div&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1658.48" y="1093.5900000000001" width="170" height="60" as="geometry" />
+          <mxGeometry x="-1535.47" y="1158.93" width="170" height="60" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-166" value="&lt;h4 style=&quot;font-size: 14px; line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;  플레이리스트&lt;/span&gt;&lt;/h4&gt;&lt;h4 style=&quot;font-size: 14px; line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;추가&lt;/span&gt;&lt;/h4&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1581.48" y="1153.0900000000001" width="130" height="61.5" as="geometry" />
+          <mxGeometry x="-1458.47" y="1218.43" width="130" height="61.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-171" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;exitX=0.55;exitY=0.95;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="E3FHki-WwOboz5_hfV8X-168">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-1499.44" y="1213.6070000000002" as="sourcePoint" />
-            <mxPoint x="-1673" y="1315.3400000000001" as="targetPoint" />
+            <mxPoint x="-1376.43" y="1278.9470000000001" as="sourcePoint" />
+            <mxPoint x="-1549.99" y="1380.68" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-1627" y="1315.3400000000001" />
+              <mxPoint x="-1503.99" y="1380.68" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-168" value="&lt;h4 style=&quot;font-size: 14px; line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;앨범 아트&lt;/span&gt;&lt;/h4&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1698.48" y="1152.8400000000001" width="130" height="61.5" as="geometry" />
+          <mxGeometry x="-1575.47" y="1218.18" width="130" height="61.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-169" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span id=&quot;docs-internal-guid-8923abfa-7fff-761e-ea08-dbda35ff8330&quot; style=&quot;font-weight:normal;&quot;&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;음악 타이틀&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;앨범 아트&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;장르&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;유형&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;재생 시간&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;작곡/작사/편곡&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;아티스트&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;가사&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;댓글&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;&lt;/h4&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1814" y="1280.5900000000001" width="140" height="174.75" as="geometry" />
+          <mxGeometry x="-1690.99" y="1345.93" width="140" height="174.75" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-172" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1638.48" y="1264.8400000000001" width="70" height="40" as="geometry" />
+          <mxGeometry x="-1515.47" y="1330.18" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-174" value="&amp;nbsp;전체 재생" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1366.15" y="1153.3400000000001" width="101.15" height="55.5" as="geometry" />
+          <mxGeometry x="-1243.14" y="1218.68" width="101.15" height="55.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-177" value="셔플" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1445" y="1152.8400000000001" width="88.16" height="56" as="geometry" />
+          <mxGeometry x="-1321.99" y="1218.18" width="88.16" height="56" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-178" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span id=&quot;docs-internal-guid-8923abfa-7fff-761e-ea08-dbda35ff8330&quot; style=&quot;font-weight:normal;&quot;&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;앨범 아트&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;앨범 제목&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;아티스트 명&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;가격&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span id=&quot;docs-internal-guid-c2649ccb-7fff-d02a-d3d7-a57aa567f018&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;검색 창&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;&lt;/h4&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1240" y="1093.5900000000001" width="170" height="111.75" as="geometry" />
+          <mxGeometry x="-1116.99" y="1158.93" width="170" height="111.75" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-180" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;exitX=0.498;exitY=0.897;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="E3FHki-WwOboz5_hfV8X-181" target="E3FHki-WwOboz5_hfV8X-182">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-181" value="&lt;h4 style=&quot;font-size: 14px; line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;아티스트&lt;/span&gt;&lt;/h4&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1942.38" y="1157.3400000000001" width="96.76" height="57" as="geometry" />
+          <mxGeometry x="-1819.3700000000001" y="1222.68" width="96.76" height="57" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-182" value="아티스트 상세 페이지" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1964" y="1250.3400000000001" width="140" height="23" as="geometry" />
+          <mxGeometry x="-1840.99" y="1315.68" width="140" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-183" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1904" y="1203.8400000000001" width="70" height="40" as="geometry" />
+          <mxGeometry x="-1780.99" y="1269.18" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-184" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span id=&quot;docs-internal-guid-8923abfa-7fff-761e-ea08-dbda35ff8330&quot; style=&quot;&quot;&gt;&lt;p style=&quot;font-weight: normal; line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;아티스트 이름&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;font-weight: normal; line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;사진&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;font-weight: normal; line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;활동 연대&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;font-weight: normal; line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;활동 유형&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;font-weight: normal; line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;국적&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;음악 목록&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;font-weight: normal; line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;앨범 목록&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;font-weight: normal; line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span id=&quot;docs-internal-guid-055592f2-7fff-5eba-1831-8f5d1f87b79c&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;font-weight: normal; line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;아티스트 소개&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;&lt;/h4&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1964" y="1280.5900000000001" width="140" height="174.75" as="geometry" />
+          <mxGeometry x="-1840.99" y="1345.93" width="140" height="174.75" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-187" value="&amp;nbsp;한 곡 재생" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1366.15" y="1209.3400000000001" width="101.15" height="55.5" as="geometry" />
+          <mxGeometry x="-1243.14" y="1274.68" width="101.15" height="55.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-189" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;strokeColor=#23445d;exitX=0.59;exitY=0.916;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.011;entryY=0.335;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="E3FHki-WwOboz5_hfV8X-188" target="E3FHki-WwOboz5_hfV8X-169">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-1393" y="1265.3400000000001" as="sourcePoint" />
-            <mxPoint x="-1670" y="1395.3400000000001" as="targetPoint" />
+            <mxPoint x="-1269.99" y="1330.68" as="sourcePoint" />
+            <mxPoint x="-1546.99" y="1460.68" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-1400" y="1260.3400000000001" />
-              <mxPoint x="-1400" y="1339.3400000000001" />
-              <mxPoint x="-1670" y="1339.3400000000001" />
+              <mxPoint x="-1276.99" y="1325.68" />
+              <mxPoint x="-1276.99" y="1404.68" />
+              <mxPoint x="-1546.99" y="1404.68" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-190" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1410" y="1293.3400000000001" width="70" height="40" as="geometry" />
+          <mxGeometry x="-1286.99" y="1358.68" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-191" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot;&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;앨범 아트&lt;/font&gt;&lt;/h4&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;제목&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;아티스트&lt;/font&gt;&lt;/div&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1440" y="1093.0900000000001" width="170" height="60" as="geometry" />
+          <mxGeometry x="-1316.99" y="1158.43" width="170" height="60" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-188" value="앨범 아트" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1445" y="1208.8400000000001" width="88.16" height="56" as="geometry" />
+          <mxGeometry x="-1321.99" y="1274.18" width="88.16" height="56" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-194" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot;&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;영상&lt;/font&gt;&lt;/h4&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;제목&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;아티스트&lt;/font&gt;&lt;/div&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2120" y="1093.5900000000001" width="170" height="60" as="geometry" />
+          <mxGeometry x="-1996.9899999999998" y="1158.93" width="170" height="60" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-195" value="링크" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2120" y="1155.3400000000001" width="88.16" height="56.5" as="geometry" />
+          <mxGeometry x="-1996.9899999999998" y="1220.68" width="88.16" height="56.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-197" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;exitX=0.55;exitY=0.95;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.009;entryY=0.778;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="E3FHki-WwOboz5_hfV8X-196" target="E3FHki-WwOboz5_hfV8X-169">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-2008.1681599999997" y="1347.5860000000002" as="sourcePoint" />
-            <mxPoint x="-1670" y="1416.3400000000001" as="targetPoint" />
+            <mxPoint x="-1885.1581599999997" y="1412.9260000000002" as="sourcePoint" />
+            <mxPoint x="-1546.99" y="1481.68" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-1990" y="1570" />
-              <mxPoint x="-1640" y="1570" />
-              <mxPoint x="-1640" y="1417" />
+              <mxPoint x="-1866.99" y="1635.34" />
+              <mxPoint x="-1516.99" y="1635.34" />
+              <mxPoint x="-1516.99" y="1482.34" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-196" value="제목" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2038.1600000000003" y="1156.5900000000001" width="88.16" height="56" as="geometry" />
+          <mxGeometry x="-1915.1500000000003" y="1221.93" width="88.16" height="56" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-199" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1658.48" y="1445.3400000000001" width="70" height="40" as="geometry" />
+          <mxGeometry x="-1535.47" y="1510.68" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-201" value="유튜브" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2115.92" y="1355.0900000000001" width="95.92" height="23" as="geometry" />
+          <mxGeometry x="-1992.9099999999999" y="1420.43" width="95.92" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-204" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2080" y="1264.4" width="70" height="40" as="geometry" />
+          <mxGeometry x="-1956.99" y="1329.74" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-205" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot;&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;앨범 아트&lt;/font&gt;&lt;/h4&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;앨범 제목&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;아티스트&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;발매일&lt;/font&gt;&lt;/div&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2360" y="1093.4" width="170" height="81.25" as="geometry" />
+          <mxGeometry x="-2236.99" y="1158.74" width="170" height="81.25" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-207" value="&lt;h4 style=&quot;font-size: 14px; line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;앨범 아트&lt;/span&gt;&lt;/h4&gt;&lt;div&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;앨범 제목&lt;/span&gt;&lt;/div&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2270" y="1174.9" width="130" height="61.5" as="geometry" />
+          <mxGeometry x="-2146.99" y="1240.24" width="130" height="61.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-208" value="&lt;h4 style=&quot;font-size: 14px; line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;앨범 아트&lt;/span&gt;&lt;/h4&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2415" y="1174.9" width="130" height="61.5" as="geometry" />
+          <mxGeometry x="-2291.99" y="1240.24" width="130" height="61.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-213" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;exitX=0.498;exitY=0.897;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="E3FHki-WwOboz5_hfV8X-214">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-1749.81" y="1250.3400000000001" as="targetPoint" />
+            <mxPoint x="-1626.8" y="1315.68" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-214" value="&lt;h4 style=&quot;font-size: 14px; line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;앨범 아트&lt;/span&gt;&lt;/h4&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1798.19" y="1157.3400000000001" width="96.76" height="57" as="geometry" />
+          <mxGeometry x="-1675.18" y="1222.68" width="96.76" height="57" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-215" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1759.81" y="1203.8400000000001" width="70" height="40" as="geometry" />
+          <mxGeometry x="-1636.8" y="1269.18" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-216" value="앨범 상세 페이지" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2270" y="1275.3400000000001" width="140" height="23" as="geometry" />
+          <mxGeometry x="-2146.99" y="1340.68" width="140" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-217" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span id=&quot;docs-internal-guid-8923abfa-7fff-761e-ea08-dbda35ff8330&quot; style=&quot;font-weight:normal;&quot;&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;앨범 제목&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;앨범 아트&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;수록 곡 정보&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;앨범 소개&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;발매일&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;아티스트 정보&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;&lt;/h4&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2270" y="1305.5900000000001" width="140" height="139.75" as="geometry" />
+          <mxGeometry x="-2146.99" y="1370.93" width="140" height="139.75" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-218" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;exitX=0.498;exitY=0.897;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-2350.25" y="1233.3400000000001" as="sourcePoint" />
-            <mxPoint x="-2350.25" y="1275.3400000000001" as="targetPoint" />
+            <mxPoint x="-2227.24" y="1298.68" as="sourcePoint" />
+            <mxPoint x="-2227.24" y="1340.68" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-219" value="앨범 아트 확대" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2420" y="1275.3400000000001" width="140" height="23" as="geometry" />
+          <mxGeometry x="-2296.99" y="1340.68" width="140" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-220" value="&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;mouse over&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2350" y="1230.47" width="100" height="40" as="geometry" />
+          <mxGeometry x="-2226.99" y="1295.81" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-223" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2210" y="1228.8400000000001" width="70" height="40" as="geometry" />
+          <mxGeometry x="-2086.99" y="1294.18" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-224" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;exitX=0.498;exitY=0.897;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-2200.14" y="1233.3400000000001" as="sourcePoint" />
-            <mxPoint x="-2200.14" y="1275.3400000000001" as="targetPoint" />
+            <mxPoint x="-2077.1299999999997" y="1298.68" as="sourcePoint" />
+            <mxPoint x="-2077.1299999999997" y="1340.68" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-225" value="아티스트" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2159.8" y="1447.3400000000001" width="84.1" height="45.5" as="geometry" />
+          <mxGeometry x="-2036.79" y="1512.68" width="84.1" height="45.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-226" value="좋아요" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2310" y="1447.3400000000001" width="84.1" height="45.5" as="geometry" />
+          <mxGeometry x="-2186.99" y="1512.68" width="84.1" height="45.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-227" value="음악 제목" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2235" y="1447.3400000000001" width="84.1" height="45.5" as="geometry" />
+          <mxGeometry x="-2111.99" y="1512.68" width="84.1" height="45.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-231" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1608.48" y="1447.3400000000001" width="70" height="40" as="geometry" />
+          <mxGeometry x="-1485.47" y="1512.68" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-232" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;strokeColor=#23445d;exitX=0.875;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="E3FHki-WwOboz5_hfV8X-225" target="E3FHki-WwOboz5_hfV8X-184">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-2118" y="1482.0700000000002" as="sourcePoint" />
-            <mxPoint x="-1970" y="1405.3400000000001" as="targetPoint" />
+            <mxPoint x="-1994.9899999999998" y="1547.41" as="sourcePoint" />
+            <mxPoint x="-1846.99" y="1470.68" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-2030.0000000000005" y="1470.3400000000001" />
-              <mxPoint x="-2030.0000000000005" y="1405.3400000000001" />
+              <mxPoint x="-1906.9900000000005" y="1535.68" />
+              <mxPoint x="-1906.9900000000005" y="1470.68" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-233" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2090" y="1435.3400000000001" width="70" height="40" as="geometry" />
+          <mxGeometry x="-1966.99" y="1500.68" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-234" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot;&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;기사 썸네일&lt;/font&gt;&lt;/h4&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;기사 제목&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;기사 내용 일부&lt;/font&gt;&lt;/div&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2570" y="1093.5900000000001" width="170" height="60" as="geometry" />
+          <mxGeometry x="-2446.99" y="1158.93" width="170" height="60" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-236" value="좋아요" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1938.08" y="1455.3400000000001" width="88.16" height="56" as="geometry" />
+          <mxGeometry x="-1815.07" y="1520.68" width="88.16" height="56" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-237" value="좋아요" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1788.08" y="1508.3400000000001" width="88.16" height="56" as="geometry" />
+          <mxGeometry x="-1665.07" y="1573.68" width="88.16" height="56" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-238" value="제목" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2529.08" y="1160.47" width="88.16" height="56" as="geometry" />
+          <mxGeometry x="-2406.0699999999997" y="1225.81" width="88.16" height="56" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-239" value="기사 사이트" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2555" y="1325.8400000000001" width="140" height="23" as="geometry" />
+          <mxGeometry x="-2431.99" y="1391.18" width="140" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-240" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;strokeColor=#23445d;exitX=0.523;exitY=0.941;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="E3FHki-WwOboz5_hfV8X-238">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-2490" y="1177.8400000000001" as="sourcePoint" />
-            <mxPoint x="-2483" y="1325.8400000000001" as="targetPoint" />
+            <mxPoint x="-2366.99" y="1243.18" as="sourcePoint" />
+            <mxPoint x="-2359.99" y="1391.18" as="targetPoint" />
             <Array as="points" />
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-241" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-2500" y="1240.5900000000001" width="70" height="40" as="geometry" />
+          <mxGeometry x="-2376.99" y="1305.93" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-243" value="&lt;h4 style=&quot;font-size: 14px; line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;앨범 아트&lt;/span&gt;&lt;/h4&gt;&lt;div&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;앨범 제목&lt;/span&gt;&lt;/div&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1225" y="1208.8400000000001" width="130" height="61.5" as="geometry" />
+          <mxGeometry x="-1101.99" y="1274.18" width="130" height="61.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-244" value="스토어 상세 페이지" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1225" y="1309.2800000000002" width="140" height="23" as="geometry" />
+          <mxGeometry x="-1101.99" y="1374.6200000000001" width="140" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-245" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1165" y="1262.7800000000002" width="70" height="40" as="geometry" />
+          <mxGeometry x="-1041.99" y="1328.1200000000001" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-246" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;exitX=0.498;exitY=0.897;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-1155.1399999999999" y="1267.2800000000002" as="sourcePoint" />
-            <mxPoint x="-1155.1399999999999" y="1309.2800000000002" as="targetPoint" />
+            <mxPoint x="-1032.1299999999999" y="1332.6200000000001" as="sourcePoint" />
+            <mxPoint x="-1032.1299999999999" y="1374.6200000000001" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-247" value="&lt;b id=&quot;docs-internal-guid-089e02fe-7fff-121a-83e7-6d882898a079&quot; style=&quot;font-weight: normal; font-size: 14px;&quot;&gt;&lt;p style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-size: 14px; font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;앨범 아트&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-size: 14px; font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;앨범 제목&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-size: 14px; font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;아티스트명&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-size: 14px; font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;평점&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-size: 14px; font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;가격&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-size: 14px; font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;앨범 사양&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-size: 14px; font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;상세 이미지&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-size: 14px; font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;목록 버튼&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height: 1.2; text-align: center; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-size: 14px; font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;수량 버튼&lt;/span&gt;&lt;/p&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1225" y="1340.5900000000001" width="140" height="174.75" as="geometry" />
+          <mxGeometry x="-1101.99" y="1405.93" width="140" height="174.75" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-253" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.875;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="E3FHki-WwOboz5_hfV8X-178">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-1081.02" y="1543.3400000000001" as="sourcePoint" />
-            <mxPoint x="-1050.4849999999997" y="1147.5900000000001" as="targetPoint" />
+            <mxPoint x="-958.0099999999999" y="1608.68" as="sourcePoint" />
+            <mxPoint x="-927.4749999999996" y="1212.93" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-1081" y="1544.3400000000001" />
-              <mxPoint x="-1030" y="1544.3400000000001" />
-              <mxPoint x="-1030" y="1149.3400000000001" />
+              <mxPoint x="-957.9899999999999" y="1609.68" />
+              <mxPoint x="-906.9899999999999" y="1609.68" />
+              <mxPoint x="-906.9899999999999" y="1214.68" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-256" value="목록" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1121.9500000000003" y="1525.3400000000001" width="84.1" height="45.5" as="geometry" />
+          <mxGeometry x="-998.9400000000003" y="1590.68" width="84.1" height="45.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-257" value="장바구니" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1272.15" y="1525.3400000000001" width="84.1" height="45.5" as="geometry" />
+          <mxGeometry x="-1149.14" y="1590.68" width="84.1" height="45.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-258" value="구매 하기" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#edf3fd;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1197.15" y="1525.3400000000001" width="84.1" height="45.5" as="geometry" />
+          <mxGeometry x="-1074.14" y="1590.68" width="84.1" height="45.5" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-260" value="결제 페이지" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1210" y="1604.3400000000001" width="112.95" height="23" as="geometry" />
+          <mxGeometry x="-1086.99" y="1669.68" width="112.95" height="23" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-261" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;클릭&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1167.0499999999997" y="1564.3400000000001" width="70" height="40" as="geometry" />
+          <mxGeometry x="-1044.0399999999997" y="1629.68" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-267" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot;&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;영화 제목&lt;/font&gt;&lt;/h4&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;포스터&lt;/font&gt;&lt;/div&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#0e8088;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-1021.95" y="874" width="170" height="46" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-268" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot;&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;영화 제목&lt;/font&gt;&lt;/h4&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;영화 포스터&lt;/font&gt;&lt;/div&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-1814" y="1460" width="144" height="50" as="geometry" />
+          <mxGeometry x="-1690.99" y="1525.34" width="144" height="50" as="geometry" />
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-269" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="E3FHki-WwOboz5_hfV8X-272" target="E3FHki-WwOboz5_hfV8X-273">
           <mxGeometry relative="1" as="geometry">
@@ -1297,6 +1307,38 @@
         </mxCell>
         <mxCell id="E3FHki-WwOboz5_hfV8X-301" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span id=&quot;docs-internal-guid-4171cd41-7fff-a270-9df7-14da6e8f48f4&quot; style=&quot;font-weight:normal;&quot;&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;제목&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;장르&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;포스터&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;상영 시간&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;관람가&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;&amp;nbsp;개봉일&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;누적 관객 수&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;줄거리&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;감독&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;주연&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;국적&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Noto Sans KR&amp;quot;, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;&quot;&gt;예매율&lt;/span&gt;&lt;/p&gt;&lt;/span&gt;&lt;/h4&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#9673a6;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-2405" y="650" width="170" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="E3FHki-WwOboz5_hfV8X-302" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot;&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;앨범 아트&lt;/font&gt;&lt;/h4&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;앨범 명&lt;/font&gt;&lt;/div&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#9673a6;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-2407.56" y="876.5" width="75" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="E3FHki-WwOboz5_hfV8X-303" value="&lt;span id=&quot;docs-internal-guid-21f7aed0-7fff-f2a8-6124-d57b1509e031&quot; style=&quot;font-size: 14px; white-space-collapse: preserve;&quot;&gt;&lt;b&gt;&lt;h4 style=&quot;line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; font-size: 14px;&quot;&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;도서 표지&lt;/font&gt;&lt;/h4&gt;&lt;div&gt;&lt;font face=&quot;Noto Sans KR, sans-serif&quot;&gt;도서 제목&lt;/font&gt;&lt;/div&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#9673a6;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-2312.56" y="876.5" width="75" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="E3FHki-WwOboz5_hfV8X-304" value="&lt;h4&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;리뷰 작성&lt;/font&gt;&lt;/h4&gt;" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-2279.9700000000003" y="941.25" width="79.25" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="E3FHki-WwOboz5_hfV8X-305" value="&lt;h4 style=&quot;font-size: 14px; line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;좋아요&lt;/span&gt;&lt;/h4&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#fbf5ff;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#9673a6;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-2364.07" y="938" width="84.1" height="45.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E3FHki-WwOboz5_hfV8X-313" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;exitX=0.503;exitY=0.901;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#23445d;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="E3FHki-WwOboz5_hfV8X-306">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-2397" y="1030" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E3FHki-WwOboz5_hfV8X-306" value="&lt;h4 style=&quot;font-size: 14px; line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt;&quot;&gt;&lt;span style=&quot;white-space-collapse: preserve;&quot;&gt;예매하기&lt;/span&gt;&lt;/h4&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#fbf5ff;fontStyle=1;fontSize=14;fontFamily=Helvetica;strokeColor=#9673a6;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-2439.27" y="938" width="84.1" height="45.5" as="geometry" />
+        </mxCell>
+        <mxCell id="E3FHki-WwOboz5_hfV8X-310" value="&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;로그인 여부&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-2590" y="922.75" width="109.08" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="E3FHki-WwOboz5_hfV8X-311" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;yes&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-2500" y="730" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="E3FHki-WwOboz5_hfV8X-314" value="&lt;font color=&quot;#000000&quot; style=&quot;font-size: 14px;&quot;&gt;no&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-2446.99" y="977" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="E3FHki-WwOboz5_hfV8X-315" value="로그인 페이지" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;labelBackgroundColor=none;fontStyle=1;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-2466.22" y="1030" width="138" height="23" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
