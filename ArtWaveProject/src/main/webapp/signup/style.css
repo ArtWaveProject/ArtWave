@@ -46,12 +46,39 @@ img {
   position: relative;
   height: 368px;
 }
-.login__register, .login__create {
+.login__register{
   position: absolute;
   bottom: 1rem;
   width: 100%;
   background-color: #f2f2f2;
   padding: 2rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
+  animation-duration: 0.4s;
+  animation-name: animateLogin;
+}
+.login__create {
+  position: absolute;  
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 900px;
+  background-color: #f2f2f2;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
+/*  animation-duration: 0.1s;*/
+  animation-name: animateLogin;
+}
+.login__register, .login__create2 {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  background-color: #f2f2f2;
+  padding: 4rem 1rem;
   border-radius: 1rem;
   text-align: center;
   box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
