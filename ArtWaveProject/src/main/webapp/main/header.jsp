@@ -17,12 +17,6 @@
 						</a>
 						<!-- ***** Logo End ***** -->
 						<!-- ***** Search End ***** -->
-<!-- 						<div class="search-input">
-							<form id="search" action="#">
-								<input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
-								<i class="fa fa-search"></i>
-							</form>
-						</div> -->
 						<!-- ***** Search End ***** -->
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
@@ -30,8 +24,8 @@
 							<li><a href="browse.html">Browse</a></li>
 							<li><a href="details.html">Details</a></li>
 							<li><a href="streams.html">Streams</a></li>
-							<li><a href="../signup/login.do">
-									LogIn <img src="../assets/images/profile-header.jpg" alt="">
+							<li><a href="profile.html">
+									Profile <img src="../assets/images/profile-header.jpg" alt="">
 								</a></li>
 						</ul>
 						<a class='menu-trigger'>

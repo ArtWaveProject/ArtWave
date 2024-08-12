@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
 <bean id="main" class="com.sist.model.MainModel"></bean>
-<bean id="profile" class="com.sist.model.ProfileModel"></bean>
-<bean id="login" class="com.sist.model.LoginModel"></bean>
-<bean id="signup" class="com.sist.model.SignUpModel"></bean>
 </beans>
