@@ -66,7 +66,7 @@ img {
   width: 600px;
   height: 900px;
   background-color: #f2f2f2;
-  padding: 3rem 2rem;
+  padding: 1.5rem 2rem;
   border-radius: 1rem;
   text-align: center;
   box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
@@ -89,15 +89,6 @@ img {
   font-size: 1.5rem;
   margin-bottom: 2rem;
 }
-.login__box {
-  display: flex;
-  align-items: center; 
-  gap: 0.5rem; 
-  padding: 1.125rem 1rem;
-  background-color: #fff;
-  margin-top: 0.5rem;
-  border-radius: 0.5rem;
-}
 
 .login__box input[type="button"] {
   font-family: "Open Sans", sans-serif; 
@@ -118,7 +109,7 @@ img {
   gap: 0.5rem; 
   padding: 0.5rem 1rem;
   background-color: #fff;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   border-radius: 0.5rem;
   border: 1px solid #ccc; 
 }
@@ -221,7 +212,7 @@ img {
 .login__button {
   display: block;
   padding: 1rem;
-  margin: 2rem 0;
+  margin: 0.5rem 0;
   background-color: #4AD395;
   color: #fff;
   font-weight: 600;

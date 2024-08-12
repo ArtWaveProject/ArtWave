@@ -267,7 +267,7 @@
 				</form>
 
 				<!--         create account form -->
-				<div class="login__create none" id="login-up" style="height: 1200px;">
+				<div class="login__create none" id="login-up" style="height: 1100px;">
 					<h1 class="login__title">Create Account</h1>
 					<div class="login__box">
 						<i class='bx bx-user login__icon'></i>

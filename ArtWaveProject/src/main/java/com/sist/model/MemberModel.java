@@ -19,6 +19,7 @@ public class MemberModel {
 		try {
 			String id=request.getParameter("id");
 			String result=MemberDAO.memberIdCheck(id);
+			System.out.println(result);
 			PrintWriter out=response.getWriter();
 			out.write(result);
 		} catch (Exception e) {
