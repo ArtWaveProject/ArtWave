@@ -12,6 +12,6 @@ public class ProfileModel {
 		
 		request.setAttribute("main_jsp", "../pro/profile.jsp");
 		return "../main/main.jsp";
-	}
+	} 
 }
 
