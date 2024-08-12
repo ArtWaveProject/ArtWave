@@ -30,6 +30,7 @@
 						checkId=true
 						id.attr('readonly', 'readonly')
 						$('#idCheck').hide()
+						$('#idIcon').css('display', '')
 					}
 					else{
 						alert('이미 존재하는 ID입니다')
@@ -56,6 +57,7 @@
 						checkNick=true
 						nick.attr('readonly', 'readonly')
 						$('#nickCheck').hide()
+						$('#nickIcon').css('display', '')
 					}
 					else{
 						alert('이미 존재하는 닉네임입니다')
@@ -84,6 +86,7 @@
 						checkEmail=true
 						email.attr('readonly', 'readonly')
 						$('#emailCheck').hide()
+						$('#emailIcon').css('display', '')
 					}
 					else{
 						alert('이미 존재하는 이메일 입니다')
@@ -258,11 +261,11 @@
 						<i class='bx bx-lock login__icon'></i>
 						<input type="text" placeholder="Password" class="login__input">
 					</div>
-					<a href="#" class="login__forgot">Forgot Password? </a> <a href="#" class="login__button">Sign In</a>
+					<a href="#" class="login__forgot">Forgot Password? </a>
+					<a href="#" class="login__button">Sign In</a>
 
 					<div>
-						<span class="login__account login__account--account">Don't Have an Account?</span> <span class="login__signin login__signin--signup"
-							id="sign-up">Sign Up</span>
+						<span class="login__account login__account--account">Don't Have an Account?</span> <span class="login__signin login__signin--signup" id="sign-up">Sign Up</span>
 					</div>
 				</form>
 
@@ -278,12 +281,14 @@
 						<i class='bx bx-user login__icon'></i>
 						<input type="text" placeholder="ID" class="login__input" id="id">
 						<input type="button" value="중복확인" id="idCheck">
+						<img src="check.png" width="20px" id="idIcon" height="20px" style="background: none; display: none;">
 					</div>
 
 					<div class="login__box">
 						<i class='bx bx-ghost login__icon'></i>
 						<input type="text" placeholder="Nick name" class="login__input" id="nick">
 						<input type="button" value="중복확인" id="nickCheck">
+						<img src="check.png" width="20px" id="nickIcon" height="20px" style="background: none; display: none;">
 					</div>
 
 					<div class="login__box">
@@ -308,9 +313,9 @@
 								<option value="010">010</option>
 								<option value="011">011</option>
 								<option value="012">012</option>
-							</select> -
-							<input type="text" placeholder="Phone" class="phone-input" style="margin-right: 6px; margin-left: 6px;" id="phone_second" readonly
-								maxlength="4">
+							</select>
+							-
+							<input type="text" placeholder="Phone" class="phone-input" style="margin-right: 6px; margin-left: 6px;" id="phone_second" readonly maxlength="4">
 							-
 							<input type="text" placeholder="Phone" class="phone-input" style="margin-left: 6px;" id="phone_third" readonly maxlength="4">
 						</div>
@@ -324,14 +329,21 @@
 					<div class="login__box" style="text-align: right;">
 						<i class='bx bx-cake login__icon'></i>
 						<input type="text" placeholder="Sex" class="login__input" readonly>
-						<label class="login__input"><input type="radio" value="남자" name="sex" id="sex" checked>남자</label> <label class="login__input"><input
-								type="radio" value="여자" name="sex" id="sex">여자</label>
+						<label class="login__input">
+							<input type="radio" value="남자" name="sex" id="sex" checked>
+							남자
+						</label>
+						<label class="login__input">
+							<input type="radio" value="여자" name="sex" id="sex">
+							여자
+						</label>
 					</div>
 
 					<div class="login__box">
 						<i class='bx bx-at login__icon'></i>
 						<input type="text" placeholder="Email" class="login__input" id="email">
 						<input type="button" value="중복확인" id="emailCheck">
+						<img src="check.png" width="20px" id="emailIcon" height="20px" style="background: none; display: none;">
 					</div>
 
 					<div class="login__box">
@@ -352,14 +364,22 @@
 					<a href="#" class="login__button" id="signUpBtn">Sign Up</a>
 
 					<div>
-						<span class="login__account login__account--account">Already have an Account?</span> <span class="login__signup login__signup--signup"
-							id="sign-in">Sign In</span>
+						<span class="login__account login__account--account">Already have an Account?</span> <span class="login__signup login__signup--signup" id="sign-in">Sign In</span>
 					</div>
 
 					<div class="login__social">
-						<a href="#" class="login__social--icon"><i class='bx bxl-facebook'></i></a> <a href="#" class="login__social--icon"><i
-							class='bx bxl-twitter'></i></a> <a href="#" class="login__social--icon"><i class='bx bxl-google'></i></a> <a href="#" class="login__social--icon"><i
-							class='bx bxl-github'></i></a>
+						<a href="#" class="login__social--icon">
+							<i class='bx bxl-facebook'></i>
+						</a>
+						<a href="#" class="login__social--icon">
+							<i class='bx bxl-twitter'></i>
+						</a>
+						<a href="#" class="login__social--icon">
+							<i class='bx bxl-google'></i>
+						</a>
+						<a href="#" class="login__social--icon">
+							<i class='bx bxl-github'></i>
+						</a>
 					</div>
 				</div>
 
@@ -383,14 +403,22 @@
 					<a href="#" class="login__button">Sign Up</a>
 
 					<div>
-						<span class="login__account login__account--account">Already have an Account?</span> <span class="login__signup login__signup--signup"
-							id="sign-in">Sign In</span>
+						<span class="login__account login__account--account">Already have an Account?</span> <span class="login__signup login__signup--signup" id="sign-in">Sign In</span>
 					</div>
 
 					<div class="login__social">
-						<a href="#" class="login__social--icon"><i class='bx bxl-facebook'></i></a> <a href="#" class="login__social--icon"><i
-							class='bx bxl-twitter'></i></a> <a href="#" class="login__social--icon"><i class='bx bxl-google'></i></a> <a href="#" class="login__social--icon"><i
-							class='bx bxl-github'></i></a>
+						<a href="#" class="login__social--icon">
+							<i class='bx bxl-facebook'></i>
+						</a>
+						<a href="#" class="login__social--icon">
+							<i class='bx bxl-twitter'></i>
+						</a>
+						<a href="#" class="login__social--icon">
+							<i class='bx bxl-google'></i>
+						</a>
+						<a href="#" class="login__social--icon">
+							<i class='bx bxl-github'></i>
+						</a>
 					</div>
 				</form>
 			</div>
