@@ -270,7 +270,7 @@
 				</form>
 
 				<!--         create account form -->
-				<div class="login__create none" id="login-up" style="height: 1200px;">
+				<div class="login__create none" id="login-up" style="height: 970px;">
 					<h1 class="login__title">Create Account</h1>
 					<div class="login__box">
 						<i class='bx bx-user login__icon'></i>
@@ -365,21 +365,6 @@
 
 					<div>
 						<span class="login__account login__account--account">Already have an Account?</span> <span class="login__signup login__signup--signup" id="sign-in">Sign In</span>
-					</div>
-
-					<div class="login__social">
-						<a href="#" class="login__social--icon">
-							<i class='bx bxl-facebook'></i>
-						</a>
-						<a href="#" class="login__social--icon">
-							<i class='bx bxl-twitter'></i>
-						</a>
-						<a href="#" class="login__social--icon">
-							<i class='bx bxl-google'></i>
-						</a>
-						<a href="#" class="login__social--icon">
-							<i class='bx bxl-github'></i>
-						</a>
 					</div>
 				</div>
 
