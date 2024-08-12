@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>CodePen - Sign Up/Sign In Responsive form</title>
-<link rel="stylesheet" href="../signup/style(1).css">
+<link rel="stylesheet" href="../member/style(1).css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
@@ -397,7 +397,7 @@
 		</div>
 	</div>
 	<!-- partial -->
-	<script src="../signup/script.js"></script>
+	<script src="../member/script.js"></script>
 
 </body>
 </html>
