@@ -22,3 +22,4 @@ public class AlbumVO {
 	private Date regdate;
 	private String aname;
 }
+ 

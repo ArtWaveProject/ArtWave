@@ -20,3 +20,4 @@ public class ArtistVO {
 	private int ano, likecount;
 	private String aname, poster, type, debutyear, debutsong, active, nation, content;
 }
+ 

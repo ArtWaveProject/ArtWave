@@ -92,5 +92,5 @@ public class MusicModel {
 		request.setAttribute("list", list);
 		request.setAttribute("main_jsp", "../music/albumList.jsp");
 		return "../main/main.jsp";
-	}
+	} 
 }

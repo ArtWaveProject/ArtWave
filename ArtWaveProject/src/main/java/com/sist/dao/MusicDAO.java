@@ -67,5 +67,5 @@ public class MusicDAO {
 				session.close();
 		}
 		return total;
-	}
+	} 
 }

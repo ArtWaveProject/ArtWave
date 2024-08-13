@@ -30,3 +30,4 @@ public class MusicVO {
 	private int[] lylicistAll, composerAll, arrangerAll;
 	private String altitle, aname;
 }
+ 

@@ -34,7 +34,7 @@
 					name="username"
 					value="${username}" />
 				<property
-					name="password"
+					name="password" 
 					value="${password}" />
 			</dataSource>
 		</environment>
