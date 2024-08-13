@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.sist.vo.AlbumVO;
+import com.sist.vo.ArtistVO;
 import com.sist.vo.MusicVO;
 
 public class MusicDAO {
@@ -29,8 +30,9 @@ public class MusicDAO {
 		}
 		return list;
 	}
+
 	public static int musicTotalPage(String genre) {
-		int total=0;
+		int total = 0;
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
@@ -42,7 +44,8 @@ public class MusicDAO {
 		}
 		return total;
 	}
-	public static List<AlbumVO> albumListData(Map map){
+
+	public static List<AlbumVO> albumListData(Map map) {
 		List<AlbumVO> list = new ArrayList<AlbumVO>();
 		SqlSession session = null;
 		try {
@@ -55,8 +58,9 @@ public class MusicDAO {
 		}
 		return list;
 	}
+
 	public static int albumTotalPage(String genre) {
-		int total=0;
+		int total = 0;
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
@@ -67,5 +71,53 @@ public class MusicDAO {
 				session.close();
 		}
 		return total;
-	} 
+	}
+
+	public static ArtistVO artistDetailData(int ano) {
+		ArtistVO vo = new ArtistVO();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			vo = session.selectOne("artistDetailData", ano);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return vo;
+	}
+
+	public static List<MusicVO> artistMusicData(int ano) {
+		List<MusicVO> list = new ArrayList<MusicVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("artistMusicData", ano);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
+
+	public static List<AlbumVO> artistAlbumData(int ano) {
+		List<AlbumVO> list = new ArrayList<AlbumVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("artistAlbumData", ano);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
 }

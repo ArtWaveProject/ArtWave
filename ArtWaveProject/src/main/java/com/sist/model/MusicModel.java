@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sist.dao.MusicDAO;
 import com.sist.vo.AlbumVO;
+import com.sist.vo.ArtistVO;
 import com.sist.vo.MusicVO;
 
 import controller.RequestMapping;
@@ -93,4 +94,17 @@ public class MusicModel {
 		request.setAttribute("main_jsp", "../music/albumList.jsp");
 		return "../main/main.jsp";
 	} 
+	@RequestMapping("music/artistDetail.do")
+	public String artistDetail(HttpServletRequest request, HttpServletResponse response) {
+		String ano=request.getParameter("ano");
+		ArtistVO vo=MusicDAO.artistDetailData(Integer.parseInt(ano));
+		List<MusicVO> mList=MusicDAO.artistMusicData(Integer.parseInt(ano));
+		List<AlbumVO> aList=MusicDAO.artistAlbumData(Integer.parseInt(ano));
+		System.out.println(mList.size());
+		request.setAttribute("mList", mList);
+		request.setAttribute("aList", aList);
+		request.setAttribute("detail", vo);
+		request.setAttribute("main_jsp", "../music/artistDetail.jsp");
+		return "../main/main.jsp";
+	}
 }

@@ -145,9 +145,6 @@ $(function() {
                                 </ul>
                             </li>
                             <li>
-                                <a href="streams.html">Streams</a>
-                            </li>
-                            <li>
                                 <a href="profile.html">
                                     Profile <img src="../assets/images/profile-header.jpg" alt="">
                                 </a>

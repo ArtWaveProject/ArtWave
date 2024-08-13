@@ -15,8 +15,9 @@
 	background-color: #fff !important;
 	border: 7px solid #a1daba;
 }
-.item h4{
-color: black;
+
+.item h4 {
+	color: black;
 }
 </style>
 
@@ -37,10 +38,14 @@ color: black;
 							<div class="col-sm-3">
 								<div class="item">
 									<img src="${vo.poster}">
-									<a href="../music/albumDetail.do?alno=${vo.alno}"><h4>
-										${vo.atitle	}<br>
-									</h4></a>
-									<a href="../music/artistDetail.do?ano=${vo.ano}"><span>${vo.aname}</span></a>
+									<a href="../music/albumDetail.do?alno=${vo.alno}">
+										<h4>
+											${vo.atitle	}<br>
+										</h4>
+									</a>
+									<a href="../music/artistDetail.do?ano=${vo.ano}">
+										<span>${vo.aname}</span>
+									</a>
 								</div>
 							</div>
 						</c:forEach>
