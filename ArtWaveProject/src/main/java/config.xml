@@ -2,32 +2,45 @@
 <!DOCTYPE configuration
  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-config.dtd">
-<configuration>
 
+<configuration>
+<properties resource="db.properties">
+</properties>
 	<typeAliases>
-		<typeAlias type="com.sist.vo.MemberVO" alias="MemberVO" />
+		<typeAlias
+			type="com.sist.vo.MemberVO"
+			alias="MemberVO"/>
+		<typeAlias
+			type="com.sist.vo.MusicVO"
+			alias="MusicVO"/>
+		<typeAlias
+			type="com.sist.vo.ArtistVO"
+			alias="ArtistVO"/>
+		<typeAlias
+			type="com.sist.vo.AlbumVO"
+			alias="AlbumVO"/>
 	</typeAliases>
-	<environments default="">
-		<environment id="">
+	<environments default="development">
+		<environment id="development">
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
-				<property name="driver"
-					value="oracle.jdbc.driver.OracleDriver" />
-				<property name="url"
-					value="jdbc:oracle:thin:@211.238.142.124:1521:XE" />
-				<property name="username" value="hr3" />
-				<property name="password" value="happy" />
+				<property
+					name="driver"
+					value="${driver}" />
+				<property
+					name="url"
+					value="${url}" />
+				<property
+					name="username"
+					value="${username}" />
+				<property
+					name="password" 
+					value="${password}" />
 			</dataSource>
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="com/sist/mapper/member_mapper.xml" />
+	<mapper resource="com/sist/mapper/member_mapper.xml"/>
+	<mapper resource="com/sist/mapper/music_mapper.xml"/>
 	</mappers>
 </configuration>
-
-
-<!-- (properties?, settings?, typeAliases?, typeHandlers?, objectFactory?, 
-	objectWrapperFactory?, reflectorFactory?, plugins?, environments?, databaseIdProvider?, 
-	mappers?) myBatis : Mapper(데이터베이스만 연결) 요소 properties : 파일 읽기 => 오라클 정보 settings 
-	: 캐시 메모리 => 자주 사용하는 SQL 저장해서 사용 typeAliases : VO등록 environments : 오라클 연결하는 
-	정보 전송 mappers : SQL문장 처리 대소문자 구분 최상위 태그 존재 속성값 => "" => 속성은 지정된 속성만 사용 가능 -->

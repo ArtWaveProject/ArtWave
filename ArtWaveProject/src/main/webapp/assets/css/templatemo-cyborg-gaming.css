@@ -123,13 +123,13 @@ Global Styles
 */
 html,
 body {
-  background: #1f2122;
+  background: white;
   font-family: 'Poppins', sans-serif;
 }
 
 body .page-content {
   margin-top: 110px;
-  background-color: #27292a;
+  background-color: lightblue;
   padding: 60px;
   border-radius: 23px;
 }
@@ -423,8 +423,8 @@ Header Style
 }
 
 .header-area .main-nav .nav {
-  display: inline-flex;
-  flex-basis: 70%;
+  display: block;
+  /*flex-basis: 70%;*/
   justify-content: left;
   vertical-align: middle;
   text-align: right;
@@ -460,11 +460,6 @@ Header Style
   letter-spacing: .3px;
 }
 
-.header-area .main-nav .nav li:last-child a {
-  background-color: #27292a;
-  padding: 8px 10px 8px 20px;
-  border-radius: 23px;
-}
 
 .header-area .main-nav .nav li:last-child a img {
   max-width: 30px;
@@ -474,19 +469,19 @@ Header Style
 
 .header-area .main-nav .nav li.has-sub ul.sub-menu li:last-child a:hover,
 .background-header .main-nav .nav li.has-sub ul.sub-menu li:last-child a:hover {
-  padding-left: 25px !important;
+  padding-left: 20px !important;
 }
 
 .header-area .main-nav .nav li:hover a,
 .header-area .main-nav .nav li a.active {
-  color: #e75e8d !important;
+  color: skyblue !important;
 }
 
-.header-area .main-nav .nav li:last-child:hover a,
+/*.header-area .main-nav .nav li:last-child:hover a,
 .header-area .main-nav .nav li:last-child a.active {
   color: #fff !important;
   background-color: #e75e8d !important;
-}
+}*/
 
 .background-header .main-nav .nav li:hover a,
 .background-header .main-nav .nav li a.active {
@@ -808,7 +803,7 @@ Most Popular Style
 .most-popular {
   margin-top: 60px;
   padding: 30px;
-  background-color: #1f2122;
+  background-color: white;
   border-radius: 23px;
 }
 
@@ -877,7 +872,7 @@ Gaming Library Style
 .gaming-library {
   margin-top: 60px;
   padding: 30px;
-  background-color: #1f2122;
+  background-color: white;
   border-radius: 23px;
 }
 
@@ -964,7 +959,7 @@ Featured Games Style
 
 .featured-games {
   border-radius: 23px;
-  background-color: #1f2122;
+  background-color: white;
   padding: 30px;
 }
 
@@ -1068,7 +1063,7 @@ Featured Games Style
 
 .top-downloaded {
   border-radius: 23px;
-  background-color: #1f2122;
+  background-color: white;
   padding: 30px;
   max-height: 567px;
   min-height: 567px;
@@ -1173,7 +1168,7 @@ Live Stream Style
 .live-stream {
   margin-top: 60px;
   border-radius: 23px;
-  background-color: #1f2122;
+  background-color: white;
   padding: 30px;
 }
 
@@ -1311,7 +1306,7 @@ Game Details Style
 .game-details .content {
   border-radius: 23px;
   padding: 30px;
-  background-color: #1f2122;
+  background-color: white;
 }
 
 .game-details .content .left-info {
@@ -1401,7 +1396,7 @@ Other Related Style
 .other-games {
   border-radius: 23px;
   padding: 30px 30px 0px 30px;
-  background-color: #1f2122;
+  background-color: white;
   margin-top: 60px;
 }
 
@@ -1458,7 +1453,7 @@ Top Streamers Style
 
 .top-streamers {
   border-radius: 23px;
-  background-color: #1f2122;
+  background-color: white;
   padding: 30px;
   max-height: 567px;
   min-height: 567px;
@@ -1524,7 +1519,7 @@ Profile Style
 .main-profile {
   border-radius: 23px;
   padding: 30px;
-  background-color: #1f2122;
+  background-color: white;
 }
 
 .main-profile .main-info span {
@@ -1645,6 +1640,7 @@ body {
   body .page-content {
     padding: 0px 30px;
   }
+
   .main-banner {
     text-align: center;
   }

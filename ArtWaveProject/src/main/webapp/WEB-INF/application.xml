@@ -2,5 +2,5 @@
 <beans>
 <bean id="main" class="com.sist.model.MainModel"></bean>
 <bean id="member" class="com.sist.model.MemberModel"></bean>
-<bean id="profile" class="com.sist.model.ProfileModel"></bean>
+<bean id="music" class="com.sist.model.MusicModel"></bean>
 </beans>
