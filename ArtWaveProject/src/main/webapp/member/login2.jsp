@@ -270,10 +270,10 @@
 				</form>
 
 				<!--         create account form -->
-				<div class="login__create none" id="login-up" style="height: 970px;">
+				<div class="login__create none" id="login-up" >
 					<h1 class="login__title">Create Account</h1>
 					<div class="login__box">
-						<i class='bx bx-user login__icon'></i>
+						<i class='bx bx-face login__icon'></i>
 						<input type="text" placeholder="Username" class="login__input" id="name" required>
 					</div>
 
@@ -310,14 +310,12 @@
 						<div class="phone-container">
 							<select name="phone" class="phone-prefix" style="margin-right: 6px;" id="phone_first">
 								<option value="">없음</option>
-								<option value="010">010</option>
-								<option value="011">011</option>
-								<option value="012">012</option>
+								<option value="010">02</option>
+								<option value="011">010</option>
+								<option value="012">011</option>
 							</select>
-							-
-							<input type="text" placeholder="Phone" class="phone-input" style="margin-right: 6px; margin-left: 6px;" id="phone_second" readonly maxlength="4">
-							-
-							<input type="text" placeholder="Phone" class="phone-input" style="margin-left: 6px;" id="phone_third" readonly maxlength="4">
+							<input type="text" placeholder="Phone" class="phone-input" style="margin-right: 6px;" id="phone_second" readonly maxlength="4">
+							<input type="text" placeholder="Phone" class="phone-input" id="phone_third" readonly maxlength="4">
 						</div>
 					</div>
 
@@ -327,8 +325,8 @@
 						<input type="date" required id="birth">
 					</div>
 					<div class="login__box" style="text-align: right;">
-						<i class='bx bx-cake login__icon'></i>
-						<input type="text" placeholder="Sex" class="login__input" readonly>
+						<i class='bx bx-heart login__icon'></i>
+						<input type="text" placeholder="Gender" class="login__input" readonly>
 						<label class="login__input">
 							<input type="radio" value="남자" name="sex" id="sex" checked>
 							남자
@@ -347,16 +345,16 @@
 					</div>
 
 					<div class="login__box">
-						<i class='bx bx-at login__icon'></i>
+						<i class='bx bx-mail-send login__icon'></i>
 						<input type="text" placeholder="post" class="login__input" readonly="readonly" id="post">
 						<input type="button" value="우편번호 찾기" id="postBtn" required>
 					</div>
 					<div class="login__box">
-						<i class='bx bx-at login__icon'></i>
+						<i class='bx bx-map login__icon'></i>
 						<input type="text" placeholder="addr" class="login__input" readonly="readonly" id="addr1">
 					</div>
 					<div class="login__box">
-						<i class='bx bx-at login__icon'></i>
+						<i class='bx bx-map login__icon'></i>
 						<input type="text" placeholder="addr" class="login__input" id="addr2">
 					</div>
 
@@ -366,6 +364,7 @@
 					<div>
 						<span class="login__account login__account--account">Already have an Account?</span> <span class="login__signup login__signup--signup" id="sign-in">Sign In</span>
 					</div>
+
 				</div>
 
 				<form action="" class="login__create none" id="login-up">
@@ -388,23 +387,10 @@
 					<a href="#" class="login__button">Sign Up</a>
 
 					<div>
-						<span class="login__account login__account--account">Already have an Account?</span> <span class="login__signup login__signup--signup" id="sign-in">Sign In</span>
+						<span class="login__account login__account--account">Already have an Account?</span> 
+						<span class="login__signup login__signup--signup" id="sign-in">Sign In</span>
 					</div>
 
-					<div class="login__social">
-						<a href="#" class="login__social--icon">
-							<i class='bx bxl-facebook'></i>
-						</a>
-						<a href="#" class="login__social--icon">
-							<i class='bx bxl-twitter'></i>
-						</a>
-						<a href="#" class="login__social--icon">
-							<i class='bx bxl-google'></i>
-						</a>
-						<a href="#" class="login__social--icon">
-							<i class='bx bxl-github'></i>
-						</a>
-					</div>
 				</form>
 			</div>
 		</div>
