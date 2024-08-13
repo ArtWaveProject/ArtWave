@@ -423,11 +423,10 @@ Header Style
 }
 
 .header-area .main-nav .nav {
-  display: inline-flex;
-  flex-basis: 70%;
+  display: block;
   justify-content: left;
   vertical-align: middle;
-  text-align: right;
+  text-align: left;
   margin-top: 0px;
   margin-right: 0px;
   -webkit-transition: all 0.3s ease 0s;

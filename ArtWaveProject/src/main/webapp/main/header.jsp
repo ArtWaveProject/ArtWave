@@ -73,13 +73,13 @@ $(function() {
     // 기존 드롭다운 메뉴에 마우스 오버 및 아웃 이벤트 적용
     $('.dropdown').hover(
         function() {
-            $(this).find('.dropmenu').stop(true, true).slideDown();
+            $(this).find('.dropmenu').stop(true, true).slideDown()
         },
         function() {
-            $(this).find('.dropmenu').stop(true, true).slideUp();
+            $(this).find('.dropmenu').stop(true, true).slideUp()
         }
-    );
-});
+    )
+})
 </script>
 </head>
 <body>
