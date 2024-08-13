@@ -129,6 +129,21 @@ $(function() {
                                     </li>
                                 </ul>
                             </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Music<span class="caret"></span></a>
+                                <ul class="dropmenu">
+                                    <li class="submenu">
+                                        <a href="../music/musicList.do">Chart</a>
+                                    </li>
+                                    <li class="submenu">
+                                        <a href="../music/albumList.do">Album</a>
+                                    </li>
+                                    <li class="submenu">
+                                        <a href="#">Page 1-3</a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li>
                                 <a href="streams.html">Streams</a>
                             </li>
