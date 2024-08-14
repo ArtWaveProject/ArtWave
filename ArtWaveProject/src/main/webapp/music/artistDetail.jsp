@@ -9,13 +9,43 @@
 .main-profile {
 	margin-top: 150px;
 }
+.main-profile .row{
+vertical-align: top;
+}
 
 .col-lg-12 {
-	width: 900px;
+	width: 1200px;
 	margin: 0px auto;
 }
-h1, h2, h3, h4, h5, h6{
-color: black;
+.clips .item{
+background-color: #999;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: black;
+	margin: 0px;
+}
+.likeCheck{
+width:20px !important;
+height:20px;
+margin: 0px !important;
+}
+div.gaming-library div.item li{
+margin: 0px auto !important;
+vertical-align: middle;
+}
+div.gaming-library div.item{
+margin: 0px;
+padding: 10px 0px;
+border-bottom: 1px solid #a1daba;
+}
+.gaming-library .item ul li img{
+margin: 0px;
+}
+.main-profile ul li span{
+color: #a1daba;
+}
+.main-profile ul li{
+color: #ccc;
 }
 </style>
 </head>
@@ -25,7 +55,7 @@ color: black;
 			<div class="main-profile ">
 				<div class="row">
 					<div class="col-lg-4">
-						<img src="${detail.poster }" style="border-radius: 23px; height: 80px; width: 80px;">
+						<img src="${detail.poster }" style="border-radius: 23px; width: 100%;">
 					</div>
 					<div class="col-lg-4 align-self-center">
 						<div class="main-info header-text">
@@ -36,7 +66,7 @@ color: black;
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 align-self-center">
+					<div class="col-lg-4">
 						<ul>
 							<li>
 								활동유형 <span>${detail.type}</span>
@@ -116,10 +146,10 @@ color: black;
 						<li style="width: 5%">
 							<h4>${mvo.likecount}</h4>
 						</li>
-						<li style="width: 30%">
-							<div class="main-border-button border-no-active">
-								<a href="#">Donwloaded</a>
-							</div>
+						<li style="width: 25%">
+							<a href="#">
+								<img class="likeCheck" src="like_off.png" >
+							</a>
 						</li>
 					</ul>
 				</div>

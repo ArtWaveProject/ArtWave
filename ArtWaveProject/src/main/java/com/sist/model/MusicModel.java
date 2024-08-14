@@ -107,4 +107,10 @@ public class MusicModel {
 		request.setAttribute("main_jsp", "../music/artistDetail.jsp");
 		return "../main/main.jsp";
 	}
+	@RequestMapping("music/musicDetail.do")
+	public String musicDetail(HttpServletRequest request, HttpServletResponse response) {
+		String mno=request.getParameter("mno");
+		request.setAttribute("main_jsp", "../music/musicDetail.jsp");
+		return "../main/main.jsp";
+	}
 }

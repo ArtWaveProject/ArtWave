@@ -64,7 +64,7 @@ ul {
 							<li id="title">
 								<h5>${vo.title }</h5>
 								<a href="../music/artistDetail.do?ano=${vo.ano}"><h6><font color="gray">${vo.aname }</font></h6></a>
-								<h6><font color="gray">${vo.altitle }</font></h6>
+								<a href="../music/albumDetail.do?alno=${vo.alno}"><h6><font color="gray">${vo.altitle }</font></h6></a>
 							</li>
 						</ul>
 						<ul>
