@@ -120,4 +120,36 @@ public class MusicDAO {
 		}
 		return list;
 	}
+	public static MusicVO musicDetailData(int mno) {
+		MusicVO vo = new MusicVO();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			vo = session.selectOne("musicDetailData", mno);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return vo;
+	}
+	public static List<String> artistName(int[] list){
+		List<String> slist=new ArrayList<String>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			for(int i:list) {
+				String name = session.selectOne("artistNameData", i);
+				slist.add(name);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return slist;
+	}
 }
