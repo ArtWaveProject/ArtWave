@@ -129,7 +129,7 @@ body {
 
 body .page-content {
   margin-top: 110px;
-  background-color: lightblue;
+  background-color: #9da2df;
   padding: 60px;
   border-radius: 23px;
 }
@@ -401,6 +401,9 @@ Header Style
 }
 
 .header-area .main-nav .logo {
+  border-right: 1px solid #27292a;
+  flex-basis: 25%;
+  margin-right: 5%;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -764,31 +767,21 @@ Banner Style
 --------------------------------------------- 
 */
 
-.main-banner {
-  background-position: center center;
-  background-size: cover;
-  min-height: 380px;
-  border-radius: 23px;
-  padding: 80px 60px;
+.carousel video{
+ margin-top:50px;
+ position:relative;
+  display: inline-block;
+  width: 100%;
+  height: 60%;
+  object-fit: fill;
+}
+.carousel-cell {
+  width: 90vw;
+  height: auto;
+  padding: 60px 60px;
+  background-color: black;
 }
 
-.main-banner h6 {
-  font-size: 20px;
-  color: #fff;
-  font-weight: 400;
-  margin-bottom: 25px;
-}
-
-.main-banner h4 {
-  font-size: 45px;
-  text-transform: uppercase;
-  margin-bottom: 25px;
-}
-
-.main-banner h4 em {
-  font-style: normal;
-  color: #ec6090;
-}
 
 /* 
 ---------------------------------------------
@@ -822,14 +815,16 @@ Most Popular Style
 }
 
 .most-popular .item h4 {
-  font-size: 15px;
+  font-size: 30px;
+  color: rgb(255, 255, 128);
   margin-top: 20px;
   margin-bottom: 0px;
   display: inline-block;
 }
 
 .most-popular .item span {
-  color: #666;
+  font-size: 23px;
+  color: rgb(255, 255, 255);
   display: block;
   margin-top: 7px;
   font-weight: 400;
@@ -846,12 +841,13 @@ Most Popular Style
   font-size: 14px;
 }
 
-.most-popular .item ul li:first-child i {
-  color: yellow;
+.most-popular .item ul li:first-child {
+  color: rgb(255, 255, 255);
+  font-size: 13px;
 }
 
 .most-popular .item ul li:last-child i {
-  color: #ec6090;
+  color: rgb(255, 128, 255);
 }
 
 .most-popular .main-button {
