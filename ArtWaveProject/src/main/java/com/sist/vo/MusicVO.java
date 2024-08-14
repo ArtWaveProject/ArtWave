@@ -29,5 +29,6 @@ public class MusicVO {
 	private String title, lylics, poster, genre, style, playtime, lylicist, composer, arranger, urlmp4, price, urlmp3;
 	private int[] lylicistAll, composerAll, arrangerAll;
 	private String altitle, aname;
+	private double score;
 }
  

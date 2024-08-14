@@ -25,24 +25,30 @@
 		id="musicTotalPage"
 		parameterType="String"
 		resultType="int">
-		SELECT CEIL(COUNT(*)/50.0) FROM music WHERE genre LIKE '%'||#{genre}||'%'
+		SELECT CEIL(COUNT(*)/50.0) FROM music WHERE genre LIKE
+		'%'||#{genre}||'%'
 	</select>
 	<select
 		id="albumListData"
 		parameterType="hashmap"
 		resultType="AlbumVO">
 		SELECT alno, ano, atitle, poster, aname, num
-		FROM (SELECT alno, ano, atitle, poster, aname, rownum as num
-		FROM (SELECT alno, ano, atitle, poster , (SELECT aname from artist where
-		artist.ano=album.ano) as aname
-		FROM album WHERE genre LIKE '%'||#{genre}||'%' ORDER BY alno DESC))
+		FROM (SELECT
+		alno, ano, atitle, poster, aname, rownum as num
+		FROM (SELECT alno, ano,
+		atitle, poster , (SELECT aname from artist where
+		artist.ano=album.ano)
+		as aname
+		FROM album WHERE genre LIKE '%'||#{genre}||'%' ORDER BY alno
+		DESC))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
 	<select
 		id="albumTotalPage"
 		parameterType="String"
 		resultType="int">
-		SELECT CEIL(COUNT(*)/12.0) FROM music WHERE genre LIKE '%'||#{genre}||'%'
+		SELECT CEIL(COUNT(*)/12.0) FROM music WHERE genre LIKE
+		'%'||#{genre}||'%'
 	</select>
 	<select
 		id="artistDetailData"
@@ -54,19 +60,34 @@
 		id="artistMusicData"
 		resultType="MusicVO"
 		parameterType="int">
-		SELECT mno, title, alno, ano, poster, genre, likecount, altitle, aname, rownum
-		FROM (SELECT mno, title, alno, ano, poster, genre, likecount,(SELECT atitle FROM
+
+		SELECT mno, title, alno, ano, poster, genre, likecount, altitle, aname,
+		rownum
+		FROM (SELECT mno, title, alno, ano, poster, genre,
+		likecount,(SELECT atitle FROM
 		album WHERE
-		album.alno=music.alno) as altitle, (SELECT aname FROM
+		album.alno=music.alno) as
+		altitle, (SELECT aname FROM
 		artist where
 		artist.ano=music.ano) as aname
-		FROM music WHERE ano=#{ano} ORDER BY playcount)
+		FROM music WHERE ano=#{ano} ORDER BY playcount desc)
 		WHERE rownum &lt;= 10
 	</select>
 	<select
 		id="artistAlbumData"
 		resultType="AlbumVO"
 		parameterType="int">
-		SELECT * FROM album WHERE ano=#{ano}
+		SELECT * FROM album WHERE ano=#{ano} AND rownum &lt;= 4
+	</select>
+	<select id="musicDetailData" parameterType="int" resultType="MusicVO">
+	SELECT mno, title, alno, ano, lylics, poster, genre, style, playtime, lylicist, composer, arranger, price, likecount, playcount, titlecheck,
+	(SELECT atitle FROM album WHERE music.alno=album.alno) as altitle, (SELECT aname FROM artist WHERE music.ano=artist.ano) as aname
+	FROM music WHERE mno=#{mno}
+	</select>
+	<select id="musicAlbumData" parameterType="int" resultType="AlbumVO">
+	SELECT * FROM album WHERE alno=#{alno}
+	</select>
+	<select id="artistNameData" parameterType="int" resultType="String">
+	SELECT aname FROM artist WHERE ano=#{ano}
 	</select>
 </mapper>

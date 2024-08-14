@@ -9,45 +9,78 @@
 .main-profile {
 	margin-top: 150px;
 }
-.main-profile .row{
-vertical-align: top;
+
+.main-profile .row {
+	vertical-align: top;
 }
 
 .col-lg-12 {
 	width: 1200px;
 	margin: 0px auto;
 }
-.clips .item{
-background-color: #999;
+
+.clips .item {
+	background-color: #999;
+	height: 350px;
 }
+
 h1, h2, h3, h4, h5, h6 {
 	color: black;
 	margin: 0px;
 }
-.likeCheck{
-width:20px !important;
-height:20px;
-margin: 0px !important;
+
+.likeCheck {
+	width: 20px !important;
+	height: 20px;
+	margin: 0px !important;
 }
-div.gaming-library div.item li{
-margin: 0px auto !important;
-vertical-align: middle;
+
+div.gaming-library div.item li {
+	margin: 0px auto !important;
+	vertical-align: middle;
 }
-div.gaming-library div.item{
-margin: 0px;
-padding: 10px 0px;
-border-bottom: 1px solid #a1daba;
+
+div.gaming-library div.item {
+	margin: 0px;
+	padding: 10px 0px;
+	border-bottom: 1px solid #a1daba;
 }
-.gaming-library .item ul li img{
-margin: 0px;
+
+.gaming-library .item ul li img {
+	margin: 0px;
 }
-.main-profile ul li span{
-color: #a1daba;
+
+.main-profile ul li span {
+	color: #a1daba;
 }
-.main-profile ul li{
-color: #ccc;
+
+.main-profile ul li {
+	color: #ccc;
 }
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		let height=$('#content').height()
+		if(height>270)
+			$('#content').css('height', '270px')
+		else{
+			$('#contentBtn').hide()
+		}
+		let check = false
+		$('#contentBtn').click(function() {
+			if (check === true) {
+				check = false
+				$('html, body').scrollTop(0)
+				$('#content').css('height', '270px')
+			} else {
+				check = true
+				console.log(check)
+				$('#content').css('height', '')
+			}
+		})
+	})
+</script>
 </head>
 <body>
 	<div class="row">
@@ -57,12 +90,12 @@ color: #ccc;
 					<div class="col-lg-4">
 						<img src="${detail.poster }" style="border-radius: 23px; width: 100%;">
 					</div>
-					<div class="col-lg-4 align-self-center">
+					<div class="col-lg-4">
 						<div class="main-info header-text">
 							<h4>${detail.aname }</h4>
-							<p>${detail.content }</p>
-							<div class="main-border-button">
-								<a href="#">Start Live Stream</a>
+							<p id="content" style="overflow: hidden;">${detail.content }</p>
+							<div class="main-border-button" style="text-align: center;">
+								<input type="button"id="contentBtn" value="펼치기" style="border: none; background-color: transparent;">
 							</div>
 						</div>
 					</div>
@@ -148,7 +181,7 @@ color: #ccc;
 						</li>
 						<li style="width: 25%">
 							<a href="#">
-								<img class="likeCheck" src="like_off.png" >
+								<img class="likeCheck" src="like_off.png">
 							</a>
 						</li>
 					</ul>
