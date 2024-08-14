@@ -115,7 +115,7 @@ $(function() {
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="../book/list.do">
                                     Books<span class="caret"></span></a>
                                 <ul class="dropmenu">
                                     <li class="submenu">
