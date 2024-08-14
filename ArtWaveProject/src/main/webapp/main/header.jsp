@@ -99,7 +99,7 @@ $(function() {
                                 <a href="index.html" class="active">Home</a>
                             </li>
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="../movie/moviemain.do">
                                     Movie<span class="caret"></span>
                                 </a>
                                 <ul class="dropmenu">

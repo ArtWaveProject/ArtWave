@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Insert title here</title>
 <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../movie/mstyle.css">
@@ -49,12 +50,8 @@ $(function(){
 </script>
 </head>
 <body>
- <div class="page-content">
-	<div class="container">
- 		<div class="row">
-			<div class="col-lg-12">
+
 			<!-- ***** 예고편 동영상 시작 ***** -->
-			<div class="main-banner1">
 		<div class="carousel" id="flickity" data-flickity>
     		<div class="carousel-cell">
       		<video muted controls preload="metadata" poster="" >
@@ -77,50 +74,53 @@ $(function(){
       		</video>
     	</div>
   		</div>
-  	</div>
-  	</div>
-  </div>
   <!-- ***** 예고편 동영상 끝 ***** -->
-  
-  <div class="text-center my-4">
-         <h2><br>#박스오피스    </h2>
+  <div class="page-content">
+  	<div class="heading-section">
+        <h4><em>#</em> 박스오피스</h4>
       </div>
       
   <div class="most-popular">
-   <c:forEach var="vo" items="${tList }">
-  		<c:if test="${(rownum % 4) == 0 && rownum != 0}">
+  <div class="featured-games">
             <div class="row">
-                  
-				<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="col-lg-8">
+            <h3>  <br></h3>
+                <div class="owl-features owl-carousel">
+                  <c:forEach var="vo" items="${tList }">
 				 <div class="item">
-                <img src="https://www.kobis.or.kr${vo.mposter }" style="width: 180px;height: 200px" alt="">
-                <h4>${rownum }<br> <span>${vo.mtitle }</span></h4>
+				 <div class="thumb">
+                <img src="https://www.kobis.or.kr${vo.mposter }"  alt="">
+                 <div class="hover-effect">
+                      <h6><a href="#" title="화면이동">상세정보</a></h6>
+                      </div>
+                    
+                <h4 id="text">${vo.num }<br> <span>${vo.mtitle }</span></h4>
                 <ul>
                 	<li>예매율</li>
                     <li><i class="fa fa-ticket"></i>  ${vo.mrate }</li>
                 </ul>
             </div>
         </div>
+          </c:forEach>
         </div>
-        </c:if>
-        </c:forEach>
         </div>
+       
 	<!-- ***** Most Popular End ***** -->
 
 	<!-- ***** 실시간 예매율 차트 시작 ***** -->
-					<div class="gaming-library">
-						<div class="col-lg-12">
-							<div class="heading-section">
-								
+					
+						<div class="col-lg-4">
+							 <div class="top-downloaded">	
 							</div>
 						</div>
 				</div>
 					<!-- ***** 실시간 예매율 차트 끝  ***** -->
-  </div>
-  </div>
+			</div>
+        </div>
+     </div>
 </body>
 	<script src="../assets/js/isotope.min.js"></script>
-	<script src="../assets/js/owl-carousel.js"></script>
+	<script src="../movie/owl2-carousel.js"></script>
 	<script src="../assets/js/tabs.js"></script>
 	<script src="../assets/js/popup.js"></script>
 	<script src="../assets/js/custom.js"></script>
