@@ -100,7 +100,7 @@ $(function() {
                             </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    Browse<span class="caret"></span>
+                                    Movie<span class="caret"></span>
                                 </a>
                                 <ul class="dropmenu">
                                     <li class="submenu">
@@ -115,7 +115,7 @@ $(function() {
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="../book/list.do">
                                     Books<span class="caret"></span></a>
                                 <ul class="dropmenu">
                                     <li class="submenu">
@@ -143,9 +143,6 @@ $(function() {
                                         <a href="#">Page 1-3</a>
                                     </li>
                                 </ul>
-                            </li>
-                            <li>
-                                <a href="streams.html">Streams</a>
                             </li>
                             <li>
                                 <a href="profile.html">

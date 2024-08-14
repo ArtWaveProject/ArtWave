@@ -53,7 +53,7 @@
           </div>
           
           <div class="login__box">
-            <i class='bx bx-at login__icon'></i>
+            <i class='bx bx-cool login__icon'></i>
             <input type="text" placeholder="Nick name" class="login__input">
           </div>
           
