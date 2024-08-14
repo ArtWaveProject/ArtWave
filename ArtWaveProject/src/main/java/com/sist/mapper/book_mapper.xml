@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.seoul-mapper">
+<select id="bookListData" resultType="BookVO" parameterType="hashmap">
+    SELECT bno,btag,bgenre,cover,btitle,writer,price,sale_price,dis_rate,publisher,intro,intro_img,pages,isbn13,isbn10,bdate,num
+    FROM (SELECT bno,btag,bgenre,cover,btitle,writer,price,sale_price,dis_rate,publisher,intro,intro_img,pages,isbn13,isbn10,bdate,rownum as num
+    FROM (SELECT bno,btag,bgenre,cover,btitle,writer,price,sale_price,dis_rate,publisher,intro,intro_img,pages,isbn13,isbn10,bdate
+    FROM book ORDER BY bno ASC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+
+  <select id="bookTotalPage" resultType="int">
+    SELECT CEIL(COUNT(*)/20.0) FROM book
+  </select>
+  
+  <select id="bookListCount" resultType="int">
+		    SELECT COUNT(*) FROM book
+  </select>
+</mapper>

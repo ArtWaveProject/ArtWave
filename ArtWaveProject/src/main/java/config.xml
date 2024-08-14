@@ -22,6 +22,9 @@
 		<typeAlias
 			type="com.sist.vo.MovieVO"
 			alias="MovieVO"/>
+		<typeAlias
+			type="com.sist.vo.BookVO"
+			alias="BookVO"/>	
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -46,5 +49,6 @@
 	<mapper resource="com/sist/mapper/member_mapper.xml"/>
 	<mapper resource="com/sist/mapper/music_mapper.xml"/>
 	<mapper resource="com/sist/mapper/movie_mapper.xml"/>
+	<mapper resource="com/sist/mapper/book_mapper.xml"/>
 	</mappers>
 </configuration>
