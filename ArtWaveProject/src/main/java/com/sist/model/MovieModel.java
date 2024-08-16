@@ -33,7 +33,6 @@ public class MovieModel {
 		   map.put("end", end);
 		   List<MovieVO> mlList1=MovieDAO.movieListData1(map);
 		   int totalpage=MovieDAO.movieTotalPage1();
-		   
 		   final int BLOCK=10;
 		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
 		   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
@@ -46,6 +45,10 @@ public class MovieModel {
 		   request.setAttribute("totalpage", totalpage);
 		   request.setAttribute("startPage", startPage);
 		   request.setAttribute("endPage", endPage);
+		   
+		   int count1=MovieDAO.movieListCount1();
+		   request.setAttribute("count1", count1);
+		   
 		   request.setAttribute("main_jsp", "../movie/movielist1.jsp");
 			return "../main/main.jsp";
 	}
@@ -78,7 +81,10 @@ public class MovieModel {
 		   request.setAttribute("totalpage", totalpage);
 		   request.setAttribute("startPage", startPage);
 		   request.setAttribute("endPage", endPage);
-		
+		   
+		   int count2=MovieDAO.movieListCount2();
+		   request.setAttribute("count2", count2);
+		   
 		   request.setAttribute("main_jsp", "../movie/movielist2.jsp");
 			return "../main/main.jsp";
 	}

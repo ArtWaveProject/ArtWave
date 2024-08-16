@@ -69,6 +69,25 @@ public class MovieDAO {
 		   }
 		   return total;
 	   }
+	 public static int movieListCount1()
+	   {
+		   int count=0;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   count=session.selectOne("movieListCount1");
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return count;
+	   }
 	 public static List<MovieVO> movieListData2(Map map)
 	   {
 		   List<MovieVO> list=new ArrayList<MovieVO>();
@@ -106,5 +125,24 @@ public class MovieDAO {
 				   session.close();
 		   }
 		   return total;
+	   }
+	 public static int movieListCount2()
+	   {
+		   int count=0;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   count=session.selectOne("movieListCount2");
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return count;
 	   }
 }

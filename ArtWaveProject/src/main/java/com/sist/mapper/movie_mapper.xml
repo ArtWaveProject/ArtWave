@@ -28,4 +28,10 @@
 	<select id="movieTotalPage2" resultType="int">
 	 SELECT CEIL(COUNT(*)/20.0) FROM movie WHERE mtype LIKE '2'
 	</select>
+	 <select id="movieListCount1" resultType="int">
+    SELECT COUNT(*) FROM movie WHERE mtype LIKE '1'
+    </select>
+	 <select id="movieListCount2" resultType="int">
+    SELECT COUNT(*) FROM movie WHERE mtype LIKE '2'
+    </select>
 </mapper>

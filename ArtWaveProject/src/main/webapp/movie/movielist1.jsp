@@ -20,33 +20,24 @@ function handle(event) {
 </script>
 </head>
 <body>
-<div class="container">
+
         <div class="page-content2">
             <!-- ***** 영화목록 메뉴 시작 ***** -->
-            <!-- ***** 탭 메뉴 시작 ***** -->
-            <ul class="nav nav-tabs2 mb-4" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="box-office-tab" href="../movie/movielist1.do" role="tab" aria-controls="box-office" aria-selected="true">박스오피스</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="independent-art-tab" href="../movie/movielist2.do" role="tab" aria-controls="independent-art" aria-selected="false">독립＆예술영화</a>
-                </li>
-                <li class="nav-item ml-auto">
-                    <div class="search-input2">
-                        <form id="search2" action="#">
-                            <input type="text" placeholder="영화 제목" id='searchText' name="searchKeyword" onkeypress="handle(event)" />
-                            <i class="fa fa-search"></i>
-                        </form>
-                    </div>
-                </li>
-            </ul>
-            <!-- ***** 탭 메뉴 끝 ***** -->
-           <!-- ***** 탭 내용 시작 ***** -->
-         
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="box-office" role="tabpanel" aria-labelledby="box-office-tab">
-                    <div class="row">
-                        <c:forEach var="vo" items="${mlList1}" varStatus="s">
+        <div class="btn2-category-container">
+            <a id="listbtn" href="../movie/movielist1.do" class="btn2-category ${activeCategory == 'box-office' ? 'active' : ''}">박스오피스</a>
+            <a id="listbtn"href="../movie/movielist2.do" class="btn2-category ${activeCategory == 'independent-art' ? 'active' : ''}">독립＆예술영화</a>
+        </div>
+        <div class="search-input2">
+            <form id="search2" action="#">
+                <input type="text" placeholder="영화 제목" id='searchText' name="searchKeyword" onkeypress="handle(event)" />
+                <i class="fa fa-search"></i>
+            </form>
+        </div>
+        <!-- ***** 영화목록 메뉴 끝 ***** -->
+           <!-- ***** 영화목록 시작 ***** -->
+           <div class="container">
+                   <div class="row">
+                        <c:forEach var="vo" items="${mlList1 }" varStatus="s">
                             <div class="col-md-3">
                                 <div class="item">
                                     <div class="thumb">
@@ -80,32 +71,30 @@ function handle(event) {
                                     </div>
                                 </div>
                             </div>
+                            <p>${mlList1 }</p>
                         </c:forEach>
                     </div>
-        
-                </div>
            
-            <!-- ***** 탭 내용 끝 ***** -->
+            <!-- ***** 버튼 내용 끝 ***** -->
             <!-- ***** 페이지 나누기 시작*****-->
-       
-        <!-- ***** 페이지 나누기 끝*****-->
-        </div>
-    </div>
-    </div>
-         <nav class="pagination">
-        <ul class="pagination">
-          <c:if test="${startPage>1}">
-           <li><a href="../movie/movielist1.do?page=${startPage-1 }">&laquo; 이전</a></li>
-          </c:if>
-           <c:forEach var="i" begin="${startPage }" end="${endPage }">
-            <li ${i==curpage?"class=current":""}><a href="../movie/movielist1.do?page=${i }">${i }</a></li>
-           </c:forEach>
-           
-          <c:if test="${endPage<totalpage }">
-           <li><a href="../movie/movielist1.do?page=${endPage+1}">다음 &raquo;</a></li>
-          </c:if>
-        </ul>
-      </nav>
+         <nav>
+            <ul class="pagination">
+                <c:if test="${curpage > 1}">
+                    <li class="page-item"><a class="page-link" href="../movie/movielist1.do?page=${curpage - 1}">&laquo; 이전</a></li>
+                </c:if>
+                <c:forEach var="i" begin="${startPage}" end="${endPage}">
+                    <li class="page-item ${i == curpage ? 'active' : ''}">
+                        <a class="page-link" href="../movie/movielist1.do?page=${i}">${i}</a>
+                    </li>
+                </c:forEach>
+                <c:if test="${curpage < totalpage}">
+                    <li class="page-item"><a class="page-link" href="../movie/movielist1.do?page=${curpage + 1}">다음 &raquo;</a></li>
+                </c:if>
+            </ul>
+        </nav>
+      <!-- ***** 페이지 나누기 끝*****-->
+      </div>
+      </div>
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
   </body>
