@@ -19,7 +19,6 @@ cursor:pointer;
 	position: relative;
 	width: 100%;
 	padding-bottom: 56.25%;
-	width: 100%;
 }
 
 .paging {

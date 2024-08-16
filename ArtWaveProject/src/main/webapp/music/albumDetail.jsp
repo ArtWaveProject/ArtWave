@@ -43,7 +43,6 @@ $(function() {
 			url:'../music/musicLikeCheck.do',
 			data:{
 				'mno':${detail.alno},
-				'id':id,
 				'type':2
 			},
 			success:function(result){
@@ -81,6 +80,43 @@ $(function() {
 			$('#listBtn').val('펼치기')
 		}
 	})
+	$('#likeBtn').click(function() {
+		let alno=$('#alno').val()
+		if(likeCheck===true){
+			$.ajax({
+				type:'post',
+				url:'../music/musicLikeOff.do',
+				data:{
+					'mno':alno,
+					'type':2
+				},
+				success:function(result){
+					if(result>=0){
+						likeCheck=false
+						$('#likeBtnIcon').attr('src', 'like_off.png')
+						$('#likeCount').text(result)
+					}
+				}
+			})
+		}
+		else{
+			$.ajax({
+				type:'post',
+				url:'../music/musicLikeOn.do',
+				data:{
+					'mno':alno,
+					'type':2
+				},
+				success:function(result){
+					if(result>=0){
+						likeCheck=true
+						$('#likeBtnIcon').attr('src', 'like_on.png')
+						$('#likeCount').text(result)
+					}
+				}
+			})
+		}
+	})
 })
 </script>
 </head>
@@ -89,7 +125,9 @@ $(function() {
 		<div class="row" style="margin-top: 150px;">
 			<table class="table">
 				<tr>
-					<td rowspan="6"><img src="${detail.poster}" id="poster"></td>
+					<td rowspan="6">
+						<img src="${detail.poster}" id="poster">
+					</td>
 					<th width="20%" class="text-center">앨범명</th>
 					<td colspan="2" width="80%">${detail.atitle }</td>
 				</tr>
@@ -107,37 +145,49 @@ $(function() {
 				</tr>
 				<tr>
 					<th width="20%" class="text-center">좋아요</th>
-					<td width="40%">${detail.likecount}</td>
-					<td><button id="likeBtn">
+					<td width="40%" id="likeCount">${detail.likecount}</td>
+					<td>
+						<button id="likeBtn">
 							<img src="" id="likeBtnIcon">
-						</button></td>
+						</button>
+					</td>
 				</tr>
 			</table>
 			<div>
 				<input type="hidden" value="${sessionScope.id}" id="id">
+				<input type="hidden" value="${detail.alno}" id="alno">
 				<h4>${detail.atitle}곡list</h4>
 			</div>
 			<table class="table">
 				<tbody id="listBody">
 					<c:forEach var="vo" items="${mList }">
-						<tr style="vertical-align: middle; height: 70px; position:relative; z-index: 1">
-							<td width="10%"><img src="${vo.poster}" id="musicPoster"></td>
-							<td width="40%"><a href="../music/musicDetail.do?mno=${vo.mno}">${vo.title }</a></td>
-							<td width="20%" style="text-align: center;"><a href="../music/artistDetail.do?ano=${vo.ano}">${vo.aname }</a></td>
+						<tr style="vertical-align: middle; height: 70px; position: relative; z-index: 1">
+							<td width="10%">
+								<img src="${vo.poster}" id="musicPoster">
+							</td>
+							<td width="40%">
+								<a href="../music/musicDetail.do?mno=${vo.mno}">${vo.title }</a>
+							</td>
+							<td width="20%" style="text-align: center;">
+								<a href="../music/artistDetail.do?ano=${vo.ano}">${vo.aname }</a>
+							</td>
 							<td width="7%" style="text-align: center;">${vo.genre}</td>
 							<td width="13%" style="text-align: center;">${vo.playcount }</td>
-							<td width="10%" style="text-align: center;  padding: 0px;"><button class="playListBtn"
-									style="border: none; background-color: transparent; font-size: 30px;">+</button>
-								<ul class="menu" style="position: relative; z-index:2;">
+							<td width="10%" style="text-align: center; padding: 0px;">
+								<button class="playListBtn" style="border: none; background-color: transparent; font-size: 30px;">+</button>
+								<ul class="menu" style="position: relative; z-index: 2;">
 									<li>1</li>
 									<li>2</li>
 									<li>3</li>
-								</ul></td>
+								</ul>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 				<tr>
-					<td colspan="5" style="text-align: center; border: none;"><input type="button" id="listBtn" value="펼치기"></td>
+					<td colspan="5" style="text-align: center; border: none;">
+						<input type="button" id="listBtn" value="펼치기">
+					</td>
 				</tr>
 			</table>
 		</div>

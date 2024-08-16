@@ -218,4 +218,40 @@ public class MusicDAO {
 		}
 		return total;
 	}
+	public static int musicLikeOn(Map map) {
+		SqlSession session = null;
+		int count=0;
+		try {
+			session = ssf.openSession();
+			session.insert("musicLikeOn", map);
+			session.update("musicLikeCountIncrement", map);
+			session.commit();
+			count=session.selectOne("musicLikeCount", map);
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return count;
+	}
+	public static int musicLikeOff(Map map) {
+		SqlSession session = null;
+		int count=0;
+		try {
+			session = ssf.openSession();
+			session.insert("musicLikeOff", map);
+			session.update("musicLikeCountDecrement", map);
+			session.commit();
+			count=session.selectOne("musicLikeCount", map);
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return count;
+	}
 }

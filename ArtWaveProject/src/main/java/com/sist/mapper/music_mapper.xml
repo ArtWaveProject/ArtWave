@@ -107,4 +107,19 @@
 		WHERE artist.ano=music.ano) as aname FROM music) WHERE titlecheck=1 AND (title
 		LIKE '%'||#{ss}||'%' OR aname LIKE '%'||#{ss}||'%')
 	</select>
+	<insert id="musicLikeOn" parameterType="hashmap">
+	INSERT INTO musiclike values((SELECT NVL(MAX(mulno)+1, 1) FROM musiclike), #{id}, #{mno}, #{type})
+	</insert>
+	<insert id="musicLikeOff" parameterType="hashmap">
+	DELETE FROM musiclike WHERE mno=#{mno} AND id=#{id} AND type=#{type}
+	</insert>
+	<update id="musicLikeCountIncrement" parameterType="hashmap">
+	UPDATE ${table} SET likecount=likecount+1 WHERE ${noName}=#{mno}
+	</update>
+	<update id="musicLikeCountDecrement" parameterType="hashmap">
+	UPDATE ${table} SET likecount=likecount-1 WHERE ${noName}=#{mno}
+	</update>
+	<select id="musicLikeCount" parameterType="hashmap" resultType="int">
+	SELECT NVL(likecount, 0) as likecount FROM ${table} WHERE ${noName}=#{mno}
+	</select>
 </mapper>

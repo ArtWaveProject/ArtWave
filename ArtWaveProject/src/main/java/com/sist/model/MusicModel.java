@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.dao.MusicDAO;
 import com.sist.vo.AlbumVO;
@@ -38,7 +39,8 @@ R&B/소울
 public class MusicModel {
 	private String[] genreList = { "", "", "댄스", "드라마", "발라드", "인디", "락", "랩/힙합", "블루스/포크", "R&B/소울", "트로트", "동요",
 			"일렉트로니카", "정통", "애시드/퓨전", "한국영화", "국내CCM", "캐롤" };
-
+	private String[] tables= {"", "music", "album", "artist"};
+	private String[] noName= {"", "mno", "alno", "ano"};
 	@RequestMapping("music/musicList.do")
 	public String musicList(HttpServletRequest request, HttpServletResponse response) {
 		String page = request.getParameter("page");
@@ -99,35 +101,37 @@ public class MusicModel {
 		request.setAttribute("main_jsp", "../music/albumList.jsp");
 		return "../main/main.jsp";
 	}
+
 	@RequestMapping("music/musicMvList.do")
 	public String musicMvList(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			request.setCharacterEncoding("UTF-8");
-		} catch (Exception e) {}
-		String ss=request.getParameter("ss");
-		if(ss==null)
-			ss="";
-		String page=request.getParameter("page");
-		if(page==null)
-			page="1";
-		int curPage=Integer.parseInt(page);
-		int start=(curPage-1)*20+1;
-		int end=start+20-1;
-		Map map=new HashMap();
+		} catch (Exception e) {
+		}
+		String ss = request.getParameter("ss");
+		if (ss == null)
+			ss = "";
+		String page = request.getParameter("page");
+		if (page == null)
+			page = "1";
+		int curPage = Integer.parseInt(page);
+		int start = (curPage - 1) * 20 + 1;
+		int end = start + 20 - 1;
+		Map map = new HashMap();
 		map.put("start", start);
 		map.put("end", end);
 		map.put("ss", ss);
-		int totalPage=MusicDAO.musicMvTotalPage(ss);
-		int startPage=(curPage-1)/10*10+1;
-		int endPage=startPage+10-1;
-		if(endPage>totalPage)
-			endPage=totalPage;
-		List<MusicVO> list=MusicDAO.musicMvListData(map);
-		for(MusicVO vo:list) {
-			String url=vo.getUrlmp4();
-			url=url.substring(url.indexOf("v=")+2, url.indexOf("&pp"));
-			String mp4url=url;
-			url="https://img.youtube.com/vi/"+url+"/0.jpg";
+		int totalPage = MusicDAO.musicMvTotalPage(ss);
+		int startPage = (curPage - 1) / 10 * 10 + 1;
+		int endPage = startPage + 10 - 1;
+		if (endPage > totalPage)
+			endPage = totalPage;
+		List<MusicVO> list = MusicDAO.musicMvListData(map);
+		for (MusicVO vo : list) {
+			String url = vo.getUrlmp4();
+			url = url.substring(url.indexOf("v=") + 2, url.indexOf("&pp"));
+			String mp4url = url;
+			url = "https://img.youtube.com/vi/" + url + "/0.jpg";
 			vo.setThum(url);
 			vo.setUrlmp4(mp4url);
 		}
@@ -140,7 +144,7 @@ public class MusicModel {
 		request.setAttribute("main_jsp", "../music/mvList.jsp");
 		return "../main/main.jsp";
 	}
-	
+
 	@RequestMapping("music/artistDetail.do")
 	public String artistDetail(HttpServletRequest request, HttpServletResponse response) {
 		String ano = request.getParameter("ano");
@@ -160,9 +164,9 @@ public class MusicModel {
 		String mno = request.getParameter("mno");
 		MusicVO vo = MusicDAO.musicDetailData(Integer.parseInt(mno));
 		List<MusicVO> mList = MusicDAO.artistMusicData(vo.getAno());
-		List<String> lList=new ArrayList<String>();
-		List<String> cList=new ArrayList<String>();
-		List<String> aList=new ArrayList<String>();
+		List<String> lList = new ArrayList<String>();
+		List<String> cList = new ArrayList<String>();
+		List<String> aList = new ArrayList<String>();
 		if (vo.getLylicist().length() > 0) {
 			String[] slist = vo.getLylicist().split(",");
 			int[] ilist = new int[slist.length];
@@ -195,35 +199,78 @@ public class MusicModel {
 		request.setAttribute("main_jsp", "../music/musicDetail.jsp");
 		return "../main/main.jsp";
 	}
+
 	@RequestMapping("music/albumDetail.do")
 	public String albumDetail(HttpServletRequest request, HttpServletResponse response) {
-		String alno=request.getParameter("alno");
-		
-		AlbumVO vo=MusicDAO.albumDetailData(Integer.parseInt(alno));
-		List<MusicVO> mList=MusicDAO.albumMusicData(Integer.parseInt(alno));
-		
+		String alno = request.getParameter("alno");
+
+		AlbumVO vo = MusicDAO.albumDetailData(Integer.parseInt(alno));
+		List<MusicVO> mList = MusicDAO.albumMusicData(Integer.parseInt(alno));
+
 		request.setAttribute("detail", vo);
 		request.setAttribute("mList", mList);
 		request.setAttribute("main_jsp", "../music/albumDetail.jsp");
 		return "../main/main.jsp";
 	}
-	@RequestMapping("music/likeCheck.do")
+
+	@RequestMapping("music/musicLikeCheck.do")
 	public void musicLikeCheck(HttpServletRequest request, HttpServletResponse response) {
-		String mno=request.getParameter("mno");
-		String type=request.getParameter("type");
-		Map map=new HashMap();
+		HttpSession session = request.getSession();
+		String mno = request.getParameter("mno");
+		String type = request.getParameter("type");
+		String id = (String) session.getAttribute("id");
+		Map map = new HashMap();
 		map.put("mno", Integer.parseInt(mno));
 		map.put("type", Integer.parseInt(type));
-		int count=MusicDAO.musicLikeCheck(map);
+		map.put("id", id);
+		int count = MusicDAO.musicLikeCheck(map);
 		try {
-			PrintWriter out=response.getWriter();
-			if(count==0) {
+			PrintWriter out = response.getWriter();
+			if (count == 0) {
 				out.write("NO");
-			}
-			else {
+			} else {
 				out.write("OK");
 			}
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 	}
 
+	@RequestMapping("music/musicLikeOn.do")
+	public void musicLikeOn(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		String mno = request.getParameter("mno");
+		String type = request.getParameter("type");
+		String id = (String) session.getAttribute("id");
+		Map map = new HashMap();
+		map.put("mno", Integer.parseInt(mno));
+		map.put("type", Integer.parseInt(type));
+		map.put("id", id);
+		map.put("table", tables[Integer.parseInt(type)]);
+		map.put("noName", noName[Integer.parseInt(type)]);
+		int result=MusicDAO.musicLikeOn(map);
+		try {
+			PrintWriter out = response.getWriter();
+			out.write(String.valueOf(result));
+		} catch (Exception e) {
+		}
+	}
+	@RequestMapping("music/musicLikeOff.do")
+	public void musicLikeOff(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		String mno = request.getParameter("mno");
+		String type = request.getParameter("type");
+		String id = (String) session.getAttribute("id");
+		Map map = new HashMap();
+		map.put("mno", Integer.parseInt(mno));
+		map.put("type", Integer.parseInt(type));
+		map.put("id", id);
+		map.put("table", tables[Integer.parseInt(type)]);
+		map.put("noName", noName[Integer.parseInt(type)]);
+		int result=MusicDAO.musicLikeOff(map);
+		try {
+			PrintWriter out = response.getWriter();
+			out.write(String.valueOf(result));
+		} catch (Exception e) {
+		}
+	}
 }
