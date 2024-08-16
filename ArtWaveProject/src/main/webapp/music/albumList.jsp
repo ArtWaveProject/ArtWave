@@ -37,14 +37,11 @@
 						<c:forEach var="vo" items="${list}">
 							<div class="col-sm-3">
 								<div class="item">
-									<img src="${vo.poster}">
-									<a href="../music/albumDetail.do?alno=${vo.alno}">
+									<img src="${vo.poster}"> <a href="../music/albumDetail.do?alno=${vo.alno}">
 										<h4>
 											${vo.atitle	}<br>
 										</h4>
-									</a>
-									<a href="../music/artistDetail.do?ano=${vo.ano}">
-										<span>${vo.aname}</span>
+									</a> <a href="../music/artistDetail.do?ano=${vo.ano}"> <span>${vo.aname}</span>
 									</a>
 								</div>
 							</div>
@@ -53,6 +50,20 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="row text-center">
+		<ul class="pagination">
+			<li><a href="#">1</a></li>
+			<li>1</li>
+			<li>1</li>
+			<li>1</li>
+			<li>1</li>
+			<li>1</li>
+			<li>1</li>
+			<li>1</li>
+			<li>1</li>
+			<li>1</li>
+		</ul>
 	</div>
 </body>
 </html>

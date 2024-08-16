@@ -98,10 +98,10 @@ display: inline-grid;
 						<div style="height: 100px;">
 							<ul>
 								<li>
-									아티스트 <span>${detail.aname}</span>
+									아티스트 <span><a href="../music/artistDetail.do?ano=${detail.ano}">${detail.aname}</a></span>
 								</li>
 								<li>
-									앨범명 <span>${detail.altitle}</span>
+									앨범명 <span><a href="../music/albumDetail.do?alno=${detail.alno}">${detail.altitle}</a></span>
 								</li>
 								<li>
 									장르 <span>${detail.genre}</span>

@@ -79,7 +79,6 @@ public class MusicDAO {
 		try {
 			session = ssf.openSession();
 			vo = session.selectOne("artistDetailData", ano);
-			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -95,7 +94,6 @@ public class MusicDAO {
 		try {
 			session = ssf.openSession();
 			list = session.selectList("artistMusicData", ano);
-			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -111,7 +109,6 @@ public class MusicDAO {
 		try {
 			session = ssf.openSession();
 			list = session.selectList("artistAlbumData", ano);
-			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -126,7 +123,6 @@ public class MusicDAO {
 		try {
 			session = ssf.openSession();
 			vo = session.selectOne("musicDetailData", mno);
-			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -151,5 +147,75 @@ public class MusicDAO {
 				session.close();
 		}
 		return slist;
+	}
+	public static AlbumVO albumDetailData(int alno) {
+		AlbumVO vo = new AlbumVO();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			vo = session.selectOne("albumDetailData", alno);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return vo;
+	}
+	public static List<MusicVO> albumMusicData(int alno){
+		List<MusicVO> list=new ArrayList<MusicVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("albumMusicData", alno);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
+	public static int musicLikeCheck(Map map) {
+		int count=0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			count = session.selectOne("likeCheck", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return count;
+	}
+	public static List<MusicVO> musicMvListData(Map map){
+		List<MusicVO> list=new ArrayList<MusicVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("musicMvListData", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
+	public static int musicMvTotalPage(String ss) {
+		int total=0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			total = session.selectOne("musicMvTotalPage", ss);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return total;
 	}
 }
