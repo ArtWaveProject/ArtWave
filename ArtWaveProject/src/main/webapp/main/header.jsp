@@ -151,6 +151,9 @@ nav {
 									<li class="submenu">
 										<a href="../music/musicMvList.do">Page 1-3</a>
 									</li>
+									<li class="submenu">
+										<a href="#">store</a>
+									</li>
 								</ul>
 							</li>
 							<li>
