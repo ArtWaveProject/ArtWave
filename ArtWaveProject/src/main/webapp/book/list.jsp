@@ -93,10 +93,153 @@
   margin-top: -30px;
   margin-bottom: -45px;
 }
+.page {
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+
+.page {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto; /* 위와 아래 여백을 추가하고 자동으로 가운데 정렬 */
+    display: flex;
+    justify-content: center; /* 네비게이션 항목을 가운데로 정렬 */
+    font-family: Arial, sans-serif;
+}
+
+.page li {
+    margin: 0 3px; /* 네비게이션 항목 간의 여백 */
+}
+
+.page a {
+    text-decoration: none;
+    color: #0197A3; /* 링크 색상 */
+    padding: 8px 12px;
+    border: 1px solid #0197A3; /* 링크 테두리 색상 */
+    border-radius: 4px; /* 둥근 모서리 */
+    transition: background-color 0.3s, color 0.3s; /* 부드러운 색상 변화 */
+}
+
+.page a:hover {
+    background-color: #0197A3; /* 호버 시 배경색 */
+    color: #fff; /* 호버 시 텍스트 색상 */
+}
+
+.page .current a {
+    background-color: #0197A3; /* 현재 페이지 배경색 */
+    color: #fff; /* 현재 페이지 텍스트 색상 */
+    border: 1px solid #0197A3; /* 현재 페이지 테두리 색상 */
+    pointer-events: none; /* 현재 페이지 클릭 방지 */
+}
+
+.page .current a:hover {
+    background-color: #0197A3; /* 현재 페이지 호버 시 배경색 */
+    color: #fff; /* 현재 페이지 호버 시 텍스트 색상 */
+}
+
+.page li:first-child a {
+    border-radius: 4px 0 0 4px; /* 왼쪽 끝 모서리 둥글게 */
+}
+
+.page li:last-child a {
+    border-radius: 0 4px 4px 0; /* 오른쪽 끝 모서리 둥글게 */
+}
 </style>
 </head>
 <body>
 	<div class="container">
+	<div class="row">
+            <div class="col-lg-8" style="margin-top: 150px;">
+              <div class="featured-games header-text">
+                <div class="heading-section">
+                  <span>최신 도서</span>
+                </div>
+                <div class="owl-features owl-carousel">
+                  <div class="item">
+                    <div class="thumb">
+                      <img src="../assets/images/featured-01.jpg" alt="">
+                      <div class="hover-effect">
+                        <h6>2.4K Streaming</h6>
+                      </div>
+                    </div>
+                    <h4>CS-GO<br><span>249K Downloads</span></h4>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      <li><i class="fa fa-download"></i> 2.3M</li>
+                    </ul>
+                  </div>
+                  <div class="item">
+                    <div class="thumb">
+                      <img src="../assets/images/featured-02.jpg" alt="">
+                      <div class="hover-effect">
+                        <h6>2.4K Streaming</h6>
+                      </div>
+                    </div>
+                    <h4>Gamezer<br><span>249K Downloads</span></h4>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      <li><i class="fa fa-download"></i> 2.3M</li>
+                    </ul>
+                  </div>
+                  <div class="item">
+                    <div class="thumb">
+                      <img src="../assets/images/featured-03.jpg" alt="">
+                      <div class="hover-effect">
+                        <h6>2.4K Streaming</h6>
+                      </div>
+                    </div>
+                    <h4>Island Rusty<br><span>249K Downloads</span></h4>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      <li><i class="fa fa-download"></i> 2.3M</li>
+                    </ul>
+                  </div>
+                  <div class="item">
+                    <div class="thumb">
+                      <img src="../assets/images/featured-01.jpg" alt="">
+                      <div class="hover-effect">
+                        <h6>2.4K Streaming</h6>
+                      </div>
+                    </div>
+                    <h4>CS-GO<br><span>249K Downloads</span></h4>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      <li><i class="fa fa-download"></i> 2.3M</li>
+                    </ul>
+                  </div>
+                  <div class="item">
+                    <div class="thumb">
+                      <img src="../assets/images/featured-02.jpg" alt="">
+                      <div class="hover-effect">
+                        <h6>2.4K Streaming</h6>
+                      </div>
+                    </div>
+                    <h4>Gamezer<br><span>249K Downloads</span></h4>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      <li><i class="fa fa-download"></i> 2.3M</li>
+                    </ul>
+                  </div>
+                  <div class="item">
+                    <div class="thumb">
+                      <img src="../assets/images/featured-03.jpg" alt="">
+                      <div class="hover-effect">
+                        <h6>2.4K Streaming</h6>
+                      </div>
+                    </div>
+                    <h4>Island Rusty<br><span>249K Downloads</span></h4>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      <li><i class="fa fa-download"></i> 2.3M</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- ***** Featured Games End ***** -->
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="page-content">
@@ -117,8 +260,10 @@
 								<div class="col-lg-3 col-sm-6" style="text-align: center;">
 									<div class="item">
 										<div class="thumb">
-											<img src="${vo.cover }" alt=""
+											<a href="../book/detail.do?bno=${vo.bno }" class="thumb-link">
+												<img src="${vo.cover }" alt="${vo.btitle }"
 												style="width: 200px; height: 250px;">
+											</a>
 											<div class="hover-effect">
 												<div class="content">
 													<ul>
@@ -144,24 +289,23 @@
 			</div>
 		</div>
 		<nav>
-			<ul class="pagination pagination-lg"
-				style="display: ruby; text-align: center;">
-				<c:if test="${startPage>1}">
-					<li><a href="../book/list.do?page=${startPage-1 }">&laquo;
+			<ul class="page page-lg">
+				<c:if test="${startPage > 1}">
+					<li><a href="../book/list.do?page=${startPage-1}">&laquo;
 							Previous</a></li>
 				</c:if>
-				<c:forEach var="i" begin="${startPage }" end="${endPage }">
-					<li ${i==curpage?"class=current":""}><a
-						href="../book/list.do?page=${i }">${i }</a></li>
+				<c:forEach var="i" begin="${startPage}" end="${endPage}">
+					<li ${i == curpage ? "class='current'" : ""}><a
+						href="../book/list.do?page=${i}">${i}</a></li>
 				</c:forEach>
-
-				<c:if test="${endPage<totalpage }">
+				<c:if test="${endPage < totalpage}">
 					<li><a href="../book/list.do?page=${endPage+1}">Next
 							&raquo;</a></li>
 				</c:if>
 			</ul>
 		</nav>
 	</div>
+ </div>	
 	<!-- ***** Live Stream End ***** -->
 </body>
 </html>

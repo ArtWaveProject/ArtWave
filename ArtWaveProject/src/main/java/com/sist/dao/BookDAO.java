@@ -86,4 +86,32 @@ public class BookDAO {
 		   }
 		   return count;
 	   }
+	  /*
+			<select id="bookDetailData" resultType="FoodVO" parameterType="int">
+				SELECT bno,btag,bgenre,cover,btitle,writer,price,sale_price,dis_rate,publisher,intro,intro_img,pages,isbn13,isbn10,bdate
+				FROM book
+				WHERE bno=#{fbno}
+			</select>
+	    */
+	   public static BookVO bookDetailData(int bno)
+	   {
+		   BookVO vo=new BookVO();
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession(true);
+			   session.update("bookDetailData",bno);
+			   
+			   vo=session.selectOne("bookDetailData",bno);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return vo;
+	   }
 }

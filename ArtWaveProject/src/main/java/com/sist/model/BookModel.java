@@ -45,4 +45,14 @@ public class BookModel {
 		   request.setAttribute("main_jsp", "../book/list.jsp");
 		   return "../main/main.jsp";
 	   }  
+	   @RequestMapping("book/detail.do")
+	   public String book_detail(HttpServletRequest request,HttpServletResponse response)
+	   {
+	 	  String bno=request.getParameter("bno");
+	 	  BookVO vo=BookDAO.bookDetailData(Integer.parseInt(bno));
+	 	  
+	 	  request.setAttribute("vo", vo);
+	 	  request.setAttribute("main_jsp", "../book/detail.jsp");
+	 	  return "../main/main.jsp";
+	   }
 }

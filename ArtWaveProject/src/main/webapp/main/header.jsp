@@ -130,7 +130,7 @@ nav {
 										<a href="../book/list.do">Page 1-1</a>
 									</li>
 									<li class="submenu">
-										<a href="#">Page 1-2</a>
+										<a href="../book/detail.do">Page 1-2</a>
 									</li>
 									<li class="submenu">
 										<a href="#">Page 1-3</a>
