@@ -25,6 +25,7 @@
 		<typeAlias
 			type="com.sist.vo.BookVO"
 			alias="BookVO"/>	
+		<typeAlias type="com.sist.vo.ReplyBoardVO" alias="ReplyBoardVO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -50,5 +51,6 @@
 	<mapper resource="com/sist/mapper/music_mapper.xml"/>
 	<mapper resource="com/sist/mapper/movie_mapper.xml"/>
 	<mapper resource="com/sist/mapper/book_mapper.xml"/>
+	<mapper resource="com/sist/mapper/replyboard-mapper.xml"/>
 	</mappers>
 </configuration>

@@ -5,4 +5,5 @@
 <bean id="music" class="com.sist.model.MusicModel"></bean>
 <bean id="movie" class="com.sist.model.MovieModel"></bean>
 <bean id="book" class="com.sist.model.BookModel"></bean>
+<bean id="replyboard" class="com.sist.model.ReplyBoardModel"></bean>
 </beans>
