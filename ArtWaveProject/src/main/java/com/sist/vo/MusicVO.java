@@ -26,9 +26,8 @@ import lombok.Data;
 
 public class MusicVO {
 	private int mno, alno, ano, likecount, playcount, titlecheck;
-	private String title, lylics, poster, genre, style, playtime, lylicist, composer, arranger, urlmp4, price, urlmp3;
+	private String title, lylics, poster, genre, style, playtime, lylicist, composer, arranger, urlmp4, price, urlmp3, thum;
 	private int[] lylicistAll, composerAll, arrangerAll;
 	private String altitle, aname;
-	private double score;
 }
  
