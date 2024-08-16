@@ -85,4 +85,45 @@ public class ReplyBoardDAO {
 		}
 		return list;
 	}
+	
+	public static void adminReplyBoardInsert(int no,ReplyBoardVO vo)
+	{
+		SqlSession session = null;
+		try
+		{
+			session=ssf.openSession();
+			session.insert("adminReplyBoardInsery",vo);
+			session.update("adminReplyUpdate",no);
+			session.commit();
+			
+		}
+		catch(Exception ex)
+		{
+			session.rollback();
+			ex.printStackTrace();
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+	public static ReplyBoardVO adminReplyInfoData(int no)
+	  {
+		  ReplyBoardVO vo=new ReplyBoardVO();
+		  SqlSession session=null;
+		  try
+		  {
+			  session=ssf.openSession(true);
+			  vo=session.selectOne("adminReplyInfoData",no);
+		  }catch(Exception ex)
+		  {
+			  ex.printStackTrace();
+		  }
+		  finally
+		  {
+			  if(session!=null)
+				  session.close();
+		  }
+		  return vo;
+	  }
 }
