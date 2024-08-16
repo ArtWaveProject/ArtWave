@@ -254,4 +254,59 @@ public class MusicDAO {
 		}
 		return count;
 	}
+	public static List<MusicVO> musicFindData(Map map){
+		List<MusicVO> list=new ArrayList<MusicVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("musicFindData", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
+	public static List<ArtistVO> artistFindData(Map map){
+		List<ArtistVO> list=new ArrayList<ArtistVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("artistFindData", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
+	public static List<AlbumVO> albumFindData(Map map){
+		List<AlbumVO> list=new ArrayList<AlbumVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("albumFindData", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
+	public static List<MusicVO> musicListDataNew(Map map){
+		List<MusicVO> list = new ArrayList<MusicVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("musicListDataNew", map);
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
 }

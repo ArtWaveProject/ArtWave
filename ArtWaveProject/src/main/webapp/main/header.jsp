@@ -138,7 +138,7 @@ nav {
 								</ul>
 							</li>
 							<li class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="../music/musicHome.do">
 									Music<span class="caret"></span>
 								</a>
 								<ul class="dropmenu">

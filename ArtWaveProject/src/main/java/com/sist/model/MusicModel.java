@@ -41,6 +41,21 @@ public class MusicModel {
 			"일렉트로니카", "정통", "애시드/퓨전", "한국영화", "국내CCM", "캐롤" };
 	private String[] tables= {"", "music", "album", "artist"};
 	private String[] noName= {"", "mno", "alno", "ano"};
+	@RequestMapping("music/musicHome.do")
+	public String musicHome(HttpServletRequest request, HttpServletResponse response) {
+		Map map=new HashMap();
+		map.put("genre", "");
+		map.put("start", 1);
+		map.put("end", 10);
+		List<MusicVO> mList=MusicDAO.musicListData(map);
+		map.put("end", 12);
+		List<MusicVO> list=MusicDAO.musicListDataNew(map);
+		
+		request.setAttribute("list", list);
+		request.setAttribute("mList", mList);
+		request.setAttribute("main_jsp", "../music/home.jsp");
+		return "../main/main.jsp";
+	}
 	@RequestMapping("music/musicList.do")
 	public String musicList(HttpServletRequest request, HttpServletResponse response) {
 		String page = request.getParameter("page");
@@ -272,5 +287,23 @@ public class MusicModel {
 			out.write(String.valueOf(result));
 		} catch (Exception e) {
 		}
+	}
+	@RequestMapping("music/find.do")
+	public String musicFind(HttpServletRequest request, HttpServletResponse response) {
+		String ss=request.getParameter("ss");
+		Map map=new HashMap();
+		map.put("start", 1);
+		map.put("end", 10);
+		map.put("ss", ss);
+		List<MusicVO> mList=MusicDAO.musicFindData(map);
+		map.put("end", 6);
+		List<AlbumVO> alList=MusicDAO.albumFindData(map);
+		map.put("end", 4);
+		List<ArtistVO> aList=MusicDAO.artistFindData(map);
+		request.setAttribute("mList", mList);
+		request.setAttribute("alList", alList);
+		request.setAttribute("aList", aList);
+		request.setAttribute("main_jsp", "../music/find.jsp");
+		return "../main/main.jsp";
 	}
 }
