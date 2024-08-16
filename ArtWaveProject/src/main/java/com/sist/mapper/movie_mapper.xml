@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
- PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
- "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
 <mapper namespace="com.sist.mapper.movie_mapper">
 	<select id="movieTopData" resultType="MovieVO">
 		SELECT mno, mtitle, mposter, mrate, num
 		    FROM (SELECT mno, mtitle, mposter, mrate, rownum as num
 		    FROM (SELECT mno, mtitle, mposter, mrate
 		    FROM movie WHERE mrate IS NOT null ORDER BY mrate DESC))
-		    WHERE rownum&lt;=8
+		    WHERE rownum&lt;=10
 	</select>
-	</mapper>
+	<select id="movieListData1" resultType="MovieVO" parameterType="hashmap">
+		SELECT mno, mtitle, mposter, TO_CHAR(mrdate,'YYYY.MM.DD'), mstate, mgrade, mtype, num
+			FROM(SELECT mno, mtitle, mposter, mrdate, mstate, mgrade, mtype, rownum as num
+			FROM (SELECT mno, mtitle, mposter, mrdate, mstate, mgrade, mtype
+			FROM movie WHERE mtype LIKE '1' ORDER BY mstate ASC, mno DESC))
+	</select>
+	<select id="movieListData2" resultType="MovieVO" parameterType="hashmap">
+		SELECT mno, mtitle, mposter, TO_CHAR(mrdate,'YYYY-MM-DD'), mstate, mgrade, mtype, num
+			FROM(SELECT mno, mtitle, mposter, mrdate, mstate, mgrade, mtype, rownum as num
+			FROM (SELECT mno, mtitle, mposter, mrdate, mstate, mgrade, mtype
+			FROM movie WHERE mtype LIKE '2' ORDER BY mstate ASC, mno DESC))
+	</select>
+	<select id="movieTotalPage1" resultType="int">
+	 SELECT CEIL(COUNT(*)/20.0) FROM movie WHERE mtype LIKE '1'
+	</select>
+	<select id="movieTotalPage2" resultType="int">
+	 SELECT CEIL(COUNT(*)/20.0) FROM movie WHERE mtype LIKE '2'
+	</select>
+</mapper>
