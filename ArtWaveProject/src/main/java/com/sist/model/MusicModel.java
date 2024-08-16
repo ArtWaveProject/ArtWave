@@ -53,7 +53,7 @@ public class MusicModel {
 		
 		request.setAttribute("list", list);
 		request.setAttribute("mList", mList);
-		request.setAttribute("main_jsp", "../music/home.jsp");
+		request.setAttribute("main_jsp", "../music/musicHome.jsp");
 		return "../main/main.jsp";
 	}
 	@RequestMapping("music/musicList.do")

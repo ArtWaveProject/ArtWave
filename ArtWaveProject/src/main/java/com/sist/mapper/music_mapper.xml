@@ -7,13 +7,13 @@
 		id="musicListData"
 		resultType="MusicVO"
 		parameterType="hashmap">
-		SELECT mno, title, alno, ano, poster, genre, altitle,
+		SELECT mno, title, alno, ano, poster, genre, altitle,urlmp4,
 		aname, num
 		FROM (SELECT mno,
-		title, alno, ano, poster, genre, altitle,
+		title, alno, ano, poster, genre, altitle,urlmp4,
 		aname, rownum
 		as num
-		FROM (SELECT mno, title, alno, ano, poster, genre
+		FROM (SELECT mno, title, alno, ano, poster, genre, urlmp4
 		,(SELECT atitle FROM
 		album WHERE
 		album.alno=music.alno) as altitle,
@@ -29,19 +29,25 @@
 		resultType="MusicVO"
 		parameterType="hashmap">
 		SELECT mno, title, alno, ano, poster, genre, altitle,
+		urlmp4,
 		aname, num
 		FROM (SELECT mno,
-		title, alno, ano, poster, genre, altitle,
+		title, alno, ano, poster, genre,
+		altitle, urlmp4,
 		aname, rownum
 		as num
-		FROM (SELECT mno, title, alno, ano, poster, genre
+		FROM (SELECT mno, title, alno, ano,
+		poster, genre
 		,(SELECT atitle FROM
 		album WHERE
-		album.alno=music.alno) as altitle,
+		album.alno=music.alno) as
+		altitle,urlmp4,
 		(SELECT aname FROM
-		artist where artist.ano=music.ano) as aname
+		artist where artist.ano=music.ano) as
+		aname
 		FROM
-		music WHERE genre LIKE '%'||#{genre}||'%' ORDER
+		music WHERE genre LIKE '%'||#{genre}||'%' AND titlecheck=1
+		ORDER
 		BY mno DESC))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
@@ -265,9 +271,12 @@
 		parameterType="hashmap"
 		resultType="ArtistVO">
 		SELECT ano, aname, nation, type, poster, num
-		FROM (SELECT ano, aname, nation, type, poster, rownum as num
-		FROM (SELECT ano, aname, nation, type, poster
+		FROM (SELECT
+		ano, aname, nation, type, poster, rownum as num
+		FROM (SELECT ano,
+		aname, nation, type, poster
 		FROM artist))
-		WHERE num BETWEEN #{start} AND #{end}
+		WHERE num BETWEEN #{start} AND
+		#{end}
 	</select>
 </mapper>
