@@ -42,7 +42,6 @@ function handle(event) {
             </ul>
             <!-- ***** 탭 메뉴 끝 ***** -->
            <!-- ***** 탭 내용 시작 ***** -->
-           <div class="live-stream">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade" id="independent-art" role="tabpanel" aria-labelledby="independent-art-tab">
                     <div class="row">
@@ -83,7 +82,6 @@ function handle(event) {
                         </c:forEach>
                     </div>
                 </div>
-            </div>
             </div>
             <!-- ***** 탭 내용 끝 ***** -->
                <!-- ***** 페이지 나누기 시작*****-->

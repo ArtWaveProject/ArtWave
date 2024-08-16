@@ -42,12 +42,12 @@ function handle(event) {
             </ul>
             <!-- ***** 탭 메뉴 끝 ***** -->
            <!-- ***** 탭 내용 시작 ***** -->
-           <div class="live-stream">
+         
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="box-office" role="tabpanel" aria-labelledby="box-office-tab">
                     <div class="row">
                         <c:forEach var="vo" items="${mlList1}" varStatus="s">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="item">
                                     <div class="thumb">
                                         <a href="#"><img src="https://www.kobis.or.kr${vo.mposter}" alt="${vo.mtitle}"></a>
@@ -84,7 +84,7 @@ function handle(event) {
                     </div>
         
                 </div>
-            </div>
+           
             <!-- ***** 탭 내용 끝 ***** -->
             <!-- ***** 페이지 나누기 시작*****-->
        
