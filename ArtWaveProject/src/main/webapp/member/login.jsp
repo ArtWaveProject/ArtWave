@@ -14,7 +14,7 @@
 		let checkEmail=false
 		let checkPwd=false
 		$('#idCheck').click(function() {
-			let id = $('#id')
+			let id = $('#signUpId')
 			if(id.val().trim()===''){
 				id.focus()
 				return
@@ -175,7 +175,7 @@
 		})
 		$('#signUpBtn').click(function() {
 			if(!checkId){
-				$('#id').focus()
+				$('#signUpId').focus()
 				return
 			}
 			if(!checkNick){
@@ -189,7 +189,7 @@
 			if(!checkPwd){
 				$('#pwdCheck').focus()
 			}
-			let id=$('#id').val()
+			let id=$('#signUpId').val()
 			let pwd=$('#pwd').val()
 			let name=$('#name').val()
 			if(name==='')
@@ -318,7 +318,7 @@
 
 					<div class="login__box">
 						<i class='bx bx-user login__icon'></i>
-						<input type="text" placeholder="ID" class="login__input" id="id">
+						<input type="text" placeholder="ID" class="login__input" id="signUpId">
 						<input type="button" value="중복확인" id="idCheck">
 						<img src="check.png" width="20px" id="idIcon" height="20px" style="background: none; display: none;">
 					</div>

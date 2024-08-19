@@ -37,7 +37,7 @@ R&B/소울
 캐롤
  */
 public class MusicModel {
-	private String[] genreList = { "", "", "댄스", "드라마", "발라드", "인디", "락", "랩/힙합", "블루스/포크", "R&B/소울", "트로트", "동요",
+	private String[] genreList = { "", "", "댄스", "드라마", "발라드", "인디", "락", "랩/힙합", "트로트", "R&B/소울", "블루스/포크", "동요",
 			"일렉트로니카", "정통", "애시드/퓨전", "한국영화", "국내CCM", "캐롤" };
 	private String[] tables = { "", "music", "album", "artist" };
 	private String[] noName = { "", "mno", "alno", "ano" };
@@ -85,12 +85,13 @@ public class MusicModel {
 		int endPage = startPage + 10 - 1;
 		System.out.println(list.size());
 		request.setAttribute("ss", ss);
+		request.setAttribute("genre", genre);
 		request.setAttribute("curPage", curPage);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("list", list);
-		request.setAttribute("main_jsp", "../music/musicList.jsp");
+		request.setAttribute("main_jsp", "../music/musicList2.jsp");
 		return "../main/main.jsp";
 	}
 
@@ -204,11 +205,10 @@ public class MusicModel {
 		ArtistVO vo = MusicDAO.artistDetailData(Integer.parseInt(ano));
 		List<MusicVO> mList = MusicDAO.artistMusicData(Integer.parseInt(ano));
 		List<AlbumVO> aList = MusicDAO.artistAlbumData(Integer.parseInt(ano));
-		System.out.println(mList.size());
 		request.setAttribute("mList", mList);
 		request.setAttribute("aList", aList);
 		request.setAttribute("detail", vo);
-		request.setAttribute("main_jsp", "../music/artistDetail.jsp");
+		request.setAttribute("main_jsp", "../music/artistDetail2.jsp");
 		return "../main/main.jsp";
 	}
 
@@ -217,6 +217,8 @@ public class MusicModel {
 		String mno = request.getParameter("mno");
 		MusicVO vo = MusicDAO.musicDetailData(Integer.parseInt(mno));
 		List<MusicVO> mList = MusicDAO.artistMusicData(vo.getAno());
+		for(MusicVO vor:mList)
+			System.out.println(vor.getPlaycount());
 		List<String> lList = new ArrayList<String>();
 		List<String> cList = new ArrayList<String>();
 		List<String> aList = new ArrayList<String>();
@@ -249,7 +251,7 @@ public class MusicModel {
 		request.setAttribute("cList", cList);
 		request.setAttribute("aList", aList);
 		request.setAttribute("mList", mList);
-		request.setAttribute("main_jsp", "../music/musicDetail.jsp");
+		request.setAttribute("main_jsp", "../music/musicDetail2.jsp");
 		return "../main/main.jsp";
 	}
 
@@ -301,6 +303,7 @@ public class MusicModel {
 		map.put("table", tables[Integer.parseInt(type)]);
 		map.put("noName", noName[Integer.parseInt(type)]);
 		int result = MusicDAO.musicLikeOn(map);
+		System.out.println(result);
 		try {
 			PrintWriter out = response.getWriter();
 			out.write(String.valueOf(result));

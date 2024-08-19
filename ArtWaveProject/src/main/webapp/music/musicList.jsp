@@ -6,16 +6,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-.images{
-margin-top: 0px !important;
+.images {
+	margin-top: 0px !important;
 }
-#row{
-width: 1200px;
-margin: 0px auto;
+
+#row {
+	width: 1200px;
+	margin: 0px auto;
 }
+
 ul {
 	display: contents;
 }
+
 #title {
 	width: 600px;
 	text-align: left;
@@ -28,7 +31,7 @@ ul {
 	vertical-align: middle;
 }
 
-.gaming-library .item ul li{
+.gaming-library .item ul li {
 	vertical-align: middle;
 }
 
@@ -57,14 +60,24 @@ ul {
 						</ul>
 						<ul>
 							<li>
-								<img src="${vo.poster}" class="templatemo-item images" >
+								<img src="${vo.poster}" class="templatemo-item images">
 							</li>
 						</ul>
 						<ul>
 							<li id="title">
-								<a href="../music/musicDetail.do?mno=${vo.mno}"><h5>${vo.title }</h5></a>
-								<a href="../music/artistDetail.do?ano=${vo.ano}"><h6><font color="gray">${vo.aname }</font></h6></a>
-								<a href="../music/albumDetail.do?alno=${vo.alno}"><h6><font color="gray">${vo.altitle }</font></h6></a>
+								<a href="../music/musicDetail.do?mno=${vo.mno}">
+									<h5>${vo.title }</h5>
+								</a>
+								<a href="../music/artistDetail.do?ano=${vo.ano}">
+									<h6>
+										<font color="gray">${vo.aname }</font>
+									</h6>
+								</a>
+								<a href="../music/albumDetail.do?alno=${vo.alno}">
+									<h6>
+										<font color="gray">${vo.altitle }</font>
+									</h6>
+								</a>
 							</li>
 						</ul>
 						<ul>
@@ -74,11 +87,6 @@ ul {
 						</ul>
 					</div>
 				</c:forEach>
-				<div class="col-lg-12">
-					<div class="main-button">
-						<a href="profile.html">View Your Library</a>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
