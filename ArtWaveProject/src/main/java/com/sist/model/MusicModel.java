@@ -39,26 +39,32 @@ R&B/소울
 public class MusicModel {
 	private String[] genreList = { "", "", "댄스", "드라마", "발라드", "인디", "락", "랩/힙합", "블루스/포크", "R&B/소울", "트로트", "동요",
 			"일렉트로니카", "정통", "애시드/퓨전", "한국영화", "국내CCM", "캐롤" };
-	private String[] tables= {"", "music", "album", "artist"};
-	private String[] noName= {"", "mno", "alno", "ano"};
+	private String[] tables = { "", "music", "album", "artist" };
+	private String[] noName = { "", "mno", "alno", "ano" };
+
 	@RequestMapping("music/musicHome.do")
 	public String musicHome(HttpServletRequest request, HttpServletResponse response) {
-		Map map=new HashMap();
+		Map map = new HashMap();
 		map.put("genre", "");
 		map.put("start", 1);
 		map.put("end", 10);
-		List<MusicVO> mList=MusicDAO.musicListData(map);
+		map.put("ss", "");
+		List<MusicVO> mList = MusicDAO.musicListData(map);
 		map.put("end", 12);
-		List<MusicVO> list=MusicDAO.musicListDataNew(map);
-		
+		List<MusicVO> list = MusicDAO.musicListDataNew(map);
+
 		request.setAttribute("list", list);
 		request.setAttribute("mList", mList);
 		request.setAttribute("main_jsp", "../music/musicHome.jsp");
 		return "../main/main.jsp";
 	}
+
 	@RequestMapping("music/musicList.do")
 	public String musicList(HttpServletRequest request, HttpServletResponse response) {
 		String page = request.getParameter("page");
+		String ss = request.getParameter("ss");
+		if (ss == null)
+			ss = "";
 		if (page == null)
 			page = "1";
 		String genre = request.getParameter("genre");
@@ -72,11 +78,13 @@ public class MusicModel {
 		map.put("start", start);
 		map.put("end", end);
 		map.put("genre", genreList[Integer.parseInt(genre)]);
+		map.put("ss", ss);
 		List<MusicVO> list = MusicDAO.musicListData(map);
 		int totalPage = MusicDAO.musicTotalPage(genreList[Integer.parseInt(genre)]);
 		int startPage = (curPage - 1) / 10 * 10 + 1;
 		int endPage = startPage + 10 - 1;
 		System.out.println(list.size());
+		request.setAttribute("ss", ss);
 		request.setAttribute("curPage", curPage);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
@@ -94,6 +102,9 @@ public class MusicModel {
 		String genre = request.getParameter("genre");
 		if (genre == null)
 			genre = "1";
+		String ss = request.getParameter("ss");
+		if (ss == null)
+			ss = "";
 		int curPage = Integer.parseInt(page);
 		int rowSize = 12;
 		int start = (curPage - 1) * rowSize + 1;
@@ -102,18 +113,45 @@ public class MusicModel {
 		map.put("start", start);
 		map.put("end", end);
 		map.put("genre", genreList[Integer.parseInt(genre)]);
+		map.put("ss", ss);
 		List<AlbumVO> list = MusicDAO.albumListData(map);
 		int totalPage = MusicDAO.albumTotalPage(genreList[Integer.parseInt(genre)]);
 		int startPage = (curPage - 1) / 10 * 10 + 1;
 		int endPage = startPage + 10 - 1;
 		System.out.println(list.size());
 		System.out.println(totalPage);
+		request.setAttribute("ss", ss);
 		request.setAttribute("curPage", curPage);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("list", list);
 		request.setAttribute("main_jsp", "../music/albumList.jsp");
+		return "../main/main.jsp";
+	}
+
+	@RequestMapping("music/artistList.do")
+	public String artistList(HttpServletRequest request, HttpServletResponse response) {
+		String page = request.getParameter("page");
+		if (page == null)
+			page = "1";
+		String ss = request.getParameter("ss");
+		if (ss == null)
+			ss = "";
+		int curPage = Integer.parseInt(page);
+		int rowSize = 12;
+		int start = (curPage - 1) * rowSize + 1;
+		int end = start + rowSize - 1;
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("ss", ss);
+		List<ArtistVO> list = MusicDAO.artistListData(map);
+		request.setAttribute("ss", ss);
+		request.setAttribute("curPage", curPage);
+		request.setAttribute("totalPage", list.size());
+		request.setAttribute("list", list);
+		request.setAttribute("main_jsp", "../music/artistList.jsp");
 		return "../main/main.jsp";
 	}
 
@@ -262,13 +300,14 @@ public class MusicModel {
 		map.put("id", id);
 		map.put("table", tables[Integer.parseInt(type)]);
 		map.put("noName", noName[Integer.parseInt(type)]);
-		int result=MusicDAO.musicLikeOn(map);
+		int result = MusicDAO.musicLikeOn(map);
 		try {
 			PrintWriter out = response.getWriter();
 			out.write(String.valueOf(result));
 		} catch (Exception e) {
 		}
 	}
+
 	@RequestMapping("music/musicLikeOff.do")
 	public void musicLikeOff(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
@@ -281,25 +320,37 @@ public class MusicModel {
 		map.put("id", id);
 		map.put("table", tables[Integer.parseInt(type)]);
 		map.put("noName", noName[Integer.parseInt(type)]);
-		int result=MusicDAO.musicLikeOff(map);
+		int result = MusicDAO.musicLikeOff(map);
 		try {
 			PrintWriter out = response.getWriter();
 			out.write(String.valueOf(result));
 		} catch (Exception e) {
 		}
 	}
+
 	@RequestMapping("music/find.do")
 	public String musicFind(HttpServletRequest request, HttpServletResponse response) {
-		String ss=request.getParameter("ss");
-		Map map=new HashMap();
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (Exception e) {
+		}
+		String ss = request.getParameter("ss");
+		if (ss == null)
+			ss = "";
+		System.out.println(ss);
+		Map map = new HashMap();
 		map.put("start", 1);
 		map.put("end", 10);
 		map.put("ss", ss);
-		List<MusicVO> mList=MusicDAO.musicFindData(map);
+		List<MusicVO> mList = MusicDAO.musicFindData(map);
 		map.put("end", 6);
-		List<AlbumVO> alList=MusicDAO.albumFindData(map);
+		List<AlbumVO> alList = MusicDAO.albumFindData(map);
 		map.put("end", 4);
-		List<ArtistVO> aList=MusicDAO.artistFindData(map);
+		List<ArtistVO> aList = MusicDAO.artistFindData(map);
+		System.out.println(mList.size());
+		System.out.println(alList.size());
+		System.out.println(aList.size());
+		request.setAttribute("ss", ss);
 		request.setAttribute("mList", mList);
 		request.setAttribute("alList", alList);
 		request.setAttribute("aList", aList);

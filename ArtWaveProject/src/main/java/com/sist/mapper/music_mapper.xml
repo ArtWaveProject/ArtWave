@@ -7,73 +7,53 @@
 		id="musicListData"
 		resultType="MusicVO"
 		parameterType="hashmap">
-		SELECT mno, title, alno, ano, poster, genre, altitle,urlmp4,
-		aname, num
-		FROM (SELECT mno,
-		title, alno, ano, poster, genre, altitle,urlmp4,
-		aname, rownum
-		as num
-		FROM (SELECT mno, title, alno, ano, poster, genre, urlmp4
-		,(SELECT atitle FROM
-		album WHERE
-		album.alno=music.alno) as altitle,
-		(SELECT aname FROM
-		artist where artist.ano=music.ano) as aname
-		FROM
-		music WHERE genre LIKE '%'||#{genre}||'%' ORDER
-		BY playcount DESC))
+		SELECT mno, title, alno, ano, poster, genre, altitle, urlmp4, aname, num
+		FROM (SELECT mno, title, alno, ano, poster, genre, altitle,urlmp4, aname, rownum as num
+		FROM (SELECT mno, title, alno, ano, poster, genre, urlmp4 ,(SELECT atitle FROM album WHERE album.alno=music.alno) as altitle, (SELECT aname FROM artist where artist.ano=music.ano) as aname
+		FROM music WHERE genre LIKE '%'||#{genre}||'%' ORDER BY playcount DESC)
+		WHERE aname LIKE '%'||#{ss}||'%' OR title LIKE '%'||#{ss}||'%')
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
 	<select
 		id="musicListDataNew"
 		resultType="MusicVO"
 		parameterType="hashmap">
-		SELECT mno, title, alno, ano, poster, genre, altitle,
-		urlmp4,
-		aname, num
-		FROM (SELECT mno,
-		title, alno, ano, poster, genre,
-		altitle, urlmp4,
-		aname, rownum
-		as num
-		FROM (SELECT mno, title, alno, ano,
-		poster, genre
-		,(SELECT atitle FROM
-		album WHERE
-		album.alno=music.alno) as
-		altitle,urlmp4,
-		(SELECT aname FROM
-		artist where artist.ano=music.ano) as
-		aname
-		FROM
-		music WHERE genre LIKE '%'||#{genre}||'%' AND titlecheck=1
-		ORDER
-		BY mno DESC))
+		SELECT mno, title, alno, ano, poster, genre, altitle, urlmp4, aname, num
+		FROM (SELECT mno, title, alno, ano, poster, genre, altitle, urlmp4, aname, rownum as num
+		FROM (SELECT mno, title, alno, ano, poster, genre, (SELECT atitle FROM album WHERE album.alno=music.alno) as altitle, urlmp4, (SELECT aname FROM artist where artist.ano=music.ano) as aname
+		FROM music WHERE titlecheck=1 ORDER BY mno DESC))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
 	<select
 		id="musicTotalPage"
 		parameterType="String"
 		resultType="int">
-		SELECT CEIL(COUNT(*)/50.0) FROM music WHERE genre LIKE
-		'%'||#{genre}||'%'
+		SELECT CEIL(COUNT(*)/50.0) FROM music WHERE genre LIKE '%'||#{genre}||'%'
 	</select>
 	<select
 		id="albumListData"
 		parameterType="hashmap"
 		resultType="AlbumVO">
 		SELECT alno, ano, atitle, poster, aname, num
-		FROM (SELECT
-		alno, ano, atitle,
-		poster, aname, rownum as num
-		FROM (SELECT alno, ano,
-		atitle, poster , (SELECT aname from artist where
-		artist.ano=album.ano)
-		as aname
-		FROM album WHERE
-		genre LIKE '%'||#{genre}||'%' ORDER BY alno
-		DESC))
+		FROM (SELECT alno, ano, atitle, poster, aname, rownum as num
+		FROM (SELECT alno, ano, atitle, poster , (SELECT aname from artist where artist.ano=album.ano) as aname
+		FROM album WHERE genre LIKE '%'||#{genre}||'%' ORDER BY alno DESC)
+		WHERE aname LIKE '%'||#{ss}||'%' OR atitle LIKE '%'||#{ss}||'%')
 		WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<select
+		id="artistListData"
+		resultType="ArtistVO"
+		parameterType="hashmap">
+		SELECT ano, poster, nation, type, aname, num
+		FROM(SELECT
+		ano, poster, nation, type, aname, rownum as num
+		FROM(SELECT ano,
+		poster, nation, type, aname
+		FROM artist WHERE aname LIKE
+		'%'||#{ss}||'%' ORDER BY ano DESC))
+		WHERE num BETWEEN #{start} AND
+		#{end}
 	</select>
 	<select
 		id="albumTotalPage"
@@ -103,12 +83,14 @@
 		album.alno=music.alno)
 		as
 		altitle, (SELECT aname FROM
-		artist where
+		artist
+		where
 		artist.ano=music.ano) as
 		aname
 		FROM music WHERE ano=#{ano} ORDER BY playcount desc)
 		WHERE rownum
-		&lt;= 10
+		&lt;=
+		10
 	</select>
 	<select
 		id="artistAlbumData"
@@ -127,7 +109,8 @@
 		urlmp3,
 		(SELECT atitle FROM album WHERE
 		music.alno=album.alno) as altitle,
-		(SELECT aname FROM artist WHERE
+		(SELECT
+		aname FROM artist WHERE
 		music.ano=artist.ano) as aname
 		FROM music WHERE mno=#{mno}
 	</select>
@@ -161,7 +144,8 @@
 		parameterType="int">
 		SELECT mno, title, ano, genre, playcount, titlecheck,
 		poster, (SELECT aname
-		FROM artist WHERE artist.ano=music.ano) as aname
+		FROM
+		artist WHERE artist.ano=music.ano) as aname
 		FROM music WHERE alno=#{alno}
 	</select>
 	<select
@@ -196,7 +180,8 @@
 		parameterType="String"
 		resultType="int">
 		SELECT CEIL(COUNT(*)/20.0) FROM (SELECT titlecheck, title,
-		(SELECT aname FROM artist
+		(SELECT aname FROM
+		artist
 		WHERE artist.ano=music.ano) as aname FROM
 		music) WHERE titlecheck=1 AND (title
 		LIKE '%'||#{ss}||'%' OR aname LIKE
@@ -239,31 +224,29 @@
 		parameterType="hashmap"
 		resultType="MusicVO">
 		SELECT mno, ano, alno, title, altitle, aname, poster, num
-		FROM (SELECT mno, ano, alno, title, altitle, aname, poster, rownum as
+		FROM (SELECT mno, ano,
+		alno, title, altitle, aname, poster, rownum as
 		num
 		FROM (SELECT mno, ano, alno, title, (SELECT atitle FROM album WHERE
-		album.alno=music.alno) as altitle, (SELECT aname FROM artist where
+		album.alno=music.alno) as
+		altitle, (SELECT aname FROM artist where
 		artist.ano=music.ano) as aname, poster
-		FROM WHERE aname LIKE
-		'%'||#{ss}||'%' OR title LIKE '%'||#{ss}||'%'))
-		WHERE num BETWEEN
+		FROM music ORDER BY mno DESC)
+		WHERE aname LIKE
+		'%'||#{ss}||'%' OR title
+		LIKE '%'||#{ss}||'%')
+		WHERE num
+		BETWEEN
 		#{start} AND #{end}
 	</select>
 	<select
 		id="albumFindData"
 		parameterType="hashmap"
 		resultType="AlbumVO">
-		SELECT alno, ano, atitle, poster, TO_CHAR(regdate,
-		'YYYY-MM-DD') as dbday,
-		aname, num
-		FROM (SELECT alno, ano, atitle,
-		poster, regdate, aname, rownum as num
-		FROM (SELECT alno, ano, atitle,
-		poster, regdate, (SELECT aname FROM artist
-		WHERE artist.ano=album.ano)
-		as aname
-		FROM album WHERE aname LIKE '%'||#{ss}||'%' OR atitle LIKE
-		'%'||#{ss}||'%'))
+		SELECT alno, ano, atitle, poster, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, aname, num
+		FROM (SELECT alno, ano, atitle, poster, regdate, aname, rownum as num
+		FROM (SELECT alno, ano, atitle, poster, regdate, (SELECT aname FROM artist WHERE artist.ano=album.ano) as aname
+		FROM album ORDER BY alno DESC) WHERE aname LIKE '%'||#{ss}||'%' OR atitle LIKE '%'||#{ss}||'%')
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
 	<select
@@ -272,11 +255,28 @@
 		resultType="ArtistVO">
 		SELECT ano, aname, nation, type, poster, num
 		FROM (SELECT
-		ano, aname, nation, type, poster, rownum as num
+		ano, aname, nation,
+		type, poster, rownum as num
 		FROM (SELECT ano,
-		aname, nation, type, poster
-		FROM artist))
-		WHERE num BETWEEN #{start} AND
+		aname,
+		nation, type, poster
+		FROM artist WHERE aname LIKE '%'||#{ss}||'%' ORDER
+		BY ano DESC))
+		WHERE num
+		BETWEEN #{start} AND
 		#{end}
 	</select>
+	<insert
+		id="playListInsert"
+		parameterType="hashmap">
+		INSERT INTO playlist VALUES(NVL(max(plno)+1, 1), #{id},
+		#{plname}, sysdate)
+	</insert>
+	<insert
+		id="playListMusicInsert"
+		parameterType="hashmap">
+		INSERT INTO playlistmusic VALUES(NVL(max(plmno)+1, 1),
+		#{mno}, #{plno} ,
+		sysdate)
+	</insert>
 </mapper>

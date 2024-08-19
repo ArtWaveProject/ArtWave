@@ -72,7 +72,21 @@ public class MusicDAO {
 		}
 		return total;
 	}
-
+	
+	public static List<ArtistVO> artistListData(Map map){
+		List<ArtistVO> list = new ArrayList<ArtistVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("artistListData", map);
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
+	
 	public static ArtistVO artistDetailData(int ano) {
 		ArtistVO vo = new ArtistVO();
 		SqlSession session = null;
