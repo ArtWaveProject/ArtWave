@@ -2,12 +2,29 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+.featured-games {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cover {
+    flex: 1;
+    max-width: 300px;
+}
+
+.book-info {
+    flex: 2;
+    margin-left: 20px;
+    max-width: calc(100% - 340px); /* cover의 width와 마진을 고려하여 최대 너비를 설정 */
+}
+
 .pricing-info {
 	display: flex;
 	width: 400px;
@@ -149,40 +166,55 @@
 					<div class="container" style="padding: 20px;">
 						<div class="row" style="display: flex; align-items: flex-start;">
 							<div class="col-lg-8" style="flex: 1; margin-right: 10px;">
-								<div class="featured-games header-text" style="display: flex;">
-									<div class="cover"
-										style="position: relative; overflow: hidden;">
+								<div class="featured-games header-text">
+									<div class="cover">
 										<img src="${vo.cover}" alt=""
 											style="width: 300px; height: 400px; border-radius: 23px;">
 									</div>
-									<div class="book-info" style="margin-left: 50px;">
-									<p>${vo.bgenre}<br></p>
-										<span style="font-size: 30px; font-weight: bold;">${vo.btitle}</span>
-										<p>${vo.writer} ${vo.writer != null ? '저 | ' : ''}${vo.publisher}
+									<div class="book-info">
+										<p>${vo.bgenre}<br>
+										</p>
+										<span
+											style="font-size: 30px; font-weight: bold; display: block; margin-bottom: 10px;">${vo.btitle}</span>
+										<p>${vo.writer}${vo.writer != null ? '저 | ' : ''}${vo.publisher}
 											| ${vo.dbday}</p>
 										<p>${vo.btag}</p>
 										<div class="hr-container">
 											<hr>
 										</div>
 										<table class="pricing-info">
-										 <tr>
-											<th class="price-label">정가</th>
-											<td class="price-value"><fmt:formatNumber value="${vo.price}" type="number"/>원</td>
-										 </tr>	
-										<tr>
-											<th class="price-label">할인가</th>
-											<td class="price-value discount-price"><fmt:formatNumber value="${vo.sale_price}" type="number"/>원<span class="discount-rate">(${vo.dis_rate} 할인)</span></td>
-										</tr>	
-										<tr>
-											<th class="price-delivery" style="padding-top: 8px;font-size: 13px; color: #979797; font-weight: 300; width: 400px;">배송비</th>
-											<td class="delivery-info" style="padding-top: 8px;">무료</td>
-										</tr>
+											<tr>
+												<th class="price-label">정가</th>
+												<td class="price-value"><fmt:formatNumber
+														value="${vo.price}" type="number" />원</td>
+											</tr>
+											<tr>
+												<th class="price-label">할인가</th>
+												<td class="price-value discount-price"><fmt:formatNumber
+														value="${vo.sale_price}" type="number" />원 <span
+													class="discount-rate"> <c:choose>
+															<c:when test="${vo.sale_price < vo.price}">
+																<c:out
+																	value="(${((vo.price - vo.sale_price) / vo.price * 100)}" />% 할인)
+                    </c:when>
+															<c:otherwise>
+                    할인 없음
+                    </c:otherwise>
+														</c:choose>
+												</span></td>
+											</tr>
+											<tr>
+												<th class="price-delivery"
+													style="padding-top: 8px; font-size: 13px; color: #979797; font-weight: 300; width: 400px;">배송비</th>
+												<td class="delivery-info" style="padding-top: 8px;">무료</td>
+											</tr>
 											<tr>
 												<th class="price-label">수량</th>
 												<td><div class="quantity-control">
-												<button id="decrement">-</button> 
-												<input type="text" id="quantity" value="1">
-													<button id="increment">+</button></div></td>
+														<button id="decrement">-</button>
+														<input type="text" id="quantity" value="1">
+														<button id="increment">+</button>
+													</div></td>
 											</tr>
 											<tr>
 												<th class="price-label">총 금액</th>
@@ -190,9 +222,10 @@
 											</tr>
 										</table>
 										<div class="buttons">
-											<a href="#" class="add-to-cart"><i class="fa fa-cart-plus">&nbsp;Add to Cart</i></a>
-											<a href="#"
-												class="buy-now"><i class="fa fa-credit-card">&nbsp;Buy Now</i></a>
+											<a href="#" class="add-to-cart"><i
+												class="fa fa-cart-plus">&nbsp;Add to Cart</i></a> <a href="#"
+												class="buy-now"><i class="fa fa-credit-card">&nbsp;Buy
+													Now</i></a>
 										</div>
 									</div>
 								</div>

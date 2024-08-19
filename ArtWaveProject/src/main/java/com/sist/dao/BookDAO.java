@@ -43,14 +43,14 @@ public class BookDAO {
 		  }
 		  return list;
 	  }
-	  public static int bookTotalPage()
+	  public static int bookTotalPage(String genre)
 	  {
 		  int total=0;
 		  SqlSession session=null;
 		  try
 		  {
 			  session=ssf.openSession();
-			  total=session.selectOne("bookTotalPage");
+			  total=session.selectOne("bookTotalPage",genre);
 		  }catch(Exception ex)
 		  {
 			  ex.printStackTrace();
@@ -67,14 +67,14 @@ public class BookDAO {
 		    SELECT COUNT(*) FROM book
           </select>
 	   */
-	  public static int bookListCount()
+	  public static int bookListCount(String genre)
 	   {
 		   int count=0;
 		   SqlSession session=null;
 		   try
 		   {
 			   session=ssf.openSession();
-			   count=session.selectOne("bookListCount");
+			   count=session.selectOne("bookListCount",genre);
 		   }catch(Exception ex)
 		   {
 			   ex.printStackTrace();
@@ -114,4 +114,62 @@ public class BookDAO {
 		   }
 		   return vo;
 	   }
+	   public static List<BookVO> bookNewData(Map map)
+	   {
+		   List<BookVO> list=new ArrayList<BookVO>();
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("bookNewData",map);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
+	   public static List<BookVO> bookFindListData(Map map)
+	   {
+		   List<BookVO> list=new ArrayList<BookVO>();
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("bookFindListData",map);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
+	   public static int bookFindTotalPage(Map map)
+	   {
+		   int total=0;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   total=session.selectOne("bookFindTotalPage",map);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return total;
+	   }
+	   
 }
