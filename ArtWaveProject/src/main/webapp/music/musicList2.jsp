@@ -26,7 +26,7 @@
 
 .listChart {
 	background: white;
-	border-radius: 20px;
+	border-radius: 0px 0px 20px 20px;
 	padding: 5px;
 }
 
@@ -107,57 +107,90 @@
 .listArtist {
 	font-size: 11px;
 }
-.genreTable td a{
-text-align:center;
-color:black;
-display: block;
-width: 100%;
-border: 2px solid white;
-border-right: none;
+
+.genreTable {
+	border: transparent;
+	margin-top: 15px;
+	margin-bottom: -1px;
 }
-.genreTable td:last-child a{
-width: 100%;
-border: 2px solid white;
+
+.genreTable td {
+	padding: 0px;
+	vertical-align: middle;
 }
-.genreTable .active a{
-border-bottom: none;
+
+.genreTable td a {
+	text-align: center;
+	color: #aaa;
+	display: block;
+	width: 100%;
+	border: 2px solid #aaa;
+	border-bottom: 2px solid #777;
+	border-right: none;
+	border-radius: 7px 7px 0px 0px;
+	height: 35px;
+	vertical-align: middle;
+	background: white;
+	font-size: 13px;
+	padding-top: 6px;
 }
-.genreTable td{
-padding: 0px;
+
+.genreTable td:first-child a {
+	
+}
+
+.genreTable td:last-child a {
+	width: 100%;
+	border: 2px solid #aaa;
+	border-bottom: 2px solid #777;
+}
+
+.genreTable .active a {
+	border-left: 2px solid #777 !important;
+	border-top: 2px solid #777 !important;
+	border-right: 2px solid #777 !important;
+	border-bottom: none !important;
+}
+
+.genreTable .anext a {
+	border-left: none !important;
+}
+
+.genreTable td {
+	padding: 0px;
 }
 </style>
 </head>
 <body>
 	<div class="container" style="margin-top: 150px;">
 		<div class="row listBody">
-			<h2>곡</h2>
 			<table class="table genreTable">
 				<tr>
-					<td width="11%" class="genreBtn">
+					<td width="11%" class="genreBtn ${genre==1?'active':''}">
 						<a href="../music/musicList.do?genre=1">전체</a>
 					</td>
-					<td width="11%" class="genreBtn">
+					<td width="11%" class="genreBtn ${genre==2?'active':genre==1?'anext':''}">
 						<a href="../music/musicList.do?genre=2">댄스</a>
 					</td>
-					<td width="11%" class="genreBtn">
+					<td width="11%" class="genreBtn ${genre==3?'active':genre==2?'anext':''}">
 						<a href="../music/musicList.do?genre=3">드라마</a>
 					</td>
-					<td width="11%" class="genreBtn">
+					<td width="11%" class="genreBtn ${genre==4?'active':genre==3?'anext':''}">
 						<a href="../music/musicList.do?genre=4">발라드</a>
 					</td>
-					<td width="11%" class="genreBtn active">
+					<td width="11%" class="genreBtn ${genre==5?'active':genre==4?'anext':''}">
 						<a href="../music/musicList.do?genre=5">인디</a>
 					</td>
-					<td width="11%" class="genreBtn">
+					<td width="11%" class="genreBtn ${genre==6?'active':genre==5?'anext':''}">
 						<a href="../music/musicList.do?genre=6">락</a>
 					</td>
-					<td width="11%" class="genreBtn">
+					<td width="11%" class="genreBtn ${genre==7?'active':genre==6?'anext':''}">
 						<a href="../music/musicList.do?genre=7">랩/힙합</a>
 					</td>
-					<td width="11%" class="genreBtn">
+					<td width="11%" class="genreBtn ${genre==8?'active':genre==7?'anext':''}">
 						<a href="../music/musicList.do?genre=8">트로트</a>
 					</td>
-					<td width="11%" class="genreBtn">
+					<td width="11%" class="genreBtn ${genre==9?'active':genre==8?'anext':''}">
 						<a href="../music/musicList.do?genre=9">R&B/소울</a>
 					</td>
 				</tr>
