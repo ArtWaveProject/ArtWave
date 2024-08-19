@@ -64,4 +64,5 @@
 		        publisher LIKE '%'||#{search}||'%')
 		AND bgenre LIKE '%'||#{genre}||'%'    
 </select>
+
 </mapper>

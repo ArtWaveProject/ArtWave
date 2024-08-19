@@ -22,7 +22,7 @@
 .book-info {
     flex: 2;
     margin-left: 20px;
-    max-width: calc(100% - 340px); /* cover의 width와 마진을 고려하여 최대 너비를 설정 */
+    max-width: calc(100% - 340px);
 }
 
 .pricing-info {

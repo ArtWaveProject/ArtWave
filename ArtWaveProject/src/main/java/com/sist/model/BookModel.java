@@ -13,7 +13,6 @@ public class BookModel {
 			                 "인문","자연과학","만화/라이트노벨","유아","대학교재","자기계발","예술","IT 모바일","소설/시/희곡","종교",
 			                 "수험서 자격증","중고등참고서","잡지","여행","인물","전집","ELT/사전","유아/어린이","인문 사회","유아 어린이",
 			                 "해외잡지","ELT 사전","예술 대중문화","문학/소설","경영/인문","프랑스도서","대학교재/전문서적","문학 소설","취미 라이프스타일","컴퓨터"};
-	
 	   @RequestMapping("book/list.do")
 	   public String book_list(HttpServletRequest request,HttpServletResponse response)
 	   {
