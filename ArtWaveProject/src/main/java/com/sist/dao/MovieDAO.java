@@ -145,4 +145,31 @@ public class MovieDAO {
 		   }
 		   return count;
 	   }
+	 public static MovieVO movieDetailData(int mno)
+	   {
+		   MovieVO vo=new MovieVO();
+		   SqlSession session=null;
+		   try
+		   {
+			  
+			   session=ssf.openSession();
+			   /*
+			   // 조회수 증가 
+			   session.update("movieHitIncrement",mno);
+			   session.commit(); // insert,update,delete
+			   */
+			   // 데이터 읽기 
+			   vo=session.selectOne("movieDetailData",mno);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return vo;
+	   }
+	
 }

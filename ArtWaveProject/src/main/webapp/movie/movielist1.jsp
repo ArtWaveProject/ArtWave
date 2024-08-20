@@ -20,36 +20,35 @@ function handle(event) {
 </script>
 </head>
 <body>
-
         <div class="page-content2">
-            <!-- ***** 영화목록 메뉴 시작 ***** -->
-        <div class="btn2-category-container">
-            <a id="listbtn" href="../movie/movielist1.do" class="btn2-category ${activeCategory == 'box-office' ? 'active' : ''}">박스오피스</a>
-            <a id="listbtn"href="../movie/movielist2.do" class="btn2-category ${activeCategory == 'independent-art' ? 'active' : ''}">독립＆예술영화</a>
-        </div>
+        <!-- 검색 창 시작 -->
         <div class="search-input2">
             <form id="search2" action="#">
-                <input type="text" placeholder="영화 제목" id='searchText' name="searchKeyword" onkeypress="handle(event)" />
+                <input type="text" placeholder="영화명 검색" id='searchText' name="searchKeyword" onkeypress="handle(event)" />
                 <i class="fa fa-search"></i>
             </form>
         </div>
+        <!-- 검색 창 끝 -->
+            <!-- ***** 영화목록 메뉴 시작 ***** -->
+        <div class="btn2-category-container">
+            <a id="listbtnactive" href="../movie/movielist1.do" class="btn2-category">박스오피스</a>
+            <a id="listbtn"href="../movie/movielist2.do" class="btn2-category">독립＆예술영화</a>
+        </div>
+        
         <!-- ***** 영화목록 메뉴 끝 ***** -->
            <!-- ***** 영화목록 시작 ***** -->
            <div class="container">
+           <div class="live-stream2">
                    <div class="row">
                         <c:forEach var="vo" items="${mlList1 }" varStatus="s">
                             <div class="col-md-3">
                                 <div class="item">
                                     <div class="thumb">
                                         <a href="#"><img src="https://www.kobis.or.kr${vo.mposter}" alt="${vo.mtitle}"></a>
-                                    </div>
-                                    <div class="hover-effect">
-                                        <div class="content">
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-eye"></i> 상세보기</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                       	  <div class="hover-effect">
+                                            <h6 id="hetext"><a href="../movie/moviedetail_before.do?mno=${vo.mno }"><i class="fa fa-eye"></i>&nbsp; 상세보기 &nbsp;</a></h6>
+                                          </div>
+                                      </div>
                                     <div class="down-content">
                                         <div class="avatar2">
                                             <c:choose>
@@ -67,14 +66,28 @@ function handle(event) {
                                                 </c:when>
                                             </c:choose>
                                         </div>
-                                        <h4>${vo.mtitle}</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <p>${mlList1 }</p>
+                                        <h4 id=text3>${vo.mtitle}</h4>
+                                        <h5 id=text4>&emsp;&emsp;개봉일&nbsp;:&nbsp;${vo.mrday}<br></h5>
+                                        </div>
+                                        
+                                        <div class="bokdBtns">
+                                        	<c:choose>
+                                                <c:when test="${vo.mstate == '1'}">
+                                                 <a href="#" title="영화 예매하기"><input type="button" id="bokdBtn1" value="예매"></a>
+                                                </c:when>
+                                                <c:when test="${vo.mstate == '2'}">
+                                                  <a href="#" title="영화 상영예정"><input type="button" id="bokdBtn2" value="상영예정" disabled></a>
+                                                </c:when>
+                                                <c:when test="${vo.mstate == '3'}">
+                                                   <a href="#" title="영화 상영종료"><input type="button" id="bokdBtn3" value="상영종료" disabled></a>
+                                                </c:when>
+                                            </c:choose>
+                                        </div>
+                                   </div>
+                               </div>
                         </c:forEach>
                     </div>
-           
+           		</div>
             <!-- ***** 버튼 내용 끝 ***** -->
             <!-- ***** 페이지 나누기 시작*****-->
          <nav>

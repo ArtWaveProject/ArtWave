@@ -11,16 +11,18 @@
 		    WHERE rownum&lt;=10
 	</select>
 	<select id="movieListData1" resultType="MovieVO" parameterType="hashmap">
-		SELECT mno, mtitle, mposter, TO_CHAR(mrdate,'YYYY.MM.DD'), mstate, mgrade, mtype, num
+		SELECT mno, mtitle, mposter, TO_CHAR(mrdate,'YYYY.MM.DD') as mrday, mstate, mgrade, mtype, num
 			FROM(SELECT mno, mtitle, mposter, mrdate, mstate, mgrade, mtype, rownum as num
 			FROM (SELECT mno, mtitle, mposter, mrdate, mstate, mgrade, mtype
 			FROM movie WHERE mtype LIKE '1' ORDER BY mstate ASC, mno DESC))
+			WHERE num BETWEEN #{start} AND #{end}
 	</select>
 	<select id="movieListData2" resultType="MovieVO" parameterType="hashmap">
-		SELECT mno, mtitle, mposter, TO_CHAR(mrdate,'YYYY-MM-DD'), mstate, mgrade, mtype, num
+			SELECT mno, mtitle, mposter, TO_CHAR(mrdate,'YYYY.MM.DD') as mrday, mstate, mgrade, mtype, num
 			FROM(SELECT mno, mtitle, mposter, mrdate, mstate, mgrade, mtype, rownum as num
 			FROM (SELECT mno, mtitle, mposter, mrdate, mstate, mgrade, mtype
 			FROM movie WHERE mtype LIKE '2' ORDER BY mstate ASC, mno DESC))
+			WHERE num BETWEEN #{start} AND #{end}
 	</select>
 	<select id="movieTotalPage1" resultType="int">
 	 SELECT CEIL(COUNT(*)/20.0) FROM movie WHERE mtype LIKE '1'
@@ -33,5 +35,23 @@
     </select>
 	 <select id="movieListCount2" resultType="int">
     SELECT COUNT(*) FROM movie WHERE mtype LIKE '2'
+    </select>
+ <select id="movieFindData1" resultType="MovieVO" parameterType="hashmap">
+   	 SELECT mno, mtitle, mposter, TO_CHAR(mrdate,'YYYY.MM.DD') as mrday, mstate, mgrade, mtype, num
+			FROM(SELECT mno, mtitle, mposter, mrdate, mstate, mgrade, mtype, rownum as num
+			FROM (SELECT mno, mtitle, mposter, mrdate, mstate, mgrade, mtype
+			FROM movie WHERE mtype LIKE '1' ORDER BY mstate ASC, mno DESC))
+			WHERE mtitle LIKE '%'||#{msg}||'%'
+    </select>
+    <select id="movieFindData2" resultType="MovieVO" parameterType="hashmap">
+   	 SELECT mno, mtitle, mposter, TO_CHAR(mrdate,'YYYY.MM.DD') as mrday, mstate, mgrade, mtype, num
+			FROM(SELECT mno, mtitle, mposter, mrdate, mstate, mgrade, mtype, rownum as num
+			FROM (SELECT mno, mtitle, mposter, mrdate, mstate, mgrade, mtype
+			FROM movie WHERE mtype LIKE '2' ORDER BY mstate ASC, mno DESC))
+			WHERE mtitle LIKE '%'||#{msg}||'%'
+    </select>
+    <select id="movieDetailData" resultType="MovieVO" parameterType="hashmap">
+     SELECT mno, mtitle, mposter, mcount, mtype, mstate, mgenre, mtime, mdirector, mactor, mgrade, mnation, msynop, TO_CHAR(mrdate,'YYYY.MM.DD') as mrday
+     FROM movie WHERE mno=#{mno}
     </select>
 </mapper>

@@ -1186,68 +1186,79 @@ Start Stream Style
 Live Stream Style
 --------------------------------------------- 
 */
-
-.live-stream {
-  margin-top: 60px;
+.live-stream2 {
+  margin-top: 0px;
   border-radius: 23px;
   background-color: white;
   padding: 30px;
 }
 
-.live-stream .item {
-  margin-bottom: 30px;
+.live-stream2 .item {
+  margin-bottom: 55px;
+  padding: 0px 30px 20px 30px;
 }
 
-.live-stream .thumb {
+.live-stream2 .thumb {
   position: relative;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
-.live-stream .thumb img {
+.live-stream2 .thumb img {
   border-radius: 23px; 
+  width: 210px;
+  height: 270px;
+  float: center;
+  margin-top:10px;
 }
 
-.live-stream .thumb:hover .hover-effect {
-  opacity: 1;
+.live-stream2 .thumb img:hover {
+  opacity: 0.7;
   visibility: visible;
 }
 
-.live-stream .hover-effect {
-  opacity: 0;
+.live-stream2 .item .thumb .hover-effect {
+  position: absolute;
+  top:110px;
+  bottom: 70px;
+  left: 15px;
+  text-align: center;
+  opacity: 0.9;
   visibility: hidden;
   transition: all .4s;
+  box-shadow:none;
 }
 
-.live-stream .hover-effect .live a { 
-  position: absolute;
-  background-color: rgba(236, 96, 144, 0.9);
-  padding: 5px 10px;
+.live-stream2 .item .thumb:hover .hover-effect {
+  opacity: 0.9;
+  visibility: visible;
+  top:110px;
+  bottom: 70px;
+  left: 15px;
+  cursor: pointer;
+  transition: all .6s;
+}
+
+.live-stream2 .hover-effect{ 
+  position: relative;
+  padding: 5px 5px;
   border-radius: 23px;
   color: #fff;
   font-size: 14px;
-  right: 15px;
-  top: 15px;
+  right: 30px;
+  top: 80px;
 }
 
-.live-stream .hover-effect ul {
-  position: absolute;
-  bottom: 20px;
-  text-align: center;
-  width: 100%;
-}
-
-.live-stream .hover-effect ul li {
+.live-stream2 .hover-effect #hetext a{
+  background-color: rgb(255, 255, 255);
   display: inline-block;
-  margin: 0px 5px;
-}
-
-.live-stream .hover-effect ul li a {
-  background-color: rgba(236, 96, 144, 0.9);
-  padding: 5px 10px;
-  border-radius: 23px;
-  color: #fff;
+  color: rgb(64, 0, 64);
+  height:30px;
+  font-weight: 600;
   font-size: 14px;
+  padding: 10px 5px 5px 5px;
+  border-radius: 25px;
+  box-shadow:none;
 }
 
 .avatar2 img {
@@ -1257,7 +1268,7 @@ Live Stream Style
   float: left;
 }
 
-.live-stream span i {
+.live-stream2 span i {
   color: #fff;
   background-color: #ec6090;
   border-radius: 50%;
@@ -1270,12 +1281,12 @@ Live Stream Style
   margin-right: 3px;
 }
 
-.live-stream span {
+.live-stream2 span {
   font-size: 14px;
   color: #ec6090;
 }
 
-.live-stream .down-content h4 {
+.live-stream2 .down-content h4 {
   margin-top: 8px;
   font-size: 18px;
   font-weight: 700;
@@ -1283,7 +1294,7 @@ Live Stream Style
   color: rgb(64, 0, 64);
 }
 
-.live-stream .main-button {
+.live-stream2 .main-button {
   text-align: center;
   margin-bottom: -53px;
 }
@@ -1758,7 +1769,7 @@ body {
   .gaming-library .item ul li {
     width: 16%;
   }
-  }
+  
   .owl-carousel {
   display: inline-block;
   width: 100%;
@@ -1940,105 +1951,67 @@ body {
   position: relative;
   z-index: 1;
   height: 100%;
-  width: 100%; }
-  .google-visualization-tooltip-action:hover {
-  background-color: #eeeeee;
-}
-.google-visualization-tooltip {
-  border:solid 1px #bdbdbd;
-  border-radius: 2px;
-  background-color: white;
-  position: absolute;
-  box-shadow: 0px 2px 2px 0px rgba(204, 204, 204, 0.6);
-  font-size: 12px;
-  padding: 0px;
-  -moz-box-shadow: 0px 2px 2px 0px rgba(204, 204, 204, 0.6);
-  -webkit-box-shadow: 0px 2px 2px 0px rgba(204, 204, 204, 0.6);
-  z-index: 10000;
-}
-.google-visualization-tooltip-action-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0.5em 0em 0.5em 0em;
-  cursor: hand;
-}
-.google-visualization-tooltip-action {
-  margin: 0;
-  cursor: pointer;
-  padding: 0.5em 2em 0.5em 1em;
-}
-.google-visualization-tooltip-action:hover {
-  background-color: #eeeeee;
-}
-.google-visualization-tooltip-item-list {
-  list-style-type: none;
-  margin: 1em 0 1em 0;
-  padding: 0em;
-}
-.google-visualization-tooltip-item {
-  margin: 0.65em 0em 0.65em 0em;
-  padding: 0em 2em 0em 1em;
-}
-.google-visualization-tooltip-item-list
-.google-visualization-tooltip-item:first-child {
-  margin: 1em 0em 1em 0em;
-}
-.google-visualization-tooltip-separator {
-  margin: 0;
-  padding: 0;
-  height: 1px;
-  background-color: #dddddd;
-}
-.google-visualization-tooltip-square {
-  display: inline-block;
-  /* IE did not support inline-block, so fall back to float left. */
-  /* float: left; */
-  clear: none;
-  width: 0.5em;
-  height: 0.5em;
-  margin: 0.16em 0.7em 0em 0em;
-  border-bottom: solid 0.1em white;
-}
+  width: 100%; 
+  }
+  }
 .search-input2{
-	float:right;
- 	 height: 46px;
- 	 border-radius: 23px;
+	float: right;
+	width: 260px;
+ 	height: 55px;
+ 	border-radius: 15px;
   	border: none;
   	color: #666;
   	font-size: 14px;
-  	padding: 0px 15px 0px 45px;
+  	padding: 10px 15px 10px 20px;
+  	margin-right: 260px;
+  	background-color: white;
 }
+ .search-input2 form {
+   display: inline-block;
+   width:100%;
+ }	
+ .search-input2 input {
+   display: inline-block;
+ }
  .search-input2 i {
- float:right;
   color: rgb(64, 0, 64);
-  left: 20px;
   top: 16px;
   width: 18px;
   height: 18px;
   font-size: 16px;
+  margin: 10px 10px 0px 5px;
+  transition: color 0.3s;
 }
-.btn2-category{
-     display: inline;
-        width: 60%;
-        padding: 15px;
-        margin: 0px 10px;
-        border: 3px solid rgb(128, 128, 192);
+ .search-input2 i:hover {
+     color: #b3b3ff;
+    }
+ .btn2-category-container{
+	padding: 0px 80px;
+	margin-left: 200px;
+ }
+
+ .btn2-category{
+     	display: inline-block;
+        width: 250px;
+        padding: 20px 10px 10px 0px;
+        border-bottom: 10px solid rgb(128, 128, 192);
         border-radius: 5px;
-        color: rgb(64, 0, 64);
         background-color: #fff;
+        color: rgb(64, 0, 64);
         text-align: center;
         font-weight: bold;
         text-decoration: none;
         transition: background-color 0.3s, color 0.3s;
     }
 
-    .btn2-category.active {
-        color: #fff;
-        background-color: #007bff;
-    }
+ #listbtnactive {
+		
+		background-color: rgb(128, 128, 192);
+		color: #fff;
+	}
 
-    .btn2-category:hover {
-        background-color: #f8f9fa;
+	.btn2-category:hover {
+        background-color: rgb(230, 230, 255);
     }
 
     .btn2-category:focus, .btn2-category:active {
@@ -2052,32 +2025,89 @@ body {
     }
 
     .pagination .page-item {
-        margin: 0 5px;
+        margin: 0px 5px;
     }
 
     .pagination .page-link {
         padding: 10px 15px;
-        border: 1px solid #007bff;
+        border: 2px solid rgb(64, 0, 64);    
         border-radius: 5px;
-        color: #007bff;
+       	color: rgb(64, 0, 64);
         text-decoration: none;
     }
 
     .pagination .page-item.active .page-link {
-        background-color: #007bff;
+        background-color: rgb(64, 0, 64);
         color: #fff;
     }
 
     .pagination .page-link:hover {
         background-color: #f8f9fa;
     }
-.hover-effect .content li{
-  background-color: rgb(255, 255, 255);
-  display: inline-block;
-  color: rgb(64, 0, 64);
-  font-weight: 600;
+
+  #text3 {
+  max-width:190px;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top:0px;
+ }
+  #text4 {
   font-size: 14px;
-  padding: 10px 15px;
-  border-radius: 25px;
-  box-shadow:none;
-}
+  color: rgb(102, 105, 150);
+  max-width: 200px;
+  float: left;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top:3px;
+ }
+
+ .bokdBtns #bokdBtn1{
+	 width:210px;
+	height:30px;
+	padding:5px 10px 10px 0px;
+	margin-top:5px;
+	margin-bottom:2px;
+	text-align:center;
+	float:left;
+	color:white;
+	font-size: 14px;
+	background-color: rgb(64,0,64);
+	border-radius:15px;
+  }
+  .bokdBtns #bokdBtn2, .bokdBtns #bokdBtn3{
+	width:210px;
+	height:30px;
+	padding:5px 10px 10px 0px;
+	margin-top:5px;
+	margin-bottom:2px;
+	text-align:center;
+	float:left;
+	color:white;
+	font-size: 14px;
+	background-color: #6E6980;
+	border-radius:15px;
+  }
+  #motitle{
+	  display: inline-block;
+	  font-size:30px;
+	  font-family: inherit;
+	  font-weight: bold;
+	  color:rgb(64,0,64);
+  }
+  #jjimBtn{
+	  display:inline-block;
+	  font-size: 25px;
+	  font-weight: bold;
+	  color:rgb(64, 0, 64);
+	  background-color: white;
+	  border-radius:15px;
+	  cursor: pointer;
+  }
+  .mlbefore{
+	  height:40px;
+  }
+  #likeBtnactive{
+	  color:red;
+  }

@@ -21,8 +21,8 @@ import lombok.Data;
 
 @Data
 public class MovieVO {
-		private int mno, mcount, mtype, mstate, num;
-		private String mtitle, mgenre, mposter, mtime, mdirector, mactor, mgrade, msynop;
+		private int mno, mcount, mtype, mstate, num, likecount;
+		private String mtitle, mgenre, mposter, mtime, mdirector, mactor, mgrade, msynop, mrday, mnation;
 		private Date mrdate;
 		private double mrate;
 }

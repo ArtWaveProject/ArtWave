@@ -9,4 +9,6 @@
 <bean id="alstore" class="com.sist.model.AlStoreModel"></bean>
 <bean id="mypage" class="com.sist.model.MyPageModel"></bean>
 <bean id="board" class="com.sist.model.BoardModel"></bean>
+<bean id="movielike" class="com.sist.model.MovieLikeModel"></bean>
+<bean id="mreview" class="com.sist.model.MreviewModel"></bean>
 </beans>

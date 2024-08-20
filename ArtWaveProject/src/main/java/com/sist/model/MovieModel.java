@@ -1,8 +1,11 @@
 package com.sist.model;
+import java.io.PrintWriter;
 import java.util.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.vo.*;
 import controller.RequestMapping;
@@ -25,7 +28,7 @@ public class MovieModel {
 			   page="1";
 		   int curpage=Integer.parseInt(page);
 		   Map map=new HashMap();
-		   int rowSize=20;
+		   int rowSize=16;
 		   int start=(rowSize*curpage)-(rowSize-1);
 		   int end=rowSize*curpage;
 		   
@@ -60,7 +63,7 @@ public class MovieModel {
 			   page="1";
 		   int curpage=Integer.parseInt(page);
 		   Map map=new HashMap();
-		   int rowSize=20;
+		   int rowSize=16;
 		   int start=(rowSize*curpage)-(rowSize-1);
 		   int end=rowSize*curpage;
 		   
@@ -88,4 +91,31 @@ public class MovieModel {
 		   request.setAttribute("main_jsp", "../movie/movielist2.jsp");
 			return "../main/main.jsp";
 	}
+	  @RequestMapping("movie/moviedetail_before.do")
+	   public String movie_detail_before(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   String mno=request.getParameter("mno");
+		  /*
+		   // 쿠키 
+		   Cookie cookie=new Cookie("food_"+fno, fno);
+		   cookie.setMaxAge(60*60*24);
+		   cookie.setPath("/");
+		 
+		   // 브라우저로 전송 
+		   response.addCookie(cookie);
+		     */
+		   return "redirect:../movie/moviedetail.do?mno="+mno;
+	   }
+	  
+	@RequestMapping("movie/moviedetail.do")
+	public String movie_detail(HttpServletRequest request,HttpServletResponse response)
+	{
+		  String mno=request.getParameter("mno");
+		   // 데이터베이스 연동 
+		   MovieVO vo=MovieDAO.movieDetailData(Integer.parseInt(mno));
+		   request.setAttribute("vo", vo);
+		  
+		   request.setAttribute("main_jsp", "../movie/moviedetail.jsp");
+		 return "../main/main.jsp";
+	}	
 }

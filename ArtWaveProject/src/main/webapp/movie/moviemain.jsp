@@ -17,7 +17,7 @@ $(function(){
 	  const videosLength = videos.length;
 	  const flickity = new Flickity(target,{
 	    wrapAround:true,
-	    autoPlay:true,
+	    autoPlay:false,
 	    prevNextButtons: true,
 	    on: {
 	      ready: function() {
@@ -102,7 +102,7 @@ $(function(){
 				 <div class="thumb">
                 <img src="https://www.kobis.or.kr${vo.mposter }"  alt="">
                  <div class="hover-effect">
-                      <h6><a href="#" title="화면이동">상세정보</a></h6>
+                      <h6><a href="../movie/moviedetail_before.do?mno=${vo.mno }" title="상세정보 확인">상세정보</a></h6>
                       </div>
                     
                 <h4 id="text2">${vo.num }<br> <span>${vo.mtitle }</span></h4>
