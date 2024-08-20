@@ -107,18 +107,15 @@
 .listArtist {
 	font-size: 11px;
 }
-
 .genreTable {
 	border: transparent;
 	margin-top: 15px;
 	margin-bottom: -1px;
 }
-
 .genreTable td {
 	padding: 0px;
 	vertical-align: middle;
 }
-
 .genreTable td a {
 	text-align: center;
 	color: #aaa;
@@ -134,11 +131,6 @@
 	font-size: 13px;
 	padding-top: 6px;
 }
-
-.genreTable td:first-child a {
-	
-}
-
 .genreTable td:last-child a {
 	width: 100%;
 	border: 2px solid #aaa;

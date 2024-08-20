@@ -35,8 +35,11 @@ color: black;
 .toggleMenu::after {
     content: none; /* 가상 요소 내용 제거 */
 }
-.dropdown .toggleMenu ul li a{
-font-size: 10px;
+.dropUl{
+width: 190px;
+}
+.dropmenu li a{
+font-size: 15px;
 }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
@@ -193,9 +196,9 @@ $(function() {
 								<ul class="nav" style="display: inline">
 									<li class="dropdown">
 										<a class="dropdown-toggle toggleMenu" data-toggle="dropdown">+</a>
-										<ul class="dropmenu">
+										<ul class="dropmenu dropUl">
 											<li>
-												<a>플레이리스트 만들기</a>
+												<a>플레이리스트 추가</a>
 											</li>
 											<li>
 												<a>2</a>

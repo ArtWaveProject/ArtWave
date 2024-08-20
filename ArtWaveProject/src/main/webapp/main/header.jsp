@@ -129,13 +129,23 @@ nav {
 									class="caret"></span>
 							</a>
 								<ul class="dropmenu">
-									<li class="submenu"><a href="../music/musicList.do">Chart</a>
+									<li class="submenu"><a href="../music/musicList.do">인기차트</a>
 									</li>
-									<li class="submenu"><a href="../music/albumList.do">Album</a>
+									<li class="submenu"><a href="../music/albumList.do">앨범목록</a>
 									</li>
-									<li class="submenu"><a href="../music/musicMvList.do">Page
-											1-3</a></li>
-									<li class="submenu"><a href="../music/alstoreList.do">store</a></li>
+									<li class="submenu"><a href="../music/musicMvList.do">뮤비목록</a></li>
+									<li class="submenu"><a href="../music/alstoreList.do">스토어</a></li>
+								</ul></li>
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown" href="../music/musicHome.do">커뮤니티<span
+									class="caret"></span>
+							</a>
+								<ul class="dropmenu">
+									<li class="submenu"><a href="../board/boardList.do">자유게시판</a>
+									</li>
+									<li class="submenu"><a href="../music/albumList.do">공지사항</a>
+									</li>
+									<li class="submenu"><a href="../music/musicMvList.do">문의</a></li>
 								</ul></li>
 							<c:if test="${sessionScope.id!=null }">
 								<li><a href="../mypage/mypage_main.do"> Profile <img
@@ -152,7 +162,7 @@ nav {
 						</c:if>
 						<c:if test="${sessionScope.id!=null }">
 							<ul class="nav">
-								<li><a id="info">${sessionScope.nickname}님</a></li>
+								<li><a href="../mypage/mypage_main.do" id="info">${sessionScope.nickname}님</a></li>
 								<li><a id="info"> <input type="button" id="logoutBtn"
 										value="LogOut"
 										style="color: #666; background-color: transparent; border: none;">

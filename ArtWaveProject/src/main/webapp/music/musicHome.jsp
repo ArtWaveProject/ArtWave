@@ -34,7 +34,8 @@
 		<div class="row">
 			<div class="text-center">
 				<form action="../music/find.do" method="post">
-					<input type="text" name="ss" size="15" class="input input-sm"> <input type="button" class="btn btn-sm btn-primary" value="검색">
+					<input type="text" name="ss" size="15" class="input input-sm">
+					<input type="button" class="btn btn-sm btn-primary" value="검색">
 				</form>
 			</div>
 		</div>
@@ -56,14 +57,30 @@
 					<c:forEach var="mvo" items="${mList}" varStatus="i">
 						<tr style="vertical-align: middle;">
 							<td width="5%" class="text-center">${i.index+1}</td>
-							<td width="15%" class="text-center"><img src="${mvo.poster}" class="listImg"></td>
+							<td width="15%" class="text-center">
+								<img src="${mvo.poster}" class="listImg">
+							</td>
 							<td width="51%">${mvo.title}</td>
 							<td width="20%" class="text-center">${mvo.aname}</td>
-							<td width="3%" class="text-center"><a> <img class="iconImg" src="play.png">
-							</a></td>
-							<td width="3%" class="text-center"><a>+</a></td>
-							<td width="3%" class="text-center"><a href="${mvo.urlmp4}" id="btn" target="_blank"> <img class="iconImg" src="mv.png">
-							</a></td>
+							<td width="3%" class="text-center">
+								<a>
+									<img class="iconImg" src="play.png">
+								</a>
+							</td>
+							<td width="3%" class="text-center">
+								<a>+</a>
+							</td>
+							<td width="3%" class="text-center">
+								<c:if test="${mvo.urlmp4!=null }">
+									<a href="${mvo.urlmp4}" id="btn" target="_blank">
+										<img class="iconImg" src="mv.png">
+									</a>
+								</c:if>
+								<c:if test="${mvo.urlmp4==null }">
+									<img class="iconImg" src="mvOff.png">
+								</c:if>
+
+							</td>
 						</tr>
 					</c:forEach>
 				</table>
