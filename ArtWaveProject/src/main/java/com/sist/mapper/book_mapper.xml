@@ -30,16 +30,27 @@
 	</select>
 	
 	<select id="bookNewData" resultType="BookVO" parameterType="hashmap">
-    SELECT bno,btag,bgenre,cover,btitle,writer,price,sale_price,dis_rate,publisher,intro,intro_img,pages,isbn13,isbn10,bdate,num
-    FROM (SELECT bno,btag,bgenre,cover,btitle,writer,price,sale_price,dis_rate,publisher,intro,intro_img,pages,isbn13,isbn10,bdate,rownum as num
+    SELECT bno,btag,bgenre,cover,btitle,writer,price,sale_price,dis_rate,publisher,intro,intro_img,pages,isbn13,isbn10,TO_CHAR(bdate, 'YYYY-MM-DD') as dbday,num
+    FROM (SELECT bno,btag,bgenre,cover,btitle,writer,price,sale_price,dis_rate,publisher,intro,intro_img,pages,isbn13,isbn10,bdate,TO_CHAR(bdate, 'YYYY-MM-DD') as dbday,rownum as num
     FROM (SELECT bno,btag,bgenre,cover,btitle,writer,price,sale_price,dis_rate,publisher,intro,intro_img,pages,isbn13,isbn10,bdate
     FROM book 
     WHERE bdate IS NOT NULL 
     AND intro IS NOT NULL
     AND cover IS NOT NULL
     AND intro_img IS NOT NULL
+    AND bdate&gt;=SYSDATE-30
     ORDER BY bdate DESC))
     WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  
+  <select id="bookNewListCount" resultType="int" parameterType="hashmap">
+    SELECT CEIL(COUNT(*) / 20.0)
+    FROM book
+    WHERE bdate IS NOT NULL 
+    AND intro IS NOT NULL
+    AND cover IS NOT NULL
+    AND intro_img IS NOT NULL
+    AND bdate&gt;=SYSDATE-30
   </select>
   
   <select id="bookFindListData" resultType="BookVO" parameterType="hashmap">
@@ -64,5 +75,4 @@
 		        publisher LIKE '%'||#{search}||'%')
 		AND bgenre LIKE '%'||#{genre}||'%'    
 </select>
-
 </mapper>

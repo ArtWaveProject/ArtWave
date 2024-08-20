@@ -108,6 +108,25 @@ public class BookDAO {
 		   }
 		   return list;
 	   }
+	   public static int bookNewListCount()
+	   {
+		   int count=0;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   count=session.selectOne("bookNewListCount");
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return count;
+	   }
 	   public static List<BookVO> bookFindListData(Map map)
 	   {
 		   List<BookVO> list=new ArrayList<BookVO>();

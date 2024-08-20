@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"  import="java.util.*,com.sist.vo.*,com.sist.dao.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Most Popular Games</title>
+<title></title>
 <link rel="stylesheet" href="../book/mstyle.css">
 <style type="text/css">
+
 .item {
 	display: flex;
 	flex-direction: column;
@@ -22,7 +23,7 @@
 
 .thumb img {
 	width: 100%;
-	height: auto; 
+	height: 100%; 
 	border-radius: 23px;
 }
 
@@ -103,14 +104,6 @@
 }
 
 .page {
-	padding: 0;
-	margin: 20px 0;
-	display: flex;
-	justify-content: center;
-	font-family: Arial, sans-serif;
-}
-
-.page {
 	list-style: none;
 	padding: 0;
 	margin: 20px auto; 
@@ -166,7 +159,7 @@
     margin-bottom: 30px;
     margin-right: 25px;
 }
-/* 장르 선택 메뉴 스타일 */
+
 .genre-select {
     position: relative;
     display: flex;
@@ -198,6 +191,49 @@
     color: #333;
     line-height: 40px;
 }
+.recent-books {
+    position: fixed; 
+    right: 40px; 
+    top: 180px; 
+    width: 250px; 
+    background-color: #ffffff; 
+    border: 2px solid #ddd; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+    z-index: 1000; 
+}
+
+.recent-books h4 {
+    margin-top: 0; 
+    font-size: 18px; 
+    color: #333;
+}
+
+.recent-books ul {
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+}
+.recent-books li {
+    margin-bottom: 10px;
+}
+
+.recent-books img {
+    width: 80px; 
+    height: auto;
+    border-radius: 8px; 
+    display: block; 
+}
+
+.recent-books .book-info {
+    margin-left: 10px;
+}
+
+.recent-books .book-info p {
+    margin: 0; 
+    font-size: 14px; 
+    color: #666; 
 </style>
 </head>
 <body>
@@ -208,10 +244,8 @@
 					<form action="../book/list.do" method="post" id="searchForm">
 						<div class="search-input">
 							<input type="text" placeholder="Type Something" id="searchText"
-								name="search" onkeypress="handle(event)" />
+								name="search" onkeypress="handle(event)"/>
 							<button type="submit" class="fa fa-search" style="border:none; background:transparent"></button>
-							
-							<!-- 변경된 부분 -->
 						</div>
 					</form>
 				</div>
@@ -229,7 +263,7 @@
 								<br>
 							</h3>
 							<div class="owl-features owl-carousel">
-								<c:forEach var="vo" items="${nList}">
+								<c:forEach var="vo" items="${hList}">
 									<div class="item">
 										<div class="thumb">
 											<a href="../book/detail.do?bno=${vo.bno }" class="thumb-link">
@@ -322,6 +356,21 @@
 			</nav>
 		</div>
 	</div>
-
+	<div class="recent-books">
+    <h4>최근 본 도서</h4>
+    <ul>
+        <c:forEach var="recentBook" items="${recentBooks}">
+            <li>
+                <a href="../book/detail.do?bno=${recentBook.bno}">
+                    <img src="${recentBook.cover}" alt="${recentBook.btitle}">
+                    <span class="book-info">
+                        <p>${recentBook.btitle}</p>
+                        <small>${recentBook.writer}${recentBook.writer != null ? ' 저 | ' : ''}${recentBook.publisher}</small>
+                    </span>
+                </a>
+            </li>
+        </c:forEach>
+    </ul>
+</div>
 </body>
 </html>
