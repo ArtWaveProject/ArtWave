@@ -18,23 +18,15 @@ import com.sist.vo.MusicVO;
 import controller.RequestMapping;
 
 /*
+전체
 댄스
 드라마
 발라드
 인디
 락
 랩/힙합
-블루스/포크
-R&B/소울
 트로트
-동요
-일렉트로니카
-정통
-라틴
-애시드/퓨전
-한국영화
-국내CCM
-캐롤
+R&B/소울
  */
 public class MusicModel {
 	private String[] genreList = { "", "", "댄스", "드라마", "발라드", "인디", "락", "랩/힙합", "트로트", "R&B/소울", "블루스/포크", "동요",

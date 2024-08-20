@@ -54,6 +54,7 @@
 	padding: 0px;
 }
 </style>
+<script type="text/javascript" src=""></script>
 </head>
 <body>
 	<div class="container" style="margin-top: 130px;">
@@ -61,7 +62,7 @@
 			<h4 class="text-center" style="margin-bottom: 25px;">자유게시판</h4>
 			<table class="table" style="margin-bottom: 50px; border: transparent;">
 				<tr>
-					<td width="72%" class="text-right">
+					<td width="72%" style="text-align: right;">
 						<select name="option">
 							<option value="0">검색 옵션 선택</option>
 							<option value="1">닉네임</option>
@@ -75,16 +76,16 @@
 			</table>
 			<table class="table genreTable">
 				<tr>
-					<td width="25%" class="genreBtn ${genre==1?'active':''}">
+					<td width="25%" class="genreBtn ${type==1?'active':''}">
 						<a href="../music/musicList.do?genre=1">전체</a>
 					</td>
-					<td width="25%" class="genreBtn ${genre==2?'active':genre==1?'anext':''}">
+					<td width="25%" class="genreBtn ${type==2?'active':type==1?'anext':''}">
 						<a href="../music/musicList.do?genre=2">영화</a>
 					</td>
-					<td width="25%" class="genreBtn ${genre==3?'active':genre==2?'anext':''}">
+					<td width="25%" class="genreBtn ${type==3?'active':type==2?'anext':''}">
 						<a href="../music/musicList.do?genre=3">책</a>
 					</td>
-					<td width="25%" class="genreBtn ${genre==4?'active':genre==3?'anext':''}">
+					<td width="25%" class="genreBtn ${type==4?'active':type==3?'anext':''}">
 						<a href="../music/musicList.do?genre=4">음악</a>
 					</td>
 				</tr>
