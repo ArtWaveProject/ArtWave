@@ -134,11 +134,22 @@ nav {
 									<li class="submenu"><a href="../music/musicMvList.do">문의</a></li>
 								</ul></li>
 							<c:if test="${sessionScope.id!=null }">
-								<li><a href="../mypage/mypage_main.do"> Profile <img
-										src="../assets/images/profile-header.jpg" alt="">
-								</a></li>
+								<c:if test="${sessionScope.admin=='0' }">
+									<li><a href="../mypage/mypage_main.do"> Profile <img
+											src="../assets/images/profile-header.jpg" alt="">
+									</a></li>
+								</c:if>
+								
+								<!-- admin 페이지 -->
+								<c:if test="${sessionScope.admin=='1' }">
+									<li><a href="../adminpage/adminpage_main.do" class="active">관리자페이지</a></li>							
+								</c:if>
 							</c:if>
+							
 						</ul>
+						
+						
+						
 						<ul class="nav" style="width: 120px;"></ul>
 						<c:if test="${sessionScope.id==null }">
 							<ul class="nav">
@@ -148,7 +159,11 @@ nav {
 						</c:if>
 						<c:if test="${sessionScope.id!=null }">
 							<ul class="nav">
+
+								<li><a id="info">${sessionScope.nickname}(${sessionScope.admin=='1'?"관리자":"일반사용자"})님</a></li>
+
 								<li><a href="../mypage/mypage_main.do" id="info">${sessionScope.nickname}님</a></li>
+
 								<li><a id="info"> <input type="button" id="logoutBtn"
 										value="LogOut"
 										style="color: #666; background-color: transparent; border: none;">
