@@ -217,12 +217,12 @@ public class MusicModel {
 		String mno = request.getParameter("mno");
 		MusicVO vo = MusicDAO.musicDetailData(Integer.parseInt(mno));
 		List<MusicVO> mList = MusicDAO.artistMusicData(vo.getAno());
-		for(MusicVO vor:mList)
+		for (MusicVO vor : mList)
 			System.out.println(vor.getPlaycount());
 		List<String> lList = new ArrayList<String>();
 		List<String> cList = new ArrayList<String>();
 		List<String> aList = new ArrayList<String>();
-		if (vo.getLylicist().length() > 0) {
+		if (vo.getLylicist() != null) {
 			String[] slist = vo.getLylicist().split(",");
 			int[] ilist = new int[slist.length];
 			for (int i = 0; i < slist.length; i++) {
@@ -230,7 +230,7 @@ public class MusicModel {
 			}
 			lList = MusicDAO.artistName(ilist);
 		}
-		if (vo.getComposer().length() > 0) {
+		if (vo.getComposer() != null) {
 			String[] slist = vo.getComposer().split(",");
 			int[] ilist = new int[slist.length];
 			for (int i = 0; i < slist.length; i++) {
@@ -238,7 +238,7 @@ public class MusicModel {
 			}
 			cList = MusicDAO.artistName(ilist);
 		}
-		if (vo.getArranger().length() > 0) {
+		if (vo.getArranger() != null) {
 			String[] slist = vo.getArranger().split(",");
 			int[] ilist = new int[slist.length];
 			for (int i = 0; i < slist.length; i++) {

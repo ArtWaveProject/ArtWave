@@ -105,7 +105,7 @@
 			}).open()
 		})
 		$('#pwdCheck').keyup(function() {
-			let pwd=$('#pwd').val()
+			let pwd=$('#signUppwd').val()
 			let pwd_temp=$('#pwdCheck').val()
 			console.log(pwd)
 			console.log(pwd_temp)
@@ -125,8 +125,8 @@
 				checkPwd=false
 			}
 		})
-		$('#pwd').keyup(function() {
-			let pwd=$('#pwd').val()
+		$('#signUppwd').keyup(function() {
+			let pwd=$('#signUppwd').val()
 			let pwd_temp=$('#pwdCheck').val()
 			console.log(pwd)
 			console.log(pwd_temp)
@@ -190,7 +190,7 @@
 				$('#pwdCheck').focus()
 			}
 			let id=$('#signUpId').val()
-			let pwd=$('#pwd').val()
+			let pwd=$('#signUppwd').val()
 			let name=$('#name').val()
 			if(name==='')
 				return
@@ -332,7 +332,7 @@
 
 					<div class="login__box">
 						<i class='bx bx-lock login__icon'></i>
-						<input type="text" placeholder="Password" class="login__input" id="pwd">
+						<input type="text" placeholder="Password" class="login__input" id="signUppwd">
 					</div>
 
 					<div class="login__box">

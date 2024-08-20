@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+a{
+color: black;
+}
 #poster {
 	width: 300px !important;
 	height: 300px;
@@ -28,6 +31,12 @@
 	background-color: transparent;
 	border: none;
 	margin: 0px;
+}
+.toggleMenu::after {
+    content: none; /* 가상 요소 내용 제거 */
+}
+.dropdown .toggleMenu ul li a{
+font-size: 10px;
 }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
@@ -68,6 +77,7 @@ $(function() {
 	else{
 		$('#listBtn').css('display', 'none')
 	}
+	
 	$('#listBtn').click(function(){
 		if(listCheck===false){
 			$('#listBody tr:gt(4)').css('display', '')
@@ -80,6 +90,12 @@ $(function() {
 			$('#listBtn').val('펼치기')
 		}
 	})
+	
+	$('.playListBtn').click(function() {
+		$(this).next().css('display', '')
+		$(this).next().css('z-index', '10')
+	})
+	
 	$('#likeBtn').click(function() {
 		let alno=$('#alno').val()
 		if(likeCheck===true){
@@ -161,7 +177,7 @@ $(function() {
 			<table class="table">
 				<tbody id="listBody">
 					<c:forEach var="vo" items="${mList }">
-						<tr style="vertical-align: middle; height: 70px; position: relative; z-index: 1">
+						<tr style="vertical-align: middle; height: 70px; position: relative;">
 							<td width="10%">
 								<img src="${vo.poster}" id="musicPoster">
 							</td>
@@ -174,11 +190,24 @@ $(function() {
 							<td width="7%" style="text-align: center;">${vo.genre}</td>
 							<td width="13%" style="text-align: center;">${vo.playcount }</td>
 							<td width="10%" style="text-align: center; padding: 0px;">
-								<button class="playListBtn" style="border: none; background-color: transparent; font-size: 30px;">+</button>
-								<ul class="menu" style="position: relative; z-index: 2;">
-									<li>1</li>
-									<li>2</li>
-									<li>3</li>
+								<ul class="nav" style="display: inline">
+									<li class="dropdown">
+										<a class="dropdown-toggle toggleMenu" data-toggle="dropdown">+</a>
+										<ul class="dropmenu">
+											<li>
+												<a>플레이리스트 만들기</a>
+											</li>
+											<li>
+												<a>2</a>
+											</li>
+											<li>
+												<a>3</a>
+											</li>
+											<li>
+												<a>4</a>
+											</li>
+										</ul>
+									</li>
 								</ul>
 							</td>
 						</tr>
