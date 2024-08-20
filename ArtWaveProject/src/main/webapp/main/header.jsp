@@ -160,10 +160,12 @@ nav {
 						<c:if test="${sessionScope.id!=null }">
 							<ul class="nav">
 
-								<li><a id="info">${sessionScope.nickname}(${sessionScope.admin=='1'?"관리자":"일반사용자"})님</a></li>
-
+								<c:if test="${sessionScope.admin==1 }">
+								<li><a id="info">${sessionScope.nickname}(${sessionScope.admin=='1'?"관리자":""})님</a></li>
+								</c:if>
+								<c:if test="${sessionScope.admin==0 }">
 								<li><a href="../mypage/mypage_main.do" id="info">${sessionScope.nickname}님</a></li>
-
+								</c:if>
 								<li><a id="info"> <input type="button" id="logoutBtn"
 										value="LogOut"
 										style="color: #666; background-color: transparent; border: none;">
