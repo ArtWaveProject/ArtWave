@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -96,97 +97,69 @@ nav {
 				<div class="col-12">
 					<nav class="main-nav navbar">
 						<!-- ***** Logo Start ***** -->
-						<a href="index.html" class="logo">
-							<img src="../assets/images/logo.png" alt="">
+						<a href="index.html" class="logo"> <img
+							src="../assets/images/logo.png" alt="">
 						</a>
 						<!-- ***** Logo End ***** -->
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
-							<li>
-								<a href="index.html" class="active">Home</a>
-							</li>
-							<li class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="../movie/moviemain.do">
-									Movie<span class="caret"></span>
-								</a>
+							<li><a href="index.html" class="active">Home</a></li>
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown" href="../movie/moviemain.do"> Movie<span
+									class="caret"></span>
+							</a>
 								<ul class="dropmenu">
-									<li class="submenu">
-										<a href="#">Page 1-1</a>
-									</li>
-									<li class="submenu">
-										<a href="#">Page 1-2</a>
-									</li>
-									<li class="submenu">
-										<a href="#">Page 1-3</a>
-									</li>
-								</ul>
-							</li>
-							<li class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="../book/list.do">
-									Books<span class="caret"></span>
-								</a>
+									<li class="submenu"><a href="#">Page 1-1</a></li>
+									<li class="submenu"><a href="#">Page 1-2</a></li>
+									<li class="submenu"><a href="#">Page 1-3</a></li>
+								</ul></li>
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown" href="../book/list.do"> Books<span
+									class="caret"></span>
+							</a>
 								<ul class="dropmenu">
-									<li class="submenu">
-										<a href="../book/list.do">Page 1-1</a>
+									<li class="submenu"><a href="../book/list.do">Page 1-1</a>
 									</li>
-									<li class="submenu">
-										<a href="../book/detail.do">Page 1-2</a>
-									</li>
-									<li class="submenu">
-										<a href="#">Page 1-3</a>
-									</li>
-								</ul>
-							</li>
-							<li class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="../music/musicHome.do">
-									Music<span class="caret"></span>
-								</a>
+									<li class="submenu"><a href="../book/detail.do">Page
+											1-2</a></li>
+									<li class="submenu"><a href="#">Page 1-3</a></li>
+								</ul></li>
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown" href="../music/musicHome.do"> Music<span
+									class="caret"></span>
+							</a>
 								<ul class="dropmenu">
-									<li class="submenu">
-										<a href="../music/musicList.do">Chart</a>
+									<li class="submenu"><a href="../music/musicList.do">Chart</a>
 									</li>
-									<li class="submenu">
-										<a href="../music/albumList.do">Album</a>
+									<li class="submenu"><a href="../music/albumList.do">Album</a>
 									</li>
-									<li class="submenu">
-										<a href="../music/musicMvList.do">Page 1-3</a>
-									</li>
-									<li class="submenu">
-										<a href="#">store</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="profile.html">
-									Profile <img src="../assets/images/profile-header.jpg" alt="">
-								</a>
-							</li>
+									<li class="submenu"><a href="../music/musicMvList.do">Page
+											1-3</a></li>
+									<li class="submenu"><a href="../music/alstoreList.do">store</a></li>
+								</ul></li>
+							<c:if test="${sessionScope.id!=null }">
+								<li><a href="../mypage/mypage_main.do"> Profile <img
+										src="../assets/images/profile-header.jpg" alt="">
+								</a></li>
+							</c:if>
 						</ul>
 						<ul class="nav" style="width: 120px;"></ul>
 						<c:if test="${sessionScope.id==null }">
 							<ul class="nav">
-								<li>
-									<a href="#" id="info">SIGN UP</a>
-								</li>
-								<li>
-									<a href="../member/login.do">SIGN IN</a>
-								</li>
+								<li><a href="#" id="info">SIGN UP</a></li>
+								<li><a href="../member/login.do">SIGN IN</a></li>
 							</ul>
 						</c:if>
 						<c:if test="${sessionScope.id!=null }">
 							<ul class="nav">
-								<li>
-									<a id="info">${sessionScope.nickname}님</a>
-								</li>
-								<li>
-									<a id="info">
-										<input type="button" id="logoutBtn" value="LogOut" style="color: #666; background-color: transparent; border: none;">
-									</a>
-								</li>
+								<li><a id="info">${sessionScope.nickname}님</a></li>
+								<li><a id="info"> <input type="button" id="logoutBtn"
+										value="LogOut"
+										style="color: #666; background-color: transparent; border: none;">
+								</a></li>
 							</ul>
 						</c:if>
-						<a class='menu-trigger'>
-							<span>Menu</span>
+						<a class='menu-trigger'> <span>Menu</span>
 						</a>
 						<!-- ***** Menu End ***** -->
 					</nav>

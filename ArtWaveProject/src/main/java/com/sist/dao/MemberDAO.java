@@ -87,4 +87,54 @@ public class MemberDAO {
 				session.close();
 		}
 	}
+	  public static MemberVO memberUpdateData(String id)
+	  {
+		  MemberVO vo=new MemberVO();
+		  SqlSession session=null;
+		  try
+		  {
+			  session=ssf.openSession(true);
+			  vo=session.selectOne("memberUpdateData", id);
+		  }catch(Exception ex)
+		  {
+			  ex.printStackTrace();
+		  }
+		  finally
+		  {
+			  if(session!=null)
+				  session.close();
+		  }
+		  return vo;
+	  }
+
+	  public static boolean memberUpdate(MemberVO vo)
+	  {
+		  boolean bCheck=false;
+		  SqlSession session=null;
+		  try
+		  {
+			  session=ssf.openSession();
+			  String db_pwd=session.selectOne("memberGetPassword", vo.getId());
+			  if(db_pwd.equals(vo.getPwd()))
+			  {
+				  bCheck=true;
+				  session.update("memberUpdate",vo);
+				  session.commit();
+			  }
+			  else
+			  {
+				  bCheck=false;
+			  }
+		  }catch(Exception ex)
+		  {
+			  ex.printStackTrace();
+		  }
+		  finally
+		  {
+			  if(session!=null)
+				  session.close();
+		  }
+		  return bCheck;
+	  }
+	
 }

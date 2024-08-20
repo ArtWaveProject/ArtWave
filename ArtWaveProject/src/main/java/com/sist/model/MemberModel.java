@@ -97,4 +97,5 @@ public class MemberModel {
 		
 		MemberDAO.memberInsert(vo);
 	}
+	
 }
