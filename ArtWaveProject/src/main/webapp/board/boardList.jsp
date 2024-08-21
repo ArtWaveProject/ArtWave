@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,7 @@
 	padding-top: 6px;
 }
 
-.genreTable td:nth-child(4) a {
+.genreTable td:nth-child(5) a {
 	width: 100%;
 	border: 2px solid #aaa;
 	border-bottom: 2px solid #777;
@@ -85,17 +86,20 @@
 			</table>
 			<table class="table genreTable">
 				<tr>
-					<td width="25%" class="genreBtn ${type==1?'active':''}">
-						<a href="../music/musicList.do?genre=1">전체</a>
+					<td width="20%" class="genreBtn ${type==''?'active':''}">
+						<a href="../board/boardList.do">전체</a>
 					</td>
-					<td width="25%" class="genreBtn ${type==2?'active':type==1?'anext':''}">
-						<a href="../music/musicList.do?genre=2">영화</a>
+					<td width="20%" class="genreBtn ${type==1?'active':type==''?'anext':''}">
+						<a href="../board/boardList.do?type=1">자유</a>
 					</td>
-					<td width="25%" class="genreBtn ${type==3?'active':type==2?'anext':''}">
-						<a href="../music/musicList.do?genre=3">책</a>
+					<td width="20%" class="genreBtn ${type==2?'active':type=='1'?'anext':''}">
+						<a href="../board/boardList.do?type=2">영화</a>
 					</td>
-					<td width="25%" class="genreBtn ${type==4?'active':type==3?'anext':''}">
-						<a href="../music/musicList.do?genre=4">음악</a>
+					<td width="20%" class="genreBtn ${type==3?'active':type==2?'anext':''}">
+						<a href="../board/boardList.do?type=3">책</a>
+					</td>
+					<td width="20%" class="genreBtn ${type==4?'active':type==3?'anext':''}">
+						<a href="../board/boardList.do?type=4">음악</a>
 					</td>
 				</tr>
 			</table>
@@ -110,14 +114,18 @@
 					<th width="20%" class="text-center">작성일</th>
 					<th width="10%" class="text-center">조회수</th>
 				</tr>
-				<tr height="500px">
-					<td width="5%" class="text-center">번호</td>
-					<td width="50%">제목</td>
-					<td width="15%" class="text-center">닉네임</td>
-					<td width="20%" class="text-center">작성일</td>
-					<td width="10%" class="text-center">조회수</td>
+				<tbody style="height:500px;">
+				<c:forEach var="vo" items="${bList }" varStatus="i">
+				<tr style="height:50px;">
+					<td width="5%" class="text-center">${count-i.index}</td>
+					<td width="50%">${vo.fbsubject }</td>
+					<td width="15%" class="text-center">${vo.nick }</td>
+					<td width="20%" class="text-center">${vo.dbday }</td>
+					<td width="10%" class="text-center">${vo.fbhit }</td>
 				</tr>
+				</c:forEach>
 				<tr>
+				</tbody>
 					<td colspan="5" style="text-align: right;">
 						<input type="button" class="btn" id="writeBtn" value="글 작성" onclick="check('${sessionScope.id}')">
 					</td>

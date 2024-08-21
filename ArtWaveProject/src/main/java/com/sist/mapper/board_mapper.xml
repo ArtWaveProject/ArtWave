@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.board_mapper">
-
+<!--
+FBNO
+FBSUBJECT
+CNO
+ID
+NICK
+CONTENT
+FBPHOTO
+FBHIT
+REGDATE
+-->
+<!--게시글 목록-->
+<select id="boardListData" parameterType="hashmap" resultType="BoardVO">
+SELECT fbno, cno, fbhit, fbsubject, nick, content, to_char(regdate, 'YYYY-MM-DD') as dbday, num
+FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate, rownum as num
+FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate 
+FROM freeboard WHERE cno LIKE '%'||#{type}||'%'))
+WHERE num BETWEEN #{start} AND #{end}
+</select>
+<!--검색 게시글 목록-->
+<select id="boardFindListData" parameterType="hashmap" resultType="BoardVO">
+SELECT fbno, cno, fbhit, fbsubject, nick, content, to_char(regdate, 'YYYY-MM-DD') as dbday, num
+FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate, rownum as num
+FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate 
+FROM freeboard WHERE ${option} LIKE '%'||#{ss}||'%' AND cno LIKE '%'||#{type}||'%'))
+WHERE num BETWEEN #{start} AND #{end}
+</select>
+<!-- 게시글 개수 -->
+<select id="boardTotalCount" parameterType="String" resultType="int">
+SELECT COUNT(*) FROM freeboard WHERE cno LIKE '%'||#{type}||'%'
+</select>
+<!-- 검색 게시글 개수 -->
+<select id="boardFindTotalCount" parameterType="hashmap" resultType="int">
+SELECT COUNT(*) FROM freeboard WHERE ${option} LIKE '%'||#{ss}||'%' AND cno LIKE '%'||#{type}||'%'
+</select>
+<!-- 게시글 작성 -->
+<insert id="boardInsert" parameterType="BoardVO">
+INSERT INTO freeboard VALUES((SELECT NVL(MAX(fbno)+1, 1) FROM freeboard), #{fbsubject}, #{cno}, #{id}, #{nick}, #{content}, #{fbphoto}, 0, sysdate)
+</insert>
 </mapper>

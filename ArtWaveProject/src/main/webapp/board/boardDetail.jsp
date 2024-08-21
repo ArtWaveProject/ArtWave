@@ -4,46 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript">
-$(function() {
-	$('#writeBtn').click(function() {
-		let type=$('#type').val()
-		if(type.trim()==='999'){
-			alert('카테고리를 선택해주세요')
-			$('#type').focus()
-			return
-		}
-		let subject=$('#subject').val()
-		if(subject.trim()===''){
-			alert('제목을 입력해주세요')
-			$('#subject').focus()
-			return
-		}
-		let content=$('#content').val()
-		if(content.trim()===''){
-			alert('내용을 입력해주세요')
-			$('#content').focus()
-			return
-		}
-		$.ajax({
-			type:'post',
-			url:'../board/boardInsertOk.do',
-			data:{
-				'type':type,
-				'subject':subject,
-				'content':content
-			},
-			success:function(result){
-				location.href="../board/boardList.do"
-			}
-		})
-		console.log(type)
-		console.log(subject)
-		console.log(content)
-	})
-})
-</script>
 </head>
 <body>
 	<div class="container" style="margin-top: 150px;">
