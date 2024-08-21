@@ -16,7 +16,6 @@
 		<typeAlias type="com.sist.vo.NoticeBoardVO" alias="NoticeBoardVO" />
 		<typeAlias type="com.sist.vo.ReplyBoardVO" alias="ReplyBoardVO" />
 		<typeAlias type="com.sist.vo.AlStoreVO" alias="AlStoreVO" />
-		<typeAlias type="com.sist.vo.MovieLikeVO" alias="MovieLikeVO"/>
 		<typeAlias type="com.sist.vo.MreviewVO" alias="MreviewVO"/>
 		<typeAlias type="com.sist.vo.BoardVO" alias="BoardVO"/>
 	</typeAliases>
@@ -39,7 +38,6 @@
 		<mapper resource="com/sist/mapper/replyboard-mapper.xml" />
 		<mapper resource="com/sist/mapper/noticeboard-mapper.xml"/>
 		<mapper resource="com/sist/mapper/alstore_mapper.xml" />
-		<mapper resource="com/sist/mapper/movielike_mapper.xml"/>
 		<mapper resource="com/sist/mapper/mreview_mapper.xml"/>
 		<mapper resource="com/sist/mapper/board_mapper.xml"/>
 		<mapper resource="com/sist/mapper/like_mapper.xml"/>

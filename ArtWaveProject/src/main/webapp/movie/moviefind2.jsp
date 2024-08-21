@@ -10,39 +10,39 @@
 <link rel="stylesheet" href="../assets/css/fontawesome.css">
 <title>Insert title here</title>
 <script type="text/javascript">
+
 </script>
 </head>
 <body>
-
         <div class="page-content2">
         <!-- 검색 창 시작 -->
         <div class="search-input2">
             <form method="post" id="search2" action="../movie/moviefind2.do">
-            <input type="text" placeholder="영화명 검색" id='searchText' name="searchKeyword"  value="${ss}"/>
+            <input type="text" placeholder="영화명 검색" id='searchText' name="ss"  value="${ss}"/>
              <button type="submit" class="fa fa-search" id="i" ></button>
             </form>
         </div>
         <!-- 검색 창 끝 -->
             <!-- ***** 영화목록 메뉴 시작 ***** -->
         <div class="btn2-category-container">
-            <a id="listbtn" href="../movie/movielist1.do" class="btn2-category">박스오피스</a>
-            <a id="listbtnactive"href="../movie/movielist2.do" class="btn2-category">독립＆예술영화</a>
+            <a id="listbtnactive" href="../movie/movielist1.do" class="btn2-category">박스오피스</a>
+            <a id="listbtn"href="../movie/movielist2.do" class="btn2-category">독립＆예술영화</a>
         </div>
         
         <!-- ***** 영화목록 메뉴 끝 ***** -->
-           <!-- ***** 영화목록 시작 ***** -->
+           <!-- ***** 검색결과 시작 ***** -->
            <div class="container">
            <div class="live-stream2">
                    <div class="row">
-                        <c:forEach var="vo" items="${mlList2 }" varStatus="s">
+                        <c:forEach var="vo" items="${mfList2 }" varStatus="s">
                             <div class="col-md-3">
                                 <div class="item">
                                     <div class="thumb">
                                         <a href="#"><img src="https://www.kobis.or.kr${vo.mposter}" alt="${vo.mtitle}"></a>
-                                         <div class="hover-effect">
+                                       	  <div class="hover-effect">
                                             <h6 id="hetext"><a href="../movie/moviedetail_before.do?mno=${vo.mno }"><i class="fa fa-eye"></i>&nbsp; 상세보기 &nbsp;</a></h6>
                                           </div>
-                                    </div>
+                                      </div>
                                     <div class="down-content">
                                         <div class="avatar2">
                                             <c:choose>
@@ -77,27 +77,25 @@
                                                 </c:when>
                                             </c:choose>
                                         </div>
-                                        
                                    </div>
-                            </div>
+                               </div>
                         </c:forEach>
                     </div>
            		</div>
-           		
-            <!-- ***** 버튼 내용 끝 ***** -->
+            <!-- ***** 검색 결과 끝 ***** -->
             <!-- ***** 페이지 나누기 시작*****-->
          <nav>
             <ul class="pagination">
                 <c:if test="${curpage > 1}">
-                    <li class="page-item"><a class="page-link" href="../movie/movielist2.do?page=${curpage - 1}">&laquo; 이전</a></li>
+                    <li class="page-item"><a class="page-link" href="../movie/moviefind2.do?page=${curpage - 1}&ss=${ss}">&laquo; 이전</a></li>
                 </c:if>
                 <c:forEach var="i" begin="${startPage}" end="${endPage}">
                     <li class="page-item ${i == curpage ? 'active' : ''}">
-                        <a class="page-link" href="../movie/movielist2.do?page=${i}">${i}</a>
+                        <a class="page-link" href="../movie/moviefind2.do?page=${i}&ss=${ss}">${i}</a>
                     </li>
                 </c:forEach>
                 <c:if test="${curpage < totalpage}">
-                    <li class="page-item"><a class="page-link" href="../movie/movielist2.do?page=${curpage + 1}">다음 &raquo;</a></li>
+                    <li class="page-item"><a class="page-link" href="../movie/moviefind2.do?page=${curpage + 1}&ss=${ss}">다음 &raquo;</a></li>
                 </c:if>
             </ul>
         </nav>
