@@ -10,22 +10,15 @@
 <link rel="stylesheet" href="../assets/css/fontawesome.css">
 <title>Insert title here</title>
 <script type="text/javascript">
-function handle(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        // 검색 처리
-        console.log('검색어:', document.getElementById('searchText').value);
-    }
-}
 </script>
 </head>
 <body>
         <div class="page-content2">
         <!-- 검색 창 시작 -->
         <div class="search-input2">
-            <form id="search2" action="#">
-                <input type="text" placeholder="영화명 검색" id='searchText' name="searchKeyword" onkeypress="handle(event)" />
-                <i class="fa fa-search"></i>
+            <form method="post" id="search2" action="../movie/moviefind1.do">
+            <input type="text" placeholder="영화명 검색" id='searchText' name="searchKeyword"  value="${ss}"/>
+             <button type="submit" class="fa fa-search" id="i" ></button>
             </form>
         </div>
         <!-- 검색 창 끝 -->

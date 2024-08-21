@@ -8,43 +8,44 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../movie/mstyle.css">
 <link rel="stylesheet" href="../assets/css/fontawesome.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function() {
     let likeCheck = false; // 좋아요 상태를 저장할 변수
-    const $likeBtn = $('#likeBtn'); // 좋아요 버튼을 참조
-    const $id = $('#id').val(); // 사용자 ID
-    const $mno = $('#mno').val(); // 영화 번호
+    const likeBtn = $('#likeBtn'); // 좋아요 버튼을 참조
+    const id = $('#id').val(); // 사용자 ID
+    const mno = $('#mno').val(); // 영화 번호
     function updateLikeStatus() {
         $.ajax({
             type: 'post',
             url: '../movie/movieLikeCheck.do',
-            data: { "mno": $mno },
+            data: { "mno": mno },
             success: function(result) {
                 likeCheck = (result === 'OK'); // 서버에서 'OK'를 받으면 좋아요 상태를 true로 설정
-                $likeBtn.css('color', likeCheck ? 'red' : 'black'); // 좋아요 상태에 따라 버튼 색상 변경
+                likeBtn.css('color', likeCheck ? 'red' : 'black'); // 좋아요 상태에 따라 버튼 색상 변경
+               
             },
             error: function(request, status, error) {
                 console.log(error); // 오류 발생 시 콘솔에 로그
             }
         })
     }
-    if ($id.length > 0) {
+    if (id.length > 0) {
         updateLikeStatus(); // 사용자가 로그인한 경우 좋아요 상태를 업데이트
     } else {
-        $likeBtn.hide(); // 로그인하지 않은 경우 좋아요 버튼 숨김
+        likeBtn.hide(); // 로그인하지 않은 경우 좋아요 버튼 숨김
     }
-    $likeBtn.on('click', function() {
+    likeBtn.on('click', function() {
         const actionUrl = likeCheck ? '../movie/movieLikeOff.do' : '../movie/movieLikeOn.do';
         $.ajax({
             type: 'post',
             url: actionUrl,
-            data: { "mno": $mno },
+            data: { "mno": mno },
             success: function(result) {
                 if (result >= 0) {
                     likeCheck = !likeCheck; // 좋아요 상태 토글
-                    $likeBtn.css('color', likeCheck ? 'red' : 'black'); // 버튼 색상 변경
+                    likeBtn.css('color', likeCheck ? 'red' : 'black'); // 버튼 색상 변경
+                    
                 } else {
                     console.log('fail'); // 실패 시 로그
                 }
@@ -55,7 +56,7 @@ $(document).ready(function() {
         })
     })
 
-$('#writeBtn').on('click', function() {
+  $('#writeBtn').on('click', function() {
     const mrcontent = $('#mrcontent').val().trim(); // 입력된 댓글 텍스트
     if (msg === "") {
         $('#mrcontent').focus(); // 댓글이 비어 있을 경우 포커스
@@ -66,7 +67,7 @@ $('#writeBtn').on('click', function() {
     $.ajax({
         type: 'post',
         url: '../movie/mreviewinsert.do',
-        data: { 'mcno': mcno, "mrcontent": mrcontent },
+        data: { 'mcno': mno, "mrcontent": mrcontent },
         success: function(result) {
             if (result === 'OK') {
                 mreviewList(mno); // 댓글 작성 후 댓글 목록 업데이트
@@ -180,6 +181,8 @@ function mreviewList(mcno) {
 		  
 	</div>
 	<div class="container">
+	 <input type="hidden" value="${sessionScope.id}" id="id">
+     <input type="hidden" value="${vo.mno}" id="mno">
 	<table class="table">
        <tr>
         <td width="40%" class="text-center" rowspan="10">
@@ -189,11 +192,7 @@ function mreviewList(mcno) {
         <tr>
         <td>
           <h2 id="motitle" class="text-left">&nbsp;${vo.mtitle}&nbsp;&emsp;</h2>         
-          <input type="hidden" value="${sessionScope.id}" id="id">
-          <input type="hidden" value="${vo.mno}" id="mno">
-          
           <input type=button id="likeBtn" class="text-center" value="&#10084;" >
-      
         </td>
         </tr>
         <tr>
