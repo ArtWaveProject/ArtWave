@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.sist.vo.*;
 import controller.RequestMapping;
+
 import com.sist.dao.*;
 
 public class MovieModel {
@@ -97,7 +98,7 @@ public class MovieModel {
 		   String mno=request.getParameter("mno");
 		  /*
 		   // 쿠키 
-		   Cookie cookie=new Cookie("food_"+fno, fno);
+		   Cookie cookie=new Cookie("movie_"+mno, mno);
 		   cookie.setMaxAge(60*60*24);
 		   cookie.setPath("/");
 		 
@@ -118,4 +119,90 @@ public class MovieModel {
 		   request.setAttribute("main_jsp", "../movie/moviedetail.jsp");
 		 return "../main/main.jsp";
 	}	
+	@RequestMapping("movie/moviefind1.do")
+	   public String moviefind1(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex) {}
+		   String ss=request.getParameter("ss");
+		   if(ss==null)
+			   ss="사랑";
+		   String page=request.getParameter("page");
+		   if(page==null)
+			   page="1";
+		   int curpage=Integer.parseInt(page);
+		   int rowSize=16;
+		   int start=(rowSize*curpage)-(rowSize-1);
+		   int end=(rowSize*curpage);
+		   
+		   Map map=new HashMap();
+		   map.put("start",start);
+		   map.put("end", end);
+		   map.put("ss", ss);
+		   // 데이터 읽기
+		   List<MovieVO> mfList1=MovieDAO.movieFindData1(map);
+		   int totalpage=MovieDAO.movieFindTotalPage1(ss);
+		   // 총페이지 읽기 
+		   final int BLOCK=10;
+		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+		   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+		   if(endPage>totalpage)
+			   endPage=totalpage;
+		   
+		   request.setAttribute("curpage", curpage);
+		   request.setAttribute("totalpage", totalpage);
+		   request.setAttribute("startPage", startPage);
+		   request.setAttribute("endPage", endPage);
+		   request.setAttribute("mfList1", mfList1);
+		   request.setAttribute("ss", ss);
+		   // BLOCK별 처리 
+		   request.setAttribute("main_jsp", "../movie/moviefind1.jsp");
+	
+		   return "../main/main.jsp";
+	   }
+	@RequestMapping("movie/moviefind2.do")
+	   public String moviefind2(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex) {}
+		   String ss=request.getParameter("ss");
+		   if(ss==null)
+			   ss=" ";
+		   String page=request.getParameter("page");
+		   if(page==null)
+			   page="1";
+		   int curpage=Integer.parseInt(page);
+		   int rowSize=16;
+		   int start=(rowSize*curpage)-(rowSize-1);
+		   int end=(rowSize*curpage);
+		   
+		   Map map=new HashMap();
+		   map.put("start",start);
+		   map.put("end", end);
+		   map.put("ss", ss);
+		   // 데이터 읽기
+		   List<MovieVO> mfList2=MovieDAO.movieFindData2(map);
+		   int totalpage=MovieDAO.movieFindTotalPage2(ss);
+		   // 총페이지 읽기 
+		   final int BLOCK=10;
+		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+		   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+		   if(endPage>totalpage)
+			   endPage=totalpage;
+		   
+		   request.setAttribute("curpage", curpage);
+		   request.setAttribute("totalpage", totalpage);
+		   request.setAttribute("startPage", startPage);
+		   request.setAttribute("endPage", endPage);
+		   request.setAttribute("mfList2", mfList2);
+		   request.setAttribute("ss", ss);
+		   // BLOCK별 처리 
+		   request.setAttribute("main_jsp", "../movie/moviefind2.jsp");
+	
+		   return "../main/main.jsp";
+	   }
 }
