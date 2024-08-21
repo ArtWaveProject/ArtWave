@@ -1959,11 +1959,12 @@ body {
 	width: 260px;
  	height: 55px;
  	border-radius: 15px;
-  	border: none;
+  	border-style: solid ;
   	color: #666;
   	font-size: 14px;
-  	padding: 10px 15px 10px 20px;
-  	margin-right: 260px;
+  	font-family: inherit;
+  	padding: 5px 15px 10px 20px;
+  	margin-right: 250px;
   	background-color: white;
 }
  .search-input2 form {
@@ -1973,16 +1974,22 @@ body {
  .search-input2 input {
    display: inline-block;
  }
- .search-input2 i {
+ .search-input2 #searchText{
+	 border-style: hidden;
+ }
+ .search-input2 #i {
   color: rgb(64, 0, 64);
-  top: 16px;
-  width: 18px;
-  height: 18px;
+  top: 10px;
+  width: 25px;
+  height: 25px;
   font-size: 16px;
-  margin: 10px 10px 0px 5px;
+  margin: 10px 5px 0px 5px;
   transition: color 0.3s;
+  border-radius: 15px;
+  background-color: white;
+  border-style: hidden;
 }
- .search-input2 i:hover {
+ .search-input2 #i:hover {
      color: #b3b3ff;
     }
  .btn2-category-container{

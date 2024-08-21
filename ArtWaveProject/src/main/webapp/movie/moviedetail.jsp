@@ -9,53 +9,72 @@
 <link rel="stylesheet" href="../movie/mstyle.css">
 <link rel="stylesheet" href="../assets/css/fontawesome.css">
 <script type="text/javascript">
-
-$(document).ready(function() {
-    let likeCheck = false; // 좋아요 상태를 저장할 변수
-    const likeBtn = $('#likeBtn'); // 좋아요 버튼을 참조
-    const id = $('#id').val(); // 사용자 ID
-    const mno = $('#mno').val(); // 영화 번호
-    function updateLikeStatus() {
-        $.ajax({
-            type: 'post',
-            url: '../movie/movieLikeCheck.do',
-            data: { "mno": mno },
-            success: function(result) {
-                likeCheck = (result === 'OK'); // 서버에서 'OK'를 받으면 좋아요 상태를 true로 설정
-                likeBtn.css('color', likeCheck ? 'red' : 'black'); // 좋아요 상태에 따라 버튼 색상 변경
-               
-            },
-            error: function(request, status, error) {
-                console.log(error); // 오류 발생 시 콘솔에 로그
-            }
-        })
-    }
-    if (id.length > 0) {
-        updateLikeStatus(); // 사용자가 로그인한 경우 좋아요 상태를 업데이트
-    } else {
-        likeBtn.hide(); // 로그인하지 않은 경우 좋아요 버튼 숨김
-    }
-    likeBtn.on('click', function() {
-        const actionUrl = likeCheck ? '../movie/movieLikeOff.do' : '../movie/movieLikeOn.do';
-        $.ajax({
-            type: 'post',
-            url: actionUrl,
-            data: { "mno": mno },
-            success: function(result) {
-                if (result >= 0) {
-                    likeCheck = !likeCheck; // 좋아요 상태 토글
-                    likeBtn.css('color', likeCheck ? 'red' : 'black'); // 버튼 색상 변경
-                    
-                } else {
-                    console.log('fail'); // 실패 시 로그
-                }
-            },
-            error: function(request, status, error) {
-                console.log(error); // 오류 발생 시 콘솔에 로그
-            }
-        })
-    })
-
+$(function() {
+	let listCheck=false
+	let likeCheck=false
+	let id=$('#id').val()
+	if(id.length>0){
+		console.log(id)
+		$.ajax({
+			type:'post',
+			url:'../like/likeCheck.do',
+			data:{
+				'tno':${vo.mno},
+				'type':4
+			},
+			success:function(result){
+				if(result==='OK'){
+					likeCheck=true
+					$('#likeBtnIcon').attr('src', 'likeon.png')
+				}
+				else{
+					likeCheck=false
+					$('#likeBtnIcon').attr('src', 'likeoff.png')
+				}
+			}
+		})
+	}
+	else{
+		$('#likeBtn').css('display', 'none')
+	}
+	$('#likeBtn').click(function() {
+		let mno=$('#mno').val()
+		if(likeCheck===true){
+			$.ajax({
+				type:'post',
+				url:'../like/likeOff.do',
+				data:{
+					'tno':mno,
+					'type':4
+				},
+				success:function(result){
+					if(result>=0){
+						likeCheck=false
+						$('#likeBtnIcon').attr('src', 'likeoff.png')
+						$('#likeCount').text(result)
+					}
+				}
+			})
+		}
+		else{
+			$.ajax({
+				type:'post',
+				url:'../like/likeOn.do',
+				data:{
+					'tno':mno,
+					'type':4
+				},
+				success:function(result){
+					if(result>=0){
+						likeCheck=true
+						$('#likeBtnIcon').attr('src', 'likeon.png')
+						$('#likeCount').text(result)
+					}
+				}
+			})
+		}
+	})
+	
   $('#writeBtn').on('click', function() {
     const mrcontent = $('#mrcontent').val().trim(); // 입력된 댓글 텍스트
     if (msg === "") {
@@ -192,7 +211,9 @@ function mreviewList(mcno) {
         <tr>
         <td>
           <h2 id="motitle" class="text-left">&nbsp;${vo.mtitle}&nbsp;&emsp;</h2>         
-          <input type=button id="likeBtn" class="text-center" value="&#10084;" >
+          <button id="likeBtn">
+				<img src="" id="likeBtnIcon">
+		  </button>
         </td>
         </tr>
         <tr>
