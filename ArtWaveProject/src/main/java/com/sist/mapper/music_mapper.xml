@@ -129,13 +129,7 @@
 		SELECT mno, title, ano, genre, playcount, titlecheck, poster, (SELECT aname FROM artist WHERE artist.ano=music.ano) as aname
 		FROM music WHERE alno=#{alno}
 	</select>
-	<select
-		id="likeCheck"
-		resultType="int"
-		parameterType="hashmap">
-		SELECT COUNT(*) FROM musiclike WHERE mno=#{mno} AND
-		type=#{type} AND id=#{id}
-	</select>
+	
 	<select
 		id="musicMvListData"
 		parameterType="hashmap"
@@ -168,38 +162,7 @@
 		LIKE '%'||#{ss}||'%' OR aname LIKE
 		'%'||#{ss}||'%')
 	</select>
-	<insert
-		id="musicLikeOn"
-		parameterType="hashmap">
-		INSERT INTO musiclike values((SELECT NVL(MAX(mulno)+1,
-		1) FROM musiclike),
-		#{id}, #{mno}, #{type})
-	</insert>
-	<insert
-		id="musicLikeOff"
-		parameterType="hashmap">
-		DELETE FROM musiclike WHERE mno=#{mno} AND id=#{id} AND
-		type=#{type}
-	</insert>
-	<update
-		id="musicLikeCountIncrement"
-		parameterType="hashmap">
-		UPDATE ${table} SET likecount=likecount+1 WHERE
-		${noName}=#{mno}
-	</update>
-	<update
-		id="musicLikeCountDecrement"
-		parameterType="hashmap">
-		UPDATE ${table} SET likecount=likecount-1 WHERE
-		${noName}=#{mno}
-	</update>
-	<select
-		id="musicLikeCount"
-		parameterType="hashmap"
-		resultType="int">
-		SELECT NVL(likecount, 0) as likecount FROM ${table} WHERE
-		${noName}=#{mno}
-	</select>
+	
 	<select
 		id="musicFindData"
 		parameterType="hashmap"

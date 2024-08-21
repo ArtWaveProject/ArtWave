@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.like_mapper">
+	<insert
+		id="likeOn"
+		parameterType="hashmap">
+		INSERT INTO totallike values((SELECT NVL(MAX(lno)+1,
+		1) FROM totallike),
+		#{id}, #{tno}, #{type})
+	</insert>
+	<insert
+		id="likeOff"
+		parameterType="hashmap">
+		DELETE FROM totallike WHERE tno=#{tno} AND id=#{id} AND
+		type=#{type}
+	</insert>
+	<update
+		id="likeCountIncrement"
+		parameterType="hashmap">
+		UPDATE ${table} SET likecount=likecount+1 WHERE
+		${noName}=#{tno}
+	</update>
+	<update
+		id="likeCountDecrement"
+		parameterType="hashmap">
+		UPDATE ${table} SET likecount=likecount-1 WHERE
+		${noName}=#{tno}
+	</update>
+	<select
+		id="likeCount"
+		parameterType="hashmap"
+		resultType="int">
+		SELECT NVL(likecount, 0) as likecount FROM ${table} WHERE
+		${noName}=#{tno}
+	</select>
+	<select
+		id="likeCheck"
+		resultType="int"
+		parameterType="hashmap">
+		SELECT COUNT(*) FROM totallike WHERE tno=#{tno} AND
+		type=#{type} AND id=#{id}
+	</select>
+</mapper>

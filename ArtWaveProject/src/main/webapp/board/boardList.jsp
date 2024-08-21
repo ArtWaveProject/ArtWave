@@ -54,7 +54,16 @@
 	padding: 0px;
 }
 </style>
-<script type="text/javascript" src=""></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+	function check(id) {
+		if(id==='')
+			alert('로그인이 필요합니다')
+		else{
+			location.href="../board/boardInsert.do"
+		}
+	}
+</script>
 </head>
 <body>
 	<div class="container" style="margin-top: 130px;">
@@ -110,7 +119,7 @@
 				</tr>
 				<tr>
 					<td colspan="5" style="text-align: right;">
-						<a href="../board/boardInsert.do" class="btn">글 작성</a>
+						<input type="button" class="btn" id="writeBtn" value="글 작성" onclick="check('${sessionScope.id}')">
 					</td>
 				</tr>
 			</table>

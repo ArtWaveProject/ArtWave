@@ -49,9 +49,9 @@ $(function() {
 		console.log(id)
 		$.ajax({
 			type:'post',
-			url:'../music/musicLikeCheck.do',
+			url:'../like/likeCheck.do',
 			data:{
-				'mno':${detail.ano},
+				'tno':${detail.ano},
 				'type':3
 			},
 			success:function(result){
@@ -74,9 +74,9 @@ $(function() {
 		if(likeCheck===true){
 			$.ajax({
 				type:'post',
-				url:'../music/musicLikeOff.do',
+				url:'../like/likeOff.do',
 				data:{
-					'mno':ano,
+					'tno':ano,
 					'type':3
 				},
 				success:function(result){
@@ -91,9 +91,9 @@ $(function() {
 		else{
 			$.ajax({
 				type:'post',
-				url:'../music/musicLikeOn.do',
+				url:'../like/likeOn.do',
 				data:{
-					'mno':ano,
+					'tno':ano,
 					'type':3
 				},
 				success:function(result){

@@ -11,6 +11,7 @@
 <bean id="board" class="com.sist.model.BoardModel"></bean>
 <bean id="movielike" class="com.sist.model.MovieLikeModel"></bean>
 <bean id="mreview" class="com.sist.model.MreviewModel"></bean>
+<bean id="like" class="com.sist.model.LikeModel"></bean>
 
 
 	<bean id="admin" class="com.sist.model.AdminModel"/>

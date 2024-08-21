@@ -37,9 +37,17 @@ color: black;
 }
 .dropUl{
 width: 190px;
+z-index: 999;
 }
 .dropmenu li a{
 font-size: 15px;
+}
+.dropmenu li{
+padding: 0px 3px;
+
+}
+.dropmenu li a:hover{
+background: #aaa !important;
 }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
@@ -52,9 +60,9 @@ $(function() {
 		console.log(id)
 		$.ajax({
 			type:'post',
-			url:'../music/musicLikeCheck.do',
+			url:'../like/likeCheck.do',
 			data:{
-				'mno':${detail.alno},
+				'tno':${detail.alno},
 				'type':2
 			},
 			success:function(result){
@@ -104,9 +112,9 @@ $(function() {
 		if(likeCheck===true){
 			$.ajax({
 				type:'post',
-				url:'../music/musicLikeOff.do',
+				url:'../like/likeOff.do',
 				data:{
-					'mno':alno,
+					'tno':alno,
 					'type':2
 				},
 				success:function(result){
@@ -121,9 +129,9 @@ $(function() {
 		else{
 			$.ajax({
 				type:'post',
-				url:'../music/musicLikeOn.do',
+				url:'../like/likeOn.do',
 				data:{
-					'mno':alno,
+					'tno':alno,
 					'type':2
 				},
 				success:function(result){
@@ -192,8 +200,8 @@ $(function() {
 							</td>
 							<td width="7%" style="text-align: center;">${vo.genre}</td>
 							<td width="13%" style="text-align: center;">${vo.playcount }</td>
-							<td width="10%" style="text-align: center; padding: 0px;">
-								<ul class="nav" style="display: inline">
+							<td width="10%" style="text-align: center; padding: 0px; position: relative;">
+								<ul class="nav" style="display: inline; position: relative;">
 									<li class="dropdown">
 										<a class="dropdown-toggle toggleMenu" data-toggle="dropdown">+</a>
 										<ul class="dropmenu dropUl">

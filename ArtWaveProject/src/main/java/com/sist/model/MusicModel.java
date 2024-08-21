@@ -31,8 +31,7 @@ R&B/소울
 public class MusicModel {
 	private String[] genreList = { "", "", "댄스", "드라마", "발라드", "인디", "락", "랩/힙합", "트로트", "R&B/소울", "블루스/포크", "동요",
 			"일렉트로니카", "정통", "애시드/퓨전", "한국영화", "국내CCM", "캐롤" };
-	private String[] tables = { "", "music", "album", "artist" };
-	private String[] noName = { "", "mno", "alno", "ano" };
+	
 
 	@RequestMapping("music/musicHome.do")
 	public String musicHome(HttpServletRequest request, HttpServletResponse response) {
@@ -259,70 +258,6 @@ public class MusicModel {
 		request.setAttribute("main_jsp", "../music/albumDetail.jsp");
 		return "../main/main.jsp";
 	}
-
-	@RequestMapping("music/musicLikeCheck.do")
-	public void musicLikeCheck(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession();
-		String mno = request.getParameter("mno");
-		String type = request.getParameter("type");
-		String id = (String) session.getAttribute("id");
-		Map map = new HashMap();
-		map.put("mno", Integer.parseInt(mno));
-		map.put("type", Integer.parseInt(type));
-		map.put("id", id);
-		int count = MusicDAO.musicLikeCheck(map);
-		try {
-			PrintWriter out = response.getWriter();
-			if (count == 0) {
-				out.write("NO");
-			} else {
-				out.write("OK");
-			}
-		} catch (Exception e) {
-		}
-	}
-
-	@RequestMapping("music/musicLikeOn.do")
-	public void musicLikeOn(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession();
-		String mno = request.getParameter("mno");
-		String type = request.getParameter("type");
-		String id = (String) session.getAttribute("id");
-		Map map = new HashMap();
-		map.put("mno", Integer.parseInt(mno));
-		map.put("type", Integer.parseInt(type));
-		map.put("id", id);
-		map.put("table", tables[Integer.parseInt(type)]);
-		map.put("noName", noName[Integer.parseInt(type)]);
-		int result = MusicDAO.musicLikeOn(map);
-		System.out.println(result);
-		try {
-			PrintWriter out = response.getWriter();
-			out.write(String.valueOf(result));
-		} catch (Exception e) {
-		}
-	}
-
-	@RequestMapping("music/musicLikeOff.do")
-	public void musicLikeOff(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession();
-		String mno = request.getParameter("mno");
-		String type = request.getParameter("type");
-		String id = (String) session.getAttribute("id");
-		Map map = new HashMap();
-		map.put("mno", Integer.parseInt(mno));
-		map.put("type", Integer.parseInt(type));
-		map.put("id", id);
-		map.put("table", tables[Integer.parseInt(type)]);
-		map.put("noName", noName[Integer.parseInt(type)]);
-		int result = MusicDAO.musicLikeOff(map);
-		try {
-			PrintWriter out = response.getWriter();
-			out.write(String.valueOf(result));
-		} catch (Exception e) {
-		}
-	}
-
 	@RequestMapping("music/find.do")
 	public String musicFind(HttpServletRequest request, HttpServletResponse response) {
 		try {
