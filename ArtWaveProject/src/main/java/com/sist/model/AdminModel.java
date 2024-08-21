@@ -1,4 +1,4 @@
-package com.sist.dao;
+package com.sist.model;
 
 import java.util.*;
 
@@ -15,19 +15,6 @@ import com.sist.dao.*;
 import com.sist.vo.*;
 
 public class AdminModel {
-	private String[] types= {"","일반공지","영화공지","책공지","음악공지","기타공지"};
-	@RequestMapping("adminpage/adminpage_main.do")
-	public String adminpage_main(HttpServletRequest request, HttpServletResponse response)
-	{
-		request.setAttribute("admin_jsp", "../adminpage/adminpage_home.jsp");
-		request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
-		return "../main/main.jsp";
-	}
-	
-	
-	
-	
-	
 	@RequestMapping("adminpage/reply_list.do")
 	   public String reply_list(HttpServletRequest request,HttpServletResponse response)
 	   {

@@ -13,6 +13,7 @@
 		<typeAlias type="com.sist.vo.AlbumVO" alias="AlbumVO" />
 		<typeAlias type="com.sist.vo.MovieVO" alias="MovieVO" />
 		<typeAlias type="com.sist.vo.BookVO" alias="BookVO" />
+		<typeAlias type="com.sist.vo.NoticeBoardVO" alias="NoticeBoardVO" />
 		<typeAlias type="com.sist.vo.ReplyBoardVO" alias="ReplyBoardVO" />
 		<typeAlias type="com.sist.vo.AlStoreVO" alias="AlStoreVO" />
 		<typeAlias type="com.sist.vo.MovieLikeVO" alias="MovieLikeVO"/>
@@ -36,6 +37,7 @@
 		<mapper resource="com/sist/mapper/movie_mapper.xml" />
 		<mapper resource="com/sist/mapper/book_mapper.xml" />
 		<mapper resource="com/sist/mapper/replyboard-mapper.xml" />
+		<mapper resource="com/sist/mapper/noticeboard-mapper.xml"/>
 		<mapper resource="com/sist/mapper/alstore_mapper.xml" />
 		<mapper resource="com/sist/mapper/movielike_mapper.xml"/>
 		<mapper resource="com/sist/mapper/mreview_mapper.xml"/>
