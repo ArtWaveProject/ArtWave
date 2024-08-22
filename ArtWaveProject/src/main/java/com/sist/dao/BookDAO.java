@@ -165,5 +165,43 @@ public class BookDAO {
 		   }
 		   return total;
 	   }
+	   public static List<BookVO> bookBestData(Map map)
+	   {
+		   List<BookVO> list=new ArrayList<BookVO>();
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("bookBestData",map);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
+	   public static int bookBestListCount()
+	   {
+		   int count=0;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   count=session.selectOne("bookBestListCount");
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return count;
+	   }
 	   
 }

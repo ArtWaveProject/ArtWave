@@ -6,10 +6,21 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title></title>
+<script type="text/javascript">
+function toggleRecentBooks() {
+    const container = document.querySelector('.recent-books-container');
+    const toggleIcon = container.querySelector('.toggle-icon');
+    if (container.classList.contains('expanded')) {
+        container.classList.remove('expanded');
+        toggleIcon.textContent = '+';
+    } else {
+        container.classList.add('expanded');
+        toggleIcon.textContent = '-';
+    }
+}
+</script>
 <link rel="stylesheet" href="../book/mstyle.css">
 <style type="text/css">
-
 .item {
 	display: flex;
 	flex-direction: column;
@@ -191,49 +202,63 @@
     color: #333;
     line-height: 40px;
 }
-.recent-books {
+.recent-books-container {
     position: fixed; 
-    right: 40px; 
-    top: 180px; 
-    width: 250px; 
+    right: 60px; 
+    bottom: 20px; 
+    width: 200px; 
     background-color: #ffffff; 
     border: 2px solid #ddd; 
     border-radius: 15px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     padding: 20px; 
     z-index: 1000; 
+    transition: height 0.3s ease, bottom 0.3s ease; 
+    overflow: hidden; 
+    height: 60px; 
 }
 
-.recent-books h4 {
-    margin-top: 0; 
+.recent-books-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recent-books-header h4 {
+    margin: 0; 
     font-size: 18px; 
     color: #333;
 }
 
-.recent-books ul {
-    list-style: none; 
-    padding: 0; 
-    margin: 0; 
-}
-.recent-books li {
-    margin-bottom: 10px;
+.recent-books-content {
+    display: flex; 
+    flex-wrap: wrap; 
+    margin-top: 10px;
 }
 
-.recent-books img {
-    width: 80px; 
-    height: auto;
+.recent-books-content ul {
+    list-style: none; 
+    padding: 0; 
+    margin: 0;
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+.recent-books-content li {
+    margin: 5px; 
+}
+
+.recent-books-content img {
     border-radius: 8px; 
     display: block; 
 }
 
-.recent-books .book-info {
-    margin-left: 10px;
+.recent-books-container.expanded {
+    padding: 25px;
+    height: 250px; 
+    bottom: 60px;
 }
-
-.recent-books .book-info p {
-    margin: 0; 
-    font-size: 14px; 
-    color: #666; 
 </style>
 </head>
 <body>
@@ -266,7 +291,7 @@
 								<c:forEach var="vo" items="${hList}">
 									<div class="item">
 										<div class="thumb">
-											<a href="../book/detail.do?bno=${vo.bno }" class="thumb-link">
+											<a href="../book/cookie.do?bno=${vo.bno }" class="thumb-link">
 												<img src="${vo.cover }" alt=""
 												style="width: 220px; height: 300px;">
 											</a> <span
@@ -305,7 +330,7 @@
 									<div class="col-lg-3 col-sm-6" style="text-align: center;">
 										<div class="item">
 											<div class="thumb">
-												<a href="../book/detail.do?bno=${vo.bno }"
+												<a href="../book/cookie.do?bno=${vo.bno }"
 													class="thumb-link"> <img src="${vo.cover }"
 													alt="${vo.btitle }" style="width: 200px; height: 250px;">
 												</a>
@@ -356,21 +381,22 @@
 			</nav>
 		</div>
 	</div>
-	<div class="recent-books">
-    <h4>최근 본 도서</h4>
-    <ul>
-        <c:forEach var="recentBook" items="${recentBooks}">
-            <li>
-                <a href="../book/detail.do?bno=${recentBook.bno}">
-                    <img src="${recentBook.cover}" alt="${recentBook.btitle}">
-                    <span class="book-info">
-                        <p>${recentBook.btitle}</p>
-                        <small>${recentBook.writer}${recentBook.writer != null ? ' 저 | ' : ''}${recentBook.publisher}</small>
-                    </span>
-                </a>
-            </li>
-        </c:forEach>
-    </ul>
+	<div class="recent-books-container">
+    <div class="recent-books-header" onclick="toggleRecentBooks()">
+        <h4>최근 본 도서</h4>
+        <span class="toggle-icon">+</span>
+    </div>
+    <div class="recent-books-content">
+        <ul>
+            <c:forEach var="vo" items="${cList}">
+                <li>
+                    <figure><a href="../book/cookie.do?bno=${vo.bno}">
+                        <img class="radius-10 btmspace-10" src="${vo.cover}" style="width: 60px; height: 80px;"></a>
+                    </figure>
+                </li>
+            </c:forEach>
+        </ul>
+    </div>
 </div>
 </body>
 </html>

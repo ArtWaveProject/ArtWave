@@ -1,8 +1,11 @@
 package com.sist.model;
+import java.io.PrintWriter;
 import java.util.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.dao.*;
 import com.sist.vo.*;
@@ -50,6 +53,28 @@ public class BookModel {
 		   if(endPage>totalpage)
 			   endPage=totalpage;
 		   
+		   Cookie[] cookies = request.getCookies();
+		    List<BookVO> cookieList = new ArrayList();
+		    if (cookies != null) {
+		        Map<String, BookVO> bookMap = new LinkedHashMap(); // LinkedHashMap maintains insertion order
+		        for (int i = cookies.length - 1; i >= 0; i--) {
+		            if (cookies[i].getName().startsWith("book_")) {
+		                String bno = cookies[i].getValue();
+		                BookVO vo = BookDAO.bookDetailData(Integer.parseInt(bno));
+		                if (vo != null) {
+		                    bookMap.put(bno, vo); // Insert or update the book in the map
+		                }
+		            }
+		        }
+		        // Retrieve the last 4 entries from the map (most recent books)
+		        int count = 0;
+		        for (Map.Entry<String, BookVO> entry : bookMap.entrySet()) {
+		            if (count >= 4) break;
+		            cookieList.add(entry.getValue());
+		            count++;
+		        }
+		    }
+		    
 		   request.setAttribute("genres", genres);
 		   request.setAttribute("hList", hList);
 		   request.setAttribute("bList", bList);
@@ -59,7 +84,8 @@ public class BookModel {
 		   request.setAttribute("endPage", endPage);
 		   request.setAttribute("search", search);
 		   request.setAttribute("genre", genre);
-
+		   request.setAttribute("cList", cookieList);
+		   
 		   int count=BookDAO.bookListCount(genres[Integer.parseInt(genre)]);
 		   request.setAttribute("count", count);
 		   
@@ -110,5 +136,62 @@ public class BookModel {
 		   request.setAttribute("main_jsp", "../book/new.jsp");
 		   return "../main/main.jsp";
 	   }  
+	   @RequestMapping("book/best.do")
+	   public String book_best(HttpServletRequest request,HttpServletResponse response)
+	   {
+ 		   String page=request.getParameter("page");
+		   if(page==null)
+			   page="1";
+		   int curpage=Integer.parseInt(page);
+		   int rowSize=20;
+		   int start=(rowSize*curpage)-(rowSize-1);
+		   int end=rowSize*curpage;
+		   
+		   Map map=new HashMap();
+		   map.put("start", start);
+		   map.put("end", end);
+		   
+		   List<BookVO> tList=BookDAO.bookBestData(map);
+		   int totalpage=BookDAO.bookBestListCount();
+
+		   final int BLOCK=10;
+		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+		   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+		   if(endPage>totalpage)
+			   endPage=totalpage;
+		   
+		   request.setAttribute("tList", tList);
+		   request.setAttribute("curpage", curpage);
+		   request.setAttribute("totalpage", totalpage);
+		   request.setAttribute("startPage", startPage);
+		   request.setAttribute("endPage", endPage);
+
+		   
+		   request.setAttribute("main_jsp", "../book/best.jsp");
+		   return "../main/main.jsp";
+	   }  
+	   @RequestMapping("book/cookie.do")
+	   public String book_cookie(HttpServletRequest request, HttpServletResponse response) {
+	       String bno = request.getParameter("bno");
+
+	       Cookie[] cookies = request.getCookies();
+	       if (cookies != null) {
+	           for (Cookie cookie : cookies) {
+	               if (cookie.getName().equals("book_" + bno)) {
+	                   cookie.setMaxAge(0); 
+	                   cookie.setPath("/");
+	                   response.addCookie(cookie);
+	                   break;
+	               }
+	           }
+	       }
+
+	       Cookie cookie = new Cookie("book_" + bno, bno);
+	       cookie.setMaxAge(60 * 60 * 24); 
+	       cookie.setPath("/");
+	       response.addCookie(cookie);
+
+	       return "redirect:../book/detail.do?bno=" + bno;
+	   }
 	   
 }

@@ -119,14 +119,14 @@ body {
 	margin-bottom: 8px;
 }
 
-.book-actions .account-control {
+.book-actions .quantity-control {
 	display: flex;
 	gap: 5px;
 	justify-content: center;
 	margin: 0 0 0 0;
 }
 
-.account-control button {
+.quantity-control button {
 	width: 30px;
 	height: 30px;
 	font-size: 18px;
@@ -140,11 +140,11 @@ body {
 	justify-content: center;
 }
 
-.account-control button:hover {
+.quantity-control button:hover {
 	background-color: #ddd;
 }
 
-.account-control input {
+.quantity-control input {
 	width: 72px;
 	height: 30px;
 	text-align: center;
@@ -198,49 +198,23 @@ body {
 }
 
 .page li:last-child a {
-	border-radius: 0 4px 4px 0 ;
+	border-radius: 0 4px 4px 0;
 }
 
 }
 </style>
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-    const incrementButtons = document.querySelectorAll("#increment");
-    const decrementButtons = document.querySelectorAll("#decrement");
-    const accountInputs = document.querySelectorAll("#account");
-
-    incrementButtons.forEach((button, index) => {
-        button.addEventListener("click", () => {
-            const accountInput = accountInputs[index];
-            let account = parseInt(accountInput.value);
-            accountInput.value = account+1;
-        });
-    });
-
-    decrementButtons.forEach((button, index) => {
-        button.addEventListener("click", () => {
-            const accountInput = accountInputs[index];
-            let account = parseInt(accountInput.value);
-            if (account > 1) {
-                accountInput.value = account-1;
-            }
-        });
-    });
-});
-</script>
 </head>
 <body>
 <div class="row">
 				<div class="col-lg-12">
 	<div class="page-line" style="margin-top: 150px;">
-		<h2 style="color: black; margin-top: -50px; margin-bottom: 40px; text-align: center;">새로나온
-			책</h2>
+		<h2 style="color: black; margin-top: -50px; margin-bottom: 40px; text-align: center;">베스트셀러</h2>
 		<div class="book-list">
-			<c:forEach var="vo" items="${nList}">
+			<c:forEach var="vo" items="${tList}">
 				<div class="book-item">
 					<div class="book-cover">
-						<a href="../book/cookie.do?bno=${vo.bno }"> <img height=100%;
-							src="${vo.cover }" alt="">
+						<a href="../book/cookie.do?bno=${vo.bno }"> 
+						<img height=100%;	src="${vo.cover }" alt="">
 						</a>
 					</div>
 					<div class="book-info">
@@ -266,10 +240,10 @@ document.addEventListener("DOMContentLoaded", function() {
 					</div>
 					<div class="book-actions">
 						<button type="button" class="fa fa-heart">&nbsp;좋아요</button>
-						<div class="account-control">
-							<button id="decrement">-</button>
-							<input type="text" id="account" value="1">
-							<button id="increment">+</button>
+						<div class="quantity-control">
+							<button id="decrement">+</button>
+							<input type="text" id="quantity" value="1">
+							<button id="increment">-</button>
 						</div>
 						<button type="button" class="fa fa-cart-plus"
 							style="background-color: #99D9EA;">&nbsp;Add to Cart</button>
@@ -283,15 +257,15 @@ document.addEventListener("DOMContentLoaded", function() {
 			</div>
 				<ul class="page page-xg">
 					<c:if test="${startPage > 1}">
-						<li><a href="../book/new.do?page=${startPage-1}">&laquo;
+						<li><a href="../book/best.do?page=${startPage-1}">&laquo;
 								Previous</a></li>
 					</c:if>
-					<c:forEach var="n" begin="${startPage}" end="${endPage}">
+					<c:forEach var="t" begin="${startPage}" end="${endPage}">
 						<li ${n == curpage ? "class='current'" : ""}><a
-							href="../book/new.do?page=${n}">${n}</a></li>
+							href="../book/best.do?page=${t}">${t}</a></li>
 					</c:forEach>
 					<c:if test="${endPage < totalpage}">
-						<li><a href="../book/new.do?page=${endPage+1}">Next
+						<li><a href="../book/best.do?page=${endPage+1}">Next
 								&raquo;</a></li>
 					</c:if>
 				</ul>
