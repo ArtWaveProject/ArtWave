@@ -17,7 +17,7 @@ import controller.RequestMapping;
 
 public class BoardModel {
 	String[] options = { "", "nick", "subject", "content" };
-
+	String[] types= {"", "자유", "영화", "책", "음악"};
 	@RequestMapping("board/boardList.do")
 	public String boardList(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
@@ -57,7 +57,9 @@ public class BoardModel {
 			list = BoardDAO.boardFindListData(map);
 			count = BoardDAO.boardFindTotalCount(map);
 		}
-		System.out.println(count);
+		for(BoardVO vo:list) {
+			vo.setTypeDetail(types[vo.getCno()]);
+		}
 		int totalPage = (int) (Math.ceil(count / 10.0));
 		int startPage = (curPage - 1) / 10 * 10 + 1;
 		int endPage = startPage + 10 - 1;
@@ -79,7 +81,6 @@ public class BoardModel {
 
 	@RequestMapping("board/boardInsert.do")
 	public String boardInsert(HttpServletRequest request, HttpServletResponse response) {
-
 		request.setAttribute("main_jsp", "../board/boardInsert.jsp");
 		return "../main/main.jsp";
 	}
@@ -107,5 +108,33 @@ public class BoardModel {
 		vo.setFbsubject(subject);
 		vo.setContent(content);
 		BoardDAO.boardInsert(vo);
+	}
+	
+	@RequestMapping("board/boardDetail.do")
+	public String boardDetail(HttpServletRequest request, HttpServletResponse response) {
+		String fbno=request.getParameter("fbno");
+		BoardVO vo=BoardDAO.boardDetailData(Integer.parseInt(fbno));
+		int count=BoardDAO.boardReplyCount(Integer.parseInt(fbno));
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		if(id==null)
+			id="";
+		request.setAttribute("id", id);
+		request.setAttribute("count", count);
+		request.setAttribute("type", types[vo.getCno()]);
+		request.setAttribute("detail", vo);
+		request.setAttribute("main_jsp", "../board/boardDetail.jsp");
+		return "../main/main.jsp";
+	}
+	
+	@RequestMapping("board/replyInsert.do")
+	public void boardReplyInert(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		String nick=(String)session.getAttribute("nickname");
+		String content= request.getParameter("content");
+		String fbno=request.getParameter("fbno");
+		String root=request.getParameter("root");
+		String depth=request.getParameter("depth");
 	}
 }

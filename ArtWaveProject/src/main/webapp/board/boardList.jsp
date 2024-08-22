@@ -6,6 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+.title {
+	color: black;
+}
+
 .genreTable {
 	border: transparent;
 	margin-top: 15px;
@@ -58,10 +62,10 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 	function check(id) {
-		if(id==='')
+		if (id === '')
 			alert('로그인이 필요합니다')
-		else{
-			location.href="../board/boardInsert.do"
+		else {
+			location.href = "../board/boardInsert.do"
 		}
 	}
 </script>
@@ -114,21 +118,23 @@
 					<th width="20%" class="text-center">작성일</th>
 					<th width="10%" class="text-center">조회수</th>
 				</tr>
-				<tbody style="height:500px;">
-				<c:forEach var="vo" items="${bList }" varStatus="i">
-				<tr style="height:50px;">
-					<td width="5%" class="text-center">${count-i.index}</td>
-					<td width="50%">${vo.fbsubject }</td>
-					<td width="15%" class="text-center">${vo.nick }</td>
-					<td width="20%" class="text-center">${vo.dbday }</td>
-					<td width="10%" class="text-center">${vo.fbhit }</td>
-				</tr>
-				</c:forEach>
-				<tr>
+				<tbody style="height: 500px;">
+					<c:forEach var="vo" items="${bList }" varStatus="i">
+						<tr style="height: 50px;">
+							<td width="5%" class="text-center">${count-i.index}</td>
+							<td width="50%">
+								<a href="../board/boardDetail.do?fbno=${vo.fbno}" class="title">[${vo.typeDetail}]${vo.fbsubject }</a>
+							</td>
+							<td width="15%" class="text-center">${vo.nick }</td>
+							<td width="20%" class="text-center">${vo.dbday }</td>
+							<td width="10%" class="text-center">${vo.fbhit }</td>
+						</tr>
+					</c:forEach>
+					<tr>
 				</tbody>
-					<td colspan="5" style="text-align: right;">
-						<input type="button" class="btn" id="writeBtn" value="글 작성" onclick="check('${sessionScope.id}')">
-					</td>
+				<td colspan="5" style="text-align: right;">
+					<input type="button" class="btn" id="writeBtn" value="글 작성" onclick="check('${sessionScope.id}')">
+				</td>
 				</tr>
 			</table>
 		</div>

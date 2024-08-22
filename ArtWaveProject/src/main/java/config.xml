@@ -18,6 +18,7 @@
 		<typeAlias type="com.sist.vo.AlStoreVO" alias="AlStoreVO" />
 		<typeAlias type="com.sist.vo.MreviewVO" alias="MreviewVO"/>
 		<typeAlias type="com.sist.vo.BoardVO" alias="BoardVO"/>
+		<typeAlias type="com.sist.vo.ReplyVO" alias="ReplyVO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">

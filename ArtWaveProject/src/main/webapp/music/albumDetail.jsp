@@ -80,33 +80,6 @@ $(function() {
 	else{
 		$('#likeBtn').css('display', 'none')
 	}
-	let length=$('#listBody tr').length
-	console.log(length)
-	if(length >5){
-		$('#listBody tr:gt(4)').css('display', 'none')
-	}
-	else{
-		$('#listBtn').css('display', 'none')
-	}
-	
-	$('#listBtn').click(function(){
-		if(listCheck===false){
-			$('#listBody tr:gt(4)').css('display', '')
-			listCheck=true
-			$('#listBtn').val('접기')
-		}
-		else{
-			$('#listBody tr:gt(4)').css('display', 'none')
-			listCheck=false
-			$('#listBtn').val('펼치기')
-		}
-	})
-	
-	$('.playListBtn').click(function() {
-		$(this).next().css('display', '')
-		$(this).next().css('z-index', '10')
-	})
-	
 	$('#likeBtn').click(function() {
 		let alno=$('#alno').val()
 		if(likeCheck===true){
@@ -144,6 +117,34 @@ $(function() {
 			})
 		}
 	})
+	let length=$('#listBody tr').length
+	console.log(length)
+	if(length >5){
+		$('#listBody tr:gt(4)').css('display', 'none')
+	}
+	else{
+		$('#listBtn').css('display', 'none')
+	}
+	
+	$('#listBtn').click(function(){
+		if(listCheck===false){
+			$('#listBody tr:gt(4)').css('display', '')
+			listCheck=true
+			$('#listBtn').val('접기')
+		}
+		else{
+			$('#listBody tr:gt(4)').css('display', 'none')
+			listCheck=false
+			$('#listBtn').val('펼치기')
+		}
+	})
+	
+	$('.playListBtn').click(function() {
+		$(this).next().css('display', '')
+		$(this).next().css('z-index', '10')
+	})
+	
+	
 })
 </script>
 </head>

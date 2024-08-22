@@ -40,4 +40,21 @@ SELECT COUNT(*) FROM freeboard WHERE ${option} LIKE '%'||#{ss}||'%' AND cno LIKE
 <insert id="boardInsert" parameterType="BoardVO">
 INSERT INTO freeboard VALUES((SELECT NVL(MAX(fbno)+1, 1) FROM freeboard), #{fbsubject}, #{cno}, #{id}, #{nick}, #{content}, #{fbphoto}, 0, sysdate)
 </insert>
-</mapper>
+<!-- 게시글 내용 보기 -->
+<select id="boardDetailData" parameterType="int" resultType="BoardVO">
+SELECT fbno, fbsubject, cno, id, nick, content, fbphoto, fbhit, to_char(regdate, 'YYYY-MM-DD HH24:MI:SS') as dbday
+FROM freeboard
+WHERE fbno=#{fbno}
+</select>
+<!-- 조회수 증가 -->
+<update id="boardHitIncrement" parameterType="int">
+UPDATE freeboard SET fbhit=fbhit+1 WHERE fbno=#{fbno}
+</update>
+<!-- 게시글 댓글 개수 -->
+<select id="boardReplyCount" parameterType="int" resultType="int">
+SELECT COUNT(*) FROM freereply WHERE fbno=#{fbno}
+</select>
+<!-- 댓글 작성 -->
+<insert id="replyInsert" parameterType="ReplyVO">
+</insert>
+</mapper> 
