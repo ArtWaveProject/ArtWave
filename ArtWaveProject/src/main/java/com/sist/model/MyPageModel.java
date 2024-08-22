@@ -1,14 +1,22 @@
 package com.sist.model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.RequestMapping;
+
+import com.sist.dao.LikeDAO;
 import com.sist.dao.MemberDAO;
-import com.sist.vo.MemberVO;
+import com.sist.vo.*;
 
 public class MyPageModel {
+    private String[] liketype = { "", "", "영화", "도서", "음악" };  // 배열 이름 변경
+
    @RequestMapping("mypage/mypage_main.do")
    public String mypage_main(HttpServletRequest request,HttpServletResponse response)
    {
@@ -42,13 +50,60 @@ public class MyPageModel {
 	   return "../main/main.jsp";
    }
    @RequestMapping("mypage/my_like.do")
-   public String my_like(HttpServletRequest request,HttpServletResponse response)
-   {
+   public String likeList(HttpServletRequest request, HttpServletResponse response) {
+   	System.out.println("check");
+   	
+   	try {
+       String page = request.getParameter("page");
+       if (page == null) page = "1";
+
+       // 변수 이름 변경
+       String tlikeIndexStr = request.getParameter("tlike");
+       if (tlikeIndexStr == null) tlikeIndexStr = "1";
+       
+       System.out.println(tlikeIndexStr);
+       
+       int tlike = Integer.parseInt(tlikeIndexStr);  // 문자열을 정수로 변환
+       String selectedTlike = liketype[tlike];  // 배열 인덱스를 사용하여 값 선택
+
+       int curPage = Integer.parseInt(page);
+       int rowSize = 50;
+       int start = (curPage - 1) * rowSize + 1;
+       int end = start + rowSize - 1;
+
+       Map map = new HashMap();
+       map.put("start", start);
+       map.put("end", end);
+       map.put("tlike", selectedTlike);  // 배열에서 선택한 값 사용
+       
+       List<LikeVO> mulike = LikeDAO.mulikeListData(map);
+       
+	   System.out.println(mulike+"model mulike");
+		
+       
+       
+       int totalPage = LikeDAO.likeTotalPage(selectedTlike);  // 배열에서 선택한 값 사용
+       int startPage = (curPage - 1) / 10 * 10 + 1;
+       int endPage = startPage + 10 - 1;
+       
+       System.out.println(tlike);
+       
+       request.setAttribute("mulike", mulike);
+       request.setAttribute("tlike", tlikeIndexStr);  // 배열에서 선택한 값 사용
+       request.setAttribute("curPage", curPage);
+       request.setAttribute("startPage", startPage);
+       request.setAttribute("endPage", endPage);
+       request.setAttribute("totalPage", totalPage);
+       
 	   request.setAttribute("title", "좋아요");
-	   request.setAttribute("mypage_jsp", "../mypage/my_like.jsp");
-	   request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
-	   return "../main/main.jsp";
+       request.setAttribute("mypage_jsp", "../mypage/my_like.jsp");
+       request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
+   	}catch(Exception e) {
+   		e.printStackTrace();
+   	}
+       return "../main/main.jsp";
    }
+   
    @RequestMapping("mypage/my_member_exit.do")
    public String my_member_exit(HttpServletRequest request,HttpServletResponse response)
    {
