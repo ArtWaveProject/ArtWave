@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sist.mapper.seoul-mapper">
+<mapper namespace="com.sist.mapper.book_mapper">
 <select id="bookListData" resultType="BookVO" parameterType="hashmap">
     SELECT bno,btag,bgenre,cover,btitle,writer,price,sale_price,dis_rate,publisher,intro,intro_img,pages,isbn13,isbn10,bdate,num
     FROM (SELECT bno,btag,bgenre,cover,btitle,writer,price,sale_price,dis_rate,publisher,intro,intro_img,pages,isbn13,isbn10,bdate,rownum as num
@@ -75,4 +75,26 @@
 		        publisher LIKE '%'||#{search}||'%')
 		AND bgenre LIKE '%'||#{genre}||'%'    
 </select>
+
+<select id="bookBestData" resultType="BookVO" parameterType="hashmap">
+	  SELECT bno, btag, bgenre, cover, btitle, writer, price, sale_price, dis_rate, publisher, intro, intro_img, pages, isbn13, isbn10, TO_CHAR(bdate, 'YYYY-MM-DD') as dbday, num
+    FROM (SELECT bno, btag, bgenre, cover, btitle, writer, price, sale_price, dis_rate, publisher, intro, intro_img, pages, isbn13, isbn10, bdate, rownum as num
+    FROM (SELECT book.bno, book.btag, book.bgenre, book.cover, book.btitle, book.writer, book.price, book.sale_price, book.dis_rate, book.publisher, book.intro, book.intro_img, book.pages, book.isbn13, book.isbn10, book.bdate
+    FROM book
+    JOIN (SELECT bno, SUM(bcount) as total_count
+    FROM bbuy
+    GROUP BY bno) bb ON book.bno = bb.bno
+    ORDER BY total_count DESC))
+    WHERE num BETWEEN #{start} AND #{end}
+</select>
+
+	<select id="bookBestListCount" resultType="int" parameterType="hashmap">
+    SELECT CEIL(COUNT(*) / 20.0) 
+    FROM (SELECT book.bno
+    FROM book
+    JOIN (SELECT bno, SUM(bcount) as total_count
+    FROM bbuy
+    GROUP BY bno) bb ON book.bno = bb.bno)
+</select>
+  
 </mapper>
