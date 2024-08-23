@@ -25,7 +25,7 @@ WHERE num BETWEEN #{start} AND #{end}
 SELECT fbno, cno, fbhit, fbsubject, nick, content, to_char(regdate, 'YYYY-MM-DD') as dbday, num
 FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate, rownum as num
 FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate 
-FROM freeboard WHERE ${option} LIKE '%'||#{ss}||'%' AND cno LIKE '%'||#{type}||'%'))
+FROM freeboard WHERE ${option} LIKE '%'||#{ss}||'%' AND cno LIKE '%'||#{type}||'%' ORDER BY fbno DESC))
 WHERE num BETWEEN #{start} AND #{end}
 </select>
 <!-- 게시글 개수 -->
@@ -67,7 +67,24 @@ INSERT INTO freereply VALUES ((SELECT NVL(MAX(frno)+1, 1) FROM freereply), #{fbn
 SELECT frno, fbno, id, nick, to_char(regdate, 'YYYY-MM-DD HH24:MI:SS') as dbday, root, depth, content
 FROM freereply WHERE fbno=#{fbno} ORDER BY root DESC, depth ASC
 </select>
+<!-- 댓글의 대댓글 여부 -->
+<select id="replyCheck" resultType="int" parameterType="int">
+SELECT COUNT(*) FROM freereply WHERE root=#{root} AND depth=2
+</select>
+<!-- 댓글 개수 -->
+<select id="replyCount" resultType="int" parameterType="int">
+SELECT COUNT(*) FROM freereply WHERE fbno=#{fbno}
+</select>
+<!-- 댓글 삭제 -->
 <delete id="replyDelete" parameterType="int">
-DELETE FROM freereply
+DELETE FROM freereply WHERE frno=#{frno}
+</delete>
+<!-- 게시글 삭제 -->
+<delete id="boardDelete" parameterType="int">
+DELETE FROM freeboard WHERE fbno=#{fbno}
+</delete>
+<!-- 게시글의 댓글 전체 삭제 -->
+<delete id="boardReplyDeleteAll" parameterType="int">
+DELETE FROM freereply WHERE fbno=#{fbno}
 </delete>
 </mapper> 

@@ -180,4 +180,36 @@ public class BoardModel {
 			out.write(arr.toJSONString());
 		} catch (Exception e) {}
 	}
+	@RequestMapping("board/replyCheck.do")
+	public void replyCheck(HttpServletRequest request, HttpServletResponse response) {
+		String root=request.getParameter("root");
+		System.out.println(root);
+		int count=BoardDAO.replyCheck(Integer.parseInt(root));
+		try {
+		  response.setContentType("text/plain;charset=UTF-8");
+			PrintWriter out=response.getWriter();
+			out.write(String.valueOf(count));
+		} catch (Exception e) {}
+	}
+	@RequestMapping("board/replyCount.do")
+	public void replyCount(HttpServletRequest request, HttpServletResponse response) {
+		String fbno=request.getParameter("fbno");
+		int count=BoardDAO.replyCount(Integer.parseInt(fbno));
+		System.out.println(count);
+		try {
+		  response.setContentType("text/plain;charset=UTF-8");
+			PrintWriter out=response.getWriter();
+			out.write(String.valueOf(count));
+		} catch (Exception e) {}
+	}
+	@RequestMapping("board/replyDelete.do")
+	public void replyDelete(HttpServletRequest request, HttpServletResponse response) {
+		String frno=request.getParameter("frno");
+		BoardDAO.replyDelete(Integer.parseInt(frno));
+	}
+	@RequestMapping("board/boardDelete.do")
+	public void boardDelete(HttpServletRequest request, HttpServletResponse response) {
+		String fbno=request.getParameter("fbno");
+		BoardDAO.boardDelete(Integer.parseInt(fbno));
+	}
 }

@@ -6,10 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.deleteBtn{
-width: 15px;
-height: 15px;
-background: gray;
+.deleteBtn {
+	padding-top: 3px;
+	padding-left: 15px;
+	background: none;
+	border: none;
+	font-size: 20px;
+	color: red;
 }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
@@ -40,6 +43,17 @@ let id = '${id}'
 				success:function(){
 					$('#content').val('')
 					replyList()
+					replyCount()
+				}
+			})
+		})
+		$('#deleteBtn').click(function() {
+			$.ajax({
+				type:'post',
+				url:'../board/boardDelete.do',
+				data:{'fbno':${detail.fbno}},
+				success:function(){
+					location.href="../board/boardList.do"
 				}
 			})
 		})
@@ -85,10 +99,10 @@ let id = '${id}'
 					html+='</td>'
 					if(reply.id===reply.sessionId){
 						html+='<td width="25%" style="text-align:right;">'+reply.dbday+'</td>'
-						html+='<td width="5%"><button type="button" class="deleteBtn" data-rno="'+reply.frno+'">x</button></td>'
+						html+='<td width="5%" style="padding:0px;"><button onclick="replyDelete('+reply.frno+', '+reply.depth+')" type="button" class="deleteBtn" data-rno="'+reply.frno+'">x</button></td>'
 					}
 					else{
-						html+='<td width="30%" style="text-align:right;">'+reply.dbday+'</td>'
+						html+='<td colspan="2" width="30%" style="text-align:right; padding-right:48px;">'+reply.dbday+'</td>'
 					}
 					html+='</tr>'
 					if(reply.depth==1){
@@ -137,12 +151,59 @@ let id = '${id}'
 				$('#content'+frno).val('')
 				tableShow(frno)
 				replyList()
+				replyCount()
 			}
 		})
-		function replyDelete() {
-			
-		}
 	}
+		function replyDelete(frno, depth) {
+			if(depth===1){
+				$.ajax({
+					type:'post', 
+					url:'../board/replyCheck.do',
+					data:{'root':frno},
+					success:function(result){
+						if(result!=0){
+							alert('댓글을 지울 수 없습니다')
+							return
+						}
+						else{
+							$.ajax({
+								type:'post',
+								url:'../board/replyDelete.do',
+								data:{'frno':frno},
+								success:function(result){
+									replyList()
+									replyCount()
+								}
+							})
+						}
+					}
+				})
+			}
+			else{
+				$.ajax({
+					type:'post',
+					url:'../board/replyDelete.do',
+					data:{'frno':frno},
+					success:function(result){
+						replyList()
+						replyCount()
+					}
+				})
+			}
+		}
+		function replyCount() {
+			let fbno=${detail.fbno}
+			$.ajax({
+				type:'post',
+				url:'../board/replyCount.do',
+				data:{'fbno':fbno},
+				success:function(result){
+					$('#reply1').text(result)
+					$('#reply2').text(result)
+				}
+			})
+		}
 </script>
 </head>
 <body>
@@ -157,7 +218,9 @@ let id = '${id}'
 				</tr>
 				<tr>
 					<td width="80%">${detail.nick}&nbsp;&nbsp;|&nbsp;&nbsp;${detail.dbday}</td>
-					<td width="20%" class="text-right">조회수 ${detail.fbhit}&nbsp;&nbsp; 댓글 ${count}개</td>
+					<td width="20%" class="text-right">
+						조회수 ${detail.fbhit}&nbsp;&nbsp; 댓글 <span id="reply1">${count}</span>개
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2" style="height: 500px;">
@@ -167,7 +230,7 @@ let id = '${id}'
 				<tr style="text-align: right;">
 					<td colspan="2">
 						<c:if test="${sessionScope.id==detail.id}">
-							<input type="button" value="삭제" id="writeBtn">
+							<input type="button" value="삭제" id="deleteBtn">
 							<input type="button" value="수정" id="writeBtn">
 						</c:if>
 						<input type="button" value="목록" onclick="javascript:history.back()">
@@ -177,7 +240,9 @@ let id = '${id}'
 			<table class="table">
 				<thead>
 					<tr>
-						<td colspan="2">전체 댓글 ${count}개</td>
+						<td colspan="2">
+							전체 댓글 <span id="reply2">${count}</span>개
+						</td>
 					</tr>
 				</thead>
 				<tbody>

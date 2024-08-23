@@ -287,4 +287,8 @@ public class MusicModel {
 		request.setAttribute("main_jsp", "../music/find.jsp");
 		return "../main/main.jsp";
 	}
+	@RequestMapping("music/playListMake.do")
+	public String playListMake(HttpServletRequest request, HttpServletResponse response) {
+		return "../music/playlistMake.jsp";
+	}
 }

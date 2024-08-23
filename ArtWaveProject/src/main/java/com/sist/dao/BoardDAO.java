@@ -105,8 +105,9 @@ public class BoardDAO {
 		}
 		return vo;
 	}
+
 	public static int boardReplyCount(int fbno) {
-		int count=0;
+		int count = 0;
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
@@ -119,7 +120,7 @@ public class BoardDAO {
 		}
 		return count;
 	}
-	
+
 	public static void replyInsert(ReplyVO vo) {
 		SqlSession session = null;
 		try {
@@ -132,7 +133,7 @@ public class BoardDAO {
 				session.close();
 		}
 	}
-	
+
 	public static void reReplyInsert(ReplyVO vo) {
 		SqlSession session = null;
 		try {
@@ -145,13 +146,13 @@ public class BoardDAO {
 				session.close();
 		}
 	}
-	
-	public static List<ReplyVO> replyList(int fbno){
-		List<ReplyVO> list=new ArrayList<ReplyVO>();
+
+	public static List<ReplyVO> replyList(int fbno) {
+		List<ReplyVO> list = new ArrayList<ReplyVO>();
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
-			list=session.selectList("replyList", fbno);
+			list = session.selectList("replyList", fbno);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -159,5 +160,62 @@ public class BoardDAO {
 				session.close();
 		}
 		return list;
+	}
+
+	public static int replyCheck(int root) {
+		int count = 0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			count = session.selectOne("replyCheck", root);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return count;
+	}
+
+	public static int replyCount(int fbno) {
+		int count = 0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			count = session.selectOne("replyCount", fbno);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return count;
+	}
+
+	public static void replyDelete(int frno) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession(true);
+			session.delete("replyDelete", frno);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+	}
+	public static void boardDelete(int fbno) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			session.delete("boardDelete", fbno);
+			session.delete("boardReplyDeleteAll", fbno);
+			session.commit();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
 	}
 }

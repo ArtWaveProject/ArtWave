@@ -32,6 +32,9 @@ color: black;
 	border: none;
 	margin: 0px;
 }
+a.toggleMenu::hover{
+background: transparent;
+}
 .toggleMenu::after {
     content: none; /* 가상 요소 내용 제거 */
 }
@@ -39,19 +42,19 @@ color: black;
 width: 190px;
 z-index: 999;
 }
-.dropmenu li a{
-font-size: 15px;
-}
 .dropmenu li{
 padding: 0px 3px;
-
+}
+.dropmenu li a{
+font-size: 15px;
 }
 .dropmenu li a:hover{
 background: #aaa !important;
 }
 </style>
+<script type="text/javascript" src="../shadow/js/shadowbox.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" src="../shadow/js/shadowbox.js"></script><script type="text/javascript">
 $(function() {
 	let listCheck=false
 	let likeCheck=false
@@ -80,6 +83,14 @@ $(function() {
 	else{
 		$('#likeBtn').css('display', 'none')
 	}
+	$('.playlistBtn').click(function(){
+		Shadowbox.open({
+			content:'../music/playListmake.do',
+			player:'iframe',
+			title:'플레이리스트 만들기',
+			width:350,
+			height:250
+		}) 
 	$('#likeBtn').click(function() {
 		let alno=$('#alno').val()
 		if(likeCheck===true){
@@ -207,7 +218,7 @@ $(function() {
 										<a class="dropdown-toggle toggleMenu" data-toggle="dropdown">+</a>
 										<ul class="dropmenu dropUl">
 											<li>
-												<a>플레이리스트 추가</a>
+												<a href="#" class="playlistBtn">플레이리스트 추가</a>
 											</li>
 											<li>
 												<a>2</a>
