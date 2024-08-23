@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -6,52 +7,64 @@
 <meta charset="UTF-8">
 <title>Details Page</title>
 <style type="text/css">
-
+/* 기본 스타일 설정 */
 nav {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
+/* 드롭다운 메뉴 기본 스타일 */
 .dropdown {
-    position: relative;
+	position: relative;
+	display: inline-block;
+	margin: 0 10px; /* 드롭다운 메뉴 간 간격 조정 */
 }
 
+/* 드롭다운 메뉴 스타일 */
 .dropmenu {
-    display: none; 
-    position: absolute;
-    top: 100%; 
-    text-align: center;
-    background-color: #ffffff;
-    box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
-    border-radius: 8px; 
-    overflow: hidden; 
-    width: 117px; 
+	display: none;
+	position: absolute;
+	top: 100%; /* 메뉴가 드롭다운 항목 바로 아래에 위치하도록 */
+	left: 0;
+	background-color: #ffffff;
+	box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
+	z-index: 999; /* 다른 요소들 위에 표시되도록 */
+	border-radius: 8px; /* 메뉴 전체를 둥글게 */
+	overflow: hidden; /* 둥글게 처리된 메뉴 항목의 모서리 넘침 방지 */
+	width: 110px; /* 드롭다운 메뉴 너비 설정 */
 }
 
+/* 드롭다운 메뉴 항목 스타일 */
 .dropmenu li {
-    padding: 3px;
+	padding: 5px;
+	text-align: center; /* 항목 내의 텍스트를 수평 중앙 정렬 */
 }
 
+/* 드롭다운 메뉴 항목의 링크 스타일 */
 .dropmenu a {
-    text-decoration: none;
-    color: #333; 
-    display: block;
-    line-height: 0.7; 
+	text-decoration: none;
+	color: #333; /* 기본 글씨 색상 */
+	display: block;
+	line-height: 1.0; /* 텍스트 줄 높이 */
 }
 
+/* 드롭다운 메뉴의 항목에 마우스를 올렸을 때 링크의 색상 변경 */
 .dropmenu li:hover a {
-    background-color: #C2C2C2; 
+	color: #007bff; /* 마우스 오버 시 글씨 색상 변경 */
+	background-color: #C2C2C2; /* 선택된 항목의 배경색 변경 (선택 사항) */
 }
 
+/* 드롭다운 메뉴를 표시할 때의 스타일 */
 .dropdown:hover .dropmenu {
 	display: block;
 }
 
-.nav > li {
-    list-style: none;
-    margin: 0;
+/* 헤더 내 메뉴 항목의 기본 스타일 */
+.nav>li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
-
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
@@ -92,64 +105,47 @@ nav {
 						<ul class="nav">
 							<li><a href="index.html" class="active">Home</a></li>
 							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="../movie/moviemain.do"> 영화<span
+								data-toggle="dropdown" href="../movie/moviemain.do"> Movie<span
 									class="caret"></span>
 							</a>
 								<ul class="dropmenu">
-									<li class="submenu"><a href="../movie/movielist1.do">전체 영화</a></li>
-									<li class="submenu"><a href="#">예매 하기</a></li>
-									<li class="submenu"><a href="#">스토어</a></li>
+									<li class="submenu"><a href="#">Page 1-1</a></li>
+									<li class="submenu"><a href="#">Page 1-2</a></li>
+									<li class="submenu"><a href="#">Page 1-3</a></li>
 								</ul></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="../book/list.do"> Books<span
-									class="caret"></span></a>
+									class="caret"></span>
+							</a>
 								<ul class="dropmenu">
-									<li class="submenu" style="text-align: center;"><a
-										href="../book/new.do">새로나온 책</a></li>
-									<li class="submenu"><a href="../book/best.do">베스트셀러</a></li>
-									<li class="submenu"><a href="../book/recomm.do">추천 도서</a>
+									<li class="submenu"><a href="../book/list.do">Page 1-1</a>
 									</li>
+									<li class="submenu"><a href="../book/detail.do">Page
+											1-2</a></li>
+									<li class="submenu"><a href="#">Page 1-3</a></li>
 								</ul></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="../music/musicHome.do"> Music<span
 									class="caret"></span>
 							</a>
 								<ul class="dropmenu">
-									<li class="submenu"><a href="../music/musicList.do">인기차트</a>
+									<li class="submenu"><a href="../music/musicList.do">Chart</a>
 									</li>
-									<li class="submenu"><a href="../music/albumList.do">앨범목록</a>
+									<li class="submenu"><a href="../music/albumList.do">Album</a>
 									</li>
-									<li class="submenu"><a href="../music/musicMvList.do">뮤비목록</a></li>
-									<li class="submenu"><a href="../music/alstoreList.do">스토어</a></li>
+									<li class="submenu"><a href="../music/musicMvList.do">Page
+											1-3</a></li>
+									<li class="submenu"><a href="../music/alstoreList.do">store</a>
+									</li>
 								</ul></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="../music/musicHome.do">커뮤니티<span
-									class="caret"></span>
-							</a>
-								<ul class="dropmenu">
-									<li class="submenu"><a href="../board/boardList.do">자유게시판</a>
-									</li>
-									<li class="submenu"><a href="../music/albumList.do">공지사항</a>
-									</li>
-									<li class="submenu"><a href="../music/musicMvList.do">문의</a></li>
-								</ul></li>
-							<c:if test="${sessionScope.id!=null }">
-								<c:if test="${sessionScope.admin=='0' }">
-									<li><a href="../mypage/mypage_main.do"> Profile <img
-											src="../assets/images/profile-header.jpg" alt="">
-									</a></li>
-								</c:if>
 								
 								<!-- admin 페이지 -->
 								<c:if test="${sessionScope.admin=='1' }">
 									<li><a href="../adminpage/adminpage_main.do" class="active">관리자페이지</a></li>							
 								</c:if>
-							</c:if>
-							
+				
+
 						</ul>
-						
-						
-						
 						<ul class="nav" style="width: 120px;"></ul>
 						<c:if test="${sessionScope.id==null }">
 							<ul class="nav">
@@ -159,13 +155,8 @@ nav {
 						</c:if>
 						<c:if test="${sessionScope.id!=null }">
 							<ul class="nav">
-
-								<c:if test="${sessionScope.admin==1 }">
-								<li><a id="info">${sessionScope.nickname}(${sessionScope.admin=='1'?"관리자":""})님</a></li>
-								</c:if>
-								<c:if test="${sessionScope.admin==0 }">
-								<li><a href="../mypage/mypage_main.do" id="info">${sessionScope.nickname}님</a></li>
-								</c:if>
+							
+								<li><a a href="../mypage/mypage_main.do" id="info">${sessionScope.nickname}님</a></li>
 								<li><a id="info"> <input type="button" id="logoutBtn"
 										value="LogOut"
 										style="color: #666; background-color: transparent; border: none;">

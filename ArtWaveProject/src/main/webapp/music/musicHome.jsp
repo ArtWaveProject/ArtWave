@@ -28,19 +28,9 @@
 .listChart tr td {
 	padding: 0px;
 }
-
-.btnhe {
+ .btnhe{
 	margin-bottom: 61px;
-}
-
-.textblck {
-/*     margin-top: 15px;
- */    font-size: 30px; /* 폰트 사이즈 */
-    font-weight: bold; /* 폰트 굵기 */
-    color: #000 !important; /* 폰트 색상 (검정색) */
-    text-decoration: none; /* 밑줄 제거 */
-    background-color: rgba(128, 128, 128, 0.2); /* 반투명 회색 */
-}
+} 
 </style>
 </head>
 <body>
@@ -115,11 +105,6 @@
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="visually-hidden">Next</span>
 				</button>
-				<div>
-					<ul class="text-center textblck">
-						<li><a href="../music/alstoreList.do">스토어 바로가기</a></li>
-					</ul>
-				</div>
 			</div>
 
 		</div>

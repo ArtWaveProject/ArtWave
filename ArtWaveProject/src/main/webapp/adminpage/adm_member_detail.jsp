@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>묻고답하기</h3>
+	<h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>관리자 홈</h3>
 </body>
 </html>
