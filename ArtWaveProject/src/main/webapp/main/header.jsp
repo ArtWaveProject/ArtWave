@@ -138,11 +138,13 @@ nav {
 									<li class="submenu"><a href="../music/alstoreList.do">store</a>
 									</li>
 								</ul></li>
-<%-- 							<c:if test="${sessionScope.id!=null }">
-								<li><a href="../mypage/mypage_main.do"> Profile <img
-										src="../assets/images/profile-header.jpg" alt="">
-								</a></li>
-							</c:if> --%>
+								
+								<!-- admin 페이지 -->
+								<c:if test="${sessionScope.admin=='1' }">
+									<li><a href="../adminpage/adminpage_main.do" class="active">관리자페이지</a></li>							
+								</c:if>
+				
+
 						</ul>
 						<ul class="nav" style="width: 120px;"></ul>
 						<c:if test="${sessionScope.id==null }">
@@ -153,6 +155,7 @@ nav {
 						</c:if>
 						<c:if test="${sessionScope.id!=null }">
 							<ul class="nav">
+							
 								<li><a a href="../mypage/mypage_main.do" id="info">${sessionScope.nickname}님</a></li>
 								<li><a id="info"> <input type="button" id="logoutBtn"
 										value="LogOut"
