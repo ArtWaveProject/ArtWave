@@ -66,9 +66,9 @@
  		 <result property="bvo.cover" column="cover"/>
  		 <result property="bvo.price" column="price"/>
  	</resultMap>
- 	     <select id="movieBookData"  resultType="MovieBookVO" parameterType="hashmap">
+ 	     <select id="movieBookData"  resultType="MovieBookVO"  parameterType="hashmap">
  	     		SELECT moviebook.mbno, moviebook.mno, moviebook.bno, book.btitle, book.cover, book.price
- 	     		FROM moviebook
+ 	     		FROM moviebook, book
  	     		FULL OUTER JOIN book ON moviebook.bno = book.bno
  	     		WHERE moviebook.mno = #{mno}
  	     </select>

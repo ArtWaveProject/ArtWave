@@ -265,14 +265,71 @@ public class MovieDAO {
 		   }
 		   return list;
 	   }
-	   public static List<TheaterVO> theaterAllData(String tloc)
+	   public static List<MovieVO> movieTitleData()
+	   {
+		   List<MovieVO> list=new ArrayList<MovieVO>();
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("movieTitleData");
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
+	   public static List<TheaterVO> movieTheaterData(String tloc)
 	   {
 		   List<TheaterVO> list=new ArrayList< TheaterVO>();
 		   SqlSession session=null; //Connection
 		   try
 		   {
 			   session=ssf.openSession();
-			   list=session.selectList("theaterAllData", tloc);
+			   list=session.selectList("movieTheaterData", tloc);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
+	   public static List<MscheduleVO> mscheduleData(Map map)
+	   {
+		   List<MscheduleVO> list=new ArrayList<MscheduleVO>();
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("mscheduleData", map);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
+	   public static List<MscheduleVO> movieReserveDayData(Map map)
+	   {
+		   List<MscheduleVO> list=new ArrayList<MscheduleVO>();
+		   SqlSession session=null; //Connection
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("mscheduleData", map);
 		   }catch(Exception ex)
 		   {
 			   ex.printStackTrace();

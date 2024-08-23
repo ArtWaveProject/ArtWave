@@ -10,13 +10,19 @@ FROM movie WHERE mstate LIKE '1'
 	FROM theater WHERE tloc LIKE '%'||#{tloc}||'%' 
 	ORDER BY tno ASC
 </select>
-<resultMap type="com.sist.vo.MscheduleVO" id="moviebookMap">
+
+<select id="movieReserveDayData" resultType="String" parameterType="hashmap">
+ SELECT DISTINCT TO_CHAR(msdate, 'YYYY.MM.DD') as msday, mno, tdno FROM movie_schedule
+    WHERE mno=#{mno} AND tdno=#{tdno} ORDER BY msday
+</select>
+
+<resultMap type="com.sist.vo.MscheduleVO" id="mscheduleMap">
  		 <result property="tdvo.tdno" column="tdno"/>
  		 <result property="tvo.tno" column="tno"/>
  		 <result property="tdvo.tdname" column="tdname"/>
  		 <result property="mvo.mno" column="mno"/>
 </resultMap>
-<select id="mscheduleData" resultType="MscheduleVO" >
+<select id="mscheduleData" resultType="MscheduleVO" parameterType="hashmap">
 	SELECT msno, movie.mno, theater.tno, theater_detail.tdno, theater_detail.tdname, mstime, TO_CHAR(msdate, 'YYYY.MM.DD') as msday
 	FROM movie_schedule
 	JOIN movie ON movie.mno = movie_schedule.mno
