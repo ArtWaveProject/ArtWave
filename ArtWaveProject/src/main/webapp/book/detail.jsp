@@ -324,8 +324,9 @@ $(document).ready(function() {
 
 $(function() {
     let likeCheck = false;
-    let id = $('#id').val();
+    let id = '${id}'
     let bno = $('#bno').val();
+    
 
     if (id.length > 0) {
         $.ajax({
@@ -350,6 +351,7 @@ $(function() {
     }
 
     $('#likeBtn').click(function() {
+        console.log(bno)
         if (likeCheck) {
             $.ajax({
                 type: 'post',
@@ -359,6 +361,7 @@ $(function() {
                     'type': 5
                 },
                 success: function(result) {
+                	console.log(bno)
                     if (result >= 0) {
                         likeCheck = false;
                         $('#like-button').attr('src', 'heart.png');
@@ -374,10 +377,14 @@ $(function() {
                     'type': 5
                 },
                 success: function(result) {
+                	console.log(bno)
                     if (result >= 0) {
                         likeCheck = true;
                         $('#like-button').attr('src', 'fullheart.png');
                     }
+                },
+                error:function(request, status, error){
+                	alert(error)
                 }
             });
         }
@@ -423,8 +430,7 @@ $(document).ready(function() {
         	acountInput.val(value - 1);
         }
     });
-
-
+    
 });
 
 </script>
@@ -546,36 +552,36 @@ $(document).ready(function() {
 								<br>
 								<!-- 리뷰 작성 폼 -->
 								<div id="review-form" class="review-form">
-									<div class="heading-section" style="padding: 0 0 15px 0;">
-										<span style="font-size: 20px; font-weight: bold;">도서 리뷰</span>
-									</div>
-									<form action="submitReview.do" method="post">
-										<input type="hidden" name="bno" value="${vo.bno}" />
-										<div>
-											<div class="star-rating">
-												<input type="radio" id="star5" name="rating" value="5"
-													required /> <label for="star5"></label> <input
-													type="radio" id="star4" name="rating" value="4" /> <label
-													for="star4"></label> <input type="radio" id="star3"
-													name="rating" value="3" /> <label for="star3"></label> <input
-													type="radio" id="star2" name="rating" value="2" /> <label
-													for="star2"></label> <input type="radio" id="star1"
-													name="rating" value="1" /> <label for="star1"></label>
-											</div>
+										<div class="heading-section" style="padding: 0 0 15px 0;">
+											<span style="font-size: 20px; font-weight: bold;">도서 리뷰</span>
 										</div>
-										<table>
-											<tr>
-												<td>
-													<div class="review-container">
-														<textarea id="content" style="resize: none;"
-															name="content" required placeholder="리뷰를 작성해주세요!!"></textarea>
-														<button type="submit">리뷰 작성</button>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</form>
-								</div>
+										<form action="submitReview.do" method="post">
+											<input type="hidden" id="bno" name="bno" value="${vo.bno}" /> 
+											<div>
+												<div class="star-rating">
+													<input type="radio" id="star5" name="rating" value="5"
+														required /> <label for="star5"></label> <input
+														type="radio" id="star4" name="rating" value="4" /> <label
+														for="star4"></label> <input type="radio" id="star3"
+														name="rating" value="3" /> <label for="star3"></label> <input
+														type="radio" id="star2" name="rating" value="2" /> <label
+														for="star2"></label> <input type="radio" id="star1"
+														name="rating" value="1" /> <label for="star1"></label>
+												</div>
+											</div>
+											<table>
+												<tr>
+													<td>
+														<div class="review-container">
+															<textarea id="content" style="resize: none;"
+																name="content" required placeholder="리뷰를 작성해주세요!!"></textarea>
+															<button type="submit" id="reviewBtn">리뷰 작성</button>
+														</div>
+													</td>
+												</tr>
+											</table>
+										</form>
+									</div>
 							</div>
 						</div>
 					</div>
