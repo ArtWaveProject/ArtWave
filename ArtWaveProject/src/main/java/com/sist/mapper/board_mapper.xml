@@ -56,5 +56,18 @@ SELECT COUNT(*) FROM freereply WHERE fbno=#{fbno}
 </select>
 <!-- 댓글 작성 -->
 <insert id="replyInsert" parameterType="ReplyVO">
+INSERT INTO freereply VALUES ((SELECT NVL(MAX(frno)+1, 1) FROM freereply), #{fbno}, #{id}, #{content}, sysdate, (SELECT NVL(MAX(frno)+1, 1) FROM freereply), #{depth}, #{nick})
 </insert>
+<!-- 대댓글 작성 -->
+<insert id="reReplyInsert" parameterType="ReplyVO">
+INSERT INTO freereply VALUES ((SELECT NVL(MAX(frno)+1, 1) FROM freereply), #{fbno}, #{id}, #{content}, sysdate, #{root}, #{depth}, #{nick})
+</insert>
+<!-- 댓글 목록 -->
+<select id="replyList" resultType="ReplyVO" parameterType="int">
+SELECT frno, fbno, id, nick, to_char(regdate, 'YYYY-MM-DD HH24:MI:SS') as dbday, root, depth, content
+FROM freereply WHERE fbno=#{fbno} ORDER BY root DESC, depth ASC
+</select>
+<delete id="replyDelete" parameterType="int">
+DELETE FROM freereply
+</delete>
 </mapper> 

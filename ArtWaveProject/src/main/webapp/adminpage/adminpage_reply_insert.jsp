@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div calss="wrapper row3">
+	<div class="wrapper row3">
 		<main class="container clear">
 			<h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>답변하기</h3>
 				<form method=post action="../adminpage/reply_insert_ok.do">

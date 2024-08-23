@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -44,13 +44,31 @@
   background-clip: text;
   color: transparent;
 }
+.sidebar {
+    position: relative;
+}
 
+
+</style>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Tempus Dominus CSS -->
+<link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+<!-- Custom styles -->
+<style>
+  body {
+    padding-top: 20px;
+  }
 
 </style>
 </head>
 <body>
-<div class="container-xxl position-relative bg-white d-flex p-0">
-	<div class="sidebar pe-4 pb-3">
+<div class="container">
+  <div class="row" style="margin-top: 120px;">
+    <div class="col-lg-4">
+      <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>ArtWave</h3>
@@ -61,7 +79,7 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0"> 관리자 아이디 </h6>
+                        <h6 class="mb-0">${sessionScope.id}님 </h6>
                         <span>Admin등급</span>
                     </div>
                 </div>
@@ -104,31 +122,31 @@
                 </div>
             </nav>
  			  </div>
-        <!-- 사이드바 영역 -->
-        
-        
-         <div class="content">
-        	<div class="container-fluid pt-4 px-4">
-             <div class="col-sm-12">
-             		<jsp:include page="${admin_jsp }"></jsp:include>             
-             </div>
-          </div>
-        </div>
-     
-     
-</div>
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    </div>  
+    
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <div class="col-lg-8">
+      <jsp:include page="${admin_jsp}"></jsp:include>
+    </div>
+    
+  </div>
+</div>
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+	<!-- JavaScript Libraries -->
 </body>
 </html>

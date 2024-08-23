@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.sist.vo.BoardVO;
+import com.sist.vo.ReplyVO;
 
 public class BoardDAO {
 	private static SqlSessionFactory ssf;
@@ -117,5 +118,46 @@ public class BoardDAO {
 				session.close();
 		}
 		return count;
+	}
+	
+	public static void replyInsert(ReplyVO vo) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession(true);
+			session.insert("replyInsert", vo);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+	}
+	
+	public static void reReplyInsert(ReplyVO vo) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession(true);
+			session.insert("reReplyInsert", vo);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+	}
+	
+	public static List<ReplyVO> replyList(int fbno){
+		List<ReplyVO> list=new ArrayList<ReplyVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list=session.selectList("replyList", fbno);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
 	}
 }
