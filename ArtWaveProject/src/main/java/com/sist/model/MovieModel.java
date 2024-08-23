@@ -115,7 +115,13 @@ public class MovieModel {
 		   // 데이터베이스 연동 
 		   MovieVO vo=MovieDAO.movieDetailData(Integer.parseInt(mno));
 		   request.setAttribute("vo", vo);
-		  
+		   MovieBookVO mbvo = new MovieBookVO();
+		   request.setAttribute("mbvo", mbvo);
+		   
+		   Map map=new HashMap();
+		   map.put("mno",Integer.parseInt(mno));
+		   List<MovieBookVO> mbList=MovieDAO.movieBookData(map);
+		  request.setAttribute("mbList", mbList);
 		   request.setAttribute("main_jsp", "../movie/moviedetail.jsp");
 		 return "../main/main.jsp";
 	}	
@@ -205,4 +211,5 @@ public class MovieModel {
 	
 		   return "../main/main.jsp";
 	   }
+
 }

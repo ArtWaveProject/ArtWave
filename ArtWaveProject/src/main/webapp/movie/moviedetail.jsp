@@ -50,7 +50,7 @@ $(function() {
 				success:function(result){
 					if(result>=0){
 						likeCheck=false
-						$('#likeBtnIcon').attr('src', 'likeoff.png')
+						$('#likeBtnIcon').attr('src', '../movie/likeoff.png')
 						$('#likeCount').text(result)
 					}
 				}
@@ -67,7 +67,7 @@ $(function() {
 				success:function(result){
 					if(result>=0){
 						likeCheck=true
-						$('#likeBtnIcon').attr('src', 'likeon.png')
+						$('#likeBtnIcon').attr('src', '../movie/likeon.png')
 						$('#likeCount').text(result)
 					}
 				}
@@ -159,7 +159,7 @@ function mreviewList(mcno) {
             mreviews.forEach(function(mreview) {
                 html += '<table class="table">';
                 html += '<tr>';
-                html += '<td class="text-left">◑' + mreview.nickname + '(' + mreview.dbday + ')</td>';
+                html += '<td class="text-left">'+mreview.nickname + '(' + mreview.dbday + ')</td>';
                 html += '<td class="text-right">';
                 if (mreview.id === mreview.sessionId) {
                     html += '<span class="btn btn-xs btn-success ups" onclick="mreviewUpdate(' + mreview.mrno + ')">수정</span>&nbsp;';
@@ -196,24 +196,23 @@ function mreviewList(mcno) {
 	<div class="page-content2">
 	<div class="mlbefore">
 	   	<i class="fa fa-chevron-circle-left"></i>
-		  <input type="button" id='backbtn' name="이전 페이지로 이동" value="Back" onclick="javascript:history.back()">
-		  
+		  <input type="button" id='backbtn' name="이전 페이지로 이동" value="뒤로 가기" onclick="javascript:history.back()"> 
 	</div>
 	<div class="container">
 	 <input type="hidden" value="${sessionScope.id}" id="id">
      <input type="hidden" value="${vo.mno}" id="mno">
-	<table class="table">
+	<table class="mdtable">
        <tr>
-        <td width="40%" class="text-center" rowspan="10">
+        <td width="40%" class="text-center" rowspan="16">
           <img src="https://www.kobis.or.kr${vo.mposter }" style="width: 100%">
         </td>
         </tr>
         <tr>
         <td>
-          <h2 id="motitle" class="text-left">&nbsp;${vo.mtitle}&nbsp;&emsp;</h2>         
-          <button id="likeBtn">
+          <h2 id="motitle" class="text-left">&nbsp;${vo.mtitle}&nbsp;&emsp;</h2>      
+            <button id="likeBtn">
 				<img src="" id="likeBtnIcon">
-		  </button>
+		  </button>   
         </td>
         </tr>
         <tr>
@@ -228,24 +227,46 @@ function mreviewList(mcno) {
         <td id="moinfo3"> ${vo.msynop } </td>
        </tr>
        <tr>
-        <td>장르 &nbsp;:&nbsp; ${vo.mgenre} </td>
+        <td id="moinfo4">장르 &nbsp;:&nbsp; ${vo.mgenre} </td>
        </tr>
        <tr>
-        <td>감독 &nbsp;:&nbsp; ${vo.mdirector} </td>
+        <td id="moinfo5">감독 &nbsp;:&nbsp; ${vo.mdirector} </td>
        </tr>
        <c:if test="${vo.mactor!=null }">
        <tr>
-        <td>출연 &nbsp;:&nbsp; ${vo.mactor} </td>
+        <td id="moinfo6">출연 &nbsp;:&nbsp; ${vo.mactor} </td>
        </tr>
        </c:if>
        </table>
-	</div>
+        
+		<div class="moviebook">
+            <h3>  <br></h3>
+                <div class="owl-features owl-carousel">
+                 <c:forEach var="mbvo" items="${mbList }">
+                  <input type="hidden" value="${vo.mno}" id="mno">
+				 <div class="item">
+				 <div class="thumb">
+                <img src="${mbvo.cover }"  alt="">
+                 <div class="hover-effect">
+                      <h6><i class="fa fa-eye"></i><a href="../book/detail.do?bno=${mbvo.bno }"  title="상세정보 확인">상세정보</a></h6>
+                      </div>
+                <h4 id="text2"><span>${mbvo.btitle }</span></h4>
+                <ul>
+                    <li>&nbsp; ${mbvo.price }원</li>
+                </ul>
+            </div>
+        </div>
+          </c:forEach>
+        </div>
+        </div>
+        </div>
+		</div>
 	<div style="height: 20px"></div>
 	    <h2 class="sectiontitle">리뷰</h2>
 	    <table class="table" id="mreview_table">
 	      <tbody>
 	        <tr>
-	          <td id="reply">
+	          <td id="review">
 	          </td>
 	        </tr>
 	      </tbody>
@@ -261,6 +282,7 @@ function mreviewList(mcno) {
 	       </tr>
 	     </table>
 	    </c:if>
+	</div>
 	</div>
 </body>
 </html>

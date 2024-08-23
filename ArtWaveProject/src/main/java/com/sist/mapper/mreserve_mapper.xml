@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.mreserve_mapper">
+<select id="movieTitleData" resultType="MovieVO">
+SELECT mno, mtitle, mposter, mgrade, mstate 
+FROM movie WHERE mstate LIKE '1'
+</select>
+<select id="movieTheaterData" resultType="TheaterVO"  parameterType="string">
+	SELECT tno, tname, tloc 
+	FROM theater WHERE tloc LIKE '%'||#{tloc}||'%' 
+	ORDER BY tno ASC
+</select>
+<resultMap type="com.sist.vo.MscheduleVO" id="moviebookMap">
+ 		 <result property="tdvo.tdno" column="tdno"/>
+ 		 <result property="tvo.tno" column="tno"/>
+ 		 <result property="tdvo.tdname" column="tdname"/>
+ 		 <result property="mvo.mno" column="mno"/>
+</resultMap>
+<select id="mscheduleData" resultType="MscheduleVO" >
+	SELECT msno, movie.mno, theater.tno, theater_detail.tdno, theater_detail.tdname, mstime, TO_CHAR(msdate, 'YYYY.MM.DD') as msday
+	FROM movie_schedule
+	JOIN movie ON movie.mno = movie_schedule.mno
+    JOIN theater ON theater.tno = movie_schedule.tno
+    JOIN theater_detail ON theater_detail.tdno = movie_schedule.tdno
+    WHERE mno=#{mno} AND tdno=#{tdno} AND msday=#{msday}
+    ORDER BY msno ASC
+</select>
+</mapper>

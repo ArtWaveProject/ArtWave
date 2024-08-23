@@ -60,4 +60,16 @@
      SELECT mno, mtitle, mposter, mcount, mtype, mstate, mgenre, mtime, mdirector, mactor, mgrade, mnation, msynop, TO_CHAR(mrdate,'YYYY.MM.DD') as mrday
      FROM movie WHERE mno=#{mno}
     </select>
+    	<resultMap type="com.sist.vo.MovieBookVO" id="moviebookMap">
+ 		 <result property="bvo.bno" column="bno"/>
+ 		 <result property="bvo.btitle" column="btitle"/>
+ 		 <result property="bvo.cover" column="cover"/>
+ 		 <result property="bvo.price" column="price"/>
+ 	</resultMap>
+ 	     <select id="movieBookData"  resultType="MovieBookVO" parameterType="hashmap">
+ 	     		SELECT moviebook.mbno, moviebook.mno, moviebook.bno, book.btitle, book.cover, book.price
+ 	     		FROM moviebook
+ 	     		FULL OUTER JOIN book ON moviebook.bno = book.bno
+ 	     		WHERE moviebook.mno = #{mno}
+ 	     </select>
 </mapper>

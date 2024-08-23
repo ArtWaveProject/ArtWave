@@ -151,7 +151,6 @@ public class MovieDAO {
 		   SqlSession session=null;
 		   try
 		   {
-			  
 			   session=ssf.openSession();
 			   /*
 			   // 조회수 증가 
@@ -246,5 +245,43 @@ public class MovieDAO {
 				   session.close();
 		   }
 		   return total;
+	   }
+	   public static List<MovieBookVO> movieBookData(Map map)
+	   {
+		   List<MovieBookVO> list=new ArrayList<MovieBookVO>();
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("movieBookData", map);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
+	   public static List<TheaterVO> theaterAllData(String tloc)
+	   {
+		   List<TheaterVO> list=new ArrayList< TheaterVO>();
+		   SqlSession session=null; //Connection
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("theaterAllData", tloc);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
 	   }
 }
