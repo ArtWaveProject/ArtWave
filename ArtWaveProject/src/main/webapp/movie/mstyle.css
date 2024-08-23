@@ -97,6 +97,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0px;
   margin-bottom: 0px;
   font-weight: 700;
+  color: black;
 }
 
 ul {
@@ -405,9 +406,6 @@ Header Style
 }
 
 .header-area .main-nav .logo {
-  border-right: 1px solid #27292a;
-  flex-basis: 25%;
-  margin-right: 5%;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -2103,18 +2101,196 @@ body {
 	  font-weight: bold;
 	  color:rgb(64,0,64);
   }
-  #jjimBtn{
-	  display:inline-block;
-	  font-size: 25px;
-	  font-weight: bold;
-	  color:rgb(64, 0, 64);
-	  background-color: white;
-	  border-radius:15px;
-	  cursor: pointer;
-  }
+ 
   .mlbefore{
 	  height:40px;
   }
-  #likeBtnactive{
-	  color:red;
+  #likeBtn{
+	  background: none;
+	  border: none;
   }
+  #likeBtnIcon{
+	 display: inline-block;
+	 width: 30px;
+	 height: 30px;
+	 border-radius:10px;
+	 cursor: pointer;
+	 border-style: hidden;
+	 background: none;
+  }
+.mdtable{
+	border-style: hidden;
+	background-color: white;
+	 border-radius:10px;
+	 padding: 10px 10px;
+	 margin-bottom: 10px;
+}
+.moviebook .item{
+	width: 200px;
+	height: 300px;
+}
+.y-appointment-wrapper {
+   margin-top: 160px;
+    padding-left:10%;
+    padding-right: 10%;
+}
+.field-set-reset{
+    padding: 0;
+    border: 0;
+    margin: 0;
+    min-width: 0;
+}
+fieldset legend.title {
+    text-align:center;
+    font-size:36px;
+    margin-bottom:50px;
+}
+.scroll-btn {
+    width:3%;
+    height:140px;
+    display:inline-block;
+    position:relative;
+    cursor:pointer;
+}
+.scroll-btn.left{
+	margin-left: 220px;
+    margin-right:2%;
+}
+.scroll-btn.right{
+    margin-left: 50px;
+}
+.scroll-img-wrap {
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.date-pick {
+    width:100%;
+    height:140px;
+    margin-bottom:80px;
+}
+.date-pick .date-wrapper {
+    width:58%;
+    display:inline-block;
+    height:130px;
+    vertical-align:top;
+    text-align:center;
+    margin-left: 10px;
+    margin-right: 0;
+}
+.date-pick .date-scroll-container {
+    white-space:nowrap;
+    overflow-x:scroll;
+    height:150px;
+}
+.date-pick .date-scroll-container::-webkit-scrollbar {
+    display:none;
+}
+.date-wrapper input[type="radio"] {
+    box-sizing: border-box;
+    padding:0;
+    border: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+}
+.date-wrapper .timecell {
+    position: relative;
+    width:125px;
+    display:inline-block;
+    box-sizing:border-box;
+    height:120px;
+    cursor:pointer;
+}
+.date-wrapper .date-item{
+    display:inline-block;
+    border:1px solid #eee;
+    padding:10px 0;
+    width:100px;
+}
+/*.timecell .fill-box {
+    border:1px solid #eee;
+    z-index:-1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}*/
+.timecell.selected .date-item{
+    border-color:#e6b6a4;
+    z-index:1;
+}
+.timecell .time-day,
+.timecell .time-date,
+.timecell .time-month,
+.timecell .time-available {
+    display:block;
+}
+
+.time-day {
+    font-size:15px;
+    line-height: 22px;
+}
+.time-date {
+    color:black;
+    font-size:40px;
+    line-height: 48px;
+}
+.selected .time-date{
+    color:#e3b6a4;
+}
+.time-month {
+    font-size:15px;
+    line-height: 22px;
+    color:#aaa;
+}
+
+.time-slot .time-slice2 span{
+    display:inline-block;
+    width:110px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+    border:1px solid #ccc;
+    font-size:15px;
+    font-weight:300;
+    margin: 10px 30px 10px 10px;
+    cursor:pointer;
+}
+.time-slice.selected{
+    color:#e3b6a4;
+    border: 1px solid #e3b6a4;
+}
+@media all and (min-width : 300px) and (max-width : 768px){
+    .y-appointment-wrapper{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    legend.title {
+        font-size:20px;
+    }
+    .date-pick .date-wrapper{
+        width:100%;
+    }
+    .date-wrapper .timecell {
+        width:33%;
+    }
+    .scroll-btn {
+        display:none;
+    }
+    .time-slot {
+        width:100% !important;
+        margin-bottom:15px;
+    }
+    .time-slot .slot-heading{
+        border:1px solid #ccc;
+    }
+    .time-slot .time-slice{
+        width:100% !important;
+    }
+}
