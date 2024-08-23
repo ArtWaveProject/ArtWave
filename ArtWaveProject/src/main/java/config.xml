@@ -19,6 +19,10 @@
 		<typeAlias type="com.sist.vo.MreviewVO" alias="MreviewVO"/>
 		<typeAlias type="com.sist.vo.BoardVO" alias="BoardVO"/>
 		<typeAlias type="com.sist.vo.ReplyVO" alias="ReplyVO"/>
+		<typeAlias type="com.sist.vo.MovieBookVO" alias="MovieBookVO"/>
+		<typeAlias type="com.sist.vo.MscheduleVO" alias="MscheduleVO"/>
+		<typeAlias type="com.sist.vo.TheaterVO" alias="TheaterVO"/>
+		<typeAlias type="com.sist.vo.TheaterDetailVO" alias="TheaterDetailVO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -42,5 +46,7 @@
 		<mapper resource="com/sist/mapper/mreview_mapper.xml"/>
 		<mapper resource="com/sist/mapper/board_mapper.xml"/>
 		<mapper resource="com/sist/mapper/like_mapper.xml"/>
+		<mapper resource="com/sist/mapper/moviebook_mapper.xml"/>
+		<mapper resource="com/sist/mapper/mreserve_mapper.xml"/>
 	</mappers>
 </configuration>
