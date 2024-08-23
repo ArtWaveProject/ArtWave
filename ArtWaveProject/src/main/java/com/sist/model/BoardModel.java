@@ -1,5 +1,6 @@
 package com.sist.model;
 
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,8 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import com.sist.dao.BoardDAO;
 import com.sist.vo.BoardVO;
+import com.sist.vo.ReplyVO;
 
 import controller.RequestMapping;
 
@@ -134,7 +139,45 @@ public class BoardModel {
 		String nick=(String)session.getAttribute("nickname");
 		String content= request.getParameter("content");
 		String fbno=request.getParameter("fbno");
-		String root=request.getParameter("root");
 		String depth=request.getParameter("depth");
+		String root=request.getParameter("root");
+		ReplyVO vo=new ReplyVO();
+		vo.setId(id);
+		vo.setNick(nick);
+		vo.setContent(content);
+		vo.setFbno(Integer.parseInt(fbno));
+		vo.setDepth(Integer.parseInt(depth));
+		if(root==null)
+			BoardDAO.replyInsert(vo);
+		else {
+			vo.setRoot(Integer.parseInt(root));
+			BoardDAO.reReplyInsert(vo);
+		}
+	}
+	@RequestMapping("board/replyList.do")
+	public void boardReplyList(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		String fbno=request.getParameter("fbno");
+		List<ReplyVO> list=BoardDAO.replyList(Integer.parseInt(fbno));
+		JSONArray arr=new JSONArray();
+		for(ReplyVO vo:list) {
+			JSONObject obj=new JSONObject();
+			obj.put("sessionId", id);
+			obj.put("id", vo.getId());
+			obj.put("frno", vo.getFrno());
+			obj.put("fbno", vo.getFbno());
+			obj.put("content", vo.getContent());
+			obj.put("dbday", vo.getDbday());
+			obj.put("root", vo.getRoot());
+			obj.put("depth", vo.getDepth());
+			obj.put("nick", vo.getNick());
+			arr.add(obj);
+		}
+		try {
+		  response.setContentType("text/plain;charset=UTF-8");
+			PrintWriter out=response.getWriter();
+			out.write(arr.toJSONString());
+		} catch (Exception e) {}
 	}
 }
