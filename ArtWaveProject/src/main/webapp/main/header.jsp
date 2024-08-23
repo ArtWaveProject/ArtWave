@@ -90,7 +90,7 @@ nav {
 						<!-- ***** Logo End ***** -->
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
-							<li><a href="index.html" class="active">Home</a></li>
+							<li><a href="index.html" class="active">홈</a></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="../movie/moviemain.do"> 영화<span
 									class="caret"></span>
@@ -101,7 +101,7 @@ nav {
 									<li class="submenu"><a href="#">스토어</a></li>
 								</ul></li>
 							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="../book/list.do"> Books<span
+								data-toggle="dropdown" href="../book/list.do"> 도서<span
 									class="caret"></span></a>
 								<ul class="dropmenu">
 									<li class="submenu" style="text-align: center;"><a
@@ -111,7 +111,7 @@ nav {
 									</li>
 								</ul></li>
 							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="../music/musicHome.do"> Music<span
+								data-toggle="dropdown" href="../music/musicHome.do"> 음악<span
 									class="caret"></span>
 							</a>
 								<ul class="dropmenu">
@@ -134,11 +134,11 @@ nav {
 									<li class="submenu"><a href="../music/musicMvList.do">문의</a></li>
 								</ul></li>
 							<c:if test="${sessionScope.id!=null }">
-								<c:if test="${sessionScope.admin=='0' }">
+<%-- 								<c:if test="${sessionScope.admin=='0' }">
 									<li><a href="../mypage/mypage_main.do"> Profile <img
 											src="../assets/images/profile-header.jpg" alt="">
 									</a></li>
-								</c:if>
+								</c:if> --%>
 								
 								<!-- admin 페이지 -->
 								<c:if test="${sessionScope.admin=='1' }">
@@ -153,8 +153,8 @@ nav {
 						<ul class="nav" style="width: 120px;"></ul>
 						<c:if test="${sessionScope.id==null }">
 							<ul class="nav">
-								<li><a href="#" id="info">SIGN UP</a></li>
-								<li><a href="../member/login.do">SIGN IN</a></li>
+								<li><a href="#" id="info">회원가입</a></li>
+								<li><a href="../member/login.do">로그인</a></li>
 							</ul>
 						</c:if>
 						<c:if test="${sessionScope.id!=null }">

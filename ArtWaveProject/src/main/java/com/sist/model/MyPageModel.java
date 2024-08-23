@@ -61,34 +61,54 @@ public class MyPageModel {
        String tlikeIndexStr = request.getParameter("tlike");
        if (tlikeIndexStr == null) tlikeIndexStr = "1";
        
-       System.out.println(tlikeIndexStr);
        
        int tlike = Integer.parseInt(tlikeIndexStr);  // 문자열을 정수로 변환
        String selectedTlike = liketype[tlike];  // 배열 인덱스를 사용하여 값 선택
 
+       
        int curPage = Integer.parseInt(page);
        int rowSize = 50;
        int start = (curPage - 1) * rowSize + 1;
        int end = start + rowSize - 1;
-
+       
+       HttpSession session = request.getSession();
+       String id = (String)session.getAttribute("id");  
+       String type = (String)session.getAttribute("tlike");
+       
+       
        Map map = new HashMap();
        map.put("start", start);
        map.put("end", end);
        map.put("tlike", selectedTlike);  // 배열에서 선택한 값 사용
+       map.put("id", id);
+//       map.put("type", type);
        
        List<LikeVO> mulike = LikeDAO.mulikeListData(map);
+       List<LikeVO> molike = LikeDAO.molikeListData(map);
+       List<LikeVO> bolike = LikeDAO.bolikeListData(map);
+       List<LikeVO> allike = LikeDAO.allikeListData(map);
        
-	   System.out.println(mulike+"model mulike");
-		
+//       LikeDAO.likecancel(Integer.parseInt("tno"));
        
        
        int totalPage = LikeDAO.likeTotalPage(selectedTlike);  // 배열에서 선택한 값 사용
        int startPage = (curPage - 1) / 10 * 10 + 1;
        int endPage = startPage + 10 - 1;
        
-       System.out.println(tlike);
+       System.out.println(mulike+"model mulike");
+       System.out.println(tlikeIndexStr+"str");
+       System.out.println(tlike+"tlike");
        
-       request.setAttribute("mulike", mulike);
+       if(tlike==1) {
+    	   request.setAttribute("allike", allike);
+       }else if(tlike==2) {
+    	   request.setAttribute("molike", molike);
+       }else if(tlike==3) {
+    	   request.setAttribute("bolike", bolike);
+       }else if(tlike==4) {
+    	   request.setAttribute("mulike", mulike);    	   
+       }
+       
        request.setAttribute("tlike", tlikeIndexStr);  // 배열에서 선택한 값 사용
        request.setAttribute("curPage", curPage);
        request.setAttribute("startPage", startPage);

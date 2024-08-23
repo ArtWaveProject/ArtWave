@@ -198,23 +198,107 @@
 			</table>
 			<table class="table listChart" id="middle">
 				<tr>
+					<c:if test="${tlike==1 }">
+					<th width="10%" class="text-center">번호</th>
+					<th width="15%" class="text-center"></th>
+					<th width="40%" class="text-center">제목</th>
+					<th width="20%" class="text-center">분류</th>
+					<th width="15%" class="text-center">취소</th>
+					</c:if>
+					<c:if test="${tlike==2 }">
+					<th width="10%" class="text-center">번호</th>
+					<th width="15%" class="text-center"></th>
+					<th width="40%" class="text-center">제목</th>
+					<th width="20%" class="text-center">장르</th>
+					<th width="15%" class="text-center">취소</th>
+					</c:if>
+					<c:if test="${tlike==3 }">
+					<th width="10%" class="text-center">번호</th>
+					<th width="15%" class="text-center"></th>
+					<th width="40%" class="text-center">제목</th>
+					<th width="20%" class="text-center">작가</th>
+					<th width="15%" class="text-center">취소</th>
+					</c:if>
+					<c:if test="${tlike==4 }">
 					<th width="10%" class="text-center">번호</th>
 					<th width="15%" class="text-center"></th>
 					<th width="40%" class="text-center">제목</th>
 					<th width="20%" class="text-center">가수</th>
 					<th width="15%" class="text-center">취소</th>
+					</c:if>
 				</tr>
-				<c:forEach var="mulike" items="${mulike}" varStatus="i">
+				<c:if test="${tlike==1 }">
+				<c:forEach var="al" items="${allike}" varStatus="i">
+					<tr style="vertical-align: middle; height: 50px;">
+						<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
+						<c:choose>
+						<c:when test="${al.mulikevo.poster!=null }">
+						<td width="15%" class="text-center">
+						<a href="../music/musicDetail.do?mno=${al.tno}">
+							<img src="${al.mulikevo.poster}" class="listImg">
+						</a>	
+						</td>
+						
+						<td width="40%">
+							<span class="listTitle" ><a href="../music/musicDetail.do?mno=${al.tno}">${al.mulikevo.title}</a></span>
+						</td>
+						
+						<td width="20%">
+							<span class="listArtist">음악</span>
+						</td>
+						
+						</c:when>
+						<c:when test="${al.molikevo.mposter!=null }">
+						<td width="15%" class="text-center">
+						<a href="../movie/moviedetail.do?mno=${al.tno}">
+							<img src="https://www.kobis.or.kr${al.molikevo.mposter}" class="listImg">
+						</a>	
+						</td>
+						<td width="40%">
+							<span class="listTitle" ><a href="../movie/moviedetail.do?mno=${al.tno}">${al.molikevo.mtitle}</a></span>
+						</td>
+						<td width="20%">
+							<span class="listArtist">영화</span>
+						</td>
+						</c:when>
+						<c:when test="${al.bolikevo.cover!=null }">
+						<td width="15%" class="text-center">
+						<a href="../book/detail.do?bno=${bl.tno}">
+							<img src="${al.bolikevo.cover}" class="listImg">
+						</a>
+						</td>
+						<td width="40%">
+							<span class="listTitle" ><a href="../book/detail.do?bno=${bl.tno}">${bl.bolikevo.btitle}</a></span>
+						</td>
+						<td width="20%">
+							<span class="listArtist">도서</span>
+						</td>
+						</c:when>
+						</c:choose>
+
+
+						<td width="15%" >
+							<button id="likeBtn">
+								<img src="like_on.png" id="likeBtnicon">
+							</button>
+						</td>
+					</tr>
+				</c:forEach>
+				</c:if>
+				<c:if test="${tlike==2 }">
+				<c:forEach var="ml" items="${molike}" varStatus="i">
 					<tr style="vertical-align: middle; height: 50px;">
 						<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
 						<td width="15%" class="text-center">
-							<img src="${mulike.mulikevo.poster}" class="listImg">
+						<a href="../movie/moviedetail.do?mno=${ml.tno}">
+							<img src="https://www.kobis.or.kr${ml.molikevo.mposter}" class="listImg">
+						</a>
 						</td>
 						<td width="40%">
-							<span class="listTitle"><a href="../music/musicDetail.do?mno=${mulike.tno}">${mulike.mulikevo.title}</a></span>
+							<span class="listTitle" ><a href="../movie/moviedetail.do?mno=${ml.tno}">${ml.molikevo.mtitle}</a></span>
 						</td>
 						<td width="20%">
-							<span class="listArtist"><a href="../music/artistDetail.do?ano=${mulike.mulikevo.ano}">${mulike.artlikevo.aname}</a></span>
+							<span class="listArtist">${ml.molikevo.mgenre}</span>
 						</td>
 						<td width="15%" >
 							<button id="likeBtn">
@@ -223,6 +307,55 @@
 						</td>
 					</tr>
 				</c:forEach>
+				</c:if>
+				<c:if test="${tlike==3 }">
+				<c:forEach var="bl" items="${bolike}" varStatus="i">
+					<tr style="vertical-align: middle; height: 50px;">
+						<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
+						<td width="15%" class="text-center">
+						<a href="../book/detail.do?bno=${bl.tno}">
+							<img src="${bl.bolikevo.cover}" class="listImg">
+						</a>
+						</td>
+						<td width="40%">
+							<span class="listTitle" ><a href="../book/detail.do?bno=${bl.tno}">${bl.bolikevo.btitle}</a></span>
+						</td>
+						<td width="20%">
+							<span class="listArtist">${bl.bolikevo.writer}</span>
+						</td>
+						<td width="15%" >
+							<button id="likeBtn">
+								<img src="like_on.png" id="likeBtnicon">
+							</button>
+						</td>
+					</tr>
+				</c:forEach>
+				</c:if>
+				<c:if test="${tlike==4 }">
+				<c:forEach var="mul" items="${mulike}" varStatus="i">
+					<tr style="vertical-align: middle; height: 50px;">
+						<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
+						<td width="15%" class="text-center">
+						<a href="../music/musicDetail.do?mno=${mul.tno}">
+							<img src="${mul.mulikevo.poster}" class="listImg">
+						</a>
+						</td>
+						<td width="40%">
+							<span class="listTitle" ><a href="../music/musicDetail.do?mno=${mul.tno}">${mul.mulikevo.title}</a></span>
+						</td>
+						<td width="20%">
+							<span class="listArtist"><a href="../music/artistDetail.do?ano=${mul.mulikevo.ano}">${mul.artlikevo.aname}</a></span>
+						</td>
+						
+						<td width="15%" >
+							<button id="likeBtn">
+								<img src="like_on.png" id="likeBtnicon">
+							</button>
+						</td>
+						
+					</tr>
+				</c:forEach>
+				</c:if>
 			</table>
 
 		</div>

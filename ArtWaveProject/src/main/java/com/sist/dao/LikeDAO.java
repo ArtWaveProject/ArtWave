@@ -119,6 +119,7 @@ public class LikeDAO {
 		}
 		return list;
 	}
+	
 	public static List<LikeVO> mulikeListData(Map map){
 		List<LikeVO> mulike = new ArrayList<LikeVO>();
 		SqlSession session = null;
@@ -134,6 +135,65 @@ public class LikeDAO {
 		return mulike; 
 
 	}
+	public static List<LikeVO> molikeListData(Map map){
+		List<LikeVO> molike = new ArrayList<LikeVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			molike = session.selectList("molikeListData", map);
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		System.out.println(molike+"dao molike");
+		return molike; 
+		
+	}
+	public static List<LikeVO> bolikeListData(Map map){
+		List<LikeVO> bolike = new ArrayList<LikeVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			bolike = session.selectList("bolikeListData", map);
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		System.out.println(bolike+"dao bolike");
+		return bolike; 
+		
+	}
+	
+	public static List<LikeVO> allikeListData(Map map){
+		List<LikeVO> allike = new ArrayList<LikeVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			allike = session.selectList("allikeListData", map);
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		System.out.println(allike+"dao allike");
+		return allike; 
+		
+	}
+//	public static void likecancel(int tno) {
+//		SqlSession session = null;
+//		try {
+//			session = ssf.openSession();
+//			session.delete("likecancel", tno);
+//			session.commit();
+//		} catch (Exception e) {
+//		} finally {
+//			if (session != null)
+//				session.close();
+//		}
+//	}
+	
 	
 }
 

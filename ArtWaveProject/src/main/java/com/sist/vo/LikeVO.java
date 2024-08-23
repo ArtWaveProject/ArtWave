@@ -11,6 +11,7 @@ public class LikeVO {
 	private MusicVO mulikevo = new MusicVO();
 	private ArtistVO artlikevo = new ArtistVO();
 	private MovieVO molikevo = new MovieVO();
+	private BookVO bolikevo = new BookVO();
 	private MemberVO memvo = new MemberVO();
 	
 	public MemberVO getMemvo() {
@@ -31,7 +32,6 @@ public class LikeVO {
 	public void setBolikevo(BookVO bolikevo) {
 		this.bolikevo = bolikevo;
 	}
-	private BookVO bolikevo = new BookVO();
 	public ArtistVO getArtlikevo() {
 		return artlikevo;
 	}
