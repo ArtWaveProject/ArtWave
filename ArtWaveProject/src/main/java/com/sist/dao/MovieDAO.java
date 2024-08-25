@@ -303,14 +303,14 @@ public class MovieDAO {
 		   }
 		   return list;
 	   }
-	   public static List<String> movieTlocData(int tno)
+	   public static List<String> movieTlocData(List<Integer> tnolist)
 	   {
 		   List<String> list=new ArrayList<String>();
 		   SqlSession session=null; //Connection
 		   try
 		   {
 			   session=ssf.openSession();
-			   list=session.selectList("movieTlocData", tno);
+			   list=session.selectList("movieTlocData", tnolist);
 		   }catch(Exception ex)
 		   {
 			   ex.printStackTrace();
@@ -342,14 +342,14 @@ public class MovieDAO {
 		   return list;
 	   }
 	   
-	   public static List<Integer> movieTnoData2(Map map)
+	   public static int movieTnoData2(Map map)
 	   {
-		   List<Integer> list= new ArrayList<Integer>();
+		   int tnonum=0;
 		   SqlSession session=null; //Connection
 		   try
 		   {
 			   session=ssf.openSession();
-			   list=session.selectList("movieTnoData2", map);
+			   tnonum=session.selectOne("movieTnoData2", map);
 		   }catch(Exception ex)
 		   {
 			   ex.printStackTrace();
@@ -359,7 +359,7 @@ public class MovieDAO {
 			   if(session!=null)
 				   session.close();
 		   }
-		   return list;
+		   return tnonum;
 	   }
 	   public static List<Integer> movieTdnoData(int tno)
 	   {

@@ -9,7 +9,7 @@
  		 <result property="bvo.price" column="price"/>
  	</resultMap>
  	     <select id="movieBookData"  resultType="MovieBookVO">
- 	     		SELECT mbno, moviebook.mno, movie.mno, moviebook.bno, book.btitle, book.cover, book.price
+ 	     		SELECT moviebook.mbno, moviebook.mno, movie.mno, moviebook.bno, book.btitle, book.cover, book.sale_price
  	     		FROM moviebook, movie, book
  	     		WHERE moviebook.mno = movie.mno
  	     </select>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,18 +9,23 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../movie/mstyle.css">
 <link rel="stylesheet" href="../assets/css/fontawesome.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+
 $(function() {
-	let listCheck=false
+	let ratingCheck = false
 	let likeCheck=false
 	let id=$('#id').val()
+	let mno = $('#mno').val()
+	
+	reviewlist()
+	
 	if(id.length>0){
-		console.log(id)
 		$.ajax({
 			type:'post',
 			url:'../like/likeCheck.do',
 			data:{
-				'tno':${vo.mno},
+				'tno':mno,
 				'type':4
 			},
 			success:function(result){
@@ -38,7 +44,6 @@ $(function() {
 		$('#likeBtn').css('display', 'none')
 	}
 	$('#likeBtn').click(function() {
-		let mno=$('#mno').val()
 		if(likeCheck===true){
 			$.ajax({
 				type:'post',
@@ -50,7 +55,7 @@ $(function() {
 				success:function(result){
 					if(result>=0){
 						likeCheck=false
-						$('#likeBtnIcon').attr('src', '../movie/likeoff.png')
+						$('#likeBtnIcon').attr('src', 'likeoff.png')
 						$('#likeCount').text(result)
 					}
 				}
@@ -67,129 +72,212 @@ $(function() {
 				success:function(result){
 					if(result>=0){
 						likeCheck=true
-						$('#likeBtnIcon').attr('src', '../movie/likeon.png')
+						$('#likeBtnIcon').attr('src', 'likeon.png')
 						$('#likeCount').text(result)
 					}
 				}
 			})
 		}
 	})
-	
-  $('#writeBtn').on('click', function() {
-    const mrcontent = $('#mrcontent').val().trim(); // 입력된 댓글 텍스트
-    if (msg === "") {
-        $('#mrcontent').focus(); // 댓글이 비어 있을 경우 포커스
-        return;
-    }
-    const mno = $(this).data("mcno"); // 영화 번호
-
-    $.ajax({
-        type: 'post',
-        url: '../movie/mreviewinsert.do',
-        data: { 'mcno': mno, "mrcontent": mrcontent },
-        success: function(result) {
-            if (result === 'OK') {
-                mreviewList(mno); // 댓글 작성 후 댓글 목록 업데이트
-            } else {
-                alert(result); // 실패 시 경고창
-            }
-        },
-        error: function(request, status, error) {
-            console.log(error); // 오류 발생 시 콘솔에 로그
-        }
-    })
 })
+	 $('.rating').change(function() {
+		    ratingCheck=true	
+				let rating=$('input[name="rating"]:checked').val()
+				rating=6-rating
+		    console.log(rating)
+			})
+	$(function() {
+		    let avgRating=parseFloat('${avg}')
 
-// 삭제
-window.mreviewDelete = function(mrno, mcno) {
-    $.ajax({
-        type: 'post',
-        url: '../movie/mreviewdelete.do',
-        data: { "mrno": mrno },
-        success: function(result) {
-            if (result === "OK") {
-                mreviewList(mcno); // 댓글 삭제 후 댓글 목록 업데이트
-            } else {
-                alert(result); // 실패 시 경고창
-            }
-        },
-        error: function(request, status, error) {
-            console.log(error); // 오류 발생 시 콘솔에 로그
-        }
-    })
-}
+		    let star= ''
+		    for (let i=1;i<=5;i++) {
+		        if (i<=avgRating) {
+		            star+='<img src="star.png" style="width:20px;height:20px;">'
+		        } else {
+		            star+='<img src="nostar.png" style="width:20px;height:20px;">'
+		        }
+		    }
+		    $('#avgstar').html(star)
+		    $('#avgS').html(star)
+		    
+		})
+		$('.rating').change(function() {
+		    ratingCheck=true	
+				let rating=$('input[name="rating"]:checked').val()
+				rating=6-rating
+		    console.log(rating)
+			})
+		$(function() {
+		    let avgRating = parseFloat('${avg}')
+		    let roundRating = Math.round(avgRating)
 
-window.mreviewUpdate = function(mrno) {
-    $('.updates').hide(); // 모든 수정 영역 숨기기
-    $('#m' + mrno).show(); // 선택한 댓글의 수정 영역 표시
-}
+		    let star= ''
+		    for (let i=1;i<=5;i++) {
+		        if (i<=roundRating) {
+		            star+='<img src="star.png" style="width:35px;height:35px;">'
+		        } else {
+		            star+='<img src="nostar.png" style="width:35px;height:35px;">'
+		        }
+		    }
+		    $('#avgS').html(star)
+		    
+		})
+			$('#reviewBtn').click(function(){
+				let rating=0
+				if(ratingCheck){
+				rating=$('input[name="rating"]:checked').val()
+				rating=6-rating
+		   		console.log(rating)
+					
+				}
+				else{
+					alert('평점을 선택해주세요')
+					return
+				}
+				let content=$('#content').val()
+				if(content.trim()===''){
+					alert('리뷰를 입력해주세요')
+					$('#content').focus()
+					return
+				}
+				// 리뷰 작성 가능 여부 확인
+		        $.ajax({
+		            type: 'post',
+		            url: '../review/checkedReview.do',
+		            data: {
+		                'tno': mno,
+		                'userId': id
+		            },
+		            success: function(result) {
+		                if (result==='NO_REVIEW') {
+		                    // 리뷰 작성
+		                    $.ajax({
+		                        type: 'post',
+		                        url: '../review/insert.do',
+		                        data: {
+		                            'tno': mno,
+		                            'trating': rating,
+		                            'tcontent': content,
+		                            'type': 1
+		                        },
+		                        success: function() {
+		                            let count = $('#rcount').text()
+		                            count = parseInt(count)
+		                            $('#content').val('')
+		                            $('input[name="rating"]').prop('checked', false)
+		                            reviewlist()
+		                            $('#rcount').text('')
+		                            $('#rcount').text(count+1)
+		                        }
+		                    })
+		                } else {
+		                    alert('이미 작성하신 리뷰가 있습니다.')
+		                }
+		            }
+		        })
+		    })
+		
+  function reviewlist(){
+			$.ajax({
+				type:'post',
+				url:'../review/list.do',
+				data:{
+					'tno':mno,
+					'type':1
+				},
+				success:function(result){
+					let json=JSON.parse(result)
+					html=''
+						json.map(function(reply) {
+							let stars=''
+							for(let i=1;i<=reply.trating;i++){
+								stars+='<img src="star.png" style="width:15px;height:15px;">'
+							}
+							for(let i=1;i<=5-reply.trating;i++){
+								stars+='<img src="nostar.png" style="width:15px;height:15px;">'
+							}
+					html+='<tr>'
+					html+='<td>'
+					html+='<div class="review-list">'
+					html+='<div>'
+					html+='<span class="nick-rate">'+reply.nickname+'</span>'
+					if(reply.id===reply.sessionId){
+						html+='<input type="button" class="xBtn" value="X" onclick="reviewdelete('+reply.trno+')">'
+						}
+					html+='<br>'
+				  html+=stars+'<br>'
+					html+='<span class="date">'+reply.dbday+'&nbsp;</span>'
+					if(reply.sessionId.length>2){
+					html+='<input type="button" class="rBtn" value="|&nbsp&nbsp;신고">'
+					}
+					html+='<div>'
+					html+='<div class="r-content">'+reply.tcontent+'</div>'
+					html+='</div>'
+					html+='</div>'
+					html+='</td>'
+					html+='</tr>'
+						})
+						$('#review').html(html)
+				}
+			})
+		}
+	function reviewdelete(trno){
+			$.ajax({
+				type:'post',
+				url:'../review/delete.do',
+				data:{
+					'trno':trno,
+				},
+				success:function(result){
+					reviewlist()
+					let count=$('#rcount').text()
+					count=parseInt(count)
+					$('#rcount').text(count-1)
+					}
+				})
+		}
+		document.addEventListener('DOMContentLoaded', function() {
+		    const stars = document.querySelectorAll('.star-rating input[type="radio"]');
+		    stars.forEach(star => {
+		        star.addEventListener('change', function() {
+		            updateStars(this);
+		        });
+		    });
 
-window.mreviewUpdateData = function(mrno, mcno) {
-    const mrcontent = $('#mrcontent' + mrno).val().trim(); // 입력된 댓글 텍스트
-    if (mrcontent === "") {
-        $('#mrcontent' + mrno).focus(); // 댓글이 비어 있을 경우 포커스
-        return;
-    }
-    $.ajax({
-        type: 'post',
-        url: '../movie/mreviewupdate.do',
-        data: { "mrno":mrno, "mrcontent": mrcontent },
-        success: function(result) {
-            if (result === 'OK') {
-                mreviewList(mcno); // 댓글 수정 후 댓글 목록 업데이트
-            } else {
-                alert(result); // 실패 시 경고창
-            }
-            $('#m' + mrno).hide(); // 수정 영역 숨기기
-        },
-        error: function(request, status, error) {
-            console.log(error); // 오류 발생 시 콘솔에 로그
-        }
-    })
-}
-function mreviewList(mcno) {
-    $.ajax({
-        type: 'post',
-        url: '../movie/mreviewlist.do',
-        data: { "mcno": mcno },
-        success: function(json) {
-            const mreviews = JSON.parse(json); // JSON 문자열을 객체로 변환
-            let html = '';
+		    function updateStars(selectedStar) {
+		        const allStars = document.querySelectorAll('.star-rating label');
+		        allStars.forEach(star => {
+		            star.style.color = '#ddd'; 
+		        });
 
-            mreviews.forEach(function(mreview) {
-                html += '<table class="table">';
-                html += '<tr>';
-                html += '<td class="text-left">'+mreview.nickname + '(' + mreview.dbday + ')</td>';
-                html += '<td class="text-right">';
-                if (mreview.id === mreview.sessionId) {
-                    html += '<span class="btn btn-xs btn-success ups" onclick="mreviewUpdate(' + mreview.mrno + ')">수정</span>&nbsp;';
-                    html += '<input type=button class="btn btn-xs btn-warning" value="삭제" onclick="mreviewDelete(' + mreview.mrno + ',' + mreview.mcno + ')">';
-                }
-                html += '</td>';
-                html += '</tr>';
-                html += '<tr>';
-                html += '<td colspan="2">';
-                html += '<pre style="white-space:pre-wrap;border:none;background:white">' + mreview.mrcontent + '</pre>';
-                html += '</td>';
-                html += '</tr>';
-                html += '<tr class="updates" id="m' + mreview.mrno + '" style="display:none">';
-                html += '<td>';
-                html += '<textarea rows="4" cols="70" id="mrcontent' + mreview.mrno + '" style="float: left">' + mreview.mrcontent + '</textarea>';
-                html += '<input type=button value="댓글수정" onclick="replyUpdateData(' + mreview.mrno + ',' + mreview.mcno + ')" style="width: 100px;height: 85px;background-color: rgb(64,0,64);color:white">';
-                html += '</td>';
-                html += '</tr>';
-                html += '</table>';
-            })
+		        const selectedValue = selectedStar.value;
+		        allStars.forEach(star => {
+		            const starValue = star.getAttribute('for').replace('star', '');
+		            if (parseInt(starValue) >= parseInt(selectedValue)) {
+		                star.style.color = '#779BC9'; 
+		            }
+		        });
+		    }
+		    
+		});
+		$(document).ready(function() {
+		    var acountInput = $('#account');
+		    var incrementButton = $('#increment');
+		    var decrementButton = $('#decrement');
 
-            $('#mreview').html(html); // 댓글 목록을 업데이트
-            $('#mrcontent').val(""); // 댓글 입력란 초기화
-        },
-        error: function(request, status, error) {
-            console.log(error); // 오류 발생 시 콘솔에 로그
-        }
-    })
-}
-})
+		    incrementButton.click(function() {
+		        var value = parseInt(acountInput.val());
+		        acountInput.val(value + 1);
+		    });
+
+		    decrementButton.click(function() {
+		        var value = parseInt(acountInput.val());
+		        if (value > 1) {
+		        	acountInput.val(value - 1)
+		        }
+		    })
+		    
+		})
 </script>
 </head>
 <body>
@@ -209,10 +297,7 @@ function mreviewList(mcno) {
         </tr>
         <tr>
         <td>
-          <h2 id="motitle" class="text-left">&nbsp;${vo.mtitle}&nbsp;&emsp;</h2>      
-            <button id="likeBtn">
-				<img src="" id="likeBtnIcon">
-		  </button>   
+          <h2 id="motitle" class="text-left">&nbsp;${vo.mtitle}&nbsp;&emsp;</h2>        
         </td>
         </tr>
         <tr>
@@ -237,8 +322,12 @@ function mreviewList(mcno) {
         <td id="moinfo6">출연 &nbsp;:&nbsp; ${vo.mactor} </td>
        </tr>
        </c:if>
+       <tr>
+       <td><button id="likeBtn">
+				<img src="" id="likeBtnIcon"><h4>${vo.likecount }</h4></button> 
+       </td>
+       </tr>
        </table>
-        
 		<div class="moviebook">
             <h3>  <br></h3>
                 <div class="owl-features owl-carousel">
@@ -252,37 +341,59 @@ function mreviewList(mcno) {
                       </div>
                 <h4 id="text2"><span>${mbvo.btitle }</span></h4>
                 <ul>
-                    <li>&nbsp; ${mbvo.price }원</li>
+                    <li>&nbsp; ${mbvo.sale_price }원</li>
                 </ul>
             </div>
         </div>
           </c:forEach>
         </div>
         </div>
-        </div>
+ 
+	<div class="heading-section" style="padding: 0 0 15px 0;">
+			<span style="font-size: 25px; font-weight: bold;"><span id="rcount" style="font-size:30px;color:  #7400e8">${rcount}</span> 명의&nbsp;회원이&nbsp;평가한&nbsp;이&nbsp;영화의&nbsp;평균별점</span>
+				</div>
+				<div class="avgRating">
+				<span id="avgS" style="font-weight: bold;"></span>
+				<p id="avgN" style="font-size: 30px; font-weight: bold;">${avg}</p><p style="font-size: 25px; font-weight: bold;">&nbsp;/ 5.0</p>
+				</div>
+				<div id="review-form" class="review-form" style="margin-top: 40px;">
+						<div class="heading-section" style="padding: 0 0 15px 0;">
+							<span style="font-size: 20px; font-weight: bold;">영화 리뷰(<span id="rcount">${rcount}</span>)</span>
+										</div>
+											<input type="hidden" id="mno" name="mno" value="${vo.mno}" /> 
+											<div>
+											<div class="star-rating">
+												<input class="rating" type="radio" id="star5" name="rating"
+													value="5" required />
+												<label for="star5"></label>
+												<input class="rating" type="radio" id="star4" name="rating"
+													value="4" />
+												<label for="star4"></label>
+												<input class="rating" type="radio" id="star3" name="rating" value="3" />
+												<label for="star3"></label>
+												<input class="rating" type="radio" id="star2" name="rating" value="2" />
+												<label for="star2"></label>
+												<input class="rating" type="radio" id="star1" name="rating" value="1" />
+												<label for="star1"></label>
+											</div>
+										</div>
+											<table>
+												<tr>
+													<td>
+														<div class="review-container">
+															<textarea id="content" style="resize: none;"
+																name="content" required placeholder="리뷰를 작성해주세요!!"></textarea>
+															<button type="button" id="reviewBtn">리뷰 작성</button>
+														</div>
+													</td>
+												</tr>
+											</table>
+											<table>
+										 <tbody id="review">
+										 </tbody>
+						</table>
+				</div>
 		</div>
-	<div style="height: 20px"></div>
-	    <h2 class="sectiontitle">리뷰</h2>
-	    <table class="table" id="mreview_table">
-	      <tbody>
-	        <tr>
-	          <td id="review">
-	          </td>
-	        </tr>
-	      </tbody>
-	    </table>
-	    <c:if test="${sessionScope.id!=null }">
-	     <table class="table">
-	       <tr>
-	        <td>
-	         <textarea rows="4" cols="100" id="msg" style="float: left"></textarea>
-	         <input type=button value="댓글쓰기" style="width: 100px;height: 85px;background-color: rgb(64,0,64); color:white" 
-	         id="writeBtn" data-cno="${vo.mno }">
-	        </td>
-	       </tr>
-	     </table>
-	    </c:if>
-	</div>
 	</div>
 </body>
 </html>

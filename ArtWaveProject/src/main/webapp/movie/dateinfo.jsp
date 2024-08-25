@@ -32,9 +32,9 @@
 <script type="text/javascript">
 $(function() {
     $('#calendar').datepicker({
-        format: 'yy/mm/dd',
-        startDate: '2024/08/25', 
-        endDate: '2024/08/31', 
+        format: 'yyyy-mm-dd',
+        startDate: '2024-08-25', 
+        endDate: '2024-08-31', 
         autoclose: true,
         showOtherMonths: true,
         selectOtherMonths: true,
@@ -49,16 +49,16 @@ $(function() {
              }
              return;
         }
-    }).on('changeDate', function() {
-        let selectedDate = event.format('yy/mm/dd')
+    }).on('changeDate', function(e) {
+        let rdate = e.format('yyyy-mm-dd')
+        $('#rdate').text(rdate)
         $.ajax({
     		type:'post',
     		url: '../movie/dateinfo.do',
-    		data:{"rdate":selectedDate},
+    		data:{"rdate":rdate},
     		success:function(result)
     		{
     			$('#moviecalendar').html(result)
-    			$('#rdate').text(result)
     		},
     		error:function(request,status,error)
     		{
@@ -70,7 +70,7 @@ $(function() {
 		$.ajax({
 			type:'post',
 			url:'../movie/timetableinfo.do',
-			data: {"rdate":selectedDate},
+			data: {"rdate":rdate},
 			success:function(result)
 			{
 				console.log("success")

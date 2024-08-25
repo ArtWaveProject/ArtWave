@@ -16,8 +16,7 @@ Nickname varchar2
  */
 @Data
 public class MreviewVO {
-		private int mrno, mcno, mrrecom;
-		private String id, mrcontent, nickname, dbday;
-		private Date mrdate;
-		private double mrating;
+	 private int trno, tno, trating, type;
+	  private String id,nickname,tcontent,regdate,dbday;
+	  private Date tdate;
 }

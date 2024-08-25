@@ -2156,3 +2156,73 @@ body {
 .reserve{
 	margin-top:100px;
 }
+.review-list {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 1022px;
+}
+
+.review-list .nick-rate {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+.review-list .date {
+    font-size: 14px;
+    color: #888;
+}
+
+.review-list .xBtn,
+.review-list .rBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 0;
+}
+
+.review-list .xBtn{
+    float: right;
+}
+
+.review-list .rBtn{
+    color: #888;
+}
+.review-list .xBtn:hover,
+.review-list .rBtn:hover {
+    text-decoration: underline;
+}
+
+.review-list .rating {
+    margin: 10px 0;
+}
+
+.review-list .r-content {
+    font-size: 14px;
+}
+
+.r-content{
+ margin-top: 10px;
+}
+
+.average-rating {
+    display: flex;
+    align-items: center;
+}
+
+#avgnumber {
+    margin-left: 5px; 
+}
+
+.avgRating {
+    display: flex;
+    align-items: center;
+}
+#avgN{
+    margin-left: 10px; 
+}

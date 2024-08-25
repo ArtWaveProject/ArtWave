@@ -8,22 +8,35 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="../movie/mstyle.css">
 </head>
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-$(function(){
+$(document).ready(function() {
+	let rmno = null;
+	let rtloc = null;
+	let rtname = null;
+	let rdate = null;
+	let tno = null;
+	let tdnos = [];
+
+	function loadMovies() {
 	$.ajax({
 		type:'post',
 		url:'../movie/movieinfo.do',
 		success:function(result)
 		{
 			$('#movielist').html(result)
+			$('#movielist .dataTr').click(function() {
+                    var rmno = $(this).data('mno') 
+                    loadLocations(rmno)
+			 })
 		},
 		error:function(request,status,error)
 		{
 			console.log(error)
 		}
 	})
-	
+}
+  function loadLocations(mno) {
 	$.ajax({
 		type:'post',
 		url:'../movie/theaterinfo1.do',
@@ -31,53 +44,117 @@ $(function(){
 		success:function(result)
 		{
 			$('#tloclist').html(result)
-			
+			 $('#tloclist .Ttloc').click(function() {
+                 var rtloc = $(this).data('rtloc') 
+                 loadTheaters(rtloc)
+             })
 		},
 		error:function(request,status,error)
 		{
 			console.log(error)
 		}
-	})
-	$.ajax({
+	  })
+	}
+  function loadTheaters(tloc) {
+		$.ajax({
 		type:'post',
 		url:'../movie/theaterinfo2.do',
-		data : {"rtloc" : rtloc},
+		data : {"tloc" : tloc},
 		success:function(result)
 		{
 			$('#tnamelist').html(result)
-			
+			$('#tnamelist .Ttname').click(function() {
+                 var rtname = $(this).data('rtname') 
+                 loadDates()
+             })
 		},
 		error:function(request,status,error)
 		{
 			console.log(error)
 		}
 	})
-	$.ajax({
-		type:'post',
-		url:'../movie/dateinfo.do',
-		success:function(result)
-		{
-			$('#rdate').html(result)
-		},
-		error:function(request,status,error)
-		{
-			console.log(error)
-		}
-	})
-	$.ajax({
-		type:'post',
-		url:'../movie/timetableinfo.do',
-		success:function(result)
-		{
-			$('#movietimedata').html(result)
-		},
-		error:function(request,status,error)
-		{
-			console.log(error)
-		}
-	})
-	
-})
+  }
+  function loadDates() {
+	  $.ajax({
+          type: 'post',
+          url: '../movie/dateinfo.do',
+          success: function(result) {
+              $('#calendar').html(result)
+              $('#calendar .date').click(function() {
+                  rdate = $(this).data('rdate')
+                  getTno()
+              })
+          },
+          error: function(request, status, error) {
+              console.log(error)
+          }
+      })
+  }
+  
+  function getTno() {
+      $.ajax({
+          type: 'post',
+          url: '../movie/timetableinfo.do',
+          data: {
+              "tloc": rtloc,
+              "tname": selectedTname
+          },
+          success: function(result) {
+              rtno = result.tno
+              getTdno();
+          },
+          error: function(request, status, error) {
+              console.log(error);
+          }
+      })
+  }
+  function getTdno() {
+      $.ajax({
+          type: 'post',
+          url: '../movie/timetableinfo.do',
+          data: {
+              "tno": rtno
+              },
+          success: function(result) {
+              tdnos = result.tdno
+              loadTimetable(tdnos);
+          },
+          error: function(request, status, error) {
+              console.log(error);
+          }
+      })
+  }
+  function loadTimetable(tdnos) {
+	  let tdno= tdnos.join(',')
+      $.ajax({
+          type: 'post',
+          url: '../movie/timetableinfo.do',
+          data: {
+        	  "mno": mno,
+              "rdate": rdate,
+              "tdno": tdno
+          },
+          success: function(result) {
+        	  $('#movietimedata').html(result);
+          },
+          error: function(request, status, error) {
+              console.log(error)
+          }
+      });
+  }
+  
+  $('.times').click(function() {
+      let time = $(this).val();
+      let tdname = $(this).siblings('input[type="hidden"]').val(); 
+      $('#rtime').val(time); 
+      $('#rtdname').val(tdname); 
+  })
+  
+  loadMovies();
+})	  
+	 
+
+
 </script>
 <body>
   <div class="container">
@@ -100,7 +177,7 @@ $(function(){
        <table class="table">
         <tbody>
          <tr>
-          <td id="ttloclist"></td>
+          <td id="tloclist"></td>
          </tr>
         </tbody>
        </table>
@@ -177,7 +254,7 @@ $(function(){
       <h4 class="text-center">관람일 선택</h4>
         <table class="table">
         <tr>
-          <td class="text-center" id="moviecalendar"></td>
+          <td class="text-center" id="calendar"></td>
         </tr>
        </table>
       </td>
@@ -185,7 +262,7 @@ $(function(){
       <h4 class="text-center">인원</h4>
        <table class="table">
         <tr>
-          <td class="text-center" id="food_inwon_data"></td>
+          <td class="text-center" id="movieinwondata"></td>
         </tr>
        </table>
       </td>
