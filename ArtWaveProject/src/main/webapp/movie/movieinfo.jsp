@@ -44,7 +44,7 @@
 			<tr class="dataTr" data-mno="${vo.mno }"
 				data-mposter="https://www.kobis.or.kr${vo.mposter }"
 				data-mtitle="${vo.mtitle }" data-mgrade="${vo.mgrade }" >
-				<td class="text-left inline-block">
+				<td class="text-left inline-block" class="moviedata">
 				<c:choose>
 						<c:when test="${vo.mgrade eq '전체관람가'}">
 							<img
@@ -68,7 +68,7 @@
 						</c:when>
 					</c:choose>
 					</td>
-				<td class="text-center inline-block">${vo.mtitle }</td>
+				<td class="text-center inline-block" class="moviedata">${vo.mtitle }</td>
 			</tr>
 		</c:forEach>
 	</table>

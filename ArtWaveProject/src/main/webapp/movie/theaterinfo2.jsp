@@ -9,15 +9,14 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function() {
-	let selectedTname = $(this).text().trim();
     $('.Ttname').click(function() {
+    	let rtname = $(this).text().trim();
         $.ajax({
             type: 'post',
             url: '../movie/theaterinfo2.do',
-            data: { "tname": selectedTname },
+            data: { "rtname": rtname },
             success: function(result) {
-                $('#rtname').html(result)
-                $('#rtnamet').text(selectedTname)
+                $('#rtname').text(rtname)
             },
             error: function(request, status, error) {
                 console.log(error)

@@ -9,14 +9,14 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function() {
-	let selectedTloc = $(this).attr("data-tloc")
     $('.Ttloc').click(function() {
+    	let rtloc = $(this).val()
         $.ajax({
             type: 'post',
             url: '../movie/theaterinfo2.do',
-            data: { "tloc": selectedTloc },
+            data: { "tloc": rtloc },
             success: function(result) {
-                $('#rtloct').text(selectedTloc)
+                console.log("success")
             },
             error: function(request, status, error) {
                 console.log(error)
@@ -30,12 +30,11 @@ $(function() {
 </head>
 <body>
 	<table class="table" id="mtloctable">
-	<c:forEach var="tvo" items="${tlList }">
+		<c:forEach var="tvo" items="${tlList }">
 		<tr class="dataTloc" data-tloc="${tvo.tloc }">
-
 			<td class="Ttloc">${tvo.tloc }</td>
 			</tr>
-			</c:forEach>
+	</c:forEach>
 	</table>
 </body>
 </html>

@@ -33,10 +33,8 @@ public class MreserveModel {
 		  MovieVO vo = new MovieVO(); 
 		  request.setAttribute("vo", vo);
 		  List<MovieVO> moList=MovieDAO.movieTitleData();
-		  String rmno=request.getParameter("rmno");
 		  request.setAttribute("moList", moList);
 		  request.setAttribute("mno", mno);
-		  request.setAttribute("rmno", rmno);
 		  
 		  return "../movie/movieinfo.jsp";
 	  }
@@ -48,20 +46,16 @@ public class MreserveModel {
 			   request.setCharacterEncoding("UTF-8");
 		   }catch(Exception ex) { ex.printStackTrace();}
 		 
-		String rmno=request.getParameter("rmno");
-		List<Integer> tnolist =MovieDAO.movieTnoData(Integer.valueOf(rmno));
+		String mno=request.getParameter("rmno");
+		List<Integer> tnolist =MovieDAO.movieTnoData(Integer.valueOf(mno));
+		List<String> tlList = MovieDAO.movieTlocData(tnolist);
 		
-		TheaterVO tvo = new TheaterVO();
-		List<String> tlList = new ArrayList<String>();
-		for (int tno : tnolist) {
-			List<String> tlocs = MovieDAO.movieTlocData(tno);
-			tlList.addAll(tlocs);
-		}
-	    
 		request.setAttribute("tlList", tlList);
-		String sTloc=request.getParameter("selectedTloc");
-		request.setAttribute("rmno", rmno);
-		request.setAttribute("sTloc", sTloc);
+		request.setAttribute("tnolist", tnolist);
+		
+		String rtloc=request.getParameter("rtloc");
+		request.setAttribute("mno", mno);
+		request.setAttribute("rtloc", rtloc);
 		
 		return "../movie/theaterinfo1.jsp";
 		
@@ -74,8 +68,8 @@ public class MreserveModel {
 			   request.setCharacterEncoding("UTF-8");
 		   }catch(Exception ex) { ex.printStackTrace();}
 		TheaterVO tvo = new TheaterVO();
-		String sTloc=request.getParameter("sTloc");
-	    List<String> tnList = MovieDAO.movieTnameData(sTloc);
+		String rtloc=request.getParameter("rtloc");
+	    List<String> tnList = MovieDAO.movieTnameData(rtloc);
 	    request.setAttribute("tnList", tnList);
 	    
 	    String sTname=request.getParameter("selectedTname");
@@ -101,22 +95,16 @@ public class MreserveModel {
 		   }catch(Exception ex) { ex.printStackTrace();} 
 		HttpSession session=request.getSession();
 		String mno= request.getParameter("rmno");
-		String tloc=request.getParameter("sTloc");
-		String tname=request.getParameter("sTname");
+		String tloc=request.getParameter("rtloc");
+		String tname=request.getParameter("rtname");
 		String rdate=request.getParameter("rdate");
 		
 		Map map1=new HashMap();
 		map1.put("tloc", tloc);
 		map1.put("tname", tname);
 		
-		List<Integer> tnoList2 = MovieDAO.movieTnoData2(map1);
-		//tno 값 list로 얻음
-		List<Integer> tdnoList = new ArrayList<Integer>();
-		for(int tno : tnoList2)
-		{
-			List<Integer> tdnos = MovieDAO.movieTdnoData(tno);
-			tdnoList.addAll(tdnos);
-		}
+		int tno = MovieDAO.movieTnoData2(map1);
+		List<Integer> tdnoList = MovieDAO.movieTdnoData(tno);
 		
 		Map map2=new HashMap();
 		for(int tdno : tdnoList)

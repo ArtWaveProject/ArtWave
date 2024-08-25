@@ -35,7 +35,6 @@ $(function(){
 <body>
 <table class="table">
   <tr class="text-center">
-  <th>상영시간표</th>
   <c:forEach var="msvo" items="${ttList }">
   	<td>${msvo.tdname }</td>
   	<td>

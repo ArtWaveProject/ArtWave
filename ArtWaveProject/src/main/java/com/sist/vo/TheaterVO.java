@@ -6,4 +6,5 @@ import lombok.Data;
 public class TheaterVO {
 	private int tno;
 	private String tname, tloc;
+	private MscheduleVO msvo=new MscheduleVO();
 }

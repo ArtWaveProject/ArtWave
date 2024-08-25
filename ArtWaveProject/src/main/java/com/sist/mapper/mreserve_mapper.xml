@@ -8,17 +8,19 @@ FROM movie WHERE mstate LIKE '1'
 <select id="movieTnoData" resultType="int" parameterType="int">
 	SELECT DISTINCT tno FROM movie_schedule WHERE mno=#{mno}
 </select>
-<select id="movieTlocData" resultType="String"  parameterType="int">
-	SELECT tloc
-	FROM theater WHERE tno=#{tno} 
-	ORDER BY tno ASC
+<select id="movieTlocData" resultType="String"  parameterType="list">
+	SELECT DISTINCT tloc FROM theater
+	 WHERE tno IN
+    <foreach item="item" index="index" collection="list" open="(" close=")" separator=",">
+        #{item}
+    </foreach>
 </select>
 <select id="movieTnameData" resultType="String"  parameterType="String">
 	SELECT tname 
 	FROM theater WHERE tloc LIKE '%'||#{tloc}||'%' 
 </select>
 <select id="movieTnoData2" resultType="int" parameterType="hashmap">
- SELECT tno FROM theater WHERE tloc LIKE '%'||#{tloc}||'%' AND tname LIKE '%'||#{tname}||'%' ORDER BY tno
+ SELECT tno FROM theater WHERE tloc LIKE '%'||#{tloc}||'%' AND tname LIKE '%'||#{tname}||'%'
 </select>
 <select id="movieTdnoData" resultType="int" parameterType="int">
  SELECT tdno FROM theater_detail WHERE tno=#{tno} ORDER BY tdno ASC                       
@@ -30,7 +32,7 @@ FROM movie WHERE mstate LIKE '1'
  		 <result property="mvo.mno" column="mno"/>
 </resultMap>
 <select id="mscheduleData" resultType="MscheduleVO" parameterType="hashmap">
-	SELECT msno, movie.mno, theater.tno, theater_detail.tdno, theater_detail.tdname, mstime, TO_CHAR(msdate, 'YYYY.MM.DD') as msday
+	SELECT msno, movie.mno, theater.tno, theater_detail.tdno, theater_detail.tdname, mstime, TO_CHAR(msdate, 'YYYY-MM-DD') as msday
 	FROM movie_schedule, theater_detail
 	JOIN movie ON movie.mno = movie_schedule.mno
     JOIN theater ON theater.tno = movie_schedule.tno

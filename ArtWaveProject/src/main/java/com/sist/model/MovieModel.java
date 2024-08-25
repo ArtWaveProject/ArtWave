@@ -117,11 +117,23 @@ public class MovieModel {
 		   request.setAttribute("vo", vo);
 		   MovieBookVO mbvo = new MovieBookVO();
 		   request.setAttribute("mbvo", mbvo);
-		   
-		   Map map=new HashMap();
-		   map.put("mno",Integer.parseInt(mno));
-		   List<MovieBookVO> mbList=MovieDAO.movieBookData(map);
-		  request.setAttribute("mbList", mbList);
+		   HttpSession session = request.getSession();
+		   String id=(String)session.getAttribute("id");
+		 	 
+		   Map map1=new HashMap();
+		   map1.put("mno",Integer.parseInt(mno));
+		   List<MovieBookVO> mbList=MovieDAO.movieBookData(map1);
+		   request.setAttribute("mbList", mbList);
+		  
+		    Map map2=new HashMap();
+		 	map2.put("tno", Integer.parseInt(mno));
+		 	map2.put("type", 1);
+		 	int rcount=MreviewDAO.reviewCount(map2);
+		 	double avg=MreviewDAO.reviewAverage(map2);
+		 	 request.setAttribute("rcount", rcount);
+		 	 request.setAttribute("avg", avg);
+		 	 request.setAttribute("id", id);
+		  
 		   request.setAttribute("main_jsp", "../movie/moviedetail.jsp");
 		 return "../main/main.jsp";
 	}	
