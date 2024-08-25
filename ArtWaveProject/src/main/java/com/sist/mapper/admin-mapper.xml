@@ -3,7 +3,7 @@
 <mapper namespace="com.sist.mapper.admin-mapper">
 	
 	<select id="memberListData" resultType="memberVO" parameterType="hashmap">
-		SELECT grade,id,name,phone,email,num
+		SELECT grade,id,name,phone,email,num  
 		FROM (SELECT grade,id,name,phone,email,rownum as num
 			FROM(SELECT grade,id,name,phone,email
 				FROM member)
