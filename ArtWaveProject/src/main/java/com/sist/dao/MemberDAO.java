@@ -1,5 +1,6 @@
 package com.sist.dao;
 
+import java.util.*;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -136,5 +137,40 @@ public class MemberDAO {
 		  }
 		  return bCheck;
 	  }
+		public static MemberVO memberinfo(String id) {
+			MemberVO vo = new MemberVO();
+			SqlSession session = null;
+			try {
+				session = ssf.openSession();
+				session.selectOne("memberInfoData", id);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if (session != null)
+					session.close();
+			}
+			return vo;
+		}
+		
+		  public static int pwdCheckData(Map map)
+		  {
+			  int count=0;
+			  SqlSession session=null;
+			  try
+			  {
+				  session=ssf.openSession();
+				  count=session.selectOne("pwdCheckData",map);
+			  }catch(Exception ex)
+			  {
+				  ex.printStackTrace();
+			  }
+			  finally
+			  {
+				  if(session!=null)
+					  session.close();
+			  }
+			  return count;
+		  }
 	
 }

@@ -44,8 +44,16 @@ public class MyPageModel {
    @RequestMapping("mypage/my_edit_member.do")
    public String my_edit_member(HttpServletRequest request,HttpServletResponse response)
    {
+	   HttpSession session=request.getSession();
+	   String id=(String)session.getAttribute("id");
+	   MemberVO vo=MemberDAO.memberUpdateData(id);
+	   
+	   String phone=vo.getPhone();
+	   phone=phone.substring(phone.indexOf(")")+1);
+	   vo.setPhone(phone);
+	   request.setAttribute("vo", vo);
 	   request.setAttribute("title", "회원 정보 수정");
-	   request.setAttribute("mypage_jsp", "../mypage/my_edite_member.jsp");
+	   request.setAttribute("mypage_jsp", "../mypage/my_edit_member.jsp");
 	   request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
 	   return "../main/main.jsp";
    }
@@ -161,7 +169,7 @@ public class MyPageModel {
    
    
    
-   @RequestMapping("member/join_update.do")
+   @RequestMapping("mypage/my_edit_member.do")
    public String mypage_join_update(HttpServletRequest request,HttpServletResponse response)
    {
 	   HttpSession session=request.getSession();
@@ -172,11 +180,12 @@ public class MyPageModel {
 	   phone=phone.substring(phone.indexOf(")")+1);
 	   vo.setPhone(phone);
 	   request.setAttribute("vo", vo);
-	   request.setAttribute("title","회원 수정");
-	   request.setAttribute("mypage_jsp", "../member/join_update.jsp");
+	   request.setAttribute("title", "회원 정보 수정");
+	   request.setAttribute("mypage_jsp", "../mypage/my_edit_member.jsp");
 	   request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
 	   return "../main/main.jsp";
    }
+   
    @RequestMapping("member/join_update_ok.do")
    public String mypage_join_update_ok(HttpServletRequest request,HttpServletResponse response)
    {

@@ -16,7 +16,10 @@
     margin-left: 50px;
     margin-top: 150px; /* 원하는 값으로 조정 */
 }
-
+	.black {
+		color: black;
+		text-align: center;
+	}
 </style>
 </head>
 <body>
@@ -29,7 +32,7 @@
                     </div>
                     <!-- 사이드바 메뉴목록1 -->
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="../member/join_update.do">회원수정</a></li>
+                        <li class="list-group-item"><a href="../mypage/my_edit_member.do">회원수정</a></li>
                         <li class="list-group-item"><a href="../mypage/my_change_pwd.do">비밀번호 변경</a></li>
                         <li class="list-group-item"><a href="../mypage/my_member_exit.do">회원탈퇴</a></li>
                     </ul>
@@ -50,7 +53,7 @@
             </div>
 
             <div class="col-lg-10">
-                <h2 class="sectiontitle " style="margin-left: 0px">${title}</h2>
+                <h2 class=" black" style="margin-left: 0px">${title}</h2>
                 <jsp:include page="${mypage_jsp}"></jsp:include>
             </div>
         </div>
