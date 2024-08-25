@@ -92,7 +92,7 @@ public class ReplyBoardDAO {
 		try
 		{
 			session=ssf.openSession();
-			session.insert("adminReplyBoardInsery",vo);
+			session.insert("adminReplyBoardInsert",vo);
 			session.update("adminReplyUpdate",no);
 			session.commit();
 			
@@ -107,6 +107,7 @@ public class ReplyBoardDAO {
 				session.close();
 		}
 	}
+	
 	public static ReplyBoardVO adminReplyInfoData(int no)
 	  {
 		  ReplyBoardVO vo=new ReplyBoardVO();
@@ -126,4 +127,6 @@ public class ReplyBoardDAO {
 		  }
 		  return vo;
 	  }
+	
+	
 }

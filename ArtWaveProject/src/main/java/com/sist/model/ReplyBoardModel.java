@@ -47,6 +47,7 @@ public class ReplyBoardModel {
 		   request.setAttribute("main_jsp", "../replyboard/replyboard_insert.jsp");
 		   return "../main/main.jsp"; // 새로운 페이지 제작 
 	   }
+	  
 	   @RequestMapping("replyboard/insert_ok.do")
 	   public String replyboard_insert_ok(HttpServletRequest request,HttpServletResponse response)
 	   {
@@ -67,5 +68,28 @@ public class ReplyBoardModel {
 		   vo.setContent(content);
 		   ReplyBoardDAO.replyBoardInsert(vo);
 		   return "redirect:../replyboard/list.do";// 재호출 
+	   }
+	   
+	   
+	   @RequestMapping("adminpage/replyboard_insert_ok.do")
+	   public String admingpage_replyboard_insert_ok(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex) {}
+		   HttpSession session=request.getSession();
+		   String id=(String)session.getAttribute("id");
+		   String name=(String)session.getAttribute("name");
+		   String subject=request.getParameter("subject");
+		   String content=request.getParameter("content");
+		   
+		   ReplyBoardVO vo=new ReplyBoardVO();
+		   vo.setId(id);
+		   vo.setName(name);
+		   vo.setSubject(subject);
+		   vo.setContent(content);
+		   ReplyBoardDAO.replyBoardInsert(vo);
+		   return "redirect:../adminpage/adminpage_replyboard_list.do";// 재호출 
 	   }
 }

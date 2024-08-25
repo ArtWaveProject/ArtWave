@@ -22,11 +22,11 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th scope="col" width="10%" align="center">번호</th>
-						<th scope="col" width="45%" align="center">제목</th>
-						<th scope="col" width="20%" align="center">작성자</th>
-						<th scope="col" width="15%" align="center">작성일</th>
-						<th scope="col" width="10%" align="center">답변상태</th>
+						<th scope="col" width="10%">번호</th>
+						<th scope="col" width="40%">제목</th>
+						<th scope="col" width="10%">작성자</th>
+						<th scope="col" width="15%">작성일</th>
+						<th scope="col" width="25%">답변상태</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -34,15 +34,15 @@
 				<c:forEach var="vo" items="${arList }">
 					<tr>
 						<td width="10%" align="center">${count}</td>
-						<td width="45%">
+						<td width="40%">
 							<c:if test="${vo.group_step>0 }">
 							&nbsp;&nbsp;
 							</c:if>
 						${vo.subject }
 						</td>
-						<td width="20%" align="center">${vo.name }</td>
-						<td width="15%" align="center">${vo.dbday }</td>
-						<td width="10%" align="center">
+						<td width="10%">${vo.name }</td>
+						<td width="15%">${vo.dbday }</td>
+						<td width="25%">
 							<c:if test="${vo.isreply==0 }">
 								<a href="../adminpage/reply_insert.do?no=${vo.no }" class="btn btn-info rounded-pill m-2">답변대기</a>	
 							</c:if>
@@ -56,18 +56,52 @@
 				</tbody>
 			</table>
 			
-			
-			<nav aria-label="Page navigation example">
-				<ul class="pagination justify-content-center">
-					<li class="page-item disabled"><a class="page-link">Previous</a>
-					</li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
-				</ul>
-			</nav>
-			
+			<table>
+			 <tr>
+				 <td class="text-center">
+					       <c:choose>
+						    <c:when test="${curpage > 1}">
+						        <a href="../adminpage/reply_list.do?page=${curpage - 1}" class="btn btn-sm btn-success">이전</a>
+						    </c:when>
+						    <c:otherwise>
+						        <a href="#" class="btn btn-sm btn-success disabled">이전</a>
+						    </c:otherwise>
+						</c:choose>
+						
+						<span class="mx-2">${curpage} page / ${totalpage} pages</span>
+						
+						<c:choose>
+						    <c:when test="${curpage < totalpage}">
+						        <a href="../adminpage/reply_list.do?page=${curpage + 1}" class="btn btn-sm btn-info">다음</a>
+						    </c:when>
+						    <c:otherwise>
+						        <a href="#" class="btn btn-sm btn-info disabled">다음</a>
+						    </c:otherwise>
+						</c:choose>
+		     		</td>
+		     	</tr>
+		     </table>
+      <!--   
+			<nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <c:if test="${startPage > 1}">
+						    <li class="page-item">
+						        <a class="page-link" href="../adminpage/reply_list.do?page=${startPage-1}">&laquo; 이전</a>
+						    </li>
+						</c:if>
+						<c:forEach var="i" begin="${startPage}" end="${endPage}">
+						    <li class="page-item ${i==curpage?'active':''}">
+						        <a class="page-link" href="../adminpage/reply_list.do?page=${i}">${i}</a>
+						    </li>
+						</c:forEach>
+						<c:if test="${endPage < totalpage}">
+						    <li class="page-item">
+						        <a class="page-link" href="../adminpage/reply_list.do?page=${endPage+1}">다음 &raquo;</a>
+						    </li>
+						</c:if>
+                    </ul>
+                </nav>
+		-->
 			
 		</div>
 	</div>
