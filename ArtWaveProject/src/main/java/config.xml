@@ -45,7 +45,7 @@
 		<mapper resource="com/sist/mapper/alstore_mapper.xml" />
 		<mapper resource="com/sist/mapper/mreview_mapper.xml"/>
 		<mapper resource="com/sist/mapper/board_mapper.xml"/>
-		<mapper resource="com/sist/mapper/like_mapper.xml"/>
+		<mapper resource="com/sist/mapper/like_mapper.xml"/> 
 		<mapper resource="com/sist/mapper/moviebook_mapper.xml"/>
 		<mapper resource="com/sist/mapper/mreserve_mapper.xml"/>
 		<mapper resource="com/sist/mapper/admin-mapper.xml"/>     
