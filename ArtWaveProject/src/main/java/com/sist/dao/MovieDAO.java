@@ -284,14 +284,91 @@ public class MovieDAO {
 		   }
 		   return list;
 	   }
-	   public static List<TheaterVO> movieTheaterData(String tloc)
+	   public static List<Integer> movieTnoData(int mno)
 	   {
-		   List<TheaterVO> list=new ArrayList< TheaterVO>();
+		   List<Integer> list= new ArrayList<Integer>();
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("movieTnoData", mno);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
+	   public static List<String> movieTlocData(int tno)
+	   {
+		   List<String> list=new ArrayList<String>();
 		   SqlSession session=null; //Connection
 		   try
 		   {
 			   session=ssf.openSession();
-			   list=session.selectList("movieTheaterData", tloc);
+			   list=session.selectList("movieTlocData", tno);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
+	   public static List<String> movieTnameData(String tloc)
+	   {
+		   List<String> list=new ArrayList<String>();
+		   SqlSession session=null; //Connection
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("movieTnameData", tloc);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
+	   
+	   public static List<Integer> movieTnoData2(Map map)
+	   {
+		   List<Integer> list= new ArrayList<Integer>();
+		   SqlSession session=null; //Connection
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("movieTnoData2", map);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
+	   public static List<Integer> movieTdnoData(int tno)
+	   {
+		   List<Integer> list= new ArrayList<Integer>();
+		   SqlSession session=null; //Connection
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("movieTdnoData", tno);
 		   }catch(Exception ex)
 		   {
 			   ex.printStackTrace();
@@ -322,23 +399,5 @@ public class MovieDAO {
 		   }
 		   return list;
 	   }
-	   public static List<MscheduleVO> movieReserveDayData(Map map)
-	   {
-		   List<MscheduleVO> list=new ArrayList<MscheduleVO>();
-		   SqlSession session=null; //Connection
-		   try
-		   {
-			   session=ssf.openSession();
-			   list=session.selectList("mscheduleData", map);
-		   }catch(Exception ex)
-		   {
-			   ex.printStackTrace();
-		   }
-		   finally
-		   {
-			   if(session!=null)
-				   session.close();
-		   }
-		   return list;
-	   }
+	   
 }

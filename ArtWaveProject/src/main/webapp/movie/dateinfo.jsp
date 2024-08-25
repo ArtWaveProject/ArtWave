@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -7,62 +6,74 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<link rel="stylesheet" href="../movie/mstyle.css">
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+<style>
+    .form-group{
+    	width:210px !important ;
+    }
+     .datepicker-days td.day-sat {
+        color: blue !important; 
+    }
+    .datepicker-days td.day-sun {
+        color: red !important; 
+    }
+    .datepicker-days td.active {
+        font-weight:bold;
+        color: white !important;
+    }
+    .datepicker-days td.active:hover {
+        font-weight:bold;
+        color: white !important;
+    }
+</style>
 <script type="text/javascript">
-$(function(){
-	$('#year').change(function(){
-		let year=$('#year').val()
-		let month=$('#month').val()
-		let mno=${mno}
-		let tdno=${tdno}
-		$.ajax({
-		type:'post',
-		url:'../movie/dateinfo.do',
-		data:{"year":year,"month":month,"mno":mno, "tdno":tdno},
-		success:function(result)
-		{
-			$('#rdate').html(result)
-		},
-		error:function(request,status,error)
-		{
-			console.log(error)
-		}
-	   })
-	})
-	$('#month').change(function(){
-		let year=$('#year').val()
-		let month=$('#month').val()
-		let mno=${mno}
-		let tdno=${tdno}
-		$.ajax({
-		type:'post',
-		url:'../movie/dateinfo.do',
-		data:{"year":year,"month":month,"mno":mno, "tdno":tdno},
-		success:function(result)
-		{
-			$('#rdate').html(result)
-		},
-		error:function(request,status,error)
-		{
-			console.log(error)
-		}
-	   })
-	})
-	
-	$('.rday_can').click(function(){
-		let year=$(this).attr("data-year")
-		let month=$(this).attr("data-month")
-		let day=$(this).attr("data-day")
-		let rday=year+"년도 "+month+"월 "+day+"일"
-		$('#movie_day').text(rday)
+$(function() {
+    $('#calendar').datepicker({
+        format: 'yy/mm/dd',
+        startDate: '2024/08/25', 
+        endDate: '2024/08/31', 
+        autoclose: true,
+        showOtherMonths: true,
+        selectOtherMonths: true,
+        beforeShowDay: function(date) {
+            
+        	 var day = date.getDay();
+             if (day === 0) { 
+                 return { classes: 'day-sun' };
+             }
+             if (day === 6) { 
+                 return { classes: 'day-sat' };
+             }
+             return;
+        }
+    }).on('changeDate', function() {
+        let selectedDate = event.format('yy/mm/dd')
+        $.ajax({
+    		type:'post',
+    		url: '../movie/dateinfo.do',
+    		data:{"rdate":selectedDate},
+    		success:function(result)
+    		{
+    			$('#moviecalendar').html(result)
+    			$('#rdate').text(result)
+    		},
+    		error:function(request,status,error)
+    		{
+    			console.log(error)
+    		}
+    	   })
+    	   
+  $(function(){
 		$.ajax({
 			type:'post',
-			url:'../movie/timeinfo.do',
-			data:{"day":day},
+			url:'../movie/timetableinfo.do',
+			data: {"rdate":selectedDate},
 			success:function(result)
 			{
-				$('#movie_time').html(result)
-				$('#r_date').val(year+"-"+month+"-"+day)
+				console.log("success")
 			},
 			error:function(request,status,error)
 			{
@@ -70,80 +81,15 @@ $(function(){
 			}
 		})
 	})
-	
+   })
 })
 </script>
-<style type="text/css">
-.rday_can:hover{
-  cursor: pointer;
-}
-</style>
 </head>
 <body>
-  <table class="table">
-   <tr>
-     <td class="text-center">${year }년도 ${month }월</td>
-   </tr>
-   <tr>
-     <td class="inline">
-      <select name="year" id="year" class="input-sm">
-       <c:forEach var="i" begin="2024" end="2030">
-        <option ${i==year?"selected":""}>${i }</option>
-       </c:forEach>
-      </select>년도&nbsp;
-      <select name="month" id="month" class="input-sm">
-       <c:forEach var="i" begin="1" end="12">
-        <option ${i==month?"selected":""}>${i }</option>
-       </c:forEach>
-      </select>월
-     </td>
-   </tr>
-  </table>
-  <div style="height: 10px"></div>
-  <table class="table">
-    <tr>
-     <c:forEach var="i" items="${weeks }" varStatus="s">
-       <c:choose>
-        <c:when test="${s.index==0 }">
-         <c:set var="color" value="red"/>
-        </c:when>
-        <c:when test="${s.index==6 }">
-         <c:set var="color" value="blue"/>
-        </c:when>
-        <c:otherwise>
-          <c:set var="color" value="white"/>
-        </c:otherwise>
-       </c:choose>
-       <th class="text-center"><span style="color:${color}">${i }</span></th>
-     </c:forEach>
-    </tr>
-    <c:set var="week" value="${week}"/>
-    <c:forEach var="i" begin="1" end="${lastday }">
-      <c:if test="${i==1 }">
-       <tr>
-        <c:forEach var="j" begin="1" end="${week }">
-          <td class="text-center" height="35">&nbsp;</td>
-        </c:forEach>
-      </c:if>
-      
-      <c:if test="${rday[i]==1 }">
-	      <td class="text-center success ${day==i?'danger':'' }" height="35">
-	      <span class="rday_can" style="font-weight: bold;" 
-	      data-year="${year }" data-month="${ month}" data-day="${i }">${i }</span>
-	      </td>
-      </c:if>
-      <c:if test="${rday[i]==0 }">
-	      <td class="text-center ${day==i?'danger':'' }" height="35">
-	       <span style="color: gray">${i }</span>
-	      </td>
-      </c:if>
-      
-      <c:set var="week" value="${week+1 }"/>
-      <c:if test="${week>6 }">
-       <c:set var="week" value="0"/>
-       <tr/>
-      </c:if>
-    </c:forEach>
-  </table>
+    <div class="container">
+        <div class="form-group">
+            <input type="text" class="form-control" id="calendar" placeholder="날짜 선택">
+        </div>
+    </div>
 </body>
 </html>
