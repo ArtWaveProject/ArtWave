@@ -7,7 +7,7 @@
 	<selectKey keyProperty="no" resultType="int" order="BEFORE">
 		SELECT NVL(MAX(no)+1,1) as no FROM noticeboard
 	</selectKey>
-		INSERT INTO noticeboard(no,type,subject,content)
+		INSERT INTO notice_board(no,type,subject,content)
 		VALUES (#{vo},#{type},#{subject},#{content})
 </insert>
 
@@ -15,17 +15,16 @@
 <select id="noticeListData" resultType="NoticeBoardVO" parameterType="hashmap">
 	SELECT no,type,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,num 
 	FROM (SELECT no,type,subject,name,regdate,hit,rownum as num 
-	FROM (SELECT no,type,subject,name,regdate,hit 
-	FROM notice BETWEEN #{start} AND #{end})) 
+		FROM (SELECT no,type,subject,name,regdate,hit 
+			FROM notice_board BETWEEN #{start} AND #{end})) 
 </select>
 
 <!-- 공지 상세 보기:user  -->
-
+	
 
 <!-- 공지 수정 admin -->
-
+	
 
 <!--  공지 삭제 admin -->
-
-
+	
 </mapper>
