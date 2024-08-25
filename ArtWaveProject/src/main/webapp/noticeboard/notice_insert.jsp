@@ -8,18 +8,24 @@
 </head>
 <body>
 	<h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>공지 등록</h3>
+	<div class="container mt-4">
 	<form method="post" action="../adminpage/noticeboard_insert_ok.do">
 		<table class="table table-borderless">
 			<tbody>
 				<tr>
 					<th scope="col" >구분</th>
-					<td>
-						
+					<td width="80%">
+						<select class="input-sm" name="type">
+					        <option value="1">일반공지</option>
+					        <option value="2">이벤트공지</option>
+					        <option value="3">맛집공지</option>
+					        <option value="4">여행공지</option>
+					      </select>
 					</td>
 				</tr>
 				<tr>
-					<th scope="row">제목</th>
-					<td scope="col">  
+					<th scope="row" width=20% class="text-center">제목</th>
+					<td scope="col"  width="80%">  
 					 <input class="form-control mb-3" type="text" placeholder="제목을 입력하세요"
                   aria-label="default input example">
 					</td>
@@ -40,5 +46,6 @@
 			</tbody>
 		</table>
 	</form>
+	</div>
 </body>
 </html>
