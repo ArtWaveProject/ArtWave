@@ -23,6 +23,7 @@ public class AdminModel {
 	{
 		request.setAttribute("admin_jsp", "../adminpage/adminpage_home.jsp");
 		request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
+		
 		return "../main/main.jsp";
 	}	
 	
@@ -31,12 +32,35 @@ public class AdminModel {
 	@RequestMapping("adminpage/member_list.do")
 	public String member_list(HttpServletRequest request, HttpServletResponse response)
 	{
+		String page = request.getParameter("page");
+		if(page==null)
+			page="1";
+		int curpage = Integer.parseInt(page);
+		int rowSize = 15;
+		int start = (rowSize * curpage) - (rowSize - 1) ;
+		int end = rowSize * curpage;
 		
-		request.setAttribute("admin_jsp", "../adminpage/admin_home.jsp");
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		
+		List<MemberVO> list = AdminDAO.memberListData(map);
+		int count = AdminDAO.memberRowCount();
+		int totalpage = (int)(Math.ceil(count/15.0));
+		count = count - ((curpage * rowSize) - rowSize);
+		
+		request.setAttribute("curpage", curpage);
+		request.setAttribute("totalpage", totalpage);
+		request.setAttribute("count", count);
+		request.setAttribute("memberlist", list	);
+		
+		request.setAttribute("admin_jsp", "../adminpage/adminpage_home.jsp");
 		request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
 		
 		return "../main/main.jsp";
 	}
+	
+	// 회원 상세정보
 	
 	//-----------------------------------------고객센터--------------------------------------
 	// 공지 목록

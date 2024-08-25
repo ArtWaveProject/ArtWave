@@ -9,6 +9,7 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
@@ -50,13 +51,25 @@
 
 
 </style>
+
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Tempus Dominus CSS -->
 <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-<!-- Custom styles -->
+<!-- style -->
+<style>
+        table table-hover{
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+        }
+        td, th {
+            text-align: center;    
+            vertical-align: middle;
+        }
+    </style>
 <style>
   body {
     padding-top: 20px;
@@ -86,29 +99,29 @@
                 <div class="navbar-nav w-100">
                
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">회원관리</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">회원목록</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="../adminpage/member_list.do" class="dropdown-item">회원 리스트</a>
                             <a href="#" class="dropdown-item">빈페이지</a>
-                            <a href="#" class="dropdown-item">빈페이지</a>
                         </div>
                     </div>
                     
-          					<div class="nav-item dropdown">
+                    <!-- 
+          			<div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">결제관리</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="#" class="dropdown-item">결제 목록</a>
-                            <a href="#" class="dropdown-item">빈페이지</a>
                         </div>
                     </div>
-                    
+                    -->
+                    <!-- 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">신고 게시판</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="#" class="dropdown-item">빈페이지</a>
-                            <a href="#" class="dropdown-item">빈페이지</a>
+                            <a href="#" class="dropdown-item">#</a>
                         </div>
                     </div>
+                    -->
                     
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">고객센터</a>
@@ -135,18 +148,12 @@
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Moment.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+<!-- Tempus Dominus Bootstrap 4 -->
 <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-</body>
-</html>
-
-
-
-
-
-
-
-
-	<!-- JavaScript Libraries -->
 </body>
 </html>
