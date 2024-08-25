@@ -62,6 +62,7 @@ public class AdminDAO {
 		return total;
 	}
 	
+	
 	public static int memberRowCount()
 	{
 		int count = 0;

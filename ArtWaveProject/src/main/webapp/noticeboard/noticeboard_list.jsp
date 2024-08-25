@@ -8,15 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3 class="text-primary">
-		<i class="fa fa-hashtag me-2"></i>회원관리
-	</h3>
+<div class="col-sm-12">
+	<div class="bg-light rounded h-100 p-4">
+		<h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>회원목록</h3>
 
-	<div class="content">
-		<div class="container-fluid pt-4 px-4">
-			<div class="col-sm-12">
-				<div class="bg-light rounded h-100 p-4">
-					<h6 class="mb-4">회원 목록</h6>
+		<!-- <div class="content"> -->
+			<!-- <div class="container-fluid pt-4 px-4"> -->
 					
 					<table class="table table-hover">
 						
@@ -46,9 +43,6 @@
 							</c:forEach>
 						</tbody>
 					</table>
-
-
-			
 			
 					<nav aria-label="Page navigation example">
 						<ul class="pagination justify-content-center">
@@ -67,13 +61,6 @@
 							</c:if>
 						</ul>
 					</nav>
-					
-					
-					
-					
-					
-				</div>
-			</div>
 		</div>
 	</div>
 </body>
