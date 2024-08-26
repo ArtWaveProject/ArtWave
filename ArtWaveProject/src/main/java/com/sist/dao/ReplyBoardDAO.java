@@ -15,6 +15,7 @@ public class ReplyBoardDAO {
 		ssf=CreateSqlSessionFactory.getSsf();
 	}
 	
+	/////////////////////////// 1:1 문의 리스트 ////////////////////////
 	public static List<ReplyBoardVO> replyBoardListData(Map map)
 	{
 		List<ReplyBoardVO> list = new ArrayList<ReplyBoardVO>();
@@ -34,6 +35,7 @@ public class ReplyBoardDAO {
 		return list;
 	}
 	
+	/////////////////////////// 1:1 문의 쓰기 ////////////////////////
 	public static void replyBoardInsert(ReplyBoardVO vo)
 	{
 		SqlSession session = null;
@@ -51,12 +53,14 @@ public class ReplyBoardDAO {
 		}
 	}
 	
+	/////////////////////////// 1:1 문의 RowCount ////////////////////////
 	public static int replyBoardRowCount()
 	{
 		int count = 0;
 		SqlSession session = null;
 		try {
-			
+			session = ssf.openSession();
+			count = session.selectOne("replyBoardRowCount");
 		}catch(Exception ex)
 		{
 			ex.printStackTrace();
@@ -68,6 +72,7 @@ public class ReplyBoardDAO {
 		return count;
 	}
 	
+	////////////////////////// 1:1문의 리스트(admin) ///////////////////////////
 	public static List<ReplyBoardVO> adminReplyBoardListData(Map map)
 	{
 		List<ReplyBoardVO> list = new ArrayList<ReplyBoardVO>();
@@ -85,7 +90,8 @@ public class ReplyBoardDAO {
 		}
 		return list;
 	}
-	
+	 
+	//////////////////////// admin 응답 ///////////////////////////
 	public static void adminReplyBoardInsert(int no,ReplyBoardVO vo)
 	{
 		SqlSession session = null;
@@ -108,14 +114,37 @@ public class ReplyBoardDAO {
 		}
 	}
 	
+	///////////////////////// admin /////////////////////////////
 	public static ReplyBoardVO adminReplyInfoData(int no)
 	  {
-		  ReplyBoardVO vo=new ReplyBoardVO();
+		  ReplyBoardVO vo = new ReplyBoardVO();
+		  SqlSession session = null;
+		  try
+		  {
+			  session = ssf.openSession(true);
+			  vo = session.selectOne("adminReplyInfoData",no);
+		  }catch(Exception ex)
+		  {
+			  ex.printStackTrace();
+		  }
+		  finally
+		  {
+			  if(session != null)
+				  session.close();
+		  }
+		  return vo;
+	  }
+	
+	//////////////////////////1:1 응답 삭제 => 미구현예정 ///////////////////////////	
+	public static void adminReplyDelete(int no,int group_id)
+	  {
 		  SqlSession session=null;
 		  try
 		  {
-			  session=ssf.openSession(true);
-			  vo=session.selectOne("adminReplyInfoData",no);
+			  session=ssf.openSession();
+			  session.delete("adminReplyDelete",group_id);
+			  session.update("adminReplyUpdate2",no);
+			  session.commit();
 		  }catch(Exception ex)
 		  {
 			  ex.printStackTrace();
@@ -125,7 +154,6 @@ public class ReplyBoardDAO {
 			  if(session!=null)
 				  session.close();
 		  }
-		  return vo;
 	  }
 	
 	
