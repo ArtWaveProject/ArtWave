@@ -2,6 +2,8 @@ package com.sist.model;
 
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -168,6 +170,11 @@ public class MyPageModel {
        return "../main/main.jsp";
    }
    
+   
+   
+   
+   
+   
    @RequestMapping("mypage/my_member_exit.do")
    public String my_member_exit(HttpServletRequest request,HttpServletResponse response)
    {
@@ -186,6 +193,11 @@ public class MyPageModel {
 	   request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
 	   return "../main/main.jsp";
    }
+   
+   
+   
+   
+   
    
    
    
@@ -277,64 +289,74 @@ public class MyPageModel {
 	   return "../main/main.jsp";
    }
    
+  
    
-   
-   
-   
-   @RequestMapping("mypage/my_edit_member.do")
-   public String mypage_join_update(HttpServletRequest request,HttpServletResponse response)
-   {
-	   HttpSession session=request.getSession();
-	   String id=(String)session.getAttribute("id");
+   @RequestMapping("mypage/my_edit_member_ok.do")
+   public String mypage_join_update_ok(HttpServletRequest request, HttpServletResponse response) {
+       try {
+           request.setCharacterEncoding("UTF-8");
+       } catch (Exception ex) {
+           ex.printStackTrace();  // Exception 처리 개선
+       }
 
-	   
-	   MemberVO vo=MemberDAO.memberUpdateData(id);
-	   
-	   String phone=vo.getPhone();
-	   phone=phone.substring(phone.indexOf(")")+1);
-	   vo.setPhone(phone);
-	   request.setAttribute("vo", vo);
-	   request.setAttribute("title", "회원 정보 수정");
-	   request.setAttribute("mypage_jsp", "../mypage/my_edit_member.jsp");
-	   request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
-	   return "../main/main.jsp";
+       String id = request.getParameter("id");
+       String pwd = request.getParameter("pwd");
+       String nickname = request.getParameter("nickname");
+       String name = request.getParameter("name");
+       String sex = request.getParameter("sex");
+       String birthdayStr = request.getParameter("birthday");
+       String post = request.getParameter("post");
+       String addr1 = request.getParameter("addr1");
+       String addr2 = request.getParameter("addr2");
+       String email = request.getParameter("email");
+       String msg = request.getParameter("msg");
+       String phone1 = request.getParameter("phone1");
+       String phone2 = request.getParameter("phone2");
+
+       Date birthday = null;
+       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+       try {
+           if (birthdayStr != null && !birthdayStr.isEmpty()) {
+               birthday = sdf.parse(birthdayStr);
+           }
+       } catch (Exception e) {
+           e.printStackTrace();  // 날짜 파싱 예외 처리
+       }
+
+       MemberVO vo = new MemberVO();
+       vo.setId(id);
+       vo.setPwd(pwd);
+       vo.setName(name);
+       vo.setNickname(nickname);
+       vo.setSex(sex);
+       vo.setEmail(email);
+       vo.setBirthdate(birthday);
+       vo.setPost(post);
+       vo.setAddr1(addr1);
+       vo.setAddr2(addr2);
+       vo.setMsg(msg);
+       vo.setPhone(phone1 + ")" + phone2);
+
+       boolean bCheck = MemberDAO.memberUpdate(vo);
+       
+       // 세션 업데이트
+       if (bCheck) {
+           HttpSession session = request.getSession();
+           session.setAttribute("id", id);
+           session.setAttribute("nickname", nickname);
+           session.setAttribute("name", name);
+           session.setAttribute("sex", sex);
+           session.setAttribute("bday", birthdayStr);  // 날짜는 문자열로 저장
+           session.setAttribute("email", email);
+           session.setAttribute("post", post);
+           session.setAttribute("addr1", addr1);
+           session.setAttribute("addr2", addr2);
+           session.setAttribute("phone", phone1 + ")" + phone2);
+       }
+
+       request.setAttribute("result", bCheck);
+
+       return "../mypage/my_edit_member_ok.jsp";
    }
-   
-   @RequestMapping("member/join_update_ok.do")
-   public String mypage_join_update_ok(HttpServletRequest request,HttpServletResponse response)
-   {
-	      try
-		  {
-			  request.setCharacterEncoding("UTF-8");
-		  }catch(Exception ex) {}
-		  String id=request.getParameter("id");
-		  String pwd=request.getParameter("pwd");
-		  String name=request.getParameter("name");
-		  String sex=request.getParameter("sex");
-		  String birthday=request.getParameter("birthday");
-		  String post=request.getParameter("post");
-		  String addr1=request.getParameter("addr1");
-		  String addr2=request.getParameter("addr2");
-		  String email=request.getParameter("email");
-		  String msg=request.getParameter("msg");
-		  String phone1=request.getParameter("phone1");
-		  String phone2=request.getParameter("phone2");
-		  
-		  MemberVO vo=new MemberVO();
-		  vo.setId(id);
-		  vo.setPwd(pwd);
-		  vo.setName(name);
-		  vo.setSex(sex);
-		  vo.setEmail(email);
-		  vo.setDbbirthday(birthday);
-		  vo.setPost(post);
-		  vo.setAddr1(addr1);
-		  vo.setAddr2(addr2);
-		  vo.setMsg(msg);
-		  vo.setPhone(phone1+")"+phone2);
-		  
-		  boolean bCheck=MemberDAO.memberUpdate(vo);
-		  request.setAttribute("result", bCheck);
-	   return "../member/join_update_ok.jsp";
-   }
+
 }

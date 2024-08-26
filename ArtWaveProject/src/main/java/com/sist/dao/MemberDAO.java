@@ -110,8 +110,8 @@ public class MemberDAO {
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
-			String db_pwd = session.selectOne("memberGetPassword", vo.getId());
-			if (db_pwd.equals(vo.getPwd())) {
+			String pwd = session.selectOne("memberGetPassword", vo.getId());
+			if (pwd.equals(vo.getPwd())) {
 				bCheck = true;
 				session.update("memberUpdate", vo);
 				session.commit();
@@ -167,25 +167,27 @@ public class MemberDAO {
 	}
 
 	public static String deleteMember(String pwd, String id) {
-		String result = "";
-		SqlSession session = null;
-		try {
-			session = ssf.openSession();
-			String pwdjsp = session.selectOne("memberGetPassword",id);
-			session.delete("deleteMember", id);
-			session.commit();
-			if (pwdjsp.equals(pwd)) {
-				result = "ok";
-			} else {
-				result = "no";
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			if (session != null)
-				session.close();
-		}
-		return result;
+	    String result = "";
+	    SqlSession session = null;
+	    try {
+	        session = ssf.openSession();
+	        String pwdjsp = session.selectOne("memberGetPassword", id);
+	        
+	        if (pwdjsp != null && pwdjsp.equals(pwd)) {
+	            session.delete("deleteMember", id);
+	            session.commit();
+	            result = "ok";
+	        } else {
+	            result = "no";
+	        }
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	    } finally {
+	        if (session != null)
+	            session.close();
+	    }
+	    return result;
 	}
+
 
 }

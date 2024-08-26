@@ -31,9 +31,9 @@
 
 	<select id="memberGetPassword" resultType="string"
 		parameterType="string">
-		SELECT pwd FROM member
-		WHERE id=#{id}
+		SELECT pwd FROM member WHERE id = #{id,jdbcType=VARCHAR}
 	</select>
+
 
 
 	<insert id="memberInsert" parameterType="MemberVO">
@@ -44,23 +44,31 @@
 		0, sysdate, #{email})
 	</insert>
 
-	<update id="memberUpdate" parameterType="MemberVO">
-		UPDATE member SET
-		nickname=#{nickname}, pwd=#{pwd},
-		name=#{name},birthdate=#{dbbirthday},post=#{post},
-		addr1=#{addr1},addr2=#{addr2},phone=#{phone},email=#{email}
-		WHERE
-		id=#{id}
+	<update id="memberUpdate"
+		parameterType="MemberVO">
+		UPDATE member
+		SET nickname=#{nickname, jdbcType=VARCHAR},
+		pwd=#{pwd, jdbcType=VARCHAR},
+		name=#{name, jdbcType=VARCHAR},
+		birthdate=#{birthdate, jdbcType=DATE},
+		post=#{post, jdbcType=VARCHAR},
+		addr1=#{addr1, jdbcType=VARCHAR},
+		addr2=#{addr2, jdbcType=VARCHAR},
+		phone=#{phone, jdbcType=VARCHAR},
+		email=#{email, jdbcType=VARCHAR}
+		WHERE id=#{id, jdbcType=VARCHAR}
 	</update>
+
 	<update id="changePwd" parameterType="string">
 		UPDATE member SET
 		pwd=#{pwd}
 		WHERE id=#{id}
 	</update>
-	
+
 	<delete id="deleteMember" parameterType="String">
 		DELETE FROM member
-		WHERE id = #{id}
+		WHERE
+		id = #{id}
 	</delete>
 
 	<!-- ID NICKNAME PWD NAME BIRTHDATE SEX PHONE POST ADDR1 ADDR2 GRADE PHOTO 
