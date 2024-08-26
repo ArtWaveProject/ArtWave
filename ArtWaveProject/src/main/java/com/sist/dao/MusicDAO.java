@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.sist.vo.AlbumVO;
 import com.sist.vo.ArtistVO;
 import com.sist.vo.MusicVO;
+import com.sist.vo.PlayListVO;
 
 public class MusicDAO {
 	private static SqlSessionFactory ssf;
@@ -72,8 +73,8 @@ public class MusicDAO {
 		}
 		return total;
 	}
-	
-	public static List<ArtistVO> artistListData(Map map){
+
+	public static List<ArtistVO> artistListData(Map map) {
 		List<ArtistVO> list = new ArrayList<ArtistVO>();
 		SqlSession session = null;
 		try {
@@ -86,7 +87,7 @@ public class MusicDAO {
 		}
 		return list;
 	}
-	
+
 	public static ArtistVO artistDetailData(int ano) {
 		ArtistVO vo = new ArtistVO();
 		SqlSession session = null;
@@ -131,6 +132,7 @@ public class MusicDAO {
 		}
 		return list;
 	}
+
 	public static MusicVO musicDetailData(int mno) {
 		MusicVO vo = new MusicVO();
 		SqlSession session = null;
@@ -145,12 +147,13 @@ public class MusicDAO {
 		}
 		return vo;
 	}
-	public static List<String> artistName(int[] list){
-		List<String> slist=new ArrayList<String>();
+
+	public static List<String> artistName(int[] list) {
+		List<String> slist = new ArrayList<String>();
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
-			for(int i:list) {
+			for (int i : list) {
 				String name = session.selectOne("artistNameData", i);
 				slist.add(name);
 			}
@@ -162,6 +165,7 @@ public class MusicDAO {
 		}
 		return slist;
 	}
+
 	public static AlbumVO albumDetailData(int alno) {
 		AlbumVO vo = new AlbumVO();
 		SqlSession session = null;
@@ -176,8 +180,9 @@ public class MusicDAO {
 		}
 		return vo;
 	}
-	public static List<MusicVO> albumMusicData(int alno){
-		List<MusicVO> list=new ArrayList<MusicVO>();
+
+	public static List<MusicVO> albumMusicData(int alno) {
+		List<MusicVO> list = new ArrayList<MusicVO>();
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
@@ -190,9 +195,9 @@ public class MusicDAO {
 		}
 		return list;
 	}
-	
-	public static List<MusicVO> musicMvListData(Map map){
-		List<MusicVO> list=new ArrayList<MusicVO>();
+
+	public static List<MusicVO> musicMvListData(Map map) {
+		List<MusicVO> list = new ArrayList<MusicVO>();
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
@@ -205,8 +210,9 @@ public class MusicDAO {
 		}
 		return list;
 	}
+
 	public static int musicMvTotalPage(String ss) {
-		int total=0;
+		int total = 0;
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
@@ -219,9 +225,9 @@ public class MusicDAO {
 		}
 		return total;
 	}
-	
-	public static List<MusicVO> musicFindData(Map map){
-		List<MusicVO> list=new ArrayList<MusicVO>();
+
+	public static List<MusicVO> musicFindData(Map map) {
+		List<MusicVO> list = new ArrayList<MusicVO>();
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
@@ -234,8 +240,9 @@ public class MusicDAO {
 		}
 		return list;
 	}
-	public static List<ArtistVO> artistFindData(Map map){
-		List<ArtistVO> list=new ArrayList<ArtistVO>();
+
+	public static List<ArtistVO> artistFindData(Map map) {
+		List<ArtistVO> list = new ArrayList<ArtistVO>();
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
@@ -248,8 +255,9 @@ public class MusicDAO {
 		}
 		return list;
 	}
-	public static List<AlbumVO> albumFindData(Map map){
-		List<AlbumVO> list=new ArrayList<AlbumVO>();
+
+	public static List<AlbumVO> albumFindData(Map map) {
+		List<AlbumVO> list = new ArrayList<AlbumVO>();
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
@@ -262,7 +270,8 @@ public class MusicDAO {
 		}
 		return list;
 	}
-	public static List<MusicVO> musicListDataNew(Map map){
+
+	public static List<MusicVO> musicListDataNew(Map map) {
 		List<MusicVO> list = new ArrayList<MusicVO>();
 		SqlSession session = null;
 		try {
@@ -274,5 +283,86 @@ public class MusicDAO {
 				session.close();
 		}
 		return list;
+	}
+
+	public static void playListInsert(Map map) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession(true);
+			session.insert("playListInsert", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+	}
+
+	public static String playListMusicInsert(Map map) {
+		String result = "";
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			int count = session.selectOne("playListMusicCheck", map);
+			if (count == 0) {
+				result = "OK";
+				session.insert("playListMusicInsert", map);
+				session.commit();
+			} else {
+				result = "NO";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return result;
+	}
+
+	public static List<PlayListVO> playListListData(String id) {
+		List<PlayListVO> list = new ArrayList<PlayListVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("playListListData", id);
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+
+	}
+
+	public static List<MusicVO> playListMusicList(int plno, int type) {
+		List<MusicVO> list = new ArrayList<MusicVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			if (type == 1)
+				list = session.selectList("playListMusicList", plno);
+			else
+				list = session.selectList("playListMusicListRandom", plno);
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
+
+	public static void playListDelete(int plno) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			session.delete("playListDelete", plno);
+			session.delete("playListMusicDelete", plno);
+			session.commit();
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
 	}
 }

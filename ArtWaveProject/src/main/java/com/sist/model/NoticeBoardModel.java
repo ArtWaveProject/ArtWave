@@ -16,6 +16,7 @@ public class NoticeBoardModel {
 	@RequestMapping("notice/list.do")
 	public String noticeboard_list(HttpServletRequest request, HttpServletResponse response) {
 		String page = request.getParameter(page);
+		int curpage=Integer.parseInt(page);
 		int rowSize = 15;
 		int start = (rowSize * curpage) - (rowSize - 1);
 		int end = rowSize * curpage;

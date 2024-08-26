@@ -1,5 +1,7 @@
 package com.sist.model;
 
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,10 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import controller.RequestMapping;
 
 import com.sist.dao.LikeDAO;
 import com.sist.dao.MemberDAO;
+import com.sist.dao.MusicDAO;
 import com.sist.vo.*;
 
 public class MyPageModel {
@@ -141,13 +147,76 @@ public class MyPageModel {
 	   return "../main/main.jsp";
    }
    @RequestMapping("mypage/my_playlist.do")
-   public String my_playlist(HttpServletRequest request,HttpServletResponse response)
-   {
-	   request.setAttribute("title", "플레이 리스트");
-	   request.setAttribute("mypage_jsp", "../mypage/my_playlist.jsp");
-	   request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
-	   return "../main/main.jsp";
-   }
+ 	public String my_playlist(HttpServletRequest request, HttpServletResponse response) {
+ 		HttpSession session = request.getSession();
+ 		String id = (String) session.getAttribute("id");
+ 		List<PlayListVO> list = MusicDAO.playListListData(id);
+ 		request.setAttribute("list", list);
+ 		request.setAttribute("title", "플레이 리스트");
+ 		request.setAttribute("mypage_jsp", "../mypage/myPlayList.jsp");
+ 		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
+ 		return "../main/main.jsp";
+ 	}
+
+ 	@RequestMapping("mypage/myPlayListDetail.do")
+ 	public String myPlayListDetail(HttpServletRequest request, HttpServletResponse response) {
+ 		String plno = request.getParameter("plno");
+ 		request.setAttribute("plno", plno);
+ 		request.setAttribute("title", "플레이 리스트");
+ 		request.setAttribute("mypage_jsp", "../mypage/myPlayListDetail.jsp");
+ 		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
+ 		return "../main/main.jsp";
+ 	}
+
+ 	@RequestMapping("mypage/myPlayListMusicList.do")
+ 	public void myPlayListMusicList(HttpServletRequest request, HttpServletResponse response) {
+ 		try {
+ 		String plno = request.getParameter("plno");
+ 		String type=request.getParameter("type");
+ 		System.out.println(plno);
+ 		System.out.println(type);
+ 		List<MusicVO> list = MusicDAO.playListMusicList(Integer.parseInt(plno), Integer.parseInt(type));
+ 		JSONArray arr = new JSONArray();
+ 		for (MusicVO vo : list) {
+ 			JSONObject obj = new JSONObject();
+ 			obj.put("mno", vo.getMno());
+ 			obj.put("title", vo.getTitle());
+ 			obj.put("poster", vo.getPoster());
+ 			obj.put("urlmp3", vo.getUrlmp3());
+ 			obj.put("aname", vo.getAname());
+ 			obj.put("altitle", vo.getAltitle());
+ 			obj.put("size", list.size());
+ 			arr.add(obj);
+ 		}
+ 		System.out.println(arr.toString());
+ 			response.setContentType("text/plain;charset=UTF-8");
+ 			PrintWriter out = response.getWriter();
+ 			out.write(arr.toJSONString());
+ 		} catch (Exception e) {
+ 			e.printStackTrace();
+ 		}
+ 	}
+ 	@RequestMapping("mypage/myPlayListDelete.do")
+ 	public String myPlayListDelete(HttpServletRequest request, HttpServletResponse response) {
+ 		String plno=request.getParameter("plno");
+ 		MusicDAO.playListDelete(Integer.parseInt(plno));
+ 		return "redirect:../mypage/my_playlist.do";
+ 	}
+ 	@RequestMapping("mypage/myPlayListMake.do")
+ 	public String myPlayListMake(HttpServletRequest request, HttpServletResponse response) {
+ 		try {
+ 			request.setCharacterEncoding("UTF-8");
+ 		} catch (UnsupportedEncodingException e) {}
+ 		String plname=request.getParameter("plname");
+ 		HttpSession session=request.getSession();
+ 		String id=(String)session.getAttribute("id");
+ 		Map map=new HashMap();
+ 		map.put("id", id);
+ 		map.put("plname", plname);
+ 		MusicDAO.playListInsert(map);
+ 		return "redirect:../mypage/my_playlist.do";
+ 	}
+
    @RequestMapping("mypage/my_reserve.do")
    public String my_reserve(HttpServletRequest request,HttpServletResponse response)
    {

@@ -23,6 +23,8 @@
 		<typeAlias type="com.sist.vo.MscheduleVO" alias="MscheduleVO"/>
 		<typeAlias type="com.sist.vo.TheaterVO" alias="TheaterVO"/>
 		<typeAlias type="com.sist.vo.TheaterDetailVO" alias="TheaterDetailVO"/>
+		<typeAlias type="com.sist.vo.PlayListMusicVO" alias="PlayListMusicVO"/>
+		<typeAlias type="com.sist.vo.PlayListVO" alias="PlayListVO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -31,7 +33,7 @@
 				<property name="driver" value="${driver}" />
 				<property name="url" value="${url}" />
 				<property name="username" value="${username}" />
-				<property name="password" value="${password}" />  
+				<property name="password" value="${password}" />
 			</dataSource>
 		</environment>
 	</environments>
@@ -45,9 +47,8 @@
 		<mapper resource="com/sist/mapper/alstore_mapper.xml" />
 		<mapper resource="com/sist/mapper/mreview_mapper.xml"/>
 		<mapper resource="com/sist/mapper/board_mapper.xml"/>
-		<mapper resource="com/sist/mapper/like_mapper.xml"/>  
+		<mapper resource="com/sist/mapper/like_mapper.xml"/>
 		<mapper resource="com/sist/mapper/moviebook_mapper.xml"/>
 		<mapper resource="com/sist/mapper/mreserve_mapper.xml"/>
-		<mapper resource="com/sist/mapper/admin-mapper.xml"/>     
 	</mappers>
 </configuration>
