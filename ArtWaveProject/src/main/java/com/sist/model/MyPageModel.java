@@ -187,6 +187,8 @@ public class MyPageModel {
 	   return "../main/main.jsp";
    }
    
+   
+   
    @RequestMapping("mypage/my_playlist.do")
  	public String my_playlist(HttpServletRequest request, HttpServletResponse response) {
  		HttpSession session = request.getSession();
