@@ -10,10 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import com.sist.dao.MusicDAO;
 import com.sist.vo.AlbumVO;
 import com.sist.vo.ArtistVO;
 import com.sist.vo.MusicVO;
+import com.sist.vo.PlayListVO;
 
 import controller.RequestMapping;
 
@@ -31,7 +35,6 @@ R&B/소울
 public class MusicModel {
 	private String[] genreList = { "", "", "댄스", "드라마", "발라드", "인디", "락", "랩/힙합", "트로트", "R&B/소울", "블루스/포크", "동요",
 			"일렉트로니카", "정통", "애시드/퓨전", "한국영화", "국내CCM", "캐롤" };
-	
 
 	@RequestMapping("music/musicHome.do")
 	public String musicHome(HttpServletRequest request, HttpServletResponse response) {
@@ -88,6 +91,7 @@ public class MusicModel {
 
 	@RequestMapping("music/albumList.do")
 	public String albumList(HttpServletRequest request, HttpServletResponse response) {
+		try {
 		String page = request.getParameter("page");
 		if (page == null)
 			page = "1";
@@ -98,7 +102,7 @@ public class MusicModel {
 		if (ss == null)
 			ss = "";
 		int curPage = Integer.parseInt(page);
-		int rowSize = 12;
+		int rowSize = 25;
 		int start = (curPage - 1) * rowSize + 1;
 		int end = start + rowSize - 1;
 		Map map = new HashMap();
@@ -113,12 +117,16 @@ public class MusicModel {
 		System.out.println(list.size());
 		System.out.println(totalPage);
 		request.setAttribute("ss", ss);
+		request.setAttribute("genre", genre);
 		request.setAttribute("curPage", curPage);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("list", list);
-		request.setAttribute("main_jsp", "../music/albumList.jsp");
+		request.setAttribute("main_jsp", "../music/albumList2.jsp");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "../main/main.jsp";
 	}
 
@@ -152,6 +160,7 @@ public class MusicModel {
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		String ss = request.getParameter("ss");
 		if (ss == null)
@@ -258,6 +267,7 @@ public class MusicModel {
 		request.setAttribute("main_jsp", "../music/albumDetail.jsp");
 		return "../main/main.jsp";
 	}
+
 	@RequestMapping("music/find.do")
 	public String musicFind(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -287,8 +297,60 @@ public class MusicModel {
 		request.setAttribute("main_jsp", "../music/find.jsp");
 		return "../main/main.jsp";
 	}
+
 	@RequestMapping("music/playListMake.do")
-	public String playListMake(HttpServletRequest request, HttpServletResponse response) {
-		return "../music/playlistMake.jsp";
+	public void playListMake(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (Exception e) {
+		}
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		String plname = request.getParameter("plname");
+		Map map = new HashMap();
+		map.put("id", id);
+		map.put("plname", plname);
+		MusicDAO.playListInsert(map);
+	}
+
+	@RequestMapping("music/playListList.do")
+	public void playListList(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (Exception e) {
+		}
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		List<PlayListVO> list = MusicDAO.playListListData(id);
+		JSONArray arr = new JSONArray();
+		for (PlayListVO vo : list) {
+			JSONObject obj = new JSONObject();
+			obj.put("plno", vo.getPlno());
+			obj.put("plname", vo.getPlname());
+			obj.put("id", vo.getId());
+			obj.put("dbday", vo.getDbday());
+			arr.add(obj);
+		}
+		try {
+			response.setContentType("text/plain;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.write(arr.toJSONString());
+		} catch (Exception e) {
+		}
+	}
+
+	@RequestMapping("music/playListMusicInsert.do")
+	public void playListMusicInsert(HttpServletRequest request, HttpServletResponse response) {
+		String mno = request.getParameter("mno");
+		String plno = request.getParameter("plno");
+		Map map = new HashMap();
+		map.put("mno", Integer.parseInt(mno));
+		map.put("plno", Integer.parseInt(plno));
+		String result = MusicDAO.playListMusicInsert(map);
+		try {
+			response.setContentType("text/plain;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.write(result);
+		} catch (Exception e) {}
 	}
 }
