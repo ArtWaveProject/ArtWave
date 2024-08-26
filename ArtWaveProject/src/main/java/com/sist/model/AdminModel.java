@@ -152,5 +152,6 @@ public class AdminModel {
 		   //ReplyBoardDAO.adminReplyDelete(Integer.parseInt(no),Integer.parseInt(group_id));
 		   return "redirect:../adminpage/reply_list.do";
 	   }
+	   
 	  
 }

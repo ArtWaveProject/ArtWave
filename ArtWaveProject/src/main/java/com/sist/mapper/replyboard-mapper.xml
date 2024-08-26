@@ -27,10 +27,8 @@
     FROM replyboard
     WHERE no BETWEEN #{start} AND #{end}
     ORDER BY group_step DESC,no
-    
-
   </select>
-  
+ 
   <insert id="adminReplyBoardInsert" parameterType="ReplyBoardVO">
    INSERT INTO replyboard(no,id,name,subject,content,group_id,group_step,isreply) 
    VALUES(pr_no_seq.nextval,#{id},#{name},#{subject},#{content},

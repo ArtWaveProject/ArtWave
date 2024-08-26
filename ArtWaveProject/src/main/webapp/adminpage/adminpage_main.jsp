@@ -72,9 +72,7 @@
         }
     </style>
 <style>
-  body {
-    padding-top: 20px;
-  }
+  
 
 </style>
 </head>
@@ -103,26 +101,34 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">회원목록</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="../adminpage/member_list.do" class="dropdown-item">회원 리스트</a>
-                            <a href="#" class="dropdown-item">빈페이지</a>
+                            <a href="#" class="dropdown-item">#</a>
+                            <a href="#" class="dropdown-item">#</a>
+                            <a href="#" class="dropdown-item">#</a>
+                            <a href="#" class="dropdown-item">#</a>
                         </div>
                     </div>
                     
-                    <!-- 
+                    
           			<div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">결제관리</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="#" class="dropdown-item">결제 목록</a>
-                        </div>
-                    </div>
-                    -->
-                    <!-- 
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">신고 게시판</a>
-                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="#" class="dropdown-item">예약 관리</a>
+                            <a href="#" class="dropdown-item">#</a>
                             <a href="#" class="dropdown-item">#</a>
                         </div>
                     </div>
-                    -->
+                    
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">신고 게시판</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="#" class="dropdown-item">신고게시물</a>
+                            <a href="#" class="dropdown-item">#</a>
+                            <a href="#" class="dropdown-item">#</a>
+                            <a href="#" class="dropdown-item">#</a>
+                        </div>
+                    </div>
+                  
                     
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">고객센터</a>
@@ -133,9 +139,27 @@
                             <a href="#" class="dropdown-item">실시간 상담</a>
                         </div>
                     </div>
+                    
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">집계</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="#" class="dropdown-item">#</a>
+                            <a href="#" class="dropdown-item">#</a>
+                            <a href="#" class="dropdown-item">#</a>
+                            <a href="#" class="dropdown-item">#</a>
+                            <a href="#" class="dropdown-item">#</a>
+                            <a href="#" class="dropdown-item">#</a>
+                            <a href="#" class="dropdown-item">#</a>
+                            <a href="#" class="dropdown-item">#</a>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
                 </div>
             </nav>
- 			  </div>
+  		</div>
     </div>  
     
 

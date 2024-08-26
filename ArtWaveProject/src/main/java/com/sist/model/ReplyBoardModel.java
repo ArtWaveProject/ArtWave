@@ -13,6 +13,7 @@ import controller.RequestMapping;
 import com.sist.dao.*;
 
 public class ReplyBoardModel {
+	
 	@RequestMapping("replyboard/list.do")
 	   public String replyboard_list(HttpServletRequest request,HttpServletResponse response)
 	   {
@@ -38,9 +39,12 @@ public class ReplyBoardModel {
 		   request.setAttribute("curpage", curpage);
 		   request.setAttribute("totalpage", totalpage);
 		   request.setAttribute("rbList", list);
+		   
 		   request.setAttribute("main_jsp", "../replyboard/replyboard_list.jsp");
+		   
 		   return "../main/main.jsp";
 	   }
+	
 	   @RequestMapping("replyboard/insert.do")
 	   public String replyboard_insert(HttpServletRequest request,HttpServletResponse response)
 	   {

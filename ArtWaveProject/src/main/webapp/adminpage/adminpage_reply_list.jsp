@@ -16,6 +16,7 @@
 </style>
 </head>
 <body>
+	<main class="container">
 	<div class="col-12">
 		<div class="bg-light rounded h-100 p-4">
 			<h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>묻고답하기</h3>
@@ -106,5 +107,6 @@
 			
 		</div>
 	</div>
+	</main>
 </body>
 </html>

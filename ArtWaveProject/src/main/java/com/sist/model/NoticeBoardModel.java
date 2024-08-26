@@ -9,7 +9,7 @@ import controller.RequestMapping;
 
 import com.sist.dao.*;
 import com.sist.vo.*;
-
+/*
 public class NoticeBoardModel {
 	private String[] types = { "", "일반공지", "Books공지", "Music공지", "잔체공지" };
 
@@ -46,3 +46,4 @@ public class NoticeBoardModel {
 
 	// 상세보기 -----------------------------------------------------------------
 }
+*/
