@@ -26,6 +26,7 @@ public class MemberModel {
 			session.setAttribute("id", vo.getId());
 			session.setAttribute("nickname", vo.getNickname());
 			session.setAttribute("admin", vo.getAdmin());
+			
 		}
 		try {
 			PrintWriter out=response.getWriter();

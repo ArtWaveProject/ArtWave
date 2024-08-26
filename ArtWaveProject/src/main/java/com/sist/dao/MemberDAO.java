@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.taglibs.standard.lang.jstl.EqualityOperator;
 
 import com.sist.vo.MemberVO;
 
@@ -88,89 +89,103 @@ public class MemberDAO {
 				session.close();
 		}
 	}
-	  public static MemberVO memberUpdateData(String id)
-	  {
-		  MemberVO vo=new MemberVO();
-		  SqlSession session=null;
-		  try
-		  {
-			  session=ssf.openSession(true);
-			  vo=session.selectOne("memberUpdateData", id);
-		  }catch(Exception ex)
-		  {
-			  ex.printStackTrace();
-		  }
-		  finally
-		  {
-			  if(session!=null)
-				  session.close();
-		  }
-		  return vo;
-	  }
 
-	  public static boolean memberUpdate(MemberVO vo)
-	  {
-		  boolean bCheck=false;
-		  SqlSession session=null;
-		  try
-		  {
-			  session=ssf.openSession();
-			  String db_pwd=session.selectOne("memberGetPassword", vo.getId());
-			  if(db_pwd.equals(vo.getPwd()))
-			  {
-				  bCheck=true;
-				  session.update("memberUpdate",vo);
-				  session.commit();
-			  }
-			  else
-			  {
-				  bCheck=false;
-			  }
-		  }catch(Exception ex)
-		  {
-			  ex.printStackTrace();
-		  }
-		  finally
-		  {
-			  if(session!=null)
-				  session.close();
-		  }
-		  return bCheck;
-	  }
-		public static MemberVO memberinfo(String id) {
-			MemberVO vo = new MemberVO();
-			SqlSession session = null;
-			try {
-				session = ssf.openSession();
-				session.selectOne("memberInfoData", id);
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				if (session != null)
-					session.close();
-			}
-			return vo;
+	public static MemberVO memberUpdateData(String id) {
+		MemberVO vo = new MemberVO();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession(true);
+			vo = session.selectOne("memberUpdateData", id);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
 		}
-		
-		  public static int pwdCheckData(Map map)
-		  {
-			  int count=0;
-			  SqlSession session=null;
-			  try
-			  {
-				  session=ssf.openSession();
-				  count=session.selectOne("pwdCheckData",map);
-			  }catch(Exception ex)
-			  {
-				  ex.printStackTrace();
-			  }
-			  finally
-			  {
-				  if(session!=null)
-					  session.close();
-			  }
-			  return count;
-		  }
-	
+		return vo;
+	}
+
+	public static boolean memberUpdate(MemberVO vo) {
+		boolean bCheck = false;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			String db_pwd = session.selectOne("memberGetPassword", vo.getId());
+			if (db_pwd.equals(vo.getPwd())) {
+				bCheck = true;
+				session.update("memberUpdate", vo);
+				session.commit();
+			} else {
+				bCheck = false;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return bCheck;
+	}
+
+	public static MemberVO memberinfo(String id) {
+		MemberVO vo = new MemberVO();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			session.selectOne("memberInfoData", id);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return vo;
+	}
+
+	public static int memberGetPassword(Map map) {
+		int count = 0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			count = session.selectOne("memberGetPassword", map);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return count;
+	}
+
+	public static String checkPassword(String pwd, String id) {
+		String result = "";
+		SqlSession session = ssf.openSession();
+		session.selectOne("checkPassword", pwd);
+
+		return result;
+	}
+
+	public static String deleteMember(String pwd, String id) {
+		String result = "";
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			String pwdjsp = session.selectOne("memberGetPassword",id);
+			session.delete("deleteMember", id);
+			session.commit();
+			if (pwdjsp.equals(pwd)) {
+				result = "ok";
+			} else {
+				result = "no";
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return result;
+	}
+
 }

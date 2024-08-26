@@ -206,8 +206,7 @@
 						<tr>
 							<th class="text-right" width="15%">닉네임</th>
 							<td width="85%" class="inline"><input type="text" size=20
-								class="input-sm" name="nickname" id="nickname"
-								value="${sessionScope.nickname }"></td>
+								class="input-sm" name="nickname" id="nickname"></td>
 						</tr>
 
 						<tr>
@@ -231,7 +230,7 @@
 						<tr>
 							<th class="text-right" width="15%">이메일</th>
 							<td width="85%"><input type="text" size=70 class="input-sm"
-								name="email" id="email" value="${sessionScope.email }">
+								name="email" id="email">
 							</td>
 						</tr>
 						<tr>

@@ -26,11 +26,33 @@ public class MyPageModel {
    @RequestMapping("mypage/mypage_main.do")
    public String mypage_main(HttpServletRequest request,HttpServletResponse response)
    {
+	   HttpSession session=request.getSession();
+	   String id=(String)session.getAttribute("id");
+	   String nickname=(String)session.getAttribute("nickname");
+	   String name=(String)session.getAttribute("name");
+	   String bday=(String)session.getAttribute("bday");
+	   String email=(String)session.getAttribute("email");
+	   String post=(String)session.getAttribute("post");
+	   String addr1=(String)session.getAttribute("addr1");
+	   String addr2=(String)session.getAttribute("addr2");
+	   
+	   session.setAttribute("id", id);
+	   session.setAttribute("nickname", nickname);
+	   session.setAttribute("name", name);
+	   session.setAttribute("bday", bday);
+	   session.setAttribute("email", email);
+	   session.setAttribute("post", post);
+	   session.setAttribute("addr1", addr1);
+	   session.setAttribute("addr2", addr2);
+	   
+	   
+	   
 	   request.setAttribute("title", "마이페이지 홈");
 	   request.setAttribute("mypage_jsp", "../mypage/mypage_home.jsp");
 	   request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
 	   return "../main/main.jsp";
    }
+   
    @RequestMapping("mypage/my_cart.do")
    public String my_cart(HttpServletRequest request,HttpServletResponse response)
    {
@@ -42,6 +64,14 @@ public class MyPageModel {
    @RequestMapping("mypage/my_change_pwd.do")
    public String my_change_pwd(HttpServletRequest request,HttpServletResponse response)
    {
+	   HttpSession session=request.getSession();
+	   String id=(String)session.getAttribute("id");
+	   String pwd=(String)session.getAttribute("pwd");
+	   
+	   Map map = new HashMap();
+	   map.put("id", id);
+	   map.put("pwd", pwd);
+	   
 	   request.setAttribute("title", "비밀번호 변경");
 	   request.setAttribute("mypage_jsp", "../mypage/my_change_pwd.jsp");
 	   request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
@@ -141,11 +171,22 @@ public class MyPageModel {
    @RequestMapping("mypage/my_member_exit.do")
    public String my_member_exit(HttpServletRequest request,HttpServletResponse response)
    {
+	   HttpSession session = request.getSession();
+	   String id=(String)session.getAttribute("id");
+	   
+	   String pwd =request.getParameter("pwdjsp");
+	   Map map=new HashMap();
+	   map.put("id", id);
+	   map.put("pwdjsp", pwd);
+	   
+	   MemberDAO.deleteMember(id, pwd);
+
 	   request.setAttribute("title", "회원 탈퇴");
 	   request.setAttribute("mypage_jsp", "../mypage/my_member_exit.jsp");
 	   request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
 	   return "../main/main.jsp";
    }
+   
    @RequestMapping("mypage/my_playlist.do")
  	public String my_playlist(HttpServletRequest request, HttpServletResponse response) {
  		HttpSession session = request.getSession();
@@ -243,6 +284,8 @@ public class MyPageModel {
    {
 	   HttpSession session=request.getSession();
 	   String id=(String)session.getAttribute("id");
+
+	   
 	   MemberVO vo=MemberDAO.memberUpdateData(id);
 	   
 	   String phone=vo.getPhone();

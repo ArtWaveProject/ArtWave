@@ -20,11 +20,6 @@
 		resultType="int">
 		SELECT COUNT(*) FROM member WHERE email=#{email}
 	</select>
-	<select id="memberGetPassword" resultType="string"
-		parameterType="string">
-		SELECT pwd FROM member
-		WHERE id=#{id}
-	</select>
 	<select id="memberUpdateData" resultType="MemberVO"
 		parameterType="string">
 		SELECT
@@ -33,6 +28,13 @@
 		WHERE
 		id=#{id}
 	</select>
+
+	<select id="memberGetPassword" resultType="string"
+		parameterType="string">
+		SELECT pwd FROM member
+		WHERE id=#{id}
+	</select>
+
 
 	<insert id="memberInsert" parameterType="MemberVO">
 		INSERT INTO member
@@ -50,11 +52,17 @@
 		WHERE
 		id=#{id}
 	</update>
-
-	<delete id="memberDelete" parameterType="String">
-		DELETE FROM member WHERE
-		id=#{id}
+	<update id="changePwd" parameterType="string">
+		UPDATE member SET
+		pwd=#{pwd}
+		WHERE id=#{id}
+	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM member
+		WHERE id = #{id}
 	</delete>
+
 	<!-- ID NICKNAME PWD NAME BIRTHDATE SEX PHONE POST ADDR1 ADDR2 GRADE PHOTO 
 		ADMIN REGDATE EMAIL -->
 </mapper>

@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
 <script type="text/javascript">
 
 </script>
@@ -174,6 +175,9 @@
 	margin-left: 100px;
 }
 </style>
+<script type="text/javascript">
+
+</script>
 </head>
 <body>
 	<div class="listBody">
@@ -230,8 +234,8 @@
 						</tr>
 						
 						<tr>
-							<td colspan="2" ><input class="btnposi btn-sm" id="checkBtn"
-								type="submit" value="수정하기" >
+							<td colspan="2" >
+								<input class="btnposi btn-sm" type="submit" value="수정하기" id="checkBtn" >
 							</td>
 						</tr>
 					</table>
@@ -239,5 +243,6 @@
 			</div>
 		</main>
 	</div>
+
 </body>
 </html>

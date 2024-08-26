@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style type="text/css">
     .mtop {
         margin-top: 200px;
@@ -20,6 +21,9 @@
 		color: black;
 		text-align: center;
 	}
+.caret{
+	display: none !important;
+}
 </style>
 </head>
 <body>
