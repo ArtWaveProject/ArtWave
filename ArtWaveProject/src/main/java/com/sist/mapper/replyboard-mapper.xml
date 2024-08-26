@@ -4,12 +4,12 @@
  
   <!-- 목록 -->
   <select id="replyBoardListData" resultType="ReplyBoardVO" parameterType="hashmap">
-    SELECT no,id,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,group_step,num
-    FROM (SELECT no,id,subject,name,regdate,hit,group_step,rownum as num 
-    	FROM (SELECT no,id,subject,name,regdate,hit,group_step 
-   		 FROM replyboard ORDER BY group_id DESC , group_step ASC))
-    WHERE num BETWEEN #{start} AND #{end}
+    SELECT no,id,isreply,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,group_step,rownum as num
+    FROM replyboard
+    WHERE no BETWEEN #{start} AND #{end}
+    ORDER BY no
   </select>
+  
   <select id="replyBoardRowCount" resultType="int">
    SELECT COUNT(*) FROM replyboard
   </select>

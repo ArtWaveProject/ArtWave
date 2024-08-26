@@ -41,7 +41,7 @@
 				</thead>
 				<tbody>
 				<c:set var="count" value="${count }"/>
-				<c:forEach var="vo" items="${mrList }">
+				<c:forEach var="vo" items="${rbList }">
 					<tr>
 						<td width="10%" align="center">${vo.no}</td>
 						<td width="40%">
