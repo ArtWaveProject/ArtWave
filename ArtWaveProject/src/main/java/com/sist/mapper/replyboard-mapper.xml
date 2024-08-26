@@ -23,11 +23,12 @@
   </insert>
   
   <select id="adminReplyBoardListData" resultType="ReplyBoardVO" parameterType="hashmap">
-    SELECT no,id,isreply,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,group_step,group_id,num
-    FROM (SELECT no,id,isreply,subject,name,regdate,hit,group_step,group_id,rownum as num 
-    	FROM (SELECT no,id,isreply,subject,name,regdate,hit,group_step,group_id
-   		 FROM replyboard WHERE group_step!=1 ORDER BY group_id DESC , group_step ASC))
-    WHERE num BETWEEN #{start} AND #{end}
+    SELECT no,id,isreply,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,group_step,group_id,rownum as num
+    FROM replyboard
+    WHERE no BETWEEN #{start} AND #{end}
+    ORDER BY group_step DESC,no
+    
+
   </select>
   
   <insert id="adminReplyBoardInsert" parameterType="ReplyBoardVO">
