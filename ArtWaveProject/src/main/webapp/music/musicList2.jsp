@@ -42,14 +42,6 @@
 }
 
 .page {
-	padding: 0;
-	margin: 20px 0;
-	display: flex;
-	justify-content: center;
-	font-family: Arial, sans-serif;
-}
-
-.page {
 	list-style: none;
 	padding: 0;
 	margin: 20px auto; /* 위와 아래 여백을 추가하고 자동으로 가운데 정렬 */

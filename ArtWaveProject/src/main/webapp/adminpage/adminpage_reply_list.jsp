@@ -31,9 +31,9 @@
 				</thead>
 				<tbody>
 				<c:set var="count" value="${count }"/>
-				<c:forEach var="vo" items="${arList }">
+				<c:forEach var="vo" items="${rbList }">
 					<tr>
-						<td width="10%" align="center">${count}</td>
+						<td width="10%" align="center">${vo.no}</td>
 						<td width="40%">
 							<c:if test="${vo.group_step>0 }">
 							&nbsp;&nbsp;
@@ -56,9 +56,9 @@
 				</tbody>
 			</table>
 			
-			<table>
-			 <tr>
-				 <td class="text-center">
+			<table >
+			 <tr class="text-center">
+				 <td class="text-center"> 
 					       <c:choose>
 						    <c:when test="${curpage > 1}">
 						        <a href="../adminpage/reply_list.do?page=${curpage - 1}" class="btn btn-sm btn-success">이전</a>
@@ -78,6 +78,7 @@
 						        <a href="#" class="btn btn-sm btn-info disabled">다음</a>
 						    </c:otherwise>
 						</c:choose>
+						
 		     		</td>
 		     	</tr>
 		     </table>

@@ -35,6 +35,7 @@ public class AdminModel {
 		String page = request.getParameter("page");
 		if(page==null)
 			page="1";
+		
 		int curpage = Integer.parseInt(page);
 		int rowSize = 15;
 		int start = (rowSize * curpage) - (rowSize - 1) ;
@@ -52,7 +53,7 @@ public class AdminModel {
 		request.setAttribute("curpage", curpage);
 		request.setAttribute("totalpage", totalpage);
 		request.setAttribute("count", count);
-		request.setAttribute("memberlist", list	);
+		request.setAttribute("memberList", list	);
 		
 		request.setAttribute("admin_jsp", "../adminpage/adminpage_home.jsp");
 		request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
@@ -70,7 +71,8 @@ public class AdminModel {
 		
 		return "../main/main.jsp";
 	}
-	// 묻고답하기 게시판 목록
+	/////////////////////////////////////////// 묻고답하기 게시판 목록//////////////////////////////////////////////
+	
 	@RequestMapping("adminpage/reply_list.do")
 	   public String reply_list(HttpServletRequest request,HttpServletResponse response)
 	   {
@@ -79,6 +81,7 @@ public class AdminModel {
 			   page="1";
 		   
 		   int curpage=Integer.parseInt(page);
+		   
 		   Map map=new HashMap();
 		   int rowSize=15;
 		   int start=(rowSize*curpage)-(rowSize-1);
@@ -91,7 +94,7 @@ public class AdminModel {
 		   int count=ReplyBoardDAO.replyBoardRowCount();
 		   int totalpage=(int)(Math.ceil(count/15.0));
 		   
-		   request.setAttribute("arList", list);
+		   request.setAttribute("rbList", list);
 		   request.setAttribute("curpage", curpage);
 		   request.setAttribute("totalpage", totalpage);
 		   request.setAttribute("count", count);
