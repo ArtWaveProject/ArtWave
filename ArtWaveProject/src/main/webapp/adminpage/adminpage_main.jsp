@@ -64,6 +64,7 @@
             width: 100%;
             border-collapse: collapse;
             border: none;
+            margin: 0 auto;
         }
         td, th {
             text-align: center;    
