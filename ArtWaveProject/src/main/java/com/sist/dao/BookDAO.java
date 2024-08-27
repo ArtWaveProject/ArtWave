@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.sist.vo.*;
 public class BookDAO {
+	
 	private static SqlSessionFactory ssf;
 	  static
 	  {

@@ -3,7 +3,6 @@ package com.sist.vo;
 import java.util.Date;
 
 import lombok.Data;
-
 /*
  *  BNO        NOT NULL NUMBER         
 	BTAG                VARCHAR2(1000) 

@@ -37,6 +37,7 @@ public class ReviewDAO {
 				  session.close();
 		  }
 	  }
+	  
 	  public static List<ReviewVO> reviewListData(Map map)
 	  {
 		  List<ReviewVO> list=new ArrayList<ReviewVO>();

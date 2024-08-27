@@ -8,6 +8,7 @@
      #{tno},#{trating},#{id},#{nickname},#{tcontent},SYSDATE,#{type}
     )
   </insert>
+  
   <select id="reviewListData" resultType="ReviewVO" parameterType="hashmap">
     SELECT trno,tno,trating,id,nickname,tcontent,type,TO_CHAR(tdate,'YYYY-MM-DD') as dbday
     FROM totalreview

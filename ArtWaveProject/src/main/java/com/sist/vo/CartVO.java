@@ -11,6 +11,7 @@ import lombok.Data;
 	BUYDATE          DATE           
 	TYPE             NUMBER         
  */
+
 @Data
 public class CartVO {
   private int cno,tno,count,type;

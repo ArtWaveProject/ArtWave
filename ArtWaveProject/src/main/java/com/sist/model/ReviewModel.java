@@ -16,6 +16,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class ReviewModel {
+	 
 	   @RequestMapping("review/list.do")
 	   public void review_list(HttpServletRequest request,HttpServletResponse response)
 	   {
