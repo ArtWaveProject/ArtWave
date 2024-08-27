@@ -1,14 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
 .featured-games {
 	display: flex;
@@ -23,7 +21,7 @@
 .book-info {
 	flex: 2;
 	margin-left: 20px;
-	max-width: calc(100% - 340px); 
+	max-width: calc(100% - 340px);
 }
 
 .pricing-info {
@@ -232,22 +230,22 @@
 	margin-bottom: 15px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
-	width: 800px; 
+	width: 800px;
 	min-height: 68px;
-	box-sizing: border-box; 
-	vertical-align: middle; 
+	box-sizing: border-box;
+	vertical-align: middle;
 }
 
 .review-form button {
 	background-color: #5D7DC9;
 	color: #fff;
-	padding: 12px 20px; 
+	padding: 12px 20px;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
 	font-size: 16px;
-	height: 50px; 
-	vertical-align: middle; 
+	height: 50px;
+	vertical-align: middle;
 	box-sizing: border-box;
 	margin-bottom: 10px;
 }
@@ -267,34 +265,34 @@
 }
 
 .button-container {
-    display: flex;
-    margin: 30px 0 0 0;
+	display: flex;
+	margin: 30px 0 0 0;
 }
 
 .action-button {
-    background-color: #fff;
-    color: #000;
-    padding: 12px 20px;
-    border: 1.5px solid #000;
-    border-radius: 10px 10px 0 0; /* 위쪽 둥글게 */
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    height: 50px;
-    width: 110px;
-    text-align: center;
-    display: inline-block;
-    transition: background-color 0.2s, color 0.2s;
+	background-color: #fff;
+	color: #000;
+	padding: 12px 20px;
+	border: 1.5px solid #000;
+	border-radius: 10px 10px 0 0; /* 위쪽 둥글게 */
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
+	height: 50px;
+	width: 110px;
+	text-align: center;
+	display: inline-block;
+	transition: background-color 0.2s, color 0.2s;
 }
 
 .action-button:hover {
-    background-color: #f0f0f0;
-    color: #333;
+	background-color: #f0f0f0;
+	color: #333;
 }
 
 .action-button.active {
-    background-color: #000;
-    color: #fff;
+	background-color: #000;
+	color: #fff;
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -446,16 +444,13 @@ $(document).ready(function() {
 							<div class="col-lg-8" style="flex: 1; margin-right: 10px;">
 								<div class="featured-games header-text">
 									<div class="cover">
-										<img src="${vo.cover}" alt=""
-											style="width: 300px; height: 400px; border-radius: 23px;">
+										<img src="${vo.cover}" alt="" style="width: 300px; height: 400px; border-radius: 23px;">
 									</div>
 									<div class="book-info">
 										<p>${vo.bgenre}<br>
 										</p>
-										<span
-											style="font-size: 30px; font-weight: bold; display: block; margin-bottom: 10px;">${vo.btitle}</span>
-										<p>${vo.writer}${vo.writer != null ? ' 저 | ' : ''}${vo.publisher}
-											| ${vo.dbday}</p>
+										<span style="font-size: 30px; font-weight: bold; display: block; margin-bottom: 10px;">${vo.btitle}</span>
+										<p>${vo.writer}${vo.writer != null ? ' 저 | ' : ''}${vo.publisher}| ${vo.dbday}</p>
 										<p>${vo.btag}</p>
 										<div class="hr-container">
 											<hr>
@@ -463,34 +458,37 @@ $(document).ready(function() {
 										<table class="pricing-info">
 											<tr>
 												<th class="price-label">정가</th>
-												<td class="price-value"><fmt:formatNumber
-														value="${vo.price}" type="number" />원</td>
+												<td class="price-value">
+													<fmt:formatNumber value="${vo.price}" type="number" />
+													원
+												</td>
 											</tr>
 											<tr>
 												<th class="price-label">할인가</th>
-												<td class="price-value discount-price"><fmt:formatNumber
-														value="${vo.sale_price}" type="number" />원 <span
-													class="discount-rate"> <c:choose>
+												<td class="price-value discount-price">
+													<fmt:formatNumber value="${vo.sale_price}" type="number" />
+													원 <span class="discount-rate"> <c:choose>
 															<c:when test="${vo.sale_price<vo.price}">
-															(<fmt:formatNumber maxFractionDigits="0" type="number"
-																	value="${((vo.price-vo.sale_price) / vo.price*100)}" />% 할인)
+															(<fmt:formatNumber maxFractionDigits="0" type="number" value="${((vo.price-vo.sale_price) / vo.price*100)}" />% 할인)
                                   </c:when>
 															<c:otherwise>(할인 없음)</c:otherwise>
 														</c:choose>
-												</span></td>
+													</span>
+												</td>
 											</tr>
 											<tr>
-												<th class="price-delivery"
-													style="padding-top: 8px; font-size: 13px; color: #979797; font-weight: 300; width: 400px;">배송비</th>
+												<th class="price-delivery" style="padding-top: 8px; font-size: 13px; color: #979797; font-weight: 300; width: 400px;">배송비</th>
 												<td class="delivery-info" style="padding-top: 8px;">무료</td>
 											</tr>
 											<tr>
 												<th class="price-label">수량</th>
-												<td><div class="account-control">
+												<td>
+													<div class="account-control">
 														<button id="decrement">-</button>
 														<input type="text" id="account" value="1">
 														<button id="increment">+</button>
-													</div></td>
+													</div>
+												</td>
 											</tr>
 											<tr>
 												<th class="price-label">총 금액</th>
@@ -498,12 +496,14 @@ $(document).ready(function() {
 											</tr>
 										</table>
 										<div class="buttons">
-											<a href="#" class="like-button" id="likeBtn"> <img
-												src="../book/heart.png" id="like-button" alt="">
-											</a> <a href="#" class="add-to-cart"> <i
-												class="fa fa-cart-plus">&nbsp;Add to Cart</i>
-											</a> <a href="#" class="buy-now"> <i
-												class="fa fa-credit-card">&nbsp;Buy Now</i>
+											<a href="#" class="like-button" id="likeBtn">
+												<img src="../book/heart.png" id="like-button" alt="">
+											</a>
+											<a href="#" class="add-to-cart">
+												<i class="fa fa-cart-plus">&nbsp;Add to Cart</i>
+											</a>
+											<a href="#" class="buy-now">
+												<i class="fa fa-credit-card">&nbsp;Buy Now</i>
 											</a>
 										</div>
 									</div>
@@ -512,8 +512,8 @@ $(document).ready(function() {
 						</div>
 						<div class="col-lg-4">
 							<div class="button-container">
-								<a href="#review-form" id="scrollToReview" class="action-button">도서	리뷰</a> 
-								<a href="#intro-section" id="scrollToIntro"	class="action-button">책 소개</a>
+								<a href="#review-form" id="scrollToReview" class="action-button">도서 리뷰</a>
+								<a href="#intro-section" id="scrollToIntro" class="action-button">책 소개</a>
 							</div>
 							<div class="top-streamers" style="flex: 1; margin-top: 0px; border-radius: 0 10px 10px 10px;">
 								<div class="heading-section">
@@ -540,41 +540,41 @@ $(document).ready(function() {
 									</tbody>
 								</table>
 								<div id="intro-section" style="margin-top: 50px;">
-								<div class="heading-section" style="padding: 0 0 15px 0;">
-                <span style="font-size: 20px; font-weight: bold;">책 소개</span>
-            </div>
-								<p>${vo.intro }</p>
+									<div class="heading-section" style="padding: 0 0 15px 0;">
+										<span style="font-size: 20px; font-weight: bold;">책 소개</span>
+									</div>
+									<p>${vo.intro }</p>
 
-								<div class="heading-section" style="padding: 50px 0 10px 0;">
-									<span style="font-size: 20px; font-weight: bold;">소개 이미지</span>
-								</div>
-								<img src="${vo.intro_img }" alt="" style="padding-bottom: 80px;">
-								<br>
-								<!-- 리뷰 작성 폼 -->
-								<div id="review-form" class="review-form">
+									<div class="heading-section" style="padding: 50px 0 10px 0;">
+										<span style="font-size: 20px; font-weight: bold;">소개 이미지</span>
+									</div>
+									<img src="${vo.intro_img }" alt="" style="padding-bottom: 80px;"> <br>
+									<!-- 리뷰 작성 폼 -->
+									<div id="review-form" class="review-form">
 										<div class="heading-section" style="padding: 0 0 15px 0;">
 											<span style="font-size: 20px; font-weight: bold;">도서 리뷰</span>
 										</div>
 										<form action="submitReview.do" method="post">
-											<input type="hidden" id="bno" name="bno" value="${vo.bno}" /> 
+											<input type="hidden" id="bno" name="bno" value="${vo.bno}" />
 											<div>
 												<div class="star-rating">
-													<input type="radio" id="star5" name="rating" value="5"
-														required /> <label for="star5"></label> <input
-														type="radio" id="star4" name="rating" value="4" /> <label
-														for="star4"></label> <input type="radio" id="star3"
-														name="rating" value="3" /> <label for="star3"></label> <input
-														type="radio" id="star2" name="rating" value="2" /> <label
-														for="star2"></label> <input type="radio" id="star1"
-														name="rating" value="1" /> <label for="star1"></label>
+													<input type="radio" id="star5" name="rating" value="5" required />
+													<label for="star5"></label>
+													<input type="radio" id="star4" name="rating" value="4" />
+													<label for="star4"></label>
+													<input type="radio" id="star3" name="rating" value="3" />
+													<label for="star3"></label>
+													<input type="radio" id="star2" name="rating" value="2" />
+													<label for="star2"></label>
+													<input type="radio" id="star1" name="rating" value="1" />
+													<label for="star1"></label>
 												</div>
 											</div>
 											<table>
 												<tr>
 													<td>
 														<div class="review-container">
-															<textarea id="content" style="resize: none;"
-																name="content" required placeholder="리뷰를 작성해주세요!!"></textarea>
+															<textarea id="content" style="resize: none;" name="content" required placeholder="리뷰를 작성해주세요!!"></textarea>
 															<button type="submit" id="reviewBtn">리뷰 작성</button>
 														</div>
 													</td>
@@ -582,15 +582,15 @@ $(document).ready(function() {
 											</table>
 										</form>
 									</div>
+								</div>
 							</div>
 						</div>
 					</div>
+					<!-- ***** Featured Games End ***** -->
 				</div>
-				<!-- ***** Featured Games End ***** -->
 			</div>
 		</div>
-	</div>
 
-	<!-- <a href="https://www.flaticon.com/kr/free-icons/" title="심장 아이콘">심장 아이콘 제작자: hazhio - Flaticon</a> -->
+		<!-- <a href="https://www.flaticon.com/kr/free-icons/" title="심장 아이콘">심장 아이콘 제작자: hazhio - Flaticon</a> -->
 </body>
 </html>

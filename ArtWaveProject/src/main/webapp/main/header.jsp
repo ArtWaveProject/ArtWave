@@ -146,7 +146,7 @@ nav {
 									<li><a href="../adminpage/adminpage_main.do" class="active">관리자페이지</a></li>							
 								</c:if>
 							</c:if>
-							
+						
 						</ul>
 						
 						

@@ -195,8 +195,6 @@ $(function() {
 		$(this).next().css('display', '')
 		$(this).next().css('z-index', '10')
 	})
-	
-	
 })
 function playListMake() {
 	let plname=$('#playListName').val()

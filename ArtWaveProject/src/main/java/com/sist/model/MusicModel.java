@@ -55,6 +55,8 @@ public class MusicModel {
 
 	@RequestMapping("music/musicList.do")
 	public String musicList(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
 		String page = request.getParameter("page");
 		String ss = request.getParameter("ss");
 		if (ss == null)
@@ -78,6 +80,7 @@ public class MusicModel {
 		int startPage = (curPage - 1) / 10 * 10 + 1;
 		int endPage = startPage + 10 - 1;
 		System.out.println(list.size());
+		request.setAttribute("id", id);
 		request.setAttribute("ss", ss);
 		request.setAttribute("genre", genre);
 		request.setAttribute("curPage", curPage);
@@ -229,6 +232,7 @@ public class MusicModel {
 				ilist[i] = Integer.parseInt(slist[i]);
 			}
 			lList = MusicDAO.artistName(ilist);
+			request.setAttribute("lnList", ilist);
 		}
 		if (vo.getComposer() != null) {
 			String[] slist = vo.getComposer().split(",");
@@ -237,6 +241,7 @@ public class MusicModel {
 				ilist[i] = Integer.parseInt(slist[i]);
 			}
 			cList = MusicDAO.artistName(ilist);
+			request.setAttribute("cnList", ilist);
 		}
 		if (vo.getArranger() != null) {
 			String[] slist = vo.getArranger().split(",");
@@ -245,6 +250,7 @@ public class MusicModel {
 				ilist[i] = Integer.parseInt(slist[i]);
 			}
 			aList = MusicDAO.artistName(ilist);
+			request.setAttribute("anList", ilist);
 		}
 		request.setAttribute("detail", vo);
 		request.setAttribute("lList", lList);
@@ -347,6 +353,7 @@ public class MusicModel {
 		map.put("mno", Integer.parseInt(mno));
 		map.put("plno", Integer.parseInt(plno));
 		String result = MusicDAO.playListMusicInsert(map);
+		System.out.println(result);
 		try {
 			response.setContentType("text/plain;charset=UTF-8");
 			PrintWriter out = response.getWriter();
