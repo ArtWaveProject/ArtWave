@@ -9,30 +9,40 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function() {
-    $('.Ttloc').click(function() {
-    	let rtloc = $(this).val()
+	$('.dataTloc').click(function() {
+		let rtloc = $(this).attr("data-tloc")
         $.ajax({
             type: 'post',
             url: '../movie/theaterinfo2.do',
             data: { "tloc": rtloc },
             success: function(result) {
-                console.log("success")
+            	$('#tnamelist').html(result)
             },
             error: function(request, status, error) {
                 console.log(error)
             }
-        });
-    });
-
-
+        })
+        $.ajax({
+            type: 'post',
+            url: '../movie/dateinfo.do',
+            data: { "tloc": rtloc },
+            success: function(result) {
+            	$('#rtloc').val(rtloc)
+            	$('#moviertloc').val(rtloc)
+            },
+            error: function(request, status, error) {
+                console.log(error)
+            }
+        })
+    })
 })
 </script>
 </head>
 <body>
 	<table class="table" id="mtloctable">
-		<c:forEach var="tvo" items="${tlList }">
-		<tr class="dataTloc" data-tloc="${tvo.tloc }">
-			<td class="Ttloc">${tvo.tloc }</td>
+		<c:forEach var="tloc" items="${tlList }">
+		<tr class="dataTloc" data-tloc="${tloc }">
+			<td class="Ttloc">${tloc }</td>
 			</tr>
 	</c:forEach>
 	</table>

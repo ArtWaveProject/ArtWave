@@ -1,6 +1,6 @@
 package com.sist.model;
 
-import com.sist.controller.RequestMapping;
+import controller.RequestMapping;
 import com.sist.dao.*;
 import com.sist.vo.*;
 

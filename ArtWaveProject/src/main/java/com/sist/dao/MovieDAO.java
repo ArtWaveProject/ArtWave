@@ -284,33 +284,14 @@ public class MovieDAO {
 		   }
 		   return list;
 	   }
-	   public static List<Integer> movieTnoData(int mno)
-	   {
-		   List<Integer> list= new ArrayList<Integer>();
-		   SqlSession session=null;
-		   try
-		   {
-			   session=ssf.openSession();
-			   list=session.selectList("movieTnoData", mno);
-		   }catch(Exception ex)
-		   {
-			   ex.printStackTrace();
-		   }
-		   finally
-		   {
-			   if(session!=null)
-				   session.close();
-		   }
-		   return list;
-	   }
-	   public static List<String> movieTlocData(List<Integer> tnolist)
+	   public static List<String> movieTlocData(int mno)
 	   {
 		   List<String> list=new ArrayList<String>();
 		   SqlSession session=null; //Connection
 		   try
 		   {
 			   session=ssf.openSession();
-			   list=session.selectList("movieTlocData", tnolist);
+			   list=session.selectList("movieTlocData", mno);
 		   }catch(Exception ex)
 		   {
 			   ex.printStackTrace();
@@ -399,5 +380,21 @@ public class MovieDAO {
 		   }
 		   return list;
 	   }
-	   
+	   public static void reserveInsert(ReserveVO vo)
+	   {
+		   SqlSession session=null; 
+		   try
+		   {
+			   session=ssf.openSession(true);
+			   session.insert("reserveInsert", vo);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+	   }
 }

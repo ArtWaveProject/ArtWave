@@ -9,7 +9,7 @@
 <bean id="alstore" class="com.sist.model.AlStoreModel"></bean>
 <bean id="mypage" class="com.sist.model.MyPageModel"></bean>
 <bean id="board" class="com.sist.model.BoardModel"></bean>
-<bean id="mreview" class="com.sist.model.MreviewModel"></bean>
+<bean id="review" class="com.sist.model.ReviewModel"></bean>
 <bean id="like" class="com.sist.model.LikeModel"></bean>
 <bean id="admin" class="com.sist.model.AdminModel"/>
 <bean id="replyboard" class="com.sist.model.ReplyBoardModel"/>

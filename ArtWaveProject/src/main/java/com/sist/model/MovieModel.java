@@ -128,8 +128,8 @@ public class MovieModel {
 		    Map map2=new HashMap();
 		 	map2.put("tno", Integer.parseInt(mno));
 		 	map2.put("type", 1);
-		 	int rcount=MreviewDAO.reviewCount(map2);
-		 	double avg=MreviewDAO.reviewAverage(map2);
+		 	int rcount=ReviewDAO.reviewCount(map2);
+		 	double avg=ReviewDAO.reviewAverage(map2);
 		 	 request.setAttribute("rcount", rcount);
 		 	 request.setAttribute("avg", avg);
 		 	 request.setAttribute("id", id);

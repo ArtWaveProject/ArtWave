@@ -2,18 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.mreserve_mapper">
 <select id="movieTitleData" resultType="MovieVO">
-SELECT mno, mtitle, mposter, mgrade, mstate 
-FROM movie WHERE mstate LIKE '1'
+SELECT mno, mtitle, mposter, mgrade, mstate, mrate
+FROM movie WHERE mstate LIKE '1' AND mno IN (SELECT mno FROM movie_schedule)
+ORDER BY mno ASC 
 </select>
-<select id="movieTnoData" resultType="int" parameterType="int">
-	SELECT DISTINCT tno FROM movie_schedule WHERE mno=#{mno}
-</select>
-<select id="movieTlocData" resultType="String"  parameterType="list">
-	SELECT DISTINCT tloc FROM theater
-	 WHERE tno IN
-    <foreach item="item" index="index" collection="list" open="(" close=")" separator=",">
-        #{item}
-    </foreach>
+<select id="movieTlocData" resultType="String"  parameterType="int">
+	SELECT DISTINCT tloc
+	 FROM theater
+	WHERE tno IN (SELECT DISTINCT tno FROM movie_schedule WHERE mno=#{mno})
 </select>
 <select id="movieTnameData" resultType="String"  parameterType="String">
 	SELECT tname 
@@ -23,21 +19,26 @@ FROM movie WHERE mstate LIKE '1'
  SELECT tno FROM theater WHERE tloc LIKE '%'||#{tloc}||'%' AND tname LIKE '%'||#{tname}||'%'
 </select>
 <select id="movieTdnoData" resultType="int" parameterType="int">
- SELECT tdno FROM theater_detail WHERE tno=#{tno} ORDER BY tdno ASC                       
+ SELECT DISTINCT tdno FROM theater_detail WHERE tno=#{tno} ORDER BY tdno ASC                       
 </select>
 <resultMap type="com.sist.vo.MscheduleVO" id="mscheduleMap">
- 		 <result property="tdvo.tdno" column="tdno"/>
- 		 <result property="tvo.tno" column="tno"/>
- 		 <result property="tdvo.tdname" column="tdname"/>
- 		 <result property="mvo.mno" column="mno"/>
-</resultMap>
-<select id="mscheduleData" resultType="MscheduleVO" parameterType="hashmap">
-	SELECT msno, movie.mno, theater.tno, theater_detail.tdno, theater_detail.tdname, mstime, TO_CHAR(msdate, 'YYYY-MM-DD') as msday
-	FROM movie_schedule, theater_detail
-	JOIN movie ON movie.mno = movie_schedule.mno
-    JOIN theater ON theater.tno = movie_schedule.tno
-    JOIN theater_detail ON theater_detail.tdno = movie_schedule.tdno
-    WHERE mno=#{mno} AND tdno=#{tdno} AND msday=#{rdate}
-    ORDER BY msno ASC
+ 	<result property="msno" column="msno"/>
+  <result property="mno" column="mno"/>
+  <result property="tno" column="tno"/>
+  <result property="tdvo.tdno" column="tdno"/>
+  <result property="tdvo.tdname" column="tdname"/>
+  <result property="mstime" column="mstime"/>
+  <result property="msdate" column="msdate"/>
+  </resultMap>
+<select id="mscheduleData" resultMap="mscheduleMap" parameterType="hashmap">
+  SELECT ms.msno, ms.mno, ms.tno, td.tdno, td.tdname, ms.mstime, TO_CHAR(ms.msdate, 'YYYY-MM-DD') AS msday
+  FROM movie_schedule ms
+   JOIN theater_detail td ON ms.tdno = td.tdno
+   WHERE ms.mno=#{mno} AND td.tdno=#{tdno} AND TO_CHAR(ms.msdate, 'YYYY-MM-DD') = #{rdate} 
+    ORDER BY ms.msno ASC
 </select>
+<insert id="reserveInsert" parameterType="ReserveVO">
+   INSERT INTO reserve(rno, id, mno, mtitle, tdname, tname, day, time, inwon)
+   VALUES(rs_rno_seq.nextval,#{id},#{mno},#{mtitle},#{tdname},#{tname},#{day},#{time},#{inwon})
+  </insert>
 </mapper>

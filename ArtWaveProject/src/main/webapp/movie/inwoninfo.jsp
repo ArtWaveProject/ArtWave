@@ -14,19 +14,18 @@ $(function(){
         let inwon = parseInt(inwonText);
         let price = inwon * 9000; // 가격 계산
         
-		$('#movieinwondata').text(inwonText)
-		$()
+		$('#movieinwondata').text(inwon)
 		$('#sselectBtn').show()
 		$('#rinwon').val(inwon)
-		$('#rprice').val(price)
+		$('#movierprice').text(price)
+		$('#rprice').text(price)
 	})
 })
 </script>
 </head>
 <body>
   <c:forEach var="i" begin="1" end="5">
-    <span class="btn btn-xs btn-warning inwons">${i }명</span>
+    <button class="inwons">${i }명</button>
   </c:forEach>
-    <span class="btn btn-xs btn-warning inwons">단체</span>
 </body>
 </html>

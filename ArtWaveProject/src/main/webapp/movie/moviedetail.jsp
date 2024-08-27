@@ -18,7 +18,6 @@ $(function() {
 	let id=$('#id').val()
 	let mno = $('#mno').val()
 	
-	reviewlist()
 	
 	if(id.length>0){
 		$.ajax({
@@ -226,7 +225,7 @@ $(function() {
 				type:'post',
 				url:'../review/delete.do',
 				data:{
-					'trno':trno,
+					'trno':trno
 				},
 				success:function(result){
 					reviewlist()
@@ -335,13 +334,13 @@ $(function() {
                   <input type="hidden" value="${vo.mno}" id="mno">
 				 <div class="item">
 				 <div class="thumb">
-                <img src="${mbvo.cover }"  alt="">
+                <img src="${mbvo.bvo.cover }"  alt="">
                  <div class="hover-effect">
                       <h6><i class="fa fa-eye"></i><a href="../book/detail.do?bno=${mbvo.bno }"  title="상세정보 확인">상세정보</a></h6>
                       </div>
-                <h4 id="text2"><span>${mbvo.btitle }</span></h4>
+                <h4 id="text2"><span>${mbvo.bvo.btitle }</span></h4>
                 <ul>
-                    <li>&nbsp; ${mbvo.sale_price }원</li>
+                    <li>&nbsp; ${mbvo.bvo.sale_price }원</li>
                 </ul>
             </div>
         </div>

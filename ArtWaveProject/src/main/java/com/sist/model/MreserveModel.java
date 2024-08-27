@@ -2,6 +2,7 @@ package com.sist.model;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -28,35 +29,31 @@ public class MreserveModel {
 	@RequestMapping("movie/movieinfo.do")
 	  public String movieinfo(HttpServletRequest request,HttpServletResponse response)
 	  {
-		  
+		  try {
 		  String mno=request.getParameter("mno");
+		  request.setAttribute("mno", mno);
 		  MovieVO vo = new MovieVO(); 
 		  request.setAttribute("vo", vo);
 		  List<MovieVO> moList=MovieDAO.movieTitleData();
 		  request.setAttribute("moList", moList);
-		  request.setAttribute("mno", mno);
-		  
+		  }catch (Exception ex) {
+			ex.printStackTrace();
+		}		 
 		  return "../movie/movieinfo.jsp";
 	  }
 	@RequestMapping("movie/theaterinfo1.do")
 	public String theaterinfo1(HttpServletRequest request, HttpServletResponse response)
 	{
-		 try
-		   {
-			   request.setCharacterEncoding("UTF-8");
-		   }catch(Exception ex) { ex.printStackTrace();}
-		 
-		String mno=request.getParameter("rmno");
-		List<Integer> tnolist =MovieDAO.movieTnoData(Integer.valueOf(mno));
-		List<String> tlList = MovieDAO.movieTlocData(tnolist);
-		
-		request.setAttribute("tlList", tlList);
-		request.setAttribute("tnolist", tnolist);
-		
-		String rtloc=request.getParameter("rtloc");
-		request.setAttribute("mno", mno);
-		request.setAttribute("rtloc", rtloc);
-		
+			   String mno=request.getParameter("mno");
+			   List<String> tlList = MovieDAO.movieTlocData(Integer.parseInt(mno));
+			   try
+			   {
+				   request.setCharacterEncoding("UTF-8");
+			   }catch(Exception ex) { ex.printStackTrace();}
+			   String tloc=request.getParameter("tloc");
+			   request.setAttribute("tlList", tlList);	
+			   request.setAttribute("tloc", tloc);	
+			   
 		return "../movie/theaterinfo1.jsp";
 		
 	}
@@ -67,55 +64,68 @@ public class MreserveModel {
 		   {
 			   request.setCharacterEncoding("UTF-8");
 		   }catch(Exception ex) { ex.printStackTrace();}
-		TheaterVO tvo = new TheaterVO();
-		String rtloc=request.getParameter("rtloc");
-	    List<String> tnList = MovieDAO.movieTnameData(rtloc);
+		
+		String tloc=request.getParameter("tloc");
+	    List<String> tnList = MovieDAO.movieTnameData(tloc);
+	    String tname=request.getParameter("tname");
+	    request.setAttribute("tloc", tloc);
 	    request.setAttribute("tnList", tnList);
+	    request.setAttribute("tname", tname);
 	    
-	    String sTname=request.getParameter("selectedTname");
-	    request.setAttribute("sTname", sTname);
-	   
 	    return "../movie/theaterinfo2.jsp";
 	    
 	}
 	@RequestMapping("movie/dateinfo.do")
 	  public String dateinfo(HttpServletRequest request,HttpServletResponse response)
 	  {
-		String selectedDate = request.getParameter("rdate"); 
-		request.setAttribute("rdate", selectedDate);
+		try
+		   { request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex) { ex.printStackTrace();}
+		String tloc = request.getParameter("tloc");
+		String tname = request.getParameter("tname");		
+		String rdate = request.getParameter("rdate"); 
+		request.setAttribute("rdate", rdate);
+		request.setAttribute("tloc", tloc);
+		request.setAttribute("tname", tname);
+		
 		  return "../movie/dateinfo.jsp";
 	  }
-	
 	@RequestMapping("movie/timetableinfo.do")
 	public String timetableinfo(HttpServletRequest request, HttpServletResponse response)
 	{
 		try
 		   {
 			   request.setCharacterEncoding("UTF-8");
-		   }catch(Exception ex) { ex.printStackTrace();} 
-		HttpSession session=request.getSession();
-		String mno= request.getParameter("rmno");
-		String tloc=request.getParameter("rtloc");
-		String tname=request.getParameter("rtname");
-		String rdate=request.getParameter("rdate");
+		  }catch(Exception ex) { ex.printStackTrace();} 
+		
+		String tloc=request.getParameter("tloc");
+		String tname=request.getParameter("tname");
+		System.out.println(tloc);
+		System.out.println(tname);
 		
 		Map map1=new HashMap();
 		map1.put("tloc", tloc);
 		map1.put("tname", tname);
 		
 		int tno = MovieDAO.movieTnoData2(map1);
+		System.out.println(tno);
 		List<Integer> tdnoList = MovieDAO.movieTdnoData(tno);
 		
-		Map map2=new HashMap();
-		for(int tdno : tdnoList)
-		{
-		map2.put("mno", mno);
-		map2.put("tdno", tdno);
-		map2.put("rdate", rdate);
+		String mno= request.getParameter("mno");
+		String rdate=request.getParameter("rdate");
+		System.out.println(mno);
+		System.out.println(rdate);
+		List<MscheduleVO> ttList = new ArrayList<MscheduleVO>();
+		for (int tdno : tdnoList) {
+		    Map map2 = new HashMap();
+		    map2.put("mno", Integer.parseInt(mno));
+		    map2.put("tdno", tdno);
+		    map2.put("rdate", rdate);
+
+		    List<MscheduleVO> schedules = MovieDAO.mscheduleData(map2);
+		    ttList.addAll(schedules);
 		}
 		
-		MscheduleVO msvo = new MscheduleVO();
-		List<MscheduleVO> ttList = MovieDAO.mscheduleData(map2);
 		request.setAttribute("mno", mno);
 		request.setAttribute("rdate", rdate);
 		request.setAttribute("ttList", ttList);
@@ -126,5 +136,65 @@ public class MreserveModel {
 	  public String inwoninfo(HttpServletRequest request,HttpServletResponse response)
 	  {
 		  return "../movie/inwoninfo.jsp";
+	  }
+	@RequestMapping("movie/movieseat.do")
+	  public String movieseat(HttpServletRequest request,HttpServletResponse response)
+	  {
+		String mtitle=request.getParameter("movietitle");
+		 String date=request.getParameter("date");
+		 String inwon=request.getParameter("inwon");
+		 int rinwon= Integer.parseInt(inwon);
+		 
+		 request.setAttribute("mtitle", mtitle);
+		 request.setAttribute("date", date);
+		 request.setAttribute("rinwon", rinwon);
+		 		 
+		return "../movie/movieseat.jsp";
+	  }
+	@RequestMapping("movie/reserveok.do")
+	  public String reserve_ok(HttpServletRequest request,HttpServletResponse response)
+	  {
+		  // 예약정보 
+		  try
+		  {
+			  request.setCharacterEncoding("UTF-8");
+		  }catch(Exception ex) {}
+		 try {
+		  String mno=request.getParameter("mno");
+		  String mtitle=request.getParameter("movietitle");
+		  String tloc=request.getParameter("tloc");
+		  String tname=request.getParameter("tname");
+		  String date=request.getParameter("date");
+		  String tdname=request.getParameter("tdname");
+		  String time=request.getParameter("time");
+		  String inwon=request.getParameter("inwon");
+		  String price=request.getParameter("price");
+		  
+		  System.out.println("예약일:"+date);
+		  System.out.println("예약시간:"+time);
+		  System.out.println("인원:"+inwon);
+		  
+		  HttpSession session=request.getSession();
+		  String id=(String)session.getAttribute("id");
+		  String email=(String)session.getAttribute("email");
+		  
+		  ReserveVO vo=new ReserveVO();
+		  vo.setMno(Integer.parseInt(mno));
+		  vo.setMtitle(mtitle);
+		  vo.setTname(tname);
+		  vo.setDay(date);
+		  vo.setTdname(tdname);
+		  vo.setTime(time);
+		  vo.setInwon(Integer.parseInt(inwon));
+		 
+		  if(id!=null)
+		  vo.setId(id);
+		  else
+		  vo.setEmail(email);
+		  
+		  MovieDAO.reserveInsert(vo);
+		 }catch(Exception ex) {ex.printStackTrace();}
+		  //request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
+		  return "redirect:../movie/mreservemain.do";
 	  }
 }

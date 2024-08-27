@@ -7,89 +7,54 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="../movie/mstyle.css">
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <style>
-    .form-group{
-    	width:210px !important ;
-    }
-     .datepicker-days td.day-sat {
-        color: blue !important; 
-    }
-    .datepicker-days td.day-sun {
-        color: red !important; 
-    }
-    .datepicker-days td.active {
-        font-weight:bold;
-        color: white !important;
-    }
-    .datepicker-days td.active:hover {
-        font-weight:bold;
-        color: white !important;
-    }
+
 </style>
 <script type="text/javascript">
 $(function() {
-    $('#calendar').datepicker({
-        format: 'yyyy-mm-dd',
-        startDate: '2024-08-25', 
-        endDate: '2024-08-31', 
-        autoclose: true,
-        showOtherMonths: true,
-        selectOtherMonths: true,
-        beforeShowDay: function(date) {
-            
-        	 var day = date.getDay();
-             if (day === 0) { 
-                 return { classes: 'day-sun' };
-             }
-             if (day === 6) { 
-                 return { classes: 'day-sat' };
-             }
-             return;
-        }
-    }).on('changeDate', function(e) {
-        let rdate = e.format('yyyy-mm-dd')
-        $('#rdate').text(rdate)
+	$('input[type="date"]').on('change', function() {
+        let rdate = $(this).val();
+        let rtname = $('#rtname').val()
+    	let rtloc = $('#rtloc').val()
+    	let rmno = $('#rmno').val()
         $.ajax({
-    		type:'post',
-    		url: '../movie/dateinfo.do',
-    		data:{"rdate":rdate},
-    		success:function(result)
-    		{
-    			$('#moviecalendar').html(result)
-    		},
-    		error:function(request,status,error)
-    		{
-    			console.log(error)
-    		}
-    	   })
-    	   
-  $(function(){
-		$.ajax({
-			type:'post',
-			url:'../movie/timetableinfo.do',
-			data: {"rdate":rdate},
-			success:function(result)
-			{
-				console.log("success")
-			},
-			error:function(request,status,error)
-			{
-				console.log(error)
-			}
-		})
-	})
-   })
+        	 type: 'post',
+             url: '../movie/dateinfo.do',
+             data: { "rdate": rdate},
+             success: function(result) {
+            	 $('#rdate').val(rdate)
+             },
+             error: function(request, status, error) {
+                 console.log(error)
+             }
+        })
+    	
+    	$.ajax({
+            type: 'post',
+            url: '../movie/timetableinfo.do',
+            data: { "tname": rtname, "tloc":rtloc, "rdate": rdate, "mno":rmno },
+            success: function(result) {
+                $('#rtimetable').html(result)
+    			 $('#movierdate').text(rdate)
+    			 console.log(rtname)
+    			 console.log(rtloc)
+    			 console.log(rdate)
+    			 console.log(rmno)
+            },
+            error: function(request, status, error) {
+                console.log(error)
+            }
+        })
+    })
 })
 </script>
 </head>
 <body>
-    <div class="container">
-        <div class="form-group">
-            <input type="text" class="form-control" id="calendar" placeholder="날짜 선택">
-        </div>
-    </div>
+    
+  <input type="date" width = "200px" min="2024-08-25" max="2024-08-31">
+
 </body>
 </html>

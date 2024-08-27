@@ -17,12 +17,25 @@
 			$.ajax({
 				type : 'post',
 				url : '../movie/theaterinfo1.do',
-				data : {"rmno" : rmno},
+				data : {"mno" : rmno},
 				success : function(result) {
 					$('#movieposter').attr("src", mposter)
 					$('#movietitle').text(mtitle)
 					$('#moviegrade').text(mgrade)
 					$('#rmno').val(rmno)
+					$('#tloclist').html(result)
+					$('#rmovietitle').val(mtitle)
+				},
+				error : function(request, status, error) {
+					console.log(error)
+				}
+			})
+			$.ajax({
+				type : 'post',
+				url : '../movie/dateinfo.do',
+				data : {"rmno" : rmno},
+				success : function(result) {
+					console.log(rmno)
 				},
 				error : function(request, status, error) {
 					console.log(error)

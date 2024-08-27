@@ -140,6 +140,13 @@ body .page-content2 {
   border-radius: 23px;
 }
 
+body .page-content3 {
+  margin-top: 130px;
+  background-color: rgb(218, 220, 243);
+  padding: 30px;
+  border-radius: 23px;
+}
+
 p {
   font-size: 15px;
   color: #666;
@@ -1679,7 +1686,9 @@ body {
   body .page-content2 {
     padding: 0px 30px;
   }
-
+  body .page-content3 {
+    padding: 0px 30px;
+  }
   .main-banner {
     text-align: center;
   }
@@ -2225,4 +2234,8 @@ body {
 }
 #avgN{
     margin-left: 10px; 
+}
+.reserve{
+	margin-top: 50px;
+	margin-left: 50px;
 }
