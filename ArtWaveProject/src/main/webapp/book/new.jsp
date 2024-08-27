@@ -286,9 +286,47 @@ function toggleRecentBooks() {
         toggleIcon.textContent = '-';
     }
 }
+
+$(document).ready(function() {
+    $('.add-to-cart').click(function(event) {
+        event.preventDefault()
+ 
+      let id = '${id}'  
+        
+      if (id.length === 0) {
+			alert('해당 기능은 로그인 시 이용하실 수 있습니다')
+			return
+		}
+        
+        let bno = $('#bno').val()
+        let count = $('#account').val()
+        let price = ${vo.sale_price}
+
+        console.log(bno)
+        console.log(count)
+        console.log(price)
+        $.ajax({
+            type: 'post',
+            url: '../book/cart.do',
+            data: {
+                'tno': bno,
+                'price': price,
+                'count': count,
+                'type': 2 
+            },
+            success: function(result) {
+                alert('장바구니에 추가되었습니다')
+            },
+            error: function(request, status, error) {
+                alert('오류가 발생했습니다')
+            }
+        })
+    })
+})
+
 $(function() {
 	let id = '${id}';
-
+  
 	$('.book-item').each(function() {
 		let $item = $(this)
 		let bno = $item.find('input[name="bno"]').val()

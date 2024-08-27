@@ -103,16 +103,28 @@
  </insert>
  
  <select id="CartRecomm" resultType="BookVO" parameterType="map">
-    SELECT * FROM (SELECT b.*
-    FROM book b
-    JOIN (SELECT DISTINCT tno
-    FROM totalcart 
-    WHERE id = #{id} 
-    AND type = 2) 
-    similar ON b.bno = similar.tno
-    WHERE b.bno NOT IN (SELECT tno FROM totalcart WHERE type=2 AND id=#{id})
-    ORDER BY DBMS_RANDOM.VALUE)
-    WHERE ROWNUM &lt;= 12;
+    SELECT * FROM book WHERE bgenre=(
+    SELECT bgenre 
+    FROM (SELECT bgenre, SUM(NVL(count, 0)) as ccount
+    FROM book 
+    JOIN totalcart ON bno=tno AND type=2 AND id=#{id}
+    GROUP BY bgenre) 
+    WHERE ccount=(SELECT MAX(SUM(NVL(count, 0))) 
+    FROM book 
+    JOIN totalcart ON bno=tno AND type=2 AND id=#{id}
+    GROUP BY bgenre))
+</select>
+
+<select id="CartRecommName" resultType="BookVO" parameterType="map">
+    SELECT bgenre 
+    FROM (SELECT bgenre, SUM(NVL(count, 0)) as ccount
+    FROM book 
+    JOIN totalcart ON bno=tno AND type=2 AND id=#{id}
+    GROUP BY bgenre) 
+    WHERE ccount=(SELECT MAX(SUM(NVL(count, 0))) 
+    FROM book 
+    JOIN totalcart ON bno=tno AND type=2 AND id=#{id}
+    GROUP BY bgenre)
 </select>
 
 <select id="BuyRecomm" resultType="BookVO" parameterType="map">
