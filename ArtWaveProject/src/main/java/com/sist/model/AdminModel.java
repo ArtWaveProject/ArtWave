@@ -55,7 +55,9 @@ public class AdminModel {
 		request.setAttribute("count", count);
 		request.setAttribute("memberList", list	);
 		
-		request.setAttribute("admin_jsp", "../adminpage/adminpage_home.jsp");
+		
+		
+		request.setAttribute("admin_jsp", "../adminpage/adminpage_member_list.jsp");
 		request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
 		
 		return "../main/main.jsp";
@@ -99,11 +101,13 @@ public class AdminModel {
 		   request.setAttribute("totalpage", totalpage);
 		   request.setAttribute("count", count);
 		   
+		   request.setAttribute("main_jsp", "../replyboard/replyboard_list.jsp");
 		   request.setAttribute("admin_jsp", "../adminpage/adminpage_reply_list.jsp");
 		   request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
 		   
 		   return "../main/main.jsp";
 	   }
+	
 	   // 묻고답하기 insert(admin)
 	   @RequestMapping("adminpage/reply_insert.do")
 	   public String reply_insert(HttpServletRequest request,HttpServletResponse response)

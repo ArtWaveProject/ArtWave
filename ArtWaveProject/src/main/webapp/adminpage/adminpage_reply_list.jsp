@@ -13,6 +13,12 @@
     background-color: #ffa657;
     border-color: #ffa657;
 }
+
+
+table{
+	margin:	auto;
+}
+
 </style>
 </head>
 <body>
@@ -57,7 +63,8 @@
 				</tbody>
 			</table>
 			
-			<table >
+			
+			<table>
 			 <tr class="text-center">
 				 <td class="text-center"> 
 					       <c:choose>
@@ -83,6 +90,7 @@
 		     		</td>
 		     	</tr>
 		     </table>
+		     
       <!--   
 			<nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
