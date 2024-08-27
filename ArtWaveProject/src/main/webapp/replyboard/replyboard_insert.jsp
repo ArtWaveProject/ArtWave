@@ -82,20 +82,19 @@ table table-hover{
 						<tr>
 							<th width=20% class="text-center">제목</th>
 							<td width=80%>
-								<input class="form-control mb-3" type="text" placeholder="제목을 입력해주세요" aria-label="default input example">					
+								<input class="form-control mb-3" name="subject" type="text" placeholder="제목을 입력해주세요" aria-label="default input example">					
 								<input type="hidden" name="no" value="${no}">
 							</td>
 						</tr>
 						<tr>
 							<th width="20%" class="text-center">내용</th>
 							<td width="80%">
-								<textarea class="form-control" placeholder="문의내용을 입력해주세요" 
+								<textarea class="form-control" name="content" placeholder="문의내용을 입력해주세요" 
 								id="floatingTextarea" style="height: 800px;"></textarea>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2" class="text-center inline">
-							
 								<button type="submit" class="btn btn-outline-success m-2">등록</button>
 								<input type=button value="취소" class="btn btn-outline-secondary m-2" onclick="javascript:history.back()">
 							</td>

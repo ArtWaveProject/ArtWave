@@ -50,7 +50,7 @@ table{
 							<th scope="col" width="10%" align="center">등급</th>
 							<th scope="col" width="20%" class="text-center">id</th>
 							<th scope="col" width="20%" class="text-center">이름</th>
-							<th scope="col" width="20%" class="text-center">닉네임</th>
+							<th scope="col" width="20%" class="text-center">이메일</th>
 							<th scope="col" width="30%" class="text-center">전화번호</th>
 						</tr>
 					</thead>
@@ -62,7 +62,7 @@ table{
 								<td width="10%" class="text-center">${vo.grade}</td>
 								<td width="20%" class="text-center">${vo.id}</td>
 								<td width="20%" class="text-center">${vo.name}</td>
-								<td width="10%" class="text-center">${vo.nickname}</td>
+								<td width="10%" class="text-center">${vo.email}</td>
 								<td width="30%" class="text-center">${vo.phone}</td>
 							</tr>
 						</c:forEach>
