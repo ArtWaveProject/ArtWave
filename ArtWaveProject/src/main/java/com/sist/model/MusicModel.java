@@ -360,4 +360,13 @@ public class MusicModel {
 		} catch (Exception e) {
 		}
 	}
+	@RequestMapping("mypage/my_reserve.do")
+	public String my_reserve(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("title", "나의 예약");
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		request.setAttribute("mypage_jsp", "../mypage/my_reserve.jsp");
+		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
+		return "../main/main.jsp";
+	}
 }

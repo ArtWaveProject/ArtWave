@@ -11,6 +11,7 @@ import com.sist.vo.AlbumVO;
 import com.sist.vo.ArtistVO;
 import com.sist.vo.MusicVO;
 import com.sist.vo.PlayListVO;
+import com.sist.vo.ReserveVO;
 
 public class MusicDAO {
 	private static SqlSessionFactory ssf;
@@ -364,5 +365,18 @@ public class MusicDAO {
 			if (session != null)
 				session.close();
 		}
+	}
+	public static List<ReserveVO> reserveListData(String id){
+		List<ReserveVO> list=new ArrayList<ReserveVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list=session.selectList("reserveListData", id);
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
 	}
 }

@@ -16,7 +16,7 @@ body {
 }
 
 #app-cover {
-	width: 430px;
+	width: 100%;
 	height: 100px;
 	margin: -4px auto;
 }
@@ -180,7 +180,6 @@ body {
 	animation: rotateAlbumArt 3s linear 0s infinite forwards;
 }
 
-
 #buffer-box {
 	position: absolute;
 	top: 50%;
@@ -276,7 +275,7 @@ body {
 	$(function() {
 		playListList(1)
 		var playerTrack = $("#player-track"), bgArtwork = $('#bg-artwork'), bgArtworkUrl, albumName = $('#album-name'), trackName = $('#track-name'), sArea = $('#s-area'), seekBar = $('#seek-bar'), trackTime = $('#track-time'), insTime = $('#ins-time'), sHover = $('#s-hover'), playPauseButton = $("#play-pause-button"), i = playPauseButton
-				.find('i'), tProgress = $('#current-time'), tTime = $('#track-length'), seekT, seekLoc, seekBarPos, cM, ctMinutes, ctSeconds, curMinutes, curSeconds, durMinutes, durSeconds, playProgress, bTime, nTime = 0, buffInterval = null, tFlag = false , playPreviousTrackButton = $('#play-previous'), playNextTrackButton = $('#play-next'), currIndex = 0;
+				.find('i'), tProgress = $('#current-time'), tTime = $('#track-length'), seekT, seekLoc, seekBarPos, cM, ctMinutes, ctSeconds, curMinutes, curSeconds, durMinutes, durSeconds, playProgress, bTime, nTime = 0, buffInterval = null, tFlag = false, playPreviousTrackButton = $('#play-previous'), playNextTrackButton = $('#play-next'), currIndex = 0;
 
 		function playPause() {
 			setTimeout(function() {
@@ -374,8 +373,7 @@ body {
 			else
 				tTime.text(durMinutes + ':' + durSeconds);
 
-			if (isNaN(curMinutes) || isNaN(curSeconds) || isNaN(durMinutes)
-					|| isNaN(durSeconds))
+			if (isNaN(curMinutes) || isNaN(curSeconds) || isNaN(durMinutes) || isNaN(durSeconds))
 				trackTime.removeClass('active');
 			else
 				trackTime.addClass('active');
@@ -401,13 +399,12 @@ body {
 			}, 100);
 		}
 		function selectTrack(flag) {
-			if (flag == 0 || flag == 1){
+			if (flag == 0 || flag == 1) {
 				++currIndex;
 				console.log(currIndex)
-			}
-			else
+			} else
 				--currIndex;
-			if ((currIndex > 0) && (currIndex <= $('#list'+currIndex).attr('data-size'))) {
+			if ((currIndex > 0) && (currIndex <= $('#list' + currIndex).attr('data-size'))) {
 				if (flag == 0)
 					i.attr('class', 'fa fa-play');
 				else {
@@ -419,11 +416,11 @@ body {
 				tProgress.text('00:00');
 				tTime.text('00:00');
 				console.log(currIndex)
-				currAlbum = $('#list'+currIndex).attr('data-altitle');
-				currTrackName = $('#list'+currIndex).attr('data-title');
-				$('#album-art').attr("src", $('#list'+currIndex).attr('data-poster'))
-				audio.src = $('#list'+currIndex).attr('data-url');
-				console.log($('#list'+currIndex).attr('data-url'))
+				currAlbum = $('#list' + currIndex).attr('data-altitle');
+				currTrackName = $('#list' + currIndex).attr('data-title');
+				$('#album-art').attr("src", $('#list' + currIndex).attr('data-poster'))
+				audio.src = $('#list' + currIndex).attr('data-url');
+				console.log($('#list' + currIndex).attr('data-url'))
 				nTime = 0;
 				bTime = new Date();
 				bTime = bTime.getTime();
@@ -471,53 +468,47 @@ body {
 				selectTrack(1)
 			})
 		}
-	function playListList(type) {
-		let plno = '${plno}'
-		$
-				.ajax({
-					type : 'post',
-					url : '../mypage/myPlayListMusicList.do',
-					data : {
-						'plno' : plno,
-						'type' : type
-					},
-					success : function(result) {
-						let playlist = JSON.parse(result)
-						
-						console.log(playlist)
-						console.log(playlist[0].title)
-						console.log(playlist.length)
-						let html = ''
-						let i = 1
-						playlist.map(function(music) {
-									html += '<tr>'
-									html += '<td width="5%" class="text-center">'
-											+ i + '</td>'
-									html += '<td width="7%" class="text-center"><img src="'
-											+ music.poster + '"</td>'
-									html += '<td width="78%" style="text-align:left;">'
-											+ music.title
-											+ '<br>'
-											+ music.aname + '</td>'
-									html += '<td width="5%" class="text-center"><img src="../music/play.png">'
-									html+= '<input id="list'+i+'" type="hidden" data-poster="'+music.poster+'" data-size="'+music.size+'" data-altitle="'+music.altitle+'"  data-title="'+music.title+'" data-url="'+music.urlmp3+'"</td>'
-									html += '</tr>'
-									i += 1
-								})
-						$('#playListTbody').html(html)
-						initPlayer()
-					}
-				})
-	}
+		function playListList(type) {
+			let plno = '${plno}'
+			$.ajax({
+				type : 'post',
+				url : '../mypage/myPlayListMusicList.do',
+				data : {
+					'plno' : plno,
+					'type' : type
+				},
+				success : function(result) {
+					let playlist = JSON.parse(result)
+
+					console.log(playlist)
+					console.log(playlist[0].title)
+					console.log(playlist.length)
+					let html = ''
+					let i = 1
+					playlist.map(function(music) {
+						html += '<tr>'
+						html += '<td width="10%" class="text-center">' + i + '</td>'
+						html += '<td width="7%" class="text-center"><img src="' + music.poster + '"</td>'
+						html += '<td width="68%" style="text-align:left;">' + music.title + '<br>' + music.aname + '</td>'
+						html += '<td width="10%" class="text-center"><img src="../music/play.png" style="width:33px;height:33px;">'
+						html += '<input id="list' + i + '" type="hidden" data-poster="' + music.poster + '" data-size="' + music.size + '" data-altitle="'
+								+ music.altitle + '"  data-title="' + music.title + '" data-url="' + music.urlmp3 + '"</td>'
+						html += '</tr>'
+						i += 1
+					})
+					$('#playListTbody').html(html)
+					initPlayer()
+				}
+			})
+		}
 	});
 </script>
 </head>
 <body>
-	<div class="container" style="margin: 0px;">
-		<div class="row" style="height: 400px;"></div>
+	<div class="container" style="margin: 0px; border: 3px solid #ddd; padding:30px; margin-top: 40px;">
 		<div class="row">
 			<div class="col-lg-4">
-				<div id="app-cover">
+				<div id="app-cover" style="margin-top: 35px;">
 					<div id="player">
 						<div id="player-track">
 							<img id="album-art" src="">
@@ -559,19 +550,21 @@ body {
 				<table class="table">
 					<thead>
 						<tr>
-							<th width="5%" class="text-center">¹øÈ£</th>
+							<th width="10%" class="text-center">¹øÈ£</th>
 							<th width="7%" class="text-center"></th>
-							<th width="78%" class="text-center">°îÁ¤º¸</th>
-							<th width="5%" class="text-center">µè±â</th>
+							<th width="68%" class="text-center">°îÁ¤º¸</th>
+							<th width="10%" class="text-center">µè±â</th>
 						</tr>
 					</thead>
 					<tbody id="playListTbody">
 						<c:forEach var="vo" items="${list}" varStatus="i">
 							<tr>
-								<td width="5%" class="text-center">${i.index+1}</td>
+								<td width="10%" class="text-center">${i.index+1}</td>
 								<td width="7%" class="text-center">${vo.poster}</td>
-								<td width="78%" class="text-center">${vo.title}<br>${vo.aname}</td>
-								<td width="5%" class="text-center"><img src="play.png"></td>
+								<td width="73%" class="text-center">${vo.title}<br>${vo.aname}</td>
+								<td width="10%" class="text-center">
+									<img src="play.png">
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

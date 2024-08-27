@@ -155,10 +155,18 @@
 		FROM music WHERE mno in (SELECT mno FROM playlistmusic WHERE plno=#{plno})
 		ORDER BY DBMS_RANDOM.RANDOM))
 	</select>
+	<!-- 플레이리스트 삭제 -->
 	<delete id="playListDelete" parameterType="int">
 	DELETE FROM playlist WHERE plno=#{plno}
 	</delete>
+	<!-- 플레이리스트 음악 삭제 -->
 	<delete id="playListMusicDelete" parameterType="int">
 	DELETE FROM playlistmusic WHERE plno=#{plno}
 	</delete>
+	<!-- 예약출력 -->
+	<select id="reserveListData" parameterType="String" resultType="ReserveVO">
+	SELECT mno, mtitle, tdname, tname, to_char(day, 'YYYY-MM-DD') as day, time, inwon, price, id, email, sno, rno, state,
+	(SELECT mposter FROM movie WHERE movie.mno=reserve.mno)
+	FROM reserve WHERE id=#{id}
+	</select>
 </mapper>
