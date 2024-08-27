@@ -108,10 +108,6 @@ body {
 	font-size: 12px;
 }
 
-.book-actions button:hover {
-	background-color: #EA0035;
-}
-
 .book-actions select {
 	padding: 8px;
 	border-radius: 4px;
@@ -201,100 +197,316 @@ body {
 	border-radius: 0 4px 4px 0 ;
 }
 
+.buttons a.like-button {
+	background-color: transparent;
+	border: 1px solid #ccc;
+	color: #fff;
+	width: 140px;
+	height: 28px;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	margin-bottom: 8px;
+}
+
+.buttons a.like-button img {
+	width: 20px;
+	height: 20px;
+}
+.recent-books-container {
+    position: fixed; 
+    right: 60px; 
+    bottom: 20px; 
+    width: 200px; 
+    background-color: #ffffff; 
+    border: 2px solid #ddd; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+    z-index: 1000; 
+    transition: height 0.3s ease, bottom 0.3s ease; 
+    overflow: hidden; 
+    height: 60px; 
+}
+
+.recent-books-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recent-books-header h4 {
+    margin: 0; 
+    font-size: 18px; 
+    color: #333;
+}
+
+.recent-books-content {
+    display: flex; 
+    flex-wrap: wrap; 
+    margin-top: 10px;
+}
+
+.recent-books-content ul {
+    list-style: none; 
+    padding: 0; 
+    margin: 0;
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+.recent-books-content li {
+    margin: 5px; 
+}
+
+.recent-books-content img {
+    border-radius: 8px; 
+    display: block; 
+}
+
+.recent-books-container.expanded {
+    padding: 25px;
+    height: 250px; 
+    bottom: 60px;
 }
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-    const incrementButtons = document.querySelectorAll("#increment");
-    const decrementButtons = document.querySelectorAll("#decrement");
-    const accountInputs = document.querySelectorAll("#account");
+function toggleRecentBooks() {
+    const container = document.querySelector('.recent-books-container');
+    const toggleIcon = container.querySelector('.toggle-icon');
+    if (container.classList.contains('expanded')) {
+        container.classList.remove('expanded');
+        toggleIcon.textContent = '+';
+    } else {
+        container.classList.add('expanded');
+        toggleIcon.textContent = '-';
+    }
+}
+$(function() {
+	let id = '${id}';
 
-    incrementButtons.forEach((button, index) => {
-        button.addEventListener("click", () => {
-            const accountInput = accountInputs[index];
-            let account = parseInt(accountInput.value);
-            accountInput.value = account+1;
-        });
-    });
+	$('.book-item').each(function() {
+		let $item = $(this)
+		let bno = $item.find('input[name="bno"]').val()
+		let $likeButton = $item.find('.like-button')
+		let $likeIcon = $likeButton.find('img')
+		let likeCheck = false
 
-    decrementButtons.forEach((button, index) => {
-        button.addEventListener("click", () => {
-            const accountInput = accountInputs[index];
-            let account = parseInt(accountInput.value);
-            if (account > 1) {
-                accountInput.value = account-1;
+		if (id.length > 0) {
+			$.ajax({
+				type : 'post',
+				url : '../like/likeCheck.do',
+				data : {
+					'tno' : bno,
+					'type' : 5
+				},
+				success : function(result) {
+					if (result === 'OK') {
+						likeCheck = true
+						$likeIcon.attr('src', 'fullheart.png')
+					} else {
+						likeCheck = false
+						$likeIcon.attr('src', 'heart.png')
+					}
+				}
+			})
+		}
+
+		$likeButton.click(function(event) {
+			if (id.length === 0) {
+				alert('해당 기능은 로그인 시 이용하실 수 있습니다')
+				return
+			}
+
+			event.preventDefault()
+			if (likeCheck) {
+				$.ajax({
+					type : 'post',
+					url : '../like/likeOff.do',
+					data : {
+						'tno' : bno,
+						'type' : 5
+					},
+					success : function(result) {
+						if (result >= 0) {
+							likeCheck = false
+							$likeIcon.attr('src', 'heart.png')
+						}
+					}
+				})
+			} else {
+				$.ajax({
+					type : 'post',
+					url : '../like/likeOn.do',
+					data : {
+						'tno' : bno,
+						'type' : 5
+					},
+					success : function(result) {
+						if (result >= 0) {
+							likeCheck = true
+							$likeIcon.attr('src', 'fullheart.png')
+						}
+					},
+					error : function(request, status, error) {
+						alert(error)
+					}
+				})
+			}
+		})
+	})
+
+	$('.book-item').each(function() {
+		let $item = $(this)
+		let $increment = $item.find('.increment')
+		let $decrement = $item.find('.decrement')
+		let $account = $item.find('.account')
+
+		$increment.click(function() {
+			let count = parseInt($account.val())
+			$account.val(count + 1)
+		})
+
+		$decrement.click(function() {
+			let count = parseInt($account.val())
+			if (count > 1) {
+				$account.val(count - 1)
+			}
+		})
+	})
+})
+
+$(document).ready(function() {
+    $('.add-to-cart').click(function(event) {
+        event.preventDefault()
+ 
+      let id = '${id}'  
+        
+      if (id.length === 0) {
+			alert('해당 기능은 로그인 시 이용하실 수 있습니다')
+			return
+		}
+        
+        let bno = $('#bno').val()
+        let count = $('#account').val()
+        let price = ${vo.sale_price}
+
+        console.log(bno)
+        console.log(count)
+        console.log(price)
+        $.ajax({
+            type: 'post',
+            url: '../book/cart.do',
+            data: {
+                'tno': bno,
+                'price': price,
+                'count': count,
+                'type': 2 
+            },
+            success: function(result) {
+                alert('장바구니에 추가되었습니다')
+            },
+            error: function(request, status, error) {
+                alert('오류가 발생했습니다')
             }
-        });
-    });
-});
+        })
+    })
+})
 </script>
 </head>
 <body>
 <div class="row">
-				<div class="col-lg-12">
-	<div class="page-line" style="margin-top: 150px;">
-		<h2 style="color: black; margin-top: -50px; margin-bottom: 40px; text-align: center;">새로나온
-			책</h2>
-		<div class="book-list">
-			<c:forEach var="vo" items="${nList}">
-				<div class="book-item">
-					<div class="book-cover">
-						<a href="../book/cookie.do?bno=${vo.bno }"> <img height=100%;
-							src="${vo.cover }" alt="">
-						</a>
-					</div>
-					<div class="book-info">
-						<p class="book-genre">${vo.bgenre }</p>
-						<a href="../book/cookie.do?bno=${vo.bno }">
-							<h2 class="book-title">${vo.btitle }</h2></a>
-							<p class="book-author">${vo.writer}${vo.writer != null ? ' 저 | ' : ''}${vo.publisher}&nbsp;|
-								${vo.dbday}</p>
-							<p class="book-price">
-								<fmt:formatNumber value="${vo.sale_price}" type="number" />원
-								<c:choose>
-									<c:when test="${vo.sale_price < vo.price}">
-										<span class="discount"> (<fmt:formatNumber
-												maxFractionDigits="0" type="number"
-												value="${((vo.price - vo.sale_price) / vo.price * 100)}" />% 할인)
-										</span>
-									</c:when>
-									<c:otherwise>
-										<span class="discount">(할인 없음)</span>
-									</c:otherwise>
-								</c:choose>
-							</p>
-					</div>
-					<div class="book-actions">
-						<button type="button" class="fa fa-heart">&nbsp;좋아요</button>
-						<div class="account-control">
-							<button id="decrement">-</button>
-							<input type="text" id="account" value="1">
-							<button id="increment">+</button>
+		<div class="col-lg-12">
+			<div class="page-line" style="margin-top: 150px;">
+				<h2
+					style="color: black; margin-top: -50px; margin-bottom: 40px; text-align: center;">새로나온
+					책</h2>
+				<div class="book-list">
+					<c:forEach var="vo" items="${nList}">
+						<div class="book-item">
+							<div class="book-cover">
+								<a href="../book/cookie.do?bno=${vo.bno }"> <img
+									height=100%; src="${vo.cover }" alt="">
+								</a>
+							</div>
+							<div class="book-info">
+								<p class="book-genre">${vo.bgenre }</p>
+								<a href="../book/cookie.do?bno=${vo.bno }">
+									<h2 class="book-title">${vo.btitle }</h2>
+								</a>
+								<p class="book-author">${vo.writer}${vo.writer != null ? ' 저 | ' : ''}${vo.publisher}&nbsp;|
+									${vo.dbday}</p>
+								<p class="book-price">
+									<fmt:formatNumber value="${vo.sale_price}" type="number" />원
+									<c:choose>
+										<c:when test="${vo.sale_price < vo.price}">
+											<span class="discount"> (<fmt:formatNumber
+													maxFractionDigits="0" type="number"
+													value="${((vo.price - vo.sale_price) / vo.price * 100)}" />%
+												할인)
+											</span>
+										</c:when>
+										<c:otherwise>
+											<span class="discount">(할인 없음)</span>
+										</c:otherwise>
+									</c:choose>
+								</p>
+							</div>
+							<input type="hidden" id="bno" name="bno" value="${vo.bno}" />
+							<div class="book-actions">
+								<div class="buttons">
+									<a href="#" class="like-button" data-bno="${vo.bno}"><img
+										src="../book/heart.png" alt=""></a>
+								</div>
+								<div class="account-control">
+									<button class="decrement">-</button>
+									<input type="text" class="account" value="1">
+									<button class="increment">+</button>
+								</div>
+								<button type="button" class="fa fa-cart-plus add-to-cart" 
+									style="background-color: #99D9EA;">&nbsp;Add to Cart</button>
+								<button type="button" class="fa fa-credit-card"
+									style="background-color: #7396EA">&nbsp;Buy Now</button>
+							</div>
 						</div>
-						<button type="button" class="fa fa-cart-plus"
-							style="background-color: #99D9EA;">&nbsp;Add to Cart</button>
-						<button type="button" class="fa fa-credit-card"
-							style="background-color: #7396EA">&nbsp;Buy Now</button>
-					</div>
-				</div>
-			</c:forEach>
-			</div>
-			</div>
-			</div>
-				<ul class="page page-xg">
-					<c:if test="${startPage > 1}">
-						<li><a href="../book/new.do?page=${startPage-1}">&laquo;
-								Previous</a></li>
-					</c:if>
-					<c:forEach var="n" begin="${startPage}" end="${endPage}">
-						<li ${n == curpage ? "class='current'" : ""}><a
-							href="../book/new.do?page=${n}">${n}</a></li>
 					</c:forEach>
-					<c:if test="${endPage < totalpage}">
-						<li><a href="../book/new.do?page=${endPage+1}">Next
-								&raquo;</a></li>
-					</c:if>
-				</ul>
+				</div>
+			</div>
 		</div>
+		<ul class="page page-xg">
+			<c:if test="${startPage > 1}">
+				<li><a href="../book/new.do?page=${startPage-1}">&laquo;
+						Previous</a></li>
+			</c:if>
+			<c:forEach var="n" begin="${startPage}" end="${endPage}">
+				<li ${n == curpage ? "class='current'" : ""}><a
+					href="../book/new.do?page=${n}">${n}</a></li>
+			</c:forEach>
+			<c:if test="${endPage < totalpage}">
+				<li><a href="../book/new.do?page=${endPage+1}">Next &raquo;</a></li>
+			</c:if>
+		</ul>
+	</div>
+		<div class="recent-books-container">
+        <div class="recent-books-header" onclick="toggleRecentBooks()">
+            <h4>최근 본 도서</h4>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="recent-books-content">
+            <ul>
+                <c:forEach var="vo" items="${sessionScope.recentBooks}">
+                    <li>
+                        <figure><a href="../book/cookie.do?bno=${vo.bno}">
+                            <img class="radius-10 btmspace-10" src="${vo.cover}" style="width: 60px; height: 80px;"></a>
+                        </figure>
+                    </li>
+                </c:forEach>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

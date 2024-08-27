@@ -81,9 +81,9 @@
     FROM (SELECT bno, btag, bgenre, cover, btitle, writer, price, sale_price, dis_rate, publisher, intro, intro_img, pages, isbn13, isbn10, bdate, rownum as num
     FROM (SELECT book.bno, book.btag, book.bgenre, book.cover, book.btitle, book.writer, book.price, book.sale_price, book.dis_rate, book.publisher, book.intro, book.intro_img, book.pages, book.isbn13, book.isbn10, book.bdate
     FROM book
-    JOIN (SELECT bno, SUM(bcount) as total_count
-    FROM bbuy
-    GROUP BY bno) bb ON book.bno = bb.bno
+    JOIN (SELECT tno, SUM(count) as total_count
+    FROM totalcart
+    GROUP BY tno) bb ON book.bno = bb.tno
     ORDER BY total_count DESC))
     WHERE num BETWEEN #{start} AND #{end}
 </select>
@@ -92,9 +92,47 @@
     SELECT CEIL(COUNT(*) / 20.0) 
     FROM (SELECT book.bno
     FROM book
-    JOIN (SELECT bno, SUM(bcount) as total_count
-    FROM bbuy
-    GROUP BY bno) bb ON book.bno = bb.bno)
+    JOIN (SELECT tno, SUM(count) as total_count
+    FROM totalcart
+    GROUP BY tno) bb ON book.bno = bb.tno)
 </select>
-  
+
+ <insert id="insertCart">
+        INSERT INTO totalcart (cno, tno, price, id, count, buydate, type)
+        VALUES ((SELECT NVL(MAX(cno)+1, 1) FROM totalcart), #{tno}, #{price}, #{id}, #{count}, SYSDATE, #{type})
+ </insert>
+ 
+ <select id="CartRecomm" resultType="BookVO" parameterType="map">
+    SELECT * FROM (SELECT b.*
+    FROM book b
+    JOIN (SELECT DISTINCT tno
+    FROM totalcart 
+    WHERE id = #{id} 
+    AND type = 2) 
+    similar ON b.bno = similar.tno
+    WHERE b.bno NOT IN (SELECT tno FROM totalcart WHERE type=2 AND id=#{id})
+    ORDER BY DBMS_RANDOM.VALUE)
+    WHERE ROWNUM &lt;= 12;
+</select>
+
+<select id="BuyRecomm" resultType="BookVO" parameterType="map">
+    SELECT * FROM (SELECT b.*
+    FROM book b
+    JOIN (SELECT DISTINCT tno
+    FROM totalcart
+    WHERE id != #{id}
+    AND type = 2) 
+    similar ON b.bno = similar.tno
+    WHERE b.bno NOT IN (SELECT tno FROM totalcart WHERE type=2 AND id=#{id})
+    ORDER BY DBMS_RANDOM.VALUE)
+    WHERE ROWNUM &lt;= 12
+</select>
+
+<select id="RandomRecomm" resultType="BookVO" parameterType="map">
+    SELECT * FROM (SELECT *
+    FROM book
+    ORDER BY DBMS_RANDOM.VALUE) 
+    WHERE ROWNUM &lt;= 12
+</select>
+    
 </mapper>

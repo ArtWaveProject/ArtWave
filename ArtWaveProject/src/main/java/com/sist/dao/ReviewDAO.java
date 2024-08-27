@@ -112,12 +112,13 @@ public class ReviewDAO {
 	  }
 	  public static double reviewAverage(Map map)
 	  {
-		  double avg=0;
+		  double avg=0.0;
 		  SqlSession session=null;
 		  try
 		  {
 			  session=ssf.openSession();
-			  avg=session.selectOne("reviewAverage",map);  
+			  double avg1=session.selectOne("reviewAverage",map);
+			  avg=avg1;
 		  }catch(Exception ex)
 		  {
 			  ex.printStackTrace();

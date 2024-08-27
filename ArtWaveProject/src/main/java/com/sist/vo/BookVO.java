@@ -25,6 +25,6 @@ import lombok.Data;
 @Data
 public class BookVO {
   private int bno;
-  private String btag,bgenre,cover,btitle,writer,price,sale_price,dis_rate,publisher,intro,intro_img,pages,isbn13,isbn10,dbday;
+  private String btag,bgenre,cover,btitle,writer,price,sale_price,dis_rate,publisher,intro,intro_img,pages,isbn13,isbn10,dbday,avg;
   private Date bdate;
 }

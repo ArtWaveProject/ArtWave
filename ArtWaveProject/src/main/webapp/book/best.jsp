@@ -7,13 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <style type="text/css">
-
 .page-line {
-    padding: 40px;
-    background-color: #FFFFFF;
-    border-radius: 24px;
-    margin: 20px auto;
-    max-width: 1200px; 
+	padding: 40px;
+	background-color: #FFFFFF;
+	border-radius: 24px;
+	margin: 20px auto;
+	max-width: 1200px;
 }
 
 body {
@@ -21,7 +20,6 @@ body {
 	padding: 0;
 	font-family: Arial, sans-serif;
 }
-
 
 .book-list {
 	display: flex;
@@ -108,10 +106,6 @@ body {
 	font-size: 12px;
 }
 
-.book-actions button:hover {
-	background-color: #EA0035;
-}
-
 .book-actions select {
 	padding: 8px;
 	border-radius: 4px;
@@ -119,14 +113,14 @@ body {
 	margin-bottom: 8px;
 }
 
-.book-actions .quantity-control {
+.book-actions .account-control {
 	display: flex;
 	gap: 5px;
 	justify-content: center;
 	margin: 0 0 0 0;
 }
 
-.quantity-control button {
+.account-control button {
 	width: 30px;
 	height: 30px;
 	font-size: 18px;
@@ -140,11 +134,11 @@ body {
 	justify-content: center;
 }
 
-.quantity-control button:hover {
+.account-control button:hover {
 	background-color: #ddd;
 }
 
-.quantity-control input {
+.account-control input {
 	width: 72px;
 	height: 30px;
 	text-align: center;
@@ -157,40 +151,40 @@ body {
 .page {
 	list-style: none;
 	padding: 0;
-	margin: 20px auto; 
+	margin: 20px auto;
 	display: flex;
-	justify-content: center; 
+	justify-content: center;
 	font-family: Arial, sans-serif;
 }
 
 .page li {
-	margin: 0 3px; 
+	margin: 0 3px;
 }
 
 .page a {
 	text-decoration: none;
-	color: #0197A3; 
+	color: #0197A3;
 	padding: 8px 12px;
-	border: 1px solid #0197A3; 
-	border-radius: 4px; 
-	transition: background-color 0.3s, color 0.3s; 
+	border: 1px solid #0197A3;
+	border-radius: 4px;
+	transition: background-color 0.3s, color 0.3s;
 }
 
 .page a:hover {
-	background-color: #0197A3; 
-	color: #fff; 
+	background-color: #0197A3;
+	color: #fff;
 }
 
 .page .current a {
-	background-color: #0197A3; 
+	background-color: #0197A3;
 	color: #fff;
-	border: 1px solid #0197A3; 
-	pointer-events: none; 
+	border: 1px solid #0197A3;
+	pointer-events: none;
 }
 
 .page .current a:hover {
-	background-color: #0197A3; 
-	color: #fff; 
+	background-color: #0197A3;
+	color: #fff;
 }
 
 .page li:first-child a {
@@ -201,8 +195,226 @@ body {
 	border-radius: 0 4px 4px 0;
 }
 
+.buttons a.like-button {
+	background-color: transparent;
+	border: 1px solid #ccc;
+	color: #fff;
+	width: 140px;
+	height: 28px;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	margin-bottom: 8px;
+}
+
+.buttons a.like-button img {
+	width: 20px;
+	height: 20px;
+}
+.recent-books-container {
+    position: fixed; 
+    right: 60px; 
+    bottom: 20px; 
+    width: 200px; 
+    background-color: #ffffff; 
+    border: 2px solid #ddd; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+    z-index: 1000; 
+    transition: height 0.3s ease, bottom 0.3s ease; 
+    overflow: hidden; 
+    height: 60px; 
+}
+
+.recent-books-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recent-books-header h4 {
+    margin: 0; 
+    font-size: 18px; 
+    color: #333;
+}
+
+.recent-books-content {
+    display: flex; 
+    flex-wrap: wrap; 
+    margin-top: 10px;
+}
+
+.recent-books-content ul {
+    list-style: none; 
+    padding: 0; 
+    margin: 0;
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+.recent-books-content li {
+    margin: 5px; 
+}
+
+.recent-books-content img {
+    border-radius: 8px; 
+    display: block; 
+}
+
+.recent-books-container.expanded {
+    padding: 25px;
+    height: 250px; 
+    bottom: 60px;
 }
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+function toggleRecentBooks() {
+    const container = document.querySelector('.recent-books-container');
+    const toggleIcon = container.querySelector('.toggle-icon');
+    if (container.classList.contains('expanded')) {
+        container.classList.remove('expanded');
+        toggleIcon.textContent = '+';
+    } else {
+        container.classList.add('expanded');
+        toggleIcon.textContent = '-';
+    }
+}
+$(document).ready(function() {
+    $('.add-to-cart').click(function(event) {
+        event.preventDefault()
+ 
+      let id = '${id}'  
+        
+      if (id.length === 0) {
+			alert('해당 기능은 로그인 시 이용하실 수 있습니다')
+			return
+		}
+        
+        let bno = $('#bno').val()
+        let count = $('#account').val()
+        let price = ${vo.sale_price}
+
+        console.log(bno)
+        console.log(count)
+        console.log(price)
+        
+        $.ajax({
+            type: 'post',
+            url: '../book/cart.do',
+            data: {
+                'tno': bno,
+                'price': price,
+                'count': count,
+                'type': 2 
+            },
+            success: function(result) {
+                alert('장바구니에 추가되었습니다')
+            },
+            error: function(request, status, error) {
+                alert('오류가 발생했습니다')
+            }
+        })
+    })
+})
+	  $(function() {
+		let id = '${id}';
+
+		$('.book-item').each(function() {
+			let $item = $(this)
+			let bno = $item.find('input[name="bno"]').val()
+			let $likeButton = $item.find('.like-button')
+			let $likeIcon = $likeButton.find('img')
+			let likeCheck = false
+
+			if (id.length > 0) {
+				$.ajax({
+					type : 'post',
+					url : '../like/likeCheck.do',
+					data : {
+						'tno' : bno,
+						'type' : 5
+					},
+					success : function(result) {
+						if (result === 'OK') {
+							likeCheck = true
+							$likeIcon.attr('src', 'fullheart.png')
+						} else {
+							likeCheck = false
+							$likeIcon.attr('src', 'heart.png')
+						}
+					}
+				})
+			}
+
+			$likeButton.click(function(event) {
+				if (id.length === 0) {
+					alert('해당 기능은 로그인 시 이용하실 수 있습니다')
+					return
+				}
+
+				event.preventDefault()
+				if (likeCheck) {
+					$.ajax({
+						type : 'post',
+						url : '../like/likeOff.do',
+						data : {
+							'tno' : bno,
+							'type' : 5
+						},
+						success : function(result) {
+							if (result >= 0) {
+								likeCheck = false
+								$likeIcon.attr('src', 'heart.png')
+							}
+						}
+					})
+				} else {
+					$.ajax({
+						type : 'post',
+						url : '../like/likeOn.do',
+						data : {
+							'tno' : bno,
+							'type' : 5
+						},
+						success : function(result) {
+							if (result >= 0) {
+								likeCheck = true
+								$likeIcon.attr('src', 'fullheart.png')
+							}
+						},
+						error : function(request, status, error) {
+							alert(error)
+						}
+					})
+				}
+			})
+		})
+
+		$('.book-item').each(function() {
+			let $item = $(this)
+			let $increment = $item.find('.increment')
+			let $decrement = $item.find('.decrement')
+			let $account = $item.find('.account')
+
+			$increment.click(function() {
+				let count = parseInt($account.val())
+				$account.val(count + 1)
+			})
+
+			$decrement.click(function() {
+				let count = parseInt($account.val())
+				if (count > 1) {
+					$account.val(count - 1)
+				}
+			})
+		})
+	})
+</script>
 </head>
 <body>
 <div class="row">
@@ -238,18 +450,22 @@ body {
 								</c:choose>
 							</p>
 					</div>
-					<div class="book-actions">
-						<button type="button" class="fa fa-heart">&nbsp;좋아요</button>
-						<div class="quantity-control">
-							<button id="decrement">+</button>
-							<input type="text" id="quantity" value="1">
-							<button id="increment">-</button>
-						</div>
-						<button type="button" class="fa fa-cart-plus"
-							style="background-color: #99D9EA;">&nbsp;Add to Cart</button>
-						<button type="button" class="fa fa-credit-card"
-							style="background-color: #7396EA">&nbsp;Buy Now</button>
-					</div>
+					<input type="hidden" id="bno" name="bno" value="${vo.bno}" />
+							<div class="book-actions">
+								<div class="buttons">
+									<a href="#" class="like-button" data-bno="${vo.bno}"><img
+										src="../book/heart.png" alt=""></a>
+								</div>
+								<div class="account-control">
+									<button class="decrement">-</button>
+									<input type="text" class="account" value="1">
+									<button class="increment">+</button>
+								</div>
+								<button type="button" class="fa fa-cart-plus add-to-cart"
+									style="background-color: #99D9EA;">&nbsp;Add to Cart</button>
+								<button type="button" class="fa fa-credit-card"
+									style="background-color: #7396EA">&nbsp;Buy Now</button>
+							</div>
 				</div>
 			</c:forEach>
 			</div>
@@ -270,5 +486,22 @@ body {
 					</c:if>
 				</ul>
 		</div>
+		<div class="recent-books-container">
+        <div class="recent-books-header" onclick="toggleRecentBooks()">
+            <h4>최근 본 도서</h4>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="recent-books-content">
+            <ul>
+                <c:forEach var="vo" items="${sessionScope.recentBooks}">
+                    <li>
+                        <figure><a href="../book/cookie.do?bno=${vo.bno}">
+                            <img class="radius-10 btmspace-10" src="${vo.cover}" style="width: 60px; height: 80px;"></a>
+                        </figure>
+                    </li>
+                </c:forEach>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

@@ -203,5 +203,98 @@ public class BookDAO {
 		   }
 		   return count;
 	   }
-	   
+	   public static void insertCart(Map map) {
+		    SqlSession session = null;
+		    try {
+		        session = ssf.openSession(true); 
+		        session.insert("insertCart", map);
+		    } catch (Exception ex) 
+		    {
+		        ex.printStackTrace();
+		    } 
+		    finally 
+		    {
+		        if (session != null) 
+		            session.close();
+		    }
+		}
+	   public static List<BookVO> cartRecomm(String id, List<Integer> bnoList) {
+		    List<BookVO> list = new ArrayList();
+		    SqlSession session = null;
+		    try 
+		    {
+		        session = ssf.openSession();
+		        Map map = new HashMap();
+		        map.put("id", id);
+		        map.put("bnoList", bnoList);
+		        list = session.selectList("CartRecomm", map);
+		    } catch (Exception ex) 
+		    {
+		        ex.printStackTrace();
+		    } 
+		    finally 
+		    {
+		        if (session != null) 
+		        {
+		            session.close();
+		        }
+		    }
+		    return list;
+		}
+
+	   public static List<BookVO> buyRecomm(String id, List<Integer> bnoList) {
+		    List<BookVO> list = new ArrayList();
+		    SqlSession session = null;
+		    try 
+		    {
+		        session = ssf.openSession();
+		        Map map = new HashMap();
+		        map.put("id", id);
+		        map.put("bnoList", bnoList);
+		        list = session.selectList("BuyRecomm", map);
+		    } catch (Exception ex) 
+		    {
+		        ex.printStackTrace();
+		    } 
+		    finally 
+		    {
+		        if (session != null) 
+		        {
+		            session.close();
+		        }
+		    }
+		    return list;
+		}
+
+	   public static List<Integer> getCartBnoList(String userId) {
+		    List<Integer> bnoList = new ArrayList();
+		    SqlSession session = null;
+		    try {
+		        session = ssf.openSession();
+		        bnoList = session.selectList("getCartBnoList", userId);
+		    } catch (Exception ex) {
+		        ex.printStackTrace();
+		    } finally {
+		        if (session != null) {
+		            session.close();
+		        }
+		    }
+		    return bnoList;
+		}
+
+	    public static List<BookVO> randomRecomm(Map map) {
+	        List<BookVO> list = new ArrayList();
+	        SqlSession session = null;
+	        try {
+	            session = ssf.openSession();
+	            list = session.selectList("RandomRecomm", map);
+	        } catch (Exception ex) {
+	            ex.printStackTrace();
+	        } finally {
+	            if (session != null)
+	                session.close();
+	        }
+	        return list;
+	    }
+
 }
