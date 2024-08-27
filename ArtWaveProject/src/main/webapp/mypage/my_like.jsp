@@ -261,21 +261,22 @@
 							<span class="listArtist">영화</span>
 						</td>
 						</c:when>
-						<c:when test="${al.bolikevo.cover!=null }">
+			
+						<c:when test="${al.bolikevo.btitle!=null }">
 						<td width="15%" class="text-center">
-						<a href="../book/detail.do?bno=${bl.tno}">
+						<a href="../book/detail.do?bno=${al.tno}">
 							<img src="${al.bolikevo.cover}" class="listImg">
 						</a>
 						</td>
 						<td width="40%">
-							<span class="listTitle" ><a href="../book/detail.do?bno=${bl.tno}">${bl.bolikevo.btitle}</a></span>
+							<span class="listTitle" ><a href="../book/detail.do?bno=${al.tno}">${al.bolikevo.btitle}</a></span>
 						</td>
 						<td width="20%">
 							<span class="listArtist">도서</span>
 						</td>
 						</c:when>
 						</c:choose>
-
+				
 
 						<td width="15%" >
 							<button id="likeBtn">

@@ -86,16 +86,16 @@
         (SELECT movie.mposter FROM movie WHERE mno = totallike.tno) as mposter,
 		(SELECT movie.mtitle FROM movie WHERE mno = totallike.tno) as mtitle,
 		(SELECT movie.mgenre FROM movie WHERE mno = totallike.tno) as mgenre,
-		(SELECT book.cover FROM book WHERE bno = totallike.tno) as bcover,
- 		(SELECT book.btitle FROM book WHERE bno = totallike.tno) as btitle,
- 		(SELECT book.writer FROM book WHERE bno = totallike.tno) as bwriter
+		(SELECT book.cover FROM book WHERE bno = totallike.tno) as cover,
+ 		(SELECT book.btitle FROM book WHERE bno = totallike.tno) as title,
+ 		(SELECT book.writer FROM book WHERE bno = totallike.tno) as writer
  		FROM totallike
         WHERE type in(1,4,5) AND id=#{id}
  	</select>
-<!-- 	<delete id="likecancel" parameterType="string">
+	<delete id="likecancel" parameterType="string">
 		DELETE FROM totallike WHERE
 		tno=#{tno} AND id=#{id} 
-	</delete> -->
+	</delete> 
 </mapper>
 
 

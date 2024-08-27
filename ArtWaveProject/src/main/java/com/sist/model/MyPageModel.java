@@ -59,9 +59,6 @@ public class MyPageModel {
 		System.out.println("check");
 
 		try {
-			String page = request.getParameter("page");
-			if (page == null)
-				page = "1";
 
 			// 변수 이름 변경
 			String tlikeIndexStr = request.getParameter("tcart");
@@ -71,49 +68,34 @@ public class MyPageModel {
 			int tcart = Integer.parseInt(tlikeIndexStr); // 문자열을 정수로 변환
 			String selectedcart = carttype[tcart]; // 배열 인덱스를 사용하여 값 선택
 
-//			int curPage = Integer.parseInt(page);
-//			int rowSize = 50;
-//			int start = (curPage - 1) * rowSize + 1;
-//			int end = start + rowSize - 1;
 
 			HttpSession session = request.getSession();
 			String id = (String) session.getAttribute("id");
 			String type = (String) session.getAttribute("tcart");
 
 			Map map = new HashMap();
-//			map.put("start", start);
-//			map.put("end", end);
+
 			map.put("tcart", selectedcart); // 배열에서 선택한 값 사용
 			map.put("id", id);
 //       map.put("type", type);
 
-			/*List<CartVO> allcart = CartDAO.allcartListData(map);
+			List<CartVO> allcart = CartDAO.allcartListData(map);
 			List<CartVO> bocart = CartDAO.bocartListData(map);
-			List<CartVO> ascart = CartDAO.ascartListData(map);*/
-
-
-//       LikeDAO.likecancel(Integer.parseInt("tno"));
-
-//			int totalPage = LikeDAO.likeTotalPage(selectedTlike); // 배열에서 선택한 값 사용
-//			int startPage = (curPage - 1) / 10 * 10 + 1;
-//			int endPage = startPage + 10 - 1;
+			List<CartVO> ascart = CartDAO.ascartListData(map);
 
 			System.out.println(tlikeIndexStr + "str");
 			System.out.println(tcart + "tcart");
 
-			/*if (tcart == 1) {
+			if (tcart == 1) {
 				request.setAttribute("allcart", allcart);
 			} else if (tcart == 2) {
 				request.setAttribute("bocart", bocart);
 			} else if (tcart == 3) {
 				request.setAttribute("ascart", ascart);
-			} */
+			} 
 
 			request.setAttribute("tlike", tlikeIndexStr); // 배열에서 선택한 값 사용
-//			request.setAttribute("curPage", curPage);
-//			request.setAttribute("startPage", startPage);
-//			request.setAttribute("endPage", endPage);
-//			request.setAttribute("totalPage", totalPage);
+
 
 			request.setAttribute("title", "장바구니");
 			request.setAttribute("mypage_jsp", "../mypage/my_cart.jsp");
@@ -231,17 +213,23 @@ public class MyPageModel {
 
 	@RequestMapping("mypage/my_edit_member.do")
 	public String my_edit_member(HttpServletRequest request, HttpServletResponse response) {
+		try {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		MemberVO vo = MemberDAO.memberUpdateData(id);
 
 		String phone = vo.getPhone();
-		phone = phone.substring(phone.indexOf(")") + 1);
-		vo.setPhone(phone);
+		if(phone!=null) {
+			phone = phone.substring(phone.indexOf(")") + 1);
+			vo.setPhone(phone);			
+		}
 		request.setAttribute("vo", vo);
 		request.setAttribute("title", "회원 정보 수정");
 		request.setAttribute("mypage_jsp", "../mypage/my_edit_member.jsp");
 		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return "../main/main.jsp";
 	}
 
@@ -282,7 +270,8 @@ public class MyPageModel {
 			List<LikeVO> molike = LikeDAO.molikeListData(map);
 			List<LikeVO> bolike = LikeDAO.bolikeListData(map);
 			List<LikeVO> allike = LikeDAO.allikeListData(map);
-
+			
+			System.out.println(allike+"< allike model");
 //       LikeDAO.likecancel(Integer.parseInt("tno"));
 
 			int totalPage = LikeDAO.likeTotalPage(selectedTlike); // 배열에서 선택한 값 사용
@@ -302,7 +291,7 @@ public class MyPageModel {
 			} else if (tlike == 4) {
 				request.setAttribute("mulike", mulike);
 			}
-
+			
 			request.setAttribute("tlike", tlikeIndexStr); // 배열에서 선택한 값 사용
 			request.setAttribute("curPage", curPage);
 			request.setAttribute("startPage", startPage);

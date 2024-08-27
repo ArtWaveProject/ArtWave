@@ -181,53 +181,53 @@
 		<div class=" listBody">
 			<table class="table genreTable">
 				<tr>
-					<td width="11%" class="tlikeBtn ${tlike==1?'active':''}">
-						<a href="../mypage/my_cart.do?tlike=1">전체</a>
+					<td width="11%" class="tcartBtn ${tcart==1?'active':''}">
+						<a href="../mypage/my_cart.do?tcart=1">전체</a>
 					</td>
-
-					<td width="11%" class="tlikeBtn ${tlike==2?'active':tlike==1?'anext':''}">
-						<a href="../mypage/my_cart.do?tlike=2">도서</a>
+					<td width="11%" class="tcartBtn ${tcart==2?'active':tcart==1?'anext':''}">
+						<a href="../mypage/my_cart.do?tcart=2">도서</a>
 					</td>
-					<td width="11%" class="tlikeBtn ${tlike==3?'active':tlike==2?'anext':''}">
-						<a href="../mypage/my_cart.do?tlike=3">음악</a>
+					<td width="11%" class="tcartBtn ${tcart==3?'active':tcart==2?'anext':''}">
+						<a href="../mypage/my_cart.do?tcart=3">음악</a>
 					</td>
 
 				</tr>
 			</table>
 			<table class="table listChart" id="middle">
 				<tr>
-					<c:if test="${tlike==1 }">
+					<c:if test="${tcart==1 }">
 					<th width="10%" class="text-center">번호</th>
 					<th width="15%" class="text-center"></th>
 					<th width="40%" class="text-center">제목</th>
 					<th width="20%" class="text-center">분류</th>
-					<th width="15%" class="text-center">취소</th>
+					<th width="15%" class="text-center">금액</th>
 					</c:if>
 
-					<c:if test="${tlike==3 }">
+					<c:if test="${tcart==2 }">
 					<th width="10%" class="text-center">번호</th>
 					<th width="15%" class="text-center"></th>
 					<th width="40%" class="text-center">제목</th>
 					<th width="20%" class="text-center">작가</th>
-					<th width="15%" class="text-center">취소</th>
+					<th width="15%" class="text-center">금액</th>
 					</c:if>
-					<c:if test="${tlike==4 }">
+					<c:if test="${tcart==3 }">
 					<th width="10%" class="text-center">번호</th>
 					<th width="15%" class="text-center"></th>
 					<th width="40%" class="text-center">제목</th>
 					<th width="20%" class="text-center">가수</th>
-					<th width="15%" class="text-center">취소</th>
+					<th width="15%" class="text-center">금액</th>
 					</c:if>
 				</tr>
-				<c:if test="${tlike==1 }">
-				<c:forEach var="al" items="${allike}" varStatus="i">
+				
+				<c:if test="${tcart==1 }">
+				<c:forEach var="all" items="${allcart}" varStatus="i">
 				
 					<tr style="vertical-align: middle; height: 50px;">
 						<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
-						
-
-
-
+						<td width="15%" class="text-center">
+						<a href="../book/detail.do?bno=${bl.tno }">
+							<img src="${bl.bovo.cover }" class="listImg">
+						</a>
 						<td width="15%" >
 							<button id="likeBtn">
 								<img src="like_on.png" id="likeBtnicon">
@@ -238,8 +238,8 @@
 				</c:if>
 				
 				
-				<c:if test="${tlike==3 }">
-				<c:forEach var="bl" items="${bolike}" varStatus="i">
+				<c:if test="${tcart==2 }">
+				<c:forEach var="bl" items="${bocart}" varStatus="i">
 					<tr style="vertical-align: middle; height: 50px;">
 						<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
 						<td width="15%" class="text-center">
@@ -261,8 +261,8 @@
 					</tr>
 				</c:forEach>
 				</c:if>
-				<c:if test="${tlike==4 }">
-				<c:forEach var="mul" items="${mulike}" varStatus="i">
+				<c:if test="${tcart==3 }">
+				<c:forEach var="mul" items="${ascart}" varStatus="i">
 					<tr style="vertical-align: middle; height: 50px;">
 						<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
 						<td width="15%" class="text-center">
@@ -274,7 +274,7 @@
 							<span class="listTitle" ><a href="../music/musicDetail.do?mno=${mul.tno}">${mul.mulikevo.title}</a></span>
 						</td>
 						<td width="20%">
-							<span class="listArtist"><a href="../music/artistDetail.do?ano=${mul.mulikevo.ano}">${mul.artlikevo.aname}</a></span>
+							<span class="listArtist"><a href="../music/artistDetail.do?ano=${mul.mulikevo.ano}">${mul.artcartvo.aname}</a></span>
 						</td>
 						
 						<td width="15%" >
