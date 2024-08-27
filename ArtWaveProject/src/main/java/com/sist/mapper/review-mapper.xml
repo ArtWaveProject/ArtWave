@@ -32,7 +32,6 @@
     SELECT avg(trating) FROM totalreview
     WHERE tno=#{tno} AND type=#{type}
   </select>
-  
 <select id="CheckedReview" resultType="int" parameterType="hashmap">
     SELECT COUNT(*)
     FROM totalreview

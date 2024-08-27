@@ -333,7 +333,7 @@ function playListMusicInsert(li, plno){
 						<td width="7%" class="text-center" style="position: relative;">
 							<ul class="nav" style="display: inline; position: relative;">
 								<li class="dropdown">
-									<span class="toggleMenu">+</span>
+									<span class="toggleMenu"><i class="fas fa-list"></i></span>
 									<ul class="dropmenu dropUI" style="width:190px;" data-mno="${mvo.mno}">
 									</ul>
 								</li>

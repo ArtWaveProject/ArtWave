@@ -55,8 +55,8 @@ public class MusicModel {
 
 	@RequestMapping("music/musicList.do")
 	public String musicList(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session=request.getSession();
-		String id=(String)session.getAttribute("id");
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
 		String page = request.getParameter("page");
 		String ss = request.getParameter("ss");
 		if (ss == null)
@@ -79,7 +79,6 @@ public class MusicModel {
 		int totalPage = MusicDAO.musicTotalPage(genreList[Integer.parseInt(genre)]);
 		int startPage = (curPage - 1) / 10 * 10 + 1;
 		int endPage = startPage + 10 - 1;
-		System.out.println(list.size());
 		request.setAttribute("id", id);
 		request.setAttribute("ss", ss);
 		request.setAttribute("genre", genre);
@@ -95,39 +94,39 @@ public class MusicModel {
 	@RequestMapping("music/albumList.do")
 	public String albumList(HttpServletRequest request, HttpServletResponse response) {
 		try {
-		String page = request.getParameter("page");
-		if (page == null)
-			page = "1";
-		String genre = request.getParameter("genre");
-		if (genre == null)
-			genre = "1";
-		String ss = request.getParameter("ss");
-		if (ss == null)
-			ss = "";
-		int curPage = Integer.parseInt(page);
-		int rowSize = 25;
-		int start = (curPage - 1) * rowSize + 1;
-		int end = start + rowSize - 1;
-		Map map = new HashMap();
-		map.put("start", start);
-		map.put("end", end);
-		map.put("genre", genreList[Integer.parseInt(genre)]);
-		map.put("ss", ss);
-		List<AlbumVO> list = MusicDAO.albumListData(map);
-		int totalPage = MusicDAO.albumTotalPage(genreList[Integer.parseInt(genre)]);
-		int startPage = (curPage - 1) / 10 * 10 + 1;
-		int endPage = startPage + 10 - 1;
-		System.out.println(list.size());
-		System.out.println(totalPage);
-		request.setAttribute("ss", ss);
-		request.setAttribute("genre", genre);
-		request.setAttribute("curPage", curPage);
-		request.setAttribute("startPage", startPage);
-		request.setAttribute("endPage", endPage);
-		request.setAttribute("totalPage", totalPage);
-		request.setAttribute("list", list);
-		request.setAttribute("main_jsp", "../music/albumList2.jsp");
-		}catch (Exception e) {
+			String page = request.getParameter("page");
+			if (page == null)
+				page = "1";
+			String genre = request.getParameter("genre");
+			if (genre == null)
+				genre = "1";
+			String ss = request.getParameter("ss");
+			if (ss == null)
+				ss = "";
+			int curPage = Integer.parseInt(page);
+			int rowSize = 25;
+			int start = (curPage - 1) * rowSize + 1;
+			int end = start + rowSize - 1;
+			Map map = new HashMap();
+			map.put("start", start);
+			map.put("end", end);
+			map.put("genre", genreList[Integer.parseInt(genre)]);
+			map.put("ss", ss);
+			List<AlbumVO> list = MusicDAO.albumListData(map);
+			int totalPage = MusicDAO.albumTotalPage(genreList[Integer.parseInt(genre)]);
+			int startPage = (curPage - 1) / 10 * 10 + 1;
+			int endPage = startPage + 10 - 1;
+			System.out.println(list.size());
+			System.out.println(totalPage);
+			request.setAttribute("ss", ss);
+			request.setAttribute("genre", genre);
+			request.setAttribute("curPage", curPage);
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
+			request.setAttribute("totalPage", totalPage);
+			request.setAttribute("list", list);
+			request.setAttribute("main_jsp", "../music/albumList2.jsp");
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "../main/main.jsp";
@@ -358,6 +357,7 @@ public class MusicModel {
 			response.setContentType("text/plain;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.write(result);
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 	}
 }

@@ -6,18 +6,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.table>tbody>tr:first-child >td{
-	vertical-align: middle !important;
+.table>tbody>tr:first-child>td {
 	border-top: none !important;
 	border-bottom: none !important
 }
-.table>tbody>tr>td:last-child{
-border-bottom: none !important;
+
+.table>tbody>tr>td:last-child {
+	border-bottom: none !important;
 }
-.table>tbody>tr:first-child th{
+
+.table>tbody>tr>td, .table>tbody>tr>th {
+	vertical-align: middle !important;
+}
+
+.table>tbody>tr:first-child th {
 	border-top: none !important;
 }
-.table>tbody>tr:last-child th{
+
+.table>tbody>tr:last-child th {
 	border-bottom: none !important;
 }
 
@@ -28,7 +34,7 @@ a {
 .rowTable {
 	background: white;
 	border-radius: 20px;
-	padding: 10px 10px 0px 10px; 
+	padding: 10px 10px 0px 10px;
 }
 
 .rowColor {
@@ -317,7 +323,7 @@ function playListMusicInsert(li, plno){
 									<td width="10%" style="text-align: center; padding: 0px; position: relative;">
 										<ul class="nav" style="display: inline; position: relative;">
 											<li class="dropdown">
-												<span class="toggleMenu">+</span>
+												<span class="toggleMenu"><i class="fas fa-list"></i></span>
 												<ul class="dropmenu dropUl" data-mno="${vo.mno}">
 												</ul>
 											</li>

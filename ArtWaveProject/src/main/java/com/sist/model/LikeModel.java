@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sist.dao.LikeDAO;
-import com.sist.dao.MusicDAO;
-
 import controller.RequestMapping;
 
 public class LikeModel {
@@ -18,6 +16,7 @@ public class LikeModel {
 	private String[] noName = { "", "mno", "alno", "ano", "mno", "bno"};
 	@RequestMapping("like/likeOn.do")
 	public void musicLikeOn(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("체크");
 		HttpSession session = request.getSession();
 		String tno = request.getParameter("tno");
 		String type = request.getParameter("type");
@@ -29,7 +28,6 @@ public class LikeModel {
 		map.put("table", tables[Integer.parseInt(type)]);
 		map.put("noName", noName[Integer.parseInt(type)]);
 		int result = LikeDAO.likeOn(map);
-		System.out.println(result);
 		try {
 			PrintWriter out = response.getWriter();
 			out.write(String.valueOf(result));
