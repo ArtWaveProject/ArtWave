@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.sist.vo.*;
 public class BookDAO {
-	
 	private static SqlSessionFactory ssf;
 	  static
 	  {
@@ -268,7 +267,7 @@ public class BookDAO {
 		}
 
 	   public static List<Integer> getCartBnoList(String userId) {
-		    List<Integer> bnoList = new ArrayList();
+		    List<Integer> bnoList = new ArrayList<Integer>();
 		    SqlSession session = null;
 		    try {
 		        session = ssf.openSession();
@@ -284,7 +283,7 @@ public class BookDAO {
 		}
 
 	    public static List<BookVO> randomRecomm(Map map) {
-	        List<BookVO> list = new ArrayList();
+	        List<BookVO> list = new ArrayList<BookVO>();
 	        SqlSession session = null;
 	        try {
 	            session = ssf.openSession();

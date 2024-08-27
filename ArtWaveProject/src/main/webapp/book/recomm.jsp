@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../book/bookstyle.css">
 <style type="text/css">
-
 .page-line {
 	padding: 40px;
 	background-color: #FFFFFF;

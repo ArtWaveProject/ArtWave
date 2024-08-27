@@ -41,7 +41,6 @@
 	background: white;
 	padding: 65px;
 	vertical-align: middle !important;
-	
 }
 
 .listChart tr td {
@@ -176,7 +175,9 @@
 .btnposi {
 	margin-left: 80px;
 }
-. maincss{
+
+.
+maincss {
 	padding: 90px !important;;
 	border: none !important;
 }
@@ -184,54 +185,42 @@
 <script type="text/javascript">
 $(function(){
 	$('#pwdBtn').click(function(){
-		let pwd=$('#pwd').val()
-		if(pwd.trim()==="") // 입력이 안된 상태
+		let pwdjsp=$('#pwdjsp').val()
+		if(pwdjsp.trim()==="") // 입력이 안된 상태
 		{
 			alert("비밀번호를 입력해 주세요")
-			$('#pwd').focus()
+			$('#pwdjsp').focus()
+			event.preventDefault();
+			return
+		}else{
+
 			return
 		}
-		$.ajax({
-			type:'post',
-			url:'../mypage/my_member_exit.do',
-			data:{"pwdjsp":pwd},
-			success:function(result)
-			{
-				alert("탈퇴 되었습니다")
-				}
-				else
-				{
-					alert("비밀번호를 확인해 주세요")
-					$('#pwd').val("")
-					$('#pwd').focus()
-				}
-			},
-			error:function(request,status,error)
-			{
-				console.log(error)
-			}
-		})
-		
 	})
-	})
+	
 })
 </script>
 </head>
 <body>
 	<div class="listBody">
-		<main class="listChart maincss">
-			<table class="table">
-				<tr>
-					<td>비밀번호 확인 : &nbsp;<input type=text name="pwd" id="pwd" size=15 class="input-sm"></td>
-					</tr>
-					<tr>
-						<td><input type=button value="확인" class="btn-sm btn-warning"
-						id="pwdBtn">
-						<input type=button value="취소" class=" btn-sm btn-warning"
-						onclick="window.location.href='../mypage/mypage_main.do'">
-					</td>
-				</tr>
-			</table>
+		<main class="listChart">
+			<div class="row joinRow">
+				<form method="post" action="../mypage/my_member_exit_ok.do">
+					<table class="table">
+						<tr>
+							<td>비밀번호 확인 : &nbsp;<input type=password name="pwdjsp"
+								id="pwdjsp" size=15 class="input-sm"></td>
+						</tr>
+						<tr>
+							<td><input type="submit" value="확인" class="btn-sm btn-warning"
+								id="pwdBtn" name="pwdBtn"> <input type=button value="취소"
+								class=" btn-sm btn-warning"
+								onclick="window.location.href='../mypage/mypage_main.do'">
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
 		</main>
 	</div>
 </body>

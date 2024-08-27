@@ -59,11 +59,12 @@
 		WHERE id=#{id, jdbcType=VARCHAR}
 	</update>
 
-	<update id="changePwd" parameterType="string">
-		UPDATE member SET
-		pwd=#{pwd}
-		WHERE id=#{id}
-	</update>
+<update id="changePwd" parameterType="hashmap">
+    UPDATE member
+    SET pwd=#{pwd, jdbcType=VARCHAR}
+    WHERE id=#{id, jdbcType=VARCHAR}
+</update>
+
 
 	<delete id="deleteMember" parameterType="String">
 		DELETE FROM member

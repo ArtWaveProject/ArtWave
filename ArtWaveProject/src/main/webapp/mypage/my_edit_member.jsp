@@ -268,7 +268,7 @@
 								type="submit" value="저장" class=" btnposi btn-sm btn-info" id="joinBtn">
 								&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type=button value="취소" class=" btn-sm btn-warning"
-								onclick="javascript:history.back()"></td>
+								onclick="window.location.href='../mypage/mypage_main.do'"></td>
 						</tr>
 					</table>
 				</form>

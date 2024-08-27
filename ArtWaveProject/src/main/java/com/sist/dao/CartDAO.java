@@ -7,6 +7,7 @@ import com.sist.vo.CartVO;
 
 public class CartDAO {
     private static SqlSessionFactory ssf;
+
     static {
         try {
             ssf = CreateSqlSessionFactory.getSsf();

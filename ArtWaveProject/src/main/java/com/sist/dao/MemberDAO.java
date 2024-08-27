@@ -158,27 +158,51 @@ public class MemberDAO {
 		return count;
 	}
 
-	public static String checkPassword(String pwd, String id) {
-		String result = "";
-		SqlSession session = ssf.openSession();
-		session.selectOne("checkPassword", pwd);
-
-		return result;
+	public static boolean changePwd(Map<String, Object> map) {
+	    boolean bCheck = false;
+	    SqlSession session = null;
+	    try {
+	        session = ssf.openSession();
+	        
+	        // 데이터베이스에서 현재 비밀번호 조회
+	        String pwd = session.selectOne("memberGetPassword", map.get("id"));
+	        
+	        // 현재 비밀번호와 입력된 비밀번호가 일치하는지 확인
+	        if (pwd != null && pwd.equals(map.get("oldpwd"))) {
+	            // 비밀번호가 일치하면 새로운 비밀번호로 업데이트
+	            session.update("changePwd", map);
+	            session.commit(); // 트랜잭션 커밋
+	            bCheck = true; // 비밀번호 변경 성공
+	        } else {
+	            bCheck = false; // 비밀번호 변경 실패
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace(); // 예외 처리
+	    } finally {
+	        if (session != null) {
+	            session.close(); // SqlSession 종료
+	        }
+	    }
+	    return bCheck; // 비밀번호 변경 성공 여부 반환
 	}
 
-	public static String deleteMember(String pwd, String id) {
-	    String result = "";
+
+
+	public static boolean deleteMember(String id, String pwd) {
+	    boolean bCheck = false;
+	    System.out.println("id: "+id+" pwd: "+pwd+" dao1");
+
 	    SqlSession session = null;
 	    try {
 	        session = ssf.openSession();
 	        String pwdjsp = session.selectOne("memberGetPassword", id);
 	        
 	        if (pwdjsp != null && pwdjsp.equals(pwd)) {
+	        	bCheck = true;
 	            session.delete("deleteMember", id);
-	            session.commit();
-	            result = "ok";
+	            session.commit();	            
 	        } else {
-	            result = "no";
+	        	bCheck = false;
 	        }
 	    } catch (Exception ex) {
 	        ex.printStackTrace();
@@ -186,7 +210,8 @@ public class MemberDAO {
 	        if (session != null)
 	            session.close();
 	    }
-	    return result;
+	    System.out.println("id: "+id+" pwd: "+pwd+" dao2");
+	    return bCheck;
 	}
 
 

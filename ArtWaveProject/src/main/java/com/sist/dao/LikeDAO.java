@@ -163,7 +163,6 @@ public class LikeDAO {
 		}
 		System.out.println(bolike+"dao bolike");
 		return bolike; 
-		
 	}
 	
 	public static List<LikeVO> allikeListData(Map map){

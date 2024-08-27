@@ -18,4 +18,3 @@ public class ReviewVO {
   private String id,nickname,tcontent,regdate,dbday;
   private Date tdate;
 }
-

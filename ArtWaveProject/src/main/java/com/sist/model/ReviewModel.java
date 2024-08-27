@@ -1,9 +1,8 @@
 package com.sist.model;
 
+import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
 import com.sist.vo.*;
-
-import controller.RequestMapping;
 
 import java.io.PrintWriter;
 import java.util.*;
@@ -16,7 +15,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class ReviewModel {
-	 
 	   @RequestMapping("review/list.do")
 	   public void review_list(HttpServletRequest request,HttpServletResponse response)
 	   {

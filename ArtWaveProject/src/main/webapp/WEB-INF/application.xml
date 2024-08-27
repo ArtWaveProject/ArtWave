@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <beans>
 <bean id="main" class="com.sist.model.MainModel"></bean>
 <bean id="member" class="com.sist.model.MemberModel"></bean>
@@ -15,6 +14,5 @@
 <bean id="admin" class="com.sist.model.AdminModel"/>
 <bean id="replyboard" class="com.sist.model.ReplyBoardModel"/>
 <bean id="noticeboard" class="com.sist.model.NoticeBoardModel"/>
-<bean id="review" class="com.sist.model.ReviewModel"/>
 <bean id="mreserve" class="com.sist.model.MreserveModel"/>
 </beans>

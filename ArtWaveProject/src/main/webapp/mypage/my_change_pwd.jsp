@@ -175,28 +175,56 @@
 	margin-left: 80px;
 }
 </style>
+<script type="text/javascript">
+$(function(){
+	$('#pwdBtn').click(function(){
+		let oldpwd=$('#oldpwd').val()
+		let newpwd=$('#newpwd').val()
+		if(oldpwd.trim()==="") // 입력이 안된 상태
+		{
+			alert("비밀번호를 입력해 주세요")
+			$('#oldpwd').focus()
+			event.preventDefault();
+			return
+		}else if(newpwd.trim()===""){
+			alert("사용할 비밀번호를 입력해 주세요")
+			$('#newpwd').focus()
+			event.preventDefault();
+			return
+		}else{
+
+			return
+		}
+	})
+	
+})
+
+</script>
 </head>
 <body>
 	<div class="listBody">
 		<main class="listChart">
 			<div class="row joinRow">
-				<form method="post" action="../member/my_change_pwd_ok.do">
+				<form method="post" action="../mypage/my_change_pwd_ok.do">
 					<table class="table">
 						<tr>
-							<th width=20%>비밀번호</th>
-							<td width=80%><input type=password name="old_pwd" size="20"
+							<th width=20%>현재 비밀번호</th>
+							<td width=80%><input type=password name="oldpwd" id="oldpwd" size="20"
 								class="input-sm"></td>
 						</tr>
 						<tr>
-							<th width=20%>새비밀번호</th>
-							<td width=80%><input type=password name="new_pwd" size="20"
+							<th width=20%>사용할 비밀번호</th>
+							<td width=80%><input type=password name="newpwd" id="newpwd" size="20"
 								class="input-sm"></td>
 						</tr>
 						<tr>
 							<td colspan="2" class="text-center inline"><input
-								type=submit class="btn-sm btn-danger" value="비밀번호 변경"> <input
+								type=submit class="btn-sm btn-danger" value="비밀번호 변경"
+								id="pwdBtn"
+								> 
+								<input 
 								type=button class="btn-sm btn-primary" value="취소"
-								onclick="javascript:history.back()"></td>
+								onclick="window.location.href='../mypage/mypage_main.do'"></td>
 						</tr>
 					</table>
 				</form>
