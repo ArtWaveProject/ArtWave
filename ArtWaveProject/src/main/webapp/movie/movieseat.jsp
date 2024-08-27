@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <link rel="stylesheet" href="../seatstyle.css">
- <script  src="../seatscript.js"></script>
+ <link rel="stylesheet" href="../movie/seatstyle.css">
+ <script  src="../movie/seatscript.js"></script>
 </head>
 <body>
 <section id="section">

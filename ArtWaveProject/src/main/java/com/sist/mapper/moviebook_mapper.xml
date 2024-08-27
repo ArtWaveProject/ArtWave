@@ -11,7 +11,7 @@
  	     <select id="movieBookData"  resultType="MovieBookVO"  parameterType="hashmap">
  	     		SELECT moviebook.mbno, moviebook.mno, moviebook.bno, book.btitle, book.cover, book.price
  	     		FROM moviebook, book
- 	     		FULL OUTER JOIN book ON moviebook.bno = book.bno
+ 	     		 JOIN book ON moviebook.bno = book.bno
  	     		WHERE moviebook.mno = #{mno}
  	     </select>
  	     </mapper>
