@@ -132,7 +132,7 @@ nav {
 									</li>
 									<li class="submenu"><a href="../music/albumList.do">공지사항</a>
 									</li>
-									<li class="submenu"><a href="../music/musicMvList.do">문의</a></li>
+									<li class="submenu"><a href="../replyboard/list.do">문의</a></li>
 								</ul></li>
 							<c:if test="${sessionScope.id!=null }">
 <%-- 								<c:if test="${sessionScope.admin=='0' }">
