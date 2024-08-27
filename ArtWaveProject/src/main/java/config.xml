@@ -52,5 +52,6 @@
 		<mapper resource="com/sist/mapper/like_mapper.xml"/>
 		<mapper resource="com/sist/mapper/moviebook_mapper.xml"/>
 		<mapper resource="com/sist/mapper/mreserve_mapper.xml"/>
+		<mapper resource="com/sist/mapper/review-mapper.xml"/>
 	</mappers>
 </configuration>

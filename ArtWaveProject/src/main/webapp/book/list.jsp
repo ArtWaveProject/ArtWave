@@ -18,7 +18,6 @@ function toggleRecentBooks() {
         toggleIcon.textContent = '-';
     }
 }
-
 $(function() {
     let id = '${id}'
     let bno = $('#bno').val()
