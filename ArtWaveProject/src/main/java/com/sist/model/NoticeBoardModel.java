@@ -9,13 +9,13 @@ import controller.RequestMapping;
 
 import com.sist.dao.*;
 import com.sist.vo.*;
-/*
+
 public class NoticeBoardModel {
 	private String[] types = { "", "일반공지", "Books공지", "Music공지", "잔체공지" };
 
 	@RequestMapping("notice/list.do")
 	public String noticeboard_list(HttpServletRequest request, HttpServletResponse response) {
-		String page = request.getParameter(page);
+		String page = request.getParameter("page");
 		int curpage=Integer.parseInt(page);
 		int rowSize = 15;
 		int start = (rowSize * curpage) - (rowSize - 1);
@@ -28,7 +28,7 @@ public class NoticeBoardModel {
 		List<NoticeBoardVO> list=NoticeBoardDAO.noticeListData(map);
 		   for(NoticeBoardVO vo:list)
 		   {
-			   vo.setNotice_type(types[vo.getType()]);
+			   //vo.setNotice_type(types[vo.getType()]);
 		   }
 		   int count=NoticeBoardDAO.noticeRowCount();
 		   int totalpage=(int)(Math.ceil(count/15.0));
@@ -43,7 +43,6 @@ public class NoticeBoardModel {
 		return "../main/main.jsp";
 
 	}
-
 	// 상세보기 -----------------------------------------------------------------
 }
-*/
+

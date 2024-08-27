@@ -19,6 +19,9 @@
 			FROM notice_board BETWEEN #{start} AND #{end})) 
 </select>
 
+<select id="noticeRowCount" resultType="int">
+	SELECT COUNT(*) FROM noticeboard
+</select>
 <!-- 공지 상세 보기:user  -->
 	
 

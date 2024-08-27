@@ -59,10 +59,30 @@ public class NoticeBoardDAO {
 			if(session!=null)
 				session.close();
 		}
+		
+	}
+	
+	public static int noticeRowCount()
+	{
+		int count = 0;
+		
+		SqlSession session = null;
+		try
+		{
+			
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally {
+			if(session != null)
+				session.close();
+		}
+		
+		return count;
 	}
 	
 }
-
 
 
 
