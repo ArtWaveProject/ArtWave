@@ -146,6 +146,7 @@ input[type="password"] {
 	border-radius: 5px; /* 둥근 모서리 */
 	text-align: left; /* 왼쪽 정렬 */
 }
+
 input[type="button"] {
 	display: inline-block;
 	width: 100px;
