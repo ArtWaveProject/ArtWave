@@ -60,6 +60,7 @@ vertical-align: middle !important;
 #musicPoster {
 	width: 60px !important;
 	height: 60px;
+	border-radius: 5px;
 }
 
 .musicPoster {
@@ -323,7 +324,7 @@ function playListMusicInsert(li, plno){
 								<td width="10%" style="text-align: center; padding: 0px; position: relative;">
 									<ul class="nav" style="display: inline; position: relative;">
 										<li class="dropdown">
-											<span class="toggleMenu">+</span>
+											<span class="toggleMenu"><i class="fas fa-list"></i></span>
 											<ul class="dropmenu dropUl" data-mno="${vo.mno}">
 											</ul>
 										</li>

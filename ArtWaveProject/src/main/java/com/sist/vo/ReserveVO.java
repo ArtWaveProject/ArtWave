@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class ReserveVO {
-		private int mno, inwon, price, sno, rno, state;
-		private String mtitle, tdname, tname, time, day, id, email, poster;
+		private int mno, inwon, price, rno, state;
+		private String mtitle, tdname, tname, time, day, id, sno, poster;
 		
 }

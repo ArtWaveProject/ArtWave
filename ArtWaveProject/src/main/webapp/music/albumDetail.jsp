@@ -56,6 +56,7 @@ a {
 #musicPoster {
 	width: 60px !important;
 	height: 60px;
+	border-radius: 5px;
 }
 
 #listBtn {

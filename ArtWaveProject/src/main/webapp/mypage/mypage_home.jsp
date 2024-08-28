@@ -12,8 +12,13 @@
 
 </script>
 <style type="text/css">
+
+body {
+    font-family: Arial, sans-serif;
+}
+
 .joinRow {
-	width: 800px .
+	width: 800px 
 }
 
 .black {
@@ -32,6 +37,7 @@
 .listBody {
 	padding: 30px;
 	width: 900px;
+	height: 600px;
 	background-color: aliceblue;
 	border-radius: 30px;
 /* 	margin-left: 30px; 
@@ -39,8 +45,9 @@
 
 .listChart {
 	background: white;
-	padding: 5px;
-	vertical-align: middle !important;
+	padding: 35px;
+	border-radius: 30px;
+	height: 540px;
 }
 
 .listChart tr td {
@@ -82,31 +89,6 @@
 	transition: background-color 0.3s, color 0.3s; /* 부드러운 색상 변화 */
 }
 
-.page a:hover {
-	background-color: #0197A3; /* 호버 시 배경색 */
-	color: #fff; /* 호버 시 텍스트 색상 */
-}
-
-.page .current a {
-	background-color: #0197A3; /* 현재 페이지 배경색 */
-	color: #fff; /* 현재 페이지 텍스트 색상 */
-	border: 1px solid #0197A3; /* 현재 페이지 테두리 색상 */
-	pointer-events: none; /* 현재 페이지 클릭 방지 */
-}
-
-.page .current a:hover {
-	background-color: #0197A3; /* 현재 페이지 호버 시 배경색 */
-	color: #fff; /* 현재 페이지 호버 시 텍스트 색상 */
-}
-
-.page li:first-child a {
-	border-radius: 4px 0 0 4px; /* 왼쪽 끝 모서리 둥글게 */
-}
-
-.page li:last-child a {
-	border-radius: 0 4px 4px 0; /* 오른쪽 끝 모서리 둥글게 */
-}
-
 .listTitle {
 	font-size: 13px;
 }
@@ -115,40 +97,6 @@
 	color: black;
 }
 
-.listArtist {
-	font-size: 11px;
-}
-
-.genreTable {
-	border: transparent;
-	margin-top: 15px;
-	margin-bottom: -1px;
-}
-
-.genreTable td {
-	padding: 0px;
-	vertical-align: middle;
-}
-
-.genreTable td a {
-	text-align: center;
-	color: #aaa;
-	display: block;
-	width: 100%;
-	border: 2px solid #aaa;
-	border-bottom: 2px solid #777;
-	border-right: none;
-	border-radius: 7px 7px 0px 0px;
-	height: 35px;
-	vertical-align: middle;
-	background: white;
-	font-size: 13px;
-	padding-top: 6px;
-}
-
-.genreTable td:first-child a {
-	
-}
 
 .genreTable td:last-child a {
 	width: 100%;
@@ -171,9 +119,34 @@
 	padding: 0px !important;
 	border: none;
 }
-.btnposi{
-	margin-left: 100px;
+
+.table tr:last-child td {
+    border-bottom: none; /* 맨 아래 선 제거 */
 }
+
+.table th {
+    background-color: #f9f9f9; /* 헤더 배경색 */
+    font-weight: bold; /* 텍스트 두껍게 */
+}
+
+.btnposi {
+    display: block;
+    width: 120px;
+    height: 35px;
+    margin: 20px auto; /* 중앙 정렬 */
+    padding: 5px;
+    font-size: 16px;
+    color: #ffffff; /* 텍스트 색상 */
+    background-color: #6C86D6; /* 배경색 */
+    border: none; /* 테두리 제거 */
+    border-radius: 5px; /* 둥근 모서리 */
+}
+
+.inline{
+ font-size: 15px;
+
+}
+
 </style>
 <script type="text/javascript">
 
@@ -187,54 +160,48 @@
 				<form method="post" action="../mypage/my_edit_member.do" name="frm">
 					<table class="table">
 						<tr>
-							<th class="text-right" width="15%">ID</th>
-							<td width="85%" class="inline">${sessionScope.id}
+							<th class="text-left" width="10%" style="padding-left: 15px;">ID</th>
+							<td width="40%" class="inline">${sessionScope.id}
+							<th class="text-left" width="10%" style="padding-left: 15px;">닉네임</th>
+							<td width="40%" class="inline">${sessionScope.nickname}</td>
 							</td>
 						</tr>
 
 						<tr>
-							<th class="text-right" width="15%">닉네임</th>
-							<td width="85%" class="inline">${sessionScope.nickname}</td>
+							<th class="text-left" width="10%" style="padding-left: 15px;">이름</th>
+							<td width="40%">${sessionScope.name}</td>
+							<th class="text-left" width="10%" style="padding-left: 15px;">성별</th>
+							<td width="40%" class="inline">${sessionScope.sex}</td>
 						</tr>
 						<tr>
-							<th class="text-right" width="15%">이름</th>
-							<td width="85%">${sessionScope.name}</td>
+							<th class="text-left" width="10%" style="padding-left: 15px;">생년월일</th>
+							<td width="40%">${sessionScope.bday}</td>
+							<th class="text-left" width="10%" style="padding-left: 15px;">가입일</th>
+							<td width="40%" class="inline">${sessionScope.regdate}</td>
 						</tr>
 						<tr>
-							<th class="text-right" width="15%">성별</th>
-							<td width="85%" class="inline">${sessionScope.sex}</td>
+							<th class="text-left" width="15%" style="padding-left: 15px;">이메일</th>
+							<td colspan="3" width="85%">${sessionScope.email}</td>
 						</tr>
 						<tr>
-							<th class="text-right" width="15%">생년월일</th>
-							<td width="85%">${sessionScope.bday}</td>
+							<th class="text-left" width="15%" style="padding-left: 15px;">우편번호</th>
+							<td colspan="3" width="85%" class="inline">${sessionScope.post}</td>
 						</tr>
 						<tr>
-							<th class="text-right" width="15%">이메일</th>
-							<td width="85%">${sessionScope.email}</td>
+							<th class="text-left" width="15%" style="padding-left: 15px;">주소</th>
+							<td colspan="3" width="85%">${sessionScope.addr1}</td>
 						</tr>
 						<tr>
-							<th class="text-right" width="15%">우편번호</th>
-							<td width="85%" class="inline">${sessionScope.post}</td>
+							<th class="text-left" width="15%" style="padding-left: 15px;">상세주소</th>
+							<td colspan="3" width="85%">${sessionScope.addr2}</td>
 						</tr>
 						<tr>
-							<th class="text-right" width="15%">주소</th>
-							<td width="85%">${sessionScope.addr1}</td>
-						</tr>
-						<tr>
-							<th class="text-right" width="15%">상세주소</th>
-							<td width="85%">${sessionScope.addr2}</td>
-						</tr>
-						<tr>
-							<th class="text-right" width="15%">전화번호</th>
-							<td width="85%" class="inline">${sessionScope.phone}</td>
-						</tr>
-						<tr>
-							<th class="text-right" width="15%">가입일</th>
-							<td width="85%" class="inline">${sessionScope.regdate}</td>
+							<th class="text-left" width="15%" style="padding-left: 15px;">전화번호</th>
+							<td colspan="3" width="85%" class="inline">${sessionScope.phone}</td>
 						</tr>
 						
 						<tr>
-							<td colspan="2" >
+							<td colspan="4" >
 								<input class="btnposi btn-sm" type="submit" value="수정하기" id="checkBtn" >
 							</td>
 						</tr>

@@ -33,12 +33,12 @@ public class MusicDAO {
 		return list;
 	}
 
-	public static int musicTotalPage(String genre) {
+	public static int musicTotalPage(Map map) {
 		int total = 0;
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
-			total = session.selectOne("musicTotalPage", genre);
+			total = session.selectOne("musicTotalPage", map);
 		} catch (Exception e) {
 		} finally {
 			if (session != null)
@@ -61,12 +61,12 @@ public class MusicDAO {
 		return list;
 	}
 
-	public static int albumTotalPage(String genre) {
+	public static int albumTotalPage(Map map) {
 		int total = 0;
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
-			total = session.selectOne("albumTotalPage", genre);
+			total = session.selectOne("albumTotalPage", map);
 		} catch (Exception e) {
 		} finally {
 			if (session != null)
@@ -165,6 +165,48 @@ public class MusicDAO {
 				session.close();
 		}
 		return slist;
+	}
+	public static int musicFindCount(Map map) {
+		int count=0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			count = session.selectOne("musicFindCount", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return count;
+	}
+	public static int albumFindCount(Map map) {
+		int count=0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			count = session.selectOne("albumFindCount", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return count;
+	}
+	public static int artistFindCount(Map map) {
+		int count=0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			count = session.selectOne("artistFindCount", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return count;
 	}
 
 	public static AlbumVO albumDetailData(int alno) {

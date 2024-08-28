@@ -73,6 +73,7 @@ h1, h2, h3, h4, h5, h6 {
 #musicPoster {
 	width: 60px !important;
 	height: 60px;
+	border-radius: 5px;
 }
 
 #listBtn {
@@ -102,11 +103,30 @@ a {
 	color: black;
 }
 </style>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
+var IMP = window.IMP; 
+IMP.init("imp68206770"); 
+function requestPay(json,name,price) {
+    IMP.request_pay({
+        pg: "html5_inicis",
+        pay_method: "card",
+        merchant_uid: "ORD20180131-0000011",   // 주문번호
+        name: name,
+        amount: price,         // 숫자 타입
+        buyer_email: json.email,
+        buyer_name: json.name,
+        buyer_tel: json.phone,
+        buyer_addr: json.address,
+        buyer_postcode: json.post
+    }, function (rsp) { // callback
+    	location.href='http://localhost/JSPLastProject/mypage/mypage_buy.do' 
+    });
+}
 $(function() {
 	let listCheck=false
 	let likeCheck=false
@@ -172,6 +192,28 @@ $(function() {
 				}
 			})
 		}
+	})
+	$('#buy').click(function(){
+		let pno=${detail.mno}
+		let price=400
+		let account=1
+		let name='${detail.title}'
+		$.ajax({
+			type:'post',
+			url:'../payment/paymentInsert.do',
+			data:{
+				"pno":pno,
+				"price":price,
+				"account":account,
+				'type':1,
+				},
+			success:function(result)
+			{
+				let json=JSON.parse(result)
+			  console.log(json)
+				requestPay(json,name,price)
+			}
+		})
 	})
 })
 function playListMake() {
@@ -314,7 +356,7 @@ function playListMusicInsert(li, plno){
 								</li>
 							</ul>
 							<button type="button" style="margin-left:100px; background: transparent; border:transparent; padding: 0px; vertical-align: bottom;">
-								<i style="font-size: 30px;" class="fa fa-credit-card">&nbsp;Buy Now</i>
+								<i style="font-size: 30px;" id="buy" class="fa fa-credit-card">&nbsp;Buy Now</i>
 							</button>
 						</td>
 					</tr>

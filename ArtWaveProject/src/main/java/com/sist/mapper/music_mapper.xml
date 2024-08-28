@@ -18,8 +18,17 @@
 		FROM music WHERE titlecheck=1 ORDER BY mno DESC))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
-	<select id="musicTotalPage" parameterType="String" resultType="int">
-		SELECT CEIL(COUNT(*)/50.0) FROM music WHERE genre LIKE '%'||#{genre}||'%'
+	<select id="musicTotalPage" parameterType="hashmap" resultType="int">
+		SELECT CEIL(COUNT(*)/50.0)
+		FROM (SELECT mno, title, alno, ano, poster, genre, urlmp4 ,(SELECT atitle FROM album WHERE album.alno=music.alno) as altitle, (SELECT aname FROM artist where artist.ano=music.ano) as aname
+		FROM music WHERE genre LIKE '%'||#{genre}||'%')
+		WHERE aname LIKE '%'||#{ss}||'%' OR title LIKE '%'||#{ss}||'%'
+	</select>
+	<select id="musicFindCount" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*)
+		FROM (SELECT mno, title, alno, ano, poster, genre, urlmp4 ,(SELECT atitle FROM album WHERE album.alno=music.alno) as altitle, (SELECT aname FROM artist where artist.ano=music.ano) as aname
+		FROM music)
+		WHERE aname LIKE '%'||#{ss}||'%' OR title LIKE '%'||#{ss}||'%'
 	</select>
 	<select id="albumListData" parameterType="hashmap" resultType="AlbumVO">
 		SELECT alno, ano, atitle, poster, aname, num
@@ -40,9 +49,17 @@
 		WHERE num BETWEEN #{start} AND
 		#{end}
 	</select>
-	<select id="albumTotalPage" parameterType="String" resultType="int">
-		SELECT CEIL(COUNT(*)/12.0) FROM music WHERE genre LIKE
-		'%'||#{genre}||'%'
+	<select id="albumTotalPage" parameterType="hashmap" resultType="int">
+		SELECT CEIL(COUNT(*)/25.0)
+		FROM (SELECT alno, ano, atitle, poster , (SELECT aname from artist where artist.ano=album.ano) as aname
+		FROM album WHERE genre LIKE '%'||#{genre}||'%' ORDER BY alno DESC)
+		WHERE aname LIKE '%'||#{ss}||'%' OR atitle LIKE '%'||#{ss}||'%'
+	</select>
+	<select id="albumFindCount" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*)
+		FROM (SELECT alno, ano, atitle, poster , (SELECT aname from artist where artist.ano=album.ano) as aname
+		FROM album)
+		WHERE aname LIKE '%'||#{ss}||'%' OR atitle LIKE '%'||#{ss}||'%'
 	</select>
 	<select id="artistDetailData" resultType="ArtistVO" parameterType="int">
 		SELECT * FROM artist WHERE ano=#{ano}
@@ -117,6 +134,10 @@
 		FROM artist WHERE aname LIKE '%'||#{ss}||'%' ORDER BY ano DESC))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
+	<select id="artistFindCount" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*)
+		FROM artist WHERE aname LIKE '%'||#{ss}||'%'
+	</select>
 	<!-- 플레이리스트 추가 -->
 	<insert id="playListInsert" parameterType="hashmap">
 		INSERT INTO playlist VALUES((SELECT NVL(max(plno)+1, 1) FROM playlist), #{id}, #{plname}, sysdate)
@@ -165,7 +186,7 @@
 	</delete>
 	<!-- 예약출력 -->
 	<select id="reserveListData" parameterType="String" resultType="ReserveVO">
-	SELECT mno, mtitle, tdname, tname, day, time, inwon, price, id, email, sno, rno, state,
+	SELECT mno, mtitle, tdname, tname, day, time, inwon, price, id, sno, rno, state,
 	(SELECT mposter FROM movie WHERE movie.mno=reserve.mno) as poster
 	FROM reserve WHERE id=#{id}
 	</select>
