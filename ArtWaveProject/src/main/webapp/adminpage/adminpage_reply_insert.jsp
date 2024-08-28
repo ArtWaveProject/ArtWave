@@ -24,12 +24,11 @@
 							<th width="20%" class="text-center">내용</th>
 							<td width="80%">
 								<textarea class="form-control" placeholder="문의내용을 입력해주세요" 
-								id="floatingTextarea" style="height: 200px;"></textarea>
+								id="floatingTextarea" name="content" style="height: 200px;"></textarea>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2" class="text-center inline">
-							
+							<td colspan="2" class="text-center inline">			
 								<button type="submit" class="btn btn-outline-success m-2">등록</button>
 								<input type=button value="취소" class="btn btn-outline-secondary m-2" onclick="javascript:history.back()">
 							</td>

@@ -96,12 +96,12 @@ public class AdminModel {
 		   int count=ReplyBoardDAO.replyBoardRowCount();
 		   int totalpage=(int)(Math.ceil(count/15.0));
 		   
-		   request.setAttribute("rbList", list);
+		   request.setAttribute("arList", list);
 		   request.setAttribute("curpage", curpage);
 		   request.setAttribute("totalpage", totalpage);
 		   request.setAttribute("count", count);
 		   
-		   request.setAttribute("main_jsp", "../replyboard/replyboard_list.jsp");
+		   //request.setAttribute("main_jsp", "../replyboard/replyboard_list.jsp");
 		   request.setAttribute("admin_jsp", "../adminpage/adminpage_reply_list.jsp");
 		   request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
 		   
@@ -132,21 +132,21 @@ public class AdminModel {
 		   String content=request.getParameter("content");
 		   HttpSession session=request.getSession();
 		   String id=(String)session.getAttribute("id");
-		   String name=(String)session.getAttribute("name");
+		   //String name=(String)session.getAttribute("name");
 		   ReplyBoardVO rvo=ReplyBoardDAO.adminReplyInfoData(Integer.parseInt(no));
 		   
 		   ReplyBoardVO vo=new ReplyBoardVO();
 		   vo.setId(id);
 		   vo.setSubject(subject);
 		   vo.setContent(content);
-		   vo.setName(name);
+		   //vo.setName(name);
 		   vo.setGroup_id(rvo.getGroup_id());
 		   
 		   ReplyBoardDAO.adminReplyBoardInsert(Integer.parseInt(no), vo);
 		   
 		   return "redirect:../adminpage/reply_list.do";
 	   }
-	   // 묻고답하기 delete
+	   // 묻고답하기 delete --------------------------------------------------------------------
 	   @RequestMapping("adminpage/reply_delete.do")
 	   public String reply_delete(HttpServletRequest request,HttpServletResponse response)
 	   {
