@@ -39,14 +39,8 @@
 .dropUl li {
 	padding: 0px 3px;
 	height: 100%;
-	border-bottom: 2px solid #aaa;
 }
 
-.dropUl li:last-child {
-	padding: 0px 3px;
-	height: 100%;
-	border-bottom: none;
-}
 
 .dropUl li span {
 	font-size: 15px;
@@ -54,7 +48,9 @@
 	display: block;
 	margin: 5px 0px;
 }
-
+tbody tr td, tbody tr th{
+vertical-align: middle !important;
+}
 #poster {
 	width: 300px !important;
 	height: 300px;
@@ -316,13 +312,13 @@ function playListMusicInsert(li, plno){
 								<td width="10%">
 									<img src="${vo.poster}" id="musicPoster">
 								</td>
-								<td width="40%">
+								<td width="34%">
 									<a href="../music/musicDetail.do?mno=${vo.mno}">${vo.title }</a>
 								</td>
 								<td width="20%" style="text-align: center;">
 									<a href="../music/artistDetail.do?ano=${vo.ano}">${vo.aname }</a>
 								</td>
-								<td width="7%" style="text-align: center;">${vo.genre}</td>
+								<td width="13%" style="text-align: center;">${vo.genre}</td>
 								<td width="13%" style="text-align: center;">${vo.playcount }</td>
 								<td width="10%" style="text-align: center; padding: 0px; position: relative;">
 									<ul class="nav" style="display: inline; position: relative;">

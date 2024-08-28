@@ -18,6 +18,7 @@ import com.sist.vo.AlbumVO;
 import com.sist.vo.ArtistVO;
 import com.sist.vo.MusicVO;
 import com.sist.vo.PlayListVO;
+import com.sist.vo.ReserveVO;
 
 import controller.RequestMapping;
 
@@ -360,13 +361,36 @@ public class MusicModel {
 		} catch (Exception e) {
 		}
 	}
+
 	@RequestMapping("mypage/my_reserve.do")
 	public String my_reserve(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("title", "나의 예약");
-		HttpSession session=request.getSession();
-		String id=(String)session.getAttribute("id");
-		request.setAttribute("mypage_jsp", "../mypage/my_reserve.jsp");
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		List<ReserveVO> list = MusicDAO.reserveListData(id);
+		request.setAttribute("list", list);
+		request.setAttribute("mypage_jsp", "../mypage/myPageReseve.jsp");
 		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
 		return "../main/main.jsp";
+	}
+
+	@RequestMapping("mypage/reserveDelete.do")
+	public void reserveDelete(HttpServletRequest request, HttpServletResponse response) {
+		String rno = request.getParameter("rno");
+		MusicDAO.reserveDelete(Integer.parseInt(rno));
+	}
+
+	@RequestMapping("admin/adminReserve.do")
+	public String adminReserve(HttpServletRequest request, HttpServletResponse response) {
+		List<ReserveVO> list=MusicDAO.adminReserveListData();
+		request.setAttribute("list", list);
+		request.setAttribute("admin_jsp", "../adminpage/adminReserve.jsp");
+		request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
+		return "../main/main.jsp";
+	}
+	@RequestMapping("admin/reserveUpdate.do")
+	public void reserveUpdate(HttpServletRequest request, HttpServletResponse response) {
+		String rno=request.getParameter("rno");
+		MusicDAO.adminReserveUpdate(Integer.parseInt(rno));
 	}
 }

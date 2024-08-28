@@ -113,7 +113,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">결제관리</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="#" class="dropdown-item">결제 목록</a>
-                            <a href="#" class="dropdown-item">예약 관리</a>
+                            <a href="../admin/adminReserve.do" class="dropdown-item">예약 관리</a>
                             <a href="#" class="dropdown-item">#</a>
                             <a href="#" class="dropdown-item">#</a>
                         </div>

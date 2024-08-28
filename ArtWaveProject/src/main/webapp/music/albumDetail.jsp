@@ -88,14 +88,8 @@ a {
 .dropUl li {
 	padding: 0px 3px;
 	height: 100%;
-	border-bottom: 2px solid #aaa;
 }
 
-.dropUl li:last-child {
-	padding: 0px 3px;
-	height: 100%;
-	border-bottom: none;
-}
 
 .dropUl li span {
 	font-size: 15px;
@@ -278,7 +272,7 @@ function playListMusicInsert(li, plno){
 						</tr>
 						<tr>
 							<th width="20%" class="text-center">아티스트</th>
-							<td colspan="2" width="80%">${detail.aname }</td>
+							<td colspan="2" width="80%"><a href="../music/artistDetail.do?ano=${detail.ano}">${detail.aname }</a></td>
 						</tr>
 						<tr>
 							<th width="20%" class="text-center">장르</th>

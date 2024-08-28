@@ -423,15 +423,6 @@ public class MyPageModel {
 		MusicDAO.playListInsert(map);
 		return "redirect:../mypage/my_playlist.do";
 	}
-
-	@RequestMapping("mypage/my_reserve.do")
-	public String my_reserve(HttpServletRequest request, HttpServletResponse response) {
-		request.setAttribute("title", "나의 예약");
-		request.setAttribute("mypage_jsp", "../mypage/my_reserve.jsp");
-		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
-		return "../main/main.jsp";
-	}
-
 	@RequestMapping("mypage/my_text.do")
 	public String my_text(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("title", "내가 쓴 글");

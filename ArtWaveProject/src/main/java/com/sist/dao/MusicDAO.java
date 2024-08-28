@@ -366,17 +366,56 @@ public class MusicDAO {
 				session.close();
 		}
 	}
-	public static List<ReserveVO> reserveListData(String id){
-		List<ReserveVO> list=new ArrayList<ReserveVO>();
+
+	public static List<ReserveVO> reserveListData(String id) {
+		List<ReserveVO> list = new ArrayList<ReserveVO>();
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
-			list=session.selectList("reserveListData", id);
+			list = session.selectList("reserveListData", id);
 		} catch (Exception e) {
 		} finally {
 			if (session != null)
 				session.close();
 		}
 		return list;
+	}
+
+	public static List<ReserveVO> adminReserveListData() {
+		List<ReserveVO> list = new ArrayList<ReserveVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("adminReserveListData");
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
+
+	public static void adminReserveUpdate(int rno) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession(true);
+			session.update("adminReserveUpdate", rno);
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
+	}
+
+	public static void reserveDelete(int rno) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession(true);
+			session.delete("reserveDelete", rno);
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
 	}
 }
