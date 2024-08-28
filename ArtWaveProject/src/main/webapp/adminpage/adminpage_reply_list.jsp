@@ -19,6 +19,18 @@ table{
 	margin:	auto;
 }
 
+td[width="40%"] {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 0;
+        }
+        
+td[width="40%"]:hover {
+            white-space: normal;
+            overflow: visible;
+            position: relative;
+        }
 </style>
 </head>
 <body>
@@ -31,14 +43,14 @@ table{
 					<tr>
 						<th scope="col" width="10%">번호</th>
 						<th scope="col" width="40%">제목</th>
-						<th scope="col" width="10%">작성자</th>
-						<th scope="col" width="15%">작성일</th>
+<!-- 						<th scope="col" width="10%">작성자</th>
+ -->						<th scope="col" width="15%">작성일</th>
 						<th scope="col" width="25%">답변상태</th>
 					</tr>
 				</thead>
 				<tbody>
 				<c:set var="count" value="${count }"/>
-				<c:forEach var="vo" items="${rbList }">
+				<c:forEach var="vo" items="${arList }">
 					<tr>
 						<td width="10%" align="center">${vo.no}</td>
 						<td width="40%">
@@ -47,7 +59,7 @@ table{
 							</c:if>
 						${vo.subject }
 						</td>
-						<td width="10%">${vo.name }</td>
+					<%-- 	<td width="10%">${vo.name }</td> --%>
 						<td width="15%">${vo.dbday }</td>
 						<td width="25%">
 							<c:if test="${vo.isreply==0 }">

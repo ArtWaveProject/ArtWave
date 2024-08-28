@@ -8,275 +8,408 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../movie/mstyle.css">
-<link rel="stylesheet" href="../assets/css/fontawesome.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style type="text/css">
+#likeBtn {
+	background-color: transparent;
+	border: 1px solid #ccc;
+	color: #fff;
+	width: 100px;
+	height: 60px;
+	border-radius: 8px;
+	display: inline-block;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	margin-bottom:2px;
+}
+
+#likeBtn img {
+	width: 30px;
+	height: 30px;
+}
+.star-rating {
+	display: flex;
+	font-size: 24px;
+}
+
+.star-rating input[type="radio"] {
+	display: none;
+}
+
+.star-rating label {
+	cursor: pointer;
+	color: #ddd; /* 기본 색상: 선택되지 않은 상태 */
+	transition: color 0.2s;
+}
+
+.star-rating label:before {
+	content: '\f005'; /* Font Awesome star icon */
+	font-family: 'Font Awesome 6 Free';
+	font-weight: 900;
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+	color: #779BC9; /* 선택된 별점의 색상 */
+}
+
+.star-rating input[type="radio"]:checked ~ input[type="radio"] ~ label {
+	color: #779BC9; /* 선택된 별점과 그 이전 별점의 색상 */
+}
+
+.review-form {
+	margin-top: 20px;
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	background-color: #f9f9f9;
+}
+
+.review-form label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: bold;
+}
+
+.review-form textarea {
+	padding: 8px;
+	margin-bottom: 15px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	width: 800px; 
+	min-height: 68px;
+	box-sizing: border-box; 
+	vertical-align: middle; 
+}
+
+.review-form button {
+	background-color: #5D7DC9;
+	color: #fff;
+	padding: 12px 20px; 
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	height: 50px; 
+	vertical-align: middle; 
+	box-sizing: border-box;
+	margin-bottom: 10px;
+}
+
+.review-form button:hover {
+	background-color: #45a049;
+}
+
+.review-form .review-container {
+	display: flex;
+	align-items: center;
+}
+
+.review-form .review-container textarea {
+	margin-right: 10px; 
+}
+.review-list {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 1022px;
+}
+
+.review-list .nick-rate {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+.review-list .date {
+    font-size: 14px;
+    color: #888;
+}
+
+.review-list .xBtn,
+.review-list .rBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 0;
+}
+
+.review-list .xBtn{
+    float: right;
+}
+
+.review-list .rBtn{
+    color: #888;
+}
+.review-list .xBtn:hover,
+.review-list .rBtn:hover {
+    text-decoration: underline;
+}
+
+.review-list .rating {
+    margin: 10px 0;
+}
+
+.review-list .r-content {
+    font-size: 14px;
+}
+
+.r-content{
+ margin-top: 10px;
+}
+
+.average-rating {
+    display: flex;
+    align-items: center;
+}
+
+#avgnumber {
+    margin-left: 5px; 
+}
+
+.avgRating {
+    display: flex;
+    align-items: center;
+}
+#avgN{
+    margin-left: 10px; 
+}
+</style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
 $(function() {
-	let ratingCheck = false
-	let likeCheck=false
-	let id=$('#id').val()
-	let mno = $('#mno').val()
-	
-	
-	if(id.length>0){
-		$.ajax({
-			type:'post',
-			url:'../like/likeCheck.do',
-			data:{
-				'tno':mno,
-				'type':4
-			},
-			success:function(result){
-				if(result==='OK'){
-					likeCheck=true
-					$('#likeBtnIcon').attr('src', 'likeon.png')
-				}
-				else{
-					likeCheck=false
-					$('#likeBtnIcon').attr('src', 'likeoff.png')
-				}
-			}
-		})
-	}
-	else{
-		$('#likeBtn').css('display', 'none')
-	}
-	$('#likeBtn').click(function() {
-		if(likeCheck===true){
-			$.ajax({
-				type:'post',
-				url:'../like/likeOff.do',
-				data:{
-					'tno':mno,
-					'type':4
-				},
-				success:function(result){
-					if(result>=0){
-						likeCheck=false
-						$('#likeBtnIcon').attr('src', 'likeoff.png')
-						$('#likeCount').text(result)
-					}
-				}
-			})
+	  let ratingCheck = false
+  let likeCheck = false
+  let id = '${id}'
+  let bno = $('#mno').val()
+  
+  reviewlist()
+
+  if (id.length > 0) {
+      $.ajax({
+          type: 'post',
+          url: '../like/likeCheck.do',
+          data: {
+              'tno': mno,
+              'type': 5
+          },
+          success: function(result) {
+              if (result === 'OK') {
+                  likeCheck = true
+                  $('#like-button').attr('src', 'fullheart.png')
+              } else {
+                  likeCheck = false
+                  $('#like-button').attr('src', 'heart.png')
+              }
+          }
+      })
+  } else {
+      $('#likeBtn').css('display', 'none')
+  }
+
+  $('#likeBtn').click(function() {
+      console.log(bno)
+      if (likeCheck) {
+          $.ajax({
+              type: 'post',
+              url: '../like/likeOff.do',
+              data: {
+                  'tno': mno,
+                  'type': 4
+              },
+              success: function(result) {
+              	console.log(bno)
+                  if (result >= 0) {
+                      likeCheck = false;
+                      $('#like-button').attr('src', 'heart.png')
+                  }
+              }
+          })
+      } else {
+          $.ajax({
+              type: 'post',
+              url: '../like/likeOn.do',
+              data: {
+                  'tno': mno,
+                  'type': 4
+              },
+              success: function(result) {
+              	console.log(bno)
+                  if (result >= 0) {
+                      likeCheck = true;
+                      $('#like-button').attr('src', 'fullheart.png')
+                  }
+              },
+              error:function(request, status, error){
+              	alert(error)
+              }
+          })
+      }
+  })
+  $('.rating').change(function() {
+  ratingCheck=true	
+		let rating=$('input[name="rating"]:checked').val()
+		rating=6-rating
+  console.log(rating)
+	})
+	$(document).ready(function() {
+  let avgRating=parseFloat('${avg}')
+
+  let star= ''
+  for (let i=1;i<=5;i++) {
+      if (i<=avgRating) {
+          star+='<img src="star.png" style="width:20px;height:20px;">'
+      } else {
+          star+='<img src="nostar.png" style="width:20px;height:20px;">'
+      }
+  }
+  $('.avgstar').html(star)
+  
+})
+
+	$('#reviewBtn').click(function(){
+		let rating=0
+		if (id.length === 0) {
+			alert('해당 기능은 로그인 시 이용하실 수 있습니다')
+			return
+		}
+		if(ratingCheck){
+		rating=$('input[name="rating"]:checked').val()
+		rating=6-rating
+ 	console.log(rating)
+			
 		}
 		else{
-			$.ajax({
-				type:'post',
-				url:'../like/likeOn.do',
-				data:{
-					'tno':mno,
-					'type':4
-				},
-				success:function(result){
-					if(result>=0){
-						likeCheck=true
-						$('#likeBtnIcon').attr('src', 'likeon.png')
-						$('#likeCount').text(result)
+			alert('평점을 선택해주세요')
+			return
+		}
+		let content=$('#content').val()
+		if(content.trim()===''){
+			alert('리뷰를 입력해주세요')
+			$('#content').focus()
+			return
+		}
+      $.ajax({
+          type: 'post',
+          url: '../review/checkedReview.do',
+          data: {
+              'tno': mno,
+              'userId': id
+          },
+          success: function(result) {
+              if (result==='NO_REVIEW') {
+                  $.ajax({
+                      type: 'post',
+                      url: '../review/insert.do',
+                      data: {
+                          'tno': mno,
+                          'trating': rating,
+                          'tcontent': content,
+                          'type': 1
+                      },
+                      success: function() {
+                          let count = $('#rcount').text()
+                          count = parseInt(count)
+                          $('#content').val('')
+                          $('input[name="rating"]').prop('checked', false)
+                          reviewlist()
+                          $('.rcount').text('')
+                          $('.rcount').text(count+1)
+                      }
+                  })
+              } else {
+                  alert('이미 작성하신 리뷰가 있습니다.')
+              }
+          }
+      })
+  })
+})
+function reviewlist(){
+	$.ajax({
+		type:'post',
+		url:'../review/list.do',
+		data:{
+			'tno':${vo.mno},
+			'type':1
+		},
+		success:function(result){
+			let json=JSON.parse(result)
+			html=''
+				json.map(function(reply) {
+					let stars=''
+					for(let i=1;i<=reply.trating;i++){
+						stars+='<img src="star.png" style="width:15px;height:15px;">'
 					}
+					for(let i=1;i<=5-reply.trating;i++){
+						stars+='<img src="nostar.png" style="width:15px;height:15px;">'
+					}
+			html+='<tr>'
+			html+='<td>'
+			html+='<div class="review-list">'
+			html+='<div>'
+			html+='<span class="nick-rate">'+reply.nickname+'</span>'
+			if(reply.id===reply.sessionId){
+				html+='<input type="button" class="xBtn" value="X" onclick="reviewdelete('+reply.trno+')">'
 				}
-			})
+			html+='<br>'
+		  html+=stars+'<br>'
+			html+='<span class="date">'+reply.dbday+'&nbsp;</span>'
+			html+='<div>'
+			html+='<div class="r-content">'+reply.tcontent+'</div>'
+			html+='</div>'
+			html+='</div>'
+			html+='</td>'
+			html+='</tr>'
+				})
+				$('#review').html(html)
 		}
 	})
+}
+function reviewdelete(trno){
+	$.ajax({
+		type:'post',
+		url:'../review/delete.do',
+		data:{
+			'trno':trno,
+		},
+		success:function(result){
+			reviewlist()
+			let count=$('#rcount').text()
+			count=parseInt(count)
+			$('.rcount').text(count-1)
+			}
+		})
+}
+document.addEventListener('DOMContentLoaded', function() {
+  const stars = document.querySelectorAll('.star-rating input[type="radio"]')
+  stars.forEach(star => {
+      star.addEventListener('change', function() {
+          updateStars(this)
+      })
+  })
+
+  function updateStars(selectedStar) {
+      const allStars = document.querySelectorAll('.star-rating label')
+      allStars.forEach(star => {
+          star.style.color = '#ddd'
+      })
+
+      const selectedValue = selectedStar.value
+      allStars.forEach(star => {
+          const starValue = star.getAttribute('for').replace('star', '')
+          if (parseInt(starValue) >= parseInt(selectedValue)) {
+              star.style.color = '#779BC9'
+          }
+      })
+  }
+  
 })
-	 $('.rating').change(function() {
-		    ratingCheck=true	
-				let rating=$('input[name="rating"]:checked').val()
-				rating=6-rating
-		    console.log(rating)
-			})
-	$(function() {
-		    let avgRating=parseFloat('${avg}')
-
-		    let star= ''
-		    for (let i=1;i<=5;i++) {
-		        if (i<=avgRating) {
-		            star+='<img src="star.png" style="width:20px;height:20px;">'
-		        } else {
-		            star+='<img src="nostar.png" style="width:20px;height:20px;">'
-		        }
-		    }
-		    $('#avgstar').html(star)
-		    $('#avgS').html(star)
-		    
-		})
-		$('.rating').change(function() {
-		    ratingCheck=true	
-				let rating=$('input[name="rating"]:checked').val()
-				rating=6-rating
-		    console.log(rating)
-			})
-		$(function() {
-		    let avgRating = parseFloat('${avg}')
-		    let roundRating = Math.round(avgRating)
-
-		    let star= ''
-		    for (let i=1;i<=5;i++) {
-		        if (i<=roundRating) {
-		            star+='<img src="star.png" style="width:35px;height:35px;">'
-		        } else {
-		            star+='<img src="nostar.png" style="width:35px;height:35px;">'
-		        }
-		    }
-		    $('#avgS').html(star)
-		    
-		})
-			$('#reviewBtn').click(function(){
-				let rating=0
-				if(ratingCheck){
-				rating=$('input[name="rating"]:checked').val()
-				rating=6-rating
-		   		console.log(rating)
-					
-				}
-				else{
-					alert('평점을 선택해주세요')
-					return
-				}
-				let content=$('#content').val()
-				if(content.trim()===''){
-					alert('리뷰를 입력해주세요')
-					$('#content').focus()
-					return
-				}
-				// 리뷰 작성 가능 여부 확인
-		        $.ajax({
-		            type: 'post',
-		            url: '../review/checkedReview.do',
-		            data: {
-		                'tno': mno,
-		                'userId': id
-		            },
-		            success: function(result) {
-		                if (result==='NO_REVIEW') {
-		                    // 리뷰 작성
-		                    $.ajax({
-		                        type: 'post',
-		                        url: '../review/insert.do',
-		                        data: {
-		                            'tno': mno,
-		                            'trating': rating,
-		                            'tcontent': content,
-		                            'type': 1
-		                        },
-		                        success: function() {
-		                            let count = $('#rcount').text()
-		                            count = parseInt(count)
-		                            $('#content').val('')
-		                            $('input[name="rating"]').prop('checked', false)
-		                            reviewlist()
-		                            $('#rcount').text('')
-		                            $('#rcount').text(count+1)
-		                        }
-		                    })
-		                } else {
-		                    alert('이미 작성하신 리뷰가 있습니다.')
-		                }
-		            }
-		        })
-		    })
-		
-  function reviewlist(){
-			$.ajax({
-				type:'post',
-				url:'../review/list.do',
-				data:{
-					'tno':mno,
-					'type':1
-				},
-				success:function(result){
-					let json=JSON.parse(result)
-					html=''
-						json.map(function(reply) {
-							let stars=''
-							for(let i=1;i<=reply.trating;i++){
-								stars+='<img src="star.png" style="width:15px;height:15px;">'
-							}
-							for(let i=1;i<=5-reply.trating;i++){
-								stars+='<img src="nostar.png" style="width:15px;height:15px;">'
-							}
-					html+='<tr>'
-					html+='<td>'
-					html+='<div class="review-list">'
-					html+='<div>'
-					html+='<span class="nick-rate">'+reply.nickname+'</span>'
-					if(reply.id===reply.sessionId){
-						html+='<input type="button" class="xBtn" value="X" onclick="reviewdelete('+reply.trno+')">'
-						}
-					html+='<br>'
-				  html+=stars+'<br>'
-					html+='<span class="date">'+reply.dbday+'&nbsp;</span>'
-					if(reply.sessionId.length>2){
-					html+='<input type="button" class="rBtn" value="|&nbsp&nbsp;신고">'
-					}
-					html+='<div>'
-					html+='<div class="r-content">'+reply.tcontent+'</div>'
-					html+='</div>'
-					html+='</div>'
-					html+='</td>'
-					html+='</tr>'
-						})
-						$('#review').html(html)
-				}
-			})
-		}
-	function reviewdelete(trno){
-			$.ajax({
-				type:'post',
-				url:'../review/delete.do',
-				data:{
-					'trno':trno
-				},
-				success:function(result){
-					reviewlist()
-					let count=$('#rcount').text()
-					count=parseInt(count)
-					$('#rcount').text(count-1)
-					}
-				})
-		}
-		document.addEventListener('DOMContentLoaded', function() {
-		    const stars = document.querySelectorAll('.star-rating input[type="radio"]');
-		    stars.forEach(star => {
-		        star.addEventListener('change', function() {
-		            updateStars(this);
-		        });
-		    });
-
-		    function updateStars(selectedStar) {
-		        const allStars = document.querySelectorAll('.star-rating label');
-		        allStars.forEach(star => {
-		            star.style.color = '#ddd'; 
-		        });
-
-		        const selectedValue = selectedStar.value;
-		        allStars.forEach(star => {
-		            const starValue = star.getAttribute('for').replace('star', '');
-		            if (parseInt(starValue) >= parseInt(selectedValue)) {
-		                star.style.color = '#779BC9'; 
-		            }
-		        });
-		    }
-		    
-		});
-		$(document).ready(function() {
-		    var acountInput = $('#account');
-		    var incrementButton = $('#increment');
-		    var decrementButton = $('#decrement');
-
-		    incrementButton.click(function() {
-		        var value = parseInt(acountInput.val());
-		        acountInput.val(value + 1);
-		    });
-
-		    decrementButton.click(function() {
-		        var value = parseInt(acountInput.val());
-		        if (value > 1) {
-		        	acountInput.val(value - 1)
-		        }
-		    })
-		    
-		})
 </script>
 </head>
 <body>
@@ -323,31 +456,51 @@ $(function() {
        </c:if>
        <tr>
        <td><button id="likeBtn">
-				<img src="" id="likeBtnIcon"><h4>${vo.likecount }</h4></button> 
+				<img src="../movie/heart.png" id="likeBtnIcon"><h5 id="liketext1">&nbsp;&nbsp;${vo.likecount }</h5></button> 
+     		
+              <c:choose>
+                                                <c:when test="${vo.mstate == '1'}">
+                                                 <a href="#" title="영화 예매하기"><input type="button" id="dbokdBtn1" value="예매"></a>
+                                                </c:when>
+                                                <c:when test="${vo.mstate == '2'}">
+                                                  <a href="#" title="영화 상영예정"><input type="button" id="dbokdBtn2" value="상영예정" disabled></a>
+                                                </c:when>
+                                                <c:when test="${vo.mstate == '3'}">
+                                                   <a href="#" title="영화 상영종료"><input type="button" id="dbokdBtn3" value="상영종료" disabled></a>
+                                                </c:when>
+                                            </c:choose>
+                                       
        </td>
        </tr>
        </table>
 		<div class="moviebook">
+             <div class="row">
+            <div class="col-lg-3">
+            <div class="blank">
+            </div>
+            </div>
+            <div class="col-lg-9">
             <h3>  <br></h3>
                 <div class="owl-features owl-carousel">
                  <c:forEach var="mbvo" items="${mbList }">
                   <input type="hidden" value="${vo.mno}" id="mno">
 				 <div class="item">
 				 <div class="thumb">
-                <img src="${mbvo.bvo.cover }"  alt="">
+                <img src="${mbvo.cover }"  alt="">
                  <div class="hover-effect">
-                      <h6><i class="fa fa-eye"></i><a href="../book/detail.do?bno=${mbvo.bno }"  title="상세정보 확인">상세정보</a></h6>
+                      <h6><a href="../book/detail.do?bno=${mbvo.bno }"  title="상세정보 확인">상세정보</a></h6>
                       </div>
-                <h4 id="text2"><span>${mbvo.bvo.btitle }</span></h4>
+                <h4 id="text2"><span>${mbvo.btitle }</span></h4>
                 <ul>
-                    <li>&nbsp; ${mbvo.bvo.sale_price }원</li>
+                    <li>&nbsp; ${mbvo.sale_price }원</li>
                 </ul>
             </div>
         </div>
           </c:forEach>
         </div>
         </div>
- 
+ </div>
+ </div>
 	<div class="heading-section" style="padding: 0 0 15px 0;">
 			<span style="font-size: 25px; font-weight: bold;"><span id="rcount" style="font-size:30px;color:  #7400e8">${rcount}</span> 명의&nbsp;회원이&nbsp;평가한&nbsp;이&nbsp;영화의&nbsp;평균별점</span>
 				</div>

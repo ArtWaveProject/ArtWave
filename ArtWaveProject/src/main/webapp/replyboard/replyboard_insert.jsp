@@ -68,22 +68,36 @@ body {
 table table-hover{
 	border: none;
 }
+td[width="40%"] {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 0;
+        }
+        
+td[width="40%"]:hover {
+            white-space: normal;
+            overflow: visible;
+            position: relative;
+        }
+
 </style>
 </head>
 <body>
 <div>
 <div>
-		<div class="container">
+		<!-- <div class="container"> -->
 		<div class="col-12">
 		<div class="bg-light rounded h-100 p-4">
+		<main class="container">
 			<h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>1:1문의등록</h3>
 				<form method=post action="../replyboard/insert_ok.do">
 					<table class="table">
 						<tr>
 							<th width=20% class="text-center">제목</th>
 							<td width=80%>
-								<input class="form-control mb-3" name="subject" type="text" placeholder="제목을 입력해주세요" aria-label="default input example">					
-								<input type="hidden" name="no" value="${no}">
+								<input class="form-control mb-3" type="text" name="subject" placeholder="제목을 입력해주세요" aria-label="default input example">					
+								<input type="hidden" name="no">
 							</td>
 						</tr>
 						<tr>
@@ -101,12 +115,13 @@ table table-hover{
 						</tr>
 					</table>
 				</form>
+				</main>
 		</div>
 	</div>
 	</div>
 </div>
-</div>
-
+<!-- </div>
+ -->
 	<!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

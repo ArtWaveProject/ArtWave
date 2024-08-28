@@ -38,7 +38,7 @@ ORDER BY mno ASC
     ORDER BY ms.msno ASC
 </select>
 <insert id="reserveInsert" parameterType="ReserveVO">
-   INSERT INTO reserve(rno, id, mno, mtitle, tdname, tname, day, time, inwon)
-   VALUES(rs_rno_seq.nextval,#{id},#{mno},#{mtitle},#{tdname},#{tname},#{day},#{time},#{inwon})
+   INSERT INTO reserve(rno, id, mno, mtitle, tdname, tname, day, time, inwon, sno, price)
+   VALUES(rs_rno_seq.nextval,#{id},#{mno},#{mtitle},#{tdname},#{tname},#{day},#{time},#{inwon},#{sno}, #{price})
   </insert>
 </mapper>

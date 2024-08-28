@@ -58,16 +58,19 @@ public class ReplyBoardModel {
 		   try
 		   {
 			   request.setCharacterEncoding("UTF-8");
-		   }catch(Exception ex) {}
+		   }catch(Exception ex) {
+			   ex.printStackTrace();
+		   }
 		   HttpSession session=request.getSession();
 		   String id=(String)session.getAttribute("id");
-		   String name=(String)session.getAttribute("name");
+		   //String name=(String)session.getAttribute("rbname");
 		   String subject=request.getParameter("subject");
 		   String content=request.getParameter("content");
 		   
+		   
 		   ReplyBoardVO vo=new ReplyBoardVO();
 		   vo.setId(id);
-		   vo.setName(name);
+		   //vo.setName(name);
 		   vo.setSubject(subject);
 		   vo.setContent(content);
 		   ReplyBoardDAO.replyBoardInsert(vo);
@@ -75,25 +78,32 @@ public class ReplyBoardModel {
 	   }
 	   
 	   
-	   @RequestMapping("adminpage/replyboard_insert_ok.do")
-	   public String admingpage_replyboard_insert_ok(HttpServletRequest request,HttpServletResponse response)
-	   {
-		   try
-		   {
-			   request.setCharacterEncoding("UTF-8");
-		   }catch(Exception ex) {}
-		   HttpSession session=request.getSession();
-		   String id=(String)session.getAttribute("id");
-		   String name=(String)session.getAttribute("name");
-		   String subject=request.getParameter("subject");
-		   String content=request.getParameter("content");
-		   
-		   ReplyBoardVO vo=new ReplyBoardVO();
-		   vo.setId(id);
-		   vo.setName(name);
-		   vo.setSubject(subject);
-		   vo.setContent(content);
-		   ReplyBoardDAO.replyBoardInsert(vo);
-		   return "redirect:../adminpage/adminpage_replyboard_list.do";// 재호출 
-	   }
-}
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+		/*
+		 * @RequestMapping("adminpage/replyboard_insert_ok.do") // public String
+		 * admingpage_replyboard_insert_ok(HttpServletRequest
+		 * request,HttpServletResponse response) // { // try // { //
+		 * request.setCharacterEncoding("UTF-8"); // }catch(Exception ex) {} //
+		 * HttpSession session=request.getSession(); // String
+		 * id=(String)session.getAttribute("id"); // String
+		 * name=(String)session.getAttribute("name"); // String
+		 * subject=request.getParameter("subject"); // String
+		 * content=request.getParameter("content"); // // ReplyBoardVO vo=new
+		 * ReplyBoardVO(); // vo.setId(id); // vo.setName(name); //
+		 * vo.setSubject(subject); // vo.setContent(content); //
+		 * ReplyBoardDAO.replyBoardInsert(vo); // return
+		 * "redirect:../adminpage/adminpage_replyboard_list.do";// 재호출 // }
+		 */}
