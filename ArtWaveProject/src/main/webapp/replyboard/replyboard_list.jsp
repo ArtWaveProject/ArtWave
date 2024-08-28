@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -88,33 +89,45 @@ body {
 
 				<table class="table table-hover">
 					<thead>
+					
 						<tr>
+							
 							<th scope="col" width="10%">번호</th>
 							<th scope="col" width="40%">제목</th>
 							<!-- <th scope="col" width="10%">작성자</th> -->
 							<th scope="col" width="15%">작성일</th>
 							<th scope="col" width="25%">답변상태</th>
 						</tr>
+					
 					</thead>
+					
+						
 					<tbody>
 						<c:set var="count" value="${count }" />
-						<c:forEach var="vo" items="${rbList }">
-							<tr>
+						<c:forEach var="vo" items="${rbList }" varStatus="i" >
+							<tr onclick="location.href='../replyboard/detail.do?no=${vo.no}'" style="cursor: pointer;">
 								<td width="10%" align="center">${vo.no}</td>
-								<td width="40%"><c:if test="${vo.group_step>0 }">
-							&nbsp;&nbsp;
-							</c:if> ${vo.subject }</td>
+								<td width="40%">
+								
+									<c:if test="${vo.group_step>0 }">
+									&nbsp;&nbsp;
+									</c:if> 
+									${vo.subject }
+									</td>
 								<%-- <td width="10%">${vo.name }</td> --%>
 								<td width="15%">${vo.dbday }</td>
-								<td width="25%"><c:if test="${vo.isreply==0 }">
+								<td width="25%"><c:if test="${vo.isreply == 0 }">
 										<span class="btn btn-info rounded-pill m-2">답변대기</span>
-									</c:if> <c:if test="${vo.isreply!=0 }">
+									</c:if> <c:if test="${vo.isreply != 0 }">
 										<span style="color: #FF8F0B;">답변완료</span>
 									</c:if></td>
 							</tr>
 							<c:set var="count" value="${count-1 }" />
 						</c:forEach>
 					</tbody>
+					
+					
+					
 				</table>
 
 				<table>

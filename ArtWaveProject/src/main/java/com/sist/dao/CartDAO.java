@@ -29,12 +29,12 @@ public class CartDAO {
 		return allcart;
 	}
 	
-	public static List<CartVO> bocartListData(Map map){
+	public static List<CartVO> bookcartListData(Map map){
 		List<CartVO> bocart = new ArrayList<CartVO>();
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
-			bocart = session.selectList("bolikeListData", map);
+			bocart = session.selectList("bookcartListData", map);
 		} catch (Exception e) {
 		} finally {
 			if (session != null)
@@ -58,6 +58,22 @@ public class CartDAO {
 		}
 		System.out.println(ascart+"dao ascart");
 		return ascart; 
-
+	}
+	public static void deleteItem(Map map) {
+		  SqlSession session=null;
+		  try
+		  {
+			  session=ssf.openSession();
+			  session.delete("deleteItem",map);
+			  session.commit();
+		  }catch(Exception ex)
+		  {
+			  ex.printStackTrace();
+		  }
+		  finally
+		  {
+			  if(session!=null)
+				  session.close();
+		  }
 	}
 }

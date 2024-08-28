@@ -72,7 +72,32 @@ public class ReplyBoardDAO {
 		return count;
 	}
 	
+	///////////////////////////  1:1문의 디테일 ///////////////////////////////
+	
+	public static ReplyBoardVO replyDetailData(int no)
+	{
+		ReplyBoardVO vo = new ReplyBoardVO();
+		  SqlSession session=null;
+		  try
+		  {
+			  session=ssf.openSession(); 
+			  //session.update("boardHitIncrement", no);
+			  vo=session.selectOne("replyDetailData",no);
+			  
+		  }catch(Exception ex)
+		  {
+			  ex.printStackTrace();
+		  }
+		  finally
+		  {
+			  if(session!=null)
+				  session.close(); // 반환 (DBCP사용)
+		  }
+		  return vo;
+	}
+	
 	////////////////////////// 1:1문의 리스트(admin) ///////////////////////////
+	
 	public static List<ReplyBoardVO> adminReplyBoardListData(Map map)
 	{
 		List<ReplyBoardVO> list = new ArrayList<ReplyBoardVO>();
@@ -90,6 +115,8 @@ public class ReplyBoardDAO {
 		}
 		return list;
 	}
+	
+	
 	 
 	//////////////////////// admin 응답 ///////////////////////////
 	public static void adminReplyBoardInsert(int no,ReplyBoardVO vo)

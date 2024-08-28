@@ -6,7 +6,7 @@
     SELECT no,id,subject,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,group_step,num
     FROM (SELECT no,id,subject,regdate,hit,group_step,rownum as num 
     FROM (SELECT no,id,subject,regdate,hit,group_step 
-    FROM replyboard ORDER BY group_id DESC , group_step ASC))
+    FROM replyboard ORDER BY group_id ASC , group_step ASC))
     WHERE num BETWEEN #{start} AND #{end}
   </select>
   <select id="replyBoardRowCount" resultType="int">
@@ -20,6 +20,17 @@
     (SELECT NVL(MAX(group_id)+1,1) FROM replyboard)
    )
   </insert>
+  
+  <!--                       replyDetailData                          -->
+  <select id="replyDetailData" resultType="ReplyBoardVO" parameterType="int" >
+  	SELECT no,subject,content,id,isreply,TO_CHAR(regdate,'YYYY-MM-DD') as dbday
+  	FROM replyboard
+  	WHERE no=#{no}
+  </select>
+ 
+ 
+ 
+ 
   <select id="adminReplyBoardListData" resultType="ReplyBoardVO" parameterType="hashmap">
     SELECT no,id,isreply,subject,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,group_step,group_id,num
     FROM (SELECT no,id,isreply,subject,regdate,hit,group_step,group_id,rownum as num 

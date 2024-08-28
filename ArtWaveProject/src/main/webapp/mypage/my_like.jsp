@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -21,8 +22,9 @@
 	width: 900px;
 	background-color: aliceblue;
 	border-radius: 30px;
-/* 	margin-left: 30px; 
- */}
+	/* 	margin-left: 30px; 
+ */
+}
 
 .listChart {
 	background: white;
@@ -159,21 +161,45 @@
 	padding: 0px !important;
 	border: none;
 }
-.bono{
+
+.bono {
 	border: none !important;
 }
-#likeBtn{
+
+#likeBtn {
 	border: transparent;
 	background: none;
 	width: 40px;
-    height: 35px;
+	height: 35px;
 }
-#middle{
+
+#middle {
 	vertical-align: middle !important;
 }
 </style>
 <script type="text/javascript">
-
+	$(function() {
+		let likecheck = true
+		let id = $('#id').val()
+		$('.likeBtnicon').click(function() {
+			let mno = $('#mno').val()
+			if (likeCheck === true) {
+				$.ajax({
+					type : 'post',
+					url : '../like/likeOff.do',
+					data : {
+						'tno' : tno,
+						'type' : 4
+					},
+					success : function(result) {
+						if (result >= 0) {
+							likeCheck = false
+						}
+					}
+				})
+			}
+		})
+	})
 </script>
 </head>
 <body>
@@ -182,15 +208,19 @@
 			<table class="table genreTable">
 				<tr>
 					<td width="11%" class="tlikeBtn ${tlike==1?'active':''}">
-						<a href="../mypage/my_like.do?tlike=1">전체</a>
+						<a href="../mypage/my_like.do?tlike=1">전체</a><input type="hidden"
+						value="${sessionScope.id}" id="id">
 					</td>
-					<td width="11%" class="tlikeBtn ${tlike==2?'active':tlike==1?'anext':''}">
+					<td width="11%"
+						class="tlikeBtn ${tlike==2?'active':tlike==1?'anext':''}">
 						<a href="../mypage/my_like.do?tlike=2">영화</a>
 					</td>
-					<td width="11%" class="tlikeBtn ${tlike==3?'active':tlike==2?'anext':''}">
+					<td width="11%"
+						class="tlikeBtn ${tlike==3?'active':tlike==2?'anext':''}">
 						<a href="../mypage/my_like.do?tlike=3">도서</a>
 					</td>
-					<td width="11%" class="tlikeBtn ${tlike==4?'active':tlike==3?'anext':''}">
+					<td width="11%"
+						class="tlikeBtn ${tlike==4?'active':tlike==3?'anext':''}">
 						<a href="../mypage/my_like.do?tlike=4">음악</a>
 					</td>
 
@@ -199,163 +229,152 @@
 			<table class="table listChart" id="middle">
 				<tr>
 					<c:if test="${tlike==1 }">
-					<th width="10%" class="text-center">번호</th>
-					<th width="15%" class="text-center"></th>
-					<th width="40%" class="text-center">제목</th>
-					<th width="20%" class="text-center">분류</th>
-					<th width="15%" class="text-center">취소</th>
+						<th width="10%" class="text-center">번호</th>
+						<th width="15%" class="text-center"></th>
+						<th width="40%" class="text-center">제목</th>
+						<th width="20%" class="text-center">분류</th>
+						<th width="15%" class="text-center">취소</th>
 					</c:if>
 					<c:if test="${tlike==2 }">
-					<th width="10%" class="text-center">번호</th>
-					<th width="15%" class="text-center"></th>
-					<th width="40%" class="text-center">제목</th>
-					<th width="20%" class="text-center">장르</th>
-					<th width="15%" class="text-center">취소</th>
+						<th width="10%" class="text-center">번호</th>
+						<th width="15%" class="text-center"></th>
+						<th width="40%" class="text-center">제목</th>
+						<th width="20%" class="text-center">장르</th>
+						<th width="15%" class="text-center">취소</th>
 					</c:if>
 					<c:if test="${tlike==3 }">
-					<th width="10%" class="text-center">번호</th>
-					<th width="15%" class="text-center"></th>
-					<th width="40%" class="text-center">제목</th>
-					<th width="20%" class="text-center">작가</th>
-					<th width="15%" class="text-center">취소</th>
+						<th width="10%" class="text-center">번호</th>
+						<th width="15%" class="text-center"></th>
+						<th width="40%" class="text-center">제목</th>
+						<th width="20%" class="text-center">작가</th>
+						<th width="15%" class="text-center">취소</th>
 					</c:if>
 					<c:if test="${tlike==4 }">
-					<th width="10%" class="text-center">번호</th>
-					<th width="15%" class="text-center"></th>
-					<th width="40%" class="text-center">제목</th>
-					<th width="20%" class="text-center">가수</th>
-					<th width="15%" class="text-center">취소</th>
+						<th width="10%" class="text-center">번호</th>
+						<th width="15%" class="text-center"></th>
+						<th width="40%" class="text-center">제목</th>
+						<th width="20%" class="text-center">가수</th>
+						<th width="15%" class="text-center">취소</th>
 					</c:if>
 				</tr>
 				<c:if test="${tlike==1 }">
-				<c:forEach var="al" items="${allike}" varStatus="i">
-					<tr style="vertical-align: middle; height: 50px;">
-						<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
-						<c:choose>
-						<c:when test="${al.mulikevo.poster!=null }">
-						<td width="15%" class="text-center">
-						<a href="../music/musicDetail.do?mno=${al.tno}">
-							<img src="${al.mulikevo.poster}" class="listImg">
-						</a>	
-						</td>
-						
-						<td width="40%">
-							<span class="listTitle" ><a href="../music/musicDetail.do?mno=${al.tno}">${al.mulikevo.title}</a></span>
-						</td>
-						
-						<td width="20%">
-							<span class="listArtist">음악</span>
-						</td>
-						
-						</c:when>
-						<c:when test="${al.molikevo.mposter!=null }">
-						<td width="15%" class="text-center">
-						<a href="../movie/moviedetail.do?mno=${al.tno}">
-							<img src="https://www.kobis.or.kr${al.molikevo.mposter}" class="listImg">
-						</a>	
-						</td>
-						<td width="40%">
-							<span class="listTitle" ><a href="../movie/moviedetail.do?mno=${al.tno}">${al.molikevo.mtitle}</a></span>
-						</td>
-						<td width="20%">
-							<span class="listArtist">영화</span>
-						</td>
-						</c:when>
-			
-						<c:when test="${al.bolikevo.btitle!=null }">
-						<td width="15%" class="text-center">
-						<a href="../book/detail.do?bno=${al.tno}">
-							<img src="${al.bolikevo.cover}" class="listImg">
-						</a>
-						</td>
-						<td width="40%">
-							<span class="listTitle" ><a href="../book/detail.do?bno=${al.tno}">${al.bolikevo.btitle}</a></span>
-						</td>
-						<td width="20%">
-							<span class="listArtist">도서</span>
-						</td>
-						</c:when>
-						</c:choose>
-				
+					<c:forEach var="al" items="${allike}" varStatus="i">
+						<tr style="vertical-align: middle; height: 50px;">
+							<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
+							
+							<c:choose>
+								<c:when test="${al.mulikevo.poster!=null }">
+									<td width="15%" class="text-center"><a
+										href="../music/musicDetail.do?mno=${al.tno}"> <img
+											src="${al.mulikevo.poster}" class="listImg">
+									</a></td>
 
-						<td width="15%" >
-							<button id="likeBtn">
-								<img src="like_on.png" id="likeBtnicon">
-							</button>
-						</td>
-					</tr>
-				</c:forEach>
+									<td width="40%"><span class="listTitle"><a
+											href="../music/musicDetail.do?mno=${al.tno}">${al.mulikevo.title}</a></span>
+									</td>
+
+									<td width="20%"><span class="listArtist">음악</span></td>
+
+								</c:when>
+								<c:when test="${al.molikevo.mposter!=null }">
+									<td width="15%" class="text-center"><a
+										href="../movie/moviedetail.do?mno=${al.tno}"> <img
+											src="https://www.kobis.or.kr${al.molikevo.mposter}"
+											class="listImg">
+									</a></td>
+									<td width="40%"><span class="listTitle"><a
+											href="../movie/moviedetail.do?mno=${al.tno}">${al.molikevo.mtitle}</a></span>
+									</td>
+									<td width="20%"><span class="listArtist">영화</span></td>
+								</c:when>
+
+								<c:when test="${al.bolikevo.btitle!=null }">
+									<td width="15%" class="text-center"><a
+										href="../book/detail.do?bno=${al.tno}"> <img
+											src="${al.bolikevo.cover}" class="listImg">
+									</a></td>
+									<td width="40%"><span class="listTitle"><a
+											href="../book/detail.do?bno=${al.tno}">${al.bolikevo.btitle}</a></span>
+									</td>
+									<td width="20%"><span class="listArtist">도서</span></td>
+								</c:when>
+							</c:choose>
+
+
+							<td width="15%">
+								<button id="likeBtn">
+									<img src="like_on.png" id="likeBtnicon1">
+								</button>
+							</td>
+						</tr>
+					</c:forEach>
 				</c:if>
 				<c:if test="${tlike==2 }">
-				<c:forEach var="ml" items="${molike}" varStatus="i">
-					<tr style="vertical-align: middle; height: 50px;">
-						<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
-						<td width="15%" class="text-center">
-						<a href="../movie/moviedetail.do?mno=${ml.tno}">
-							<img src="https://www.kobis.or.kr${ml.molikevo.mposter}" class="listImg">
-						</a>
-						</td>
-						<td width="40%">
-							<span class="listTitle" ><a href="../movie/moviedetail.do?mno=${ml.tno}">${ml.molikevo.mtitle}</a></span>
-						</td>
-						<td width="20%">
-							<span class="listArtist">${ml.molikevo.mgenre}</span>
-						</td>
-						<td width="15%" >
-							<button id="likeBtn">
-								<img src="like_on.png" id="likeBtnicon">
-							</button>
-						</td>
-					</tr>
-				</c:forEach>
+					<c:forEach var="ml" items="${molike}" varStatus="i">
+						<tr style="vertical-align: middle; height: 50px;">
+							<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
+							<td width="15%" class="text-center"><a
+								href="../movie/moviedetail.do?mno=${ml.tno}"> <img
+									src="https://www.kobis.or.kr${ml.molikevo.mposter}"
+									class="listImg">
+							</a></td>
+							<td width="40%"><span class="listTitle"><a
+									href="../movie/moviedetail.do?mno=${ml.tno}">${ml.molikevo.mtitle}</a></span>
+							</td>
+							<td width="20%"><span class="listArtist">${ml.molikevo.mgenre}</span>
+							</td>
+							<td width="15%">
+								<button id="likeBtn">
+									<img src="like_on.png" id="likeBtnicon2">
+								</button>
+							</td>
+						</tr>
+					</c:forEach>
 				</c:if>
 				<c:if test="${tlike==3 }">
-				<c:forEach var="bl" items="${bolike}" varStatus="i">
-					<tr style="vertical-align: middle; height: 50px;">
-						<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
-						<td width="15%" class="text-center">
-						<a href="../book/detail.do?bno=${bl.tno}">
-							<img src="${bl.bolikevo.cover}" class="listImg">
-						</a>
-						</td>
-						<td width="40%">
-							<span class="listTitle" ><a href="../book/detail.do?bno=${bl.tno}">${bl.bolikevo.btitle}</a></span>
-						</td>
-						<td width="20%">
-							<span class="listArtist">${bl.bolikevo.writer}</span>
-						</td>
-						<td width="15%" >
-							<button id="likeBtn">
-								<img src="like_on.png" id="likeBtnicon">
-							</button>
-						</td>
-					</tr>
-				</c:forEach>
+					<c:forEach var="bl" items="${bolike}" varStatus="i">
+						<tr style="vertical-align: middle; height: 50px;">
+							<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
+							<td width="15%" class="text-center"><a
+								href="../book/detail.do?bno=${bl.tno}"> <img
+									src="${bl.bolikevo.cover}" class="listImg">
+							</a></td>
+							<td width="40%"><span class="listTitle"><a
+									href="../book/detail.do?bno=${bl.tno}">${bl.bolikevo.btitle}</a></span>
+							</td>
+							<td width="20%"><span class="listArtist">${bl.bolikevo.writer}</span>
+							</td>
+							<td width="15%">
+								<button id="likeBtn">
+									<img src="like_on.png" id="likeBtnicon3">
+								</button>
+							</td>
+						</tr>
+					</c:forEach>
 				</c:if>
 				<c:if test="${tlike==4 }">
-				<c:forEach var="mul" items="${mulike}" varStatus="i">
-					<tr style="vertical-align: middle; height: 50px;">
-						<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
-						<td width="15%" class="text-center">
-						<a href="../music/musicDetail.do?mno=${mul.tno}">
-							<img src="${mul.mulikevo.poster}" class="listImg">
-						</a>
-						</td>
-						<td width="40%">
-							<span class="listTitle" ><a href="../music/musicDetail.do?mno=${mul.tno}">${mul.mulikevo.title}</a></span>
-						</td>
-						<td width="20%">
-							<span class="listArtist"><a href="../music/artistDetail.do?ano=${mul.mulikevo.ano}">${mul.artlikevo.aname}</a></span>
-						</td>
-						
-						<td width="15%" >
-							<button id="likeBtn">
-								<img src="like_on.png" id="likeBtnicon">
-							</button>
-						</td>
-						
-					</tr>
-				</c:forEach>
+					<c:forEach var="mul" items="${mulike}" varStatus="i">
+						<tr style="vertical-align: middle; height: 50px;">
+							<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
+							<td width="15%" class="text-center"><a
+								href="../music/musicDetail.do?mno=${mul.tno}"> <img
+									src="${mul.mulikevo.poster}" class="listImg">
+							</a></td>
+							<td width="40%"><span class="listTitle"><a
+									href="../music/musicDetail.do?mno=${mul.tno}">${mul.mulikevo.title}</a></span>
+							</td>
+							<td width="20%"><span class="listArtist"><a
+									href="../music/artistDetail.do?ano=${mul.mulikevo.ano}">${mul.artlikevo.aname}</a></span>
+							</td>
+
+							<td width="15%">
+								<button id="likeBtn">
+									<img src="like_on.png" id="likeBtnicon4">
+								</button>
+							</td>
+
+						</tr>
+					</c:forEach>
 				</c:if>
 			</table>
 

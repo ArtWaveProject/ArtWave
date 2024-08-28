@@ -92,10 +92,10 @@
  		FROM totallike
         WHERE type in(1,4,5) AND id=#{id}
  	</select>
-	<delete id="likecancel" parameterType="string">
+<!-- 	<delete id="likecancel" parameterType="string">
 		DELETE FROM totallike WHERE
 		tno=#{tno} AND id=#{id} 
-	</delete> 
+	</delete> --> 
 </mapper>
 
 

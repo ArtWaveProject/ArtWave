@@ -1,5 +1,6 @@
 package com.sist.model;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
@@ -55,56 +56,69 @@ public class MyPageModel {
 
 	@RequestMapping("mypage/my_cart.do")
 	public String my_cart(HttpServletRequest request, HttpServletResponse response) {
+
+
 		
-		System.out.println("check");
+			String page = request.getParameter("page");
+			if (page == null)
+				page = "1";
+			
+			int curPage = Integer.parseInt(page);
+			
+	    try {
+	        String tcartIndexStr = request.getParameter("tcart");
+	        if (tcartIndexStr == null) {
+	            tcartIndexStr = "1";
+	        }
 
-		try {
+	        int tcart = Integer.parseInt(tcartIndexStr); // 문자열을 정수로 변환
+	        System.out.println(tcart+" tcart model");
+	        System.out.println(tcartIndexStr+" tcartIndexStr model");
+	        String[] carttype = {"1", "2", "3"}; // 
+	        int selectedcart = Integer.parseInt(carttype[tcart - 1]); // 배열 인덱스를 사용하여 값 선택
 
-			// 변수 이름 변경
-			String tlikeIndexStr = request.getParameter("tcart");
-			if (tlikeIndexStr == null)
-				tlikeIndexStr = "1";
+	        System.out.println(selectedcart + " selectedcart model");
 
-			int tcart = Integer.parseInt(tlikeIndexStr); // 문자열을 정수로 변환
-			String selectedcart = carttype[tcart]; // 배열 인덱스를 사용하여 값 선택
+	        // 세션에서 사용자 ID 가져오기
+	        HttpSession session = request.getSession();
+	        String id = (String) session.getAttribute("id");
 
+	        Map<String, Object> map = new HashMap();
+	        map.put("id", id);
+	        map.put("tcart", selectedcart); // 배열에서 선택한 값 사용
 
-			HttpSession session = request.getSession();
-			String id = (String) session.getAttribute("id");
-			String type = (String) session.getAttribute("tcart");
+	        List<CartVO> allcart = CartDAO.allcartListData(map);
+	        List<CartVO> bocart = CartDAO.bookcartListData(map);
+	        List<CartVO> ascart = CartDAO.ascartListData(map);
 
-			Map map = new HashMap();
+	        System.out.println(allcart+" allcart model");
+	        System.out.println(bocart+" bocart model");
+	        System.out.println(ascart+" ascart model");
+	        
+	        System.out.println(id);
+	        
+	        if (tcart == 1) {
+	            request.setAttribute("allcart", allcart);
+	        } else if (tcart == 2) {
+	            request.setAttribute("bocart", bocart);
+	        } else if (tcart == 3) {
+	            request.setAttribute("ascart", ascart);
+	        }
 
-			map.put("tcart", selectedcart); // 배열에서 선택한 값 사용
-			map.put("id", id);
-//       map.put("type", type);
+	        request.setAttribute("tcart", tcartIndexStr);
+			request.setAttribute("curPage", curPage);
 
-			List<CartVO> allcart = CartDAO.allcartListData(map);
-			List<CartVO> bocart = CartDAO.bocartListData(map);
-			List<CartVO> ascart = CartDAO.ascartListData(map);
+	        request.setAttribute("title", "장바구니");
+	        request.setAttribute("mypage_jsp", "../mypage/my_cart.jsp");
+	        request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
 
-			System.out.println(tlikeIndexStr + "str");
-			System.out.println(tcart + "tcart");
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 
-			if (tcart == 1) {
-				request.setAttribute("allcart", allcart);
-			} else if (tcart == 2) {
-				request.setAttribute("bocart", bocart);
-			} else if (tcart == 3) {
-				request.setAttribute("ascart", ascart);
-			} 
-
-			request.setAttribute("tlike", tlikeIndexStr); // 배열에서 선택한 값 사용
-
-
-			request.setAttribute("title", "장바구니");
-			request.setAttribute("mypage_jsp", "../mypage/my_cart.jsp");
-			request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "../main/main.jsp";
+	    return "../mypage/mypage_main.jsp";
 	}
+
 
 	@RequestMapping("mypage/my_change_pwd.do")
 	public String my_change_pwd(HttpServletRequest request, HttpServletResponse response) {
@@ -423,6 +437,15 @@ public class MyPageModel {
 		MusicDAO.playListInsert(map);
 		return "redirect:../mypage/my_playlist.do";
 	}
+
+	@RequestMapping("mypage/my_reserve.do")
+	public String my_reserve(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("title", "나의 예약");
+		request.setAttribute("mypage_jsp", "../mypage/my_reserve.jsp");
+		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
+		return "../main/main.jsp";
+	}
+
 	@RequestMapping("mypage/my_text.do")
 	public String my_text(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("title", "내가 쓴 글");
@@ -430,5 +453,35 @@ public class MyPageModel {
 		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
 		return "../main/main.jsp";
 	}
+	@RequestMapping("mypage/deleteItem.do")
+	public void deleteItem(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	    HttpSession session = request.getSession();
+	    String id = (String) session.getAttribute("id");
+	    String tno = request.getParameter("tno");
+
+	    System.out.println(id+"id model");
+	    System.out.println(tno+"cno model");
+	    Map<String, Object> map = new HashMap();
+	    map.put("id", id);
+	    map.put("tno", tno);
+
+	    String result = "fail"; // 기본값은 실패로 설정
+
+	    try {
+	        CartDAO.deleteItem(map);
+	        result = "ok"; // 성공 시 'ok'로 설정
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	    }
+
+	    // 응답 작성
+	    response.setContentType("text/plain");
+	    response.setCharacterEncoding("UTF-8");
+	    PrintWriter out = response.getWriter();
+	    out.print(result); // 결과를 응답 본문으로 작성
+	    out.flush();
+	    out.close();
+	}
+
 
 }
