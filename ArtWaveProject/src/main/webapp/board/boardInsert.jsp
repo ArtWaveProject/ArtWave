@@ -44,43 +44,107 @@ $(function() {
 	})
 })
 </script>
+<style type="text/css">
+   body {
+        font-family: Arial, sans-serif;
+    }
+  .header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .header h4 {
+        font-size: 30px;
+        color: #333;
+    }
+    .form-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .form-table td {
+        padding: 10px;
+        vertical-align: top;
+    }
+    .form-table select, .form-table input[type="text"], .form-table textarea {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+    .form-table textarea {
+        resize: vertical;
+        min-height: 300px;
+    }
+    
+    .write-btn {
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.write-btn:hover {
+    background-color: #0056b3; 
+}
+
+.cancel-btn {
+    background-color: #ffc107; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.cancel-btn:hover {
+    background-color: #e0a800; 
+}
+</style>
 </head>
 <body>
-	<div class="container" style="margin-top: 150px;">
-		<div class="row" style="width: 800px; margin: 0px auto;">
-			<h4 class="text-center" style="margin-bottom: 25px;">글작성</h4>
-			<form action="../board/boardInsert.do" method="post">
-				<table class="table">
-					<tr>
-						<td colspan="2" style="padding: 2px 8px; border-radius: 9px;">
-							<select name="type" class="input input-sm" id="type" style="width: 35%; height: 33px;" required>
-								<option value="999">카테고리 선택</option>
-								<option value="1">자유</option>
-								<option value="2">영화</option>
-								<option value="3">책</option>
-								<option value="4">음악</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2" style="padding: 3px 8px;">
-							<input type="text" style="border: none; border-radius: 5px; height: 33px; width: 100%; background: #ddd;" placeholder="제목을 입력해 주세요" id="subject" name="subject" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<textarea rows="15" cols="50" id="content" style="width: 100%; resize: none; border-radius: 9x; border: 1px solid gray;" placeholder="내용을 입력하세요" name="content" required></textarea>
-						</td>
-					</tr>
-					<tr style="text-align: right;">
-						<td>
-							<input type="button" value="작성" id="writeBtn">
-							<input type="button" value="취소" onclick="javascript:history.back()">
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
-	</div>
+	<div class="container" style="max-width: 1000px; border-radius: 12px;
+        border: 1px solid #ddd; margin-top:150px; padding: 40px;">
+        <div class="header">
+            <h4>글 작성</h4>
+        </div>
+        <form action="../board/boardInsertOk.do" method="post">
+            <table class="form-table">
+                <tr>
+                    <td>
+                        <select name="type" id="type" required>
+                            <option value="999">카테고리 선택</option>
+                            <option value="1">자유</option>
+                            <option value="2">영화</option>
+                            <option value="3">도서</option>
+                            <option value="4">음악</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" id="subject" name="subject" placeholder="제목을 입력해 주세요" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea id="content" style="resize: none;" name="content" placeholder="내용을 입력하세요" required></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <input type="button" value="작성" id="writeBtn" class="write-btn">
+                        <input type="button" value="취소" class="cancel-btn" onclick="javascript:history.back()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </body>
 </html>

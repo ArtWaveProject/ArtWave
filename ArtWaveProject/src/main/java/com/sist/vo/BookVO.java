@@ -1,5 +1,6 @@
 package com.sist.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import lombok.Data;
@@ -23,7 +24,8 @@ import lombok.Data;
 	ISBN10              VARCHAR2(30)   
  */
 @Data
-public class BookVO {
+public class BookVO implements Serializable {
+  private static final long serialVersionUID = 1L;
   private int bno;
   private String btag,bgenre,cover,btitle,writer,price,sale_price,dis_rate,publisher,intro,intro_img,pages,isbn13,isbn10,dbday;
   private Date bdate;

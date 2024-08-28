@@ -98,24 +98,38 @@
 </select>
 
  <insert id="insertCart">
-        INSERT INTO totalcart (cno, tno, price, id, count, buydate, type)
-        VALUES ((SELECT NVL(MAX(cno)+1, 1) FROM totalcart), #{tno}, #{price}, #{id}, #{count}, SYSDATE, #{type})
+    INSERT INTO totalcart (cno, tno, price, id, count, buydate, type)
+    VALUES ((SELECT NVL(MAX(cno)+1, 1) FROM totalcart), #{tno}, #{price}, #{id}, #{count}, SYSDATE, #{type})
  </insert>
  
- <select id="CartRecomm" resultType="BookVO" parameterType="map">
-    SELECT * FROM book WHERE bgenre=(
-    SELECT bgenre 
-    FROM (SELECT bgenre, SUM(NVL(count, 0)) as ccount
-    FROM book 
-    JOIN totalcart ON bno=tno AND type=2 AND id=#{id}
-    GROUP BY bgenre) 
-    WHERE ccount=(SELECT MAX(SUM(NVL(count, 0))) 
-    FROM book 
-    JOIN totalcart ON bno=tno AND type=2 AND id=#{id}
-    GROUP BY bgenre))
+ <select id="getCartBnoList" parameterType="BookVO" resultType="string">
+    SELECT tno
+    FROM totalcart
+    WHERE id = #{id}
+ </select>
+    
+ <select id="CartRecomm" resultType="BookVO" parameterType="hashmap">
+    SELECT DISTINCT b.bno, b.btag, b.bgenre, b.cover, b.btitle, b.writer, b.sale_price, b.dis_rate, b.publisher
+		FROM book b
+		JOIN totalcart tc ON b.bno = tc.tno
+		WHERE tc.type = 2
+		AND tc.id = #{id}
+		AND b.bgenre = (SELECT bgenre
+    FROM book
+    JOIN totalcart ON book.bno = totalcart.tno
+    WHERE totalcart.type = 2
+    AND totalcart.id =#{id}
+    GROUP BY bgenre
+    ORDER BY SUM(NVL(count, 0)) DESC
+    FETCH FIRST 1 ROW ONLY)
+		ORDER BY (SELECT SUM(NVL(count, 0))
+    FROM totalcart
+    WHERE totalcart.tno = b.bno
+    AND totalcart.type = 2
+    AND totalcart.id =#{id}) DESC
 </select>
 
-<select id="CartRecommName" resultType="BookVO" parameterType="map">
+<select id="CartRecommName" resultType="String" parameterType="String">
     SELECT bgenre 
     FROM (SELECT bgenre, SUM(NVL(count, 0)) as ccount
     FROM book 
@@ -127,7 +141,7 @@
     GROUP BY bgenre)
 </select>
 
-<select id="BuyRecomm" resultType="BookVO" parameterType="map">
+<select id="BuyRecomm" resultType="BookVO" parameterType="hashmap">
     SELECT * FROM (SELECT b.*
     FROM book b
     JOIN (SELECT DISTINCT tno
@@ -137,14 +151,16 @@
     similar ON b.bno = similar.tno
     WHERE b.bno NOT IN (SELECT tno FROM totalcart WHERE type=2 AND id=#{id})
     ORDER BY DBMS_RANDOM.VALUE)
-    WHERE ROWNUM &lt;= 12
+    WHERE ROWNUM &lt;= 24
 </select>
 
-<select id="RandomRecomm" resultType="BookVO" parameterType="map">
-    SELECT * FROM (SELECT *
-    FROM book
+<select id="RandomRecomm" resultType="BookVO" parameterType="hashmap">
+    SELECT * FROM (SELECT * FROM book
+    WHERE cover IS NOT NULL
+    AND btag IS NOT NULL
+    AND intro_img IS NOT NULL
     ORDER BY DBMS_RANDOM.VALUE) 
-    WHERE ROWNUM &lt;= 12
+    WHERE ROWNUM &lt;= 24
 </select>
     
 </mapper>

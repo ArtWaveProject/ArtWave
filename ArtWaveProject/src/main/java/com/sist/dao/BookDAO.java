@@ -282,6 +282,22 @@ public class BookDAO {
 		    return bnoList;
 		}
 
+	   public static String CartRecommName(String id) {
+		    String genreName = null;
+		    SqlSession session = null;
+		    try {
+		        session = ssf.openSession();
+		        genreName = session.selectOne("CartRecommName", id);
+		    } catch (Exception ex) {
+		        ex.printStackTrace();
+		    } finally {
+		        if (session != null) {
+		            session.close();
+		        }
+		    }
+		    return genreName;
+		}
+	   
 	    public static List<BookVO> randomRecomm(Map map) {
 	        List<BookVO> list = new ArrayList<BookVO>();
 	        SqlSession session = null;

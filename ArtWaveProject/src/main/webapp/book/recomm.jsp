@@ -164,120 +164,162 @@ function toggleRecentBooks() {
 </head>
 <body>
 	<div class="row">
-		<div class="col-lg-12">
-			<div class="page-line" style="margin-top: 150px;">
-				<h2 style="color: black; margin-top: -50px; margin-bottom: 40px; text-align: center;">추천 도서</h2>
-				<div class="book-list">
-					<div class="container">
-						<div class="row" style="margin-top: 20px">
-							<div class="most-popular2">
-								<div class="featured-games2 rounded-box">
-									<div class="heading-section">
-										<span style="font-weight: bold; font-size: 25px; color: #979797;">&emsp;#
-											&nbsp;장바구니에 담은 도서 연관 추천</span>
-									</div>
-									<div class="row" style="justify-content: center; height: 420px;">
-										<div class="col-lg-10" style="width: 900px; height: 500px;">
-											<h1>
-												<br>
-											</h1>
-											<div class="owl-features owl-carousel">
-												<c:forEach var="vo" items="${cRList}">
-													<div class="item">
-														<div class="thumb">
-															<a href="../book/cookie.do?bno=${vo.bno }"
-																class="thumb-link"> <img src="${vo.cover }" alt=""
-																style="width: 200px; height: 280px;">
-															</a> <span
-																style="font-size: 15px; font-weight: bold; width: 200px; height: 80px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-																${vo.btitle } <br> <small
-																style="color: #979797; font-weight: 250;">${vo.writer }${vo.writer != null ? ' 저 | ' : ''}${vo.publisher }</small>
-															</span>
-														</div>
-													</div>
-												</c:forEach>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="container">
-						<div class="row" style="margin-top: 20px">
-							<div class="most-popular2">
-								<div class="featured-games2 rounded-box">
-									<div class="heading-section">
-										<span style="font-weight: bold; font-size: 25px; color: #979797;">&emsp;#
-											&nbsp;구입한 도서 연관 추천</span>
-									</div>
-									<div class="row" style="justify-content: center; height: 420px;">
-										<div class="col-lg-10" style="width: 900px; height: 500px;">
-											<h1>
-												<br>
-											</h1>
-											<div class="owl-features owl-carousel">
-												<c:forEach var="vo" items="${bRList}">
-													<div class="item">
-														<div class="thumb">
-															<a href="../book/cookie.do?bno=${vo.bno }"
-																class="thumb-link"> <img src="${vo.cover }" alt=""
-																style="width: 200px; height: 280px;">
-															</a> <span
-																style="font-size: 15px; font-weight: bold; width: 200px; height: 80px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-																${vo.btitle } <br> <small
-																style="color: #979797; font-weight: 250;">${vo.writer }${vo.writer != null ? ' 저 | ' : ''}${vo.publisher }</small>
-															</span>
-														</div>
-													</div>
-												</c:forEach>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="container">
-						<div class="row" style="margin-top: 20px">
-							<div class="most-popular2">
-								<div class="featured-games2 rounded-box">
-									<div class="heading-section">
-										<span style="font-weight: bold; font-size: 25px; color: #979797;">&emsp;#
-											&nbsp;랜덤 도서 추천</span>
-									</div>
-									<div class="row" style="justify-content: center; height: 420px;">
-										<div class="col-lg-10" style="width: 900px; height: 500px;">
-											<h1>
-												<br>
-											</h1>
-											<div class="owl-features owl-carousel" style="margin-left:5px">
-												<c:forEach var="vo" items="${rRList}">
-													<div class="item">
-														<div class="thumb">
-															<a href="../book/cookie.do?bno=${vo.bno }"
-																class="thumb-link"> <img src="${vo.cover }" alt=""
-																style="width: 200px; height: 280px;">
-															</a> <span
-																style="font-size: 15px; font-weight: bold; width: 200px; height: 80px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-																${vo.btitle } <br> <small
-																style="color: #979797; font-weight: 250;">${vo.writer }${vo.writer != null ? ' 저 | ' : ''}${vo.publisher }</small>
-															</span>
-														</div>
-													</div>
-												</c:forEach>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="recent-books-container">
+        <div class="col-lg-12">
+            <div class="page-line" style="margin-top: 150px;">
+                <h2 style="color: black; margin-top: -50px; margin-bottom: 40px; text-align: center;">추천 도서</h2>
+                <div class="book-list">
+                    <!-- Check if the user is logged in -->
+                    <c:if test="${not empty sessionScope.id}">
+                        <!-- User is logged in, show all recommendations -->
+                        <div class="container">
+                            <div class="row" style="margin-top: 20px">
+                                <div class="most-popular2">
+                                    <div class="featured-games2 rounded-box">
+                                        <div class="heading-section">
+                                            <span style="font-weight: bold; font-size: 25px; color: #979797;">
+                                                &emsp;# &nbsp;${genreName} 장르 연관 추천 PICK!
+                                            </span>
+                                        </div>
+                                        <div class="row" style="justify-content: center; height: 420px;">
+                                            <div class="col-lg-10" style="width: 900px; height: 500px;">
+                                                <h1><br></h1>
+                                                <div class="owl-features owl-carousel">
+                                                    <c:forEach var="vo" items="${cRList}">
+                                                        <div class="item">
+                                                            <div class="thumb">
+                                                                <a href="../book/cookie.do?bno=${vo.bno }" class="thumb-link">
+                                                                    <img src="${vo.cover }" alt="" style="width: 200px; height: 280px;">
+                                                                </a>
+                                                                <span style="font-size: 15px; font-weight: bold; width: 200px; height: 80px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                                                    ${vo.btitle } <br> <small style="color: #979797; font-weight: 250;">
+                                                                        ${vo.writer }${vo.writer != null ? ' 저 | ' : ''}${vo.publisher }</small>
+                                                                        <span style="font-weight: bold; color: purple;"><fmt:formatNumber
+														value="${vo.sale_price}" type="number" />원</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </c:forEach>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 20px">
+                                <div class="most-popular2">
+                                    <div class="featured-games2 rounded-box">
+                                        <div class="heading-section">
+                                            <span style="font-weight: bold; font-size: 25px; color: #979797;">
+                                                &emsp;# &nbsp;구입한 도서 연관 추천
+                                            </span>
+                                        </div>
+                                        <div class="row" style="justify-content: center; height: 420px;">
+                                            <div class="col-lg-10" style="width: 900px; height: 500px;">
+                                                <h1><br></h1>
+                                                <div class="owl-features owl-carousel">
+                                                    <c:forEach var="vo" items="${bRList}">
+                                                        <div class="item">
+                                                            <div class="thumb">
+                                                                <a href="../book/cookie.do?bno=${vo.bno }" class="thumb-link">
+                                                                    <img src="${vo.cover }" alt="" style="width: 190px; height: 280px;">
+                                                                </a>
+                                                                <span style="font-size: 15px; font-weight: bold; width: 200px; height: 80px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                                                    ${vo.btitle } <br> <small style="color: #979797; font-weight: 250;">
+                                                                        ${vo.writer }${vo.writer != null ? ' 저 | ' : ''}${vo.publisher }</small>
+                                                                <span style="font-weight: bold; color: purple;"><fmt:formatNumber
+														value="${vo.sale_price}" type="number" />원</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </c:forEach>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 20px">
+                                <div class="most-popular2">
+                                    <div class="featured-games2 rounded-box">
+                                        <div class="heading-section">
+                                            <span style="font-weight: bold; font-size: 25px; color: #979797;">
+                                                &emsp;# &nbsp;랜덤 도서 추천
+                                            </span>
+                                        </div>
+                                        <div class="row" style="justify-content: center; height: 420px;">
+                                            <div class="col-lg-10" style="width: 900px; height: 500px;">
+                                                <h1><br></h1>
+                                                <div class="owl-features owl-carousel" style="margin-left:5px">
+                                                    <c:forEach var="vo" items="${rRList}">
+                                                        <div class="item">
+                                                            <div class="thumb">
+                                                                <a href="../book/cookie.do?bno=${vo.bno }" class="thumb-link">
+                                                                    <img src="${vo.cover }" alt="" style="width: 190px; height: 280px;">
+                                                                </a>
+                                                                <span style="font-size: 15px; font-weight: bold; width: 200px; height: 80px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                                                    ${vo.btitle } <br> <small style="color: #979797; font-weight: 250;">
+                                                                        ${vo.writer }${vo.writer != null ? ' 저 | ' : ''}${vo.publisher }</small>
+                                                                <span style="font-weight: bold; color: purple;"><fmt:formatNumber value="${vo.sale_price}" type="number" />원</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </c:forEach>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:if>
+                    <c:if test="${empty sessionScope.id}">
+                        <!-- User is not logged in, show random recommendations only -->
+                        <div class="container">
+                            <div class="row" style="margin-top: 20px">
+                                <div class="most-popular2">
+                                    <div class="featured-games2 rounded-box">
+                                        <div class="heading-section">
+                                            <span style="font-weight: bold; font-size: 25px; color: #979797;">
+                                                &emsp;# &nbsp;랜덤 도서 추천
+                                            </span>
+                                        </div>
+                                        <div class="row" style="justify-content: center; height: 420px;">
+                                            <div class="col-lg-10" style="width: 900px; height: 500px;">
+                                                <h1><br></h1>
+                                                <div class="owl-features owl-carousel" style="margin-left:5px">
+                                                    <c:forEach var="vo" items="${rRList}">
+                                                        <div class="item">
+                                                            <div class="thumb">
+                                                                <a href="../book/cookie.do?bno=${vo.bno }" class="thumb-link">
+                                                                    <img src="${vo.cover }" alt="" style="width: 190px; height: 280px;">
+                                                                </a>
+                                                                <span style="font-size: 15px; font-weight: bold; width: 200px; height: 80px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                                                    ${vo.btitle } <br> <small style="color: #979797; font-weight: 250;">
+                                                                        ${vo.writer }${vo.writer != null ? ' 저 | ' : ''}${vo.publisher }</small>
+                                                                <span style="font-weight: bold; color: purple;"><fmt:formatNumber
+														value="${vo.sale_price}" type="number" />원</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </c:forEach>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-lg-12" style="text-align: center; font-size: 18px; color: #666; font-weight: bold;margin-top: 20px">
+                                    <p>더 많은 추천을 원하시면 로그인 하셔야 합니다</p>
+                                </div>
+                            </div>
+                        </div>
+                    </c:if>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="recent-books-container">
         <div class="recent-books-header" onclick="toggleRecentBooks()">
             <h4>최근 본 도서</h4>
             <span class="toggle-icon">+</span>
@@ -286,8 +328,10 @@ function toggleRecentBooks() {
             <ul>
                 <c:forEach var="vo" items="${sessionScope.recentBooks}">
                     <li>
-                        <figure><a href="../book/cookie.do?bno=${vo.bno}">
-                            <img class="radius-10 btmspace-10" src="${vo.cover}" style="width: 60px; height: 80px;"></a>
+                        <figure>
+                            <a href="../book/cookie.do?bno=${vo.bno}">
+                                <img class="radius-10 btmspace-10" src="${vo.cover}" style="width: 60px; height: 80px;">
+                            </a>
                         </figure>
                     </li>
                 </c:forEach>

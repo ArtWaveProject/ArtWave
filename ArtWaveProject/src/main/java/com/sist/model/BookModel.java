@@ -1,6 +1,7 @@
 package com.sist.model;
 
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.util.*;
 
 import javax.servlet.http.Cookie;
@@ -130,6 +131,10 @@ public class BookModel {
 		map.put("type", 2);
 		int rcount = ReviewDAO.reviewCount(map);
 		double avg = ReviewDAO.reviewAverage(map);
+
+		DecimalFormat df = new DecimalFormat("#.##");
+		String formattedAvg = df.format(avg);
+
 		request.setAttribute("rcount", rcount);
 		request.setAttribute("avg", avg);
 		request.setAttribute("id", id);
@@ -305,48 +310,59 @@ public class BookModel {
 
 	@RequestMapping("book/recomm.do")
 	public String book_recomm(HttpServletRequest request, HttpServletResponse response) {
-	    try {
-	        request.setCharacterEncoding("UTF-8");
-	    } catch (Exception e) {}
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (Exception ex) {
+		}
 
-	    String id = (String) request.getSession().getAttribute("id");
+		String id = (String) request.getSession().getAttribute("id");
+		String genreName = "";
+		
+		
+		Map map = new HashMap();
+		List<BookVO> cRList = new ArrayList<BookVO>();
+		List<BookVO> bRList = new ArrayList<BookVO>();
+		if (id != null) {
+			genreName = BookDAO.CartRecommName(id);
+			List<Integer> bnoList = BookDAO.getCartBnoList(id);
+			
+			cRList = BookDAO.cartRecomm(id, bnoList);
+			bRList = BookDAO.buyRecomm(id, bnoList);
+		}
+		List<BookVO> rRList = BookDAO.randomRecomm(map);
 
-	    List<Integer> bnoList = BookDAO.getCartBnoList(id);
-        Map map=new HashMap();
-	    List<BookVO> cRList = BookDAO.cartRecomm(id, bnoList);
-	    List<BookVO> bRList = BookDAO.buyRecomm(id, bnoList);
-	    List<BookVO> rRList = BookDAO.randomRecomm(map);
+		// 쿠키 처리
+		Cookie[] cookies = request.getCookies();
+		List<BookVO> cookieList = new ArrayList();
+		if (cookies != null) {
+			Map<String, BookVO> bookMap = new LinkedHashMap();
+			for (int i = cookies.length - 1; i >= 0; i--) {
+				if (cookies[i].getName().startsWith("book_")) {
+					String bnoValue = cookies[i].getValue();
+					BookVO vo = BookDAO.bookDetailData(Integer.parseInt(bnoValue));
+					if (vo != null) {
+						bookMap.put(bnoValue, vo);
+					}
+				}
+			}
+			int count = 0;
+			for (Map.Entry<String, BookVO> entry : bookMap.entrySet()) {
+				if (count >= 4)
+					break;
+				cookieList.add(entry.getValue());
+				count++;
+			}
+		}
 
-	    // 쿠키 처리
-	    Cookie[] cookies = request.getCookies();
-	    List<BookVO> cookieList = new ArrayList();
-	    if (cookies != null) {
-	        Map<String, BookVO> bookMap = new LinkedHashMap();
-	        for (int i = cookies.length - 1; i >= 0; i--) {
-	            if (cookies[i].getName().startsWith("book_")) {
-	                String bnoValue = cookies[i].getValue();
-	                BookVO vo = BookDAO.bookDetailData(Integer.parseInt(bnoValue));
-	                if (vo != null) {
-	                    bookMap.put(bnoValue, vo);
-	                }
-	            }
-	        }
-	        int count = 0;
-	        for (Map.Entry<String, BookVO> entry : bookMap.entrySet()) {
-	            if (count >= 4) break;
-	            cookieList.add(entry.getValue());
-	            count++;
-	        }
-	    }
+		HttpSession session = request.getSession();
+		session.setAttribute("recentBooks", cookieList);
 
-	    HttpSession session = request.getSession();
-	    session.setAttribute("recentBooks", cookieList);
-
-	    request.setAttribute("cRList", cRList);
-	    request.setAttribute("bRList", bRList);
-	    request.setAttribute("rRList", rRList);
-	    request.setAttribute("main_jsp", "../book/recomm.jsp");
-	    return "../main/main.jsp";
+		request.setAttribute("genreName", genreName);
+		request.setAttribute("cRList", cRList);
+		request.setAttribute("bRList", bRList);
+		request.setAttribute("rRList", rRList);
+		request.setAttribute("main_jsp", "../book/recomm.jsp");
+		return "../main/main.jsp";
 	}
 
 }
