@@ -1,5 +1,6 @@
 package com.sist.model;
 
+import java.net.http.HttpRequest;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import com.sist.dao.*;
 
 public class ReplyBoardModel {
 	
+	// 문의게시판 리스트
 	@RequestMapping("replyboard/list.do")
 	   public String replyboard_list(HttpServletRequest request,HttpServletResponse response)
 	   {
@@ -44,7 +46,8 @@ public class ReplyBoardModel {
 		   
 		   return "../main/main.jsp";
 	   }
-	
+		
+	//문의게시판 쓰기
 	   @RequestMapping("replyboard/insert.do")
 	   public String replyboard_insert(HttpServletRequest request,HttpServletResponse response)
 	   {
@@ -52,6 +55,7 @@ public class ReplyBoardModel {
 		   return "../main/main.jsp"; // 새로운 페이지 제작 
 	   }
 	  
+	   //문의게시판 삽입
 	   @RequestMapping("replyboard/insert_ok.do")
 	   public String replyboard_insert_ok(HttpServletRequest request,HttpServletResponse response)
 	   {
@@ -79,19 +83,22 @@ public class ReplyBoardModel {
 	   
 	   
 	   
+	   //------------------------------------- detail ------------------------------------------------------
 	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
+	   @RequestMapping("replyboard/detail.do")
+	   public String replyboard_detail(HttpServletRequest request, HttpServletResponse response)
+	   {
+		   String no = request.getParameter("no");
+		   // 데이터베이스에서 값을 가지고 온다 
+		   ReplyBoardVO vo = ReplyBoardDAO.replyDetailData(Integer.parseInt(no));
+		   
+		   HttpSession session = request.getSession();
+		   
+		   request.setAttribute("vo", vo);
+		   request.setAttribute("main_jsp", "../replyboard/replyboard_detail.jsp");
+		   return "../main/main.jsp";
+	   }
+	
 		/*
 		 * @RequestMapping("adminpage/replyboard_insert_ok.do") // public String
 		 * admingpage_replyboard_insert_ok(HttpServletRequest
