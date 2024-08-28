@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.payment-mapper">
-<insert id="paymentInsert" parameterType="hashmap">
-INSERT payment INTO VALUES(SELECT(NVL(max(pno)+1, 1)), #{id}, #{count}, #{price}, sysdate, #{post}, #{addr1}, #{addr2}, #{type})
-</insert>
+	<insert
+		id="paymentInsert"
+		parameterType="hashmap">
+		INSERT INTO payment VALUES((SELECT(NVL(max(pno)+1, 1)) FROM payment), #{id}, #{count}, #{price}, sysdate, #{post}, #{addr1}, #{addr2}, #{type})
+	</insert>
 </mapper>

@@ -31,12 +31,14 @@ public class PaymentModel {
 	public void musicBuy(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
+		System.out.println(id);
 		MemberVO vo=MemberDAO.memberinfo(id);
 		String pno=request.getParameter("pno");
 		String count=request.getParameter("account");
 		String price=request.getParameter("price");
 		String type=request.getParameter("type");
 		Map map=new HashMap();
+		System.out.println(vo.getPost());
 		map.put("pno", Integer.parseInt(pno));
 		map.put("id", id);
 		map.put("count", Integer.parseInt(count));
@@ -53,6 +55,7 @@ public class PaymentModel {
 	  obj.put("post", vo.getPost());
 	  obj.put("phone", vo.getPhone());
 	  try {
+	  	response.setContentType("text/plain;charset=UTF-8");
 			PrintWriter out=response.getWriter();
 			out.write(obj.toJSONString());
 		} catch (Exception e) {}

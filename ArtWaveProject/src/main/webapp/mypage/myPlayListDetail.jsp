@@ -133,7 +133,6 @@ body {
 
 #album-art {
 	width: 100%;
-	height: 430px;
 	transform: rotateZ(0);
 	transition: 0.3s ease all;
 	overflow: hidden;

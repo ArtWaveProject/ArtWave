@@ -27,6 +27,7 @@
 		<typeAlias type="com.sist.vo.ReviewVO" alias="ReviewVO"/>
 		<typeAlias type="com.sist.vo.CartVO" alias="CartVO"/>
 		<typeAlias type="com.sist.vo.LikeVO" alias="LikeVO"/>
+		<typeAlias type="com.sist.vo.PaymentVO" alias="PaymentVO"/>
 		<typeAlias type="com.sist.vo.ReserveVO" alias="ReserveVO"/>
 	</typeAliases>
 	<environments default="development">
@@ -55,5 +56,6 @@
 		<mapper resource="com/sist/mapper/review-mapper.xml"/>
 		<mapper resource="com/sist/mapper/cart_mapper.xml"/>
 		<mapper resource="com/sist/mapper/admin-mapper.xml"/>
+		<mapper resource="com/sist/mapper/payment_mapper.xml"/>
 	</mappers>
 </configuration>

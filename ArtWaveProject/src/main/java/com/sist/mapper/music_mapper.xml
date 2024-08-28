@@ -192,7 +192,7 @@
 	</select>
 	<!-- 관리자 예약 출력 -->
 	<select id="adminReserveListData" resultType="ReserveVo">
-	SELECT mno, mtitle, tdname, tname, day, time, inwon, price, id, email, sno, rno, state,
+	SELECT mno, mtitle, tdname, tname, day, time, inwon, price, id, sno, rno, state,
 	(SELECT mposter FROM movie WHERE movie.mno=reserve.mno) as poster
 	FROM reserve
 	</select>

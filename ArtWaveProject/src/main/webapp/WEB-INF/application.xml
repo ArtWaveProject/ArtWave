@@ -15,4 +15,5 @@
 <bean id="replyboard" class="com.sist.model.ReplyBoardModel"/>
 <bean id="noticeboard" class="com.sist.model.NoticeBoardModel"/>
 <bean id="mreserve" class="com.sist.model.MreserveModel"/>
+<bean id="payment" class="com.sist.model.PaymentModel"/>
 </beans>

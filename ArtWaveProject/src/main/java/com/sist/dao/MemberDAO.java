@@ -132,7 +132,7 @@ public class MemberDAO {
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
-			session.selectOne("memberInfoData", id);
+			vo=session.selectOne("memberInfoData", id);
 
 		} catch (Exception e) {
 			e.printStackTrace();

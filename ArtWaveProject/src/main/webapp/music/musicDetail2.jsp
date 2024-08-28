@@ -124,7 +124,6 @@ function requestPay(json,name,price) {
         buyer_addr: json.address,
         buyer_postcode: json.post
     }, function (rsp) { // callback
-    	location.href='http://localhost/JSPLastProject/mypage/mypage_buy.do' 
     });
 }
 $(function() {
@@ -355,7 +354,7 @@ function playListMusicInsert(li, plno){
 									</ul>
 								</li>
 							</ul>
-							<button type="button" style="margin-left:100px; background: transparent; border:transparent; padding: 0px; vertical-align: bottom;">
+							<button type="button" style="margin-left: 100px; background: transparent; border: transparent; padding: 0px; vertical-align: bottom;">
 								<i style="font-size: 30px;" id="buy" class="fa fa-credit-card">&nbsp;Buy Now</i>
 							</button>
 						</td>
