@@ -139,7 +139,7 @@ a {
 	<div class="container" style="margin-top: 150px; background: #9BA8B5; padding: 50px; border-radius: 50px;">
 		<h3 style="margin-bottom: 40px;">앨범 목록</h3>
 		<div id="row">
-			<div class="row" style="display: flex; flex-wrap: wrap; justify-content: center; background: white; border-radius: 30px;">
+			<div class="row" style="display: flex; flex-wrap: wrap; background: white; border-radius: 30px;">
 				<table class="table genreTable">
 					<tr>
 						<td width="11%" class="genreBtn ${genre==1?'active':''}">
@@ -171,8 +171,8 @@ a {
 						</td>
 					</tr>
 				</table>
-				<c:forEach var="vo" items="${list}">
-					<div class="col-sm-3" style="width: 240px;">
+				<c:forEach var="vo" items="${list}" varStatus="i">
+					<div class="col-sm-3" style="width: 240px; ${i.index%5==0?'margin-left:10px;':''}">
 						<div class="albumItem" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
 							<img class="albumImg" src="${vo.poster}">
 							<a href="../music/albumDetail.do?alno=${vo.alno}">

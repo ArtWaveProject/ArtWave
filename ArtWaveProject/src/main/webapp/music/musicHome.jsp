@@ -39,6 +39,31 @@ a {
 .btnhe {
 	margin-bottom: 61px;
 }
+
+
+.search-input input {
+	width: 300px;
+	height: 40px;
+	border-radius: 20px;
+	border: 1px solid #ccc;
+	outline: none;
+	background: #fff;
+	color: #666;
+	font-size: 14px;
+	position: absolute;
+	right: 332px;
+	top: 204px;
+	z-index: 0;
+	padding-left: 15px;
+}
+
+.search-input button {
+	border: none;
+	background: transparent;
+	position: absolute;
+	right: 340px;
+	top: 213px;
+}
 </style>
 </head>
 <body>
@@ -46,7 +71,13 @@ a {
 		<div class="row">
 			<div style="height: 30px;"></div>
 			<div class="row" style="padding: 30px; background: aliceblue; border-radius: 30px;">
-				<h3>최신 음악</h3>
+				<div class="search-input" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+					<h3>최신 음악</h3>
+					<form action="../music/find.do" method="post">
+						<input type="text" placeholder="Type Something" id="searchText" name="ss" />
+						<button type="submit" class="fa fa-search" style="border: none; background: transparent"></button>
+					</form>
+				</div>
 				<div style="height: 30px;"></div>
 				<c:forEach var="vo" items="${list}" varStatus="i">
 					<div class="col-sm-2" style="margin: 0px 0px ${i.index>=6?'15px':'0px'} 0px; padding-top: 15px; background: white; border-radius:${i.index==0?'15px 0px 0px 0px;':i.index==5?'0px 15px 0px 0px;':i.index==11?'0px 0px 15px 0px;':i.index==6?'0px 0px 0px 15px;':''}">
@@ -58,6 +89,7 @@ a {
 				</c:forEach>
 				<div class="col-lg-8">
 					<h3>실시간 차트</h3>
+					<div style="height: 15px;"></div>
 					<div style="padding: 30px; background: white; border-radius: 20px;">
 						<table class="table listChart">
 							<c:forEach var="mvo" items="${mList}" varStatus="i">

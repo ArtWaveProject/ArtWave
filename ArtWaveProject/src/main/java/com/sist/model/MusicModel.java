@@ -77,9 +77,11 @@ public class MusicModel {
 		map.put("genre", genreList[Integer.parseInt(genre)]);
 		map.put("ss", ss);
 		List<MusicVO> list = MusicDAO.musicListData(map);
-		int totalPage = MusicDAO.musicTotalPage(genreList[Integer.parseInt(genre)]);
+		int totalPage = MusicDAO.musicTotalPage(map);
 		int startPage = (curPage - 1) / 10 * 10 + 1;
 		int endPage = startPage + 10 - 1;
+		if(endPage>totalPage)
+			endPage=totalPage;
 		request.setAttribute("id", id);
 		request.setAttribute("ss", ss);
 		request.setAttribute("genre", genre);
@@ -114,11 +116,11 @@ public class MusicModel {
 			map.put("genre", genreList[Integer.parseInt(genre)]);
 			map.put("ss", ss);
 			List<AlbumVO> list = MusicDAO.albumListData(map);
-			int totalPage = MusicDAO.albumTotalPage(genreList[Integer.parseInt(genre)]);
+			int totalPage = MusicDAO.albumTotalPage(map);
 			int startPage = (curPage - 1) / 10 * 10 + 1;
 			int endPage = startPage + 10 - 1;
-			System.out.println(list.size());
-			System.out.println(totalPage);
+			if(endPage>totalPage)
+				endPage=totalPage;
 			request.setAttribute("ss", ss);
 			request.setAttribute("genre", genre);
 			request.setAttribute("curPage", curPage);
@@ -149,12 +151,20 @@ public class MusicModel {
 		map.put("start", start);
 		map.put("end", end);
 		map.put("ss", ss);
+		int count=MusicDAO.artistFindCount(map);
+		int totalPage=(int)(count/12.0+1);
 		List<ArtistVO> list = MusicDAO.artistListData(map);
+		int startPage=(curPage-1)/10*10+1;
+		int endPage=startPage+10-1;
+		if(endPage>totalPage)
+			endPage=totalPage;
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
 		request.setAttribute("ss", ss);
 		request.setAttribute("curPage", curPage);
-		request.setAttribute("totalPage", list.size());
+		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("list", list);
-		request.setAttribute("main_jsp", "../music/artistList.jsp");
+		request.setAttribute("main_jsp", "../music/artistList2.jsp");
 		return "../main/main.jsp";
 	}
 
@@ -289,13 +299,16 @@ public class MusicModel {
 		map.put("end", 10);
 		map.put("ss", ss);
 		List<MusicVO> mList = MusicDAO.musicFindData(map);
-		map.put("end", 6);
+		map.put("end", 8);
 		List<AlbumVO> alList = MusicDAO.albumFindData(map);
 		map.put("end", 4);
 		List<ArtistVO> aList = MusicDAO.artistFindData(map);
-		System.out.println(mList.size());
-		System.out.println(alList.size());
-		System.out.println(aList.size());
+		int musicCount=MusicDAO.musicFindCount(map);
+		int albumCount=MusicDAO.albumFindCount(map);
+		int artistCount=MusicDAO.artistFindCount(map);
+		request.setAttribute("musicCount", musicCount);
+		request.setAttribute("albumCount", albumCount);
+		request.setAttribute("artistCount", artistCount);
 		request.setAttribute("ss", ss);
 		request.setAttribute("mList", mList);
 		request.setAttribute("alList", alList);
@@ -361,6 +374,7 @@ public class MusicModel {
 		} catch (Exception e) {
 		}
 	}
+	
 
 	@RequestMapping("mypage/my_reserve.do")
 	public String my_reserve(HttpServletRequest request, HttpServletResponse response) {
@@ -368,6 +382,10 @@ public class MusicModel {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		List<ReserveVO> list = MusicDAO.reserveListData(id);
+		System.out.println(list.size());
+		for(ReserveVO vo:list) {
+			System.out.println(vo.getTname());
+		}
 		request.setAttribute("list", list);
 		request.setAttribute("mypage_jsp", "../mypage/myPageReseve.jsp");
 		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");

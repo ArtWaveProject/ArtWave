@@ -21,10 +21,13 @@ import com.sist.vo.ReplyVO;
 import controller.RequestMapping;
 
 public class BoardModel {
-	String[] options = { "", "nick", "subject", "content" };
+	String[] options = { "", "nick", "fbsubject", "content" };
 	String[] types= {"", "자유", "영화", "책", "음악"};
 	@RequestMapping("board/boardList.do")
 	public String boardList(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (Exception e) {}
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		String page = request.getParameter("page");
@@ -43,10 +46,6 @@ public class BoardModel {
 		String option = request.getParameter("option");
 		if (option == null)
 			option = "0";
-		if (id == null)
-			System.out.println("null");
-		else
-			System.out.println("not null");
 		Map map = new HashMap();
 		map.put("start", start);
 		map.put("end", end);
