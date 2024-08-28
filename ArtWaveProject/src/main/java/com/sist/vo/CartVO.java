@@ -11,12 +11,11 @@ TYPE	NUMBER
 
 import java.util.*;
 
+import lombok.Data;
+
+
 public class CartVO {
-	private int cno, tno, count, type;
-	private String price, id;
-	private Date buydate;
-	BookVO bovo= new BookVO();
-	AlStoreVO alvo= new AlStoreVO();
+	
 	public int getCno() {
 		return cno;
 	}
@@ -59,4 +58,22 @@ public class CartVO {
 	public void setBuydate(Date buydate) {
 		this.buydate = buydate;
 	}
+	public BookVO getBovo() {
+		return bovo;
+	}
+	public void setBovo(BookVO bovo) {
+		this.bovo = bovo;
+	}
+	public AlStoreVO getAlvo() {
+		return alvo;
+	}
+	public void setAlvo(AlStoreVO alvo) {
+		this.alvo = alvo;
+	}
+	private int cno, tno, count, type;
+	private String price, id;
+	private Date buydate;
+	BookVO bovo= new BookVO();
+	AlStoreVO alvo= new AlStoreVO();
+
 }

@@ -180,11 +180,11 @@ public class LikeDAO {
 		return allike; 
 		
 	}
-//	public static void likecancel(int tno) {
+//	public static void likecancel(Map map) {
 //		SqlSession session = null;
 //		try {
 //			session = ssf.openSession();
-//			session.delete("likecancel", tno);
+//			session.delete("likecancel", map);
 //			session.commit();
 //		} catch (Exception e) {
 //		} finally {
