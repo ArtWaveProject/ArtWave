@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
  <link rel="stylesheet" href="../movie/seatstyle.css">
- <script  src="../movie/seatscript.js"></script>
+ <script  src="../movie/seatscript.js" defer></script>
 </head>
 <body>
 <section id="section">
@@ -39,7 +39,7 @@
               <div class="seatRowCont1 seatRowCont">
                 <div class="row">
                   <div class="seat"></div>
-                  <div class="seat occupied"></div>
+                  <div class="seat"></div>
                   <div class="seat"></div>
                   <div class="seat"></div>
                   <div class="seat"></div>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="row">
                   <div class="seat"></div>
-                  <div class="seat occupied"></div>
+                  <div class="seat"></div>
                   <div class="seat"></div>
                   <div class="seat"></div>
                   <div class="seat"></div>
@@ -61,17 +61,7 @@
               <div class="seatRowCont2 seatRowCont">
                 <div class="row">
                   <div class="seat"></div>
-                  <div class="seat occupied"></div>
                   <div class="seat"></div>
-                  <div class="seat"></div>
-                  <div class="seat"></div>
-                  <div class="seat"></div>
-                  <div class="seat"></div>
-                  <div class="seat"></div>
-                </div>
-                <div class="row">
-                  <div class="seat"></div>
-                  <div class="seat occupied"></div>
                   <div class="seat"></div>
                   <div class="seat"></div>
                   <div class="seat"></div>
@@ -81,7 +71,7 @@
                 </div>
                 <div class="row">
                   <div class="seat"></div>
-                  <div class="seat occupied"></div>
+                  <div class="seat"></div>
                   <div class="seat"></div>
                   <div class="seat"></div>
                   <div class="seat"></div>
@@ -91,7 +81,17 @@
                 </div>
                 <div class="row">
                   <div class="seat"></div>
-                  <div class="seat occupied"></div>
+                  <div class="seat"></div>
+                  <div class="seat"></div>
+                  <div class="seat"></div>
+                  <div class="seat"></div>
+                  <div class="seat"></div>
+                  <div class="seat"></div>
+                  <div class="seat"></div>
+                </div>
+                <div class="row">
+                  <div class="seat"></div>
+                  <div class="seat"></div>
                   <div class="seat"></div>
                   <div class="seat"></div>
                   <div class="seat"></div>
@@ -103,7 +103,7 @@
               <div class="seatRowCont3 seatRowCont">
                 <div class="row">
                   <div class="seat"></div>
-                  <div class="seat occupied"></div>
+                  <div class="seat"></div>
                   <div class="seat"></div>
                   <div class="seat"></div>
                   <div class="seat"></div>
@@ -113,7 +113,7 @@
                 </div>
                 <div class="row">
                   <div class="seat"></div>
-                  <div class="seat occupied"></div>
+                  <div class="seat"></div>
                   <div class="seat"></div>
                   <div class="seat"></div>
                   <div class="seat"></div>
@@ -151,9 +151,9 @@
           </div>
           <div class="rightBottomCont">
             <div class="selectedSeatCont">
-              <p>SELECTED SEATS</p>
+              <p>선택한 좌석</p>
               <div class="selectedSeatsHolder" id="selectedSeatsHolder">
-                <span class="noSelected">No Seat Selected</span>
+                <span class="noSelected">선택한 좌석이 없습니다</span>
               </div>
             </div>
             <!-- Seat number and price -->
@@ -170,10 +170,23 @@
 
             <div class="buttonCont">
               <div class="cancelBtn">
-                <button id="cancelBtn">취소하기</button>
+                <button id="cancelBtn">선택 취소하기</button>
               </div>
-              <div class="proceedBtnEl">
-                <button id="proceedBtn">결제하기</button>
+              <div class="proceedBtnEl">  
+               <button id="proceedBtn">좌석 확인</button>
+             <form method="post" action="../movie/reserveok.do">
+            <input type="hidden" name="mno" value="${mno }" id="rmno">
+            <input type="hidden" name="mtitle" value="${mtitle }" id="rmovietitle">
+            <input type="hidden" name="tloc" value="${tloc }" id="rtloc">
+            <input type="hidden" name="tname" value="${tname}" id="rtname">
+            <input type="hidden" name="date" value="${date}" id="rdate">
+            <input type="hidden" name="tdname" value="${tdname }" id="rtdname">
+            <input type="hidden" name="time" value="${time }" id="rtime">
+            <input type="hidden" name="inwon" value="${rinwon }" id="rinwon">
+            <input type="hidden" name="price" value="" id="price">
+            <input type="hidden" name="seats" value="" id="seats">
+			 <button id="payBtn">결제하기</button>
+			 </form>
               </div>
             </div>
           </div>

@@ -39,10 +39,6 @@ $(function() {
             success: function(result) {
                 $('#rtimetable').html(result)
     			 $('#movierdate').text(rdate)
-    			 console.log(rtname)
-    			 console.log(rtloc)
-    			 console.log(rdate)
-    			 console.log(rmno)
             },
             error: function(request, status, error) {
                 console.log(error)
