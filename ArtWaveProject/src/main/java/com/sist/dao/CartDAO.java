@@ -59,6 +59,7 @@ public class CartDAO {
 		System.out.println(ascart+"dao ascart");
 		return ascart; 
 	}
+	
 	public static void deleteItem(Map map) {
 		  SqlSession session=null;
 		  try
