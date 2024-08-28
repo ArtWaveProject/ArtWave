@@ -53,8 +53,8 @@ body {
 .table input[type="submit"], 
 .table input[type="button"] {
 	display: inline-block;
-	width: 120px;
-	height: 40px;
+	width: 80px;
+	height: 35px;
 	font-size: 16px;
 	color: #ffffff; /* 텍스트 색상 */
 	border: none; /* 테두리 제거 */

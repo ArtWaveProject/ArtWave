@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style type="text/css">
     body {
-        margin-left: 250px;
+        margin-left: 180px;
         padding: 0;
     }
     .container2 {
@@ -56,7 +56,7 @@
             </div>
 
             <div class="col-lg-10">
-                <h2 class="black" style="text-align: center; font-weight:bold; font-size: 30px; margin: -30px 0 40px -220px;">${title}</h2>
+                <h2 class="black" style="text-align: center; font-weight:bold; font-size: 30px; margin: -30px 0 40px -150px;">${title}</h2>
                 <jsp:include page="${mypage_jsp}"></jsp:include>
             </div>
         </div>

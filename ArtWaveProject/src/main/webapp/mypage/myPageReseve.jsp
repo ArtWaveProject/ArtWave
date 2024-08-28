@@ -27,44 +27,87 @@
 	background: white;
 	padding: 5px;
 	vertical-align: middle !important;
+	border-radius: 30px;
 }
 
-.listChart tr td {
-	padding: 0px;
-	height: 50px;
-	margin: 0px;
+.listChart th, .listChart td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
 }
 
-.row .row {
-	width: 800px;
+.listChart th {
+    font-weight: bold;
 }
 
-.listTitle {
-	font-size: 13px;
+
+.listChart img {
+    border-radius: 5px;
 }
 
-.listTitle a {
-	color: black;
+.listChart button {
+    background-color: #e74c3c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-.listArtist {
-	font-size: 11px;
+.listChart button:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
 }
 
-.bono {
-	border: none !important;
+.listChart .checkBtn {
+    color: #3498db;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-#likeBtn {
-	border: transparent;
-	background: none;
-	width: 40px;
-	height: 35px;
+.listChart .checkBtn:hover {
+    color: #2980b9;
+}
+
+.reserve-details {
+    display: none;
+}
+
+.reserve-details img {
+    width: 200px;
+    border-radius: 5px;
+}
+
+.reserve-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.reserve-details th {
+    text-align: left;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.reserve-details td {
+    padding: 10px;
+}
+
+.reserve-details tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.reserve-details td img {
+    width: 100%;
+    border-radius: 5px;
 }
 
 #middle {
-	vertical-align: middle !important;
+    vertical-align: middle !important;
 }
+
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
@@ -96,14 +139,14 @@
 </script>
 </head>
 <body>
-	<div class="container" style="margin-top: 10px;">
+	<div class="container" style="margin-top: 10px; font-weight: bold; font-size: 15px;">
 		<div class=" listBody">
 			<table class="table listChart" id="middle">
 				<tr>
 					<th width="10%" class="text-center">번호</th>
 					<th width="15%" class="text-center"></th>
 					<th width="45%" class="text-center">제목</th>
-					<th width="30%" class="text-center"></th>
+					<th width="30%" class="text-center">예약 상태</th>
 				</tr>
 				<c:forEach var="vo" items="${list}" varStatus="i">
 					<tr style="vertical-align: middle; height: 50px;">
