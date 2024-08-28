@@ -298,9 +298,9 @@ $(document).ready(function() {
 			return
 		}
         
-        let bno = $('#bno').val()
-        let count = $('#account').val()
-        let price = ${vo.sale_price}
+        let bno = $(this).attr('data-bno')
+        let count = $('#account'+bno).val()
+        let price = $(this).attr('data-price')
 
         console.log(bno)
         console.log(count)
@@ -502,11 +502,11 @@ $(document).ready(function() {
 								</div>
 								<div class="account-control">
 									<button class="decrement">-</button>
-									<input type="text" class="account" value="1">
+									<input type="text" class="account" id="account${vo.bno}" value="1">
 									<button class="increment">+</button>
 								</div>
 								<button type="button" class="fa fa-cart-plus add-to-cart" 
-									style="background-color: #99D9EA;">&nbsp;Add to Cart</button>
+									style="background-color: #99D9EA;" data-bno="${vo.bno }" data-price="${vo.sale_price }">&nbsp;Add to Cart</button>
 								<button type="button" class="fa fa-credit-card"
 									style="background-color: #7396EA">&nbsp;Buy Now</button>
 							</div>

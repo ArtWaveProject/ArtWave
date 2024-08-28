@@ -60,10 +60,14 @@ body {
     .deleteBtn {
         background: none;
         border: none;
-        font-size: 20px;
+        font-size: 15px;
+        width: 0px;
+        height: 0px;
         color: red;
         cursor: pointer;
+        margin-left: -5px;
     }
+    
     .reply-section textarea {
         width: 100%;
         padding: 10px;
@@ -188,41 +192,40 @@ let id = '${id}'
 					json.map(function(reply) {
 					html+='<tr>'
 					if(reply.depth===1){
-						html+='<td colspan="2" width="15%" style="font-weight:bold;">'+reply.nick+'</td>'
+						html+='<td width="10%" style="font-weight:bold;">'+reply.nick+'</td>'
 					}
 					else{
-						html+='<td width="3%"></td>'
-						html+='<td width="15%">'+reply.nick+'</td>'
+						html+='<td width="10%">'+reply.nick+'</td>'
 					}
 					if(reply.depth===1){
-						html+='<td width="68%" style="cursor:pointer;" onclick="tableShow('+reply.frno+')"><pre>'+reply.content+'</pre>'
+						html+='<td style="cursor:pointer;width:70%;" onclick="tableShow('+reply.frno+')"><pre>'+reply.content+'</pre>'
 					}
 					else{
-						html+='<td width="68%"><pre style="margin-left:20px;">ㄴ'+reply.content+'</pre>'	
+						html+='<td style="width:70%;"><pre style="margin-left:20px;">ㄴ'+reply.content+'</pre>'	
 					}
 					html+='</td>'
 					if(reply.id===reply.sessionId){
-						html+='<td width="25%" style="text-align:right;">'+reply.dbday+'</td>'
-						html+='<td width="5%" style="padding:0px;"><button onclick="replyDelete('+reply.frno+', '+reply.depth+')" type="button" class="deleteBtn" data-rno="'+reply.frno+'">x</button></td>'
+						html+='<td style="width:18%;" style="text-align:center;">'+reply.dbday+'</td>'
+						html+='<td style="width:2%;" style="padding:0px;"><button onclick="replyDelete('+reply.frno+', '+reply.depth+')" type="button" class="deleteBtn" data-rno="'+reply.frno+'">x</button></td>'
 					}
 					else{
-						html+='<td width="25%" style="text-align:right;">'+reply.dbday+'</td>'
-						html+='<td width="5%" style="text-align:right;"></td>'
+						html+='<td style="width:18%;" style="text-align:center;">'+reply.dbday+'</td>'
+						html+='<td style="width:2%;" style="text-align:right;"></td>'
 					}
 					html+='</tr>'
 					if(reply.depth==1){
-						html+='<tr>'
-						html+='<td colspan="5" style="text-align:right; padding:0px;">'
-						html+='<table class="table reReplyTable" id="table'+reply.frno+'" style="display:none;">'
-						html+='<tr>'
-						html+='<td width="85%" style="vertical-align: middle;">'
-						html+='<textarea onclick="reReplyCheck('+reply.frno+')" id="content'+reply.frno+'" rows="3" cols="10" style="width: 1050px; resize: none; border: 1px solid #ddd;"></textarea></td>'
-						html+='<td width="15%" style="vertical-align: middle;">'
-						html+='<input class="reReplyBtn" onclick="reReplyInsert('+reply.frno+')" type="button" style="width: 80%; height: 60px;" value="작성"></td>'
-						html+='</tr>'
-						html+='</table>'
-						html+='</td>'
-						html+='</tr>'
+						html += '<tr>';
+	                    html += '<td colspan="5" style="text-align:right; padding:0px;" class="reply-form">'
+	                    html += '<table class="table reReplyTable" id="table' + reply.frno + '" style="display:none;">'
+	                    html += '<tr>'
+	                    html+='<td width="85%" style="vertical-align: middle;">'
+	                    html += '<textarea onclick="reReplyCheck('+reply.frno+')" id="content'+reply.frno+'" style="width: 100%; padding: 10px ;border: 1px solid #ddd; border-radius: 4px; resize: none; font-size: 16px; margin-top:"></textarea></td>'
+	                    html += '<td width="15%" style="vertical-align: middle;">'
+	                    html += '<input class="reReplyBtn" onclick="reReplyInsert('+reply.frno+')" type="button" style="width: 120px; height: 60px;" value="작성"></td>'
+	                    html += '</tr>'
+	                    html += '</table>'
+	                    html += '</td>'
+	                    html += '</tr>'
 					}
 				})
 					html+='</table>'
@@ -363,7 +366,7 @@ let id = '${id}'
                         <textarea id="content" rows="3" cols="10" style="resize: none;" placeholder="댓글을 입력하세요"></textarea>
                     </td>
                     <td width="15%" class="reply-section">
-                        <input type="button" id="replyBtn"  value="작성">
+                        <input type="button" id="replyBtn" value="작성">
                     </td>
                 </tr>
             </tfoot>

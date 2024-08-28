@@ -19,82 +19,6 @@ function toggleRecentBooks() {
     }
 }
 
-$(function() {
-    let id = '${id}'
-    let bno = $('#bno').val()
-    $('.content').each(function() {
-    	
-        let $item = $(this)
-        let bno = $item.find('input[name="bno"]').val()
-        let $likeButton = $item.find('.like-button')
-        let $likeIcon = $likeButton.find('img')
-        let likeCheck = false;
-
-        if (id.length > 0) {
-            $.ajax({
-                type: 'post',
-                url: '../like/likeCheck.do',
-                data: {
-                    'tno': bno,
-                    'type': 5
-                },
-                success: function(result) {
-                    if (result === 'OK') {
-                        likeCheck = true
-                        $likeIcon.attr('src', '../book/fullheart.png')
-                    } else {
-                        likeCheck = false
-                        $likeIcon.attr('src', '../book/heart.png')
-                    }
-                }
-            })
-        }
-
-        $likeButton.click(function(event) {
-            if (id.length === 0) {
-                alert('해당 기능은 로그인 시 이용하실 수 있습니다')
-                return
-            }
-
-            event.preventDefault()
-            if (likeCheck) {
-                $.ajax({
-                    type: 'post',
-                    url: '../like/likeOff.do',
-                    data: {
-                        'tno': bno,
-                        'type': 5
-                    },
-                    success: function(result) {
-                        if (result >= 0) {
-                            likeCheck = false
-                            $likeIcon.attr('src', '../book/heart.png')
-                        }
-                    }
-                })
-            } else {
-                $.ajax({
-                    type: 'post',
-                    url: '../like/likeOn.do',
-                    data: {
-                        'tno': bno,
-                        'type': 5
-                    },
-                    success: function(result) {
-                        if (result >= 0) {
-                            likeCheck = true
-                            $likeIcon.attr('src', '../book/fullheart.png')
-                        }
-                    },
-                    error: function(request, status, error) {
-                        alert('Error: ' + error)
-                    }
-                })
-            }
-        })
-    })
-})
-
 </script>
 <link rel="stylesheet" href="../book/bstyle.css">
 <style type="text/css">
@@ -414,12 +338,8 @@ $(function() {
 												<div class="hover-effect">
 													<div class="content">
 														<ul>
-															<li><a href="#" class="like-button"> <img
-																	src="../book/heart.png"
-																	style="width: 18px; height: 18px;"> like
-															</a></li>
-															<li><a href="#"><i class="fa fa-cart-plus"
-																	style="margin-right: 8px;"></i> to cart</a></li>
+															<li><a href="../book/cookie.do?bno=${vo.bno }"><i class="fa fa-search-plus "
+																	style="text-align: center;"></i>상세보기</a></li>
 														</ul>
 													</div>
 												</div>
