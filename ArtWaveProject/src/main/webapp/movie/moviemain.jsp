@@ -96,7 +96,7 @@ $(function(){
             </div>
             <div class="col-lg-10">
             <h3>  <br></h3>
-                <div class="owl-features owl-carousel">
+                <div class="owl-features owl-carousel" id="moviebookc">
                  <c:forEach var="vo" items="${tList }">
 				 <div class="item">
 				 <div class="thumb">

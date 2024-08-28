@@ -181,13 +181,15 @@
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../movie/custom1.js"></script>
 <script type="text/javascript">
 
 $(function() {
-	  let ratingCheck = false
+ 	
+  let ratingCheck = false
   let likeCheck = false
   let id = '${id}'
-  let bno = $('#mno').val()
+  let mno = $('#mno').val()
   
   reviewlist()
 
@@ -197,7 +199,7 @@ $(function() {
           url: '../like/likeCheck.do',
           data: {
               'tno': mno,
-              'type': 5
+              'type': 4
           },
           success: function(result) {
               if (result === 'OK') {
@@ -214,7 +216,7 @@ $(function() {
   }
 
   $('#likeBtn').click(function() {
-      console.log(bno)
+
       if (likeCheck) {
           $.ajax({
               type: 'post',
@@ -224,7 +226,7 @@ $(function() {
                   'type': 4
               },
               success: function(result) {
-              	console.log(bno)
+              	
                   if (result >= 0) {
                       likeCheck = false;
                       $('#like-button').attr('src', 'heart.png')
@@ -240,7 +242,7 @@ $(function() {
                   'type': 4
               },
               success: function(result) {
-              	console.log(bno)
+              	
                   if (result >= 0) {
                       likeCheck = true;
                       $('#like-button').attr('src', 'fullheart.png')
@@ -256,7 +258,7 @@ $(function() {
   ratingCheck=true	
 		let rating=$('input[name="rating"]:checked').val()
 		rating=6-rating
-  console.log(rating)
+
 	})
 	$(document).ready(function() {
   let avgRating=parseFloat('${avg}')
@@ -413,7 +415,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </head>
 <body>
-	<div class="page-content2">
+	<div class="page-content3">
 	<div class="mlbefore">
 	   	<i class="fa fa-chevron-circle-left"></i>
 		  <input type="button" id='backbtn' name="이전 페이지로 이동" value="뒤로 가기" onclick="javascript:history.back()"> 
@@ -424,7 +426,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	<table class="mdtable">
        <tr>
         <td width="40%" class="text-center" rowspan="16">
-          <img src="https://www.kobis.or.kr${vo.mposter }" style="width: 100%">
+          <img src="https://www.kobis.or.kr${vo.mposter }" id="detailposter">
         </td>
         </tr>
         <tr>
@@ -473,24 +475,27 @@ document.addEventListener('DOMContentLoaded', function() {
        </td>
        </tr>
        </table>
-		<div class="moviebook">
-             <div class="row">
-            <div class="col-lg-3">
+         <div class="featured-games2">
+          <div class="row">
+            <div class="col-lg-4">
             <div class="blank">
             </div>
             </div>
-            <div class="col-lg-9">
+            <div class="col-lg-7">
+        <h5>&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        			# &nbsp; 관련&nbsp;추천&nbsp;도서
+       	</h5>
             <h3>  <br></h3>
-                <div class="owl-features owl-carousel">
+                <div class="owl-features owl-carousel" id="moviebookc">
                  <c:forEach var="mbvo" items="${mbList }">
                   <input type="hidden" value="${vo.mno}" id="mno">
-				 <div class="item">
-				 <div class="thumb">
-                <img src="${mbvo.cover }"  alt="">
+				 <div class="item2">
+				 <div class="thumb" id="mbookimg">
+                <img src="${mbvo.cover }"  alt="" >
                  <div class="hover-effect">
                       <h6><a href="../book/detail.do?bno=${mbvo.bno }"  title="상세정보 확인">상세정보</a></h6>
                       </div>
-                <h4 id="text2"><span>${mbvo.btitle }</span></h4>
+                <h5 id="text2"><span>${mbvo.btitle }</span></h5>
                 <ul>
                     <li>&nbsp; ${mbvo.sale_price }원</li>
                 </ul>
@@ -499,6 +504,11 @@ document.addEventListener('DOMContentLoaded', function() {
           </c:forEach>
         </div>
         </div>
+         <div class="col-lg-1">
+            <div class="blank">
+            </div>
+            </div>
+ </div>
  </div>
  </div>
 	<div class="heading-section" style="padding: 0 0 15px 0;">

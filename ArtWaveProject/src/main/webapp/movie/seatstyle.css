@@ -4,6 +4,11 @@
   box-sizing: border-box;
   font-family: sans-serif;
 }
+#movieprice, #rdate , #rinwon {
+	font-weight: bold;
+	font-size: 14px;
+	font-weight: 700;
+}
 .leftCont {
   width: 100%;
   background-color: aliceblue;
@@ -89,8 +94,8 @@ body {
 }
 .container .leftMainCont .seat.selected,
 .container .leftMainCont .seat.selected::after {
-  background-color: rgb(168, 245, 168);
-  border-color: rgba(0, 190, 0, 0.336);
+  background-color: rgb(205, 205, 231);
+  border-color: rgb(128, 128, 255);
 }
 
 .container .mainSeatCont {
@@ -153,10 +158,10 @@ body {
   margin-bottom: 0.8rem;
 }
 .container .confirmCont .movieInfo p {
-  color: #bdbdbd;
+  color: rgb(64, 0, 64);
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 12px;
+  font-size: 15px;
   margin-bottom: 0.2rem;
 }
 .container .confirmCont .movieInfo .dateOn .inwonon {
@@ -200,8 +205,8 @@ body {
   width: 200px;
 }
 .container .confirmCont .rightBottomCont .selectedSeatCont .selectedSeat {
-  border: 1px solid lightgreen;
-  color: lightgreen;
+  border: 1px solid rgb(64, 0, 64);
+  color: rgb(64, 0, 64);
   padding: 0.375rem 1.8rem;
   border-radius: 3px;
   user-select: none;
@@ -213,7 +218,7 @@ body {
   float: left;
 }
 .container .confirmCont .rightBottomCont .selectedSeatCont .selectedSeat:hover {
-  background-color: rgba(144, 238, 144, 0.151);
+  background-color: rgb(128, 128, 192);
   transition: 0.3s ease background-color;
 }
 .container
@@ -267,7 +272,7 @@ body {
   transition: 0.3s ease background-color;
 }
 .container .confirmCont .rightBottomCont .buttonCont .proceedBtnEl button {
-  background-color: lightgreen;
+  background-color: rgb(64, 0, 64);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   transition: 0.3s ease background-color;
 }
@@ -277,7 +282,7 @@ body {
   .buttonCont
   .proceedBtnEl
   button:hover {
-  background-color: rgba(84, 216, 84, 0.808);
+  background-color: rgb(128, 128, 192);
 }
 
 /* Success Modal */
@@ -419,4 +424,17 @@ body.modal-active .overlay {
   100% {
     margin-top: 0px;
   }
+}
+
+#payBtn:disabled {
+	background-color: darkgray;
+}
+
+h3, h5{
+	color: rgb(64, 0, 64);
+}
+p {
+	color: rgb(64, 0, 64);
+	font-size: 14px;
+	font-weight: bold;
 }

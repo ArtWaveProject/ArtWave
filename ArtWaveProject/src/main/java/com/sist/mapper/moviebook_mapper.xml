@@ -6,12 +6,12 @@
  		 <result property="bvo.bno" column="bno"/>
  		 <result property="bvo.btitle" column="btitle"/>
  		 <result property="bvo.cover" column="cover"/>
- 		 <result property="bvo.price" column="price"/>
+ 		 <result property="bvo.sale_price" column="price"/>
  	</resultMap>
  	     <select id="movieBookData"  resultType="MovieBookVO"  parameterType="hashmap">
- 	     		SELECT moviebook.mbno, moviebook.mno, moviebook.bno, book.btitle, book.cover, book.price
- 	     		FROM moviebook, book
- 	     		 JOIN book ON moviebook.bno = book.bno
+ 	     		SELECT moviebook.mbno, moviebook.mno, moviebook.bno, book.btitle, book.cover, book.sale_price
+ 	     		FROM moviebook
+ 	     		INNER JOIN book ON moviebook.bno = book.bno
  	     		WHERE moviebook.mno = #{mno}
  	     </select>
  	     </mapper>

@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
  <link rel="stylesheet" href="../movie/seatstyle.css">
  <script  src="../movie/seatscript.js" defer></script>
 </head>
@@ -133,11 +136,11 @@
             <!-- moviename -->
             <div class="movieInfo">
               <div class="movieName">
-                <h1 id="rmovie">${mtitle }</h1>
+                <h3 id="rmovie">${mtitle }</h3>
               </div>
               <div class="moviePrice">
                 <p>가격</p>
-                <h1 id="moviePrice">9000원</h1>
+                <h5 id="moviePrice">9000원</h5>
               </div>
               <div class="dateCont">
                 <p>일시</p>
@@ -185,7 +188,7 @@
             <input type="hidden" name="inwon" value="${rinwon }" id="rinwon">
             <input type="hidden" name="price" value="" id="price">
             <input type="hidden" name="seats" value="" id="seats">
-			 <button id="payBtn">결제하기</button>
+			 <button id="payBtn" disabled >결제하기</button>
 			 </form>
               </div>
             </div>

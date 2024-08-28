@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const cancelBtnEL = document.getElementById("cancelBtn");
   const proceedBtnEl = document.getElementById("proceedBtn");
+  const payBtnEl = document.getElementById("payBtn");
 
   let currentMovieName = selectMovieEl.textContent.trim();
   let moviePrice = parseInt(moviePriceEl.textContent.replace("원", "").trim(), 10);
@@ -157,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
              success: function(result) {
             	 $('#seats').val(seats)
             	 $('#price').val(totalPrice)
+            	 payBtnEl.disabled = false;
              },
              error: function(request, status, error) {
                  console.log(error)
@@ -168,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (takenSeats.length > inwonCount) {
       alert("인원수보다 많은 좌석을 선택하셨습니다");
     } else {
-      alert("인원수보다 적은 좌석 선택 또는 좌석을 선택하지 않으셨습니다");
+      alert("인원수보다 적은 좌석을 선택하셨거나 좌석을 선택하지 않으셨습니다");
     }
   });
 });
