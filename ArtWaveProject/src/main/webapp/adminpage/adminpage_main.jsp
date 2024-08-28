@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,12 +88,22 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+						<c:choose>
+							<c:when test="${empty sessionScope.photo}">
+								<img class="rounded-circle" src="img/user.jpg" alt=""
+									style="width: 40px; height: 40px;">
+							</c:when>
+							<c:otherwise>
+								<img class="rounded-circle" src="${sessionScope.photo}" alt=""
+									style="width: 40px; height: 40px;">
+							</c:otherwise>
+						</c:choose>
+					<div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
+                    
                     <div class="ms-3">
                         <h6 class="mb-0">${sessionScope.id}님 </h6>
-                        <span>Admin등급</span>
+                        <!-- <span>Admin등급</span> -->
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -101,10 +112,10 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">회원목록</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="../adminpage/member_list.do" class="dropdown-item">회원 리스트</a>
+                            <!-- <a href="#" class="dropdown-item">#</a>
                             <a href="#" class="dropdown-item">#</a>
                             <a href="#" class="dropdown-item">#</a>
-                            <a href="#" class="dropdown-item">#</a>
-                            <a href="#" class="dropdown-item">#</a>
+                            <a href="#" class="dropdown-item">#</a> -->
                         </div>
                     </div>
                     
@@ -119,7 +130,7 @@
                         </div>
                     </div>
                     
-                    <div class="nav-item dropdown">
+                    <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">신고 게시판</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="#" class="dropdown-item">신고게시물</a>
@@ -127,7 +138,7 @@
                             <a href="#" class="dropdown-item">#</a>
                             <a href="#" class="dropdown-item">#</a>
                         </div>
-                    </div>
+                    </div> -->
                   
                     
                     <div class="nav-item dropdown">
@@ -135,12 +146,12 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="../adminpage/reply_list.do" class="dropdown-item">1:1문의</a>
                             <a href="../adminpage/notice_list.do" class="dropdown-item">공지사항</a>
-                            <a href="#" class="dropdown-item">사전 질문 게시판</a>
+                            <!-- <a href="#" class="dropdown-item">사전 질문 게시판</a>
                             <a href="#" class="dropdown-item">실시간 상담</a>
-                        </div>
+                        </div> -->
                     </div>
                     
-                    <div class="nav-item dropdown">
+                   <!--  <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">집계</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="#" class="dropdown-item">#</a>
@@ -152,7 +163,7 @@
                             <a href="#" class="dropdown-item">#</a>
                             <a href="#" class="dropdown-item">#</a>
                         </div>
-                    </div>
+                    </div> -->
                     
                     
                     

@@ -21,6 +21,10 @@ public class AdminModel {
 	@RequestMapping("adminpage/adminpage_main.do")
 	public String adminpage_main(HttpServletRequest request, HttpServletResponse response)
 	{
+		HttpSession	session = request.getSession();
+		MemberVO vo =  new MemberVO();
+		session.setAttribute("photo",vo.getPhoto());
+		
 		request.setAttribute("admin_jsp", "../adminpage/adminpage_home.jsp");
 		request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
 		
@@ -114,6 +118,15 @@ public class AdminModel {
 	   {
 		   String no=request.getParameter("no");
 		   request.setAttribute("no", no);
+		   
+		   ReplyBoardVO vo = ReplyBoardDAO.replyDetailData(Integer.parseInt(no));
+		   
+		   request.setAttribute("subject", vo.getSubject());
+		   request.setAttribute("content", vo.getContent());
+		   
+		   request.setAttribute("vo", vo);
+		   
+
 		   request.setAttribute("admin_jsp", "../adminpage/adminpage_reply_insert.jsp");
 		   request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
 		   
@@ -148,6 +161,11 @@ public class AdminModel {
 		   
 		   return "redirect:../adminpage/reply_list.do";
 	   }
+	   
+
+	   
+	   
+	   
 	   // 묻고답하기 delete --------------------------------------------------------------------
 	   @RequestMapping("adminpage/reply_delete.do")
 	   public String reply_delete(HttpServletRequest request,HttpServletResponse response)

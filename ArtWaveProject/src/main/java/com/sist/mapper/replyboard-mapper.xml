@@ -5,10 +5,18 @@
   <select id="replyBoardListData" resultType="ReplyBoardVO" parameterType="hashmap">
     SELECT no,id,subject,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,group_step,num
     FROM (SELECT no,id,subject,regdate,hit,group_step,rownum as num 
-    FROM (SELECT no,id,subject,regdate,hit,group_step 
-    FROM replyboard ORDER BY group_id ASC , group_step ASC))
+    	FROM (SELECT no,id,subject,regdate,hit,group_step 
+    		FROM replyboard ORDER BY group_id ASC , group_step ASC))
     WHERE num BETWEEN #{start} AND #{end}
-  </select>
+  </select> 
+ <!--  <select id="replyBoardListData" resultType="ReplyBoardVO" parameterType="hashmap">
+	SELECT no, id, subject, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, hit, group_step, isreply, num
+	FROM (SELECT no, id, subject, regdate, hit, group_step, isreply,
+           rownum() OVER (ORDER BY group_id ASC, group_step ASC) as num
+    		FROM replyboard
+    			WHERE group_step = 0)
+	WHERE num BETWEEN #{start} AND #{end}
+</select> -->
   <select id="replyBoardRowCount" resultType="int">
    SELECT COUNT(*) FROM replyboard
   </select>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +15,27 @@
 				<form method=post action="../adminpage/reply_insert_ok.do">
 					<table class="table">
 						<tr>
+							<th><h5>문의 내용</h5></th>
+						</tr>
+						<tr>
 							<th width=20% class="text-center">제목</th>
+							<td width=80%>
+								${vo.subject }
+							</td>
+						</tr>
+						<tr>
+							<th width=20% class="text-center">내용</th>
+							<td width=80%>
+								${vo.content }
+							</td>
+						</tr>
+						
+						<tr>
+							<%-- <th width=20% class="text-center">제목</th>
 							<td width=80%>
 								<input class="form-control mb-3" type="text" name="subject" placeholder="제목을 입력해주세요" aria-label="default input example">					
 								<input type="hidden" name="no" value="${no}">
-							</td>
+							</td> --%>
 						</tr>
 						<tr>
 							<th width="20%" class="text-center">내용</th>
