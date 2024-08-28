@@ -126,7 +126,9 @@ public class AdminModel {
 		   try
 		   {
 			   request.setCharacterEncoding("UTF-8");
-		   }catch(Exception ex) {}
+		   }catch(Exception ex) {
+			   ex.printStackTrace();
+		   }
 		   String no=request.getParameter("no");
 		   String subject=request.getParameter("subject");
 		   String content=request.getParameter("content");

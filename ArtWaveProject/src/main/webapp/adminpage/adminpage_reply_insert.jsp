@@ -16,7 +16,7 @@
 						<tr>
 							<th width=20% class="text-center">제목</th>
 							<td width=80%>
-								<input class="form-control mb-3" type="text" placeholder="제목을 입력해주세요" aria-label="default input example">					
+								<input class="form-control mb-3" type="text" name="subject" placeholder="제목을 입력해주세요" aria-label="default input example">					
 								<input type="hidden" name="no" value="${no}">
 							</td>
 						</tr>

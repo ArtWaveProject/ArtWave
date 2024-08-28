@@ -28,8 +28,8 @@
     WHERE num BETWEEN #{start} AND #{end}
   </select>
   <insert id="adminReplyBoardInsert" parameterType="ReplyBoardVO">
-   INSERT INTO replyboard(no,id,subject,content,group_id,group_step,isreply) 
-   VALUES(pr_no_seq.nextval,#{id},#{subject},#{content},
+   INSERT INTO replyboard(no,subject,content,group_id,group_step,isreply) 
+   VALUES(pr_no_seq.nextval,#{subject},#{content},
     #{group_id},1,1
    )
   </insert>
@@ -38,6 +38,7 @@
     SELECT group_id,group_step FROM replyboard
     WHERE no=#{no}
   </select>
+  
   <update id="adminReplyUpdate" parameterType="int">
     UPDATE replyboard SET 
     isreply=1
