@@ -7,28 +7,26 @@
 <title>Insert title here</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style type="text/css">
-    .mtop {
-        margin-top: 200px;
-    }
-    .sinav {
-        width: 150px;
+    body {
+        margin-left: 250px;
+        padding: 0;
     }
     .container2 {
-    margin-left: 50px;
-    margin-top: 150px; /* 원하는 값으로 조정 */
-}
-	.black {
-		color: black;
-		text-align: center;
-	}
-.caret{
-	display: none !important;
-}
+        width: 80%; /* 원하는 너비로 조정 */
+        margin: 0 auto; /* 수평 중앙 정렬 */
+    }
+    .black {
+        color: black;
+        text-align: center;
+    }
+    .caret {
+        display: none !important;
+    }
 </style>
 </head>
 <body>
     <div class=" container2 text-center">
-        <div class="row" style="margin-top:50px;">
+        <div class="row" style="margin-top:150px;">
             <div class="col-lg-2">
                 <div class="panel panel-info">
                     <div class="panel-heading">
@@ -57,7 +55,7 @@
             </div>
 
             <div class="col-lg-10">
-                <h2 class=" black" style="margin-left: 0px">${title}</h2>
+                <h2 class="black" style="text-align: center; font-weight:bold; font-size: 30px; margin: -30px 0 40px -220px;">${title}</h2>
                 <jsp:include page="${mypage_jsp}"></jsp:include>
             </div>
         </div>

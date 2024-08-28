@@ -5,18 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <style type="text/css">
-.joinRow {
-	width: 800px
+body {
+    font-family: Arial, sans-serif;
 }
 
 .joinRow {
-	width: 800px .
+	width: 800px 
 }
 
 .black {
 	color: black;
 }
-
 .listImg {
 	width: 45px !important;
 	height: 45px !important;
@@ -30,16 +29,17 @@
 .listBody {
 	padding: 30px;
 	width: 900px;
+	height: 280px;
 	background-color: aliceblue;
 	border-radius: 30px;
-	/* 	margin-left: 30px; 
- */
-}
+/* 	margin-left: 30px; 
+ */}
 
 .listChart {
 	background: white;
-	padding: 5px;
-	vertical-align: middle !important;
+	padding: 35px;
+	border-radius: 30px;
+	height: 220px;
 }
 
 .listChart tr td {
@@ -81,31 +81,6 @@
 	transition: background-color 0.3s, color 0.3s; /* 부드러운 색상 변화 */
 }
 
-.page a:hover {
-	background-color: #0197A3; /* 호버 시 배경색 */
-	color: #fff; /* 호버 시 텍스트 색상 */
-}
-
-.page .current a {
-	background-color: #0197A3; /* 현재 페이지 배경색 */
-	color: #fff; /* 현재 페이지 텍스트 색상 */
-	border: 1px solid #0197A3; /* 현재 페이지 테두리 색상 */
-	pointer-events: none; /* 현재 페이지 클릭 방지 */
-}
-
-.page .current a:hover {
-	background-color: #0197A3; /* 현재 페이지 호버 시 배경색 */
-	color: #fff; /* 현재 페이지 호버 시 텍스트 색상 */
-}
-
-.page li:first-child a {
-	border-radius: 4px 0 0 4px; /* 왼쪽 끝 모서리 둥글게 */
-}
-
-.page li:last-child a {
-	border-radius: 0 4px 4px 0; /* 오른쪽 끝 모서리 둥글게 */
-}
-
 .listTitle {
 	font-size: 13px;
 }
@@ -114,40 +89,6 @@
 	color: black;
 }
 
-.listArtist {
-	font-size: 11px;
-}
-
-.genreTable {
-	border: transparent;
-	margin-top: 15px;
-	margin-bottom: -1px;
-}
-
-.genreTable td {
-	padding: 0px;
-	vertical-align: middle;
-}
-
-.genreTable td a {
-	text-align: center;
-	color: #aaa;
-	display: block;
-	width: 100%;
-	border: 2px solid #aaa;
-	border-bottom: 2px solid #777;
-	border-right: none;
-	border-radius: 7px 7px 0px 0px;
-	height: 35px;
-	vertical-align: middle;
-	background: white;
-	font-size: 13px;
-	padding-top: 6px;
-}
-
-.genreTable td:first-child a {
-	
-}
 
 .genreTable td:last-child a {
 	width: 100%;
@@ -171,9 +112,68 @@
 	border: none;
 }
 
-.btnposi {
-	margin-left: 80px;
+.table tr:last-child td {
+    border-bottom: none; /* 맨 아래 선 제거 */
 }
+
+.table th {
+    background-color: #f9f9f9; /* 헤더 배경색 */
+    font-weight: bold; /* 텍스트 두껍게 */
+}
+
+.btnposi {
+    display: block;
+    width: 120px;
+    height: 35px;
+    margin: 20px auto; /* 중앙 정렬 */
+    padding: 5px;
+    font-size: 16px;
+    color: #ffffff; /* 텍스트 색상 */
+    background-color: #6C86D6; /* 배경색 */
+    border: none; /* 테두리 제거 */
+    border-radius: 5px; /* 둥근 모서리 */
+}
+
+.inline{
+ font-size: 15px;
+
+}
+input[type="password"] {
+	width: 100%;
+	border: none; /* 테두리 제거 */
+	padding: 8px;
+	box-sizing: border-box; /* 패딩 포함하여 전체 너비 설정 */
+	border-radius: 5px; /* 둥근 모서리 */
+	text-align: left; /* 왼쪽 정렬 */
+}
+input[type="button"] {
+	display: inline-block;
+	width: 100px;
+	height: 37px;
+	font-size: 12px;
+	color: #ffffff; /* 텍스트 색상 */
+	border: none; /* 테두리 제거 */
+	border-radius: 5px; /* 둥근 모서리 */
+	cursor: pointer; /* 커서 포인터 */
+	transition: background-color 0.3s, transform 0.3s; /* 부드러운 색상 변화와 크기 변화 */
+	text-align: center; /* 텍스트 중앙 정렬 */
+	line-height: 24px; /* 텍스트 수직 중앙 정렬 */
+}
+
+input[type="submit"] {
+	display: inline-block;
+	width: 100px;
+	height: 37px;
+	font-size: 12px;
+	color: #ffffff; /* 텍스트 색상 */
+	border: none; /* 테두리 제거 */
+	border-radius: 5px; /* 둥근 모서리 */
+	cursor: pointer; /* 커서 포인터 */
+	transition: background-color 0.3s, transform 0.3s; /* 부드러운 색상 변화와 크기 변화 */
+	text-align: center; /* 텍스트 중앙 정렬 */
+	line-height: 24px; /* 텍스트 수직 중앙 정렬 */
+}
+
 </style>
 <script type="text/javascript">
 $(function(){
@@ -219,7 +219,7 @@ $(function(){
 						</tr>
 						<tr>
 							<td colspan="2" class="text-center inline"><input
-								type=submit class="btn-sm btn-danger" value="비밀번호 변경"
+								type=submit class="btn-sm btn-info" value="비밀번호 변경"
 								id="pwdBtn"
 								> 
 								<input 
