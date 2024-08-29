@@ -84,7 +84,7 @@ nav {
 				<div class="col-12">
 					<nav class="main-nav navbar"> 
 						<!-- ***** Logo Start ***** -->
-						<a href="index.html" class="logo"> <img
+						<a href="../main/main.do" class="logo"> <img
 							src="../main/logo.png" alt="">
 						</a>
 						<!-- ***** Logo End ***** -->

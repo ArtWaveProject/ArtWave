@@ -4,17 +4,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	.bblack{
+		color: black !important;
+		font-weight: bold;
+	}
+	.black{
+		color: black !important;
+	}
+</style>
 </head>
 <body>
 	<footer>
-		<div class="container">
+		<div class="container ">
 			<div class="row">
-				<div class="col-lg-12">
-					<p>
+				<div class="col-lg-12 ">
+					<p class="bblack">
 						Copyright © 2036
-						<a href="#">Cyborg Gaming</a>
+						Cyborg Gaming
 						Company. All rights reserved. <br>Design:
-						<a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>
+						TemplateMo
 					</p>
 				</div>
 			</div>

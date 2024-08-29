@@ -37,9 +37,12 @@ a {
 }
 
 .btnhe {
-	margin-bottom: 61px;
+	margin-bottom: 515px;
 }
-
+.sidebtn{
+	height: 395px;
+	margin-top: 49px;
+}
 
 .search-input input {
 	width: 300px;
@@ -158,14 +161,14 @@ function musicPlay(mno) {
 					</div>
 				</div>
 				<div id="carouselExampleIndicators" class="carousel slide col-lg-4" data-bs-ride="carousel">
-					<h4>Goods</h4>
+					<h4 style="color: black"><a href="../music/alstoreList.do">Goods ></a></h4>
 					<div class="carousel-indicators btnhe">
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
 					</div>
-					<div class="carousel-inner">
+					<div class="carousel-inner" style="margin-top:20px; border-radius: 20px;">
 						<div class="carousel-item active">
 							<img src="../music/img/083622.png" class="d-block w-100" alt="...">
 						</div>
@@ -179,10 +182,10 @@ function musicPlay(mno) {
 							<img src="../music/img/083736.png" class="d-block w-100" alt="...">
 						</div>
 					</div>
-					<button class="carousel-control-prev btncolor" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+					<button class="carousel-control-prev btncolor sidebtn" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
 						<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Previous</span>
 					</button>
-					<button class="carousel-control-next btncolor" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+					<button class="carousel-control-next btncolor sidebtn" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
 						<span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span>
 					</button>
 				</div>
