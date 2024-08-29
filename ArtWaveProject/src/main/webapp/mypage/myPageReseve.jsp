@@ -196,7 +196,7 @@ button:hover {
 									<th width="20%">인원</th>
 									<td width="30%" id="mMember">${vo.inwon }명</td>
 									<th width="20%">좌석</th>
-									<td width="30%" id="mSit"></td>
+									<td width="30%" id="mSit">${vo.sno}</td>
 								</tr>
 							</table>
 						</td>

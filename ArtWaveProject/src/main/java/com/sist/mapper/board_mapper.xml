@@ -17,7 +17,7 @@ REGDATE
 SELECT fbno, cno, fbhit, fbsubject, nick, content, to_char(regdate, 'YYYY-MM-DD') as dbday, num
 FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate, rownum as num
 FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate 
-FROM freeboard WHERE cno LIKE '%'||#{type}||'%' AND cno&lt;=4))
+FROM freeboard WHERE cno LIKE '%'||#{type}||'%' AND cno&lt;=4 ORDER BY fbno DESC))
 WHERE num BETWEEN #{start} AND #{end}
 </select>
 <!-- 공지 게시글 목록 -->
@@ -25,7 +25,7 @@ WHERE num BETWEEN #{start} AND #{end}
 SELECT fbno, cno, fbhit, fbsubject, nick, content, to_char(regdate, 'YYYY-MM-DD') as dbday, num
 FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate, rownum as num
 FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate 
-FROM freeboard WHERE cno LIKE '%'||#{type}||'%' AND cno&gt;4))
+FROM freeboard WHERE cno LIKE '%'||#{type}||'%' AND cno&gt;4 ORDER BY fbno DESC))
 WHERE num BETWEEN #{start} AND #{end}
 </select>
 <!--검색 게시글 목록-->
