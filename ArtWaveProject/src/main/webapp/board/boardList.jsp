@@ -264,17 +264,17 @@ body {
 			<ul class="page page-lg">
 				<c:if test="${startPage > 1}">
 					<li>
-						<a href="../music/albumList.do?page=${startPage-1}&ss=${ss}&genre=${genre}">&laquo; Previous</a>
+						<a href="../board/boardList.do?page=${startPage-1}&ss=${ss}&cno=${type}&option=${option}">&laquo; Previous</a>
 					</li>
 				</c:if>
 				<c:forEach var="i" begin="${startPage}" end="${endPage}">
 					<li ${i == curPage ? "class='current'" : ""}>
-						<a href="../music/albumList.do?page=${i}&ss=${ss}&genre=${genre}">${i}</a>
+						<a href="../board/boardList.do?page=${startPage-1}&ss=${ss}&cno=${type}&option=${option}">${i}</a>
 					</li>
 				</c:forEach>
 				<c:if test="${endPage < totalPage}">
 					<li>
-						<a href="../music/albumList.do?page=${endPage+1}&ss=${ss}&genre=${genre}">Next &raquo;</a>
+						<a href="../board/boardList.do?page=${startPage-1}&ss=${ss}&cno=${type}&option=${option}">Next &raquo;</a>
 					</li>
 				</c:if>
 			</ul>

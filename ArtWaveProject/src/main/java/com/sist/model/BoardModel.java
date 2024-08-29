@@ -73,6 +73,7 @@ public class BoardModel {
 			endPage = totalPage;
 		count = count - (curPage - 1) * 10;
 
+		request.setAttribute("option", Integer.parseInt(option));
 		request.setAttribute("type", type);
 		request.setAttribute("count", count);
 		request.setAttribute("curPage", curPage);

@@ -85,7 +85,7 @@ nav {
 					<nav class="main-nav navbar"> 
 						<!-- ***** Logo Start ***** -->
 						<a href="index.html" class="logo"> <img
-							src="../assets/images/logo.png" alt="">
+							src="../main/logo.png" alt="">
 						</a>
 						<!-- ***** Logo End ***** -->
 						<!-- ***** Menu Start ***** -->
