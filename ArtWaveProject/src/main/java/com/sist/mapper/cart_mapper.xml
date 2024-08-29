@@ -14,7 +14,7 @@
 	</resultMap>
 	<select id="allcartListData" resultMap="cartmap"
 		parameterType="string">
-		select tno, id,
+		select tno, id, cno,
 		(select cover from book where bno=tno) as cover,
 		(select btitle from book where bno=tno) as btitle,
 		(select writer from book where bno=tno) as writer,
@@ -28,7 +28,7 @@
 	</select>
 	<select id="bookcartListData" resultMap="cartmap"
 		parameterType="string">
-		select tno, id,
+		select tno, id, cno,
 		(select cover from book where bno=tno) as cover,
 		(select btitle from book where bno=tno) as btitle,
 		(select writer from book where bno=tno) as writer,
@@ -38,7 +38,7 @@
 	</select>
 	<select id="ascartListData" resultMap="cartmap"
 		parameterType="string">
-		select tno, id, price,
+		select tno, id, price, cno,
 		(select aphoto from album_store where ano=tno) as aphoto,
 		(select aname from album_store where ano=tno) as aname,
 		(select aartist from album_store where ano=tno) as aartist,
@@ -48,7 +48,7 @@
 	</select>
 	<delete id="deleteItem" parameterType="hashMap">
 		DELETE FROM totalcart
-		WHERE tno=#{tno} AND id=#{id}
+		WHERE cno=#{cno} AND id=#{id}
 	</delete>
 
 </mapper>

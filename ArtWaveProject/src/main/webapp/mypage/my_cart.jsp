@@ -172,13 +172,13 @@
 <script type="text/javascript">
 $(function() {
     $('.xbtn').click(function() {
-        let tno = $(this).attr('data-tno');
+        let cno = $(this).attr('data-cno');
 
         $.ajax({
             type: 'POST',
             url: '../mypage/deleteItem.do',
             data: {
-                'tno': tno
+                'cno': cno 
             },
             success: function(response) {
                 if (response.trim() === 'ok') { // 서버 응답이 'ok'인 경우
@@ -194,6 +194,7 @@ $(function() {
         });
     });
 });
+
 
 
 </script>
@@ -295,7 +296,7 @@ $(function() {
 								</c:when>
 							</c:choose>
 							<td width="8%">
-							<input type="button" data-tno="${all.tno}"
+							<input type="button" data-cno="${all.cno}"
 							class="xbtn" src="../mypage/xBtn.png">
 							</td>
 						</tr>
@@ -308,7 +309,7 @@ $(function() {
 							<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
 
 							<td width="13%" class="text-center"><a
-								href="../book/detail.do?bno=${all.bovo.bno}"> <img
+								href="../book/detail.do?bno=${bl.bovo.bno}"> <img
 									src="${bl.bovo.cover}" class="listImg">
 							</a></td>
 
@@ -322,7 +323,7 @@ $(function() {
 							<td width="13%"><span class="listArtist">${bl.bovo.sale_price}
 									원</span></td>
 							<td width="8%">
-							<input type="button" data-tno="${bl.bovo.bno }"
+							<input type="button" data-cno="${all.cno}"
 							class="xbtn" src="../mypage/xBtn.png"></td>
 						</tr>
 					</c:forEach>
@@ -348,7 +349,7 @@ $(function() {
 							<td width="13%"><span class="listArtist">${mul.alvo.aprice}
 									원</span></td>
 							<td width="8%">
-							<input type="button" data-tno="${mul.alvo.ano}"
+							<input type="button" data-cno="${all.cno}"
 								class="xbtn" src="../mypage/xBtn.png">
 							</td>
 						</tr>

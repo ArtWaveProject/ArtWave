@@ -457,13 +457,13 @@ public class MyPageModel {
 	public void deleteItem(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    HttpSession session = request.getSession();
 	    String id = (String) session.getAttribute("id");
-	    String tno = request.getParameter("tno");
+	    String cno = request.getParameter("cno");
 
 	    System.out.println(id+"id model");
-	    System.out.println(tno+"cno model");
+	    System.out.println(cno+"cno model");
 	    Map<String, Object> map = new HashMap();
 	    map.put("id", id);
-	    map.put("tno", tno);
+	    map.put("cno", cno);
 
 	    String result = "fail"; // 기본값은 실패로 설정
 
