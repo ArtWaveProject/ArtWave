@@ -94,7 +94,6 @@ nav {
 								data-toggle="dropdown" href="../movie/moviemain.do"> 영화<span
 									class="caret"></span>
 							</a>
-							
 								<ul class="dropmenu">
 									<li class="submenu"><a href="../movie/movielist1.do">전체 영화</a></li>
 									<li class="submenu">
