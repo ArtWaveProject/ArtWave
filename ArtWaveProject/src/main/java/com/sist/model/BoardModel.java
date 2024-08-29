@@ -141,6 +141,25 @@ public class BoardModel {
 		request.setAttribute("main_jsp", "../board/boardDetail.jsp");
 		return "../main/main.jsp";
 	}
+	@RequestMapping("noticeboard/boardDetail.do")
+	public String noticeBoardDetail(HttpServletRequest request, HttpServletResponse response) {
+		String fbno = request.getParameter("fbno");
+		BoardVO vo = BoardDAO.boardDetailData(Integer.parseInt(fbno));
+		if(vo.getCno()>4) {
+			vo.setNick("관리자");
+		}
+		int count = BoardDAO.boardReplyCount(Integer.parseInt(fbno));
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		if (id == null)
+			id = "";
+		request.setAttribute("id", id);
+		request.setAttribute("count", count);
+		request.setAttribute("type", types[vo.getCno()]);
+		request.setAttribute("detail", vo);
+		request.setAttribute("main_jsp", "../noticeboard/boardDetail.jsp");
+		return "../main/main.jsp";
+	}
 
 	@RequestMapping("board/replyInsert.do")
 	public void boardReplyInert(HttpServletRequest request, HttpServletResponse response) {

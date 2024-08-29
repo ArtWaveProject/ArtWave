@@ -231,7 +231,7 @@ body {
 					<tr>
 						<td>${count-i.index}</td>
 						<td>
-							<a href="../board/boardDetail.do?fbno=${vo.fbno}" class="title">[${vo.typeDetail}] ${vo.fbsubject}</a>
+							<a href="../noticeboard/boardDetail.do?fbno=${vo.fbno}" class="title">[${vo.typeDetail}] ${vo.fbsubject}</a>
 						</td>
 						<td>${vo.nick}</td>
 						<td>${vo.dbday}</td>
