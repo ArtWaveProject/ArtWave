@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modalHeading.innerHTML = `좌석 선택 성공`;
     modalCenter.appendChild(modalHeading);
     const modalPara = document.createElement("p");
-    modalPara.innerHTML = `${movieNameIn} 영화의 좌석 선택이 완료되었습니다. 결제페이지로 이동해주세요 `;
+    modalPara.innerHTML = `${movieNameIn} 영화의 좌석 선택이 완료되었습니다. 결제를 위해 결제하기 버튼을 눌러주세요 :) `;
     modalCenter.appendChild(modalPara);
     successModal.appendChild(modalCenter);
 

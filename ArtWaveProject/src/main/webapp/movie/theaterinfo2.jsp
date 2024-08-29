@@ -10,7 +10,16 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function() {
+	let selectedCell = null;
     $('.dataTname').click(function() {
+    	if (selectedCell && selectedCell !== this) {
+            $(selectedCell).removeClass('selected');
+        }
+
+        $(this).addClass('selected');
+
+        selectedCell = this;
+        
     	let rtname = $(this).attr("data-tname");
         $.ajax({
             type: 'post',
@@ -39,8 +48,48 @@ $(function() {
     })
 })
 </script>
+<style type="text/css">
+
+.dataTname:hover , .dataTname.selected{
+	background-color: white;
+	cursor: pointer;
+}
+
+.table-wrapper {
+	max-height: 550px; 
+    overflow-y: auto;
+}
+
+.table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.table td, .table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+.table th {
+	background-color: #f2f2f2;
+	text-align: left;
+}
+.table-wrapper::-webkit-scrollbar {
+    width: 5px; 
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: rgb(64,0,64);
+    border-radius: 10px; 
+}
+.table{
+ border-top: 3px medium; 
+ border-top-color: white;
+}
+</style>
 </head>
 <body>
+<div class="table-wrapper">
 <table class="table" id="mtnametable">
       <c:forEach var="tname" items="${tnList }">
 			<tr  class="dataTname" data-tname="${tname }">
@@ -48,5 +97,6 @@ $(function() {
 		</tr>
 	</c:forEach>	
 	</table>
+	</div>
 </body>
 </html>

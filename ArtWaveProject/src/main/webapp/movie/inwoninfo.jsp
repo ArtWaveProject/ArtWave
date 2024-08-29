@@ -22,10 +22,17 @@ $(function(){
 	})
 })
 </script>
+<style type="text/css">
+.inwons{
+   align-content: center;
+}
+</style>
 </head>
 <body>
   <c:forEach var="i" begin="1" end="5">
-    <button class="inwons">${i }명</button>
+  <h6 style="font-size: 7px;"><br></h6>
+    <button class="inwons" style="margin-top: 5px; bottom:3px; size: 12px; color: rgb(64,0,64); background-color:white; border-radius: 6px">${i }명</button>
+
   </c:forEach>
 </body>
 </html>

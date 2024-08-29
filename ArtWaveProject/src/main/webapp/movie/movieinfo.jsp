@@ -9,7 +9,17 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 	$(function() {
+		let selectedCell = null;
 		$('.dataTr').click(function() {
+			
+			if (selectedCell && selectedCell !== this) {
+	            $(selectedCell).removeClass('selected');
+	        }
+
+	        $(this).addClass('selected');
+
+	        selectedCell = this;
+	        	        
 			let rmno = $(this).attr("data-mno")
 			let mposter = $(this).attr("data-mposter")
 			let mtitle = $(this).attr("data-mtitle")
@@ -43,20 +53,52 @@
 			})
 		})
 	})
+	
 </script>
+
 <style type="text/css">
-.dataTr:hover {
+.dataTr:hover , .dataTr.selected{
 	background-color: white;
 	cursor: pointer;
+}
+
+.table-wrapper {
+	max-height: 600px; 
+    overflow-y: auto;
+}
+
+.table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.table td, .table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+.table th {
+	background-color: #f2f2f2;
+	text-align: left;
+}
+.table-wrapper::-webkit-scrollbar {
+    width: 5px; 
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: rgb(64,0,64);
+    border-radius: 10px; 
 }
 </style>
 </head>
 <body>
-	<table class="table" id="mtitletable" style="overflow-y:scroll">
+<div class="table-wrapper">
+	<table class="table" id="mtitletable">
 		<c:forEach var="vo" items="${moList }">  <!--  영화 제목 리스트 --> 
 			<tr class="dataTr" data-mno="${vo.mno }"
 				data-mposter="https://www.kobis.or.kr${vo.mposter }"
-				data-mtitle="${vo.mtitle }" data-mgrade="${vo.mgrade }" >
+				data-mtitle="${vo.mtitle }" data-mgrade="${vo.mgrade }" 
+				>
 				<td class="text-left inline-block" class="moviedata">
 				<c:choose>
 						<c:when test="${vo.mgrade eq '전체관람가'}">
@@ -85,5 +127,6 @@
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 </body>
 </html>

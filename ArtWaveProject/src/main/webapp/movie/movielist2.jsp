@@ -40,7 +40,7 @@
                                     <div class="thumb">
                                         <a href="#"><img src="https://www.kobis.or.kr${vo.mposter}" alt="${vo.mtitle}"></a>
                                          <div class="hover-effect">
-                                            <h6 id="hetext"><a href="../movie/moviedetail_before.do?mno=${vo.mno }"><i class="fa fa-eye"></i>&nbsp; 상세보기 &nbsp;</a></h6>
+                                            <h6 id="hetext"><a href="../movie/moviedetail_before.do?mno=${vo.mno }">&nbsp; 상세보기 &nbsp;</a></h6>
                                           </div>
                                     </div>
                                     <div class="down-content">
@@ -67,7 +67,12 @@
                                         <div class="bokdBtns">
                                         	<c:choose>
                                                 <c:when test="${vo.mstate == '1'}">
-                                                 <a href="#" title="영화 예매하기"><input type="button" id="bokdBtn1" value="예매"></a>
+                                                <c:if test="${sessionScope.id!=null }">
+                                                 <a href="../movie/mreservemain.do" title="영화 예매하기"><input type="button" id="bokdBtn1" value="예매"></a>
+                                                </c:if>
+                                                <c:if test="${sessionScope.id ==null }">
+                                                <a href="../member/login.do" onclick="alert('로그인이 필요한 메뉴입니다!')" title="영화 예매하기"><input type="button" id="bokdBtn1" value="예매"></a>
+                                                </c:if>
                                                 </c:when>
                                                 <c:when test="${vo.mstate == '2'}">
                                                   <a href="#" title="영화 상영예정"><input type="button" id="bokdBtn2" value="상영예정" disabled></a>

@@ -44,10 +44,15 @@ $(function() {
     })
 })
 </script>
+<style type="text/css">
+    .date-input {
+            width: 500px; /* Set width of the date input */
+        }
+</style>
 </head>
 <body>
-    
+ <div class="container">
   <input type="date" width = "200px" min="2024-08-25" max="2024-08-31">
-
+  </div>
 </body>
 </html>

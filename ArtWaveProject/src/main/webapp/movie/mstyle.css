@@ -96,10 +96,12 @@ a:hover {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0px;
   margin-bottom: 0px;
-  font-weight: 700;
   color: black;
 }
-
+h5
+{
+	  font-weight:400;
+}
 ul {
   margin-bottom: 0px;
 }
@@ -143,7 +145,7 @@ body .page-content2 {
 body .page-content3 {
   margin-top: 100px;
   background-color: rgb(218, 220, 243);
-  padding: 30px;
+  padding: 10px;
   margin-left: 200px;
   margin-right: 200px;
   border-radius: 23px;
@@ -1105,24 +1107,22 @@ Featured Games Style
   border-radius: 23px;
   background-color: white;
   padding: 30px 30px;
-  height: 550px;
 }
 .featured-games3 .item2{
-	width: 180px;
-	height: 380px;
+	width: 178px;
+	height: 200px;
 	margin-left: 0px !important;
-	display: flex; 
+	display: inline-block; 
 }
 .featured-games3 .item2 .thumb {
   position: relative;
   overflow: hidden;
-  
 }
 
 .featured-games3 .item2 .thumb .hover-effect {
   position: absolute;
-  bottom: 210px;
-  left: 65px;
+  bottom: 100px;
+  left: 25px;
   text-align: center;
   opacity: 0.9;
   visibility: hidden;
@@ -1133,8 +1133,8 @@ Featured Games Style
 .featured-games3 .item2 .thumb:hover .hover-effect {
   opacity: 0.9;
   visibility: visible;
-  bottom: 210px;
-  left: 65px;
+  bottom: 100px;
+  left: 25px;
   cursor: pointer;
 }
 
@@ -1143,7 +1143,7 @@ Featured Games Style
   display: inline-block;
   color: rgb(64, 0, 64);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 11px;
   padding: 10px 15px;
   border-radius: 25px;
   box-shadow:none;
@@ -1151,21 +1151,27 @@ Featured Games Style
 
 .featured-games3 .item2 img {
   border-radius: 15px;
+  width: 130px;
+  height: 180px;
 }
 
-.featured-games3 .item2 h4 {
+.featured-games3 .item2 h3 {
   font-size: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
   display: inline-block;
 }
 
-.featured-games3 .item2 span {
+.featured-games3 .item2 h5 {
   color: rgb(0, 0, 0);
   display: inline-block;
-  margin-top: 7px;
-  font-weight: bold;
-  font-size: 14px;
+  margin-top: 3px;
+  font-weight: 400;
+  font-size: 9px;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width:80px !important;
 }
 
 .featured-games3 .item2 ul {
@@ -1185,26 +1191,25 @@ Featured Games Style
 
 
 .featured-games3 .owl-nav .owl-prev{
-  position: absolute;
+  position: inline-block;
   margin: 0 auto;
-  top: 50px;
-  left: 30px;
-  margin-right: 500px;
+  top: 40px;
+  left: -80px;
+  
 
   }
 
 .featured-games3 .owl-nav .owl-next {
-	position: absolute;
+	position: inline-block;
   margin: 0 auto;
-  top: 50px;
-  right: 30px;
-  margin-left: 500px;
-
+  top: 40px;
+  right: 85px;
+  
 }
 
 .featured-games3 .owl-nav .owl-prev span,
 .featured-games3 .owl-nav .owl-next span  {
-  font-size: 50px;
+  font-size: 30px;
   display: inline-block;
   color: #666;
   opacity: 1;
@@ -2280,7 +2285,7 @@ body {
   }
   #likeBtn{
 	  width: 100px;
-	  height: 60px;
+	  height: 61px;
 	  border-radius: 8px;
 	  background: none;
 	  border: none;
@@ -2332,12 +2337,7 @@ body {
 	font-weight: bold;
 	color: white !important;
 }
-.tabletotal{
-	display:inline-block;
-}
-.reserve{
-	margin-top:100px;
-}
+
 .review-list {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -2409,8 +2409,8 @@ body {
     margin-left: 10px; 
 }
 .reserve{
-	margin-top: 50px;
-	margin-left: 50px;
+	margin-top: 30px;
+	margin-right: 10px;
 }
 #detailposter {
 	display: inline-block;
@@ -2437,4 +2437,8 @@ body {
 #moinfo3, #moinfo4, #moinfo5, #moinfo6 {
 	font-weight: 300;
 	padding-right: 40px;
+}
+.tabletitle{
+	color:rgb(64,0,64); 
+	font-size: 23px; 
 }
