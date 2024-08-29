@@ -14,6 +14,8 @@
 			<h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>답변하기</h3>
 				<form method=post action="../adminpage/reply_insert_ok.do">
 					<table class="table">
+					
+					
 						<tr>
 							<th><h5>문의 내용</h5></th>
 						</tr>
@@ -30,12 +32,15 @@
 							</td>
 						</tr>
 						
+						
+						
+						
 						<tr>
-							<%-- <th width=20% class="text-center">제목</th>
+						 <th width=20% class="text-center">제목</th>
 							<td width=80%>
 								<input class="form-control mb-3" type="text" name="subject" placeholder="제목을 입력해주세요" aria-label="default input example">					
 								<input type="hidden" name="no" value="${no}">
-							</td> --%>
+							</td>
 						</tr>
 						<tr>
 							<th width="20%" class="text-center">내용</th>

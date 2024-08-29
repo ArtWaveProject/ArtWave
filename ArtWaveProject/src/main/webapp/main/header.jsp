@@ -85,21 +85,25 @@ nav {
 					<nav class="main-nav navbar"> 
 						<!-- ***** Logo Start ***** -->
 						<a href="index.html" class="logo"> <img
-							src="../assets/images/logo.png" alt="">
+							src="../main/logo.png" alt="">
 						</a>
 						<!-- ***** Logo End ***** -->
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
-							<li><a href="index.html" class="active">홈</a></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="../movie/moviemain.do"> 영화<span
 									class="caret"></span>
 							</a>
-							
 								<ul class="dropmenu">
 									<li class="submenu"><a href="../movie/movielist1.do">전체 영화</a></li>
-									<li class="submenu"><a href="#">예매 하기</a></li>
-									<li class="submenu"><a href="#">스토어</a></li>
+									<li class="submenu">
+										<c:if test="${sessionScope.id!=null }">
+									<a href="../movie/mreservemain.do">예매 하기</a>
+									    </c:if>
+									    <c:if test="${sessionScope.id==null }">
+									<a href="../member/login.do" onclick="alert('로그인이 필요한 메뉴입니다!')"> 예매 하기</a>
+									    </c:if>
+									</li>
 								</ul></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="../book/list.do"> 도서<span

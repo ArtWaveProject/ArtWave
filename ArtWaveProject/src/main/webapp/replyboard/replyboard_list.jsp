@@ -106,8 +106,7 @@ body {
 						      <td width="10%" class="text-center">${count }</td>
 						      <td width="60%">
 						       <c:if test="${vo.group_step>0 }">
-						        <span>└</span>&nbsp;&nbsp;&nbsp;&nbsp;
-						        
+						        <span>┖</span>&nbsp;&nbsp;&nbsp;&nbsp;        
 						       </c:if>
 						       ${vo.subject}
 						      </td>

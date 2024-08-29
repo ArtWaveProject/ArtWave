@@ -256,7 +256,7 @@
 }
 
 .review-form button:hover {
-	background-color: #45a049;
+	background-color: #506CAD;
 }
 
 .review-form .review-container {
@@ -763,7 +763,7 @@ function reviewlist(){
 		  html+=stars+'<br>'
 			html+='<span class="date">'+reply.dbday+'&nbsp;</span>'
 			html+='<div>'
-			html+='<div class="r-content">'+reply.tcontent+'</div>'
+			html+='<div class="r-content"><pre>'+reply.tcontent+'</pre></div>'
 			html+='</div>'
 			html+='</div>'
 			html+='</td>'

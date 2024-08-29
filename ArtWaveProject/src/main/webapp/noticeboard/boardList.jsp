@@ -221,7 +221,7 @@ body {
 				<tr>
 					<th width="5%" class="text-center">번호</th>
 					<th width="50%" class="text-center">제목</th>
-					<th width="15%" class="text-center">닉네임</th>
+					<th width="15%" class="text-center">작성자</th>
 					<th width="20%" class="text-center">작성일</th>
 					<th width="10%" class="text-center">조회수</th>
 				</tr>
@@ -231,7 +231,7 @@ body {
 					<tr>
 						<td>${count-i.index}</td>
 						<td>
-							<a href="../board/boardDetail.do?fbno=${vo.fbno}" class="title">[${vo.typeDetail}] ${vo.fbsubject}</a>
+							<a href="../noticeboard/boardDetail.do?fbno=${vo.fbno}" class="title">[${vo.typeDetail}] ${vo.fbsubject}</a>
 						</td>
 						<td>${vo.nick}</td>
 						<td>${vo.dbday}</td>

@@ -66,7 +66,7 @@
                                         <div class="bokdBtns">
                                         	<c:choose>
                                                 <c:when test="${vo.mstate == '1'}">
-                                                 <a href="#" title="영화 예매하기"><input type="button" id="bokdBtn1" value="예매"></a>
+                                                 <a href="../movie/mreservemain.do" title="영화 예매하기"><input type="button" id="bokdBtn1" value="예매"></a>
                                                 </c:when>
                                                 <c:when test="${vo.mstate == '2'}">
                                                   <a href="#" title="영화 상영예정"><input type="button" id="bokdBtn2" value="상영예정" disabled></a>

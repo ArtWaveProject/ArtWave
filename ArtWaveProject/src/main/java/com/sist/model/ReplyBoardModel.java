@@ -66,17 +66,22 @@ public class ReplyBoardModel {
 			   ex.printStackTrace();
 		   }
 		   HttpSession session=request.getSession();
+		   
+		   
 		   String id=(String)session.getAttribute("id");
 		   //String name=(String)session.getAttribute("rbname");
 		   String subject=request.getParameter("subject");
 		   String content=request.getParameter("content");
 		   
 		   
-		   ReplyBoardVO vo=new ReplyBoardVO();
+		   ReplyBoardVO vo = new ReplyBoardVO();
 		   vo.setId(id);
+		   
 		   //vo.setName(name);
 		   vo.setSubject(subject);
 		   vo.setContent(content);
+		   
+		   
 		   ReplyBoardDAO.replyBoardInsert(vo);
 		   return "redirect:../replyboard/list.do";// 재호출 
 	   }

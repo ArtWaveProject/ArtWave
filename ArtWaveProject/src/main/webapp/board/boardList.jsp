@@ -136,6 +136,21 @@ body {
 .button-container input[type="button"]:hover {
 	background-color: #0056b3;
 }
+
+input[type="submit"] {
+	background-color: #3b84d1;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: background 0.3s;
+}
+
+input[type="submit"]:hover {
+	background-color: #0056b3;
+}
 .page {
 	list-style: none;
 	padding: 0;
@@ -236,7 +251,7 @@ body {
 				<tr>
 					<th width="5%" class="text-center">번호</th>
 					<th width="50%" class="text-center">제목</th>
-					<th width="15%" class="text-center">닉네임</th>
+					<th width="15%" class="text-center">작성자</th>
 					<th width="20%" class="text-center">작성일</th>
 					<th width="10%" class="text-center">조회수</th>
 				</tr>
@@ -264,17 +279,17 @@ body {
 			<ul class="page page-lg">
 				<c:if test="${startPage > 1}">
 					<li>
-						<a href="../music/albumList.do?page=${startPage-1}&ss=${ss}&genre=${genre}">&laquo; Previous</a>
+						<a href="../board/boardList.do?page=${startPage-1}&ss=${ss}&cno=${type}&option=${option}">&laquo; Previous</a>
 					</li>
 				</c:if>
 				<c:forEach var="i" begin="${startPage}" end="${endPage}">
 					<li ${i == curPage ? "class='current'" : ""}>
-						<a href="../music/albumList.do?page=${i}&ss=${ss}&genre=${genre}">${i}</a>
+						<a href="../board/boardList.do?page=${i}&ss=${ss}&cno=${type}&option=${option}">${i}</a>
 					</li>
 				</c:forEach>
 				<c:if test="${endPage < totalPage}">
 					<li>
-						<a href="../music/albumList.do?page=${endPage+1}&ss=${ss}&genre=${genre}">Next &raquo;</a>
+						<a href="../board/boardList.do?page=${endPage+1}&ss=${ss}&cno=${type}&option=${option}">Next &raquo;</a>
 					</li>
 				</c:if>
 			</ul>
