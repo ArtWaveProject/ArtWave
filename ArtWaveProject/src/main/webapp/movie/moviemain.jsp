@@ -100,7 +100,7 @@ $(function(){
                  <c:forEach var="vo" items="${tList }">
 				 <div class="item">
 				 <div class="thumb">
-                <img src="https://www.kobis.or.kr${vo.mposter }"  alt="">
+                <a href="../movie/moviedetail_before.do?mno=${vo.mno }"><img src="https://www.kobis.or.kr${vo.mposter }"  alt=""></a>
                  <div class="hover-effect">
                       <h6><a href="../movie/moviedetail_before.do?mno=${vo.mno }" title="상세정보 확인">상세정보</a></h6>
                       </div>

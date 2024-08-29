@@ -38,7 +38,7 @@
                             <div class="col-md-3">
                                 <div class="item">
                                     <div class="thumb">
-                                        <a href="#"><img src="https://www.kobis.or.kr${vo.mposter}" alt="${vo.mtitle}"></a>
+                                        <a href="../movie/moviedetail_before.do?mno=${vo.mno }"><img src="https://www.kobis.or.kr${vo.mposter}" alt="${vo.mtitle}"></a>
                                          <div class="hover-effect">
                                             <h6 id="hetext"><a href="../movie/moviedetail_before.do?mno=${vo.mno }">&nbsp; 상세보기 &nbsp;</a></h6>
                                           </div>
