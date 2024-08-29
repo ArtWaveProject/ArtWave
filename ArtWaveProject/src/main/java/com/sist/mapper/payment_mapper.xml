@@ -7,13 +7,13 @@
 <result property="avo.aphoto" column="aposter"/>
 </resultMap>
 	<insert id="paymentInsert" parameterType="hashmap">
-		INSERT INTO payment VALUES((SELECT(NVL(max(pno)+1, 1)) FROM payment), #{id}, #{count}, #{price}, sysdate, #{post}, #{addr1}, #{addr2}, #{type}, #{gno}, #{ptitle})
+		INSERT INTO payment VALUES((SELECT(NVL(max(pno)+1, 1)) FROM payment), #{id}, #{count}, #{price}, sysdate, #{post}, #{addr1}, '${addr2}', #{type}, #{gno}, #{ptitle})
 	</insert>
 	<select id="paymentCheck" resultType="int" parameterType="hashmap">
 		SELECT COUNT(*) FROM payment WHERE id=#{id} AND type=#{type} AND gno=#{gno}
 	</select>
 	<select id="paymentList" resultMap="paymentMap" parameterType="hashmap">
-	SELECT pno, id, count, price, buydate, post, addr1, addr2, type, gno, ptitle,
+	SELECT pno, id, count, price, buydate, post, addr1, addr2, type, gno, ptitle, TO_CHAR(buydate, 'YYYY-MM-DD') as dbday,
 	(SELECT poster FROM music WHERE gno=music.mno AND type=1) as mposter,
 	(SELECT cover FROM book WHERE gno=book.bno AND type=2) as bposter,
 	(SELECT aphoto FROM album_store WHERE gno=album_store.ano AND type=3) as aposter

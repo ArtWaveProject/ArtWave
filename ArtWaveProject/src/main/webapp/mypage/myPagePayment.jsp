@@ -193,18 +193,20 @@
 			</table>
 			<table class="table listChart" id="middle">
 				<tr>
-					<th width="10%" class="text-center">번호</th>
-					<th width="15%" class="text-center"></th>
+					<th width="7%" class="text-center">번호</th>
+					<th width="7%" class="text-center"></th>
 					<th width="40%" class="text-center">제목</th>
 					<th width="20%" class="text-center">분류</th>
+					<th width="26%" class="text-center">구매일</th>
 				</tr>
 				<c:forEach var="vo" items="${list}" varStatus="i">
 					<tr style="vertical-align: middle; height: 50px;">
-						<td width="10%" class="text-center">${i.index+1}</td>
-						<td width="15%" class="text-center"><a href="${vo.type==1?'../music/musicDetail.do?mno=':vo.type==2?'../book/detail.do?bno=':'../alstore/alstoreDetail.do?ano='}${vo.gno}"> <img src="${vo.type==1?vo.mvo.poster:vo.type==2?vo.book.cover:vo.avo.aphoto}" class="listImg">
+						<td width="7%" class="text-center">${i.index+1}</td>
+						<td width="7%" class="text-center"><a href="${vo.type==1?'../music/musicDetail.do?mno=':vo.type==2?'../book/detail.do?bno=':'../alstore/alstoreDetail.do?ano='}${vo.gno}"> <img src="${vo.type==1?vo.mvo.poster:vo.type==2?vo.book.cover:vo.avo.aphoto}" class="listImg">
 						</a></td>
 						<td width="40%"><span class="listTitle"><a href="${vo.type==1?'../music/musicDetail.do?mno=':vo.type==2?'../book/detail.do?bno=':'../alstore/alstoreDetail.do?ano='}${vo.gno}">${vo.ptitle}</a></span></td>
 						<td width="20%"><span class="listArtist">${vo.typeDetail }</span></td>
+						<td width="26%"><span class="listArtist">${vo.dbday}</span></td>
 					</tr>
 				</c:forEach>
 			</table>
