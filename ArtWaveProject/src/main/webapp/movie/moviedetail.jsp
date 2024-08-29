@@ -437,7 +437,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <tr>
           <td>
           <h4 id="moinfo1">&nbsp;${vo.mrday}&nbsp;개봉&nbsp;|&nbsp;${vo.mtime}&nbsp;|&nbsp;${vo.mgrade}&nbsp;<br>
-          &nbsp;누적관객수&nbsp;:&nbsp; ${vo.mcount }명&nbsp;|&nbsp;${vo.mnation }&nbsp;</h4>
+          &nbsp;누적관객수&nbsp;:&nbsp; <fmt:formatNumber value="${vo.mcount }" type="number" ></fmt:formatNumber>명&nbsp;|&nbsp;${vo.mnation }&nbsp;</h4>
        </td>
        <tr>
         <td class="text-left" id="moinfo2">소개</td>
@@ -475,16 +475,17 @@ document.addEventListener('DOMContentLoaded', function() {
        </td>
        </tr>
        </table>
-         <div class="featured-games2">
+        <c:if test="${mbvo.mno != null }">
+         <div class="featured-games3">
           <div class="row">
             <div class="col-lg-4">
             <div class="blank">
             </div>
             </div>
             <div class="col-lg-7">
-        <h5>&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <h4>&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         			# &nbsp; 관련&nbsp;추천&nbsp;도서
-       	</h5>
+       	</h4>
             <h3>  <br></h3>
                 <div class="owl-features owl-carousel" id="moviebookc">
                  <c:forEach var="mbvo" items="${mbList }">
@@ -495,7 +496,7 @@ document.addEventListener('DOMContentLoaded', function() {
                  <div class="hover-effect">
                       <h6><a href="../book/detail.do?bno=${mbvo.bno }"  title="상세정보 확인">상세정보</a></h6>
                       </div>
-                <h5 id="text2"><span>${mbvo.btitle }</span></h5>
+                <h5><span>${mbvo.btitle }</span></h5>
                 <ul>
                     <li>&nbsp; ${mbvo.sale_price }원</li>
                 </ul>
@@ -510,6 +511,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
  </div>
  </div>
+   </c:if>
  </div>
 	<div class="heading-section" style="padding: 0 0 15px 0;">
 			<span style="font-size: 25px; font-weight: bold;"><span id="rcount" style="font-size:30px;color:  #7400e8">${rcount}</span> 명의&nbsp;회원이&nbsp;평가한&nbsp;이&nbsp;영화의&nbsp;평균별점</span>
@@ -520,7 +522,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				</div>
 				<div id="review-form" class="review-form" style="margin-top: 40px;">
 						<div class="heading-section" style="padding: 0 0 15px 0;">
-							<span style="font-size: 20px; font-weight: bold;">영화 리뷰(<span id="rcount">${rcount}</span>)</span>
+							<span style="font-size: 20px; font-weight: bold;">영화 관람평(<span id="rcount">${rcount}</span>)</span>
 										</div>
 											<input type="hidden" id="mno" name="mno" value="${vo.mno}" /> 
 											<div>
@@ -544,8 +546,8 @@ document.addEventListener('DOMContentLoaded', function() {
 													<td>
 														<div class="review-container">
 															<textarea id="content" style="resize: none;"
-																name="content" required placeholder="리뷰를 작성해주세요!!"></textarea>
-															<button type="button" id="reviewBtn">리뷰 작성</button>
+																name="content" required placeholder="관람평을 작성해 주세요!"></textarea>
+															<button type="button" id="reviewBtn">관람평 작성</button>
 														</div>
 													</td>
 												</tr>
