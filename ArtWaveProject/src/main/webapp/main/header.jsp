@@ -90,7 +90,6 @@ nav {
 						<!-- ***** Logo End ***** -->
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
-							<li><a href="index.html" class="active">홈</a></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="../movie/moviemain.do"> 영화<span
 									class="caret"></span>
