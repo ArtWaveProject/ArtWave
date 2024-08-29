@@ -1,5 +1,6 @@
 package com.sist.model;
 
+import java.io.PrintWriter;
 import java.net.http.HttpRequest;
 import java.util.*;
 
@@ -47,7 +48,7 @@ public class ReplyBoardModel {
 		   return "../main/main.jsp";
 	   }
 		
-	//문의게시판 쓰기
+	// 문의게시판 쓰기
 	   @RequestMapping("replyboard/insert.do")
 	   public String replyboard_insert(HttpServletRequest request,HttpServletResponse response)
 	   {
@@ -55,7 +56,7 @@ public class ReplyBoardModel {
 		   return "../main/main.jsp"; // 새로운 페이지 제작 
 	   }
 	  
-	   //문의게시판 삽입
+	   // 문의게시판 삽입
 	   @RequestMapping("replyboard/insert_ok.do")
 	   public String replyboard_insert_ok(HttpServletRequest request,HttpServletResponse response)
 	   {
@@ -119,4 +120,32 @@ public class ReplyBoardModel {
 		 * vo.setSubject(subject); // vo.setContent(content); //
 		 * ReplyBoardDAO.replyBoardInsert(vo); // return
 		 * "redirect:../adminpage/adminpage_replyboard_list.do";// 재호출 // }
-		 */}
+		 */
+	   @RequestMapping("replyboard/delete.do")
+	   public String replyboard_delete(HttpServletRequest request,HttpServletResponse response)
+	    {
+	    	request.setAttribute("no", request.getParameter("no"));
+	    	request.setAttribute("main_jsp", "../replyboard/delete.jsp");
+	    	return "../main/main.jsp";
+	    }
+	   
+	   @RequestMapping("replyboard/delete_ok.do")
+	   public void board_delete_ok(HttpServletRequest request,HttpServletResponse response)
+	    {
+	    	String no=request.getParameter("no");
+	    	String pwd=request.getParameter("pwd");
+	    	
+	    	// DAO연동 
+	    	boolean bCheck=ReplyBoardDAO.adminReplyDelete(Integer.parseInt(no), pwd);
+	    	// => 이동 
+			/*
+			 * try { // Ajax 처리 //response.setContentType("text/html;charset=UTF-8");
+			 * 
+			 * if(bCheck==true)// 비밀번호가 맞는 경우 {} else {} }catch(Exception ex){
+			 * 
+			 * }
+			 */
+	    }
+	   
+
+}

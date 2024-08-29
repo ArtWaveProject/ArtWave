@@ -84,6 +84,7 @@ body {
                     <a href="../replyboard/delete.do?no=${vo.no}" class="btn btn-danger">삭제</a>
                 </c:if>
             </div>
+            
         </div>
     </div>
 </div>

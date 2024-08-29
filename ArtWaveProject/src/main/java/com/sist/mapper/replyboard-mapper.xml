@@ -87,6 +87,7 @@
    WHERE group_id=#{group_id} AND group_step=1
   </delete>
   
+  
   <update id="adminReplyUpdate2" parameterType="int">
     UPDATE replyboard SET 
     isreply=0
