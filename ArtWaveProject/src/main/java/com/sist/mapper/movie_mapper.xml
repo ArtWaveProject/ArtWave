@@ -57,7 +57,7 @@
     SELECT CEIL(COUNT(*)/16.0) FROM movie WHERE mtype LIKE '2' AND mtitle LIKE '%'||#{ss}||'%'
   </select>
     <select id="movieDetailData" resultType="MovieVO" parameterType="hashmap">
-     SELECT mno, mtitle, mposter, mcount, mtype, mstate, mgenre, mtime, mdirector, mactor, mgrade, mnation, msynop, TO_CHAR(mrdate,'YYYY.MM.DD') as mrday
+     SELECT mno, mtitle, mposter, mcount, mtype, mstate, mgenre, mtime, mdirector, mactor, mgrade, mnation, msynop, TO_CHAR(mrdate,'YYYY.MM.DD') as mrday, likecount
      FROM movie WHERE mno=#{mno}
      </select>
 </mapper>

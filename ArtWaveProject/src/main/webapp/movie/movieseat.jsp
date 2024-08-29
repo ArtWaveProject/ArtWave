@@ -5,11 +5,69 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="../movie/seatstyle.css">
- <script  src="../movie/seatscript.js" defer></script>
+<link rel="stylesheet" href="../movie/seatstyle.css">
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script type="text/javascript" src="../movie/seatscript.js"></script>
+<script>
+var IMP = window.IMP; 
+IMP.init("imp68206770"); 
+function requestPay(json,name,price) {
+	console.log(json)
+    IMP.request_pay({
+        pg: "html5_inicis",
+        pay_method: "card",
+        merchant_uid: "ORD20180131-0000011",   // 주문번호
+        name: name,
+        amount: price,         // 숫자 타입
+        buyer_email: json.email,
+        buyer_name: json.name,
+        buyer_tel: json.phone,
+        buyer_addr: json.address,
+        buyer_postcode: json.post
+    }, function (rsp) { // callback
+    	alert('예매완료')
+    });
+}
+$(function () {
+	$('#payBtn').click(function(){
+		let gno=${mno}
+		let price=$("#price").val()
+		let name='${mtitle}'
+		let id=$('#id').val()
+		if(id.length<2){
+			alert('로그인이 필요합니다')
+			return
+		}
+		let mno=$('#rmno').val()
+		let mtitle=$('#rmovietitle').val()
+		let tloc=$('#rtloc').val()
+		let tname=$('#rtname').val()
+		let date=$('#rdate').val()
+		let tdname=$('#rtdname').val()
+		let time=$('#rtime').val()
+		let inwon=$('#rinwon').val()
+		let seats=$('#seats').val()
+		console.log(price)
+		console.log(seats)
+					$.ajax({
+						type:'post',
+						url:'../movie/reserveok.do',
+						data:{
+							"gno":gno,
+							"price":price,
+							'title':name
+							},
+						success:function(result)
+						{
+							let json=JSON.parse(result)
+						  console.log(json)
+							requestPay(json,name,price)
+						}
+					})
+		})
+})
+
+</script>
 </head>
 <body>
 <section id="section">
@@ -170,14 +228,14 @@
               </div>
             </div>
             <!-- button Cont -->
-
+			<input type="hidden" value="${sessionScope.id}" id="id">
             <div class="buttonCont">
               <div class="cancelBtn">
                 <button id="cancelBtn">선택 취소하기</button>
               </div>
               <div class="proceedBtnEl">  
                <button id="proceedBtn">좌석 확인</button>
-             <form method="post" action="../movie/reserveok.do">
+             <!-- <form method="post" action="../movie/reserveok.do"> -->
             <input type="hidden" name="mno" value="${mno }" id="rmno">
             <input type="hidden" name="mtitle" value="${mtitle }" id="rmovietitle">
             <input type="hidden" name="tloc" value="${tloc }" id="rtloc">
@@ -188,8 +246,8 @@
             <input type="hidden" name="inwon" value="${rinwon }" id="rinwon">
             <input type="hidden" name="price" value="" id="price">
             <input type="hidden" name="seats" value="" id="seats">
-			 <button id="payBtn" disabled >결제하기</button>
-			 </form>
+			 <button type="button" id="payBtn"  >확정하기</button>
+			 <!-- </form> -->
               </div>
             </div>
           </div>

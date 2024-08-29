@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+
 import controller.RequestMapping;
 import com.sist.dao.*;
 import com.sist.vo.*;
@@ -166,7 +168,7 @@ public class MreserveModel {
 	  }
 
 	@RequestMapping("movie/reserveok.do")
-	public String reserve_ok(HttpServletRequest request, HttpServletResponse response) {
+	public void reserve_ok(HttpServletRequest request, HttpServletResponse response) {
 		// 예약정보
 		try {
 			request.setCharacterEncoding("UTF-8");
@@ -200,11 +202,24 @@ public class MreserveModel {
 			vo.setPrice(Integer.parseInt(totalPrice));
 
 			MovieDAO.reserveInsert(vo);
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
+			
+			MemberVO mvo = MemberDAO.memberinfo(id);
+			Map map = new HashMap();
+			System.out.println(mvo.getPost());
+			map.put("ptitle", mtitle);
+			map.put("gno", Integer.parseInt(mno));
+			map.put("id", id);
+			map.put("price", Integer.parseInt(totalPrice));
+			
+		JSONObject obj = new JSONObject();
+		obj.put("name", mvo.getName());
+		obj.put("email", mvo.getEmail());
+		obj.put("address", mvo.getAddr1());
+		obj.put("post", mvo.getPost());
+		obj.put("phone", mvo.getPhone());
+			response.setContentType("text/plain;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.write(obj.toJSONString());
+		} catch (Exception e) {e.printStackTrace();}
 		}
-		// request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
-		return "redirect:../movie/mreservemain.do";
-	}
 }

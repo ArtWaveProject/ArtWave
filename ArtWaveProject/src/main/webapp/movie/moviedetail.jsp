@@ -11,27 +11,14 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style type="text/css">
-#likeBtn {
-	background-color: transparent;
-	border: 1px solid #ccc;
-	color: #fff;
-	width: 100px;
-	height: 60px;
-	border-radius: 8px;
-	display: inline-block;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	margin-bottom:2px;
-}
 
-#likeBtn img {
-	width: 30px;
-	height: 30px;
-}
+ #likeBtn{
+	  background-color: transparent;
+	  border: 2px solid rgb(64, 0, 64);
+	  }
 .star-rating {
 	display: flex;
-	font-size: 24px;
+	font-size: 25px;
 }
 
 .star-rating input[type="radio"] {
@@ -84,21 +71,21 @@
 }
 
 .review-form button {
-	background-color: #5D7DC9;
+	background-color: rgb(64,0,64);
 	color: #fff;
 	padding: 12px 20px; 
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
 	font-size: 16px;
-	height: 50px; 
+	height: 65px; 
 	vertical-align: middle; 
 	box-sizing: border-box;
 	margin-bottom: 10px;
 }
 
 .review-form button:hover {
-	background-color: #45a049;
+	background-color: purple;
 }
 
 .review-form .review-container {
@@ -172,10 +159,6 @@
     margin-left: 5px; 
 }
 
-.avgRating {
-    display: flex;
-    align-items: center;
-}
 #avgN{
     margin-left: 10px; 
 }
@@ -188,7 +171,7 @@ $(function() {
  	
   let ratingCheck = false
   let likeCheck = false
-  let id = '${id}'
+  let id=$('#id').val()
   let mno = $('#mno').val()
   
   reviewlist()
@@ -204,10 +187,10 @@ $(function() {
           success: function(result) {
               if (result === 'OK') {
                   likeCheck = true
-                  $('#like-button').attr('src', 'fullheart.png')
+                  $('#likeBtnIcon').attr('src', 'fullheart.png')
               } else {
                   likeCheck = false
-                  $('#like-button').attr('src', 'heart.png')
+                  $('#likeBtnIcon').attr('src', 'heart.png')
               }
           }
       })
@@ -216,44 +199,41 @@ $(function() {
   }
 
   $('#likeBtn').click(function() {
-
-      if (likeCheck) {
-          $.ajax({
-              type: 'post',
-              url: '../like/likeOff.do',
-              data: {
-                  'tno': mno,
-                  'type': 4
-              },
-              success: function(result) {
-              	
-                  if (result >= 0) {
-                      likeCheck = false;
-                      $('#like-button').attr('src', 'heart.png')
-                  }
-              }
-          })
-      } else {
-          $.ajax({
-              type: 'post',
-              url: '../like/likeOn.do',
-              data: {
-                  'tno': mno,
-                  'type': 4
-              },
-              success: function(result) {
-              	
-                  if (result >= 0) {
-                      likeCheck = true;
-                      $('#like-button').attr('src', 'fullheart.png')
-                  }
-              },
-              error:function(request, status, error){
-              	alert(error)
-              }
-          })
-      }
-  })
+		if(likeCheck===true){
+			$.ajax({
+				type:'post',
+				url:'../like/likeOff.do',
+				data:{
+					'tno':mno,
+					'type':4
+				},
+				success:function(result){
+					if(result>=0){
+						likeCheck=false
+						$('#likeBtnIcon').attr('src', 'heart.png')
+						$('#likeCount').text(result)
+					}
+				}
+			})
+		}
+		else{
+			$.ajax({
+				type:'post',
+				url:'../like/likeOn.do',
+				data:{
+					'tno':mno,
+					'type':4
+				},
+				success:function(result){
+					if(result>=0){
+						likeCheck=true
+						$('#likeBtnIcon').attr('src', 'fullheart.png')
+						$('#likeCount').text(result)
+					}
+				}
+			})
+		}
+	})
   $('.rating').change(function() {
   ratingCheck=true	
 		let rating=$('input[name="rating"]:checked').val()
@@ -266,9 +246,9 @@ $(function() {
   let star= ''
   for (let i=1;i<=5;i++) {
       if (i<=avgRating) {
-          star+='<img src="star.png" style="width:20px;height:20px;">'
+          star+='<img src="star.png" style="width:23px;height:23px;">'
       } else {
-          star+='<img src="nostar.png" style="width:20px;height:20px;">'
+          star+='<img src="nostar.png" style="width:23px;height:23px;">'
       }
   }
   $('.avgstar').html(star)
@@ -293,7 +273,7 @@ $(function() {
 		}
 		let content=$('#content').val()
 		if(content.trim()===''){
-			alert('리뷰를 입력해주세요')
+			alert('관람평을 입력해주세요')
 			$('#content').focus()
 			return
 		}
@@ -363,7 +343,7 @@ function reviewlist(){
 		  html+=stars+'<br>'
 			html+='<span class="date">'+reply.dbday+'&nbsp;</span>'
 			html+='<div>'
-			html+='<div class="r-content">'+reply.tcontent+'</div>'
+			html+='<div class="r-content"><pre>'+reply.tcontent+'</pre></div>'
 			html+='</div>'
 			html+='</div>'
 			html+='</td>'
@@ -406,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function() {
       allStars.forEach(star => {
           const starValue = star.getAttribute('for').replace('star', '')
           if (parseInt(starValue) >= parseInt(selectedValue)) {
-              star.style.color = '#779BC9'
+              star.style.color = '#D1B810'
           }
       })
   }
@@ -425,22 +405,22 @@ document.addEventListener('DOMContentLoaded', function() {
      <input type="hidden" value="${vo.mno}" id="mno">
 	<table class="mdtable">
        <tr>
-        <td width="40%" class="text-center" rowspan="16">
+        <td width="40%" class="text-center" rowspan="14">
           <img src="https://www.kobis.or.kr${vo.mposter }" id="detailposter">
         </td>
         </tr>
         <tr>
         <td>
-          <h2 id="motitle" class="text-left">&nbsp;${vo.mtitle}&nbsp;&emsp;</h2>        
+          <h2 id="motitle" class="text-left">${vo.mtitle}&nbsp;&emsp;</h2>        
         </td>
         </tr>
         <tr>
           <td>
-          <h4 id="moinfo1">&nbsp;${vo.mrday}&nbsp;개봉&nbsp;|&nbsp;${vo.mtime}&nbsp;|&nbsp;${vo.mgrade}&nbsp;<br>
-          &nbsp;누적관객수&nbsp;:&nbsp; <fmt:formatNumber value="${vo.mcount }" type="number" ></fmt:formatNumber>명&nbsp;|&nbsp;${vo.mnation }&nbsp;</h4>
+          <h5 id="moinfo1">${vo.mrday}&nbsp;개봉&nbsp;|&nbsp;${vo.mtime}&nbsp;|&nbsp;${vo.mgrade}&nbsp;<br>
+          누적관객수&nbsp;:&nbsp; <fmt:formatNumber value="${vo.mcount }" type="number" ></fmt:formatNumber>명&nbsp;|&nbsp;${vo.mnation }&nbsp;</h5>
        </td>
        <tr>
-        <td class="text-left" id="moinfo2">소개</td>
+        <td class="text-left" id="moinfo2"></td>
         </tr>
         <tr>
         <td id="moinfo3"> ${vo.msynop } </td>
@@ -457,12 +437,14 @@ document.addEventListener('DOMContentLoaded', function() {
        </tr>
        </c:if>
        <tr>
-       <td><button id="likeBtn">
-				<img src="../movie/heart.png" id="likeBtnIcon"><h5 id="liketext1">&nbsp;&nbsp;${vo.likecount }</h5></button> 
-     		
+       <td>
+       
+       <button id="likeBtn">
+				<img src="../movie/heart.png" id="likeBtnIcon"><span id="likeCount">&nbsp;&nbsp;&nbsp;${vo.likecount }</span></button> 		
+           
               <c:choose>
                                                 <c:when test="${vo.mstate == '1'}">
-                                                 <a href="#" title="영화 예매하기"><input type="button" id="dbokdBtn1" value="예매"></a>
+                                                 <a href="../movie/mreservemain.do" title="영화 예매하기"><input type="button" id="dbokdBtn1" value="예매"></a>
                                                 </c:when>
                                                 <c:when test="${vo.mstate == '2'}">
                                                   <a href="#" title="영화 상영예정"><input type="button" id="dbokdBtn2" value="상영예정" disabled></a>
@@ -475,53 +457,45 @@ document.addEventListener('DOMContentLoaded', function() {
        </td>
        </tr>
        </table>
-        <c:if test="${mbvo.mno != null }">
-         <div class="featured-games3">
-          <div class="row">
-            <div class="col-lg-4">
-            <div class="blank">
-            </div>
-            </div>
-            <div class="col-lg-7">
-        <h4>&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        			# &nbsp; 관련&nbsp;추천&nbsp;도서
-       	</h4>
+        <div class="row">
+        <div class="featured-games3" style="width:650px; height:500px; padding-left:30px; padding-right:10px;">           
+            <div class="mbook" >
+        <h4>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        			# &nbsp; 관련&nbsp;추천&nbsp;도서</h4>
             <h3>  <br></h3>
-                <div class="owl-features owl-carousel" id="moviebookc">
-                 <c:forEach var="mbvo" items="${mbList }">
+                <div class="owl-features owl-carousel" id="moviebookc" style="width:500px; height:400px; margin-left:20px; margin-right:20px; left:10px;">
+                <c:forEach var="mbvo" items="${mbList }">
                   <input type="hidden" value="${vo.mno}" id="mno">
-				 <div class="item2">
+				 <div class="item2" >
 				 <div class="thumb" id="mbookimg">
                 <img src="${mbvo.cover }"  alt="" >
                  <div class="hover-effect">
                       <h6><a href="../book/detail.do?bno=${mbvo.bno }"  title="상세정보 확인">상세정보</a></h6>
                       </div>
-                <h5><span>${mbvo.btitle }</span></h5>
+                <h4><span>${mbvo.btitle }</span></h4>
                 <ul>
-                    <li>&nbsp; ${mbvo.sale_price }원</li>
+                    <li> ${mbvo.sale_price }원</li>
                 </ul>
             </div>
         </div>
-          </c:forEach>
+         </c:forEach>
         </div>
-        </div>
-         <div class="col-lg-1">
-            <div class="blank">
-            </div>
-            </div>
+         </div>
+             </div>
+    </div>
  </div>
- </div>
-   </c:if>
- </div>
-	<div class="heading-section" style="padding: 0 0 15px 0;">
+ <div class="container">
+ <div id="review-form" class="review-form" style="margin-top: 20px; margin-bottom:10px;">
+	<div class="heading-section" style="padding: 0px 5px 15px 0;">
 			<span style="font-size: 25px; font-weight: bold;"><span id="rcount" style="font-size:30px;color:  #7400e8">${rcount}</span> 명의&nbsp;회원이&nbsp;평가한&nbsp;이&nbsp;영화의&nbsp;평균별점</span>
 				</div>
-				<div class="avgRating">
-				<span id="avgS" style="font-weight: bold;"></span>
-				<p id="avgN" style="font-size: 30px; font-weight: bold;">${avg}</p><p style="font-size: 25px; font-weight: bold;">&nbsp;/ 5.0</p>
-				</div>
-				<div id="review-form" class="review-form" style="margin-top: 40px;">
-						<div class="heading-section" style="padding: 0 0 15px 0;">
+				<div class="average-rating">
+											<span class="avgstar" style="font-size:20px; font-weight: bold;"></span>
+											<p id="avgnumber" style="font-size: 25px; font-weight: bold;">&emsp;${avg}</p><p style="font-size: 25px; font-weight: bold;">&nbsp;/ 5.0</p>
+										</div>
+										</div>
+				 <div id="review-form" class="review-form" style="margin-top: 10px; margin-bottom:10px;">			
+						<div class="heading-section" style="padding: 0 0 5px 0;">
 							<span style="font-size: 20px; font-weight: bold;">영화 관람평(<span id="rcount">${rcount}</span>)</span>
 										</div>
 											<input type="hidden" id="mno" name="mno" value="${vo.mno}" /> 

@@ -49,11 +49,8 @@ $(function(){
 <body>
 <table class="table">
 <c:forEach var="msvo" items="${ttList }">
-  <tr class="ttdata" data-tdname = ${msvo.tdvo.tdname } data-mstime = ${msvo.mstime }>
-  <c:if test="${msvo.mstime == null}">
-  		<td><h4>상영정보 없음</h4></td>
-  </c:if>
-  	<td class ="times">${msvo.tdvo.tdname }</td>
+  <tr class="ttdata" data-tdname = ${msvo.tdvo.tdname } data-mstime = ${msvo.mstime }> 
+     <td class ="times">	${msvo.tdvo.tdname }</td>
   	<td>
     <input type="button" class="times" style="margin-top: 5px;" value="${msvo.mstime}">
  	</td>
