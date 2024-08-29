@@ -24,11 +24,11 @@ public class ReplyBoardModel {
 		   String page=request.getParameter("page");
 		   if(page==null)
 			   page="1";
-		   int curpage=Integer.parseInt(page);
+		   int curPage=Integer.parseInt(page);
 		   Map map=new HashMap();
-		   int rowSize=15;
-		   int start=(rowSize*curpage)-(rowSize-1);
-		   int end=rowSize*curpage;
+		   int rowSize=10;
+		   int start=(rowSize*curPage)-(rowSize-1);
+		   int end=rowSize*curPage;
 		   
 		   map.put("start",start);
 		   map.put("end", end);
@@ -36,14 +36,20 @@ public class ReplyBoardModel {
 		   List<ReplyBoardVO> list=ReplyBoardDAO.replyBoardListData(map);
 		   
 		   int count=ReplyBoardDAO.replyBoardRowCount();
-		   int totalpage=(int)(Math.ceil(count/15.0));
-		   count=count-((curpage*rowSize)-rowSize);
+		   int totalpage=(int)(Math.ceil(count/10.0));
+		   int startPage=(curPage-1)/10*10+1;
+		   int endPage=startPage+10-1;
+		   if(endPage>totalpage)
+		  	 endPage=totalpage;
+		   count=count-((curPage*rowSize)-rowSize);
 		   
+		   request.setAttribute("startPage", startPage);
+		   request.setAttribute("endPage", endPage);
 		   request.setAttribute("count", count);
-		   request.setAttribute("curpage", curpage);
+		   request.setAttribute("curPage", curPage);
 		   request.setAttribute("totalpage", totalpage);
 		   request.setAttribute("rbList", list);
-		   request.setAttribute("main_jsp", "../replyboard/replyboard_list.jsp");
+		   request.setAttribute("main_jsp", "../replyboard/replyboard_list2.jsp");
 		   
 		   return "../main/main.jsp";
 	   }
@@ -70,7 +76,7 @@ public class ReplyBoardModel {
 		   
 		   
 		   String id=(String)session.getAttribute("id");
-		   //String name=(String)session.getAttribute("rbname");
+		   String name=(String)session.getAttribute("nickname");
 		   String subject=request.getParameter("subject");
 		   String content=request.getParameter("content");
 		   
@@ -78,7 +84,7 @@ public class ReplyBoardModel {
 		   ReplyBoardVO vo = new ReplyBoardVO();
 		   vo.setId(id);
 		   
-		   //vo.setName(name);
+		   vo.setName(name);
 		   vo.setSubject(subject);
 		   vo.setContent(content);
 		   
@@ -136,7 +142,7 @@ public class ReplyBoardModel {
 	    	String pwd=request.getParameter("pwd");
 	    	
 	    	// DAO연동 
-	    	boolean bCheck=ReplyBoardDAO.adminReplyDelete(Integer.parseInt(no), pwd);
+			/* boolean bCheck=ReplyBoardDAO.adminReplyDelete(Integer.parseInt(no), pwd); */
 	    	// => 이동 
 			/*
 			 * try { // Ajax 처리 //response.setContentType("text/html;charset=UTF-8");
@@ -146,6 +152,39 @@ public class ReplyBoardModel {
 			 * }
 			 */
 	    }
+	   @RequestMapping("replyboard/boardUpdate.do")
+	   public String boardUpdate(HttpServletRequest request, HttpServletResponse response) {
+	  	 String no=request.getParameter("no");
+	  	 ReplyBoardVO vo=ReplyBoardDAO.replyDetailData(Integer.parseInt(no));
+	  	 request.setAttribute("detail", vo);
+    	request.setAttribute("main_jsp", "../replyboard/boardUpdate.jsp");
+	  	 return "../main/main.jsp";
+	   }
+	   @RequestMapping("replyboard/boardUpdateOk.do")
+	   public void boardUpdateOk(HttpServletRequest request, HttpServletResponse response) {
+	  	 System.out.println("check");
+	  	 try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (Exception e) {}
+	  	 String no=request.getParameter("no");
+	  	 String subject=request.getParameter("subject");
+	  	 String content=request.getParameter("content");
+	  	 ReplyBoardVO vo=new ReplyBoardVO();
+	  	 vo.setNo(Integer.parseInt(no));
+	  	 vo.setSubject(subject);
+	  	 vo.setContent(content);
+	  	 ReplyBoardDAO.replyBoardUpdate(vo);
+	   }
+	   @RequestMapping("replyboard/boardDelete.do")
+	   public static void replyBoardDelete(HttpServletRequest request, HttpServletResponse response) {
+	  	 String no=request.getParameter("no");
+	  	 String result=ReplyBoardDAO.replyBoardDelete(Integer.parseInt(no));
+	  	 try {
+				PrintWriter out=response.getWriter();
+				out.write(result);
+			} catch (Exception e) {}
+	   }
+	   
 	   
 
 }

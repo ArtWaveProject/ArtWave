@@ -1,140 +1,132 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-    
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#writeBtn').click(function() {
+			let subject = $('#subject').val()
+			let no=$('#no').val()
+			if (subject.trim() === '') {
+				alert('제목을 입력해주세요')
+				$('#subject').focus()
+				return
+			}
+			let content = $('#content').val()
+			if (content.trim() === '') {
+				alert('내용을 입력해주세요')
+				$('#content').focus()
+				return
+			}
+			$.ajax({
+				type : 'post',
+				url : '../replyboard/insert_ok.do',
+				data : {
+					'no' : no,
+					'subject' : subject,
+					'content' : content
+				},
+				success : function(result) {
+					location.href = "../replyboard/list.do"
+				}
+			})
+		})
+	})
+</script>
 <style type="text/css">
-.text-primary {
-  background: linear-gradient(
-    113.07441835248278deg,
-    rgba(255, 156, 156, 1) 7.897508384699059%,
-    rgba(255, 156, 156, 1) 11.040067389186005%,
-    rgba(255, 147, 5, 1) 89.43417444706309%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-}
-
-.btn-info {
-	color: #fff;
-	background-color: #ffa657;
-	border-color: #ffa657;
-}
-
-.bg-light{
-	margin-top : 150px;
-}
-
-.container{
-  background-color: white
-  border-radius: 10px
-  margin-top:150px
-            }
 body {
-    background-color: white;
+	font-family: Arial, sans-serif;
 }
-table table-hover{
-	border: none;
-}
-td[width="40%"] {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 0;
-        }
-        
-td[width="40%"]:hover {
-            white-space: normal;
-            overflow: visible;
-            position: relative;
-        }
 
+.header {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.header h4 {
+	font-size: 30px;
+	color: #333;
+}
+
+.form-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.form-table td {
+	padding: 10px;
+	vertical-align: top;
+}
+
+.form-table select, .form-table input[type="text"], .form-table textarea
+	{
+	width: 100%;
+	padding: 15px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 16px;
+	box-sizing: border-box;
+}
+
+.form-table textarea {
+	resize: vertical;
+	min-height: 300px;
+}
+
+.write-btn {
+	background-color: #007bff;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: background 0.3s;
+}
+
+.write-btn:hover {
+	background-color: #0056b3;
+}
+
+.cancel-btn {
+	background-color: #ffc107;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: background 0.3s;
+}
+
+.cancel-btn:hover {
+	background-color: #e0a800;
+}
 </style>
 </head>
 <body>
-<div>
-<div>
-		<!-- <div class="container"> -->
-		<div class="col-12">
-		<div class="bg-light rounded h-100 p-4">
-		<main class="container">
-			<h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>1:1문의등록</h3>
-				<form method=post action="../replyboard/insert_ok.do">
-					<table class="table">
-						<tr>
-							<th width=20% class="text-center">제목</th>
-							<td width=80%>
-								<input class="form-control mb-3" type="text" name="subject" placeholder="제목을 입력해주세요" aria-label="default input example">					
-								<input type="hidden" name="no">
-							</td>
-						</tr>
-						<tr>
-							<th width="20%" class="text-center">내용</th>
-							<td width="80%">
-								<textarea class="form-control" name="content" placeholder="문의내용을 입력해주세요" 
-								id="floatingTextarea" style="height: 800px;"></textarea>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2" class="text-center inline">
-								<button type="submit" class="btn btn-outline-success m-2">등록</button>
-								<input type=button value="취소" class="btn btn-outline-secondary m-2" onclick="javascript:history.back()">
-							</td>
-						</tr>
-					</table>
-				</form>
-				</main>
+	<div class="container" style="max-width: 1000px; border-radius: 12px; border: 1px solid #ddd; margin-top: 150px; padding: 40px;">
+		<div class="header">
+			<h4>1:1문의등록</h4>
 		</div>
+		<form action="../replyboard/insert_ok.do" method="post">
+			<input type="hidden" name="no" id="no">
+			<table class="form-table">
+				<tr>
+					<td><input type="text" id="subject" name="subject" placeholder="제목을 입력해 주세요" required></td>
+				</tr>
+				<tr>
+					<td><textarea id="content" style="resize: none;" name="content" placeholder="내용을 입력하세요" required></textarea></td>
+				</tr>
+				<tr>
+					<td style="text-align: right;"><input type="button" value="작성" id="writeBtn" class="write-btn"> <input type="button" value="취소"
+						class="cancel-btn" onclick="javascript:history.back()"></td>
+				</tr>
+			</table>
+		</form>
 	</div>
-	</div>
-</div>
-<!-- </div>
- -->
-	<!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-	
 </body>
 </html>

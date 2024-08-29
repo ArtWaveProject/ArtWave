@@ -13,6 +13,14 @@
 		let checkNick=false
 		let checkEmail=false
 		let checkPwd=false
+		let type=${type}
+		if(type===0){
+			loginin.classList.remove("block");
+		    loginup.classList.remove("none");
+
+		    loginin.classList.add("none");
+		    loginup.classList.add("block");
+		}
 		$('#idCheck').click(function() {
 			let id = $('#signUpId')
 			if(id.val().trim()===''){
@@ -232,7 +240,7 @@
 					'email':email
 				},
 				success:function(){
-					location.href='../main/main.do'
+					location.href='../movie/moviemain.do'
 				}
 			})
 		})
@@ -259,7 +267,7 @@
 			},
 			success:function(result){
 				if(result==='OK'){
-					location.href='../main/main.do'
+					location.href='../movie/moviemain.do'
 				}
 				else if(result==='NOID'){
 					alert('ID가 존재하지 않습니다')
@@ -314,9 +322,8 @@ left: -4rem;
 					</div>
 					<div class="login__box">
 						<i class='bx bx-lock login__icon'></i>
-						<input type="text" placeholder="Password" class="login__input" id="pwd">
+						<input type="password" placeholder="Password" class="login__input" id="pwd">
 					</div>
-					<a href="#" class="login__forgot">Forgot Password? </a>
 					<a href="#" class="login__button" onclick="login()">Sign In</a>
 
 					<div>

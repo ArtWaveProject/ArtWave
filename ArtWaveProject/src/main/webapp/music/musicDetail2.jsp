@@ -393,7 +393,7 @@ function musicPlay() {
 					<tr>
 						<td colspan="2" class="inline">
 							<button type="button" style="background: transparent;" class="btnIcon" onclick="musicPlay()">듣기</button>
-							<button type="button" class="btnIcon"">구매</button>
+							<button type="button" class="btnIcon" id="buy">구매</button>
 							<ul class="nav" style="display: inline-block; position: relative;">
 								<li class="dropdown">
 									<button class="btnIcon">추가</button>

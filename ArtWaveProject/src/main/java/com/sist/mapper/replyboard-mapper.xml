@@ -11,9 +11,9 @@
   </select>   -->
  
  <select id="replyBoardListData" resultType="ReplyBoardVO" parameterType="hashmap">
-    SELECT no,id,subject,TO_CHAR(regdate, 'YYYY-MM-DD') as dbday,hit,group_step,group_id, num
-    FROM (SELECT no,id,subject,regdate,hit,group_step,group_id,rownum as num
-        FROM (SELECT no,id,subject,regdate,hit,group_step,group_id
+    SELECT no,id,subject,TO_CHAR(regdate, 'YYYY-MM-DD') as dbday,hit,group_step,group_id, name, isreply, num
+    FROM (SELECT no,id,subject,regdate,hit,group_step,group_id, name,isreply, rownum as num
+        FROM (SELECT no,id,subject,regdate,hit,group_step,group_id, name,isreply
               FROM replyboard 
               ORDER BY group_id DESC, group_step ASC)
         WHERE rownum &lt;= #{end}
@@ -38,15 +38,15 @@
   
   <!-- 등록 / 답변 -->
   <insert id="replyBoardInsert" parameterType="ReplyBoardVO">
-   INSERT INTO replyboard(no,id,subject,content,group_id) 
+   INSERT INTO replyboard(no,id,subject,content,group_id, name) 
    VALUES(pr_no_seq.nextval,#{id},#{subject},#{content},
-    (SELECT NVL(MAX(group_id)+1,1) FROM replyboard)
+    (SELECT NVL(MAX(group_id)+1,1) FROM replyboard), #{name}
    )
   </insert>
   
   <!--                       replyDetailData                          -->
   <select id="replyDetailData" resultType="ReplyBoardVO" parameterType="int" >
-  	SELECT no,subject,content,id,isreply,TO_CHAR(regdate,'YYYY-MM-DD') as dbday
+  	SELECT no,subject,content,id,isreply,TO_CHAR(regdate,'YYYY-MM-DD') as dbday, name, group_id, group_step
   	FROM replyboard
   	WHERE no=#{no}
   </select>
@@ -55,16 +55,16 @@
  
  
   <select id="adminReplyBoardListData" resultType="ReplyBoardVO" parameterType="hashmap">
-    SELECT no,id,isreply,subject,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,group_step,group_id,num
-    FROM (SELECT no,id,isreply,subject,regdate,hit,group_step,group_id,rownum as num 
-    FROM (SELECT no,id,isreply,subject,regdate,hit,group_step,group_id
+    SELECT no,id,isreply,subject,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,group_step,group_id,name,num
+    FROM (SELECT no,id,isreply,subject,regdate,hit,group_step,group_id,name,rownum as num 
+    FROM (SELECT no,id,isreply,subject,regdate,hit,group_step,group_id,name
     FROM replyboard WHERE group_step!=1 ORDER BY group_id DESC , group_step ASC))
     WHERE num BETWEEN #{start} AND #{end}
   </select>
   <insert id="adminReplyBoardInsert" parameterType="ReplyBoardVO">
-   INSERT INTO replyboard(no,subject,content,group_id,group_step,isreply) 
+   INSERT INTO replyboard(no,subject,content,group_id,group_step,isreply, name, id) 
    VALUES(pr_no_seq.nextval,#{subject},#{content},
-    #{group_id},1,1
+    #{group_id},1,1, #{name}, #{id}
    )
   </insert>
   
@@ -94,6 +94,18 @@
     WHERE no=#{no}
   </update>
   <!-- 수정 -->
- 
- 
+ <update id="replyBoardUpdate" parameterType="ReplyBoardVO">
+ UPDATE replyboard SET subject=#{subject}, content=#{content} WHERE no=#{no}
+ </update>
+ <select id="replyBoardCheck" resultType="int" parameterType="int">
+ SELECT COUNT(*) FROM replyboard WHERE no=#{no} AND isreply=1
+ </select>
+ <delete id="replyBoardDelete" parameterType="int">
+ DELETE FROM replyboard WHERE no=#{no}
+ </delete>
+ <select id="replyInfo" resultType="ReplyBoardVO" parameterType="int">
+ SELECT no,subject,content,id,isreply,TO_CHAR(regdate,'YYYY-MM-DD') as dbday, name, group_id, group_step
+  	FROM replyboard
+  	WHERE group_id=#{group_id} AND group_step=1
+ </select>
 </mapper>

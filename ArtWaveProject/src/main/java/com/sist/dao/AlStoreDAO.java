@@ -101,7 +101,24 @@ public class AlStoreDAO {
 		  }
 		  return vo;
 	  }
-	
+	  public static List<AlStoreVO> alStoreRandom(){
+	  	List<AlStoreVO> list=new ArrayList<AlStoreVO>();
+	  	SqlSession session=null;
+		  try
+		  {
+			  session=ssf.openSession();
+			  list=session.selectList("alStoreRandom");
+		  }catch(Exception ex)
+		  {
+			  ex.printStackTrace();
+		  }
+		  finally
+		  {
+			  if(session!=null)
+				  session.close();
+		  }
+	  	return list;
+	  }
 	
 }
 

@@ -14,6 +14,8 @@ import controller.RequestMapping;
 public class MemberModel {
 	@RequestMapping("member/login.do")
 	public String login(HttpServletRequest request, HttpServletResponse response) {
+		String type=request.getParameter("type");
+		request.setAttribute("type", Integer.parseInt(type));
 		return "../member/login.jsp";
 	}
 	@RequestMapping("member/login_ok.do")

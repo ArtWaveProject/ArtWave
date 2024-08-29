@@ -84,7 +84,7 @@ nav {
 				<div class="col-12">
 					<nav class="main-nav navbar"> 
 						<!-- ***** Logo Start ***** -->
-						<a href="../main/main.do" class="logo"> <img
+						<a href="../movie/moviemain.do" class="logo"> <img
 							src="../main/logo.png" alt="">
 						</a>
 						<!-- ***** Logo End ***** -->
@@ -158,8 +158,8 @@ nav {
 						<ul class="nav" style="width: 120px;"></ul>
 						<c:if test="${sessionScope.id==null }">
 							<ul class="nav">
-								<li><a href="#" id="info">회원가입</a></li>
-								<li><a href="../member/login.do">로그인</a></li>
+								<li><a href="../member/login.do?type=0" id="info">회원가입</a></li>
+								<li><a href="../member/login.do?type=1">로그인</a></li>
 							</ul>
 						</c:if>
 						<c:if test="${sessionScope.id!=null }">

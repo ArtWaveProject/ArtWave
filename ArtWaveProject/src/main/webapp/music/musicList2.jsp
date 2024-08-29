@@ -53,7 +53,6 @@
 	margin: 5px 0px;
 }
 
-
 .listImg {
 	width: 45px !important;
 	height: 45px !important;
@@ -310,36 +309,20 @@ function musicPlay(mno) {
 <body>
 	<div class="container" style="margin-top: 150px;">
 		<div class="row listBody">
-			<h2 style="margin-bottom: 20px; color: #878787"><b>Music</b></h2>
+			<h2 style="margin-bottom: 20px; color: #878787">
+				<b>Music</b>
+			</h2>
 			<table class="table genreTable">
 				<tr>
-					<td width="11%" class="genreBtn ${genre==1?'active':''}">
-						<a href="../music/musicList.do?genre=1">전체</a>
-					</td>
-					<td width="11%" class="genreBtn ${genre==2?'active':genre==1?'anext':''}">
-						<a href="../music/musicList.do?genre=2">댄스</a>
-					</td>
-					<td width="11%" class="genreBtn ${genre==3?'active':genre==2?'anext':''}">
-						<a href="../music/musicList.do?genre=3">드라마</a>
-					</td>
-					<td width="11%" class="genreBtn ${genre==4?'active':genre==3?'anext':''}">
-						<a href="../music/musicList.do?genre=4">발라드</a>
-					</td>
-					<td width="11%" class="genreBtn ${genre==5?'active':genre==4?'anext':''}">
-						<a href="../music/musicList.do?genre=5">인디</a>
-					</td>
-					<td width="11%" class="genreBtn ${genre==6?'active':genre==5?'anext':''}">
-						<a href="../music/musicList.do?genre=6">락</a>
-					</td>
-					<td width="11%" class="genreBtn ${genre==7?'active':genre==6?'anext':''}">
-						<a href="../music/musicList.do?genre=7">랩/힙합</a>
-					</td>
-					<td width="11%" class="genreBtn ${genre==8?'active':genre==7?'anext':''}">
-						<a href="../music/musicList.do?genre=8">트로트</a>
-					</td>
-					<td width="11%" class="genreBtn ${genre==9?'active':genre==8?'anext':''}">
-						<a href="../music/musicList.do?genre=9">R&B/소울</a>
-					</td>
+					<td width="11%" class="genreBtn ${genre==1?'active':''}"><a href="../music/musicList.do?genre=1">전체</a></td>
+					<td width="11%" class="genreBtn ${genre==2?'active':genre==1?'anext':''}"><a href="../music/musicList.do?genre=2">댄스</a></td>
+					<td width="11%" class="genreBtn ${genre==3?'active':genre==2?'anext':''}"><a href="../music/musicList.do?genre=3">드라마</a></td>
+					<td width="11%" class="genreBtn ${genre==4?'active':genre==3?'anext':''}"><a href="../music/musicList.do?genre=4">발라드</a></td>
+					<td width="11%" class="genreBtn ${genre==5?'active':genre==4?'anext':''}"><a href="../music/musicList.do?genre=5">인디</a></td>
+					<td width="11%" class="genreBtn ${genre==6?'active':genre==5?'anext':''}"><a href="../music/musicList.do?genre=6">락</a></td>
+					<td width="11%" class="genreBtn ${genre==7?'active':genre==6?'anext':''}"><a href="../music/musicList.do?genre=7">랩/힙합</a></td>
+					<td width="11%" class="genreBtn ${genre==8?'active':genre==7?'anext':''}"><a href="../music/musicList.do?genre=8">트로트</a></td>
+					<td width="11%" class="genreBtn ${genre==9?'active':genre==8?'anext':''}"><a href="../music/musicList.do?genre=9">R&B/소울</a></td>
 				</tr>
 			</table>
 			<table class="table listChart">
@@ -354,50 +337,36 @@ function musicPlay(mno) {
 				<c:forEach var="mvo" items="${list}" varStatus="i">
 					<tr style="vertical-align: middle; height: 50px; position: relative;">
 						<td width="7%" class="text-center">${(curPage-1)*50+i.index+1}</td>
+						<td width="7%" class="text-center"><img src="${mvo.poster}" class="listImg"></td>
+						<td width="65%"><span class="listTitle"><a href="../music/musicDetail.do?mno=${mvo.mno}">${mvo.title}</a></span><br> <span
+							class="listArtist"><a style="color: #aaa;" href="../music/artistDetail.do?ano=${mvo.ano}">${mvo.aname}</a></span></td>
 						<td width="7%" class="text-center">
-							<img src="${mvo.poster}" class="listImg">
-						</td>
-						<td width="65%">
-							<span class="listTitle"><a href="../music/musicDetail.do?mno=${mvo.mno}">${mvo.title}</a></span><br> <span class="listArtist"><a style="color: #aaa;" href="../music/artistDetail.do?ano=${mvo.ano}">${mvo.aname}</a></span>
-						</td>
-						<td width="7%" class="text-center">
-							<button type="button" style="background: transparent; border:none;" onclick="musicPlay(${mvo.mno})">
+							<button type="button" style="background: transparent; border: none;" onclick="musicPlay(${mvo.mno})">
 								<img class="iconImg" src="play.png">
 							</button>
 						</td>
 						<td width="7%" class="text-center" style="position: relative;">
 							<ul class="nav" style="display: inline; position: relative;">
-								<li class="dropdown">
-									<span class="toggleMenu"><i class="fas fa-list"></i></span>
-									<ul class="dropmenu dropUI" style="width:190px;" data-mno="${mvo.mno}">
-									</ul>
-								</li>
+								<li class="dropdown"><span class="toggleMenu"><i class="fas fa-list"></i></span>
+									<ul class="dropmenu dropUI" style="width: 190px;" data-mno="${mvo.mno}">
+									</ul></li>
 							</ul>
 						</td>
-						<td width="7%" class="text-center">
-							<a href="${mvo.urlmp4}" id="btn" target="_blank">
-								<img class="iconImg" src="mv.png">
-							</a>
-						</td>
+						<td width="7%" class="text-center"><a href="${mvo.urlmp4}" id="btn" target="_blank"> <img class="iconImg" src="mv.png">
+						</a></td>
 					</tr>
 				</c:forEach>
 			</table>
 			<nav>
 				<ul class="page page-lg">
 					<c:if test="${startPage > 1}">
-						<li>
-							<a href="../music/musicList.do?page=${startPage-1}&ss=${ss}&genre=${genre}">&laquo; Previous</a>
-						</li>
+						<li><a href="../music/musicList.do?page=${startPage-1}&ss=${ss}&genre=${genre}">&laquo; Previous</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${startPage}" end="${endPage}">
-						<li ${i == curPage ? "class='current'" : ""}>
-							<a href="../music/musicList.do?page=${i}&ss=${ss}&genre=${genre}">${i}</a>
-						</li>
+						<li ${i == curPage ? "class='current'" : ""}><a href="../music/musicList.do?page=${i}&ss=${ss}&genre=${genre}">${i}</a></li>
 					</c:forEach>
 					<c:if test="${endPage < totalPage}">
-						<li>
-							<a href="../music/musicList.do?page=${endPage+1}&ss=${ss}&genre=${genre}">Next &raquo;</a>
-						</li>
+						<li><a href="../music/musicList.do?page=${endPage+1}&ss=${ss}&genre=${genre}">Next &raquo;</a></li>
 					</c:if>
 				</ul>
 			</nav>
@@ -408,8 +377,7 @@ function musicPlay(mno) {
 			<div class="modal-content">
 				<h2 class="text-center">플레이리스트 생성</h2>
 				<div class="modal-body">
-					<input type="text" id="playListName">
-					<input type="button" value="생성" onclick="playListMake()">
+					<input type="text" id="playListName"> <input type="button" value="생성" onclick="playListMake()">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -132,40 +132,41 @@ public class MreserveModel {
 	}
 
 	@RequestMapping("movie/movieseat.do")
-	  public String movieseat(HttpServletRequest request,HttpServletResponse response)
-	  {
-		try
-		  {
-			  request.setCharacterEncoding("UTF-8");
-		  }catch(Exception ex) {ex.printStackTrace();}
+	public String movieseat(HttpServletRequest request, HttpServletResponse response) {
 		try {
-		 String mno=request.getParameter("mno");
-		  String mtitle=request.getParameter("movietitle");
-		  String tloc=request.getParameter("tloc");
-		  String tname=request.getParameter("tname");
-		  String date=request.getParameter("date");
-		  String tdname=request.getParameter("tdname");
-		  String time=request.getParameter("time");
-		  String inwon=request.getParameter("inwon");
-		  String seats=request.getParameter("seats");
-		  		  
-		     request.setAttribute("mno", mno);
-			 request.setAttribute("mtitle", mtitle);
-			 request.setAttribute("tloc", tloc);
-			 request.setAttribute("tname", tname);
-			 request.setAttribute("date", date);
-			 request.setAttribute("tdname", tdname);
-			 request.setAttribute("time", time);
-			 request.setAttribute("inwon", inwon);
-			 request.setAttribute("rinwon", inwon);
-			 request.setAttribute("seats", seats);
-			
-			 
-		}catch(Exception ex) {ex.printStackTrace();} 
-		
+			request.setCharacterEncoding("UTF-8");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		try {
+			String mno = request.getParameter("mno");
+			String mtitle = request.getParameter("movietitle");
+			String tloc = request.getParameter("tloc");
+			String tname = request.getParameter("tname");
+			String date = request.getParameter("date");
+			String tdname = request.getParameter("tdname");
+			String time = request.getParameter("time");
+			String inwon = request.getParameter("inwon");
+			String seats = request.getParameter("seats");
+			System.out.println(inwon);
+			request.setAttribute("mno", mno);
+			request.setAttribute("mtitle", mtitle);
+			request.setAttribute("tloc", tloc);
+			request.setAttribute("tname", tname);
+			request.setAttribute("date", date);
+			request.setAttribute("tdname", tdname);
+			request.setAttribute("time", time);
+			request.setAttribute("inwon", inwon);
+			request.setAttribute("rinwon", inwon);
+			request.setAttribute("seats", seats);
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
 		request.setAttribute("main_jsp", "../movie/movieseat.jsp");
 		return "../main/main.jsp";
-	  }
+	}
 
 	@RequestMapping("movie/reserveok.do")
 	public void reserve_ok(HttpServletRequest request, HttpServletResponse response) {
@@ -178,7 +179,7 @@ public class MreserveModel {
 			String mno = request.getParameter("mno");
 			String mtitle = request.getParameter("mtitle");
 			String tname = request.getParameter("tname");
-			String date = request.getParameter("date");
+			String date = request.getParameter("day");
 			String tdname = request.getParameter("tdname");
 			String time = request.getParameter("time");
 			String inwon = request.getParameter("inwon");
@@ -188,7 +189,7 @@ public class MreserveModel {
 			System.out.println(selectedSeats);
 			HttpSession session = request.getSession();
 			String id = (String) session.getAttribute("id");
-		
+
 			ReserveVO vo = new ReserveVO();
 			vo.setId(id);
 			vo.setMno(Integer.parseInt(mno));
@@ -202,24 +203,20 @@ public class MreserveModel {
 			vo.setPrice(Integer.parseInt(totalPrice));
 
 			MovieDAO.reserveInsert(vo);
-			
+
 			MemberVO mvo = MemberDAO.memberinfo(id);
-			Map map = new HashMap();
-			System.out.println(mvo.getPost());
-			map.put("ptitle", mtitle);
-			map.put("gno", Integer.parseInt(mno));
-			map.put("id", id);
-			map.put("price", Integer.parseInt(totalPrice));
-			
-		JSONObject obj = new JSONObject();
-		obj.put("name", mvo.getName());
-		obj.put("email", mvo.getEmail());
-		obj.put("address", mvo.getAddr1());
-		obj.put("post", mvo.getPost());
-		obj.put("phone", mvo.getPhone());
+
+			JSONObject obj = new JSONObject();
+			obj.put("name", mvo.getName());
+			obj.put("email", mvo.getEmail());
+			obj.put("address", mvo.getAddr1());
+			obj.put("post", mvo.getPost());
+			obj.put("phone", mvo.getPhone());
 			response.setContentType("text/plain;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.write(obj.toJSONString());
-		} catch (Exception e) {e.printStackTrace();}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+	}
 }

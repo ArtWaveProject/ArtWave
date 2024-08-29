@@ -9,7 +9,6 @@
 $(function() {
 	$('#writeBtn').click(function() {
 		let type=$('#type').val()
-		let fbno=${detail.fbno}
 		if(type.trim()==='999'){
 			alert('카테고리를 선택해주세요')
 			$('#type').focus()
@@ -29,15 +28,14 @@ $(function() {
 		}
 		$.ajax({
 			type:'post',
-			url:'../board/boardUpdateOk.do',
+			url:'../board/boardInsertOk.do',
 			data:{
 				'type':type,
 				'subject':subject,
-				'content':content,
-				'fbno':fbno
+				'content':content
 			},
 			success:function(result){
-				location.href="../noticeboard/boardDetail.do?fbno="+${detail.fbno}
+				location.href="../adminpage/notice_list.do"
 			}
 		})
 		console.log(type)
@@ -112,7 +110,7 @@ $(function() {
 </head>
 <body>
 	<div class="container" style="max-width: 1000px; border-radius: 12px;
-        border: 1px solid #ddd; margin-top:150px; padding: 40px;">
+        border: 1px solid #ddd; margin:0px; padding: 40px;">
         <div class="header">
             <h4>글 작성</h4>
         </div>
@@ -122,20 +120,20 @@ $(function() {
                     <td>
                         <select name="type" id="type" required>
                             <option value="999">카테고리 선택</option>
-                            <option value="5" ${detail.cno==5?'selected':''}>영화</option>
-                            <option value="6" ${detail.cno==6?'selected':''}>도서</option>
-                            <option value="7" ${detail.cno==7?'selected':''}>음악</option>
+                            <option value="5">영화</option>
+                            <option value="6">도서</option>
+                            <option value="7">음악</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" id="subject" name="subject" value="${detail.fbsubject}" placeholder="제목을 입력해 주세요" required>
+                        <input type="text" id="subject" name="subject" placeholder="제목을 입력해 주세요" required>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <textarea id="content" style="resize: none;" name="content" placeholder="내용을 입력하세요" required>${detail.content }</textarea>
+                        <textarea id="content" style="resize: none;" name="content" placeholder="내용을 입력하세요" required></textarea>
                     </td>
                 </tr>
                 <tr>

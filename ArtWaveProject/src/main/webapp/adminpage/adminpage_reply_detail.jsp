@@ -143,20 +143,14 @@ body {
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
-$(function(){
+let state=-5
 		$('#deleteBtn').click(function() {
 			$.ajax({
 				type:'post',
-				url:'../replyboard/boardDelete.do',
-				data:{'no':${vo.no}},
-				success:function(result){
-					if(result==="OK"){
-						alert('삭제완료')
-					location.href="../replyboard/list.do"
-					}
-					else{
-						alert('답변이 달린 게시글은 삭제 불가합니다')
-					}
+				url:'../board/boardDelete.do',
+				data:{'fbno':${vo.no}},
+				success:function(){
+					location.href="../noticeboard/boardList.do"
 				}
 			})
 		})
@@ -164,7 +158,7 @@ $(function(){
 </script>
 </head>
 <body>
-	<div class="container" style="margin-top: 150px; border: 1px solid #ddd; border-radius: 8px; padding: 40px;">
+	<div class="container" style="margin:0px; border: 1px solid #ddd; border-radius: 8px; padding: 40px;">
 		<table class="table">
 			<tr>
 				<td colspan="2"><span style="font-weight: bold; font-size: 20px;">${vo.subject}</span></td>
@@ -172,9 +166,6 @@ $(function(){
 			<tr>
 				<td width="85%">${vo.name}&nbsp;&nbsp;|&nbsp;&nbsp;${vo.dbday}</td>
 				<td width="15%" class="text-right" style="text-align: center;"><c:choose>
-						<c:when test="${vo.group_step>0}">
-							<span style="color: orange;">답변</span>
-						</c:when>
 						<c:when test="${vo.isreply == 0}">
 							<span style="color: blue;">답변대기</span>
 						</c:when>
@@ -185,10 +176,10 @@ $(function(){
 			</tr>
 			<tr>
 				<td colspan="2" style="height: 500px; font-size: 18px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><pre
-						style="overflow: auto; white-space: pre-wrap; word-wrap: break-word;">${vo.content}</pre></td>
+						style="overflow: auto; white-space: pre-wrap; word-wrap: break-word; background: white;">${vo.content}</pre></td>
 			</tr>
 			<tr class="text-right">
-				<td colspan="2"><c:if test="${sessionScope.id == vo.id&&vo.group_step==0}">
+				<td colspan="2"><c:if test="${sessionScope.id == vo.id}">
 						<input type="button" value="삭제" id="deleteBtn" class="button cancel">
 						<a href="../replyboard/boardUpdate.do?no=${vo.no}" id="writeBtn" class="button edit">수정</a>
 					</c:if> <input type="button" value="목록" onclick="javascript:history.back()" class="button"></td>

@@ -276,6 +276,14 @@ public class BoardModel {
 		request.setAttribute("main_jsp", "../board/boardUpdate.jsp");
 		return "../main/main.jsp";
 	}
+	@RequestMapping("noticeboard/boardUpdate.do")
+	public String noticeBoardUpdate(HttpServletRequest request, HttpServletResponse response) {
+		String fbno = request.getParameter("fbno");
+		BoardVO vo = BoardDAO.boardDetailData(Integer.parseInt(fbno));
+		request.setAttribute("detail", vo);
+		request.setAttribute("main_jsp", "../noticeboard/boardUpdate.jsp");
+		return "../main/main.jsp";
+	}
 
 	@RequestMapping("noticeboard/boardList.do")
 	public String noticeBoardList(HttpServletRequest request, HttpServletResponse response) {
