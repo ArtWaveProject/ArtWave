@@ -162,7 +162,7 @@ public class ReplyBoardDAO {
 		  return vo;
 	  }
 	
-	//////////////////////////1:1 응답 삭제 => 미구현예정 ///////////////////////////	
+	//////////////////////////1:1 응답 삭제 ///////////////////////////	
 	public static void adminReplyDelete(int no,int group_id)
 	  {
 		  SqlSession session=null;
