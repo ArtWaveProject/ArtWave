@@ -137,7 +137,7 @@ a {
 </head>
 <body>
 	<div class="container" style="margin-top: 150px; background: #9BA8B5; padding: 50px; border-radius: 50px;">
-		<h3 style="margin-bottom: 40px;">Album</h3>
+		<h2 style="margin-bottom: 40px;">Album</h2>
 		<div id="row">
 			<div class="row" style="display: flex; flex-wrap: wrap; background: white; border-radius: 30px;">
 				<table class="table genreTable">

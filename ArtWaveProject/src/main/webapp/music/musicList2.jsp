@@ -310,7 +310,7 @@ function musicPlay(mno) {
 <body>
 	<div class="container" style="margin-top: 150px;">
 		<div class="row listBody">
-			<h3 style="margin-bottom: 40px;">Music</h3>
+			<h2 style="margin-bottom: 20px; color: #878787"><b>Music</b></h2>
 			<table class="table genreTable">
 				<tr>
 					<td width="11%" class="genreBtn ${genre==1?'active':''}">

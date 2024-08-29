@@ -91,12 +91,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btnIcon {
-	width: 30px;
-	height: 30px;
 	padding: 0px;
+	width: 60px;
+	height: 30px;
 	background-color: transparent;
-	border: none;
+	border: 1px solid #bbb;
+	border-radius: 5px;
 	margin: 0px;
+	background-color: transparent;
 }
 
 a {
@@ -390,21 +392,17 @@ function musicPlay() {
 					</tr>
 					<tr>
 						<td colspan="2" class="inline">
-							<button type="button" style="border: transparent; background: transparent;" onclick="musicPlay()">
-								<img src="play.png" class="btnIcon">
-							</button>
-							<button type="button" id="likeBtn">
-								<img src="" id="likeBtnIcon" class="btnIcon">
-							</button>
+							<button type="button" style="background: transparent;" class="btnIcon" onclick="musicPlay()">듣기</button>
+							<button type="button" class="btnIcon"">구매</button>
 							<ul class="nav" style="display: inline-block; position: relative;">
 								<li class="dropdown">
-									<img src="playlist.png" class="btnIcon">
+									<button class="btnIcon">추가</button>
 									<ul class="dropmenu dropUl" data-mno="${detail.mno}">
 									</ul>
 								</li>
 							</ul>
-							<button type="button" style="margin-left: 100px; background: transparent; border: transparent; padding: 0px; vertical-align: bottom;">
-								<i style="font-size: 30px;" id="buy" class="fa fa-credit-card">&nbsp;Buy Now</i>
+							<button type="button" id="likeBtn">
+								<img src="" id="likeBtnIcon">
 							</button>
 						</td>
 					</tr>
