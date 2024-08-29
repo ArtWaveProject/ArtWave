@@ -145,6 +145,7 @@ public class AdminModel {
 		   String no=request.getParameter("no");
 		   String subject=request.getParameter("subject");
 		   String content=request.getParameter("content");
+		   
 		   HttpSession session=request.getSession();
 		   String id=(String)session.getAttribute("id");
 		   //String name=(String)session.getAttribute("name");
