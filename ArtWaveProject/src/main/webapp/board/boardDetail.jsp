@@ -333,8 +333,8 @@ let id = '${id}'
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="height: 500px; font-size: 18px;">
-                    <pre>${detail.content}</pre>
+                <td colspan="2" style="height: 500px; font-size: 18px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; ">
+                    <pre style="overflow: auto; white-space: pre-wrap; word-wrap: break-word;">${detail.content}</pre>
                 </td>
             </tr>
             <tr class="text-right">
