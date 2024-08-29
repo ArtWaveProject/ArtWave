@@ -34,9 +34,7 @@ td[width="40%"]:hover {
 </style>
 </head>
 <body>
-	<main class="container">
-	<div class="col-12">
-		<div class="bg-light rounded h-100 p-4">
+	<div class="col-lg-12">
 			<h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>묻고답하기</h3>
 			<table class="table table-hover">
 				<thead>
@@ -127,8 +125,7 @@ td[width="40%"]:hover {
                 </nav>
 		-->
 			
-		</div>
-	</div>
-	</main>
+
+</div>
 </body>
 </html>

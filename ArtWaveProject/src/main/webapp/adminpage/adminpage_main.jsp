@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -190,6 +190,114 @@
 
 <!-- Tempus Dominus Bootstrap 4 -->
 <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+ --%>
 
+<title>Bootstrap</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">	
+<style type="text/css">
+body{
+  	font-size: 20px;
+  }
+  .container2 {
+    padding-right: 15px;
+    padding-left: 300px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-lg-2 {
+    flex: 0 0 auto;
+    width: 16.666667%;
+    padding-left: 30px; /* 사이드바를 오른쪽으로 이동 */
+}
+
+.col-lg-10 {
+    flex: 0 0 auto;
+    width: 83.333333%;
+}
+.list-group li {
+    height: 50px; /* 원하는 높이로 설정 */
+    line-height: 50px; /* 수직 정렬을 위해 라인 높이 설정 (텍스트가 중앙에 오도록) */
+    font-size: 13px
+     text-align: center;
+  }
+  
+.list-group li:hover {
+      background-color: #f0ad4e; /* 마우스를 올렸을 때 배경색 변경 */
+      color: white; /* 텍스트 색상 변경 */
+  }
+  
+.list-group li a {
+      color: inherit; /* 링크 색상을 상속받도록 설정 */
+      text-decoration: none; /* 기본 밑줄 제거 */
+      display: block; /* a 요소를 block으로 만들어 li 전체를 클릭 영역으로 설정 */
+  }
+  
+  
+</style>
+
+</head>
+
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+<body>
+	<div class="container2">
+		<div class="row" style="margin-top:150px;">
+			<div class="col-lg-2">
+			 <div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">${sessionScope.id}님 로그인</h3>
+					</div>		
+					<ul class="list-group">
+            <li class="list-group-item"><a href="../mypage/mypage_main.do">마이페이지이동</a></li>   
+          </ul>
+			</div>
+			
+				<div class="panel panel-success">				
+					<div class="panel-heading">
+						<h3 class="panel-title">회원 정보</h3>
+					</div>
+					
+						<ul class="list-group">
+							<li><a href="../adminpage/member_list.do">회원 리스트</a></li>
+	
+						</ul>
+				</div>
+				
+				
+				<div class="panel panel-warning">
+					<div class="panel-heading">
+						<h3 class="panel-title sinav ">결제관리</h3>
+					</div>
+					
+						<ul class="list-group">
+							<li><a href="">결제목록</a></li>
+							<li><a href="../admin/adminReserve.do">예약관리</a></li>
+						</ul>		
+				</div>
+				
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title sinav">고객센터</h3>
+					</div>
+					
+						<ul class="list-group">
+							<li><a href="../adminpage/reply_list.do">1:1문의</a></li>
+							<li><a href="../adminpage/notice_list.do">공지사항</a></li>
+							<li><a href=""></a></li>
+						</ul>		
+				</div>
+			</div>
+			
+			<div class="col-lg-10" >
+				<jsp:include page="${admin_jsp}"></jsp:include>
+			</div>
+			
+			
+		</div>
+	</div>  
 </body>
 </html>
