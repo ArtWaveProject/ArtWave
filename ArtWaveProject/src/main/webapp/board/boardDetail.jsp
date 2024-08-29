@@ -317,9 +317,6 @@ let id = '${id}'
 <body>
 	<div class="container" style="margin-top: 150px; border: 1px solid #ddd;
         border-radius: 8px; padding: 40px;">
-        <div class="header" >
-            <h4>글 상세보기</h4>
-        </div>
         <table class="table">
             <tr>
                 <td colspan="2">
