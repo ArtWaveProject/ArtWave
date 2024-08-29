@@ -11,7 +11,9 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style type="text/css">
-
+.owl-item{
+    margin: 0px -12px 0px -10px !important;
+}
  #likeBtn{
 	  background-color: transparent;
 	  border: 2px solid rgb(64, 0, 64);
@@ -416,8 +418,8 @@ document.addEventListener('DOMContentLoaded', function() {
         </tr>
         <tr>
           <td>
-          <h5 id="moinfo1">${vo.mrday}&nbsp;개봉&nbsp;|&nbsp;${vo.mtime}&nbsp;|&nbsp;${vo.mgrade}&nbsp;<br>
-          누적관객수&nbsp;:&nbsp; <fmt:formatNumber value="${vo.mcount }" type="number" ></fmt:formatNumber>명&nbsp;|&nbsp;${vo.mnation }&nbsp;</h5>
+          <h4 id="moinfo1">${vo.mrday}&nbsp;개봉&nbsp;|&nbsp;${vo.mtime}&nbsp;|&nbsp;${vo.mgrade}&nbsp;<br>
+          누적관객수&nbsp;:&nbsp; <fmt:formatNumber value="${vo.mcount }" type="number" ></fmt:formatNumber>명&nbsp;|&nbsp;${vo.mnation }&nbsp;</h4>
        </td>
        <tr>
         <td class="text-left" id="moinfo2"></td>
@@ -444,7 +446,12 @@ document.addEventListener('DOMContentLoaded', function() {
            
               <c:choose>
                                                 <c:when test="${vo.mstate == '1'}">
+                                                	<c:if test="${sessionScope.id!=null }">
                                                  <a href="../movie/mreservemain.do" title="영화 예매하기"><input type="button" id="dbokdBtn1" value="예매"></a>
+                                                     </c:if>
+                                                      <c:if test="${sessionScope.id==null }">
+                                                      <a href="../member/login.do" onclick="alert('로그인이 필요한 메뉴입니다!')" title="영화 예매하기"><input type="button" id="dbokdBtn1" value="예매"></a>
+                                                      </c:if>
                                                 </c:when>
                                                 <c:when test="${vo.mstate == '2'}">
                                                   <a href="#" title="영화 상영예정"><input type="button" id="dbokdBtn2" value="상영예정" disabled></a>
@@ -458,12 +465,12 @@ document.addEventListener('DOMContentLoaded', function() {
        </tr>
        </table>
         <div class="row">
-        <div class="featured-games3" style="width:650px; height:500px; padding-left:30px; padding-right:10px;">           
-            <div class="mbook" >
+        <div class="featured-games3" style="width:600px; height:300px; padding-left:11px !important; padding-right:10px !important; margin-left:10px;">           
+            <div class="mbook">
         <h4>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        			# &nbsp; 관련&nbsp;추천&nbsp;도서</h4>
+        			# &nbsp; 관련&nbsp;도서&nbsp;추천</h4>
             <h3>  <br></h3>
-                <div class="owl-features owl-carousel" id="moviebookc" style="width:500px; height:400px; margin-left:20px; margin-right:20px; left:10px;">
+                <div class="owl-features owl-carousel" id="moviebookc" style="width:504px; height:200px; margin-left:3px; margin-right:20px; left:10px;">
                 <c:forEach var="mbvo" items="${mbList }">
                   <input type="hidden" value="${vo.mno}" id="mno">
 				 <div class="item2" >
@@ -472,16 +479,16 @@ document.addEventListener('DOMContentLoaded', function() {
                  <div class="hover-effect">
                       <h6><a href="../book/detail.do?bno=${mbvo.bno }"  title="상세정보 확인">상세정보</a></h6>
                       </div>
-                <h4><span>${mbvo.btitle }</span></h4>
-                <ul>
-                    <li> ${mbvo.sale_price }원</li>
-                </ul>
+                <h5><span id=btitlel>${mbvo.btitle }</span></h5> <h5><span id=bsalep>&emsp;${mbvo.sale_price }원</span></h5>
             </div>
         </div>
+        <c:if test="${mbvo.bno == null }">
+        			<h4><span class="text-center"> 관련 도서가 없습니다. </span></h4>			
+  			</c:if>
          </c:forEach>
         </div>
          </div>
-             </div>
+         </div>
     </div>
  </div>
  <div class="container">
