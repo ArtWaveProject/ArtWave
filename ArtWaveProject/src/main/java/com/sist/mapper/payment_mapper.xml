@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.payment-mapper">
-	<insert
-		id="paymentInsert"
-		parameterType="hashmap">
-		INSERT INTO payment VALUES((SELECT(NVL(max(pno)+1, 1)) FROM payment), #{id}, #{count}, #{price}, sysdate, #{post}, #{addr1}, #{addr2}, #{type})
+<resultMap type="com.sist.vo.PaymentVO" id="paymentMap">
+<result property="bvo.cover" column="bposter"/>
+<result property="mvo.poster" column="mposter"/>
+<result property="avo.aphoto" column="aposter"/>
+</resultMap>
+	<insert id="paymentInsert" parameterType="hashmap">
+		INSERT INTO payment VALUES((SELECT(NVL(max(pno)+1, 1)) FROM payment), #{id}, #{count}, #{price}, sysdate, #{post}, #{addr1}, #{addr2}, #{type}, #{gno}, #{ptitle})
 	</insert>
+	<select id="paymentCheck" resultType="int" parameterType="hashmap">
+		SELECT COUNT(*) FROM payment WHERE id=#{id} AND type=#{type} AND gno=#{gno}
+	</select>
+	<select id="paymentList" resultMap="paymentMap" parameterType="hashmap">
+	SELECT pno, id, count, price, buydate, post, addr1, addr2, type, gno, ptitle,
+	(SELECT poster FROM music WHERE gno=music.mno AND type=1) as mposter,
+	(SELECT cover FROM book WHERE gno=book.bno AND type=2) as bposter,
+	(SELECT aphoto FROM album_store WHERE gno=album_store.ano AND type=3) as aposter
+	FROM payment WHERE id=#{id} AND type LIKE '%'||#{type}||'%' ORDER BY pno
+	</select>
 </mapper>

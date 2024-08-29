@@ -202,6 +202,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
+let audio= new Audio()
 $(function() {
 	playListList()
 	$('.playListBtn').click(function() {
@@ -270,6 +271,40 @@ function playListMusicInsert(li, plno){
 		}
 	})
 }
+function musicPlay(mno) {
+	let id='${id}'
+	if(id.length<1){
+		alert('로그인이 필요합니다')
+		return
+	}
+	$.ajax({
+		type:'post',
+		url:'../payment/paymentCheck.do',
+		data:{
+			'type':1,
+			'gno':mno
+		},
+		success:function(result){
+			if(result==='OK'){
+				alert('구매후 재생 가능합니다')
+				return
+			}
+			else{
+				$.ajax({
+					type:'post',
+					url:'../music/musicUrl.do',
+					data:{
+						'mno':mno
+					},
+					success:function(result){
+						audio.src=result
+						audio.play()
+					}
+				})
+			}
+		}
+	})
+}
 </script>
 </head>
 <body>
@@ -326,9 +361,9 @@ function playListMusicInsert(li, plno){
 							<span class="listTitle"><a href="../music/musicDetail.do?mno=${mvo.mno}">${mvo.title}</a></span><br> <span class="listArtist"><a style="color: #aaa;" href="../music/artistDetail.do?ano=${mvo.ano}">${mvo.aname}</a></span>
 						</td>
 						<td width="7%" class="text-center">
-							<a>
+							<button type="button" style="background: transparent; border:none;" onclick="musicPlay(${mvo.mno})">
 								<img class="iconImg" src="play.png">
-							</a>
+							</button>
 						</td>
 						<td width="7%" class="text-center" style="position: relative;">
 							<ul class="nav" style="display: inline; position: relative;">

@@ -436,6 +436,19 @@ public class MusicDAO {
 		}
 		return list;
 	}
+	public static String musicUrl(int mno) {
+		String result="";
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			result = session.selectOne("musicUrl", mno);
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return result;
+	}
 
 	public static void adminReserveUpdate(int rno) {
 		SqlSession session = null;

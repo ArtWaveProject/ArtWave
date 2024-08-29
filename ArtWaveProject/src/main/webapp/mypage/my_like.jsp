@@ -177,29 +177,33 @@
 	vertical-align: middle !important;
 }
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		let likecheck = true
-		let id = $('#id').val()
-		$('.likeBtnicon').click(function() {
-			let mno = $('#mno').val()
-			if (likeCheck === true) {
-				$.ajax({
-					type : 'post',
-					url : '../like/likeOff.do',
-					data : {
-						'tno' : tno,
-						'type' : 4
-					},
-					success : function(result) {
-						if (result >= 0) {
-							likeCheck = false
-						}
-					}
-				})
-			}
-		})
-	})
+$(function() {
+    $('.xbtn').click(function() {
+        let tno = $(this).attr('data-tno');
+
+        $.ajax({
+            type: 'POST',
+            url: '../mypage/deletelike.do',
+            data: {
+                'tno': tno
+            },
+            success: function(response) {
+                if (response.trim() === 'ok') { // 서버 응답이 'ok'인 경우
+                    alert('삭제 완료');
+                    location.reload(); // 페이지 새로 고침
+                } else {
+                    alert('다시 시도해 주세요');
+                }
+            },
+            error: function() {
+                alert('서버 오류가 발생했습니다.');
+            }
+        });
+    });
+});
+
 </script>
 </head>
 <body>
@@ -302,9 +306,8 @@
 
 
 							<td width="15%">
-								<button id="likeBtn">
-									<img src="like_on.png" id="likeBtnicon1">
-								</button>
+							<input type="button" data-tno="${al.tno}"
+								class="xbtn" src="../mypage/xBtn.png">
 							</td>
 						</tr>
 					</c:forEach>
@@ -324,9 +327,8 @@
 							<td width="20%"><span class="listArtist">${ml.molikevo.mgenre}</span>
 							</td>
 							<td width="15%">
-								<button id="likeBtn">
-									<img src="like_on.png" id="likeBtnicon2">
-								</button>
+							<input type="button" data-tno="${ml.tno}"
+								class="xbtn" src="../mypage/xBtn.png">
 							</td>
 						</tr>
 					</c:forEach>
@@ -345,9 +347,8 @@
 							<td width="20%"><span class="listArtist">${bl.bolikevo.writer}</span>
 							</td>
 							<td width="15%">
-								<button id="likeBtn">
-									<img src="like_on.png" id="likeBtnicon3">
-								</button>
+							<input type="button" data-tno="${bl.tno}"
+								class="xbtn" src="../mypage/xBtn.png">
 							</td>
 						</tr>
 					</c:forEach>
@@ -368,9 +369,8 @@
 							</td>
 
 							<td width="15%">
-								<button id="likeBtn">
-									<img src="like_on.png" id="likeBtnicon4">
-								</button>
+							<input type="button" data-tno="${mul.tno}"
+								class="xbtn" src="../mypage/xBtn.png">
 							</td>
 
 						</tr>

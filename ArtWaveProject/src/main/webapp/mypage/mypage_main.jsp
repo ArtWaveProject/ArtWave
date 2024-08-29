@@ -46,8 +46,8 @@
                     </div>
                     <!-- 사이드바 메뉴목록2 -->
                     <ul class="list-group">
+                        <li class="list-group-item"><a href="../mypage/myPayment.do">구매내역관리</a></li>
                         <li class="list-group-item"><a href="../mypage/my_reserve.do">예약관리</a></li>
-                        <li class="list-group-item"><a href="../mypage/my_text.do">내가 쓴 글</a></li>
                         <li class="list-group-item"><a href="../mypage/my_like.do">내 좋아요</a></li>
                         <li class="list-group-item"><a href="../mypage/my_playlist.do">플레이 리스트</a></li>
                         <li class="list-group-item"><a href="../mypage/my_cart.do">장바구니</a></li>

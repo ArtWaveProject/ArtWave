@@ -64,6 +64,7 @@ a {
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
+let audio= new Audio()
 $(function() {
 	playListList()
 })
@@ -126,6 +127,40 @@ function playListMusicInsert(li, plno){
 		}
 	})
 }
+function musicPlay(mno) {
+	let id=$('#id').val()
+	if(id.length<1){
+		alert('로그인이 필요합니다')
+		return
+	}
+	$.ajax({
+		type:'post',
+		url:'../payment/paymentCheck.do',
+		data:{
+			'type':1,
+			'gno':mno
+		},
+		success:function(result){
+			if(result==='OK'){
+				alert('구매후 재생 가능합니다')
+				return
+			}
+			else{
+				$.ajax({
+					type:'post',
+					url:'../music/musicUrl.do',
+					data:{
+						'mno':mno
+					},
+					success:function(result){
+						audio.src=result
+						audio.play()
+					}
+				})
+			}
+		}
+	})
+}
 </script>
 </head>
 <body>
@@ -154,9 +189,9 @@ function playListMusicInsert(li, plno){
 								<a href="../music/artsitDetail.do?ano=${mvo.ano}">${mvo.aname}</a>
 							</td>
 							<td width="5%" class="text-center">
-								<a>
+								<button type="button" style="background: transparent;border: none;" onclick="musicPlay(${mvo.mno})">
 									<img class="iconImg" src="play.png">
-								</a>
+								</button>
 							</td>
 							<td width="5%" class="text-center">
 								<ul class="nav" style="display: inline; position: relative;">
@@ -175,7 +210,9 @@ function playListMusicInsert(li, plno){
 						</tr>
 					</c:forEach>
 				</table>
+				<div style="text-align: right;">
 				<a href="../music/musicList.do?ss=${ss}" style="text-align: right;">검색결과 더보기</a>
+				</div>
 			</div>
 			<div style="height: 50px;"></div>
 			<div class="row">

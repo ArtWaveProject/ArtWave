@@ -17,7 +17,11 @@ import java.util.Date;
 import lombok.Data;
 @Data
 public class PaymentVO {
-	private int pno, count, price, type;
-	private String id, dbday, post, addr1, addr2;
+	private int pno, count, price, type, gno;
+	private String id, dbday, post, addr1, addr2, ptitle;
 	private Date buydate;
+	private MusicVO mvo=new MusicVO();
+	private AlStoreVO avo=new AlStoreVO();
+	private BookVO bvo=new BookVO();
+	private String typeDetail;
 }

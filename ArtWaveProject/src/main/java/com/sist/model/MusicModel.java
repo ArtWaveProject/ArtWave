@@ -14,9 +14,11 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.sist.dao.MusicDAO;
+import com.sist.dao.PaymentDAO;
 import com.sist.vo.AlbumVO;
 import com.sist.vo.ArtistVO;
 import com.sist.vo.MusicVO;
+import com.sist.vo.PaymentVO;
 import com.sist.vo.PlayListVO;
 import com.sist.vo.ReserveVO;
 
@@ -36,6 +38,7 @@ R&B/소울
 public class MusicModel {
 	private String[] genreList = { "", "", "댄스", "드라마", "발라드", "인디", "락", "랩/힙합", "트로트", "R&B/소울", "블루스/포크", "동요",
 			"일렉트로니카", "정통", "애시드/퓨전", "한국영화", "국내CCM", "캐롤" };
+	String[] types = { "", "음악", "도서", "앨범" };
 
 	@RequestMapping("music/musicHome.do")
 	public String musicHome(HttpServletRequest request, HttpServletResponse response) {
@@ -80,8 +83,8 @@ public class MusicModel {
 		int totalPage = MusicDAO.musicTotalPage(map);
 		int startPage = (curPage - 1) / 10 * 10 + 1;
 		int endPage = startPage + 10 - 1;
-		if(endPage>totalPage)
-			endPage=totalPage;
+		if (endPage > totalPage)
+			endPage = totalPage;
 		request.setAttribute("id", id);
 		request.setAttribute("ss", ss);
 		request.setAttribute("genre", genre);
@@ -119,8 +122,8 @@ public class MusicModel {
 			int totalPage = MusicDAO.albumTotalPage(map);
 			int startPage = (curPage - 1) / 10 * 10 + 1;
 			int endPage = startPage + 10 - 1;
-			if(endPage>totalPage)
-				endPage=totalPage;
+			if (endPage > totalPage)
+				endPage = totalPage;
 			request.setAttribute("ss", ss);
 			request.setAttribute("genre", genre);
 			request.setAttribute("curPage", curPage);
@@ -151,13 +154,13 @@ public class MusicModel {
 		map.put("start", start);
 		map.put("end", end);
 		map.put("ss", ss);
-		int count=MusicDAO.artistFindCount(map);
-		int totalPage=(int)(count/12.0+1);
+		int count = MusicDAO.artistFindCount(map);
+		int totalPage = (int) (count / 12.0 + 1);
 		List<ArtistVO> list = MusicDAO.artistListData(map);
-		int startPage=(curPage-1)/10*10+1;
-		int endPage=startPage+10-1;
-		if(endPage>totalPage)
-			endPage=totalPage;
+		int startPage = (curPage - 1) / 10 * 10 + 1;
+		int endPage = startPage + 10 - 1;
+		if (endPage > totalPage)
+			endPage = totalPage;
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("ss", ss);
@@ -303,9 +306,9 @@ public class MusicModel {
 		List<AlbumVO> alList = MusicDAO.albumFindData(map);
 		map.put("end", 4);
 		List<ArtistVO> aList = MusicDAO.artistFindData(map);
-		int musicCount=MusicDAO.musicFindCount(map);
-		int albumCount=MusicDAO.albumFindCount(map);
-		int artistCount=MusicDAO.artistFindCount(map);
+		int musicCount = MusicDAO.musicFindCount(map);
+		int albumCount = MusicDAO.albumFindCount(map);
+		int artistCount = MusicDAO.artistFindCount(map);
 		request.setAttribute("musicCount", musicCount);
 		request.setAttribute("albumCount", albumCount);
 		request.setAttribute("artistCount", artistCount);
@@ -374,7 +377,18 @@ public class MusicModel {
 		} catch (Exception e) {
 		}
 	}
-	
+
+	@RequestMapping("music/musicUrl.do")
+	public void musicUrl(HttpServletRequest request, HttpServletResponse response) {
+		String mno = request.getParameter("mno");
+		String result = MusicDAO.musicUrl(Integer.parseInt(mno));
+		try {
+			response.setContentType("text/plain;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.write(result);
+		} catch (Exception e) {
+		}
+	}
 
 	@RequestMapping("mypage/my_reserve.do")
 	public String my_reserve(HttpServletRequest request, HttpServletResponse response) {
@@ -383,7 +397,7 @@ public class MusicModel {
 		String id = (String) session.getAttribute("id");
 		List<ReserveVO> list = MusicDAO.reserveListData(id);
 		System.out.println(list.size());
-		for(ReserveVO vo:list) {
+		for (ReserveVO vo : list) {
 			System.out.println(vo.getTname());
 		}
 		request.setAttribute("list", list);
@@ -398,17 +412,45 @@ public class MusicModel {
 		MusicDAO.reserveDelete(Integer.parseInt(rno));
 	}
 
+	@RequestMapping("mypage/myPayment.do")
+	public String myPayment(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		String type = request.getParameter("type");
+		if (type == null || type.equals("0")) {
+			System.out.println("check");
+			type = "";
+		}
+		try {
+			Map map = new HashMap();
+			map.put("id", id);
+			map.put("type", type);
+			List<PaymentVO> list = PaymentDAO.paymentList(map);
+			for (PaymentVO vo : list) {
+				vo.setTypeDetail(types[vo.getType()]);
+			}
+			request.setAttribute("list", list);
+			request.setAttribute("mypage_jsp", "../mypage/myPagePayment.jsp");
+			request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "../main/main.jsp";
+	}
+
 	@RequestMapping("admin/adminReserve.do")
 	public String adminReserve(HttpServletRequest request, HttpServletResponse response) {
-		List<ReserveVO> list=MusicDAO.adminReserveListData();
+		List<ReserveVO> list = MusicDAO.adminReserveListData();
 		request.setAttribute("list", list);
 		request.setAttribute("admin_jsp", "../adminpage/adminReserve.jsp");
 		request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
 		return "../main/main.jsp";
 	}
+
 	@RequestMapping("admin/reserveUpdate.do")
 	public void reserveUpdate(HttpServletRequest request, HttpServletResponse response) {
-		String rno=request.getParameter("rno");
+		String rno = request.getParameter("rno");
 		MusicDAO.adminReserveUpdate(Integer.parseInt(rno));
 	}
 }

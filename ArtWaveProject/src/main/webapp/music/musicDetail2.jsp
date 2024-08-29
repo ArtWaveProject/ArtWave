@@ -124,6 +124,7 @@ function requestPay(json,name,price) {
         buyer_addr: json.address,
         buyer_postcode: json.post
     }, function (rsp) { // callback
+    	alert('구매완료')
     });
 }
 $(function() {
@@ -193,26 +194,49 @@ $(function() {
 		}
 	})
 	$('#buy').click(function(){
-		let pno=${detail.mno}
+		let gno=${detail.mno}
 		let price=400
 		let account=1
 		let name='${detail.title}'
+		let id=$('#id').val()
+		if(id.length<2){
+			alert('로그인이 필요합니다')
+			return
+		}
 		$.ajax({
 			type:'post',
-			url:'../payment/paymentInsert.do',
+			url:'../payment/paymentCheck.do',
 			data:{
-				"pno":pno,
-				"price":price,
-				"account":account,
-				'type':1,
-				},
-			success:function(result)
-			{
-				let json=JSON.parse(result)
-			  console.log(json)
-				requestPay(json,name,price)
+				'gno':gno,
+				'type':1
+			},
+			success:function(result){
+				if(result==='OK'){
+					$.ajax({
+						type:'post',
+						url:'../payment/paymentInsert.do',
+						data:{
+							"gno":gno,
+							"price":price,
+							"account":account,
+							'type':1,
+							'title':name
+							},
+						success:function(result)
+						{
+							let json=JSON.parse(result)
+						  console.log(json)
+							requestPay(json,name,price)
+						}
+					})
+				}
+				else{
+					alert('이미 구매한 음악입니다')
+					return
+				}
 			}
 		})
+		
 	})
 })
 function playListMake() {
@@ -272,6 +296,31 @@ function playListMusicInsert(li, plno){
 			}
 			else{
 				alert('이미 플레이리스트에 존재하는 음악입니다')
+			}
+		}
+	})
+}
+function musicPlay() {
+	let id=$('#id').val()
+	if(id.length<2){
+		alert('로그인이 필요합니다')
+		return
+	}
+	$.ajax({
+		type:'post',
+		url:'../payment/paymentCheck.do',
+		data:{
+			'gno':${detail.mno},
+			'type':1
+		},
+		success:function(result){
+			if(result==='OK'){
+				alert('구매후 재생 가능합니다')
+				return
+			}
+			else{
+				let audio= new Audio('${detail.urlmp3}')
+				audio.play()
 			}
 		}
 	})
@@ -341,7 +390,7 @@ function playListMusicInsert(li, plno){
 					</tr>
 					<tr>
 						<td colspan="2" class="inline">
-							<button type="button" style="border: transparent; background: transparent;">
+							<button type="button" style="border: transparent; background: transparent;" onclick="musicPlay()">
 								<img src="play.png" class="btnIcon">
 							</button>
 							<button type="button" id="likeBtn">

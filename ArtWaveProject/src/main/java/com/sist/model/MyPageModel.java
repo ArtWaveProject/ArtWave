@@ -115,7 +115,7 @@ public class MyPageModel {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-
+	    
 	    return "../mypage/mypage_main.jsp";
 	}
 
@@ -481,6 +481,36 @@ public class MyPageModel {
 	    out.print(result); // 결과를 응답 본문으로 작성
 	    out.flush();
 	    out.close();
+	}
+	
+	@RequestMapping("mypage/deletelike.do")
+	public void deletelike(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		String tno = request.getParameter("tno");
+		
+		System.out.println(id+"id model");
+		System.out.println(tno+"tno model");
+		Map<String, Object> map = new HashMap();
+		map.put("id", id);
+		map.put("tno", tno);
+		
+		String result = "fail"; // 기본값은 실패로 설정
+		
+		try {
+			LikeDAO.deletelike(map);
+			result = "ok"; // 성공 시 'ok'로 설정
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		// 응답 작성
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(result); // 결과를 응답 본문으로 작성
+		out.flush();
+		out.close();
 	}
 
 
