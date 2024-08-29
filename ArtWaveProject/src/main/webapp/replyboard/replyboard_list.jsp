@@ -105,24 +105,30 @@ body {
 					<tbody>
 						<c:set var="count" value="${count }" />
 						<c:forEach var="vo" items="${rbList }" varStatus="i" >
+							<c:if test="${vo.group_step == 0}">
 							<tr onclick="location.href='../replyboard/detail.do?no=${vo.no}'" style="cursor: pointer;">
 								<td width="10%" align="center">${vo.no}</td>
-								<td width="40%">
-								
-									<c:if test="${vo.group_step>0 }">
+								<td width="40%">	
+									<%-- <c:if test="${vo.group_step>0 }">
 									&nbsp;&nbsp;
-									</c:if> 
+									</c:if>  --%>
 									${vo.subject }
 									</td>
 								<%-- <td width="10%">${vo.name }</td> --%>
 								<td width="15%">${vo.dbday }</td>
-								<td width="25%"><c:if test="${vo.isreply == 0 }">
-										<span class="btn btn-info rounded-pill m-2">답변대기</span>
-									</c:if> <c:if test="${vo.isreply != 0 }">
-										<span style="color: #FF8F0B;">답변완료</span>
-									</c:if></td>
+								<td width="25%">
+									<c:choose>
+							          <c:when test="${vo.isreply == 0}">
+							            <span class="btn btn-info rounded-pill m-2">답변대기</span>
+							          </c:when>
+							          <c:when test="${vo.isreply == 1}">
+							            <span style="color: #FF8F0B;">답변완료</span>
+							          </c:when>
+							        </c:choose>
+								</td>
 							</tr>
 							<c:set var="count" value="${count-1 }" />
+							</c:if>
 						</c:forEach>
 					</tbody>
 					
