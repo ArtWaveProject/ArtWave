@@ -269,12 +269,12 @@ body {
 				</c:if>
 				<c:forEach var="i" begin="${startPage}" end="${endPage}">
 					<li ${i == curPage ? "class='current'" : ""}>
-						<a href="../board/boardList.do?page=${startPage-1}&ss=${ss}&cno=${type}&option=${option}">${i}</a>
+						<a href="../board/boardList.do?page=${i}&ss=${ss}&cno=${type}&option=${option}">${i}</a>
 					</li>
 				</c:forEach>
 				<c:if test="${endPage < totalPage}">
 					<li>
-						<a href="../board/boardList.do?page=${startPage-1}&ss=${ss}&cno=${type}&option=${option}">Next &raquo;</a>
+						<a href="../board/boardList.do?page=${endPage+1}&ss=${ss}&cno=${type}&option=${option}">Next &raquo;</a>
 					</li>
 				</c:if>
 			</ul>
