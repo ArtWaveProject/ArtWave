@@ -52,13 +52,14 @@ body {
 						    <th width="10%">답변 상태</th>
 						    <td width="30%">
 						      <c:if test="${vo.isreply == 0}">
-						        <span class="btn btn-info rounded-pill m-2">답변대기</span>
+						        <span style="color: red">답변대기</span>
 						      </c:if>
 						      <c:if test="${vo.isreply != 0}">
-						        <span style="color: #FF8F0B;">답변창 이동</span>
+						        <span style="color: #FF8F0B;">답변완료</span>
 						      </c:if>
 						    </td>
 						  </tr>
+						  
 						  <tr>
 						    <th width="10%">제목</th>
 						    <td colspan="5">${vo.subject}</td>
@@ -68,12 +69,12 @@ body {
 						    <td colspan="5" style="height: 200px; vertical-align: top;">${vo.content}</td>
 						  </tr>
 						  
-						  <c:if test="${vo.isreply != 0}">
+						  <%-- <c:if test="${vo.isreply != 0}">
 						    <tr>
 						      <th width="10%">답변 내용</th>
-						      <td colspan="5" style="height: 200px; vertical-align: top;">${vo.reply_content}</td>
+						      <td colspan="5" style="height: 200px; vertical-align: top;">${vo.content}</td>
 						    </tr>
-						  </c:if>
+						  </c:if>   --%>
 						</table>
             
             <div class="text-center mt-4">

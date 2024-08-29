@@ -15,7 +15,7 @@ import com.sist.dao.*;
 import com.sist.vo.*;
 
 public class AdminModel {
-	private String[] types={"","일반공지","Books공지","Music공지","잔체공지"};
+	//private String[] types={"","일반공지","Books공지","Music공지","잔체공지"};
 	
 	//-----------------------------------------admin연결-----------------------------------------
 	@RequestMapping("adminpage/adminpage_main.do")
