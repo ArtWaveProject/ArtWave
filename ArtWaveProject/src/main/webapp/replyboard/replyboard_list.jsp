@@ -91,50 +91,70 @@ body {
 					<thead>
 					
 						<tr>
-							
 							<th scope="col" width="10%">번호</th>
-							<th scope="col" width="40%">제목</th>
+							<th scope="col" width="60%"	>문의글</th>
 							<!-- <th scope="col" width="10%">작성자</th> -->
-							<th scope="col" width="15%">작성일</th>
-							<th scope="col" width="25%">답변상태</th>
+							<th scope="col" width="30%" class="text-center">작성일</th>
+							<!-- <th scope="col" width="25%">답변상태</th> -->
 						</tr>
 					
 					</thead>
-					
+
+						  <c:set var="count" value="${count }"/>
+						    <c:forEach var="vo" items="${rbList }">
+						     <tr onclick="location.href='../replyboard/detail.do?no=${vo.no}'" style="cursor: pointer;">
+						      <td width="10%" class="text-center">${count }</td>
+						      <td width="60%">
+						       <c:if test="${vo.group_step>0 }">
+						        <span>└</span>&nbsp;&nbsp;&nbsp;&nbsp;
+						        
+						       </c:if>
+						       ${vo.subject}
+						      </td>
+     							 <td width="30%" class="text-center">${vo.dbday }</td>
+
+						    </tr>
+						    <c:set var="count" value="${count-1}"/>
+						    </c:forEach>
+						<%--  <tbody>
+							<c:set var="count" value="${count }" />
+							<c:forEach var="vo" items="${rbList }" varStatus="i">
+								<c:if test="${vo.group_step == 0}">
+									<tr
+										onclick="location.href='../replyboard/detail.do?no=${vo.no}'"
+										style="cursor: pointer;">
+										<td width="10%" align="center">${vo.group_id}</td>
+										<td width="40%">
+											<c:if test="${vo.group_step>0 }">
+								&nbsp;&nbsp;
+								</c:if>  ${vo.subject }
+										</td>
+										<td width="10%">${vo.name }</td>
+										<td width="15%">${vo.dbday }</td>
+										<td width="25%"><c:choose>
+												<c:when test="${vo.isreply == 0}">
+													<span style=color:blue;>답변대기</span>
+												</c:when>
+												<c:when test="${vo.isreply == 1}">
+													<span style="color: #FF8F0B;">답변완료</span>
+												</c:when>
+											</c:choose></td>
+									</tr>
+									<c:set var="count" value="${count-1 }" />
+								</c:if>
+							</c:forEach>
+						</tbody> --%>
 						
-					<tbody>
-						<c:set var="count" value="${count }" />
-						<c:forEach var="vo" items="${rbList }" varStatus="i" >
-							<c:if test="${vo.group_step == 0}">
-							<tr onclick="location.href='../replyboard/detail.do?no=${vo.no}'" style="cursor: pointer;">
-								<td width="10%" align="center">${vo.no}</td>
-								<td width="40%">	
-									<%-- <c:if test="${vo.group_step>0 }">
-									&nbsp;&nbsp;
-									</c:if>  --%>
-									${vo.subject }
-									</td>
-								<%-- <td width="10%">${vo.name }</td> --%>
-								<td width="15%">${vo.dbday }</td>
-								<td width="25%">
-									<c:choose>
-							          <c:when test="${vo.isreply == 0}">
-							            <span class="btn btn-info rounded-pill m-2">답변대기</span>
-							          </c:when>
-							          <c:when test="${vo.isreply == 1}">
-							            <span style="color: #FF8F0B;">답변완료</span>
-							          </c:when>
-							        </c:choose>
-								</td>
-							</tr>
-							<c:set var="count" value="${count-1 }" />
-							</c:if>
-						</c:forEach>
-					</tbody>
-					
-					
-					
-				</table>
+						
+						
+						
+						</table>
+
+
+
+
+
+
 
 				<table>
 					<tr class="text-center">

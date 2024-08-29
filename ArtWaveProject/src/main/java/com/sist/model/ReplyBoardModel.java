@@ -19,6 +19,7 @@ public class ReplyBoardModel {
 	@RequestMapping("replyboard/list.do")
 	   public String replyboard_list(HttpServletRequest request,HttpServletResponse response)
 	   {
+		   // 페이지 처리 
 		   String page=request.getParameter("page");
 		   if(page==null)
 			   page="1";
@@ -41,7 +42,6 @@ public class ReplyBoardModel {
 		   request.setAttribute("curpage", curpage);
 		   request.setAttribute("totalpage", totalpage);
 		   request.setAttribute("rbList", list);
-		   
 		   request.setAttribute("main_jsp", "../replyboard/replyboard_list.jsp");
 		   
 		   return "../main/main.jsp";
@@ -95,6 +95,7 @@ public class ReplyBoardModel {
 		   HttpSession session = request.getSession();
 		   
 		   request.setAttribute("vo", vo);
+
 		   request.setAttribute("main_jsp", "../replyboard/replyboard_detail.jsp");
 		   return "../main/main.jsp";
 	   }

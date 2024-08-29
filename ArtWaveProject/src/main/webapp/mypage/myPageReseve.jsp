@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+
+body {
+    font-family: Arial, sans-serif;
+}
+
 .listImg {
 	width: 45px !important;
 	height: 45px !important;
@@ -28,51 +34,64 @@
 	padding: 5px;
 	vertical-align: middle !important;
 	border-radius: 30px;
+	border: 0.1px solid #ddd; 
 }
 
-.listChart th, .listChart td {
-    padding: 15px;
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.table th, .table td {
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    align-content: center;
 }
 
-.listChart th {
+.table th {
     font-weight: bold;
+    background-color: #f9f9f9;
 }
 
-
-.listChart img {
+.table img {
     border-radius: 5px;
 }
 
-.listChart button {
-    background-color: #e74c3c;
-    color: #ffffff;
+button {
+    background-color: transparent; 
+    color: #e74c3c;
     border: none;
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 10px 15px; 
     font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: color 0.3s, transform 0.3s;
+    text-align: center;
 }
 
-.listChart button:hover {
-    background-color: #c0392b;
+button:hover {
+    color: #c0392b;
     transform: scale(1.05);
 }
 
-.listChart .checkBtn {
+.checkBtn {
     color: #3498db;
     cursor: pointer;
     font-weight: bold;
 }
 
-.listChart .checkBtn:hover {
+.checkBtn:hover {
     color: #2980b9;
 }
 
 .reserve-details {
     display: none;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .reserve-details img {
@@ -91,23 +110,9 @@
     background-color: #f9f9f9;
 }
 
-.reserve-details td {
-    padding: 10px;
-}
-
-.reserve-details tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.reserve-details td img {
-    width: 100%;
-    border-radius: 5px;
-}
-
 #middle {
     vertical-align: middle !important;
 }
-
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
@@ -185,11 +190,11 @@
 								</tr>
 								<tr>
 									<th width="20%">결제금액</th>
-									<td colspan="3" width="80%" id="mPrice">${vo.price }</td>
+									<td colspan="3" width="80%" id="mPrice"><fmt:formatNumber value="${vo.price}" type="number" />원</td>
 								</tr>
 								<tr>
 									<th width="20%">인원</th>
-									<td width="30%" id="mMember">${vo.inwon }</td>
+									<td width="30%" id="mMember">${vo.inwon }명</td>
 									<th width="20%">좌석</th>
 									<td width="30%" id="mSit"></td>
 								</tr>

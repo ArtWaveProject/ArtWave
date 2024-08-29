@@ -274,7 +274,80 @@ body {
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript">
+
+var IMP = window.IMP; 
+IMP.init("imp68206770"); 
+function requestPay(json,name,price) {
+    IMP.request_pay({
+        pg: "html5_inicis",
+        pay_method: "card",
+        merchant_uid: "ORD20180131-0000011", 
+        name: name,
+        amount: price,        
+        buyer_email: json.email,
+        buyer_name: json.name,
+        buyer_tel: json.phone,
+        buyer_addr: json.address,
+        buyer_postcode: json.post
+    }, function (rsp) { 
+    	alert('구매완료')
+    });
+}
+$(function() {
+	$('.buy').click(function(){
+		let gno=$(this).attr('data-bno')
+		let price=$(this).attr('data-price')
+		let account=$('.account').val()
+		let name=$(this).attr('data-title')
+		let id = '${id}' 
+		console.log(gno)
+		console.log(price)
+		console.log(account)
+		console.log(name)
+		console.log(id)
+			if (id.length === 0) 
+			{
+				alert('로그인이 필요합니다')
+				return
+			}
+		$.ajax({
+			type:'post',
+			url:'../payment/paymentCheck.do',
+			data:{
+				'gno':gno,
+				'type':2
+			},
+			success:function(result){
+				if(result==='OK'){
+					$.ajax({
+						type:'post',
+						url:'../payment/paymentInsert.do',
+						data:{
+							"gno":gno,
+							"price":price,
+							"account":account,
+							'type':2,
+							'title':name
+							},
+						success:function(result)
+						{
+							let json=JSON.parse(result)
+						  console.log(json)
+							requestPay(json,name,price)
+						}
+					})
+				}
+				else{
+					alert('이미 구매한 도서입니다')
+					return
+				}
+			}
+		})
+		})
+
 function toggleRecentBooks() {
     const container = document.querySelector('.recent-books-container');
     const toggleIcon = container.querySelector('.toggle-icon');
@@ -286,44 +359,39 @@ function toggleRecentBooks() {
         toggleIcon.textContent = '-';
     }
 }
+	$(document).ready(function() {
+	    $('.add-to-cart').click(function(event) {
+	        event.preventDefault()
+	 
+	      let id = '${id}'  
+	        
+	      if (id.length === 0) {
+				alert('해당 기능은 로그인 시 이용하실 수 있습니다')
+				return
+			}
+	        
+	      let bno = $(this).attr('data-bno')
+	      let count = $('#account'+bno).val()
+	      let price = $(this).attr('data-price')
 
-$(document).ready(function() {
-    $('.add-to-cart').click(function(event) {
-        event.preventDefault()
- 
-      let id = '${id}'  
-        
-      if (id.length === 0) {
-			alert('해당 기능은 로그인 시 이용하실 수 있습니다')
-			return
-		}
-        
-        let bno = $(this).attr('data-bno')
-        let count = $('#account'+bno).val()
-        let price = $(this).attr('data-price')
-
-        console.log(bno)
-        console.log(count)
-        console.log(price)
-        $.ajax({
-            type: 'post',
-            url: '../book/cart.do',
-            data: {
-                'tno': bno,
-                'price': price,
-                'count': count,
-                'type': 2 
-            },
-            success: function(result) {
-                alert('장바구니에 추가되었습니다')
-            },
-            error: function(request, status, error) {
-                alert('오류가 발생했습니다')
-            }
-        })
-    })
-})
-
+	        $.ajax({
+	            type: 'post',
+	            url: '../book/cart.do',
+	            data: {
+	                'tno': bno,
+	                'price': price,
+	                'count': count,
+	                'type': 2 
+	            },
+	            success: function(result) {
+	                alert('장바구니에 추가되었습니다')
+	            },
+	            error: function(request, status, error) {
+	                alert('오류가 발생했습니다')
+	            }
+	        })
+	    })
+	})
 $(function() {
 	let id = '${id}';
   
@@ -396,8 +464,10 @@ $(function() {
 				})
 			}
 		})
-	})
-
+	
+		
+		})
+		
 	$('.book-item').each(function() {
 		let $item = $(this)
 		let $increment = $item.find('.increment')
@@ -454,6 +524,7 @@ $(document).ready(function() {
         })
     })
 })
+})
 </script>
 </head>
 <body>
@@ -507,8 +578,8 @@ $(document).ready(function() {
 								</div>
 								<button type="button" class="fa fa-cart-plus add-to-cart" 
 									style="background-color: #99D9EA;" data-bno="${vo.bno }" data-price="${vo.sale_price }">&nbsp;Add to Cart</button>
-								<button type="button" class="fa fa-credit-card"
-									style="background-color: #7396EA">&nbsp;Buy Now</button>
+								<button type="button" class="fa fa-credit-card buy" 
+									style="background-color: #7396EA" data-title="${vo.btitle }" data-bno="${vo.bno }" data-price="${vo.sale_price }">&nbsp;Buy Now</button>
 							</div>
 						</div>
 					</c:forEach>

@@ -52,11 +52,11 @@ td[width="40%"]:hover {
 				<c:set var="count" value="${count }"/>
 				<c:forEach var="vo" items="${arList }">
 					<tr>
-						<td width="10%" align="center">${vo.no}</td>
+						<td width="10%" align="center">${vo.group_id}</td>
 						<td width="40%">
-							<c:if test="${vo.group_step>0 }">
+							<%-- <c:if test="${vo.group_step>0 }">
 							&nbsp;&nbsp;
-							</c:if>
+							</c:if> --%>
 						${vo.subject }
 						</td>
 					<%-- 	<td width="10%">${vo.name }</td> --%>
@@ -74,6 +74,8 @@ td[width="40%"]:hover {
 					</c:forEach>
 				</tbody>
 			</table>
+			
+			
 			
 			
 			<table>

@@ -2,21 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.reply-mapper">
  
-  <select id="replyBoardListData" resultType="ReplyBoardVO" parameterType="hashmap">
+<!--    <select id="replyBoardListData" resultType="ReplyBoardVO" parameterType="hashmap">
     SELECT no,id,subject,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,group_step,num
     FROM (SELECT no,id,subject,regdate,hit,group_step,rownum as num 
     	FROM (SELECT no,id,subject,regdate,hit,group_step 
-    		FROM replyboard ORDER BY group_id ASC , group_step ASC))
+    		FROM replyboard ORDER BY group_id DESC , group_step ASC))
     WHERE num BETWEEN #{start} AND #{end}
-  </select> 
- <!--  <select id="replyBoardListData" resultType="ReplyBoardVO" parameterType="hashmap">
-	SELECT no, id, subject, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, hit, group_step, isreply, num
-	FROM (SELECT no, id, subject, regdate, hit, group_step, isreply,
-           rownum() OVER (ORDER BY group_id ASC, group_step ASC) as num
-    		FROM replyboard
-    			WHERE group_step = 0)
-	WHERE num BETWEEN #{start} AND #{end}
-</select> -->
+  </select>   -->
+ 
+ <select id="replyBoardListData" resultType="ReplyBoardVO" parameterType="hashmap">
+    SELECT no,id,subject,TO_CHAR(regdate, 'YYYY-MM-DD') as dbday,hit,group_step,group_id, num
+    FROM (SELECT no,id,subject,regdate,hit,group_step,group_id,rownum as num
+        FROM (SELECT no,id,subject,regdate,hit,group_step,group_id
+              FROM replyboard 
+              ORDER BY group_id ASC, group_step ASC)
+        WHERE rownum &lt;= #{end}
+    )
+    WHERE num &gt;= #{start}
+</select>
+ 
+  <!-- 
+  <select id="adminReplyBoardListData" resultType="ReplyBoardVO" parameterType="hashmap">
+    SELECT no,id,isreply,subject,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,group_step,group_id,num
+    FROM (SELECT no,id,isreply,subject,regdate,hit,group_step,group_id,rownum as num 
+    	FROM (SELECT no,id,isreply,subject,regdate,hit,group_step,group_id
+    FROM replyboard WHERE group_step!=1 ORDER BY group_id DESC , group_step ASC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+   -->
   <select id="replyBoardRowCount" resultType="int">
    SELECT COUNT(*) FROM replyboard
   </select>
