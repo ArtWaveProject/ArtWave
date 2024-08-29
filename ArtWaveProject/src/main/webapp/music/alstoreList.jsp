@@ -118,16 +118,16 @@
 	<!-- ***** Header Area End ***** -->
 
 	<div class="container">
-		<div class="row">
+		<div class="row" style="margin-top:50px;">
 			<div class="col-lg-12">
 				<div class="page-content">
 					<!-- ***** Most Popular Start ***** -->
-					<div class="most-popular">
+					<div class="most-popular" style="margin:0px;">
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="heading-section">
 									<h4>
-										<em>Album</em>& Goods
+										<em></em>Album & Goods
 									</h4>
 								</div>
 								<div class="row">
@@ -144,7 +144,6 @@
 														<div class="price">${vo.adisprice }</div>
 													</c:if>
 												</a>
-
 											</div>
 										</div>
 									</c:forEach>

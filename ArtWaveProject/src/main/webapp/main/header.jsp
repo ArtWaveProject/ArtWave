@@ -90,12 +90,10 @@ nav {
 						<!-- ***** Logo End ***** -->
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
-							<li><a href="index.html" class="active">홈</a></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="../movie/moviemain.do"> 영화<span
 									class="caret"></span>
 							</a>
-							
 								<ul class="dropmenu">
 									<li class="submenu"><a href="../movie/movielist1.do">전체 영화</a></li>
 									<li class="submenu">

@@ -122,6 +122,10 @@ body {
         background-color: #004494;
         transform: scale(0.98);
     }
+    #writeBtn{
+        height: 44px;
+        display: inline-block;
+    }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
@@ -195,7 +199,7 @@ let id = '${id}'
 						html+='<td width="10%" style="font-weight:bold;">'+reply.nick+'</td>'
 					}
 					else{
-						html+='<td width="10%">'+reply.nick+'</td>'
+						html+='<td width="10%" style="color:#aaa;">'+reply.nick+'</td>'
 					}
 					if(reply.depth===1){
 						html+='<td style="cursor:pointer;width:70%;" onclick="tableShow('+reply.frno+')"><pre>'+reply.content+'</pre>'

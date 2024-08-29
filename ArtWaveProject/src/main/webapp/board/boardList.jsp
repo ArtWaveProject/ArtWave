@@ -136,6 +136,21 @@ body {
 .button-container input[type="button"]:hover {
 	background-color: #0056b3;
 }
+
+input[type="submit"] {
+	background-color: #3b84d1;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: background 0.3s;
+}
+
+input[type="submit"]:hover {
+	background-color: #0056b3;
+}
 .page {
 	list-style: none;
 	padding: 0;
@@ -236,7 +251,7 @@ body {
 				<tr>
 					<th width="5%" class="text-center">번호</th>
 					<th width="50%" class="text-center">제목</th>
-					<th width="15%" class="text-center">닉네임</th>
+					<th width="15%" class="text-center">작성자</th>
 					<th width="20%" class="text-center">작성일</th>
 					<th width="10%" class="text-center">조회수</th>
 				</tr>
