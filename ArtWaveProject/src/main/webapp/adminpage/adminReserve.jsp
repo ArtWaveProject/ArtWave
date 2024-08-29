@@ -6,21 +6,6 @@
 <meta charset="UTF-8">
 <title>회원 관리</title>
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-
-<!-- Tempus Dominus Bootstrap 4 CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" />
-
-<!-- jQuery first -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-<!-- Then Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Moment.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-
 <style type="text/css">
 table {
 	margin: auto;

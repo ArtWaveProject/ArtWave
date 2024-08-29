@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>CodePen - Sign Up/Sign In Responsive form</title>
-<link rel="stylesheet" href="../member/style(1).css">
+<link rel="stylesheet" href="../member/style.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
@@ -278,6 +278,25 @@
 		})
 	}
 </script>
+<style type="text/css">
+body {
+	margin: 0;
+	padding: 0;
+	background: url('dust.png') no-repeat center center fixed;
+	background-size: cover;
+	font-family: Arial, sans-serif;
+}
+
+.login {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+.login__create{
+left: -4rem;
+}
+</style>
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -285,9 +304,6 @@
 
 	<div class="login">
 		<div class="login__content">
-			<div class="login__img">
-				<img src="https://image.freepik.com/free-vector/code-typing-concept-illustration_114360-3581.jpg" alt="user login">
-			</div>
 			<div class="login__forms">
 				<!--         login form -->
 				<form action="" class="login__register" id="login-in">
