@@ -290,6 +290,7 @@ public class BoardModel {
 		count = BoardDAO.noticeBoardTotalCount(type);
 		for (BoardVO vo : list) {
 			vo.setTypeDetail(types[vo.getCno()]);
+			vo.setNick("관리자");
 		}
 		int totalPage = (int) (Math.ceil(count / 10.0));
 		int startPage = (curPage - 1) / 10 * 10 + 1;
