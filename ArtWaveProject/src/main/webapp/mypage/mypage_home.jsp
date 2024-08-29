@@ -163,41 +163,41 @@ body {
 							<th class="text-left" width="10%" style="padding-left: 15px;">ID</th>
 							<td width="40%" class="inline">${sessionScope.id}
 							<th class="text-left" width="10%" style="padding-left: 15px;">닉네임</th>
-							<td width="40%" class="inline">${sessionScope.nickname}</td>
+							<td width="40%" class="inline">${member.nickname}</td>
 							</td>
 						</tr>
 
 						<tr>
 							<th class="text-left" width="10%" style="padding-left: 15px;">이름</th>
-							<td width="40%">${sessionScope.name}</td>
+							<td width="40%">${member.name}</td>
 							<th class="text-left" width="10%" style="padding-left: 15px;">성별</th>
-							<td width="40%" class="inline">${sessionScope.sex}</td>
+							<td width="40%" class="inline">${member.sex}</td>
 						</tr>
 						<tr>
 							<th class="text-left" width="10%" style="padding-left: 15px;">생년월일</th>
-							<td width="40%">${sessionScope.bday}</td>
+							<td width="40%">${member.dbbirthday}</td>
 							<th class="text-left" width="10%" style="padding-left: 15px;">가입일</th>
-							<td width="40%" class="inline">${sessionScope.regdate}</td>
+							<td width="40%" class="inline">${member.dbregdate}</td>
 						</tr>
 						<tr>
 							<th class="text-left" width="15%" style="padding-left: 15px;">이메일</th>
-							<td colspan="3" width="85%">${sessionScope.email}</td>
+							<td colspan="3" width="85%">${member.email}</td>
 						</tr>
 						<tr>
 							<th class="text-left" width="15%" style="padding-left: 15px;">우편번호</th>
-							<td colspan="3" width="85%" class="inline">${sessionScope.post}</td>
+							<td colspan="3" width="85%" class="inline">${member.post}</td>
 						</tr>
 						<tr>
 							<th class="text-left" width="15%" style="padding-left: 15px;">주소</th>
-							<td colspan="3" width="85%">${sessionScope.addr1}</td>
+							<td colspan="3" width="85%">${member.addr1}</td>
 						</tr>
 						<tr>
 							<th class="text-left" width="15%" style="padding-left: 15px;">상세주소</th>
-							<td colspan="3" width="85%">${sessionScope.addr2}</td>
+							<td colspan="3" width="85%">${member.addr2}</td>
 						</tr>
 						<tr>
 							<th class="text-left" width="15%" style="padding-left: 15px;">전화번호</th>
-							<td colspan="3" width="85%" class="inline">${sessionScope.phone}</td>
+							<td colspan="3" width="85%" class="inline">${member.phone}</td>
 						</tr>
 						
 						<tr>

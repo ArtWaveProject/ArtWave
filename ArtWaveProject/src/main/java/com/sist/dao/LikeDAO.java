@@ -187,6 +187,7 @@ public class LikeDAO {
 			  session=ssf.openSession();
 			  session.delete("deletelike",map);
 			  session.commit();
+			  System.out.println(map+"like DAO");
 		  }catch(Exception ex)
 		  {
 			  ex.printStackTrace();

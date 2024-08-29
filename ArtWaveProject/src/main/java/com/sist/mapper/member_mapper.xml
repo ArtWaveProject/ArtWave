@@ -3,10 +3,18 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.member_mapper">
+
 	<select id="memberInfoData" parameterType="String"
 		resultType="MemberVO">
-		SELECT * FROM member WHERE id=#{id}
+		SELECT id, nickname, pwd, name,
+		TO_CHAR(birthdate, 'YYYY-MM-DD') AS dbbirthday,
+		TO_CHAR(regdate, 'YYYY-MM-DD') AS dbregdate,
+		sex, phone, post, addr1, addr2, photo,
+		email, grade, admin
+		FROM member
+		WHERE id = #{id}
 	</select>
+
 	<select id="memberIdCheck" parameterType="String"
 		resultType="int">
 		SELECT COUNT(*) FROM member WHERE LOWER(id)=#{id}
@@ -44,10 +52,10 @@
 		0, sysdate, #{email})
 	</insert>
 
-	<update id="memberUpdate"
-		parameterType="MemberVO">
+	<update id="memberUpdate" parameterType="MemberVO">
 		UPDATE member
-		SET nickname=#{nickname, jdbcType=VARCHAR},
+		SET
+		nickname=#{nickname, jdbcType=VARCHAR},
 		pwd=#{pwd, jdbcType=VARCHAR},
 		name=#{name, jdbcType=VARCHAR},
 		birthdate=#{birthdate, jdbcType=DATE},
@@ -59,11 +67,11 @@
 		WHERE id=#{id, jdbcType=VARCHAR}
 	</update>
 
-<update id="changePwd" parameterType="hashmap">
-    UPDATE member
-    SET pwd=#{pwd, jdbcType=VARCHAR}
-    WHERE id=#{id, jdbcType=VARCHAR}
-</update>
+	<update id="changePwd" parameterType="hashmap">
+		UPDATE member
+		SET pwd=#{pwd, jdbcType=VARCHAR}
+		WHERE id=#{id, jdbcType=VARCHAR}
+	</update>
 
 
 	<delete id="deleteMember" parameterType="String">

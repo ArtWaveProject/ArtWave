@@ -31,22 +31,27 @@ public class MyPageModel {
 	public String mypage_main(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		String nickname = (String) session.getAttribute("nickname");
-		String name = (String) session.getAttribute("name");
-		String bday = (String) session.getAttribute("bday");
-		String email = (String) session.getAttribute("email");
-		String post = (String) session.getAttribute("post");
-		String addr1 = (String) session.getAttribute("addr1");
-		String addr2 = (String) session.getAttribute("addr2");
+//		String nickname = (String) session.getAttribute("nickname");
+//		String name = (String) session.getAttribute("name");
+//		String bday = (String) session.getAttribute("bday");
+//		String email = (String) session.getAttribute("email");
+//		String post = (String) session.getAttribute("post");
+//		String addr1 = (String) session.getAttribute("addr1");
+//		String addr2 = (String) session.getAttribute("addr2");
 
 		session.setAttribute("id", id);
-		session.setAttribute("nickname", nickname);
-		session.setAttribute("name", name);
-		session.setAttribute("bday", bday);
-		session.setAttribute("email", email);
-		session.setAttribute("post", post);
-		session.setAttribute("addr1", addr1);
-		session.setAttribute("addr2", addr2);
+		MemberVO member = MemberDAO.memberinfo(id);
+		
+	    request.setAttribute("member", member);
+
+//		session.setAttribute("nickname", nickname);
+//		session.setAttribute("name", name);
+//		session.setAttribute("bday", bday);
+//		session.setAttribute("email", email);
+//		session.setAttribute("post", post);
+//		session.setAttribute("addr1", addr1);
+//		session.setAttribute("addr2", addr2);
+		
 
 		request.setAttribute("title", "마이페이지 홈");
 		request.setAttribute("mypage_jsp", "../mypage/mypage_home.jsp");
@@ -116,7 +121,7 @@ public class MyPageModel {
 	        e.printStackTrace();
 	    }
 	    
-	    return "../mypage/mypage_main.jsp";
+	    return "../main/main.jsp";
 	}
 
 
@@ -434,6 +439,8 @@ public class MyPageModel {
 		Map map = new HashMap();
 		map.put("id", id);
 		map.put("plname", plname);
+		
+		
 		MusicDAO.playListInsert(map);
 		return "redirect:../mypage/my_playlist.do";
 	}
@@ -481,19 +488,22 @@ public class MyPageModel {
 	    out.print(result); // 결과를 응답 본문으로 작성
 	    out.flush();
 	    out.close();
+	    
+
 	}
 	
 	@RequestMapping("mypage/deletelike.do")
 	public void deletelike(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		String tno = request.getParameter("tno");
+		
+		String lno = request.getParameter("lno");
 		
 		System.out.println(id+"id model");
-		System.out.println(tno+"tno model");
+		System.out.println(lno+"lno model");
 		Map<String, Object> map = new HashMap();
 		map.put("id", id);
-		map.put("tno", tno);
+		map.put("lno", lno);
 		
 		String result = "fail"; // 기본값은 실패로 설정
 		

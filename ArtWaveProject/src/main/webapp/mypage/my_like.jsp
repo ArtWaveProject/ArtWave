@@ -22,8 +22,7 @@
 	width: 900px;
 	background-color: aliceblue;
 	border-radius: 30px;
-	/* 	margin-left: 30px; 
- */
+
 }
 
 .listChart {
@@ -181,13 +180,13 @@
 <script type="text/javascript">
 $(function() {
     $('.xbtn').click(function() {
-        let tno = $(this).attr('data-tno');
+        let lno = $(this).attr('data-lno');
 
         $.ajax({
             type: 'POST',
             url: '../mypage/deletelike.do',
             data: {
-                'tno': tno
+                'lno': lno
             },
             success: function(response) {
                 if (response.trim() === 'ok') { // 서버 응답이 'ok'인 경우
@@ -267,7 +266,7 @@ $(function() {
 							<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
 							
 							<c:choose>
-								<c:when test="${al.mulikevo.poster!=null }">
+								<c:when test="${al.mulikevo.poster!=null && al.type==1 }">
 									<td width="15%" class="text-center"><a
 										href="../music/musicDetail.do?mno=${al.tno}"> <img
 											src="${al.mulikevo.poster}" class="listImg">
@@ -278,9 +277,9 @@ $(function() {
 									</td>
 
 									<td width="20%"><span class="listArtist">음악</span></td>
-
 								</c:when>
-								<c:when test="${al.molikevo.mposter!=null }">
+								
+								<c:when test="${al.molikevo.mposter!=null && al.type==4 }">
 									<td width="15%" class="text-center"><a
 										href="../movie/moviedetail.do?mno=${al.tno}"> <img
 											src="https://www.kobis.or.kr${al.molikevo.mposter}"
@@ -292,7 +291,7 @@ $(function() {
 									<td width="20%"><span class="listArtist">영화</span></td>
 								</c:when>
 
-								<c:when test="${al.bolikevo.btitle!=null }">
+								<c:when test="${al.bolikevo.cover!=null && al.type==5 }">
 									<td width="15%" class="text-center"><a
 										href="../book/detail.do?bno=${al.tno}"> <img
 											src="${al.bolikevo.cover}" class="listImg">
@@ -306,8 +305,11 @@ $(function() {
 
 
 							<td width="15%">
-							<input type="button" data-tno="${al.tno}"
-								class="xbtn" src="../mypage/xBtn.png">
+							    <button class="xbtn middle" data-lno="${al.lno}" style="border: none;
+							    margin-top: 10px; background: none; padding: 0;">
+        <img src="../mypage/like_on.png" alt="삭제" style="width: 20px; height: 20px;">
+    </button>
+
 							</td>
 						</tr>
 					</c:forEach>
@@ -327,8 +329,10 @@ $(function() {
 							<td width="20%"><span class="listArtist">${ml.molikevo.mgenre}</span>
 							</td>
 							<td width="15%">
-							<input type="button" data-tno="${ml.tno}"
-								class="xbtn" src="../mypage/xBtn.png">
+    <button class="xbtn middle" data-lno="${ml.lno}" style="border: none;
+    margin-top: 10px; background: none; padding: 0;">
+        <img src="../mypage/like_on.png" alt="삭제" style="width: 20px; height: 20px;">
+    </button>
 							</td>
 						</tr>
 					</c:forEach>
@@ -347,8 +351,11 @@ $(function() {
 							<td width="20%"><span class="listArtist">${bl.bolikevo.writer}</span>
 							</td>
 							<td width="15%">
-							<input type="button" data-tno="${bl.tno}"
-								class="xbtn" src="../mypage/xBtn.png">
+							    <button class="xbtn middle" data-lno="${bl.lno}" style="border: none;
+							    margin-top: 10px; background: none; padding: 0;">
+        <img src="../mypage/like_on.png" alt="삭제" style="width: 20px; height: 20px;">
+    </button>
+
 							</td>
 						</tr>
 					</c:forEach>
@@ -369,8 +376,11 @@ $(function() {
 							</td>
 
 							<td width="15%">
-							<input type="button" data-tno="${mul.tno}"
-								class="xbtn" src="../mypage/xBtn.png">
+							    <button class="xbtn middle" data-lno="${mul.lno}" style="border: none; 
+							    margin-top: 10px; background: none; padding: 0;">
+        <img src="../mypage/like_on.png" alt="삭제" style="width: 20px; height: 20px;">
+    </button>
+
 							</td>
 
 						</tr>

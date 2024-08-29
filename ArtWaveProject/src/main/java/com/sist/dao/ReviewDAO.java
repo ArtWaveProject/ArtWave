@@ -113,6 +113,7 @@ public class ReviewDAO {
 	  public static double reviewAverage(Map map)
 	  {
 		  double avg=0.0;
+
 		  SqlSession session=null;
 		  try
 		  {

@@ -22,6 +22,7 @@
 	width: 900px;
 	background-color: aliceblue;
 	border-radius: 30px;
+
 }
 
 .listChart {
@@ -164,8 +165,21 @@
 	border: none !important;
 }
 
+#likeBtn {
+	border: transparent;
+	background: none;
+	width: 40px;
+	height: 35px;
+}
+
 #middle {
 	vertical-align: middle !important;
+}
+.xbtn{
+	margin-top: 10px;
+	margin-left: -15px;
+	width: 15px !important;
+	height: 15px !important;
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -196,7 +210,6 @@ $(function() {
 });
 
 
-
 </script>
 </head>
 <body>
@@ -219,25 +232,26 @@ $(function() {
 				<tr>
 					<c:if test="${tcart == 1}">
 						<th width="10%" class="text-center">번호</th>
-						<th width="15%" class="text-center"></th>
-						<th width="40%" class="text-center">제목</th>
-						<th width="20%" class="text-center">분류</th>
-						<th width="15%" class="text-center">금액</th>
+						<th width="13%" class="text-center"></th>
+						<th width="38%" class="text-center">제목</th>
+						<th width="18%" class="text-center">분류</th>
+						<th width="13%" class="text-center">금액</th>
+						<th width="8%" class="text-center"></th>
 					</c:if>
 
 					<c:if test="${tcart == 2}">
 						<th width="10%" class="text-center">번호</th>
-						<th width="15%" class="text-center"></th>
-						<th width="40%" class="text-center">제목</th>
-						<th width="20%" class="text-center">작가</th>
-						<th width="15%" class="text-center">금액</th>
+						<th width="13%" class="text-center"></th>
+						<th width="38%" class="text-center">제목</th>
+						<th width="18%" class="text-center">작가</th>
+						<th width="8%" class="text-center">금액</th>
 					</c:if>
 					<c:if test="${tcart == 3}">
 						<th width="10%" class="text-center">번호</th>
-						<th width="15%" class="text-center"></th>
-						<th width="40%" class="text-center">제목</th>
-						<th width="20%" class="text-center">가수</th>
-						<th width="15%" class="text-center">금액</th>
+						<th width="13%" class="text-center"></th>
+						<th width="38%" class="text-center">제목</th>
+						<th width="18%" class="text-center">가수</th>
+						<th width="8%" class="text-center">금액</th>
 					</c:if>
 				</tr>
 
@@ -296,8 +310,9 @@ $(function() {
 								</c:when>
 							</c:choose>
 							<td width="8%">
-							<input type="button" data-cno="${all.cno}"
-							class="xbtn" src="../mypage/xBtn.png">
+    <button class="xbtn middle" data-cno="${all.cno}" style="border: none; background: none; padding: 0;">
+        <img src="../mypage/xBtn.png" alt="삭제" style="width: 20px; height: 20px;">
+    </button>
 							</td>
 						</tr>
 					</c:forEach>
@@ -323,8 +338,10 @@ $(function() {
 							<td width="13%"><span class="listArtist">${bl.bovo.sale_price}
 									원</span></td>
 							<td width="8%">
-							<input type="button" data-cno="${all.cno}"
-							class="xbtn" src="../mypage/xBtn.png"></td>
+    <button class="xbtn middle" data-cno="${bl.cno}" style="border: none; background: none; padding: 0;">
+        <img src="../mypage/xBtn.png" alt="삭제" style="width: 20px; height: 20px;">
+    </button>
+							</td>
 						</tr>
 					</c:forEach>
 				</c:if>
@@ -349,8 +366,9 @@ $(function() {
 							<td width="13%"><span class="listArtist">${mul.alvo.aprice}
 									원</span></td>
 							<td width="8%">
-							<input type="button" data-cno="${all.cno}"
-								class="xbtn" src="../mypage/xBtn.png">
+    <button class="xbtn middle" data-cno="${mul.cno}" style="border: none; background: none; padding: 0;">
+        <img src="../mypage/xBtn.png" alt="삭제" style="width: 20px; height: 20px;">
+    </button>
 							</td>
 						</tr>
 					</c:forEach>

@@ -7,6 +7,7 @@
 		<result property="bovo.btitle" column="btitle" />
 		<result property="bovo.writer" column="writer"/>
 		<result property="bovo.sale_price" column="sale_price"/>
+		<result property="bovo.bno" column="bno"/>
 		<result property="alvo.aphoto" column="aphoto"/>
 		<result property="alvo.aname" column="aname"/>
 		<result property="alvo.aartist" column="aartist"/>
@@ -32,7 +33,8 @@
 		(select cover from book where bno=tno) as cover,
 		(select btitle from book where bno=tno) as btitle,
 		(select writer from book where bno=tno) as writer,
-		(select sale_price from book where bno=tno) as sale_price
+		(select sale_price from book where bno=tno) as sale_price,
+		(select bno from book where bno=tno) as bno
 		from totalcart
 		where type=2 AND id=#{id}
 	</select>
@@ -42,7 +44,8 @@
 		(select aphoto from album_store where ano=tno) as aphoto,
 		(select aname from album_store where ano=tno) as aname,
 		(select aartist from album_store where ano=tno) as aartist,
-		(select aprice from album_store where ano=tno) as aprice
+		(select aprice from album_store where ano=tno) as aprice,
+		(select ano from album_store where ano=tno) as ano
 		from totalcart
 		where type=3 AND id=#{id}
 	</select>

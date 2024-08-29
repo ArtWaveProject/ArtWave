@@ -257,6 +257,7 @@ body {
 	color: #fff;
 }
 
+
 #ytd-url {
 	display: block;
 	position: fixed;
@@ -520,9 +521,10 @@ body {
 </script>
 </head>
 <body>
-	<div class="container" style="margin: 0px; border: 3px solid #ddd; padding:30px; margin-top: 40px; height: 700px;">
-		<div class="row">
-			<div class="col-lg-4">
+	<div class="container" style="margin: 0px; border: 45px solid #ddd; padding:30px; margin-top: 40px;    
+		 width: 1000px; height: 620px; border-radius: 30px; ">
+		<div class="listBody">
+			<div class="col-lg-4 listChart">
 				<div id="app-cover" style="margin-top: 35px;">
 					<div id="player">
 						<div id="player-track">
@@ -539,7 +541,7 @@ body {
 								<div id="seek-bar"></div>
 							</div>
 						</div>
-						<div id="player-content">
+						<div id="player-content" style="height: unset;">
 							<div id="player-controls">
 								<div class="control">
 									<div class="button" id="play-previous">
@@ -569,7 +571,7 @@ body {
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-8" style="height: 630px; overflow-y: auto;">
+			<div class="col-lg-8" style="height: 500px; overflow-y: auto;">
 				<table class="table">
 					<thead>
 						<tr>

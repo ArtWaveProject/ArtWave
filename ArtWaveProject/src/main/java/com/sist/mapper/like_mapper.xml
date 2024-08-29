@@ -77,7 +77,7 @@
  		WHERE type = 5 AND id=#{id}
  	</select>
  	<select id="allikeListData" resultMap="likeMap" parameterType="string">
- 		SELECT lno, tno, id,
+ 		SELECT lno, tno, id, type, 
  				(SELECT music.poster FROM music WHERE mno = totallike.tno) as poster,
 		(SELECT music.title FROM music WHERE mno = totallike.tno) as title,
 		(SELECT music.ano FROM music WHERE mno = totallike.tno) as ano,
@@ -87,14 +87,14 @@
 		(SELECT movie.mtitle FROM movie WHERE mno = totallike.tno) as mtitle,
 		(SELECT movie.mgenre FROM movie WHERE mno = totallike.tno) as mgenre,
 		(SELECT book.cover FROM book WHERE bno = totallike.tno) as cover,
- 		(SELECT book.btitle FROM book WHERE bno = totallike.tno) as title,
+ 		(SELECT book.btitle FROM book WHERE bno = totallike.tno) as btitle,
  		(SELECT book.writer FROM book WHERE bno = totallike.tno) as writer
  		FROM totallike
         WHERE type in(1,4,5) AND id=#{id}
  	</select>
 	<delete id="deletelike" parameterType="hashMap">
 		DELETE FROM totallike
-		WHERE tno=#{tno} AND id=#{id}
+		WHERE lno=#{lno, jdbcType=INTEGER} AND id=#{id}
 	</delete> 
 </mapper>
 
