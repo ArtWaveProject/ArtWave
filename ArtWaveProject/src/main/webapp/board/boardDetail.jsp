@@ -195,7 +195,7 @@ let id = '${id}'
 						html+='<td width="10%" style="font-weight:bold;">'+reply.nick+'</td>'
 					}
 					else{
-						html+='<td width="10%">'+reply.nick+'</td>'
+						html+='<td width="10%" style="color:#aaa;">'+reply.nick+'</td>'
 					}
 					if(reply.depth===1){
 						html+='<td style="cursor:pointer;width:70%;" onclick="tableShow('+reply.frno+')"><pre>'+reply.content+'</pre>'

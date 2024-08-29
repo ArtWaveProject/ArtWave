@@ -136,6 +136,21 @@ body {
 .button-container input[type="button"]:hover {
 	background-color: #0056b3;
 }
+
+input[type="submit"] {
+	background-color: #3b84d1;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: background 0.3s;
+}
+
+input[type="submit"]:hover {
+	background-color: #0056b3;
+}
 .page {
 	list-style: none;
 	padding: 0;
