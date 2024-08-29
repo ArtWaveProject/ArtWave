@@ -122,6 +122,10 @@ body {
         background-color: #004494;
         transform: scale(0.98);
     }
+    #writeBtn{
+        height: 44px;
+        display: inline-block;
+    }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
