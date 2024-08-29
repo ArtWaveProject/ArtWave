@@ -303,25 +303,11 @@ $(function() {
 		let account=$('.account').val()
 		let name=$(this).attr('data-title')
 		let id = '${id}' 
-		console.log(gno)
-		console.log(price)
-		console.log(account)
-		console.log(name)
-		console.log(id)
 			if (id.length === 0) 
 			{
 				alert('로그인이 필요합니다')
 				return
 			}
-		$.ajax({
-			type:'post',
-			url:'../payment/paymentCheck.do',
-			data:{
-				'gno':gno,
-				'type':2
-			},
-			success:function(result){
-				if(result==='OK'){
 					$.ajax({
 						type:'post',
 						url:'../payment/paymentInsert.do',
@@ -339,13 +325,6 @@ $(function() {
 							requestPay(json,name,price)
 						}
 					})
-				}
-				else{
-					alert('이미 구매한 도서입니다')
-					return
-				}
-			}
-		})
 		})
 
 function toggleRecentBooks() {
@@ -503,9 +482,6 @@ $(document).ready(function() {
         let count = $('#account').val()
         let price = ${vo.sale_price}
 
-        console.log(bno)
-        console.log(count)
-        console.log(price)
         $.ajax({
             type: 'post',
             url: '../book/cart.do',
