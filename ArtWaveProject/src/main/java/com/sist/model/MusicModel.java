@@ -42,6 +42,8 @@ public class MusicModel {
 
 	@RequestMapping("music/musicHome.do")
 	public String musicHome(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
 		Map map = new HashMap();
 		map.put("genre", "");
 		map.put("start", 1);
@@ -51,6 +53,7 @@ public class MusicModel {
 		map.put("end", 12);
 		List<MusicVO> list = MusicDAO.musicListDataNew(map);
 
+		request.setAttribute("id", id);
 		request.setAttribute("list", list);
 		request.setAttribute("mList", mList);
 		request.setAttribute("main_jsp", "../music/musicHome.jsp");

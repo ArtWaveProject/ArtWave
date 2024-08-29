@@ -383,7 +383,7 @@ public class MusicDAO {
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
-			if (type == 1)
+			if (type == 1||type==3)
 				list = session.selectList("playListMusicList", plno);
 			else
 				list = session.selectList("playListMusicListRandom", plno);

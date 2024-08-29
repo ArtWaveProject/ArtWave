@@ -163,8 +163,8 @@
 		SELECT mno, title, alno, ano, poster, genre, altitle, urlmp3, aname, num
 		FROM (SELECT mno, title, alno, ano, poster, genre, altitle,urlmp3, aname, rownum as num
 		FROM (SELECT mno, title, alno, ano, poster, genre, urlmp3 ,(SELECT atitle FROM album WHERE album.alno=music.alno) as altitle,(SELECT aname FROM artist where artist.ano=music.ano) as aname, (SELECT plmno FROM playlistmusic where music.mno=playlistmusic.mno AND plno=#{plno}) as plmno
-		FROM music  WHERE mno in (SELECT mno FROM playlistmusic WHERE plno=#{plno})
-        order by plmno desc))
+		FROM music WHERE mno in (SELECT mno FROM playlistmusic WHERE plno=#{plno})
+		order by plmno desc))
 	</select>
 	<!-- 플레이리스트 음악 목록 셔플 -->
 	<select id="playListMusicListRandom" resultType="MusicVO" parameterType="int">
@@ -178,34 +178,34 @@
 	</select>
 	<!-- 플레이리스트 삭제 -->
 	<delete id="playListDelete" parameterType="int">
-	DELETE FROM playlist WHERE plno=#{plno}
+		DELETE FROM playlist WHERE plno=#{plno}
 	</delete>
 	<!-- 플레이리스트 음악 삭제 -->
 	<delete id="playListMusicDelete" parameterType="int">
-	DELETE FROM playlistmusic WHERE plno=#{plno}
+		DELETE FROM playlistmusic WHERE plno=#{plno}
 	</delete>
 	<!-- 예약출력 -->
 	<select id="reserveListData" parameterType="String" resultType="ReserveVO">
-	SELECT mno, mtitle, tdname, tname, day, time, inwon, price, id, sno, rno, state,
-	(SELECT mposter FROM movie WHERE movie.mno=reserve.mno) as poster
-	FROM reserve WHERE id=#{id}
+		SELECT mno, mtitle, tdname, tname, day, time, inwon, price, id, sno, rno, state,
+		(SELECT mposter FROM movie WHERE movie.mno=reserve.mno) as poster
+		FROM reserve WHERE id=#{id}
 	</select>
 	<!-- 관리자 예약 출력 -->
 	<select id="adminReserveListData" resultType="ReserveVo">
-	SELECT mno, mtitle, tdname, tname, day, time, inwon, price, id, sno, rno, state,
-	(SELECT mposter FROM movie WHERE movie.mno=reserve.mno) as poster
-	FROM reserve
+		SELECT mno, mtitle, tdname, tname, day, time, inwon, price, id, sno, rno, state,
+		(SELECT mposter FROM movie WHERE movie.mno=reserve.mno) as poster
+		FROM reserve
 	</select>
 	<!-- 관리자 예약 승인 -->
 	<update id="adminReserveUpdate" parameterType="int">
-	UPDATE reserve SET state=1 WHERE rno=#{rno}
+		UPDATE reserve SET state=1 WHERE rno=#{rno}
 	</update>
 	<!-- 사용자 예약 삭제 -->
 	<delete id="reserveDelete" parameterType="int">
-	DELETE FROM reserve WHERE rno=#{rno}
+		DELETE FROM reserve WHERE rno=#{rno}
 	</delete>
 	<!-- 음악 urlmp3 -->
 	<select id="musicUrl" resultType="String" parameterType="int">
-	SELECT urlmp3 FROM music WHERE mno=#{mno}
+		SELECT urlmp3 FROM music WHERE mno=#{mno}
 	</select>
 </mapper>

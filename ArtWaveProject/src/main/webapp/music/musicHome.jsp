@@ -65,6 +65,44 @@ a {
 	top: 213px;
 }
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+let audio= new Audio()
+function musicPlay(mno) {
+	let id='${id}'
+	if(id.length<1){
+		alert('로그인이 필요합니다')
+		return
+	}
+	$.ajax({
+		type:'post',
+		url:'../payment/paymentCheck.do',
+		data:{
+			'type':1,
+			'gno':mno
+		},
+		success:function(result){
+			if(result==='OK'){
+				alert('구매후 재생 가능합니다')
+				return
+			}
+			else{
+				$.ajax({
+					type:'post',
+					url:'../music/musicUrl.do',
+					data:{
+						'mno':mno
+					},
+					success:function(result){
+						audio.src=result
+						audio.play()
+					}
+				})
+			}
+		}
+	})
+}
+</script>
 </head>
 <body>
 	<div class="container" style="margin-top: 150px;">
@@ -105,9 +143,9 @@ a {
 										<a href="../music/artistDetail.do?ano=${mvo.ano}">${mvo.aname}</a>
 									</td>
 									<td width="5%" class="text-center">
-										<a>
+										<button type="button" style="border: none; background: transparent;" onclick="musicPlay(${mvo.mno})">
 											<img class="iconImg" src="play.png">
-										</a>
+										</button>
 									</td>
 									<td width="5%" class="text-center">
 										<a href="${mvo.urlmp4}" id="btn" target="_blank">

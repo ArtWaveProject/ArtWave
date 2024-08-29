@@ -17,7 +17,15 @@ REGDATE
 SELECT fbno, cno, fbhit, fbsubject, nick, content, to_char(regdate, 'YYYY-MM-DD') as dbday, num
 FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate, rownum as num
 FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate 
-FROM freeboard WHERE cno LIKE '%'||#{type}||'%'))
+FROM freeboard WHERE cno LIKE '%'||#{type}||'%' AND cno&lt;=4))
+WHERE num BETWEEN #{start} AND #{end}
+</select>
+<!-- 공지 게시글 목록 -->
+<select id="noticeBoardListData" parameterType="hashmap" resultType="BoardVO">
+SELECT fbno, cno, fbhit, fbsubject, nick, content, to_char(regdate, 'YYYY-MM-DD') as dbday, num
+FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate, rownum as num
+FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate 
+FROM freeboard WHERE cno LIKE '%'||#{type}||'%' AND cno&gt;4))
 WHERE num BETWEEN #{start} AND #{end}
 </select>
 <!--검색 게시글 목록-->
@@ -25,16 +33,20 @@ WHERE num BETWEEN #{start} AND #{end}
 SELECT fbno, cno, fbhit, fbsubject, nick, content, to_char(regdate, 'YYYY-MM-DD') as dbday, num
 FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate, rownum as num
 FROM (SELECT fbno, cno, fbhit, fbsubject, nick, content, regdate 
-FROM freeboard WHERE ${option} LIKE '%'||#{ss}||'%' AND cno LIKE '%'||#{type}||'%' ORDER BY fbno DESC))
+FROM freeboard WHERE ${option} LIKE '%'||#{ss}||'%' AND cno LIKE '%'||#{type}||'%' AND cno&lt;=4 ORDER BY fbno DESC))
 WHERE num BETWEEN #{start} AND #{end}
 </select>
 <!-- 게시글 개수 -->
 <select id="boardTotalCount" parameterType="String" resultType="int">
-SELECT COUNT(*) FROM freeboard WHERE cno LIKE '%'||#{type}||'%'
+SELECT COUNT(*) FROM freeboard WHERE cno LIKE '%'||#{type}||'%' AND cno&lt;=4
+</select>
+<!-- 공지 게시글 개수 -->
+<select id="noticeBoardTotalCount" parameterType="String" resultType="int">
+SELECT COUNT(*) FROM freeboard WHERE cno LIKE '%'||#{type}||'%' AND cno&gt;4
 </select>
 <!-- 검색 게시글 개수 -->
 <select id="boardFindTotalCount" parameterType="hashmap" resultType="int">
-SELECT COUNT(*) FROM freeboard WHERE ${option} LIKE '%'||#{ss}||'%' AND cno LIKE '%'||#{type}||'%'
+SELECT COUNT(*) FROM freeboard WHERE ${option} LIKE '%'||#{ss}||'%' AND cno LIKE '%'||#{type}||'%' AND cno&lt;=4
 </select>
 <!-- 게시글 작성 -->
 <insert id="boardInsert" parameterType="BoardVO">
@@ -87,4 +99,8 @@ DELETE FROM freeboard WHERE fbno=#{fbno}
 <delete id="boardReplyDeleteAll" parameterType="int">
 DELETE FROM freereply WHERE fbno=#{fbno}
 </delete>
+<!-- 게시글 수정 -->
+<update id="boardUpdate" parameterType="hashmap">
+UPDATE freeboard SET content=#{content}, fbsubject=#{fbsubject}, cno=#{cno} WHERE fbno=#{fbno}
+</update>
 </mapper> 

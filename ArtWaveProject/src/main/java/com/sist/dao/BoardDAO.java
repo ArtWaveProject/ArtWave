@@ -30,6 +30,20 @@ public class BoardDAO {
 		}
 		return list;
 	}
+	public static List<BoardVO> noticeBoardListData(Map map) {
+		List<BoardVO> list = new ArrayList<BoardVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("noticeBoardListData", map);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
 
 	public static List<BoardVO> boardFindListData(Map map) {
 		List<BoardVO> list = new ArrayList<BoardVO>();
@@ -52,6 +66,20 @@ public class BoardDAO {
 		try {
 			session = ssf.openSession(true);
 			total = session.selectOne("boardTotalCount", type);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return total;
+	}
+	public static int noticeBoardTotalCount(String type) {
+		int total = 0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession(true);
+			total = session.selectOne("noticeBoardTotalCount", type);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -211,6 +239,18 @@ public class BoardDAO {
 			session.delete("boardDelete", fbno);
 			session.delete("boardReplyDeleteAll", fbno);
 			session.commit();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+	}
+	public static void boardUpdate(Map map) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession(true);
+			session.update("boardUpdate", map);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {

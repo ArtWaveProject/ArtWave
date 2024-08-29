@@ -6,6 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+.controlBtn{
+font-size: 30px;
+margin: 0px 20px;
+}
 *:focus {
 	outline: none;
 }
@@ -273,6 +277,18 @@ body {
 <script type="text/javascript">
 	$(function() {
 		playListList(1)
+		 $('#playListTbody').on('click', '.play-button', function() {
+        let index = $(this).data('index');
+        selectTrack(2, index);
+    })
+    $('#shuffle').click(function() {
+			playListList(2)
+			playPause()
+		})
+    $('#playAll').click(function() {
+    	initPlayer(3)
+			playPause()
+		})
 		var playerTrack = $("#player-track"), bgArtwork = $('#bg-artwork'), bgArtworkUrl, albumName = $('#album-name'), trackName = $('#track-name'), sArea = $('#s-area'), seekBar = $('#seek-bar'), trackTime = $('#track-time'), insTime = $('#ins-time'), sHover = $('#s-hover'), playPauseButton = $("#play-pause-button"), i = playPauseButton
 				.find('i'), tProgress = $('#current-time'), tTime = $('#track-length'), seekT, seekLoc, seekBarPos, cM, ctMinutes, ctSeconds, curMinutes, curSeconds, durMinutes, durSeconds, playProgress, bTime, nTime = 0, buffInterval = null, tFlag = false, playPreviousTrackButton = $('#play-previous'), playNextTrackButton = $('#play-next'), currIndex = 0;
 
@@ -397,11 +413,14 @@ body {
 
 			}, 100);
 		}
-		function selectTrack(flag) {
+		function selectTrack(flag, curr) {
 			if (flag == 0 || flag == 1) {
 				++currIndex;
-				console.log(currIndex)
-			} else
+			}
+			else if(flag==2){
+				currIndex=curr
+			}
+			else
 				--currIndex;
 			if ((currIndex > 0) && (currIndex <= $('#list' + currIndex).attr('data-size'))) {
 				if (flag == 0)
@@ -419,7 +438,6 @@ body {
 				currTrackName = $('#list' + currIndex).attr('data-title');
 				$('#album-art').attr("src", $('#list' + currIndex).attr('data-poster'))
 				audio.src = $('#list' + currIndex).attr('data-url');
-				console.log($('#list' + currIndex).attr('data-url'))
 				nTime = 0;
 				bTime = new Date();
 				bTime = bTime.getTime();
@@ -442,9 +460,11 @@ body {
 			}
 		}
 
-		function initPlayer() {
+		function initPlayer(type) {
 			audio = new Audio()
-			selectTrack(0)
+			if(type===2||type===3)
+				currIndex=0
+			selectTrack(0, 0)
 
 			audio.loop = false
 
@@ -461,10 +481,10 @@ body {
 			$(audio).on('timeupdate', updateCurrTime)
 
 			playPreviousTrackButton.on('click', function() {
-				selectTrack(-1)
+				selectTrack(-1, 0)
 			})
 			playNextTrackButton.on('click', function() {
-				selectTrack(1)
+				selectTrack(1, 0)
 			})
 		}
 		function playListList(type) {
@@ -478,10 +498,6 @@ body {
 				},
 				success : function(result) {
 					let playlist = JSON.parse(result)
-
-					console.log(playlist)
-					console.log(playlist[0].title)
-					console.log(playlist.length)
 					let html = ''
 					let i = 1
 					playlist.map(function(music) {
@@ -489,22 +505,22 @@ body {
 						html += '<td width="10%" class="text-center">' + i + '</td>'
 						html += '<td width="7%" class="text-center"><img src="' + music.poster + '"</td>'
 						html += '<td width="68%" style="text-align:left;">' + music.title + '<br>' + music.aname + '</td>'
-						html += '<td width="10%" class="text-center"><img src="../music/play.png" style="width:33px;height:33px;">'
+            html += '<td width="10%" class="text-center"><button style="background:transparent;border:none;" class="play-button" data-index="' + i + '"><img src="../music/play.png" style="width:33px;height:33px;"></button>';
 						html += '<input id="list' + i + '" type="hidden" data-poster="' + music.poster + '" data-size="' + music.size + '" data-altitle="'
 								+ music.altitle + '"  data-title="' + music.title + '" data-url="' + music.urlmp3 + '"</td>'
 						html += '</tr>'
 						i += 1
 					})
 					$('#playListTbody').html(html)
-					initPlayer()
+					initPlayer(type)
 				}
 			})
 		}
-	});
+	})
 </script>
 </head>
 <body>
-	<div class="container" style="margin: 0px; border: 3px solid #ddd; padding:30px; margin-top: 40px;">
+	<div class="container" style="margin: 0px; border: 3px solid #ddd; padding:30px; margin-top: 40px; height: 700px;">
 		<div class="row">
 			<div class="col-lg-4">
 				<div id="app-cover" style="margin-top: 35px;">
@@ -542,10 +558,18 @@ body {
 								</div>
 							</div>
 						</div>
+						<div >
+						<button type="button" style="background: transparent; border: none;" id="playAll" class="controlBtn">
+						<i class="fa-solid fa-circle-play"></i>
+						</button>
+						<button type="button" style="background: transparent; border: none;" id="shuffle" class="controlBtn">
+						<i class="fa-solid fa-shuffle"></i>
+						</button>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-8">
+			<div class="col-lg-8" style="height: 630px; overflow-y: auto;">
 				<table class="table">
 					<thead>
 						<tr>

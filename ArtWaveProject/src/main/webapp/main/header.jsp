@@ -130,7 +130,7 @@ nav {
 								<ul class="dropmenu">
 									<li class="submenu"><a href="../board/boardList.do">자유게시판</a>
 									</li>
-									<li class="submenu"><a href="../music/albumList.do">공지사항</a>
+									<li class="submenu"><a href="../noticeboard/boardList.do">공지사항</a>
 									</li>
 									<li class="submenu"><a href="../replyboard/list.do">문의</a></li>
 								</ul></li>

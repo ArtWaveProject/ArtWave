@@ -341,7 +341,7 @@ let id = '${id}'
                 <td colspan="2">
                     <c:if test="${sessionScope.id == detail.id}">
                         <input type="button" value="삭제" id="deleteBtn" class="button cancel">
-                        <input type="button" value="수정" id="writeBtn" class="button edit">
+                        <a href="../board/boardUpdate.do?fbno=${detail.fbno}" id="writeBtn" class="button edit">수정</a>
                     </c:if>
                     <input type="button" value="목록" onclick="javascript:history.back()" class="button">
                 </td>

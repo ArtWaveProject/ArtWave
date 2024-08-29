@@ -22,12 +22,14 @@ import controller.RequestMapping;
 
 public class BoardModel {
 	String[] options = { "", "nick", "fbsubject", "content" };
-	String[] types= {"", "자유", "영화", "책", "음악"};
+	String[] types = { "", "자유", "영화", "도서", "음악", "영화", "도서", "음악" };
+
 	@RequestMapping("board/boardList.do")
 	public String boardList(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			request.setCharacterEncoding("UTF-8");
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		String page = request.getParameter("page");
@@ -61,7 +63,7 @@ public class BoardModel {
 			list = BoardDAO.boardFindListData(map);
 			count = BoardDAO.boardFindTotalCount(map);
 		}
-		for(BoardVO vo:list) {
+		for (BoardVO vo : list) {
 			vo.setTypeDetail(types[vo.getCno()]);
 		}
 		int totalPage = (int) (Math.ceil(count / 10.0));
@@ -86,6 +88,11 @@ public class BoardModel {
 	@RequestMapping("board/boardInsert.do")
 	public String boardInsert(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("main_jsp", "../board/boardInsert.jsp");
+		return "../main/main.jsp";
+	}
+	@RequestMapping("noticeboard/boardInsert.do")
+	public String noticeBoardInsert(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("main_jsp", "../noticeboard/boardInsert.jsp");
 		return "../main/main.jsp";
 	}
 
@@ -113,16 +120,19 @@ public class BoardModel {
 		vo.setContent(content);
 		BoardDAO.boardInsert(vo);
 	}
-	
+
 	@RequestMapping("board/boardDetail.do")
 	public String boardDetail(HttpServletRequest request, HttpServletResponse response) {
-		String fbno=request.getParameter("fbno");
-		BoardVO vo=BoardDAO.boardDetailData(Integer.parseInt(fbno));
-		int count=BoardDAO.boardReplyCount(Integer.parseInt(fbno));
-		HttpSession session=request.getSession();
-		String id=(String)session.getAttribute("id");
-		if(id==null)
-			id="";
+		String fbno = request.getParameter("fbno");
+		BoardVO vo = BoardDAO.boardDetailData(Integer.parseInt(fbno));
+		if(vo.getCno()>4) {
+			vo.setNick("관리자");
+		}
+		int count = BoardDAO.boardReplyCount(Integer.parseInt(fbno));
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		if (id == null)
+			id = "";
 		request.setAttribute("id", id);
 		request.setAttribute("count", count);
 		request.setAttribute("type", types[vo.getCno()]);
@@ -130,38 +140,39 @@ public class BoardModel {
 		request.setAttribute("main_jsp", "../board/boardDetail.jsp");
 		return "../main/main.jsp";
 	}
-	
+
 	@RequestMapping("board/replyInsert.do")
 	public void boardReplyInert(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session=request.getSession();
-		String id=(String)session.getAttribute("id");
-		String nick=(String)session.getAttribute("nickname");
-		String content= request.getParameter("content");
-		String fbno=request.getParameter("fbno");
-		String depth=request.getParameter("depth");
-		String root=request.getParameter("root");
-		ReplyVO vo=new ReplyVO();
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		String nick = (String) session.getAttribute("nickname");
+		String content = request.getParameter("content");
+		String fbno = request.getParameter("fbno");
+		String depth = request.getParameter("depth");
+		String root = request.getParameter("root");
+		ReplyVO vo = new ReplyVO();
 		vo.setId(id);
 		vo.setNick(nick);
 		vo.setContent(content);
 		vo.setFbno(Integer.parseInt(fbno));
 		vo.setDepth(Integer.parseInt(depth));
-		if(root==null)
+		if (root == null)
 			BoardDAO.replyInsert(vo);
 		else {
 			vo.setRoot(Integer.parseInt(root));
 			BoardDAO.reReplyInsert(vo);
 		}
 	}
+
 	@RequestMapping("board/replyList.do")
 	public void boardReplyList(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session=request.getSession();
-		String id=(String)session.getAttribute("id");
-		String fbno=request.getParameter("fbno");
-		List<ReplyVO> list=BoardDAO.replyList(Integer.parseInt(fbno));
-		JSONArray arr=new JSONArray();
-		for(ReplyVO vo:list) {
-			JSONObject obj=new JSONObject();
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		String fbno = request.getParameter("fbno");
+		List<ReplyVO> list = BoardDAO.replyList(Integer.parseInt(fbno));
+		JSONArray arr = new JSONArray();
+		for (ReplyVO vo : list) {
+			JSONObject obj = new JSONObject();
 			obj.put("sessionId", id);
 			obj.put("id", vo.getId());
 			obj.put("frno", vo.getFrno());
@@ -174,41 +185,127 @@ public class BoardModel {
 			arr.add(obj);
 		}
 		try {
-		  response.setContentType("text/plain;charset=UTF-8");
-			PrintWriter out=response.getWriter();
+			response.setContentType("text/plain;charset=UTF-8");
+			PrintWriter out = response.getWriter();
 			out.write(arr.toJSONString());
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 	}
+
 	@RequestMapping("board/replyCheck.do")
 	public void replyCheck(HttpServletRequest request, HttpServletResponse response) {
-		String root=request.getParameter("root");
+		String root = request.getParameter("root");
 		System.out.println(root);
-		int count=BoardDAO.replyCheck(Integer.parseInt(root));
+		int count = BoardDAO.replyCheck(Integer.parseInt(root));
 		try {
-		  response.setContentType("text/plain;charset=UTF-8");
-			PrintWriter out=response.getWriter();
+			response.setContentType("text/plain;charset=UTF-8");
+			PrintWriter out = response.getWriter();
 			out.write(String.valueOf(count));
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 	}
+
 	@RequestMapping("board/replyCount.do")
 	public void replyCount(HttpServletRequest request, HttpServletResponse response) {
-		String fbno=request.getParameter("fbno");
-		int count=BoardDAO.replyCount(Integer.parseInt(fbno));
+		String fbno = request.getParameter("fbno");
+		int count = BoardDAO.replyCount(Integer.parseInt(fbno));
 		System.out.println(count);
 		try {
-		  response.setContentType("text/plain;charset=UTF-8");
-			PrintWriter out=response.getWriter();
+			response.setContentType("text/plain;charset=UTF-8");
+			PrintWriter out = response.getWriter();
 			out.write(String.valueOf(count));
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 	}
+
 	@RequestMapping("board/replyDelete.do")
 	public void replyDelete(HttpServletRequest request, HttpServletResponse response) {
-		String frno=request.getParameter("frno");
+		String frno = request.getParameter("frno");
 		BoardDAO.replyDelete(Integer.parseInt(frno));
 	}
+
 	@RequestMapping("board/boardDelete.do")
 	public void boardDelete(HttpServletRequest request, HttpServletResponse response) {
-		String fbno=request.getParameter("fbno");
+		String fbno = request.getParameter("fbno");
 		BoardDAO.boardDelete(Integer.parseInt(fbno));
+	}
+
+	@RequestMapping("board/boardUpdateOk.do")
+	public void boardUpdateOk(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (Exception e) {
+		}
+		String fbno = request.getParameter("fbno");
+		String type = request.getParameter("type");
+		String subject = request.getParameter("subject");
+		String content = request.getParameter("content");
+		Map map = new HashMap();
+		map.put("fbno", Integer.parseInt(fbno));
+		map.put("cno", Integer.parseInt(type));
+		map.put("fbsubject", subject);
+		map.put("content", content);
+		BoardDAO.boardUpdate(map);
+	}
+
+	@RequestMapping("board/boardUpdate.do")
+	public String boardUpdate(HttpServletRequest request, HttpServletResponse response) {
+		String fbno = request.getParameter("fbno");
+		BoardVO vo = BoardDAO.boardDetailData(Integer.parseInt(fbno));
+		request.setAttribute("detail", vo);
+		request.setAttribute("main_jsp", "../board/boardUpdate.jsp");
+		return "../main/main.jsp";
+	}
+
+	@RequestMapping("noticeboard/boardList.do")
+	public String noticeBoardList(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (Exception e) {
+		}
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		String page = request.getParameter("page");
+		if (page == null)
+			page = "1";
+		int curPage = Integer.parseInt(page);
+		int rowSize = 10;
+		int start = (curPage - 1) * rowSize + 1;
+		int end = start + rowSize - 1;
+		String ss = request.getParameter("ss");
+		if (ss == null)
+			ss = "";
+		String type = request.getParameter("type");
+		if (type == null)
+			type = "";
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("type", type);
+		map.put("ss", ss);
+		List<BoardVO> list = new ArrayList<BoardVO>();
+		int count = 0;
+		list = BoardDAO.noticeBoardListData(map);
+		count = BoardDAO.noticeBoardTotalCount(type);
+		for (BoardVO vo : list) {
+			vo.setTypeDetail(types[vo.getCno()]);
+		}
+		int totalPage = (int) (Math.ceil(count / 10.0));
+		int startPage = (curPage - 1) / 10 * 10 + 1;
+		int endPage = startPage + 10 - 1;
+		if (endPage > totalPage)
+			endPage = totalPage;
+		count = count - (curPage - 1) * 10;
+
+		request.setAttribute("type", type);
+		request.setAttribute("count", count);
+		request.setAttribute("curPage", curPage);
+		request.setAttribute("totalPage", totalPage);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("bList", list);
+		request.setAttribute("main_jsp", "../noticeboard/boardList.jsp");
+		request.setAttribute("id", id);
+		return "../main/main.jsp";
 	}
 }

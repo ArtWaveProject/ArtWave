@@ -9,7 +9,6 @@
 $(function() {
 	$('#writeBtn').click(function() {
 		let type=$('#type').val()
-		let fbno=${detail.fbno}
 		if(type.trim()==='999'){
 			alert('카테고리를 선택해주세요')
 			$('#type').focus()
@@ -29,15 +28,14 @@ $(function() {
 		}
 		$.ajax({
 			type:'post',
-			url:'../board/boardUpdateOk.do',
+			url:'../board/boardInsertOk.do',
 			data:{
 				'type':type,
 				'subject':subject,
-				'content':content,
-				'fbno':fbno
+				'content':content
 			},
 			success:function(result){
-				location.href="../board/boardDetail.do?fbno="+${detail.fbno}
+				location.href="../noticeboard/boardList.do"
 			}
 		})
 		console.log(type)
@@ -122,21 +120,20 @@ $(function() {
                     <td>
                         <select name="type" id="type" required>
                             <option value="999">카테고리 선택</option>
-                            <option value="1" ${detail.cno==1?'selected':''}>자유</option>
-                            <option value="2" ${detail.cno==2?'selected':''}>영화</option>
-                            <option value="3" ${detail.cno==3?'selected':''}>도서</option>
-                            <option value="4" ${detail.cno==4?'selected':''}>음악</option>
+                            <option value="5">영화</option>
+                            <option value="6">도서</option>
+                            <option value="7">음악</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" id="subject" name="subject" value="${detail.fbsubject}" placeholder="제목을 입력해 주세요" required>
+                        <input type="text" id="subject" name="subject" placeholder="제목을 입력해 주세요" required>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <textarea id="content" style="resize: none;" name="content" placeholder="내용을 입력하세요" required>${detail.content }</textarea>
+                        <textarea id="content" style="resize: none;" name="content" placeholder="내용을 입력하세요" required></textarea>
                     </td>
                 </tr>
                 <tr>
