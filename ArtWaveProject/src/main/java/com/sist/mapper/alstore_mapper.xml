@@ -5,11 +5,9 @@
 <mapper namespace="com.sist.mapper.alstore_mapper">
 	<select id="alStoreListData" resultType="com.sist.vo.AlStoreVO"
 		parameterType="hashmap">
-		SELECT ano, aname, aprice, adisprice, aphoto, aartist,
-		num
-		FROM (SELECT ano, aname, aprice, adisprice, aphoto, aartist, rownum
-		AS num
-		FROM (SELECT ano, aname, aprice, adisprice, aphoto, aartist
+		SELECT ano, aname, aprice, adisprice, aphoto, aartist, TO_CHAR(ardate, 'YY-MM-DD') AS aldate, num
+		FROM (SELECT ano, aname, aprice, adisprice, aphoto, aartist, ardate, rownum AS num
+		FROM (SELECT ano, aname, aprice, adisprice, aphoto, aartist, ardate
 		FROM
 		ALBUM_STORE
 		ORDER BY ano ASC))
