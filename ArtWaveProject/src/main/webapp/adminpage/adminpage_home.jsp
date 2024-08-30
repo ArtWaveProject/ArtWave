@@ -10,7 +10,7 @@
 	<div class="listBody">
 	<main class="listChart">
 	<div class="row joinRow">
-	<h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>관리자 홈</h3>
+	<h3 class="text-primary"></h3>
 	<div class="row joinRow">
 	</div>
 			</div>

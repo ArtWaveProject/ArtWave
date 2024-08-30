@@ -34,7 +34,7 @@ width: 100%;
 			<div class="col-lg-2">
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h3 class="panel-title">${sessionScope.nickname}님로그인</h3>
+						<h3 class="panel-title">${sessionScope.nickname}님 로그인</h3>
 					</div>
 					<ul class="list-group">
 						<li class="list-group-item"><a href="../mypage/mypage_main.do">마이페이지 이동</a></li>
