@@ -375,7 +375,7 @@ public class MyPageModel {
 		String id = (String) session.getAttribute("id");
 		List<PlayListVO> list = MusicDAO.playListListData(id);
 		request.setAttribute("list", list);
-		request.setAttribute("title", "플레이 리스트");
+		request.setAttribute("title", "플레이리스트");
 		request.setAttribute("mypage_jsp", "../mypage/myPlayList.jsp");
 		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
 		return "../main/main.jsp";

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -113,7 +112,8 @@ button:hover {
 #middle {
 	vertical-align: middle !important;
 }
-.xBtn{
+
+.xBtn {
 	
 }
 </style>
@@ -147,8 +147,7 @@ button:hover {
 </script>
 </head>
 <body>
-	<div class="container"
-		style="margin-top: 10px; font-weight: bold; font-size: 15px;">
+	<div class="container" style="margin-top: 10px; font-weight: bold; font-size: 15px;">
 		<div class=" listBody">
 			<table class="table listChart" id="middle">
 				<tr>
@@ -161,27 +160,30 @@ button:hover {
 				<c:forEach var="vo" items="${list}" varStatus="i">
 					<tr style="vertical-align: middle; height: 50px;">
 						<td width="10%" class="text-center">${i.index+1}</td>
-						<td width="15%" class="text-center"><img
-							src="https://www.kobis.or.kr${vo.poster }"></td>
+						<td width="15%" class="text-center">
+							<img src="https://www.kobis.or.kr${vo.poster }">
+						</td>
 						<td width="45%">${vo.mtitle }</td>
-						<td width="30%"><c:if test="${vo.state==0}">
+						<td width="30%">
+							<c:if test="${vo.state==0}">
 								<span>승인대기</span>
-							</c:if> <c:if test="${vo.state==1}">
+							</c:if>
+							<c:if test="${vo.state==1}">
 								<span class="checkBtn" data-rno="${vo.rno}" data-movie="0">승인완료</span>
-							</c:if></td>
+							</c:if>
+						</td>
 						<td>
 							<button onclick="reserveDelete(${vo.rno})">
-        <img src="../mypage/xBtn.png" alt="삭제" style="width: 20px; height: 20px;">
+								<img src="../mypage/xBtn.png" alt="삭제" style="width: 20px; height: 20px;">
 							</button>
 						</td>
-
 					</tr>
 					<tr id="reserveTr${vo.rno}" style="display: none;">
 						<td colspan="4">
 							<table class="table">
 								<tr>
-									<td rowspan="5"><img style="width: 200px;"
-										src="https://www.kobis.or.kr${vo.poster }" id="mPoster">
+									<td rowspan="5">
+										<img style="width: 200px;" src="https://www.kobis.or.kr${vo.poster }" id="mPoster">
 									</td>
 									<th width="20%">제목</th>
 									<td colspan="3" width="80%" id="mTitle">${vo.mtitle }</td>
@@ -196,8 +198,10 @@ button:hover {
 								</tr>
 								<tr>
 									<th width="20%">결제금액</th>
-									<td colspan="3" width="80%" id="mPrice"><fmt:formatNumber
-											value="${vo.price}" type="number" />원</td>
+									<td colspan="3" width="80%" id="mPrice">
+										<fmt:formatNumber value="${vo.price}" type="number" />
+										원
+									</td>
 								</tr>
 								<tr>
 									<th width="20%">인원</th>

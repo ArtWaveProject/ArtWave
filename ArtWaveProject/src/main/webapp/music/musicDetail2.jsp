@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -337,7 +338,7 @@ function updatePlayCount(mno) {
 			'mno':mno
 		},
 		success:function(result){
-			$('#playcount').text(result)
+			$('#playcount').text(result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','))
 		}
 	})
 }
@@ -394,11 +395,12 @@ function updatePlayCount(mno) {
 					</tr>
 					<tr>
 						<th width="20%" class="text-center">재생시간</th>
-						<td width="80%">${detail.playtime }</td>
+						<td width="80%">
+						${detail.playtime }	</td>
 					</tr>
 					<tr>
 						<th width="20%" class="text-center">재생횟수</th>
-						<td width="80%" id="playcount">${detail.playcount }</td>
+						<td width="80%" id="playcount"><fmt:formatNumber maxFractionDigits="0" type="number" value="${detail.playcount }" /></td>
 					</tr>
 					<tr>
 						<th width="20%" class="text-center">좋아요</th>

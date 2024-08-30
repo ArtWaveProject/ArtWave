@@ -212,6 +212,7 @@ input[type="submit"]:hover {
 </head>
 <body>
 	<div class="container" style="margin-top: 200px;">
+		<h4 style="margin-bottom: 50px;">공지사항</h4>
 		<table class="table">
 			<thead>
 				<tr>
@@ -226,12 +227,16 @@ input[type="submit"]:hover {
 				<c:forEach var="vo" items="${rbList}" varStatus="i">
 					<tr>
 						<td>${count-i.index}</td>
-						<td style="text-align: left;"><a href="../replyboard/detail.do?no=${vo.no}" class="title"><c:if test="${vo.group_step>0 }">
+						<td style="text-align: left;">
+							<a href="../replyboard/detail.do?no=${vo.no}" class="title">
+								<c:if test="${vo.group_step>0 }">
 									<span>┖</span>&nbsp;&nbsp;&nbsp;&nbsp;        
-						       </c:if>${vo.subject}</a></td>
+						       </c:if>${vo.subject}</a>
+						</td>
 						<td>${vo.name}</td>
 						<td>${vo.dbday}</td>
-						<td><c:choose>
+						<td>
+							<c:choose>
 								<c:when test="${vo.group_step>0}">
 									<span style="color: orange;">답변</span>
 								</c:when>
@@ -241,7 +246,8 @@ input[type="submit"]:hover {
 								<c:when test="${vo.isreply != 0}">
 									<span style="color: green;">답변완료</span>
 								</c:when>
-							</c:choose></td>
+							</c:choose>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -254,13 +260,19 @@ input[type="submit"]:hover {
 		<nav>
 			<ul class="page page-lg">
 				<c:if test="${startPage > 1}">
-					<li><a href="../replyboard/list.do?page=${startPage-1}">&laquo; Previous</a></li>
+					<li>
+						<a href="../replyboard/list.do?page=${startPage-1}">&laquo; Previous</a>
+					</li>
 				</c:if>
 				<c:forEach var="i" begin="${startPage}" end="${endPage}">
-					<li ${i == curPage ? "class='current'" : ""}><a href="../replyboard/list.do?page=${i}">${i}</a></li>
+					<li ${i == curPage ? "class='current'" : ""}>
+						<a href="../replyboard/list.do?page=${i}">${i}</a>
+					</li>
 				</c:forEach>
 				<c:if test="${endPage < totalPage}">
-					<li><a href="../replyboard/list.do?page=${endPage+1}">Next &raquo;</a></li>
+					<li>
+						<a href="../replyboard/list.do?page=${endPage+1}">Next &raquo;</a>
+					</li>
 				</c:if>
 			</ul>
 		</nav>

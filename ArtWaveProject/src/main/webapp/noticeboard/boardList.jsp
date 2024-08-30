@@ -198,7 +198,7 @@ body {
 <body>
 	<div class="container" style="margin-top: 200px;">
 		<div class="header">
-			<h4>공지</h4>
+			<h4 style="margin-bottom: 50px;">공지사항</h4>
 		</div>
 		<table class="genreTable">
 			<tr>
@@ -230,7 +230,7 @@ body {
 				<c:forEach var="vo" items="${bList}" varStatus="i">
 					<tr>
 						<td>${count-i.index}</td>
-						<td>
+						<td style="text-align: left;">
 							<a href="../noticeboard/boardDetail.do?fbno=${vo.fbno}" class="title">[${vo.typeDetail}] ${vo.fbsubject}</a>
 						</td>
 						<td>${vo.nick}</td>

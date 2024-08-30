@@ -109,13 +109,12 @@ body {
 }
 
 .table .title {
-    color: #3b84d1;
-    text-decoration: none;
-    white-space: nowrap; /* 한 줄로 표시 */
-    overflow: hidden;    /* 넘치는 부분 숨기기 */
-    text-overflow: ellipsis; /* 생략 표시 (...) */
+	color: #3b84d1;
+	text-decoration: none;
+	white-space: nowrap; /* 한 줄로 표시 */
+	overflow: hidden; /* 넘치는 부분 숨기기 */
+	text-overflow: ellipsis; /* 생략 표시 (...) */
 }
-
 
 .button-container {
 	text-align: right;
@@ -246,11 +245,12 @@ function boardDelete(no, rno) {
 </head>
 <body>
 	<div class="container" style="margin: 0px;">
+		<h3 style="margin-bottom: 50px; margin-top: 0px!important;"><b>1:1 문의</b></h3>
 		<table class="table">
 			<thead>
 				<tr>
-					<th width="5%" class="text-center">번호</th>
-					<th width="50%" class="text-center">제목</th>
+					<th width="10%" class="text-center">번호</th>
+					<th width="45%" class="text-center">제목</th>
 					<th width="15%" class="text-center">작성자</th>
 					<th width="20%" class="text-center">작성일</th>
 					<th width="10%" class="text-center">답변상태</th>
@@ -260,10 +260,13 @@ function boardDelete(no, rno) {
 				<c:forEach var="vo" items="${arList}" varStatus="i">
 					<tr>
 						<td>${count-i.index}</td>
-						<td><a href="../admin/detail.do?no=${vo.no }" class="title">${vo.subject}</a></td>
+						<td style="text-align: left;">
+							<a href="../admin/detail.do?no=${vo.no }" class="title">${vo.subject}</a>
+						</td>
 						<td>${vo.name}</td>
 						<td>${vo.dbday}</td>
-						<td><c:choose>
+						<td>
+							<c:choose>
 								<c:when test="${vo.group_step>0}">
 									<span style="color: orange;">답변</span>
 								</c:when>
@@ -273,7 +276,8 @@ function boardDelete(no, rno) {
 								<c:when test="${vo.isreply != 0}">
 									<span style="color: green; cursor: pointer;" onclick="replyInfo(${vo.group_id}, ${vo.no })">답변완료</span>
 								</c:when>
-							</c:choose></td>
+							</c:choose>
+						</td>
 					</tr>
 					<tr id="boardTr${vo.group_id }" style="display: none;">
 						<td colspan="5">
@@ -289,21 +293,25 @@ function boardDelete(no, rno) {
 	<div class="row text-center">
 		<table>
 			<tr class="text-center">
-				<td class="text-center"><c:choose>
+				<td class="text-center">
+					<c:choose>
 						<c:when test="${curpage > 1}">
 							<a href="../adminpage/reply_list.do?page=${curpage - 1}" class="btn btn-sm btn-success">이전</a>
 						</c:when>
 						<c:otherwise>
 							<a href="#" class="btn btn-sm btn-success disabled">이전</a>
 						</c:otherwise>
-					</c:choose> <span class="mx-2">${curpage} page / ${totalpage} pages</span> <c:choose>
+					</c:choose>
+					<span class="mx-2">${curpage} page / ${totalpage} pages</span>
+					<c:choose>
 						<c:when test="${curpage < totalpage}">
 							<a href="../adminpage/reply_list.do?page=${curpage + 1}" class="btn btn-sm btn-info">다음</a>
 						</c:when>
 						<c:otherwise>
 							<a href="#" class="btn btn-sm btn-info disabled">다음</a>
 						</c:otherwise>
-					</c:choose></td>
+					</c:choose>
+				</td>
 			</tr>
 		</table>
 	</div>

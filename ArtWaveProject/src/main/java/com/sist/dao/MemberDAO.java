@@ -210,9 +210,39 @@ public class MemberDAO {
 	        if (session != null)
 	            session.close();
 	    }
-	    System.out.println("id: "+id+" pwd: "+pwd+" dao2");
 	    return bCheck;
 	}
+	public static int memberGrade(String id) {
+		int grade=0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			grade=session.selectOne("memberGrade", id);
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return grade;
+	}
+	public static void memberGradeUpdate(String id, int type) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			if(type==1)
+				session.update("gradeIncrement", id);
+			else {
+				session.update("gradeDecrement", id);
+			}
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+	}
 
 }

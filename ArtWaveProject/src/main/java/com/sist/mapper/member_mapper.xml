@@ -79,6 +79,15 @@
 		WHERE
 		id = #{id}
 	</delete>
+	<select id="memberGrade" resultType="int" parameterType="String">
+	SELECT grade FROM member WHERE id=#{id}
+	</select>
+	<update id="gradeIncrement" parameterType="String">
+	UPDATE member SET grade=grade+1 WHERE id=#{id}
+	</update>
+	<update id="gradeDecrement" parameterType="String">
+	UPDATE member SET grade=grade-1 WHERE id=#{id}
+	</update>
 
 	<!-- ID NICKNAME PWD NAME BIRTHDATE SEX PHONE POST ADDR1 ADDR2 GRADE PHOTO 
 		ADMIN REGDATE EMAIL -->

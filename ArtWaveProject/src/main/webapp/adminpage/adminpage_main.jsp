@@ -34,10 +34,10 @@ width: 100%;
 			<div class="col-lg-2">
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h3 class="panel-title">${sessionScope.id}님로그인</h3>
+						<h3 class="panel-title">${sessionScope.nickname}님로그인</h3>
 					</div>
 					<ul class="list-group">
-						<li class="list-group-item"><a href="../mypage/mypage_main.do">마이페이지이동</a></li>
+						<li class="list-group-item"><a href="../mypage/mypage_main.do">마이페이지 이동</a></li>
 					</ul>
 				</div>
 				<div class="panel panel-success">
@@ -45,16 +45,16 @@ width: 100%;
 						<h3 class="panel-title">회원 정보</h3>
 					</div>
 					<ul class="list-group">
-						<li><a href="../adminpage/member_list.do">회원 리스트</a></li>
+						<li class="list-group-item"><a href="../adminpage/member_list.do">회원 리스트</a></li>
 					</ul>
 				</div>
 				<div class="panel panel-warning">
 					<div class="panel-heading">
-						<h3 class="panel-title sinav ">결제관리</h3>
+						<h3 class="panel-title sinav ">결제 관리</h3>
 					</div>
 					<ul class="list-group">
-						<li><a href="">결제목록</a></li>
-						<li><a href="../admin/adminReserve.do">예약관리</a></li>
+						<li class="list-group-item"><a href="">결제 목록</a></li>
+						<li class="list-group-item"><a href="../admin/adminReserve.do">예약 관리</a></li>
 					</ul>
 				</div>
 				<div class="panel panel-info">
@@ -62,9 +62,8 @@ width: 100%;
 						<h3 class="panel-title sinav">고객센터</h3>
 					</div>
 					<ul class="list-group">
-						<li><a href="../adminpage/reply_list.do">1:1문의</a></li>
-						<li><a href="../adminpage/notice_list.do">공지사항</a></li>
-						<li><a href=""></a></li>
+						<li class="list-group-item"><a href="../adminpage/reply_list.do">1:1 문의</a></li>
+						<li class="list-group-item"><a href="../adminpage/notice_list.do">공지사항</a></li>
 					</ul>
 				</div>
 			</div>

@@ -54,8 +54,8 @@ public class AdminModel {
 		int totalpage = (int) (Math.ceil(count / 15.0));
 		count = count - ((curpage * rowSize) - rowSize);
 
-		request.setAttribute("curpage", curpage);
-		request.setAttribute("totalpage", totalpage);
+		request.setAttribute("curPage", curpage);
+		request.setAttribute("totalPage", totalpage);
 		request.setAttribute("count", count);
 		request.setAttribute("memberList", list);
 
@@ -270,6 +270,7 @@ public class AdminModel {
 	public void replyInfo(HttpServletRequest request, HttpServletResponse response) {
 		String gi=request.getParameter("gi");
 		ReplyBoardVO vo=ReplyBoardDAO.replyInfo(Integer.parseInt(gi));
+		System.out.println(gi);
 		JSONObject obj=new JSONObject();
 		obj.put("no", vo.getNo());
 		obj.put("subject", vo.getSubject());
@@ -285,6 +286,32 @@ public class AdminModel {
 		String no=request.getParameter("no");
 		String rno=request.getParameter("rno");
 		ReplyBoardDAO.adminReplyBoardDelete(Integer.parseInt(no), Integer.parseInt(rno));
+	}
+	@RequestMapping("admin/memberGrade.do")
+	public void memberGrade(HttpServletRequest request, HttpServletResponse response) {
+		String strType=request.getParameter("type");
+		String id=request.getParameter("id");
+		int grade=MemberDAO.memberGrade(id);
+		int type=Integer.parseInt(strType);
+		String result="";
+		if(grade==1&&type==2) {
+			result="NO";
+		}
+		else if (grade==3&&type==1) {
+			result="NO";
+		}
+		else {
+			MemberDAO.memberGradeUpdate(id, type);
+			result="OK";
+		}
+		grade=MemberDAO.memberGrade(id);
+		JSONObject obj=new JSONObject();
+		obj.put("grade", grade);
+		obj.put("result", result);
+		try {
+			PrintWriter out=response.getWriter();
+			out.write(obj.toJSONString());
+		} catch (Exception e) {}
 	}
 
 }

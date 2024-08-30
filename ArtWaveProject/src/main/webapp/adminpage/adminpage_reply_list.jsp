@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,101 +8,94 @@
 <title>Insert title here</title>
 <style type="text/css">
 .btn-info {
-    color: #fff;
-    background-color: #ffa657;
-    border-color: #ffa657;
+	color: #fff;
+	background-color: #ffa657;
+	border-color: #ffa657;
 }
 
-
-table{
-	margin:	auto;
+table {
+	margin: auto;
 }
 
 td[width="40%"] {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 0;
-        }
-        
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 0;
+}
+
 td[width="40%"]:hover {
-            white-space: normal;
-            overflow: visible;
-            position: relative;
-        }
+	white-space: normal;
+	overflow: visible;
+	position: relative;
+}
 </style>
 </head>
 <body>
 	<div class="col-lg-12">
-			<h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>묻고답하기</h3>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th scope="col" width="10%">번호</th>
-						<th scope="col" width="40%">제목</th>
-<!-- 						<th scope="col" width="10%">작성자</th>
- -->						<th scope="col" width="15%">작성일</th>
-						<th scope="col" width="25%">답변상태</th>
-					</tr>
-				</thead>
-				<tbody>
-				<c:set var="count" value="${count }"/>
+		<h3 class="text-primary">
+			<i class="fa fa-hashtag me-2"></i>묻고답하기
+		</h3>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col" width="10%">번호</th>
+					<th scope="col" width="40%">제목</th>
+					<th scope="col" width="15%">작성일</th>
+					<th scope="col" width="25%">답변상태</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:set var="count" value="${count }" />
 				<c:forEach var="vo" items="${arList }">
 					<tr>
 						<td width="10%" align="center">${vo.group_id}</td>
 						<td width="40%">
-							<%-- <c:if test="${vo.group_step>0 }">
-							&nbsp;&nbsp;
-							</c:if> --%>
-						${vo.subject }
+							${vo.subject }
 						</td>
-					<%-- 	<td width="10%">${vo.name }</td> --%>
+						<%-- 	<td width="10%">${vo.name }</td> --%>
 						<td width="15%">${vo.dbday }</td>
 						<td width="25%">
 							<c:if test="${vo.isreply==0 }">
-								<a href="../adminpage/reply_insert.do?no=${vo.no }" class="btn btn-info rounded-pill m-2">답변대기</a>	
+								<a href="../adminpage/reply_insert.do?no=${vo.no }" class="btn btn-info rounded-pill m-2">답변대기</a>
 							</c:if>
 							<c:if test="${vo.isreply!=0 }">
-								<span style="color:#FF8F0B;">답변완료</span>
+								<span style="color: #FF8F0B;">답변완료</span>
 							</c:if>
 						</td>
 					</tr>
-					<c:set var="count" value="${count-1 }"/>
-					</c:forEach>
-				</tbody>
-			</table>
-			
-			
-			
-			
-			<table>
-			 <tr class="text-center">
-				 <td class="text-center"> 
-					       <c:choose>
-						    <c:when test="${curpage > 1}">
-						        <a href="../adminpage/reply_list.do?page=${curpage - 1}" class="btn btn-sm btn-success">이전</a>
-						    </c:when>
-						    <c:otherwise>
-						        <a href="#" class="btn btn-sm btn-success disabled">이전</a>
-						    </c:otherwise>
-						</c:choose>
-						
-						<span class="mx-2">${curpage} page / ${totalpage} pages</span>
-						
-						<c:choose>
-						    <c:when test="${curpage < totalpage}">
-						        <a href="../adminpage/reply_list.do?page=${curpage + 1}" class="btn btn-sm btn-info">다음</a>
-						    </c:when>
-						    <c:otherwise>
-						        <a href="#" class="btn btn-sm btn-info disabled">다음</a>
-						    </c:otherwise>
-						</c:choose>
-						
-		     		</td>
-		     	</tr>
-		     </table>
-		     
-      <!--   
+					<c:set var="count" value="${count-1 }" />
+				</c:forEach>
+			</tbody>
+		</table>
+		<table>
+			<tr class="text-center">
+				<td class="text-center">
+					<c:choose>
+						<c:when test="${curpage > 1}">
+							<a href="../adminpage/reply_list.do?page=${curpage - 1}" class="btn btn-sm btn-success">이전</a>
+						</c:when>
+						<c:otherwise>
+							<a href="#" class="btn btn-sm btn-success disabled">이전</a>
+						</c:otherwise>
+					</c:choose>
+
+					<span class="mx-2">${curpage} page / ${totalpage} pages</span>
+
+					<c:choose>
+						<c:when test="${curpage < totalpage}">
+							<a href="../adminpage/reply_list.do?page=${curpage + 1}" class="btn btn-sm btn-info">다음</a>
+						</c:when>
+						<c:otherwise>
+							<a href="#" class="btn btn-sm btn-info disabled">다음</a>
+						</c:otherwise>
+					</c:choose>
+
+				</td>
+			</tr>
+		</table>
+
+		<!--   
 			<nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
                         <c:if test="${startPage > 1}">
@@ -124,8 +116,8 @@ td[width="40%"]:hover {
                     </ul>
                 </nav>
 		-->
-			
 
-</div>
+
+	</div>
 </body>
 </html>

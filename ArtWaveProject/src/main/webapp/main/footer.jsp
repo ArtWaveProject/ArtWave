@@ -36,10 +36,10 @@
 	<footer>
 		<div class="container" style="margin-top: 150px;">
 			<div class="row">
-			<div class="col-lg-3" style="vertical-align: middle;">
+			<div class="col-lg-2" style="vertical-align: middle;">
 			<img src="../main/footer_logo.png">
 			</div>
-				<div class="col-lg-6 " style="vertical-align: middle;">
+				<div class="col-lg-7 " style="vertical-align: middle;">
 					<p class="bblack" style="text-align: left;">
 						강북교육센터 Gangbuk<br>
 						서울특별시 마포구 월드컵북로 21 풍성빌딩 2,3,4층 쌍용강북교육센터<br>
@@ -47,7 +47,7 @@
 					</p>
 				</div>
 				<div class="col-lg-3" style="text-align: right;">
-				<h3 style="color: black; margin-right: 35px;">고객문의</h3><br>
+				<h4 style="color: black; margin-right: 35px;">고객문의</h4>
 						<a class="link" href="../noticeboard/boardList.do">공지사항</a>
 						<a class="link" href="../replyboard/list.do">1:1문의</a>
 				</div>

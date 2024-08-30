@@ -186,13 +186,13 @@
 	</delete>
 	<!-- 예약출력 -->
 	<select id="reserveListData" parameterType="String" resultType="ReserveVO">
-		SELECT mno, mtitle, tdname, tname, day, time, inwon, price, id, sno, rno, state,
+		SELECT mno, mtitle, tdname, tname, to_char(day, 'YYYY-MM-DD') as day, time, inwon, price, id, sno, rno, state,
 		(SELECT mposter FROM movie WHERE movie.mno=reserve.mno) as poster
 		FROM reserve WHERE id=#{id}
 	</select>
 	<!-- 관리자 예약 출력 -->
 	<select id="adminReserveListData" resultType="ReserveVo">
-		SELECT mno, mtitle, tdname, tname, day, time, inwon, price, id, sno, rno, state,
+		SELECT mno, mtitle, tdname, tname, to_char(day, 'YYYY-MM-DD') as day, time, inwon, price, id, sno, rno, state,
 		(SELECT mposter FROM movie WHERE movie.mno=reserve.mno) as poster
 		FROM reserve
 	</select>
