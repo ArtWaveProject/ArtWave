@@ -97,7 +97,7 @@
     GROUP BY tno) bb ON book.bno = bb.tno)
 </select>
 
- <insert id="insertCart">
+ <insert id="insertCart" parameterType="hashmap">
     INSERT INTO totalcart (cno, tno, price, id, count, buydate, type)
     VALUES ((SELECT NVL(MAX(cno)+1, 1) FROM totalcart), #{tno}, #{price}, #{id}, #{count}, SYSDATE, #{type})
  </insert>

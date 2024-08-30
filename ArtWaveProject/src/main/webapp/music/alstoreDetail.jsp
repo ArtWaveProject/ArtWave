@@ -434,7 +434,7 @@
 <script>
 var IMP = window.IMP; 
 IMP.init("imp68206770");
-
+let ratingCheck=false
 function requestPay(json, name, price) {
     IMP.request_pay({
         pg: "html5_inicis",
@@ -596,6 +596,8 @@ $(document).ready(function() {
     $('.avgstar').html(star);
 
     $('#reviewBtn').click(function() {
+    	let id=$('#id').val()
+    	console.log(ano)
         let rating = 0;
         if (id.length === 0) {
             alert('해당 기능은 로그인 시 이용하실 수 있습니다');
@@ -939,7 +941,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
-
+<input type="hidden" value="${sessionScope.id }" id="id">
 	<!-- <a href="https://www.flaticon.com/kr/free-icons/" title="심장 아이콘">심장 아이콘 제작자: hazhio - Flaticon</a> -->
 </body>
 </html>
