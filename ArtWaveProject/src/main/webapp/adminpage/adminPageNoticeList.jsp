@@ -203,16 +203,16 @@ body {
 		<table class="genreTable">
 			<tr>
 				<td width="25%" class="genreBtn ${type==''?'active':''}">
-					<a href="../noticeboard/boardList.do">전체</a>
+					<a href="../adminpage/notice_list.do?">전체</a>
 				</td>
 				<td width="25%" class="genreBtn ${type==5?'active':type==''?'anext':''}">
-					<a href="../noticeboard/boardList.do?type=5">영화</a>
+					<a href="../adminpage/notice_list.do?type=5">영화</a>
 				</td>
 				<td width="25%" class="genreBtn ${type==6?'active':type=='5'?'anext':''}">
-					<a href="../noticeboard/boardList.do?type=6">도서</a>
+					<a href="../adminpage/notice_list.do?type=6">도서</a>
 				</td>
 				<td width="25%" class="genreBtn ${type==7?'active':type==6?'anext':''}">
-					<a href="../noticeboard/boardList.do?type=7">음악</a>
+					<a href="../adminpage/notice_list.do?type=7">음악</a>
 				</td>
 			</tr>
 		</table>

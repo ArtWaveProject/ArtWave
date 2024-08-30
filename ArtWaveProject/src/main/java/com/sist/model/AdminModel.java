@@ -94,7 +94,8 @@ public class AdminModel {
 		map.put("end", end);
 
 		List<ReplyBoardVO> list = ReplyBoardDAO.adminReplyBoardListData(map);
-		int count = ReplyBoardDAO.replyBoardRowCount();
+		int count = ReplyBoardDAO.adminReplyCount();
+		System.out.println(count);
 		int totalpage = (int) (Math.ceil(count / 15.0));
 
 		request.setAttribute("arList", list);

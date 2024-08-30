@@ -34,7 +34,7 @@
 </head>
 <body>
 	<footer>
-		<div class="container">
+		<div class="container" style="margin-top: 150px;">
 			<div class="row">
 			<div class="col-lg-3" style="vertical-align: middle;">
 			<img src="../main/footer_logo.png">

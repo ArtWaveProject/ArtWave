@@ -209,4 +209,18 @@ public class ReplyBoardDAO {
 				session.close();
 		}
 	}
+	public static int adminReplyCount(){
+		int count=0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			count=session.selectOne("adminReplyCount");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return count;
+	}
 }
