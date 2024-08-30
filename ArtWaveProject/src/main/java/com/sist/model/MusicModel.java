@@ -13,8 +13,10 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.sist.dao.AlStoreDAO;
 import com.sist.dao.MusicDAO;
 import com.sist.dao.PaymentDAO;
+import com.sist.vo.AlStoreVO;
 import com.sist.vo.AlbumVO;
 import com.sist.vo.ArtistVO;
 import com.sist.vo.MusicVO;
@@ -52,12 +54,14 @@ public class MusicModel {
 		List<MusicVO> mList = MusicDAO.musicListData(map);
 		map.put("end", 12);
 		List<MusicVO> list = MusicDAO.musicListDataNew(map);
-
+		List<AlStoreVO> aList=AlStoreDAO.alStoreRandom();
+		request.setAttribute("aList", aList);
 		request.setAttribute("id", id);
 		request.setAttribute("list", list);
 		request.setAttribute("mList", mList);
 		request.setAttribute("main_jsp", "../music/musicHome.jsp");
 		return "../main/main.jsp";
+
 	}
 
 	@RequestMapping("music/musicList.do")
@@ -441,6 +445,18 @@ public class MusicModel {
 			e.printStackTrace();
 		}
 		return "../main/main.jsp";
+	}
+	@RequestMapping("music/playcountIncremnt.do")
+	public void playcountIncremnt(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("check");
+		String mno=request.getParameter("mno");
+		MusicDAO.playcountIncremnt(Integer.parseInt(mno));
+		int playcount=MusicDAO.musicPlayCount(Integer.parseInt(mno));
+		try {
+			PrintWriter out=response.getWriter();
+			out.print(playcount);
+		} catch (Exception e) {
+		}
 	}
 
 	@RequestMapping("admin/adminReserve.do")

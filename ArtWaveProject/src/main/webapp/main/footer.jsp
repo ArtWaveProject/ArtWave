@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 	.bblack{
-		color: black !important;
+		color: #555 !important;
 		font-weight: bold;
 	}
 	.black{
@@ -22,18 +22,19 @@
         height: auto;
     }
     footer .container {
-        margin: 0px 200px;
+        margin: 0px auto;
     }
     footer .link{
     border: 1px solid #ddd;
     padding : 8px;
     border-radius: 10px;
+    color: #888;
     }
 </style>
 </head>
 <body>
 	<footer>
-		<div class="container" style="margin: 0px 200px;">
+		<div class="container" style="margin-top: 150px;">
 			<div class="row">
 			<div class="col-lg-3" style="vertical-align: middle;">
 			<img src="../main/footer_logo.png">
@@ -45,8 +46,8 @@
 						Tel_02-336-8546~8     Fax_02-334-5405
 					</p>
 				</div>
-				<div class="col-lg-3">
-				<h3 style="color: black;">고객문의</h3><br>
+				<div class="col-lg-3" style="text-align: right;">
+				<h3 style="color: black; margin-right: 35px;">고객문의</h3><br>
 						<a class="link" href="../noticeboard/boardList.do">공지사항</a>
 						<a class="link" href="../replyboard/list.do">1:1문의</a>
 				</div>

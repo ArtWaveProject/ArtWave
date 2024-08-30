@@ -108,4 +108,7 @@
   	FROM replyboard
   	WHERE group_id=#{group_id} AND group_step=1
  </select>
+ <select id="adminReplyCount" resultType="int">
+ SELECT COUNT(*) FROM replyboard WHERE group_step!=1
+ </select>
 </mapper>

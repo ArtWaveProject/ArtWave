@@ -46,7 +46,7 @@ $(function() {
 </script>
 <style type="text/css">
     .date-input {
-            width: 500px; /* Set width of the date input */
+            width: 500px; 
         }
 </style>
 </head>

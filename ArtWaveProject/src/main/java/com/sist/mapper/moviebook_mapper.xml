@@ -2,16 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.moviebook_mapper">
 
-	<resultMap type="com.sist.vo.MovieBookVO" id="moviebookMap">
+	<resultMap type="com.sist.vo.MovieBookVO" id="moviebookmap">
  		 <result property="bvo.bno" column="bno"/>
  		 <result property="bvo.btitle" column="btitle"/>
  		 <result property="bvo.cover" column="cover"/>
  		 <result property="bvo.sale_price" column="price"/>
  	</resultMap>
- 	     <select id="movieBookData"  resultType="MovieBookVO"  parameterType="hashmap">
+ 	     <select id="moviebookmap"  resultType="MovieBookVO"  parameterType="hashmap">
  	     		SELECT moviebook.mbno, moviebook.mno, moviebook.bno, book.btitle, book.cover, book.sale_price
  	     		FROM moviebook
  	     		INNER JOIN book ON moviebook.bno = book.bno
  	     		WHERE moviebook.mno = #{mno}
+ 	     </select>
+ 	     <resultMap type="com.sist.vo.MovieMusicVO" id="moviemusicmap">
+ 		 <result property="avo.alno" column="alno"/>
+ 		 <result property="avo.atitle" column="atitle"/>
+ 		 <result property="avo.poster" column="poster"/>
+ 	</resultMap>
+ 	     <select id="moviemusicmap"  resultType="MovieMusicVO"  parameterType="hashmap">
+ 	     		SELECT moviemusic.mmno, moviemusic.mno, moviemusic.muno, album.atitle, album.poster
+ 	     		FROM moviemusic
+ 	     		INNER JOIN album ON moviemusic.muno = album.alno
+ 	     		WHERE moviemusic.mno = #{mno}
  	     </select>
  	     </mapper>

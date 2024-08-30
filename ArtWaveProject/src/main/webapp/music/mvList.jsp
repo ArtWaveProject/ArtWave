@@ -138,7 +138,7 @@
 					</div>
 					<div class="text-center">
 					<input type="text" size="15" id="ss" name="ss">
-					<input type="button" value="검색">
+					<input type="submit" value="검색">
 				</div>
 			</form>
 		</div>

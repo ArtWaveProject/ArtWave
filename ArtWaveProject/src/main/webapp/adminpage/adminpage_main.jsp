@@ -10,7 +10,9 @@ body {
 	margin-left: 180px;
 	padding: 0;
 }
-
+.col-lg-8 .container{
+width: 100%;
+}
 .container2 {
 	width: 80%; /* 원하는 너비로 조정 */
 	margin: 0 auto; /* 수평 중앙 정렬 */
@@ -66,7 +68,7 @@ body {
 					</ul>
 				</div>
 			</div>
-			<div class="col-lg-10">
+			<div class="col-lg-8">
 				<h2 class="black" style="text-align: center; font-weight: bold; font-size: 30px; margin: -30px 0 40px -260px;">${title}</h2>
 				<jsp:include page="${admin_jsp}"></jsp:include>
 			</div>

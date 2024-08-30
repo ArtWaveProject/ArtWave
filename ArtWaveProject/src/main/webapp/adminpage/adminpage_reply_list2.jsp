@@ -109,13 +109,13 @@ body {
 }
 
 .table .title {
-	color: #3b84d1;
-	text-decoration: none;
+    color: #3b84d1;
+    text-decoration: none;
+    white-space: nowrap; /* 한 줄로 표시 */
+    overflow: hidden;    /* 넘치는 부분 숨기기 */
+    text-overflow: ellipsis; /* 생략 표시 (...) */
 }
 
-.table .title:hover {
-	text-decoration: underline;
-}
 
 .button-container {
 	text-align: right;
