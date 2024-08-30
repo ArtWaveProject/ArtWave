@@ -263,13 +263,13 @@ $(function() {
 							<c:choose>
 								<c:when test="${all.bovo.cover != null}">
 									<td width="13%" class="text-center"><a
-										href="../book/detail.do?bno=${all.bovo.bno}"> <img
+										href="../book/detail.do?bno=${all.tno}"> <img
 											src="${all.bovo.cover}" class="listImg">
 									</a></td>
 								</c:when>
 								<c:when test="${all.alvo.aphoto != null}">
 									<td width="13%" class="text-center"><a
-										href="../music/alstoreDetail.do?alno=${all.alvo.ano}"> <img
+										href="../music/alstoreDetail.do?alno=${all.tno}"> <img
 											src="${all.alvo.aphoto}" class="listImg">
 									</a></td>
 								</c:when>

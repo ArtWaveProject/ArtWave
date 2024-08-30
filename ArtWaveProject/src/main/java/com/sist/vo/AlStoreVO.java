@@ -99,6 +99,8 @@ public class AlStoreVO {
 		this.ardate = ardate;
 	}
 	private int ano,arating;
-	private String aphoto,aname,aartist,aprice,adis,adisprice,aimg,aintro,adetail,aldate;
+	private String aphoto,aname,aartist,aprice,adis,adisprice,aimg,aintro,adetail,aldate,acategory;
 	private Date ardate;
+	
+	
 }
