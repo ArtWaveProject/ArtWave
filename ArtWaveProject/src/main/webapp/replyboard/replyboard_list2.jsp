@@ -212,7 +212,7 @@ input[type="submit"]:hover {
 </head>
 <body>
 	<div class="container" style="margin-top: 200px;">
-		<h2 style="margin-bottom: 50px; color: black; text-align: center;">1:1 문답</h2>
+		<h2 style="margin-bottom: 50px; color: black; text-align: center;">1:1 문의</h2>
 		<table class="table">
 			<thead>
 				<tr>
