@@ -50,9 +50,9 @@ $(function(){
 <table class="table">
 <c:forEach var="msvo" items="${ttList }">
   <tr class="ttdata" data-tdname = ${msvo.tdvo.tdname } data-mstime = ${msvo.mstime }> 
-     <td class ="times">	${msvo.tdvo.tdname }</td>
+     <td class ="times" style="font-weight: 500; padding-top: 15px;" align="right">	${msvo.tdvo.tdname }</td>
   	<td>
-    <input type="button" class="times" style="margin-top: 5px;" value="${msvo.mstime}">
+    <input type="button" class="times" style="margin-top: 5px; bottom:3px; size: 14px; color: rgb(64,0,64); background-color:white; border-radius: 6px" value="${msvo.mstime}">
  	</td>
  	</tr>
   </c:forEach>
