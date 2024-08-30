@@ -308,7 +308,8 @@
 												</div>
 												<div class="down-content" style="margin-left: 18px;">
 													<p>${vo.aname }</p>
-													<small>${vo.aartist }${vo.aartist != null ? ' 노래 | ' : ''}</small><br>
+													<small>${vo.aartist } 노래 | ${vo.aldate}
+													</small><br>
 													<p>
 														${vo.adisprice}원
 													</p>

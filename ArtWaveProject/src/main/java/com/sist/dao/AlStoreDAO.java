@@ -1,7 +1,5 @@
 package com.sist.dao;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -119,6 +117,7 @@ public class AlStoreDAO {
 		  }
 	  	return list;
 	  }
+
 	
 }
 

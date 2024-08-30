@@ -433,77 +433,76 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 var IMP = window.IMP; 
-IMP.init("imp68206770"); 
-function requestPay(json,name,price) {
+IMP.init("imp68206770");
+
+function requestPay(json, name, price) {
     IMP.request_pay({
         pg: "html5_inicis",
         pay_method: "card",
-        merchant_uid: "ORD20180131-0000011",  
+        merchant_uid: "ORD20180131-0000011",
         name: name,
-        amount: price,        
+        amount: price,
         buyer_email: json.email,
         buyer_name: json.name,
         buyer_tel: json.phone,
         buyer_addr: json.address,
         buyer_postcode: json.post
     }, function (rsp) { 
-    	alert('구매완료')
+        alert('구매완료');
     });
 }
 
 function toggleRecentBooks() {
-    const container = document.querySelector('.recent-books-container')
-    const toggleIcon = container.querySelector('.toggle-icon')
+    const container = document.querySelector('.recent-books-container');
+    const toggleIcon = container.querySelector('.toggle-icon');
     if (container.classList.contains('expanded')) {
-        container.classList.remove('expanded')
-        toggleIcon.textContent = '+'
+        container.classList.remove('expanded');
+        toggleIcon.textContent = '+';
     } else {
-        container.classList.add('expanded')
-        toggleIcon.textContent = '-'
+        container.classList.add('expanded');
+        toggleIcon.textContent = '-';
     }
 }
 
 $(document).ready(function() {
+    // Scroll to review form
     $('#scrollToReview').click(function(event) {
-        event.preventDefault()
+        event.preventDefault();
         $('html, body').animate({
             scrollTop: $('#review-form').offset().top
-        }, 10)
-    })
+        }, 10);
+    });
 
+    // Scroll to intro section
     $('#scrollToIntro').click(function(event) {
-        event.preventDefault()
+        event.preventDefault();
         $('html, body').animate({
             scrollTop: $('#intro-section').offset().top
-        }, 10)
-    })
-    
-    $(document).ready(function() {
-        $('.action-button').click(function() {
-            $('.action-button').removeClass('active')
-            $(this).addClass('active')
-        })
-        
-    })
-    
-  $(document).ready(function() {
-    $('.add-to-cart').click(function(event) {
-        event.preventDefault()
- 
-      let id = '${id}'  
-        
-      if (id.length === 0) {
-			alert('해당 기능은 로그인 시 이용하실 수 있습니다')
-			return
-		}
-        
-        let ano = $('#ano').val()
-        let count = $('#account').val()
-        let price = ${vo.adisprice}
+        }, 10);
+    });
 
-        console.log(ano)
-        console.log(count)
-        console.log(price)
+    // Toggle action button
+    $('.action-button').click(function() {
+        $('.action-button').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    // Add to cart
+    $('.add-to-cart').click(function(event) {
+        event.preventDefault();
+        let id = '${id}';
+        if (id.length === 0) {
+            alert('해당 기능은 로그인 시 이용하실 수 있습니다');
+            return;
+        }
+        let ano = $('#ano').val();
+        let count = $('#account').val();
+        let price = ${vo.adisprice};
+
+        console.log(ano);
+        console.log(count);
+        console.log(price);
+
         $.ajax({
             type: 'post',
             url: '../book/cart.do',
@@ -511,192 +510,111 @@ $(document).ready(function() {
                 'tno': ano,
                 'price': price,
                 'count': count,
-                'type': 2 
+                'type': 3 
             },
             success: function(result) {
-                alert('장바구니에 추가되었습니다')
+                alert('장바구니에 추가되었습니다');
             },
             error: function(request, status, error) {
-                alert('오류가 발생했습니다')
+                alert('오류가 발생했습니다');
             }
-        })
-    })
-})
+        });
+    });
 
     function updateTotalPrice() {
-        let quantity = parseInt($('#account').val())
-        let price = parseFloat('${vo.adisprice}')
-        let totalPrice = quantity * price
-        $('.price-value.total').text(totalPrice.toLocaleString() + '원')
+        let quantity = parseInt($('#account').val());
+        let price = parseFloat('${vo.adisprice}');
+        let totalPrice = quantity * price;
+        $('.price-value.total').text(totalPrice.toLocaleString() + '원');
     }
 
-    updateTotalPrice()
+    updateTotalPrice();
 
-    $('#account').change(function(){
-        updateTotalPrice()
-    })
-})
+    $('#account').change(function() {
+        updateTotalPrice();
+    });
 
-$(function() {
-	  let ratingCheck = false
-    let likeCheck = false
-    let id = '${id}'
-    let ano = $('#ano').val()
-    
-    reviewlist()
-
-    if (id.length > 0) {
+    $('#buy').click(function() {
+        let gno = ${vo.ano};
+        let price = ${vo.adisprice};
+        let account = parseInt($('#account').val());
+        let name = '${vo.aname}';
+        let id = '${id}';
+        if (id.length < 2) {
+            alert('로그인이 필요합니다');
+            return;
+        }
         $.ajax({
             type: 'post',
-            url: '../like/likeCheck.do',
+            url: '../payment/paymentCheck.do',
             data: {
-                'tno': ano,
-                'type': 5
+                'gno': gno,
+                'type': 3
             },
             success: function(result) {
                 if (result === 'OK') {
-                    likeCheck = true
-                    $('#like-button').attr('src', 'like_on.png')
+                    $.ajax({
+                        type: 'post',
+                        url: '../payment/paymentInsert.do',
+                        data: {
+                            "gno": gno,
+                            "price": price,
+                            "account": account,
+                            'type': 3,
+                            'title': name
+                        },
+                        success: function(result) {
+                            let json = JSON.parse(result);
+                            console.log(json);
+                            requestPay(json, name, price);
+                        }
+                    });
                 } else {
-                    likeCheck = false
-                    $('#like-button').attr('src', 'like_off.png')
+                    alert('이미 구매한 도서입니다');
+                    return;
                 }
             }
-        })
-    } else {
-        $('#likeBtn').css('display', 'none')
-    }
+        });
+    });
 
-    $('#likeBtn').click(function() {
-        console.log(ano)
-        if (likeCheck) {
-            $.ajax({
-                type: 'post',
-                url: '../like/likeOff.do',
-                data: {
-                    'tno': ano,
-                    'type': 5
-                },
-                success: function(result) {
-                	console.log(ano)
-                    if (result >= 0) {
-                        likeCheck = false;
-                        $('#like-button').attr('src', 'heart.png')
-                    }
-                }
-            })
-        } else {
-            $.ajax({
-                type: 'post',
-                url: '../like/likeOn.do',
-                data: {
-                    'tno': ano,
-                    'type': 5
-                },
-                success: function(result) {
-                	console.log(ano)
-                    if (result >= 0) {
-                        likeCheck = true;
-                        $('#like-button').attr('src', 'fullheart.png')
-                    }
-                },
-                error:function(request, status, error){
-                	alert(error)
-                }
-            })
-        }
-    })
-    
-    $('#buy').click(function(){
-		let gno=${vo.ano}
-		let price=${vo.adisprice}
-		let account=parseInt($('#account').val())
-		let name='${vo.aname}'
-		let id='${id}'
-			if(id.length<2)
-			{
-				alert('로그인이 필요합니다')
-				return
-		  }
-		$.ajax({
-			type:'post',
-			url:'../payment/paymentCheck.do',
-			data:{
-				'gno':gno,
-				'type':2
-			},
-			success:function(result){
-				if(result==='OK'){
-					$.ajax({
-						type:'post',
-						url:'../payment/paymentInsert.do',
-						data:{
-							"gno":gno,
-							"price":price,
-							"account":account,
-							'type':2,
-							'title':name
-							},
-						success:function(result)
-						{
-							let json=JSON.parse(result)
-						  console.log(json)
-							requestPay(json,name,price)
-						}
-					})
-				}
-				else{
-					alert('이미 구매한 도서입니다')
-					return
-				}
-			}
-		})
-		
-	})
-	
     $('.rating').change(function() {
-    ratingCheck=true	
-		let rating=$('input[name="rating"]:checked').val()
-		rating=6-rating
-    console.log(rating)
-	})
-	$(document).ready(function() {
-    let avgRating=parseFloat('${avg}')
+        ratingCheck = true;
+        let rating = $('input[name="rating"]:checked').val();
+        rating = 6 - rating;
+        console.log(rating);
+    });
 
-    let star= ''
-    for (let i=1;i<=5;i++) {
-        if (i<=avgRating) {
-            star+='<img src="star.png" style="width:20px;height:20px;">'
+    let avgRating = parseFloat('${avg}');
+    let star = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= avgRating) {
+            star += '<img src="star.png" style="width:20px;height:20px;">';
         } else {
-            star+='<img src="nostar.png" style="width:20px;height:20px;">'
+            star += '<img src="nostar.png" style="width:20px;height:20px;">';
         }
     }
-    $('.avgstar').html(star)
-    
-})
+    $('.avgstar').html(star);
 
-	$('#reviewBtn').click(function(){
-		let rating=0
-		if (id.length === 0) {
-			alert('해당 기능은 로그인 시 이용하실 수 있습니다')
-			return
-		}
-		if(ratingCheck){
-		rating=$('input[name="rating"]:checked').val()
-		rating=6-rating
-   	console.log(rating)
-			
-		}
-		else{
-			alert('평점을 선택해주세요')
-			return
-		}
-		let content=$('#content').val()
-		if(content.trim()===''){
-			alert('리뷰를 입력해주세요')
-			$('#content').focus()
-			return
-		}
+    $('#reviewBtn').click(function() {
+        let rating = 0;
+        if (id.length === 0) {
+            alert('해당 기능은 로그인 시 이용하실 수 있습니다');
+            return;
+        }
+        if (ratingCheck) {
+            rating = $('input[name="rating"]:checked').val();
+            rating = 6 - rating;
+            console.log(rating);
+        } else {
+            alert('평점을 선택해주세요');
+            return;
+        }
+        let content = $('#content').val();
+        if (content.trim() === '') {
+            alert('리뷰를 입력해주세요');
+            $('#content').focus();
+            return;
+        }
         $.ajax({
             type: 'post',
             url: '../review/checkedReview.do',
@@ -705,7 +623,7 @@ $(function() {
                 'userId': id
             },
             success: function(result) {
-                if (result==='NO_REVIEW') {
+                if (result === 'NO_REVIEW') {
                     $.ajax({
                         type: 'post',
                         url: '../review/insert.do',
@@ -713,130 +631,134 @@ $(function() {
                             'tno': ano,
                             'trating': rating,
                             'tcontent': content,
-                            'type': 2
+                            'type': 3
                         },
                         success: function() {
-                            let count = $('#rcount').text()
-                            count = parseInt(count)
-                            $('#content').val('')
-                            $('input[name="rating"]').prop('checked', false)
-                            reviewlist()
-                            $('.rcount').text('')
-                            $('.rcount').text(count+1)
+                            let count = $('#rcount').text();
+                            count = parseInt(count);
+                            $('#content').val('');
+                            $('input[name="rating"]').prop('checked', false);
+                            reviewlist();
+                            $('.rcount').text(count + 1);
                         }
-                    })
+                    });
                 } else {
-                    alert('이미 작성하신 리뷰가 있습니다.')
+                    alert('이미 작성하신 리뷰가 있습니다.');
                 }
             }
-        })
-    })
-})
-function reviewlist(){
-	$.ajax({
-		type:'post',
-		url:'../review/list.do',
-		data:{
-			'tno':${vo.ano},
-			'type':2
-		},
-		success:function(result){
-			let json=JSON.parse(result)
-			html=''
-				json.map(function(reply) {
-					let stars=''
-					for(let i=1;i<=reply.trating;i++){
-						stars+='<img src="star.png" style="width:15px;height:15px;">'
-					}
-					for(let i=1;i<=5-reply.trating;i++){
-						stars+='<img src="nostar.png" style="width:15px;height:15px;">'
-					}
-			html+='<tr>'
-			html+='<td>'
-			html+='<div class="review-list">'
-			html+='<div>'
-			html+='<span class="nick-rate">'+reply.nickname+'</span>'
-			if(reply.id===reply.sessionId){
-				html+='<input type="button" class="xBtn" value="X" onclick="reviewdelete('+reply.trno+')">'
-				}
-			html+='<br>'
-		  html+=stars+'<br>'
-			html+='<span class="date">'+reply.dbday+'&nbsp;</span>'
-			html+='<div>'
-			html+='<div class="r-content"><pre>'+reply.tcontent+'</pre></div>'
-			html+='</div>'
-			html+='</div>'
-			html+='</td>'
-			html+='</tr>'
-				})
-				$('#review').html(html)
-		}
-	})
-}
-function reviewdelete(trno){
-	$.ajax({
-		type:'post',
-		url:'../review/delete.do',
-		data:{
-			'trno':trno,
-		},
-		success:function(result){
-			reviewlist()
-			let count=$('#rcount').text()
-			count=parseInt(count)
-			$('.rcount').text(count-1)
-			}
-		})
-}
-document.addEventListener('DOMContentLoaded', function() {
-    const stars = document.querySelectorAll('.star-rating input[type="radio"]')
-    stars.forEach(star => {
-        star.addEventListener('change', function() {
-            updateStars(this)
-        })
-    })
+        });
+    });
 
-    function updateStars(selectedStar) {
-        const allStars = document.querySelectorAll('.star-rating label')
-        allStars.forEach(star => {
-            star.style.color = '#ddd'
-        })
-
-        const selectedValue = selectedStar.value
-        allStars.forEach(star => {
-            const starValue = star.getAttribute('for').replace('star', '')
-            if (parseInt(starValue) >= parseInt(selectedValue)) {
-                star.style.color = '#779BC9'
+    function reviewlist() {
+        $.ajax({
+            type: 'post',
+            url: '../review/list.do',
+            data: {
+                'tno': ${vo.ano},
+                'type': 3
+            },
+            success: function(result) {
+                let json = JSON.parse(result);
+                let html = '';
+                json.map(function(reply) {
+                    let stars = '';
+                    for (let i = 1; i <= reply.trating; i++) {
+                        stars += '<img src="star.png" style="width:15px;height:15px;">';
+                    }
+                    for (let i = 1; i <= 5 - reply.trating; i++) {
+                        stars += '<img src="nostar.png" style="width:15px;height:15px;">';
+                    }
+                    html += '<tr>';
+                    html += '<td>';
+                    html += '<div class="review-list">';
+                    html += '<div>';
+                    html += '<span class="nick-rate">' + reply.nickname + '</span>';
+                    if (reply.id === reply.sessionId) {
+                        html += '<input type="button" class="xBtn" value="X" onclick="reviewdelete(' + reply.trno + ')">';
+                    }
+                    html += '<br>';
+                    html += stars + '<br>';
+                    html += '<span class="date">' + reply.dbday + '&nbsp;</span>';
+                    html += '<div>';
+                    html += '<div class="r-content"><pre>' + reply.tcontent + '</pre></div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</td>';
+                    html += '</tr>';
+                });
+                $('#review').html(html);
             }
-        })
+        });
     }
-    
-})
-$(document).ready(function() {
-	function update(){
-		let quantity = parseInt($('#account').val())
-        let price = parseFloat('${vo.adisprice}')
-        let totalPrice = quantity * price
-        $('.price-value.total').text(totalPrice.toLocaleString() + '원')
-	}
-    var acountInput = $('#account')
-    var incrementButton = $('#increment')
-    var decrementButton = $('#decrement')
+
+    function reviewdelete(trno) {
+        $.ajax({
+            type: 'post',
+            url: '../review/delete.do',
+            data: {
+                'trno': trno
+            },
+            success: function(result) {
+                reviewlist();
+                let count = $('#rcount').text();
+                count = parseInt(count);
+                $('.rcount').text(count - 1);
+            }
+        });
+    }
+
+    // Star rating
+    document.addEventListener('DOMContentLoaded', function() {
+        const stars = document.querySelectorAll('.star-rating input[type="radio"]');
+        stars.forEach(star => {
+            star.addEventListener('change', function() {
+                updateStars(this);
+            });
+        });
+
+        function updateStars(selectedStar) {
+            const allStars = document.querySelectorAll('.star-rating label');
+            allStars.forEach(star => {
+                star.style.color = '#ddd';
+            });
+
+            const selectedValue = selectedStar.value;
+            allStars.forEach(star => {
+                const starValue = star.getAttribute('for').replace('star', '');
+                if (parseInt(starValue) >= parseInt(selectedValue)) {
+                    star.style.color = '#779BC9';
+                }
+            });
+        }
+    });
+
+    // Increment and decrement
+    function update() {
+        let quantity = parseInt($('#account').val());
+        let price = parseFloat('${vo.adisprice}');
+        let totalPrice = quantity * price;
+        $('.price-value.total').text(totalPrice.toLocaleString() + '원');
+    }
+
+    var acountInput = $('#account');
+    var incrementButton = $('#increment');
+    var decrementButton = $('#decrement');
 
     incrementButton.click(function() {
-        var value = parseInt(acountInput.val())
-        acountInput.val(value + 1)
-        update()
-    })
+        var value = parseInt(acountInput.val());
+        acountInput.val(value + 1);
+        update();
+    });
+
     decrementButton.click(function() {
-        var value = parseInt(acountInput.val())
+        var value = parseInt(acountInput.val());
         if (value > 1) {
-        	acountInput.val(value - 1)
+            acountInput.val(value - 1);
         }
-        update()
-    })
-    
-})
+        update();
+    });
+});
+
 
 
 </script>
@@ -864,8 +786,8 @@ $(document).ready(function() {
 											<span class="avgstar" style="font-weight: bold;"></span>
 											<p id="avgnumber" style="font-size: 18px; font-weight: bold;">${avg}</p>
 										</div>
-										<p>${vo.aartist}${vo.aartist != null ? ' 노래  ' : ''}|
-											${vo.ardate}</p>
+										<p>${vo.aartist != null ? ' 노래  ' : ''} ${vo.aartist} | 
+											 ${vo.aldate }</p>
 										<div class="hr-container">
 											<hr>
 										</div>
@@ -907,9 +829,7 @@ $(document).ready(function() {
 											</tr>
 										</table>
 										<div class="buttons">
-											<a href="" class="like-button" id="likeBtn"> <img
-												src="../book/heart.png" id="like-button" alt="">
-											</a> <a href="" class="add-to-cart"> <i
+											 <a href="" class="add-to-cart"> <i
 												class="fa fa-cart-plus">&nbsp;Add to Cart</i>
 											</a>
 											<button type="button" class="buy-now" style="">
@@ -934,7 +854,7 @@ $(document).ready(function() {
 								<table class="book-in" style="margin-top: 20px;">
 									<tbody class="book-size">
 										<tr>
-											<th class="b-info">발행일</th>
+											<th class="b-info">발매일</th>
 											<td class="b-in">${vo.aldate }</td>
 										</tr>
 										<tr>
@@ -960,6 +880,7 @@ $(document).ready(function() {
 									</div>
 									<img src="${vo.aimg }" alt="" style="padding-bottom: 80px;">
 									<br>
+									
 									<!-- 리뷰 작성 폼 -->
 									<div class="heading-section" style="padding: 0 0 15px 0;">
 										<span style="font-size: 25px; font-weight: bold;"><span

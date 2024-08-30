@@ -13,6 +13,7 @@
 		tno=#{tno} AND id=#{id} AND
 		type=#{type}
 	</insert>
+	
 	<update id="likeCountIncrement" parameterType="hashmap">
 		UPDATE ${table}
 		SET likecount=likecount+1 WHERE

@@ -101,7 +101,7 @@ nav {
 									<a href="../movie/mreservemain.do">예매 하기</a>
 									    </c:if>
 									    <c:if test="${sessionScope.id==null }">
-									<a href="../member/login.do" onclick="alert('로그인이 필요한 메뉴입니다!')"> 예매 하기</a>
+									<a href="../member/login.do?type=1" onclick="alert('로그인이 필요한 메뉴입니다!')"> 예매 하기</a>
 									    </c:if>
 									</li>
 								</ul></li>
@@ -136,7 +136,7 @@ nav {
 									</li>
 									<li class="submenu"><a href="../noticeboard/boardList.do">공지사항</a>
 									</li>
-									<li class="submenu"><a href="../replyboard/list.do">문의</a></li>
+									<li class="submenu"><a href="../replyboard/list.do">1:1 문의</a></li>
 								</ul></li>
 							<c:if test="${sessionScope.id!=null }">
 <%-- 								<c:if test="${sessionScope.admin=='0' }">

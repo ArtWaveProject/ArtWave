@@ -246,14 +246,33 @@ public class MovieDAO {
 		   }
 		   return total;
 	   }
-	   public static List<MovieBookVO> movieBookData(Map map)
+	   public static List<MovieBookVO> moviebookmap(Map map)
 	   {
 		   List<MovieBookVO> list=new ArrayList<MovieBookVO>();
 		   SqlSession session=null;
 		   try
 		   {
 			   session=ssf.openSession();
-			   list=session.selectList("movieBookData", map);
+			   list=session.selectList("moviebookmap", map);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
+	   public static List<MovieMusicVO> moviemusicmap(Map map)
+	   {
+		   List<MovieMusicVO> list=new ArrayList<MovieMusicVO>();
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("moviemusicmap", map);
 		   }catch(Exception ex)
 		   {
 			   ex.printStackTrace();

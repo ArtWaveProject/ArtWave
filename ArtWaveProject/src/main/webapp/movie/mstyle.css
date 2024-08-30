@@ -85,10 +85,6 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-	color: rgb(0, 0, 0);
-  text-decoration: none !important;
-}
 a:hover {
 	color: rgb(64, 0, 64);
 }
@@ -1138,7 +1134,7 @@ Featured Games Style
   cursor: pointer;
 }
 
-.featured-games3 .item2 .thumb .hover-effect h6 a{
+.featured-games3 .item2 .thumb .hover-effect h6 a {
   background-color: rgb(255, 255, 255);
   display: inline-block;
   color: rgb(64, 0, 64);
@@ -1174,18 +1170,84 @@ Featured Games Style
   width:80px !important;
 }
 
-.featured-games3 .item2 ul {
+.featured-games3 .item3{
+	width: 178px;
+	height: 200px;
+	margin-left: 0px !important;
+	display: inline-block; 
+}
+.featured-games3 .item3 .thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-games3 .item3 .thumb .hover-effect {
+  position: absolute;
+  bottom: 100px;
+  left: 65px;
+  text-align: center;
+  opacity: 0.9;
+  visibility: hidden;
+  transition: all .4s ease;
+  box-shadow:none;
+}
+
+.featured-games3 .item3 .thumb:hover .hover-effect {
+  opacity: 0.9;
+  visibility: visible;
+  bottom: 100px;
+  left: 65px;
+  cursor: pointer;
+}
+
+.featured-games3 .item3 .thumb .hover-effect h6 a {
+  background-color: rgb(255, 255, 255);
+  display: inline-block;
+  color: rgb(64, 0, 64);
+  font-weight: 600;
+  font-size: 11px;
+  padding: 10px 15px;
+  border-radius: 25px;
+  box-shadow:none;
+}
+
+.featured-games3 .item3 img {
+  border-radius: 15px;
+  width: 130px;
+  height: 180px;
+}
+
+.featured-games3 .item3 h3 {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.featured-games3 .item3 h5 {
+  color: rgb(0, 0, 0);
+  display: inline-block;
+  margin-top: 3px;
+  font-weight: 400;
+  font-size: 9px;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width:80px !important;
+}
+
+.featured-games3 .item3 ul {
   float: right;
   margin-top: 7px;
 }
 
-.featured-games3 .item2 ul li {
+.featured-games3 .item3 ul li {
   text-align: right;
   color: rgb(64, 0, 64);
   font-size: 14px;
 }
 
-.featured-games3 .item2 ul li:last-child i {
+.featured-games3 .item3 ul li:last-child i {
   color: #ec6090;
 }
 
@@ -1194,7 +1256,7 @@ Featured Games Style
   position: inline-block;
   margin: 0 auto;
   top: 40px;
-  left: -80px;
+  left: 10px;
   
 
   }
