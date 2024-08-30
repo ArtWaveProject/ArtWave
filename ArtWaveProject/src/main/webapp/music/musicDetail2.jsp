@@ -304,6 +304,7 @@ function playListMusicInsert(li, plno){
 }
 function musicPlay() {
 	let id=$('#id').val()
+	let mno=${detail.mno}
 	if(id.length<2){
 		alert('로그인이 필요합니다')
 		return
@@ -312,7 +313,7 @@ function musicPlay() {
 		type:'post',
 		url:'../payment/paymentCheck.do',
 		data:{
-			'gno':${detail.mno},
+			'gno':mno,
 			'type':1
 		},
 		success:function(result){
@@ -321,9 +322,22 @@ function musicPlay() {
 				return
 			}
 			else{
+				updatePlayCount(mno)
 				let audio= new Audio('${detail.urlmp3}')
 				audio.play()
 			}
+		}
+	})
+}
+function updatePlayCount(mno) {
+	$.ajax({
+		type:'post',
+		url:'../music/playcountIncremnt.do',
+		data:{
+			'mno':mno
+		},
+		success:function(result){
+			$('#playcount').text(result)
 		}
 	})
 }
@@ -384,7 +398,7 @@ function musicPlay() {
 					</tr>
 					<tr>
 						<th width="20%" class="text-center">재생횟수</th>
-						<td width="80%">${detail.playcount }</td>
+						<td width="80%" id="playcount">${detail.playcount }</td>
 					</tr>
 					<tr>
 						<th width="20%" class="text-center">좋아요</th>

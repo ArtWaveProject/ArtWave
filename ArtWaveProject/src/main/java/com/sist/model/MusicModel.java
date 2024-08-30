@@ -445,6 +445,18 @@ public class MusicModel {
 		}
 		return "../main/main.jsp";
 	}
+	@RequestMapping("music/playcountIncremnt.do")
+	public void playcountIncremnt(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("check");
+		String mno=request.getParameter("mno");
+		MusicDAO.playcountIncremnt(Integer.parseInt(mno));
+		int playcount=MusicDAO.musicPlayCount(Integer.parseInt(mno));
+		try {
+			PrintWriter out=response.getWriter();
+			out.print(playcount);
+		} catch (Exception e) {
+		}
+	}
 
 	@RequestMapping("admin/adminReserve.do")
 	public String adminReserve(HttpServletRequest request, HttpServletResponse response) {

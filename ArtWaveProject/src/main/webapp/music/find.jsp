@@ -153,12 +153,19 @@ function musicPlay(mno) {
 						'mno':mno
 					},
 					success:function(result){
+						$.ajax({
+							type:'post',
+							url:'../music/playcountIncremnt.do',
+							data:{
+								'mno':mno
+							}
+				})
 						audio.src=result
 						audio.play()
-					}
-				})
 			}
-		}
+		})
+	}
+}
 	})
 }
 </script>
@@ -186,7 +193,7 @@ function musicPlay(mno) {
 							<td width="73%">
 								<a href="../music/musicDetail.do?mno=${mvo.mno}">${mvo.title}</a>
 								<br>
-								<a href="../music/artsitDetail.do?ano=${mvo.ano}">${mvo.aname}</a>
+								<a href="../music/artistDetail.do?ano=${mvo.ano}">${mvo.aname}</a>
 							</td>
 							<td width="5%" class="text-center">
 								<button type="button" style="background: transparent;border: none;" onclick="musicPlay(${mvo.mno})">

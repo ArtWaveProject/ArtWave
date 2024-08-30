@@ -111,6 +111,13 @@ a {
 							'mno':mno
 						},
 						success:function(result){
+							$.ajax({
+								type:'post',
+								url:'../music/playcountIncremnt.do',
+								data:{
+									'mno':mno
+								}
+							})
 							audio.src=result
 							audio.play()
 						}

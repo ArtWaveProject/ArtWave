@@ -208,4 +208,12 @@
 	<select id="musicUrl" resultType="String" parameterType="int">
 		SELECT urlmp3 FROM music WHERE mno=#{mno}
 	</select>
+	<!-- 재생횟수 증가 -->
+	<update id="playcountIncremnt" parameterType="int">
+	UPDATE music SET playcount=playcount+1 WHERE mno=#{mno}
+	</update>
+	<!-- 재생횟수 출력 -->
+	<select id="musicPlayCount" resultType="int" parameterType="int">
+	SELECT playcount FROM music WHERE mno=#{mno}
+	</select>
 </mapper>

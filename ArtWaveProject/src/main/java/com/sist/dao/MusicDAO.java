@@ -473,4 +473,28 @@ public class MusicDAO {
 				session.close();
 		}
 	}
+	public static void playcountIncremnt(int mno) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession(true);
+			session.update("playcountIncremnt", mno);
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
+	}
+	public static int musicPlayCount(int mno) {
+		int count=0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			count=session.selectOne("musicPlayCount", mno);
+		} catch (Exception e) {
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return count;
+	}
 }
