@@ -10,7 +10,8 @@
 <link rel="stylesheet" href="../assets/css/owl.css">
 <link rel="stylesheet" href="../assets/css/animate.css">
 <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-<title>Insert title here</title>
+<title>ArtWave</title>
+    <link rel="icon" href="../main/awimg.png" type="image/png">
 </head>
 <body>
 	<script src="../vendor/jquery/jquery.min.js"></script>

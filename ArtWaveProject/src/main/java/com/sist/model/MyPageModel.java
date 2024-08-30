@@ -31,27 +31,12 @@ public class MyPageModel {
 	public String mypage_main(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-//		String nickname = (String) session.getAttribute("nickname");
-//		String name = (String) session.getAttribute("name");
-//		String bday = (String) session.getAttribute("bday");
-//		String email = (String) session.getAttribute("email");
-//		String post = (String) session.getAttribute("post");
-//		String addr1 = (String) session.getAttribute("addr1");
-//		String addr2 = (String) session.getAttribute("addr2");
+
 
 		session.setAttribute("id", id);
 		MemberVO member = MemberDAO.memberinfo(id);
 		
 	    request.setAttribute("member", member);
-
-//		session.setAttribute("nickname", nickname);
-//		session.setAttribute("name", name);
-//		session.setAttribute("bday", bday);
-//		session.setAttribute("email", email);
-//		session.setAttribute("post", post);
-//		session.setAttribute("addr1", addr1);
-//		session.setAttribute("addr2", addr2);
-		
 
 		request.setAttribute("title", "마이페이지 홈");
 		request.setAttribute("mypage_jsp", "../mypage/mypage_home.jsp");
@@ -235,14 +220,19 @@ public class MyPageModel {
 		try {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		MemberVO vo = MemberDAO.memberUpdateData(id);
+//		MemberVO vo = MemberDAO.memberUpdateData(id);		
 
-		String phone = vo.getPhone();
+		session.setAttribute("id", id);
+		MemberVO member = MemberDAO.memberinfo(id);
+		
+	    request.setAttribute("member", member);
+	    
+		String phone = member.getPhone();
 		if(phone!=null) {
 			phone = phone.substring(phone.indexOf(")") + 1);
-			vo.setPhone(phone);			
+			member.setPhone(phone);			
 		}
-		request.setAttribute("vo", vo);
+		request.setAttribute("member", member);
 		request.setAttribute("title", "회원 정보 수정");
 		request.setAttribute("mypage_jsp", "../mypage/my_edit_member.jsp");
 		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
