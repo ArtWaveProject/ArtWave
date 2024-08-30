@@ -3,52 +3,62 @@
 <mapper namespace="com.sist.mapper.cart_mapper">
 
 	<resultMap type="com.sist.vo.CartVO" id="cartmap">
-		<result property="bovo.cover" column="cover"/>
+		<result property="bovo.cover" column="cover" />
 		<result property="bovo.btitle" column="btitle" />
-		<result property="bovo.writer" column="writer"/>
-		<result property="bovo.sale_price" column="sale_price"/>
-		<result property="bovo.bno" column="bno"/>
-		<result property="alvo.aphoto" column="aphoto"/>
-		<result property="alvo.aname" column="aname"/>
-		<result property="alvo.aartist" column="aartist"/>
-		<result property="alvo.aprice" column="aprice"/>
+		<result property="bovo.writer" column="writer" />
+		<result property="bovo.sale_price" column="sale_price" />
+		<result property="bovo.bno" column="bno" />
+		<result property="alvo.aphoto" column="aphoto" />
+		<result property="alvo.aname" column="aname" />
+		<result property="alvo.aartist" column="aartist" />
+		<result property="alvo.adisprice" column="adisprice" />
 	</resultMap>
 	<select id="allcartListData" resultMap="cartmap"
 		parameterType="string">
 		select tno, id, cno,
-		(select cover from book where bno=tno) as cover,
+		(select cover from book where
+		bno=tno) as cover,
 		(select btitle from book where bno=tno) as btitle,
 		(select writer from book where bno=tno) as writer,
-		(select sale_price from book where bno=tno) as sale_price,
-		(select aphoto from album_store where ano=tno) as aphoto,
-		(select aname from album_store where ano=tno) as aname,
+		(select sale_price
+		from book where bno=tno) as sale_price,
+		(select aphoto from album_store
+		where ano=tno) as aphoto,
+		(select aname from album_store where ano=tno)
+		as aname,
 		(select aartist from album_store where ano=tno) as aartist,
-		(select aprice from album_store where ano=tno) as aprice
-		from totalcart
+		(select adisprice from album_store where ano=tno) as adisprice
+		from
+		totalcart
 		where id=#{id}
 	</select>
 	<select id="bookcartListData" resultMap="cartmap"
 		parameterType="string">
 		select tno, id, cno,
-		(select cover from book where bno=tno) as cover,
+		(select cover from book where
+		bno=tno) as cover,
 		(select btitle from book where bno=tno) as btitle,
 		(select writer from book where bno=tno) as writer,
-		(select sale_price from book where bno=tno) as sale_price,
-		(select bno from book where bno=tno) as bno
+		(select sale_price
+		from book where bno=tno) as sale_price,
+		(select bno from book where
+		bno=tno) as bno
 		from totalcart
 		where type=2 AND id=#{id}
 	</select>
 	<select id="ascartListData" resultMap="cartmap"
 		parameterType="string">
-		select tno, id, price, cno,
-		(select aphoto from album_store where ano=tno) as aphoto,
-		(select aname from album_store where ano=tno) as aname,
-		(select aartist from album_store where ano=tno) as aartist,
-		(select aprice from album_store where ano=tno) as aprice,
-		(select ano from album_store where ano=tno) as ano
-		from totalcart
-		where type=3 AND id=#{id}
+		SELECT tno, id, price, cno,
+		(SELECT aphoto FROM album_store WHERE ano=tno) AS aphoto,
+		(SELECT aname FROM album_store WHERE ano=tno) AS aname,
+		(SELECT aartist FROM album_store WHERE ano=tno) AS aartist,
+		(SELECT REPLACE(REPLACE(adisprice, ',', ''), '원', '') FROM album_store WHERE
+		ano=tno) AS adisprice,
+		(SELECT ano FROM album_store WHERE ano=tno) AS ano
+		FROM totalcart
+		WHERE type=3 AND id=#{id}
 	</select>
+
 	<delete id="deleteItem" parameterType="hashMap">
 		DELETE FROM totalcart
 		WHERE cno=#{cno} AND id=#{id}

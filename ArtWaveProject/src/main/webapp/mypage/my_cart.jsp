@@ -309,7 +309,7 @@ $(function() {
 								</c:when>
 								<c:when test="${all.bovo.btitle != null }">
 									<td width="13%"><span class="listArtist">
-									<fmt:formatNumber value="${all.alvo.aprice}" type="number" groupingUsed="true"/>
+									<fmt:formatNumber value="${all.alvo.adisaprice}" type="number" groupingUsed="true"/>
 											원</span></td>
 								</c:when>
 							</c:choose>
@@ -356,20 +356,20 @@ $(function() {
 						<tr style="vertical-align: middle; height: 50px;">
 							<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
 
-							<td width="13%" class="text-center"><a
-								href="../music/alstoreDetail.do?mno=${mul.alvo.ano}"> <img
+							<td width="13%" class="text-center">
+								<a href="../music/alstoreDetail.do?mno=${mul.alvo.ano}"> <img
 									src="${mul.alvo.aphoto}" class="listImg">
 							</a></td>
 
-							<td width="38%"><span class="listTitle"><a
-									href="../music/alstoreDetail.do?mno=${mul.alvo.ano}">${mul.alvo.aname}</a></span>
+							<td width="38%"><span class="listTitle">
+								<a href="../music/alstoreDetail.do?mno=${mul.alvo.ano}">${mul.alvo.aname}</a></span>
 							</td>
 
-							<td width="18%"><span class="listArtist"><a
-									href="../music/alstoreDetail.do?ano=${mul.alvo.ano}">${mul.alvo.aartist}</a></span>
+							<td width="18%"><span class="listArtist">
+								${mul.alvo.aartist}</span>
 							</td>
 							<td width="13%"><span class="listArtist">
-							<fmt:formatNumber value="${mul.alvo.aprice}" type="number" groupingUsed="true"/>
+							<fmt:formatNumber value="${mul.alvo.adisprice}" type="number" groupingUsed="true"/>
 									원</span></td>
 							<td width="8%">
     <button class="xbtn middle" data-cno="${mul.cno}" style="border: none; background: none; padding: 0;">
