@@ -47,7 +47,7 @@
 					</p>
 				</div>
 				<div class="col-lg-3" style="text-align: right;">
-				<h4 style="color: black; margin-right: 35px;">고객문의</h4>
+				<h4 style="color: black; margin-right: 35px; margin-bottom: 15px;">고객문의</h4>
 						<a class="link" href="../noticeboard/boardList.do">공지사항</a>
 						<a class="link" href="../replyboard/list.do">1:1문의</a>
 				</div>

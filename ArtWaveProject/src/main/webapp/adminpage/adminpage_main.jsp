@@ -40,24 +40,17 @@ width: 100%;
 						<li class="list-group-item"><a href="../mypage/mypage_main.do">마이페이지 이동</a></li>
 					</ul>
 				</div>
-				<div class="panel panel-success">
+				<div class="panel panel-warning">
 					<div class="panel-heading">
-						<h3 class="panel-title">회원 정보</h3>
+						<h3 class="panel-title sinav ">회원 관리</h3>
 					</div>
 					<ul class="list-group">
 						<li class="list-group-item"><a href="../adminpage/member_list.do">회원 리스트</a></li>
-					</ul>
-				</div>
-				<div class="panel panel-warning">
-					<div class="panel-heading">
-						<h3 class="panel-title sinav ">결제 관리</h3>
-					</div>
-					<ul class="list-group">
 						<li class="list-group-item"><a href="">결제 목록</a></li>
 						<li class="list-group-item"><a href="../admin/adminReserve.do">예약 관리</a></li>
 					</ul>
 				</div>
-				<div class="panel panel-info">
+				<div class="panel panel-success">
 					<div class="panel-heading">
 						<h3 class="panel-title sinav">고객센터</h3>
 					</div>
