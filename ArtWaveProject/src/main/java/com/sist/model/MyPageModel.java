@@ -109,6 +109,7 @@ public class MyPageModel {
 	    return "../main/main.jsp";
 	}
 
+	
 
 	@RequestMapping("mypage/my_change_pwd.do")
 	public String my_change_pwd(HttpServletRequest request, HttpServletResponse response) {
