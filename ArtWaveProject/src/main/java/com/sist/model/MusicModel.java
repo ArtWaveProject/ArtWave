@@ -13,10 +13,8 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.sist.dao.AlStoreDAO;
 import com.sist.dao.MusicDAO;
 import com.sist.dao.PaymentDAO;
-import com.sist.vo.AlStoreVO;
 import com.sist.vo.AlbumVO;
 import com.sist.vo.ArtistVO;
 import com.sist.vo.MusicVO;
@@ -54,8 +52,7 @@ public class MusicModel {
 		List<MusicVO> mList = MusicDAO.musicListData(map);
 		map.put("end", 12);
 		List<MusicVO> list = MusicDAO.musicListDataNew(map);
-		List<AlStoreVO> aList=AlStoreDAO.alStoreRandom();
-		request.setAttribute("aList", aList);
+
 		request.setAttribute("id", id);
 		request.setAttribute("list", list);
 		request.setAttribute("mList", mList);
@@ -181,43 +178,42 @@ public class MusicModel {
 	public String musicMvList(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			request.setCharacterEncoding("UTF-8");
-			String ss = request.getParameter("ss");
-			if (ss == null)
-				ss = "";
-			String page = request.getParameter("page");
-			if (page == null)
-				page = "1";
-			int curPage = Integer.parseInt(page);
-			int start = (curPage - 1) * 20 + 1;
-			int end = start + 20 - 1;
-			Map map = new HashMap();
-			map.put("start", start);
-			map.put("end", end);
-			map.put("ss", ss);
-			int totalPage = MusicDAO.musicMvTotalPage(ss);
-			int startPage = (curPage - 1) / 10 * 10 + 1;
-			int endPage = startPage + 10 - 1;
-			if (endPage > totalPage)
-				endPage = totalPage;
-			List<MusicVO> list = MusicDAO.musicMvListData(map);
-			for (MusicVO vo : list) {
-				String url = vo.getUrlmp4();
-				url = url.substring(url.indexOf("v=") + 2, url.indexOf("&pp"));
-				String mp4url = url;
-				url = "https://img.youtube.com/vi/" + url + "/0.jpg";
-				vo.setThum(url);
-				vo.setUrlmp4(mp4url);
-			}
-			request.setAttribute("ss", ss);
-			request.setAttribute("totalPage", totalPage);
-			request.setAttribute("startPage", startPage);
-			request.setAttribute("endPage", endPage);
-			request.setAttribute("curPage", curPage);
-			request.setAttribute("mvList", list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		String ss = request.getParameter("ss");
+		if (ss == null)
+			ss = "";
+		String page = request.getParameter("page");
+		if (page == null)
+			page = "1";
+		int curPage = Integer.parseInt(page);
+		int start = (curPage - 1) * 20 + 1;
+		int end = start + 20 - 1;
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("ss", ss);
+		int totalPage = MusicDAO.musicMvTotalPage(ss);
+		int startPage = (curPage - 1) / 10 * 10 + 1;
+		int endPage = startPage + 10 - 1;
+		if (endPage > totalPage)
+			endPage = totalPage;
+		List<MusicVO> list = MusicDAO.musicMvListData(map);
+		for (MusicVO vo : list) {
+			String url = vo.getUrlmp4();
+			url = url.substring(url.indexOf("v=") + 2, url.indexOf("&pp"));
+			String mp4url = url;
+			url = "https://img.youtube.com/vi/" + url + "/0.jpg";
+			vo.setThum(url);
+			vo.setUrlmp4(mp4url);
+		}
+		request.setAttribute("ss", ss);
+		request.setAttribute("totalPage", totalPage);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("curPage", curPage);
+		request.setAttribute("mvList", list);
 		request.setAttribute("main_jsp", "../music/mvList.jsp");
 		return "../main/main.jsp";
 	}
@@ -437,6 +433,7 @@ public class MusicModel {
 				vo.setTypeDetail(types[vo.getType()]);
 			}
 			request.setAttribute("list", list);
+			request.setAttribute("title", "구매 내역");
 			request.setAttribute("mypage_jsp", "../mypage/myPagePayment.jsp");
 			request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
 

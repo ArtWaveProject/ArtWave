@@ -497,18 +497,18 @@ $(document).ready(function() {
 			return
 		}
         
-        let bno = $('#bno').val()
+        let ano = $('#ano').val()
         let count = $('#account').val()
-        let price = ${vo.sale_price}
+        let price = ${vo.adisprice}
 
-        console.log(bno)
+        console.log(ano)
         console.log(count)
         console.log(price)
         $.ajax({
             type: 'post',
             url: '../book/cart.do',
             data: {
-                'tno': bno,
+                'tno': ano,
                 'price': price,
                 'count': count,
                 'type': 2 
@@ -525,7 +525,7 @@ $(document).ready(function() {
 
     function updateTotalPrice() {
         let quantity = parseInt($('#account').val())
-        let price = parseFloat('${vo.sale_price}')
+        let price = parseFloat('${vo.adisprice}')
         let totalPrice = quantity * price
         $('.price-value.total').text(totalPrice.toLocaleString() + '원')
     }
@@ -541,7 +541,7 @@ $(function() {
 	  let ratingCheck = false
     let likeCheck = false
     let id = '${id}'
-    let bno = $('#bno').val()
+    let ano = $('#ano').val()
     
     reviewlist()
 
@@ -550,16 +550,16 @@ $(function() {
             type: 'post',
             url: '../like/likeCheck.do',
             data: {
-                'tno': bno,
+                'tno': ano,
                 'type': 5
             },
             success: function(result) {
                 if (result === 'OK') {
                     likeCheck = true
-                    $('#like-button').attr('src', 'fullheart.png')
+                    $('#like-button').attr('src', 'like_on.png')
                 } else {
                     likeCheck = false
-                    $('#like-button').attr('src', 'heart.png')
+                    $('#like-button').attr('src', 'like_off.png')
                 }
             }
         })
@@ -568,17 +568,17 @@ $(function() {
     }
 
     $('#likeBtn').click(function() {
-        console.log(bno)
+        console.log(ano)
         if (likeCheck) {
             $.ajax({
                 type: 'post',
                 url: '../like/likeOff.do',
                 data: {
-                    'tno': bno,
+                    'tno': ano,
                     'type': 5
                 },
                 success: function(result) {
-                	console.log(bno)
+                	console.log(ano)
                     if (result >= 0) {
                         likeCheck = false;
                         $('#like-button').attr('src', 'heart.png')
@@ -590,11 +590,11 @@ $(function() {
                 type: 'post',
                 url: '../like/likeOn.do',
                 data: {
-                    'tno': bno,
+                    'tno': ano,
                     'type': 5
                 },
                 success: function(result) {
-                	console.log(bno)
+                	console.log(ano)
                     if (result >= 0) {
                         likeCheck = true;
                         $('#like-button').attr('src', 'fullheart.png')
@@ -608,10 +608,10 @@ $(function() {
     })
     
     $('#buy').click(function(){
-		let gno=${vo.bno}
-		let price=${vo.sale_price}
+		let gno=${vo.ano}
+		let price=${vo.adisprice}
 		let account=parseInt($('#account').val())
-		let name='${vo.btitle}'
+		let name='${vo.aname}'
 		let id='${id}'
 			if(id.length<2)
 			{
@@ -701,7 +701,7 @@ $(function() {
             type: 'post',
             url: '../review/checkedReview.do',
             data: {
-                'tno': bno,
+                'tno': ano,
                 'userId': id
             },
             success: function(result) {
@@ -710,7 +710,7 @@ $(function() {
                         type: 'post',
                         url: '../review/insert.do',
                         data: {
-                            'tno': bno,
+                            'tno': ano,
                             'trating': rating,
                             'tcontent': content,
                             'type': 2
@@ -737,7 +737,7 @@ function reviewlist(){
 		type:'post',
 		url:'../review/list.do',
 		data:{
-			'tno':${vo.bno},
+			'tno':${vo.ano},
 			'type':2
 		},
 		success:function(result){
@@ -815,7 +815,7 @@ document.addEventListener('DOMContentLoaded', function() {
 $(document).ready(function() {
 	function update(){
 		let quantity = parseInt($('#account').val())
-        let price = parseFloat('${vo.sale_price}')
+        let price = parseFloat('${vo.adisprice}')
         let totalPrice = quantity * price
         $('.price-value.total').text(totalPrice.toLocaleString() + '원')
 	}
@@ -852,7 +852,7 @@ $(document).ready(function() {
 							<div class="col-lg-8" style="flex: 1; margin-right: 10px;">
 								<div class="featured-games header-text">
 									<div class="cover">
-										<img src="${vo.poster}" alt=""
+										<img src="${vo.aphoto}" alt=""
 											style="width: 300px; height: 400px; border-radius: 23px;">
 									</div>
 									<div class="book-info">
@@ -864,8 +864,8 @@ $(document).ready(function() {
 											<span class="avgstar" style="font-weight: bold;"></span>
 											<p id="avgnumber" style="font-size: 18px; font-weight: bold;">${avg}</p>
 										</div>
-										<p>${vo.aartist}${vo.aartist != null ? ' 노래 | ' : ''}
-											| ${vo.ardate}</p>
+										<p>${vo.aartist}${vo.aartist != null ? ' 노래  ' : ''}|
+											${vo.ardate}</p>
 										<div class="hr-container">
 											<hr>
 										</div>
@@ -911,8 +911,9 @@ $(document).ready(function() {
 												src="../book/heart.png" id="like-button" alt="">
 											</a> <a href="" class="add-to-cart"> <i
 												class="fa fa-cart-plus">&nbsp;Add to Cart</i>
-											</a> <button type="button" class="buy-now" style=""> <i 
-												class="fa fa-credit-card" id="buy">&nbsp;Buy Now</i>
+											</a>
+											<button type="button" class="buy-now" style="">
+												<i class="fa fa-credit-card" id="buy">&nbsp;Buy Now</i>
 											</button>
 										</div>
 									</div>
@@ -921,14 +922,14 @@ $(document).ready(function() {
 						</div>
 						<div class="col-lg-4">
 							<div class="button-container">
-								<a href="#review-form" id="scrollToReview" class="action-button">도서
+								<a href="#review-form" id="scrollToReview" class="action-button">상품
 									리뷰</a> <a href="#intro-section" id="scrollToIntro"
-									class="action-button">책 소개</a>
+									class="action-button">상품 소개</a>
 							</div>
 							<div class="top-streamers"
 								style="flex: 1; margin-top: 0px; border-radius: 0 10px 10px 10px;">
 								<div class="heading-section">
-									<span style="font-size: 20px; font-weight: bold;">도서 정보</span>
+									<span style="font-size: 20px; font-weight: bold;">앨범 정보</span>
 								</div>
 								<table class="book-in" style="margin-top: 20px;">
 									<tbody class="book-size">
@@ -941,6 +942,7 @@ $(document).ready(function() {
 											<td class="b-in">${vo.acategory }</td>
 										</tr>
 										<tr>
+											<th class="b-info">상세정보</th>
 											<td class="b-in">${vo.adetail }</td>
 										</tr>
 
@@ -956,13 +958,13 @@ $(document).ready(function() {
 										<span style="font-size: 20px; font-weight: bold;">소개
 											이미지</span>
 									</div>
-									<img src="${vo.aimg }" alt=""
-										style="padding-bottom: 80px;"> <br>
+									<img src="${vo.aimg }" alt="" style="padding-bottom: 80px;">
+									<br>
 									<!-- 리뷰 작성 폼 -->
 									<div class="heading-section" style="padding: 0 0 15px 0;">
 										<span style="font-size: 25px; font-weight: bold;"><span
 											class="rcount" style="font-size: 30px; color: #7400e8">${rcount}</span>
-											명의&nbsp;회원이&nbsp;평가한&nbsp;이&nbsp;도서의&nbsp;평균별점</span>
+											명의&nbsp;회원이&nbsp;평가한&nbsp;이&nbsp;상품의&nbsp;평균별점</span>
 									</div>
 									<div class="avgRating">
 										<span class="avgstar" style="font-weight: bold;"></span>
@@ -972,11 +974,11 @@ $(document).ready(function() {
 									<div id="review-form" class="review-form"
 										style="margin-top: 40px;">
 										<div class="heading-section" style="padding: 0 0 15px 0;">
-											<span style="font-size: 20px; font-weight: bold;">도서
+											<span style="font-size: 20px; font-weight: bold;">상품
 												리뷰(<span id="rcount" class="rcount">${rcount}</span>)
 											</span>
 										</div>
-										<input type="hidden" id="bno" name="bno" value="${vo.bno}" />
+										<input type="hidden" id="ano" name="ano" value="${vo.ano}" />
 										<div>
 											<div class="star-rating">
 												<input class="rating" type="radio" id="star5" name="rating"
