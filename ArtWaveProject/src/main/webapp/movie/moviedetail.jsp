@@ -49,9 +49,11 @@
 
 .review-form {
 	margin-top: 20px;
+	margin-left:-12px;
 	padding: 20px;
+	width:1300px;
 	border: 1px solid #ddd;
-	border-radius: 8px;
+	border-radius: 10px;
 	background-color: #f9f9f9;
 }
 
@@ -465,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function() {
        </tr>
        </table>
         <div class="row">
-        <div class="featured-games3" style="width:600px; height:300px; padding-left:11px !important; padding-right:10px !important; margin-left:10px;">           
+        <div class="featured-games3" style="width:560px; height:300px; padding-left:11px !important; padding-right:10px !important; margin-left:10px;">           
             <div class="mbook">
         <h4>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         			# &nbsp; 관련&nbsp;도서&nbsp;추천</h4>
@@ -482,25 +484,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h5><span id=btitlel>${mbvo.btitle }</span></h5> <h5><span id=bsalep>&emsp;${mbvo.sale_price }원</span></h5>
             </div>
         </div>
-        <c:if test="${mbvo.bno == null }">
-        			<h4><span class="text-center"> 관련 도서가 없습니다. </span></h4>			
-  			</c:if>
          </c:forEach>
         </div>
          </div>
          </div>
+         <div class="featured-games3" style="width:300px; height:300px; padding-left:11px !important; padding-right:10px !important; margin-left:20px; margin-right: 10px;">           
+        <div class="heading-section" style="padding: 0px 5px 15px 0;">
+        <span style="font-size: 25px; font-weight: bold;">&emsp;&emsp; #&nbsp;평균별점</span>
+        </div>
+        <p><br></p>
+				<span class="avgstar" style="font-size:20px; font-weight: bold; margin-left:70px;"></span>
+						<p><br></p>
+							<p id="avgnumber" style="font-size: 25px; font-weight: bold;margin-left:50px;">&emsp;${avg}&nbsp;/ 5.0</p>
+	</div>
+         <div class="featured-games3" style="width:400px; height:300px; padding-left:11px !important; padding-right:10px !important; margin-left:10px; margin-right: 10px;">           
+            <div class="mbook">
+        <h4>&emsp;&emsp;&emsp;&emsp;&emsp;
+        			&nbsp; # &nbsp;OST&nbsp;&emsp;&emsp;</h4>
+            <h3>  <br></h3>
+                <c:forEach var="mmvo" items="${mmList }">
+                  <input type="hidden" value="${vo.mno}" id="mno">
+                <div class="item3" >
+				 <div class="thumb" style="margin-left: 100px; width:250px; margin-bottom:5px;">
+                <img src="${mmvo.poster}" style="width: 180px; height:180px;" alt="" >
+                 <div class="hover-effect">
+                      <h6><a href="../music/albumDetail.do?alno=${mmvo.muno}"  title="상세정보 확인">상세정보</a></h6>
+                      </div>
+                <p>&emsp;&emsp;&nbsp;${mmvo.atitle }</p>
+         		</div>
+         		</div>
+         </c:forEach>
+        </div>
+         </div>
     </div>
- </div>
  <div class="container">
- <div id="review-form" class="review-form" style="margin-top: 20px; margin-bottom:10px;">
-	<div class="heading-section" style="padding: 0px 5px 15px 0;">
-			<span style="font-size: 25px; font-weight: bold;"><span id="rcount" style="font-size:30px;color:  #7400e8">${rcount}</span> 명의&nbsp;회원이&nbsp;평가한&nbsp;이&nbsp;영화의&nbsp;평균별점</span>
-				</div>
-				<div class="average-rating">
-											<span class="avgstar" style="font-size:20px; font-weight: bold;"></span>
-											<p id="avgnumber" style="font-size: 25px; font-weight: bold;">&emsp;${avg}</p><p style="font-size: 25px; font-weight: bold;">&nbsp;/ 5.0</p>
-										</div>
-										</div>
 				 <div id="review-form" class="review-form" style="margin-top: 10px; margin-bottom:10px;">			
 						<div class="heading-section" style="padding: 0 0 5px 0;">
 							<span style="font-size: 20px; font-weight: bold;">영화 관람평(<span id="rcount">${rcount}</span>)</span>

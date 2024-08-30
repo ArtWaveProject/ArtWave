@@ -116,14 +116,22 @@ public class MovieModel {
 		   MovieVO vo=MovieDAO.movieDetailData(Integer.parseInt(mno));
 		   request.setAttribute("vo", vo);
 		   MovieBookVO mbvo = new MovieBookVO();
+		   MovieMusicVO mmvo = new MovieMusicVO();
 		   request.setAttribute("mbvo", mbvo);
+		   request.setAttribute("mmvo", mmvo);
+		   
 		   HttpSession session = request.getSession();
 		   String id=(String)session.getAttribute("id");
 		 	 
 		   Map map1=new HashMap();
 		   map1.put("mno",Integer.parseInt(mno));
-		   List<MovieBookVO> mbList=MovieDAO.movieBookData(map1);
+		   List<MovieBookVO> mbList=MovieDAO.moviebookmap(map1);
 		   request.setAttribute("mbList", mbList);
+		   
+		   Map map3=new HashMap();
+		   map3.put("mno",Integer.parseInt(mno));
+		   List<MovieMusicVO> mmList=MovieDAO.moviemusicmap(map3);
+		   request.setAttribute("mmList", mmList);
 		  
 		    Map map2=new HashMap();
 		 	map2.put("tno", Integer.parseInt(mno));
@@ -146,7 +154,7 @@ public class MovieModel {
 		   }catch(Exception ex) {}
 		   String ss=request.getParameter("ss");
 		   if(ss==null)
-			   ss="사랑";
+			   ss="사";
 		   String page=request.getParameter("page");
 		   if(page==null)
 			   page="1";
