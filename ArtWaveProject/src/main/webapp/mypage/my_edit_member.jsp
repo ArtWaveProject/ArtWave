@@ -197,39 +197,39 @@ input[type="date"]{
 							<th class="text-left" width="10%" style="padding-left: 15px;">ID</th>
 							<td width="40%" class="inline"><input type="text" size=20 class="input-sm" name="id" id="id" value="${sessionScope.id}" readonly></td>
 							<th class="text-left" width="10%" style="padding-left: 15px;">닉네임</th>
-							<td width="40%" class="inline"><input type="text" size=20 class="input-sm" name="nickname" id="nickname" value="${sessionScope.nickname}"></td>
+							<td width="40%" class="inline"><input type="text" size=20 class="input-sm" name="nickname" id="nickname" value="${member.nickname}"></td>
 						</tr>
 						<tr>
 							<th class="text-left" width="10%" style="padding-left: 15px;">이름</th>
-							<td width="40%"><input type="text" size=20 class="input-sm" name="name" id="name" value="${sessionScope.name}"></td>
+							<td width="40%"><input type="text" size=20 class="input-sm" name="name" id="name" value="${member.name}"></td>
 							<th class="text-left" width="10%" style="padding-left: 15px;">성별</th>
 							<td width="40%" class="inline">
-								<input type="radio" name="sex" value="남자" ${sessionScope.sex == '남자' ? 'checked' : ''}> 남자 
-								<input type="radio" name="sex" value="여자" ${sessionScope.sex == '여자' ? 'checked' : ''}> 여자
+								<input type="radio" name="sex" value="남자" ${member.sex == '남자' ? 'checked' : ''}> 남자 
+								<input type="radio" name="sex" value="여자" ${member.sex == '여자' ? 'checked' : ''}> 여자
 							</td>
 						</tr>
 						<tr>
 							<th class="text-left" width="10%" style="padding-left: 15px;">생년월일</th>
-							<td width="40%"><input type="date" size=30 class="input-sm" name="birthday" id="day" value="${sessionScope.bday}"></td>
+							<td width="40%"><input type="date" size=30 class="input-sm" name="birthday" id="day" value="${member.dbbirthday}"></td>
 						</tr>
 						<tr>
 							<th class="text-left" width="15%" style="padding-left: 15px;">이메일</th>
-							<td colspan="3" width="85%" style="padding-left: 15px;"><input type="text" size=70 class="input-sm" name="email" id="email" value="${sessionScope.email}"></td>
+							<td colspan="3" width="85%" style="padding-left: 15px;"><input type="text" size=70 class="input-sm" name="email" id="email" value="${member.email}"></td>
 						</tr>
 						<tr>
 							<th class="text-left" width="15%" style="padding-left: 15px;">우편번호</th>
 							<td colspan="3" width="85%" style="padding-left: 15px;" class="inline">
-								<input type="text" size=15 class="input-sm" name="post" readonly id="post1" value="${sessionScope.post}">
+								<input type="text" size=15 class="input-sm" name="post" readonly id="post1" value="${member.post}">
 								<input type="button" value="우편번호검색" class="btn btn-sm btn-primary" id="postBtn">
 							</td>
 						</tr>
 						<tr>
 							<th class="text-left" width="15%" style="padding-left: 15px;">주소</th>
-							<td colspan="3" width="85%" style="padding-left: 15px;"><input type="text" size=70 class="input-sm" name="addr1" readonly id="addr1" value="${sessionScope.addr1}"></td>
+							<td colspan="3" width="85%" style="padding-left: 15px;"><input type="text" size=70 class="input-sm" name="addr1" readonly id="addr1" value="${member.addr1}"></td>
 						</tr>
 						<tr>
 							<th class="text-left" width="15%" style="padding-left: 15px;">상세주소</th>
-							<td colspan="3" width="85%" style="padding-left: 15px;"><input type="text" size=70 class="input-sm" name="addr2" value="${sessionScope.addr2}"></td>
+							<td colspan="3" width="85%" style="padding-left: 15px;"><input type="text" size=70 class="input-sm" name="addr2" value="${member.addr2}"></td>
 						</tr>
 						<tr>
 							<th class="text-left" width="15%" style="padding-left: 15px;">전화번호</th>
@@ -239,7 +239,7 @@ input[type="date"]{
 									<option>010</option>
 									<option>011</option>
 								</select>
-								<input type="text" size=20 class="input-sm" name="phone2" id="phone2" value="${sessionScope.phone}">
+								<input type="text" size=20 class="input-sm" name="phone2" id="phone2" value="${member.phone}">
 							</td>
 						</tr>
 						<tr>
@@ -252,7 +252,7 @@ input[type="date"]{
 							<td colspan="4" class="text-center">
 								<div class="button-container">
 									<input type="submit" value="저장" class="btnposi btn-sm btn-info" id="joinBtn">
-									<input type="button" value="취소" class="btnposi btn-sm btn-warning" onclick="window.location.href='../mypage/mypage_main.do'">
+									<input type="button" value="취소" class="btnposi btn-sm btn-danger" onclick="window.location.href='../mypage/mypage_main.do'">
 								</div>
 							</td>
 						</tr>

@@ -161,10 +161,9 @@ body {
 					<table class="table">
 						<tr>
 							<th class="text-left" width="10%" style="padding-left: 15px;">ID</th>
-							<td width="40%" class="inline">${sessionScope.id}
+							<td width="40%" class="inline">${sessionScope.id}</td>
 							<th class="text-left" width="10%" style="padding-left: 15px;">닉네임</th>
 							<td width="40%" class="inline">${member.nickname}</td>
-							</td>
 						</tr>
 
 						<tr>
