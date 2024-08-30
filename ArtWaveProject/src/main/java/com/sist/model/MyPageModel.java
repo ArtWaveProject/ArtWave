@@ -75,7 +75,7 @@ public class MyPageModel {
 
 	        Map<String, Object> map = new HashMap();
 	        map.put("id", id);
-	        map.put("tcart", selectedcart); // 배열에서 선택한 값 사용
+	        map.put("type", selectedcart); // 배열에서 선택한 값 사용
 
 	        List<CartVO> allcart = CartDAO.allcartListData(map);
 	        List<CartVO> bocart = CartDAO.bookcartListData(map);
@@ -84,17 +84,17 @@ public class MyPageModel {
 	        System.out.println(allcart+" allcart model");
 	        System.out.println(bocart+" bocart model");
 	        System.out.println(ascart+" ascart model");
-	        
 	        System.out.println(id);
 	        
 	        if (tcart == 1) {
-	            request.setAttribute("allcart", allcart);
+	            request.setAttribute("allcart", allcart);		
 	        } else if (tcart == 2) {
 	            request.setAttribute("bocart", bocart);
 	        } else if (tcart == 3) {
 	            request.setAttribute("ascart", ascart);
-	        }
-
+	        }	        
+	        
+	        
 	        request.setAttribute("tcart", tcartIndexStr);
 			request.setAttribute("curPage", curPage);
 

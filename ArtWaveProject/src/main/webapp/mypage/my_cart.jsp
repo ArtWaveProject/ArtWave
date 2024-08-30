@@ -263,13 +263,13 @@ $(function() {
 							<td width="10%" class="text-center">${(curPage-1)*50+i.index+1}</td>
 
 							<c:choose>
-								<c:when test="${all.bovo.cover != null}">
+								<c:when test="${all.type==2}">
 									<td width="13%" class="text-center"><a
 										href="../book/detail.do?bno=${all.tno}"> <img
 											src="${all.bovo.cover}" class="listImg">
 									</a></td>
 								</c:when>
-								<c:when test="${all.alvo.aphoto != null}">
+								<c:when test="${all.type==3 }">
 									<td width="13%" class="text-center"><a
 										href="../music/alstoreDetail.do?alno=${all.tno}"> <img
 											src="${all.alvo.aphoto}" class="listImg">
@@ -278,13 +278,13 @@ $(function() {
 							</c:choose>
 
 							<c:choose>
-								<c:when test="${all.bovo.btitle != null}">
+								<c:when test="${all.type==2 }">
 									<td width="38%" class="text-center"><span
 										class="listTitle"> <a
 											href="../book/detail.do?bno=${all.tno }">${all.bovo.btitle}</a></span>
 									</td>
 								</c:when>
-								<c:when test="${all.alvo.aname != null}">
+								<c:when test="${all.type==3 }">
 									<td width="38%" class="text-center"><span
 										class="listTitle"> <a
 											href="../music/alstoreDetail.do?alno=${all.alvo.ano}">${all.alvo.aname}</a></span>
@@ -293,10 +293,10 @@ $(function() {
 							</c:choose>
 
 							<c:choose>
-								<c:when test="${all.bovo.btitle != null }">
+								<c:when test="${all.type==2 }">
 									<td width="18%"><span class="listArtist">도서</span></td>
 								</c:when>
-								<c:when test="${all.alvo.aname != null }">
+								<c:when test="${all.type==3 }">
 									<td width="18%"><span class="listArtist">음악</span></td>
 								</c:when>
 							</c:choose>
