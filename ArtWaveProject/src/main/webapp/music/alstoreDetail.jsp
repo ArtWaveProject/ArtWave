@@ -883,7 +883,7 @@ $(document).ready(function() {
 									<img src="${vo.aimg }" alt="" style="padding-bottom: 80px;">
 									<br>
 									
-									<!-- 리뷰 작성 폼 -->
+									<%-- <!-- 리뷰 작성 폼 -->
 									<div class="heading-section" style="padding: 0 0 15px 0;">
 										<span style="font-size: 25px; font-weight: bold;"><span
 											class="rcount" style="font-size: 30px; color: #7400e8">${rcount}</span>
@@ -930,7 +930,7 @@ $(document).ready(function() {
 										<table>
 											<tbody id="review">
 											</tbody>
-										</table>
+										</table> --%>
 									</div>
 								</div>
 							</div>
