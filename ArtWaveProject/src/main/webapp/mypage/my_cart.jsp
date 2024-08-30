@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -301,11 +303,13 @@ $(function() {
 
 							<c:choose>
 								<c:when test="${all.bovo.btitle != null }">
-									<td width="13%"><span class="listArtist">${all.bovo.sale_price}
+									<td width="13%"><span class="listArtist">
+									<fmt:formatNumber value="${all.bovo.sale_price}" type="number" groupingUsed="true"/>
 											원</span></td>
 								</c:when>
 								<c:when test="${all.bovo.btitle != null }">
-									<td width="13%"><span class="listArtist">${all.alvo.aprice}
+									<td width="13%"><span class="listArtist">
+									<fmt:formatNumber value="${all.alvo.aprice}" type="number" groupingUsed="true"/>
 											원</span></td>
 								</c:when>
 							</c:choose>
@@ -335,7 +339,8 @@ $(function() {
 							<td width="18%"><span class="listArtist">${bl.bovo.writer}</span>
 							</td>
 
-							<td width="13%"><span class="listArtist">${bl.bovo.sale_price}
+							<td width="13%"><span class="listArtist">
+							<fmt:formatNumber value="${bl.bovo.sale_price}" type="number" groupingUsed="true"/>
 									원</span></td>
 							<td width="8%">
     <button class="xbtn middle" data-cno="${bl.cno}" style="border: none; background: none; padding: 0;">
@@ -363,7 +368,8 @@ $(function() {
 							<td width="18%"><span class="listArtist"><a
 									href="../music/alstoreDetail.do?ano=${mul.alvo.ano}">${mul.alvo.aartist}</a></span>
 							</td>
-							<td width="13%"><span class="listArtist">${mul.alvo.aprice}
+							<td width="13%"><span class="listArtist">
+							<fmt:formatNumber value="${mul.alvo.aprice}" type="number" groupingUsed="true"/>
 									원</span></td>
 							<td width="8%">
     <button class="xbtn middle" data-cno="${mul.cno}" style="border: none; background: none; padding: 0;">
@@ -373,6 +379,9 @@ $(function() {
 						</tr>
 					</c:forEach>
 				</c:if>
+				<tr>
+					
+				</tr>
 			</table>
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 package com.sist.model;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -64,11 +65,19 @@ public class AlStoreModel {
 		Map map = new HashMap();
 		map.put("tno", ano);
 		map.put("type", 3);
-
-//		int rcount = ReviewDAO.reviewCount(map);
-//		double avg = ReviewDAO.reviewAverage(map);
-//		request.setAttribute("rcount", rcount);
-//		request.setAttribute("avg", avg);
+		
+		System.out.println(ano+"model ano review");
+		
+		
+		int rcount = ReviewDAO.reviewCount(map);
+		double avg = ReviewDAO.reviewAverage(map);
+		
+		DecimalFormat df = new DecimalFormat("#.##");
+		String formattedAvg = df.format(avg);
+		
+		request.setAttribute("rcount", rcount);
+		request.setAttribute("avg", avg);
+		
 		request.setAttribute("id", id);
 		request.setAttribute("vo", vo);
 

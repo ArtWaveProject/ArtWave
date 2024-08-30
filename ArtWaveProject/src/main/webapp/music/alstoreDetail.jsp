@@ -509,9 +509,9 @@ $(document).ready(function() {
             url: '../book/cart.do',
             data: {
                 'tno': ano,
-                'price': price,
+                'price': aprice,
                 'count': count,
-                'type': 2 
+                'type': 3 
             },
             success: function(result) {
                 alert('장바구니에 추가되었습니다')
@@ -536,77 +536,7 @@ $(document).ready(function() {
         updateTotalPrice()
     })
 })
-
-$(function() {
-	  let ratingCheck = false
-    let likeCheck = false
-    let id = '${id}'
-    let ano = $('#ano').val()
-    
-    reviewlist()
-
-    if (id.length > 0) {
-        $.ajax({
-            type: 'post',
-            url: '../like/likeCheck.do',
-            data: {
-                'tno': ano,
-                'type': 5
-            },
-            success: function(result) {
-                if (result === 'OK') {
-                    likeCheck = true
-                    $('#like-button').attr('src', 'like_on.png')
-                } else {
-                    likeCheck = false
-                    $('#like-button').attr('src', 'like_off.png')
-                }
-            }
-        })
-    } else {
-        $('#likeBtn').css('display', 'none')
-    }
-
-    $('#likeBtn').click(function() {
-        console.log(ano)
-        if (likeCheck) {
-            $.ajax({
-                type: 'post',
-                url: '../like/likeOff.do',
-                data: {
-                    'tno': ano,
-                    'type': 5
-                },
-                success: function(result) {
-                	console.log(ano)
-                    if (result >= 0) {
-                        likeCheck = false;
-                        $('#like-button').attr('src', 'heart.png')
-                    }
-                }
-            })
-        } else {
-            $.ajax({
-                type: 'post',
-                url: '../like/likeOn.do',
-                data: {
-                    'tno': ano,
-                    'type': 5
-                },
-                success: function(result) {
-                	console.log(ano)
-                    if (result >= 0) {
-                        likeCheck = true;
-                        $('#like-button').attr('src', 'fullheart.png')
-                    }
-                },
-                error:function(request, status, error){
-                	alert(error)
-                }
-            })
-        }
-    })
-    
+   
     $('#buy').click(function(){
 		let gno=${vo.ano}
 		let price=${vo.adisprice}
@@ -622,8 +552,8 @@ $(function() {
 			type:'post',
 			url:'../payment/paymentCheck.do',
 			data:{
-				'gno':gno,
-				'type':2
+				'gno':ano,
+				'type':3
 			},
 			success:function(result){
 				if(result==='OK'){
@@ -632,9 +562,9 @@ $(function() {
 						url:'../payment/paymentInsert.do',
 						data:{
 							"gno":gno,
-							"price":price,
+							"price":aprice,
 							"account":account,
-							'type':2,
+							'type':3,
 							'title':name
 							},
 						success:function(result)
@@ -713,7 +643,7 @@ $(function() {
                             'tno': ano,
                             'trating': rating,
                             'tcontent': content,
-                            'type': 2
+                            'type': 3
                         },
                         success: function() {
                             let count = $('#rcount').text()
@@ -738,7 +668,7 @@ function reviewlist(){
 		url:'../review/list.do',
 		data:{
 			'tno':${vo.ano},
-			'type':2
+			'type':3
 		},
 		success:function(result){
 			let json=JSON.parse(result)
@@ -864,8 +794,8 @@ $(document).ready(function() {
 											<span class="avgstar" style="font-weight: bold;"></span>
 											<p id="avgnumber" style="font-size: 18px; font-weight: bold;">${avg}</p>
 										</div>
-										<p>${vo.aartist}${vo.aartist != null ? ' 노래  ' : ''}|
-											${vo.ardate}</p>
+										<p>${vo.aartist != null ? ' 노래  ' : ''} ${vo.aartist} | 
+											 ${vo.aldate }</p>
 										<div class="hr-container">
 											<hr>
 										</div>
@@ -907,9 +837,7 @@ $(document).ready(function() {
 											</tr>
 										</table>
 										<div class="buttons">
-											<a href="" class="like-button" id="likeBtn"> <img
-												src="../book/heart.png" id="like-button" alt="">
-											</a> <a href="" class="add-to-cart"> <i
+											 <a href="" class="add-to-cart"> <i
 												class="fa fa-cart-plus">&nbsp;Add to Cart</i>
 											</a>
 											<button type="button" class="buy-now" style="">
@@ -934,7 +862,7 @@ $(document).ready(function() {
 								<table class="book-in" style="margin-top: 20px;">
 									<tbody class="book-size">
 										<tr>
-											<th class="b-info">발행일</th>
+											<th class="b-info">발매일</th>
 											<td class="b-in">${vo.aldate }</td>
 										</tr>
 										<tr>
@@ -960,6 +888,7 @@ $(document).ready(function() {
 									</div>
 									<img src="${vo.aimg }" alt="" style="padding-bottom: 80px;">
 									<br>
+									
 									<!-- 리뷰 작성 폼 -->
 									<div class="heading-section" style="padding: 0 0 15px 0;">
 										<span style="font-size: 25px; font-weight: bold;"><span
