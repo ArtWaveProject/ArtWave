@@ -10,9 +10,19 @@
 <script type="text/javascript">
 $(function(){
 	$('.inwons').click(function(){
+		var $clickedButton = $(this)
+		 var $row = $clickedButton.closest('tr')
+		 $row.find('.inwons').not($clickedButton).css({
+	            'background-color': 'white',
+	            'color': 'rgb(64,0,64)'
+	        })
+		$clickedButton.css({
+            'background-color': 'rgb(64,0,64)',
+            'color': 'white'
+        })
 		let inwonText = $(this).text().trim();
         let inwon = parseInt(inwonText);
-        let price = inwon * 9000; // 가격 계산
+        let price = inwon * 9000; 
         
 		$('#movieinwondata').text(inwon)
 		$('#sselectBtn').show()
@@ -25,13 +35,14 @@ $(function(){
 <style type="text/css">
 .inwons{
    align-content: center;
+   cursor: pointer;
 }
 </style>
 </head>
 <body>
   <c:forEach var="i" begin="1" end="5">
   <h6 style="font-size: 7px;"><br></h6>
-    <button class="inwons" style="margin-top: 5px; bottom:3px; size: 12px; color: rgb(64,0,64); background-color:white; border-radius: 6px">${i }명</button>
+    <button class="inwons" style="margin-top: 5px; bottom:3px; size: 12px; color: rgb(64,0,64); background-color:white; border-radius: 6px">${i}명</button>
 
   </c:forEach>
 </body>

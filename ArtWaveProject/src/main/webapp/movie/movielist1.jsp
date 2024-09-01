@@ -70,7 +70,7 @@
                                                  <a href="../movie/mreservemain.do" title="영화 예매하기"><input type="button" id="bokdBtn1" value="예매"></a>
                                                 </c:if>
                                                 <c:if test="${sessionScope.id ==null }">
-                                                <a href="../member/login.do" onclick="alert('로그인이 필요한 메뉴입니다!')" title="영화 예매하기"><input type="button" id="bokdBtn1" value="예매"></a>
+                                                <a href="../member/login.do?type=1" onclick="alert('로그인이 필요한 메뉴입니다!')" title="영화 예매하기"><input type="button" id="bokdBtn1" value="예매"></a>
                                                 </c:if>
                                                 </c:when>
                                                 <c:when test="${vo.mstate == '2'}">
