@@ -52,7 +52,7 @@ $(function() {
 </head>
 <body>
  <div class="container">
-  <input type="date" width = "200px" min="2024-08-25" max="2024-08-31">
+  <input type="date" width = "200px" min="2024-09-02" max="2024-09-08">
   </div>
 </body>
 </html>
