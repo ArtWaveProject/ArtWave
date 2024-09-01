@@ -448,7 +448,7 @@ function requestPay(json,name,price) {
         buyer_postcode: json.post
     }, function (rsp) { 
     	alert('구매완료')
-    });
+    })
 }
 
 function toggleRecentBooks() {
@@ -501,9 +501,6 @@ $(document).ready(function() {
         let count = $('#account').val()
         let price = ${vo.sale_price}
 
-        console.log(bno)
-        console.log(count)
-        console.log(price)
         $.ajax({
             type: 'post',
             url: '../book/cart.do',
@@ -641,7 +638,6 @@ $(function() {
     ratingCheck=true	
 		let rating=$('input[name="rating"]:checked').val()
 		rating=6-rating
-    console.log(rating)
 	})
 	$(document).ready(function() {
     let avgRating=parseFloat('${avg}')
@@ -667,11 +663,10 @@ $(function() {
 		if(ratingCheck){
 		rating=$('input[name="rating"]:checked').val()
 		rating=6-rating
-   	console.log(rating)
 			
 		}
 		else{
-			alert('평점을 선택해주세요')
+			alert('별점을 선택해주세요')
 			return
 		}
 		let content=$('#content').val()

@@ -327,17 +327,6 @@ $(function() {
 					})
 		})
 
-function toggleRecentBooks() {
-    const container = document.querySelector('.recent-books-container');
-    const toggleIcon = container.querySelector('.toggle-icon');
-    if (container.classList.contains('expanded')) {
-        container.classList.remove('expanded');
-        toggleIcon.textContent = '+';
-    } else {
-        container.classList.add('expanded');
-        toggleIcon.textContent = '-';
-    }
-}
 	$(document).ready(function() {
 	    $('.add-to-cart').click(function(event) {
 	        event.preventDefault()
@@ -501,6 +490,18 @@ $(document).ready(function() {
     })
 })
 })
+function toggleRecentBooks() {
+    const container = document.querySelector('.recent-books-container');
+    const toggleIcon = container.querySelector('.toggle-icon');
+    if (container.classList.contains('expanded')) {
+        container.classList.remove('expanded');
+        toggleIcon.textContent = '+';
+    } else {
+        container.classList.add('expanded');
+        toggleIcon.textContent = '-';
+    }
+}
+
 </script>
 </head>
 <body>
