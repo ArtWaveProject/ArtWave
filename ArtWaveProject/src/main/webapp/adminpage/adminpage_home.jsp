@@ -24,15 +24,15 @@
 				</tr>
 				<tr>
 					<th width="40%" class="text-center">총 음원구매</th>
-					<td width="40%" class="text-center">${mBuy}개</td>
+					<td width="40%" class="text-center">${mBuy}건</td>
 				</tr>
 				<tr>
 					<th width="40%" class="text-center">총 도서구매</th>
-					<td width="40%" class="text-center">${bBuy}권</td>
+					<td width="40%" class="text-center">${bBuy}건</td>
 				</tr>
 				<tr>
 					<th width="40%" class="text-center">총 앨범구매</th>
-					<td width="40%" class="text-center">${aBuy}개</td>
+					<td width="40%" class="text-center">${aBuy}건</td>
 				</tr>
 				<tr>
 					<th width="40%" class="text-center">총 영화예약</th>
