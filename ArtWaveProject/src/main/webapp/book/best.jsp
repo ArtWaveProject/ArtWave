@@ -151,40 +151,40 @@ body {
 .page {
 	list-style: none;
 	padding: 0;
-	margin: 20px auto;
+	margin: 20px auto; 
 	display: flex;
-	justify-content: center;
+	justify-content: center; 
 	font-family: Arial, sans-serif;
 }
 
 .page li {
-	margin: 0 3px;
+	margin: 0 3px; 
 }
 
 .page a {
 	text-decoration: none;
-	color: #0197A3;
+	color: #0197A3; 
 	padding: 8px 12px;
-	border: 1px solid #0197A3;
-	border-radius: 4px;
-	transition: background-color 0.3s, color 0.3s;
+	border: 1px solid #0197A3; 
+	border-radius: 4px; 
+	transition: background-color 0.3s, color 0.3s; 
 }
 
 .page a:hover {
-	background-color: #0197A3;
-	color: #fff;
+	background-color: #0197A3; 
+	color: #fff; 
 }
 
 .page .current a {
-	background-color: #0197A3;
+	background-color: #0197A3; 
 	color: #fff;
-	border: 1px solid #0197A3;
-	pointer-events: none;
+	border: 1px solid #0197A3; 
+	pointer-events: none; 
 }
 
 .page .current a:hover {
-	background-color: #0197A3;
-	color: #fff;
+	background-color: #0197A3; 
+	color: #fff; 
 }
 
 .page li:first-child a {
@@ -192,7 +192,7 @@ body {
 }
 
 .page li:last-child a {
-	border-radius: 0 4px 4px 0;
+	border-radius: 0 4px 4px 0 ;
 }
 
 .buttons a.like-button {
@@ -527,7 +527,7 @@ $(document).ready(function() {
 								Previous</a></li>
 					</c:if>
 					<c:forEach var="t" begin="${startPage}" end="${endPage}">
-						<li ${n == curpage ? "class='current'" : ""}><a
+						<li ${t == curpage ? "class='current'" : ""}><a
 							href="../book/best.do?page=${t}">${t}</a></li>
 					</c:forEach>
 					<c:if test="${endPage < totalpage}">
