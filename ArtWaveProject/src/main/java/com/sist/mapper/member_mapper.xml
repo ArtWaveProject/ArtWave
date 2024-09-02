@@ -24,6 +24,11 @@
 		SELECT COUNT(*) FROM member WHERE
 		LOWER(nickname)=#{nickname}
 	</select>
+	<select id="memberPhoneCheck" parameterType="String" resultType="int">
+	SELECT COUNT(*) FROM
+	(SELECT replace(phone, '-', '') as phone FROM member)
+	WHERE phone=#{phone}
+	</select>
 	<select id="memberEmailCheck" parameterType="String"
 		resultType="int">
 		SELECT COUNT(*) FROM member WHERE email=#{email}
@@ -88,7 +93,18 @@
 	<update id="gradeDecrement" parameterType="String">
 	UPDATE member SET grade=grade-1 WHERE id=#{id}
 	</update>
+	<select id="idFind" resultType="String" parameterType="hashmap">
+	SELECT id FROM
+	(SELECT id, email, replace(phone, '-', '') as phone FROM member)
+	WHERE ${type} = #{ss}
+	</select>
+	<select id="pwdFind" resultType="String" parameterType="hashmap">
+	SELECT pwd FROM
+	(SELECT id,pwd, email, replace(phone, '-', '') as phone FROM member)
+	WHERE ${type} = #{ss} AND id=#{id}
+	</select>
 
 	<!-- ID NICKNAME PWD NAME BIRTHDATE SEX PHONE POST ADDR1 ADDR2 GRADE PHOTO 
 		ADMIN REGDATE EMAIL -->
+	
 </mapper>

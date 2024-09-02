@@ -210,9 +210,16 @@ function musicPlay(mno) {
 								</ul>
 							</td>
 							<td width="5%" class="text-center">
+							<c:if test="${mvo.titlecheck==1}">
 								<a href="${mvo.urlmp4}" id="btn" target="_blank">
 									<img class="iconImg" src="mv.png">
 								</a>
+							</c:if>
+							<c:if test="${mvo.titlecheck==0}">
+								<span id="btn">
+									<img class="iconImg" src="mvOff.png">
+								</span>
+							</c:if>
 							</td>
 						</tr>
 					</c:forEach>

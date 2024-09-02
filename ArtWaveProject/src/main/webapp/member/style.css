@@ -66,7 +66,7 @@ img {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
+  width: 585px;
   height: 850px;
   background-color: #f2f2f2;
   padding: 1.5rem 2rem;
@@ -74,6 +74,20 @@ img {
   text-align: center;
   box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
 /*  animation-duration: 0.1s;*/
+  animation-name: animateLogin;
+}
+.login__find {
+  position: absolute;  
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 320px;
+  background-color: #f2f2f2;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
   animation-name: animateLogin;
 }
 .login__register, .login__create2 {

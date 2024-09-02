@@ -4,9 +4,9 @@
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.music_mapper">
 	<select id="musicListData" resultType="MusicVO" parameterType="hashmap">
-		SELECT mno, title, alno, ano, poster, genre, altitle, urlmp4, aname, urlmp3, num
-		FROM (SELECT mno, title, alno, ano, poster, genre, altitle,urlmp4, aname, urlmp3, rownum as num
-		FROM (SELECT mno, title, alno, ano, poster, genre, urlmp4 ,(SELECT atitle FROM album WHERE album.alno=music.alno) as altitle, (SELECT aname FROM artist where artist.ano=music.ano) as aname, urlmp3
+		SELECT mno, title, alno, ano, poster, genre, altitle, urlmp4, aname, urlmp3, titlecheck, num
+		FROM (SELECT mno, title, alno, ano, poster, genre, altitle,urlmp4, aname, urlmp3, titlecheck, rownum as num
+		FROM (SELECT mno, title, alno, ano, poster, genre, urlmp4 ,(SELECT atitle FROM album WHERE album.alno=music.alno) as altitle, (SELECT aname FROM artist where artist.ano=music.ano) as aname, urlmp3, titlecheck
 		FROM music WHERE genre LIKE '%'||#{genre}||'%' ORDER BY playcount DESC)
 		WHERE aname LIKE '%'||#{ss}||'%' OR title LIKE '%'||#{ss}||'%')
 		WHERE num BETWEEN #{start} AND #{end}
@@ -113,9 +113,9 @@
 	</select>
 
 	<select id="musicFindData" parameterType="hashmap" resultType="MusicVO">
-		SELECT mno, ano, alno, title, altitle, aname, poster, num
-		FROM (SELECT mno, ano, alno, title, altitle, aname, poster, rownum as num
-		FROM (SELECT mno, ano, alno, title, (SELECT atitle FROM album WHERE album.alno=music.alno) as altitle, (SELECT aname FROM artist where artist.ano=music.ano) as aname, poster
+		SELECT mno, ano, alno, title, altitle, aname, poster, urlmp4, titlecheck, num
+		FROM (SELECT mno, ano, alno, title, altitle, aname, poster, urlmp4, titlecheck, rownum as num
+		FROM (SELECT mno, ano, alno, title, (SELECT atitle FROM album WHERE album.alno=music.alno) as altitle, (SELECT aname FROM artist where artist.ano=music.ano) as aname, poster, urlmp4, titlecheck
 		FROM music ORDER BY mno DESC)
 		WHERE aname LIKE '%'||#{ss}||'%' OR title LIKE '%'||#{ss}||'%')
 		WHERE num BETWEEN #{start} AND #{end}
@@ -194,7 +194,7 @@
 	<select id="adminReserveListData" resultType="ReserveVo">
 		SELECT mno, mtitle, tdname, tname, to_char(day, 'YYYY-MM-DD') as day, time, inwon, price, id, sno, rno, state,
 		(SELECT mposter FROM movie WHERE movie.mno=reserve.mno) as poster
-		FROM reserve
+		FROM reserve ORDER BY rno DESC
 	</select>
 	<!-- 관리자 예약 승인 -->
 	<update id="adminReserveUpdate" parameterType="int">

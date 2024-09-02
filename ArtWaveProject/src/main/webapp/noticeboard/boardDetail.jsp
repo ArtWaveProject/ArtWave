@@ -177,7 +177,7 @@ $(function() {
 				<td colspan="2"><c:if test="${sessionScope.id == detail.id}">
 						<input type="button" value="삭제" id="deleteBtn" class="button cancel">
 						<a href="../noticeboard/boardUpdate.do?fbno=${detail.fbno}" id="writeBtn" class="button edit">수정</a>
-					</c:if> <input type="button" value="목록" onclick="javascript:history.back()" class="button"></td>
+					</c:if> <input type="button" value="목록" onclick="location.href='../noticeboard/boardList.do'" class="button"></td>
 			</tr>
 		</table>
 	</div>

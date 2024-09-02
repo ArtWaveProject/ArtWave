@@ -33,7 +33,10 @@
 	border-radius: 30px;
 
 }
-
+body {
+    margin-left: 180px;
+    padding: 0;
+}
 .listChart {
 	background: white;
 	padding: 5px;

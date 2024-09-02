@@ -50,6 +50,17 @@ public class MemberDAO {
 		}
 		return result;
 	}
+	public static String memberPhoneCheck(String phone) {
+		String result = "";
+		SqlSession session = ssf.openSession();
+		int count = session.selectOne("memberPhoneCheck", phone);
+		if (count == 0) {
+			result = "OK";
+		} else {
+			result = "NO";
+		}
+		return result;
+	}
 
 	public static String memberNickCheck(String nickname) {
 		String result = "";
@@ -243,6 +254,34 @@ public class MemberDAO {
 			if (session != null)
 				session.close();
 		}
+	}
+	public static String idFind(Map map) {
+		String result="";
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			result=session.selectOne("idFind", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return result;
+	}
+	public static String pwdFind(Map map) {
+		String result="";
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			result=session.selectOne("pwdFind", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return result;
 	}
 
 }

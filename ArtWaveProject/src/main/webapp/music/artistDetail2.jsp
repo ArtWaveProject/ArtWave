@@ -290,7 +290,7 @@ function playListMusicInsert(li, plno){
 			</div>
 			<div style="height: 20px;"></div>
 			<div class="rowColor">
-				<h4 style="color: black;">${detail.aname}&nbsp;앨범LIST</h4>
+				<h4 style="color: black;">${detail.aname}&nbsp;앨범 LIST</h4>
 				<div style="height: 30px;"></div>
 				<c:forEach var="avo" items="${aList }">
 					<div class="col-sm-3">
@@ -305,7 +305,7 @@ function playListMusicInsert(li, plno){
 			</div>
 			<div style="height: 20px;"></div>
 			<div class="rowColor">
-				<h4>${detail.aname}곡list</h4>
+				<h4>${detail.aname}&nbsp;곡 List</h4>
 				<table class="table">
 					<tbody id="listBody">
 						<c:forEach var="vo" items="${mList }">

@@ -46,45 +46,6 @@ body {
 	background-color: #0056b3;
 }
 
-.genreTable {
-	width: 100%;
-	margin-bottom: 0px;
-	border-collapse: collapse;
-}
-
-.genreTable td {
-	padding: 0;
-	vertical-align: middle;
-}
-
-.genreTable a {
-	display: block;
-	padding: 10px;
-	text-align: center;
-	color: #333;
-	text-decoration: none;
-	border: 2px solid #ddd;
-	border-radius: 4px 4px 0 0;
-	background: #fff;
-	font-size: 14px;
-	transition: background 0.3s, border-color 0.3s;
-}
-
-.genreTable a:hover {
-	background: #3b84d1;
-	color: #fff;
-	border-color: #3b84d1;
-}
-
-.genreTable .active a {
-	background: #3b84d1;
-	color: #fff;
-	border-color: #3b84d1;
-}
-
-.genreTable .anext a {
-	border-left: none;
-}
 
 .table {
 	width: 100%;
@@ -104,9 +65,6 @@ body {
 	background: #f4f4f4;
 }
 
-.table tr:hover {
-	background: #f1f1f1;
-}
 
 .table .title {
 	color: #3b84d1;

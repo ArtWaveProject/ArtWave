@@ -42,7 +42,11 @@ public class ReplyBoardModel {
 		   if(endPage>totalpage)
 		  	 endPage=totalpage;
 		   count=count-((curPage*rowSize)-rowSize);
-		   
+		   for(ReplyBoardVO vo:list) {
+		  	 if(vo.getGroup_step()==1) {
+		  		 vo.setName("관리자");
+		  	 }
+		   }
 		   request.setAttribute("startPage", startPage);
 		   request.setAttribute("endPage", endPage);
 		   request.setAttribute("count", count);

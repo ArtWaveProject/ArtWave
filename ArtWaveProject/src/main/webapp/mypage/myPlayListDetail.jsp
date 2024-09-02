@@ -6,17 +6,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.controlBtn{
-font-size: 30px;
-margin: 0px 20px;
+.controlBtn {
+	font-size: 30px;
+	margin: 0px 20px;
 }
+
 *:focus {
 	outline: none;
 }
 
 body {
 	font-family: Helvetica, Arial;
-	margin: 0;
+	margin-left: 180px;
+	padding: 0;
 }
 
 #app-cover {
@@ -257,7 +259,6 @@ body {
 	color: #fff;
 }
 
-
 #ytd-url {
 	display: block;
 	position: fixed;
@@ -278,16 +279,16 @@ body {
 <script type="text/javascript">
 	$(function() {
 		playListList(1)
-		 $('#playListTbody').on('click', '.play-button', function() {
-        let index = $(this).data('index');
-        selectTrack(2, index);
-    })
-    $('#shuffle').click(function() {
+		$('#playListTbody').on('click', '.play-button', function() {
+			let index = $(this).data('index');
+			selectTrack(2, index);
+		})
+		$('#shuffle').click(function() {
 			playListList(2)
 			playPause()
 		})
-    $('#playAll').click(function() {
-    	initPlayer(3)
+		$('#playAll').click(function() {
+			initPlayer(3)
 			playPause()
 		})
 		var playerTrack = $("#player-track"), bgArtwork = $('#bg-artwork'), bgArtworkUrl, albumName = $('#album-name'), trackName = $('#track-name'), sArea = $('#s-area'), seekBar = $('#seek-bar'), trackTime = $('#track-time'), insTime = $('#ins-time'), sHover = $('#s-hover'), playPauseButton = $("#play-pause-button"), i = playPauseButton
@@ -417,11 +418,9 @@ body {
 		function selectTrack(flag, curr) {
 			if (flag == 0 || flag == 1) {
 				++currIndex;
-			}
-			else if(flag==2){
-				currIndex=curr
-			}
-			else
+			} else if (flag == 2) {
+				currIndex = curr
+			} else
 				--currIndex;
 			if ((currIndex > 0) && (currIndex <= $('#list' + currIndex).attr('data-size'))) {
 				if (flag == 0)
@@ -434,7 +433,6 @@ body {
 				trackTime.removeClass('active');
 				tProgress.text('00:00');
 				tTime.text('00:00');
-				console.log(currIndex)
 				currAlbum = $('#list' + currIndex).attr('data-altitle');
 				currTrackName = $('#list' + currIndex).attr('data-title');
 				$('#album-art').attr("src", $('#list' + currIndex).attr('data-poster'))
@@ -463,8 +461,8 @@ body {
 
 		function initPlayer(type) {
 			audio = new Audio()
-			if(type===2||type===3)
-				currIndex=0
+			if (type === 2 || type === 3)
+				currIndex = 0
 			selectTrack(0, 0)
 
 			audio.loop = false
@@ -490,39 +488,46 @@ body {
 		}
 		function playListList(type) {
 			let plno = '${plno}'
-			$.ajax({
-				type : 'post',
-				url : '../mypage/myPlayListMusicList.do',
-				data : {
-					'plno' : plno,
-					'type' : type
-				},
-				success : function(result) {
-					let playlist = JSON.parse(result)
-					let html = ''
-					let i = 1
-					playlist.map(function(music) {
-						html += '<tr>'
-						html += '<td width="10%" class="text-center">' + i + '</td>'
-						html += '<td width="7%" class="text-center"><img src="' + music.poster + '"</td>'
-						html += '<td width="68%" style="text-align:left;">' + music.title + '<br>' + music.aname + '</td>'
-            html += '<td width="10%" class="text-center"><button style="background:transparent;border:none;" class="play-button" data-index="' + i + '"><img src="../music/play.png" style="width:33px;height:33px;"></button>';
-						html += '<input id="list' + i + '" type="hidden" data-poster="' + music.poster + '" data-size="' + music.size + '" data-altitle="'
-								+ music.altitle + '"  data-title="' + music.title + '" data-url="' + music.urlmp3 + '"</td>'
-						html += '</tr>'
-						i += 1
+			$
+					.ajax({
+						type : 'post',
+						url : '../mypage/myPlayListMusicList.do',
+						data : {
+							'plno' : plno,
+							'type' : type
+						},
+						success : function(result) {
+							let playlist = JSON.parse(result)
+							let html = ''
+							let i = 1
+							console.log(playlist.length)
+							if(playlist.length>0){
+							playlist.map(function(music) {
+										html += '<tr>'
+										html += '<td width="10%" class="text-center">' + i + '</td>'
+										html += '<td width="7%" class="text-center"><img src="' + music.poster + '"</td>'
+										html += '<td width="68%" style="text-align:left;">' + music.title + '<br>' + music.aname + '</td>'
+										html += '<td width="10%" class="text-center"><button style="background:transparent;border:none;" class="play-button" data-index="' + i + '"><img src="../music/play.png" style="width:33px;height:33px;"></button>';
+										html += '<input id="list' + i + '" type="hidden" data-poster="' + music.poster + '" data-size="' + music.size
+												+ '" data-altitle="' + music.altitle + '"  data-title="' + music.title + '" data-url="' + music.urlmp3 + '"</td>'
+										html += '</tr>'
+										i += 1
+									})
+						}
+						else{
+							html+='<td colspan="4">추가된 곡이 없습니다</td>'
+							$('#app-cover').hide()
+						}
+							$('#playListTbody').html(html)
+							initPlayer(type)
+						}
 					})
-					$('#playListTbody').html(html)
-					initPlayer(type)
-				}
-			})
 		}
 	})
 </script>
 </head>
 <body>
-	<div class="container" style="margin: 0px; border: 45px solid #ddd; padding:30px; margin-top: 40px;    
-		 width: 1000px; height: 620px; border-radius: 30px; ">
+	<div class="container" style="margin: 0px; border: 45px solid #ddd; padding: 30px; margin-top: 40px; width: 1000px; height: 620px; border-radius: 30px;">
 		<div class="listBody">
 			<div class="col-lg-4 listChart">
 				<div id="app-cover" style="margin-top: 35px;">
@@ -560,13 +565,13 @@ body {
 								</div>
 							</div>
 						</div>
-						<div >
-						<button type="button" style="background: transparent; border: none;" id="playAll" class="controlBtn">
-						<i class="fa-solid fa-circle-play"></i>
-						</button>
-						<button type="button" style="background: transparent; border: none;" id="shuffle" class="controlBtn">
-						<i class="fa-solid fa-shuffle"></i>
-						</button>
+						<div>
+							<button type="button" style="background: transparent; border: none;" id="playAll" class="controlBtn">
+								<i class="fa-solid fa-circle-play"></i>
+							</button>
+							<button type="button" style="background: transparent; border: none;" id="shuffle" class="controlBtn">
+								<i class="fa-solid fa-shuffle"></i>
+							</button>
 						</div>
 					</div>
 				</div>

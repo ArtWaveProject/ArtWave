@@ -267,25 +267,12 @@
 	<div class="container">
 		<div class="row" style="margin-top: 150px">
 			<div class="most-popular2">
-				<div class="search">
-					<form action="../book/list.do" method="post" id="searchForm">
-						<div class="search-input">
-							<input type="text" placeholder="Type Something" id="searchText"
-								name="search" onkeypress="handle(event)" />
-							<button type="submit" class="fa fa-search"
-								style="border: none; background: transparent"></button>
-						</div>
-					</form>
-				</div>
-
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="page-content" style="margin-top: 0px;">
 							<div class="heading-section">
 								<h3>Album Store</h3>
 							</div>
-
-
 							<div class="live-stream">
 								<div class="col-lg-12"></div>
 								<div class="row">

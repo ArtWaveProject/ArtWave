@@ -298,7 +298,7 @@ function playListMusicInsert(li, plno){
 					<div>
 						<input type="hidden" value="${sessionScope.id}" id="id">
 						<input type="hidden" value="${detail.alno}" id="alno">
-						<h4>${detail.atitle}곡list</h4>
+						<h4>${detail.atitle}&nbsp;곡 List</h4>
 					</div>
 					<table class="table">
 						<tbody id="listBody">

@@ -143,16 +143,18 @@ body {
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
+$(function name() {
 		$('#deleteBtn').click(function() {
 			$.ajax({
 				type:'post',
 				url:'../board/boardDelete.do',
 				data:{'fbno':${detail.fbno}},
 				success:function(){
-					location.href="../noticeboard/boardList.do"
+					toList()
 				}
 			})
 		})
+})
 	function toList() {
 		location.href="../adminpage/notice_list.do"
 	}
@@ -162,27 +164,22 @@ body {
 	<div class="container" style="margin: 0px; border: 1px solid #ddd; border-radius: 8px; padding: 40px;">
 		<table class="table">
 			<tr>
-				<td colspan="2">
-					<span style="font-weight: bold; font-size: 20px; margin-right: 5px;">[${type}]</span><span style="font-weight: bold; font-size: 20px;">${detail.fbsubject}</span>
-				</td>
+				<td colspan="2"><span style="font-weight: bold; font-size: 20px; margin-right: 5px;">[${type}]</span><span
+					style="font-weight: bold; font-size: 20px;">${detail.fbsubject}</span></td>
 			</tr>
 			<tr>
 				<td width="85%">${detail.nick}&nbsp;&nbsp;|&nbsp;&nbsp;${detail.dbday}</td>
 				<td width="15%" class="text-right" style="text-align: center;">조회수 ${detail.fbhit}</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="height: 500px; font-size: 18px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-					<pre style="overflow: auto; white-space: pre-wrap; word-wrap: break-word; background: white;">${detail.content}</pre>
-				</td>
+				<td colspan="2" style="height: 500px; font-size: 18px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><pre
+						style="overflow: auto; white-space: pre-wrap; word-wrap: break-word; background: white;">${detail.content}</pre></td>
 			</tr>
 			<tr class="text-right">
-				<td colspan="2">
-					<c:if test="${sessionScope.id == detail.id}">
+				<td colspan="2"><c:if test="${sessionScope.id == detail.id}">
 						<input type="button" value="삭제" id="deleteBtn" class="button cancel">
-						<a href="../board/boardUpdate.do?fbno=${detail.fbno}" id="writeBtn" class="button edit">수정</a>
-					</c:if>
-					<input type="button" value="목록" onclick="toList()" class="button">
-				</td>
+						<a href="../admin/boardUpdate.do?fbno=${detail.fbno}" id="writeBtn" class="button edit">수정</a>
+					</c:if> <input type="button" value="목록" onclick="toList()" class="button"></td>
 			</tr>
 		</table>
 	</div>

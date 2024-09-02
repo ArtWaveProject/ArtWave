@@ -46,7 +46,6 @@ width: 100%;
 					</div>
 					<ul class="list-group">
 						<li class="list-group-item"><a href="../adminpage/member_list.do">회원 리스트</a></li>
-						<li class="list-group-item"><a href="">결제 목록</a></li>
 						<li class="list-group-item"><a href="../admin/adminReserve.do">예약 관리</a></li>
 					</ul>
 				</div>
@@ -55,8 +54,8 @@ width: 100%;
 						<h3 class="panel-title sinav">고객센터</h3>
 					</div>
 					<ul class="list-group">
-						<li class="list-group-item"><a href="../adminpage/reply_list.do">1:1 문의</a></li>
 						<li class="list-group-item"><a href="../adminpage/notice_list.do">공지사항</a></li>
+						<li class="list-group-item"><a href="../adminpage/reply_list.do">1:1 문의</a></li>
 					</ul>
 				</div>
 			</div>

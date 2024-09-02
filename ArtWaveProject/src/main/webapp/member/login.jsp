@@ -9,10 +9,185 @@
 <script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 	$(function() {
+		$('#findType').change(function() {
+			let findType=$("input:radio[name='type']:checked").val()
+			$('#phone2').val('')
+			$('#phone3').val('')
+			$('#findEmailData').val('')
+			$('#findResult').html('')
+			if(findType==='1'){
+				$('#findPhone').removeClass('none')
+				$('#findEmail').addClass('none')
+			}
+			else{
+				$('#findEmail').removeClass('none')
+				$('#findPhone').addClass('none')
+			}
+			$('#findBtn').removeClass('none')
+		})
+		$('#findBtn').click(function() {
+			let ss
+			let findType=$("input:radio[name='type']:checked").val()
+			if(findType==='1'){
+				let phone1=$('select[name=phone1] option:checked').val()
+				let phone2=$('#phone2').val()
+				if(phone2.trim()===''){
+					alert('전화번호를 전부 입력하세요')
+					$('#phone2').focus()
+					return
+				}
+				let phone3=$('#phone3').val()
+				if(phone3.trim()===''){
+					alert('전화번호를 전부 입력하세요')
+					$('#phone3').focus()
+					return
+				}
+				ss=phone1+phone2+phone3
+				console.log(ss)
+			}
+			else{
+				ss=$('#findEmailData').val()
+				if(ss.trim()===''){
+					alert('이메일을 입력하세요')
+					$('#findEmailData').focus()
+					return
+				}
+			}
+			console.log(type)
+			$.ajax({
+				type:'post',
+				url:'../member/idFind.do',
+				data:{
+					'type':findType,
+					'ss':ss
+				},
+				success:function(result){
+					let text
+					if(result==='NO'){
+						text='<font color="red">등록된 아이디가 존재하지 않습니다</font>'
+					}
+					else{
+						text='등록된 아이디 : <font color="#4AD395">'+result+'</font>'
+					}
+					$('#findResultDiv').removeClass('none')
+					$('#findResult').html(text)
+				}
+			})
+		})
+		$('#findTypePwd').change(function() {
+			$('#phone2Pwd').val('')
+			$('#phone3Pwd').val('')
+			$('#findEmailDataPwd').val('')
+			$('#findResultPwd').html('')
+			let findType=$("input:radio[name='typePwd']:checked").val()
+			if(findType==='1'){
+				$('#findPhonePwd').removeClass('none')
+				$('#findEmailPwd').addClass('none')
+			}
+			else{
+				$('#findEmailPwd').removeClass('none')
+				$('#findPhonePwd').addClass('none')
+			}
+			$('#findBtnPwd').removeClass('none')
+		})
+		$('#findBtnPwd').click(function() {
+			let ss
+			let findType=$("input:radio[name='typePwd']:checked").val()
+			let id=$('#idPwd').val()
+			if(id.trim()===''){
+				alert('아이디를 입력하세요')
+				$('#idPwd').focus()
+				return
+			}
+			if(findType==='1'){
+				let phone1=$('select[name=phone1Pwd] option:checked').val()
+				let phone2=$('#phone2Pwd').val()
+				if(phone2.trim()===''){
+					alert('전화번호를 전부 입력하세요')
+					$('#phone2Pwd').focus()
+					return
+				}
+				let phone3=$('#phone3Pwd').val()
+				if(phone3.trim()===''){
+					alert('전화번호를 전부 입력하세요')
+					$('#phone3Pwd').focus()
+					return
+				}
+				ss=phone1+phone2+phone3
+				console.log(ss)
+			}
+			else{
+				ss=$('#findEmailDataPwd').val()
+				if(ss.trim()===''){
+					alert('이메일을 입력하세요')
+					$('#findEmailDataPwd').focus()
+					return
+				}
+			}
+			console.log(type)
+			$.ajax({
+				type:'post',
+				url:'../member/pwdFind.do',
+				data:{
+					'id':id,
+					'type':findType,
+					'ss':ss
+				},
+				success:function(result){
+					let text
+					if(result==='NO'){
+						text='<font color="red">등록된 비밀번호가 존재하지 않습니다</font>'
+					}
+					else{
+						text='등록된 비밀번호 : <font color="#4AD395">'+result+'</font>'
+					}
+					$('#findResultDivPwd').removeClass('none')
+					$('#findResultPwd').html(text)
+				}
+			})
+		})
+		$('#forgot').click(function(){
+			$('#login-in').removeClass("block");
+		    $('#find-account').removeClass("none");
+
+		    $('#login-in').addClass("none");
+		    $('#find-account').addClass("block");
+		})
+		$('#returnLogin').click(function(){
+			$('#phone2').val('')
+			$('#phone3').val('')
+			$('#findEmailData').val('')
+			$('#findResult').html('')
+			$('#login-in').removeClass("none");
+		    $('#find-account').removeClass("block");
+
+		    $('#login-in').addClass("block");
+		    $('#find-account').addClass("none");
+		})
+		$('#forgotPwd').click(function(){
+			$('#login-in').removeClass("block");
+		    $('#find-Pwd').removeClass("none");
+
+		    $('#login-in').addClass("none");
+		    $('#find-Pwdt').addClass("block");
+		})
+		$('#returnLoginPwd').click(function(){
+			$('#phone2Pwd').val('')
+			$('#phone3Pwd').val('')
+			$('#findEmailDataPwd').val('')
+			$('#findResultPwd').html('')
+			$('#idPwd').val('')
+			$('#login-in').removeClass("none");
+		    $('#find-Pwd').removeClass("block");
+
+		    $('#login-in').addClass("block");
+		    $('#find-Pwd').addClass("none");
+		})
 		let checkId=false
 		let checkNick=false
 		let checkEmail=false
 		let checkPwd=false
+		let checkPhone=true
 		let type=${type}
 		if(type===0){
 			loginin.classList.remove("block");
@@ -71,6 +246,49 @@
 						alert('이미 존재하는 닉네임입니다')
 						nick.val('')
 						nick.focus()
+					}
+				}
+			})
+		})
+		$('#phoneCheck').click(function() {
+			let sel = $('select[name=phone] option:checked').val()
+			if(sel===''){
+				$('#phone_first').attr('disabled', 'true')
+				$('#phoneCheck').hide()
+				$('#phonekIcon').css('display', '')
+				return
+			}
+			if($('#phone_second').val().trim()===''){
+				alert('전화번호를 정확히 입력하세요')
+				$('#phone_second').focus()
+				return
+			}
+			if($('#phone_third').val().trim()===''){
+				alert('전화번호를 정확히 입력하세요')
+				$('#phone_third').focus()
+				return
+			}
+			let phone=sel+$('#phone_second').val()+$('#phone_third').val()
+			console.log(phone)
+			$.ajax({
+				type:'post',
+				url:'../member/phoneCheck.do',
+				data:{
+					'phone':phone
+				},
+				success:function(result){
+					if(result==='OK'){
+						checkPhone=true
+						$('#phone_second').attr('readonly', true)
+						$('#phone_third').attr('readonly', true)
+						$('#phone_first').attr('disabled', 'true')
+						$('#phoneCheck').hide()
+						$('#phoneIcon').css('display', '')
+					}
+					else{
+						alert('이미 존재하는 전화번호입니다')
+						$('#phone_second').val('')
+						$('#phone_third').val('')
 					}
 				}
 			})
@@ -162,20 +380,21 @@
 			console.log(month)
 			console.log(day)
 		})
-		$('input[type="radio"]').change(function() {
-			let sex=$(this).val()
-			$("input:radio[name='sex']:checked").val();
+		$('#sexCheck').change(function() {
+			let sex=$("input:radio[name='sex']:checked").val();
 			console.log(sex)
 		})
 		$('select[name=phone]').change(function() {
 			let sel=$('select[name=phone]').val()
 			if(sel===''){
+				checkPhone=true
 				$('#phone_second').val('')
-				$('#phone_second').attr('readonly', true)
 				$('#phone_third').val('')
+				$('#phone_second').attr('readonly', true)
 				$('#phone_third').attr('readonly', true)
 			}
 			else{
+				checkPhone=false
 				$('#phone_second').attr('readonly', false)
 				$('#phone_third').attr('readonly', false)
 				
@@ -191,6 +410,10 @@
 				return
 			}
 			if(!checkEmail){
+				$('#email').focus()
+				return
+			}
+			if(!checkPhone){
 				$('#email').focus()
 				return
 			}
@@ -301,8 +524,9 @@ body {
 	align-items: center;
 	height: 100vh;
 }
-.login__create{
-left: -4rem;
+
+.login__create, .login__find {
+	left: -4rem;
 }
 </style>
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -317,17 +541,16 @@ left: -4rem;
 				<form action="" class="login__register" id="login-in">
 					<h1 class="login__title">Sign In</h1>
 					<div class="login__box">
-						<i class='bx bx-user login__icon'></i>
-						<input type="text" placeholder="Username" class="login__input" id="id">
+						<i class='bx bx-user login__icon'></i> <input type="text" placeholder="Username" class="login__input" id="id">
 					</div>
 					<div class="login__box">
-						<i class='bx bx-lock login__icon'></i>
-						<input type="password" placeholder="Password" class="login__input" id="pwd">
+						<i class='bx bx-lock login__icon'></i> <input type="password" placeholder="Password" class="login__input" id="pwd">
 					</div>
 					<a href="#" class="login__button" onclick="login()">Sign In</a>
 
 					<div>
-						<span class="login__account login__account--account">Don't Have an Account?</span> <span class="login__signin login__signin--signup" id="sign-up">Sign Up</span>
+						<span class="login__signin login__signin--signup" id="forgot">Forgot Account? </span>&nbsp;<span class="login__signin login__signin--signup" id="forgotPwd">Forgot Password? </span><br> <span class="login__account login__account--account">Don't
+							Have an Account?</span> <span class="login__signin login__signin--signup" id="sign-up">Sign Up</span>
 					</div>
 				</form>
 
@@ -335,124 +558,152 @@ left: -4rem;
 				<div class="login__create none" id="login-up">
 					<h1 class="login__title">Create Account</h1>
 					<div class="login__box">
-						<i class='bx bx-face login__icon'></i>
-						<input type="text" placeholder="Username" class="login__input" id="name" required>
+						<i class='bx bx-face login__icon'></i> <input type="text" placeholder="Username" class="login__input" id="name" required>
 					</div>
 
 					<div class="login__box">
-						<i class='bx bx-user login__icon'></i>
-						<input type="text" placeholder="ID" class="login__input" id="signUpId">
-						<input type="button" value="중복확인" id="idCheck">
-						<img src="check.png" width="20px" id="idIcon" height="20px" style="background: none; display: none;">
+						<i class='bx bx-user login__icon'></i> <input type="text" placeholder="ID" class="login__input" id="signUpId"> <input type="button"
+							value="중복확인" id="idCheck"> <img src="check.png" width="20px" id="idIcon" height="20px" style="background: none; display: none;">
 					</div>
 
 					<div class="login__box">
-						<i class='bx bx-ghost login__icon'></i>
-						<input type="text" placeholder="Nick name" class="login__input" id="nick">
-						<input type="button" value="중복확인" id="nickCheck">
-						<img src="check.png" width="20px" id="nickIcon" height="20px" style="background: none; display: none;">
+						<i class='bx bx-ghost login__icon'></i> <input type="text" placeholder="Nick name" class="login__input" id="nick"> <input type="button"
+							value="중복확인" id="nickCheck"> <img src="check.png" width="20px" id="nickIcon" height="20px" style="background: none; display: none;">
 					</div>
 
 					<div class="login__box">
-						<i class='bx bx-lock login__icon'></i>
-						<input type="text" placeholder="Password" class="login__input" id="signUppwd">
+						<i class='bx bx-lock login__icon'></i> <input type="text" placeholder="Password" class="login__input" id="signUppwd">
 					</div>
 
 					<div class="login__box">
-						<i class='bx bx-lock login__icon'></i>
-						<input type="text" placeholder="Confirm Password" class="login__input" id="pwdCheck">
+						<i class='bx bx-lock login__icon'></i> <input type="text" placeholder="Confirm Password" class="login__input" id="pwdCheck">
 						<p style="margin: 0 auto;">
 							<font size="1px" id="pwdState">&nbsp;</font>
 						</p>
 					</div>
 
 					<div class="login__box">
-						<i class='bx bx-phone login__icon'></i>
-						<input type="text" placeholder="Phone" class="login__input" readonly>
+						<i class='bx bx-phone login__icon'></i> <input type="text" placeholder="Phone" class="login__input" readonly>
 						<div class="phone-container">
 							<select name="phone" class="phone-prefix" style="margin-right: 6px;" id="phone_first">
 								<option value="">없음</option>
-								<option value="010">02</option>
-								<option value="011">010</option>
-								<option value="012">011</option>
-							</select>
-							<input type="text" placeholder="Phone" class="phone-input" style="margin-right: 6px;" id="phone_second" readonly maxlength="4">
-							<input type="text" placeholder="Phone" class="phone-input" id="phone_third" readonly maxlength="4">
+								<option value="02">02</option>
+								<option value="010">010</option>
+								<option value="011">011</option>
+							</select> <input type="text" placeholder="Phone" class="phone-input" style="margin-right: 6px;" id="phone_second" readonly maxlength="4"> <input
+								type="text" placeholder="Phone" class="phone-input" id="phone_third" readonly maxlength="4">
+								<input type="button"
+							value="중복확인" id="phoneCheck"> <img src="check.png" width="20px" id="phoneIcon" height="20px" style="background: none; display: none;">
 						</div>
 					</div>
 
 					<div class="login__box">
-						<i class='bx bx-cake login__icon'></i>
-						<input type="text" placeholder="Birth" class="login__input" readonly>
-						<input type="date" required id="birth">
+						<i class='bx bx-cake login__icon'></i> <input type="text" placeholder="Birth" class="login__input" readonly> <input type="date" required
+							id="birth">
 					</div>
-					<div class="login__box" style="text-align: right;">
-						<i class='bx bx-heart login__icon'></i>
-						<input type="text" placeholder="Gender" class="login__input" readonly>
-						<label class="login__input">
-							<input type="radio" value="남자" name="sex" id="sex" checked>
-							남자
-						</label>
-						<label class="login__input">
-							<input type="radio" value="여자" name="sex" id="sex">
-							여자
+					<div class="login__box" style="text-align: right;" id="sexCheck">
+						<i class='bx bx-heart login__icon'></i> <input type="text" placeholder="Gender" class="login__input" readonly> <label
+							class="login__input"> <input type="radio" value="남자" name="sex" id="sex" checked> 남자
+						</label> <label class="login__input"> <input type="radio" value="여자" name="sex" id="sex"> 여자
 						</label>
 					</div>
 
 					<div class="login__box">
-						<i class='bx bx-at login__icon'></i>
-						<input type="text" placeholder="Email" class="login__input" id="email">
-						<input type="button" value="중복확인" id="emailCheck">
-						<img src="check.png" width="20px" id="emailIcon" height="20px" style="background: none; display: none;">
+						<i class='bx bx-at login__icon'></i> <input type="text" placeholder="Email" class="login__input" id="email"> <input type="button"
+							value="중복확인" id="emailCheck"> <img src="check.png" width="20px" id="emailIcon" height="20px" style="background: none; display: none;">
 					</div>
 
 					<div class="login__box">
-						<i class='bx bx-mail-send login__icon'></i>
-						<input type="text" placeholder="post" class="login__input" readonly="readonly" id="post">
-						<input type="button" value="우편번호 찾기" id="postBtn" required>
+						<i class='bx bx-mail-send login__icon'></i> <input type="text" placeholder="post" class="login__input" readonly="readonly" id="post"> <input
+							type="button" value="우편번호 찾기" id="postBtn" required>
 					</div>
 					<div class="login__box">
-						<i class='bx bx-map login__icon'></i>
-						<input type="text" placeholder="addr" class="login__input" readonly="readonly" id="addr1">
+						<i class='bx bx-map login__icon'></i> <input type="text" placeholder="addr" class="login__input" readonly="readonly" id="addr1">
 					</div>
 					<div class="login__box">
-						<i class='bx bx-map login__icon'></i>
-						<input type="text" placeholder="addr" class="login__input" id="addr2">
+						<i class='bx bx-map login__icon'></i> <input type="text" placeholder="addr" class="login__input" id="addr2">
 					</div>
 
 
 					<a href="#" class="login__button" id="signUpBtn">Sign Up</a>
 
 					<div>
-						<span class="login__account login__account--account">Already have an Account?</span> <span class="login__signup login__signup--signup" id="sign-in">Sign In</span>
+						<span class="login__account login__account--account">Already have an Account?</span> <span class="login__signup login__signup--signup"
+							id="sign-in">Sign In</span>
 					</div>
 
 				</div>
-
-				<form action="" class="login__create none" id="login-up">
-					<h1 class="login__title">Create Account</h1>
-					<div class="login__box">
-						<i class='bx bx-user login__icon'></i>
-						<input type="text" placeholder="Username" class="login__input">
+				<!-- 아이디찾기 페이지 -->
+				<div class="login__find none" id="find-account">
+					<h1 class="login__title">Find Account</h1>
+					<div class="login__box" id="findType">
+						<i class='bx bx-search login__icon'></i> <input type="text" placeholder="type" class="login__input" readonly> <label
+							class="login__input"> <input type="radio" value="1" name="type" id="type"> 전화번호
+						</label> <label class="login__input"> <input type="radio" value="2" name="type" id="type"> 이메일
+						</label>
 					</div>
-
-					<div class="login__box">
-						<i class='bx bx-at login__icon'></i>
-						<input type="text" placeholder="Email" class="login__input">
+					<div class="login__box none" id="findPhone">
+						<i class='bx bx-phone login__icon'></i> <input type="text" placeholder="Phone" class="login__input" readonly>
+						<div class="phone-container">
+							<select name="phone1" class="phone-prefix" style="margin-right: 6px;" id="phone1">
+								<option value="02">02</option>
+								<option value="010">010</option>
+								<option value="011">011</option>
+							</select> <input type="text" placeholder="Phone" class="phone-input" style="margin-right: 6px;" id="phone2" maxlength="4"> <input type="text"
+								placeholder="Phone" class="phone-input" id="phone3" maxlength="4">
+						</div>
 					</div>
-
-					<div class="login__box">
-						<i class='bx bx-lock login__icon'></i>
-						<input type="text" placeholder="Password" class="login__input">
+					<div class="login__box none" id="findEmail">
+						<i class='bx bx-search login__icon'></i> <input type="text" placeholder="Email" class="login__input" id="findEmailData">
 					</div>
-
-					<a href="#" class="login__button">Sign Up</a>
-
+					<div class="none" id="findBtn">
+						<span style="cursor: pointer;" class="login__button">Find</span>
+					</div>
+					<div id="findResultDiv none">
+						<span id="findResult" class="login__account login__account--account" style="font-size: 25px;"></span>
+					</div>
 					<div>
-						<span class="login__account login__account--account">Already have an Account?</span> <span class="login__signup login__signup--signup" id="sign-in">Sign In</span>
+						<span class="login__account login__account--account">Already have an Account?</span> <span class="login__signup login__signup--signup"
+							id="returnLogin">Sign In</span>
 					</div>
-
-				</form>
+				</div>
+				<!-- 비밀번호찾기 페이지 -->
+				<div class="login__find none" style="height: 360px !important;" id="find-Pwd">
+					<h1 class="login__title">Find Password</h1>
+					<div class="login__box" id="findIdPwd">
+						<i class='bx bx-user login__icon'></i> <input type="text" placeholder="ID" class="login__input" id="idPwd">
+					</div>
+					<div class="login__box" id="findTypePwd">
+						<i class='bx bx-search login__icon'></i> <input type="text" placeholder="type" class="login__input" readonly> <label
+							class="login__input"> <input type="radio" value="1" name="typePwd" id="typePwd"> 전화번호
+						</label> <label class="login__input"> <input type="radio" value="2" name="typePwd" id="typePwd"> 이메일
+						</label>
+					</div>
+					<div class="login__box none" id="findPhonePwd">
+						<i class='bx bx-phone login__icon'></i> <input type="text" placeholder="Phone" class="login__input" readonly>
+						<div class="phone-container">
+							<select name="phone1Pwd" class="phone-prefix" style="margin-right: 6px;" id="phone1Pwd">
+								<option value="02">02</option>
+								<option value="010">010</option>
+								<option value="011">011</option>
+							</select> <input type="text" placeholder="Phone" class="phone-input" style="margin-right: 6px;" id="phone2Pwd" maxlength="4"> <input type="text"
+								placeholder="Phone" class="phone-input" id="phone3Pwd" maxlength="4">
+						</div>
+					</div>
+					<div class="login__box none" id="findEmailPwd">
+						<i class='bx bx-search login__icon'></i> <input type="text" placeholder="Email" class="login__input" id="findEmailDataPwd">
+					</div>
+					<div class="none" id="findBtnPwd">
+						<span style="cursor: pointer;" class="login__button">Find</span>
+					</div>
+					<div id="findResultDivPwd none">
+						<span id="findResultPwd" class="login__account login__account--account" style="font-size: 25px;"></span>
+					</div>
+					<div>
+						<span class="login__account login__account--account">Already have an Account?</span> <span class="login__signup login__signup--signup"
+							id="returnLoginPwd">Sign In</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

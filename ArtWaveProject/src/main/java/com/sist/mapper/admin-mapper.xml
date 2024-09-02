@@ -19,5 +19,28 @@
 	<select id="memberRowCount" resultType="int">
 		SELECT COUNT(*) FROM member
 	</select>
-	
+	<select id="todayReserve" resultType="int">
+	SELECT COUNT(*) FROM reserve WHERE trunc(buydate) = trunc(sysdate)
+	</select>
+	<select id="todayBuyRecord" parameterType="int" resultType="int">
+	SELECT COUNT(*) FROM payment WHERE trunc(buydate) = trunc(sysdate) AND type=#{type}
+	</select>
+	<select id="todayvisitRecord" resultType="int">
+	SELECT COUNT(*) FROM visit WHERE trunc(visitdate) = trunc(sysdate)
+	</select>
+	<insert id="visitorInsert" >
+	INSERT into visit VALUES((SELECT NVL(max(vno)+1, 1) FROM visit), sysdate)
+	</insert>
+	<select id="reserveNoneAccept" resultType="int">
+	SELECT count(*) FROM reserve WHERE state=0
+	</select>
+	<select id="visitWeek" resultType="int">
+	SELECT COUNT(*) FROM visit WHERE trunc(visitdate) BETWEEN trunc(sysdate-6) AND trunc(sysdate)  GROUP BY trunc(visitdate) ORDER BY trunc(visitdate) asc
+	</select>
+	<select id="visitMax" resultType="int">
+	SELECT max(count(*)) FROM visit WHERE trunc(visitdate) BETWEEN trunc(sysdate-6) AND trunc(sysdate) GROUP BY trunc(visitdate)
+	</select>
+	<select id="noneAnswer" resultType="int">
+	SELECT COUNT(*) FROM replyboard WHERE isreply=0
+	</select>
 </mapper>

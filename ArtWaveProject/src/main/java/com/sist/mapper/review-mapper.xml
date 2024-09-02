@@ -27,8 +27,8 @@
     SELECT COUNT(*) FROM totalreview
     WHERE tno=#{tno} AND type=#{type}
   </select>
-  <select id="reviewAverage" resultType="double" parameterType="hashmap">
-    SELECT avg(trating) FROM totalreview
+  <select id="reviewAverage" resultType="java.lang.Double" parameterType="hashmap">
+    SELECT NVL(avg(trating), 0.0) FROM totalreview
     WHERE tno=#{tno} AND type=#{type}
   </select>
   

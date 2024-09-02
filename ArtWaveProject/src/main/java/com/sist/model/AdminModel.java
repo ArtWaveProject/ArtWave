@@ -21,10 +21,31 @@ public class AdminModel {
 	// -----------------------------------------admin연결-----------------------------------------
 	@RequestMapping("adminpage/adminpage_main.do")
 	public String adminpage_main(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession();
-		MemberVO vo = new MemberVO();
-		session.setAttribute("photo", vo.getPhoto());
-
+		int mBuy=AdminDAO.todayBuyRecord(1);
+		int bBuy=AdminDAO.todayBuyRecord(2);
+		int aBuy=AdminDAO.todayBuyRecord(3);
+		int reserveCount=AdminDAO.todayReserve();
+		int noneAccept=AdminDAO.reserveNoneAccept();
+		int visit=AdminDAO.todayvisitRecord();
+		List<Integer> list=AdminDAO.visitWeek();
+		List<Date> week=new ArrayList<Date>();
+		for(int i=6;i>=0;i--) {
+			Calendar calendar=Calendar.getInstance();
+			calendar.add(Calendar.DATE, -i);
+			week.add(calendar.getTime());
+		}
+		int noneAnswer=AdminDAO.noneAnswer();
+		int visitMax=AdminDAO.visitMax();
+		request.setAttribute("noneAnswer", noneAnswer);
+		request.setAttribute("visitMax", visitMax);
+		request.setAttribute("mBuy", mBuy);
+		request.setAttribute("bBuy", bBuy);
+		request.setAttribute("aBuy", aBuy);
+		request.setAttribute("reserveCount", reserveCount);
+		request.setAttribute("noneAccept", noneAccept);
+		request.setAttribute("visit", visit);
+		request.setAttribute("list", list);
+		request.setAttribute("week", week);
 		request.setAttribute("admin_jsp", "../adminpage/adminpage_home.jsp");
 		request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
 
@@ -313,5 +334,13 @@ public class AdminModel {
 			out.write(obj.toJSONString());
 		} catch (Exception e) {}
 	}
-
+	@RequestMapping("admin/boardUpdate.do")
+	public String boardUpdate(HttpServletRequest request, HttpServletResponse response) {
+		String fbno = request.getParameter("fbno");
+		BoardVO vo = BoardDAO.boardDetailData(Integer.parseInt(fbno));
+		request.setAttribute("detail", vo);
+		request.setAttribute("admin_jsp", "../adminpage/adminUpdate.jsp");
+		request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
+		return "../main/main.jsp";
+	}
 }

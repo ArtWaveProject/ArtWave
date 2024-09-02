@@ -200,7 +200,7 @@ $(function() {
 		let gno=${detail.mno}
 		let price=400
 		let account=1
-		let name='${detail.title}'
+		let name=$('#titleName').text()
 		let id=$('#id').val()
 		if(id.length<2){
 			alert('로그인이 필요합니다')
@@ -354,7 +354,7 @@ function updatePlayCount(mno) {
 							<img src="${detail.poster}" id="poster">
 						</td>
 						<th width="20%" class="text-center">제목</th>
-						<td width="80%">${detail.title}</td>
+						<td width="80%" id="titleName">${detail.title}</td>
 					</tr>
 					<tr>
 						<th width="20%" class="text-center">앨범명</th>
@@ -433,7 +433,7 @@ function updatePlayCount(mno) {
 				<pre style="background: white;">${detail.lylics}</pre>
 			</div>
 			<div class="col-lg-5" style="margin: 20px 0px 20px 20px; background: white; padding: 20px 20px 0px 20px; border-radius: 20px;">
-				<h4 style="margin-bottom: 10px;">${detail.aname}곡list</h4>
+				<h4 style="margin-bottom: 10px;">${detail.aname}&nbsp;곡 List</h4>
 				<table class="table">
 					<tbody id="listBody">
 						<c:forEach var="vo" items="${mList }">
