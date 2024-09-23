@@ -6,7 +6,7 @@
         <mxCell id="1" parent="0" />
         <UserObject label="&lt;b style=&quot;font-weight:normal;&quot; id=&quot;docs-internal-guid-bfb3894a-7fff-13ee-e7cd-1fbcbf9ec88d&quot;&gt;&lt;img width=&quot;1885px;&quot; height=&quot;920px;&quot; src=&quot;https://lh7-rt.googleusercontent.com/slidesz/AGV_vUcluOeJ82dtkkSPzbEKz80KFxlNm0oyLbA9nCinXaoqBt42F9bJ7hzLJs8wCeLb0Z-0PGiLGP1nnfraCrqtH2MUwbTpYCJ-GYkbmYmhdGr3Kt8fFwdV5mQgTUwFmGZfWQ1oQa5XnQ9ZdeVuqPdy7i1JLNaixSuf=s2048?key=uvlss3X8heeqErbpd2EkjA&quot;&gt;&lt;/b&gt;" link="&lt;b style=&quot;font-weight:normal;&quot; id=&quot;docs-internal-guid-bfb3894a-7fff-13ee-e7cd-1fbcbf9ec88d&quot;&gt;&lt;img width=&quot;1885px;&quot; height=&quot;920px;&quot; src=&quot;https://lh7-rt.googleusercontent.com/slidesz/AGV_vUcluOeJ82dtkkSPzbEKz80KFxlNm0oyLbA9nCinXaoqBt42F9bJ7hzLJs8wCeLb0Z-0PGiLGP1nnfraCrqtH2MUwbTpYCJ-GYkbmYmhdGr3Kt8fFwdV5mQgTUwFmGZfWQ1oQa5XnQ9ZdeVuqPdy7i1JLNaixSuf=s2048?key=uvlss3X8heeqErbpd2EkjA&quot;&gt;&lt;/b&gt;" id="nbE1PKTETJ9Ci58N94wB-1">
           <mxCell style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-            <mxGeometry x="590" y="-120" width="560" height="950" as="geometry" />
+            <mxGeometry x="630" y="-120" width="560" height="950" as="geometry" />
           </mxCell>
         </UserObject>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-2" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;회원 정보(사용자, 관리자)&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;MEMBER&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
