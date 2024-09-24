@@ -1,14 +1,9 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" version="24.7.16">
   <diagram name="페이지-1" id="2n7N6EhF88uoxu0NYIik">
-    <mxGraphModel dx="667" dy="1556" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2049" dy="1190" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <UserObject label="&lt;b style=&quot;font-weight:normal;&quot; id=&quot;docs-internal-guid-bfb3894a-7fff-13ee-e7cd-1fbcbf9ec88d&quot;&gt;&lt;img width=&quot;1885px;&quot; height=&quot;920px;&quot; src=&quot;https://lh7-rt.googleusercontent.com/slidesz/AGV_vUcluOeJ82dtkkSPzbEKz80KFxlNm0oyLbA9nCinXaoqBt42F9bJ7hzLJs8wCeLb0Z-0PGiLGP1nnfraCrqtH2MUwbTpYCJ-GYkbmYmhdGr3Kt8fFwdV5mQgTUwFmGZfWQ1oQa5XnQ9ZdeVuqPdy7i1JLNaixSuf=s2048?key=uvlss3X8heeqErbpd2EkjA&quot;&gt;&lt;/b&gt;" link="&lt;b style=&quot;font-weight:normal;&quot; id=&quot;docs-internal-guid-bfb3894a-7fff-13ee-e7cd-1fbcbf9ec88d&quot;&gt;&lt;img width=&quot;1885px;&quot; height=&quot;920px;&quot; src=&quot;https://lh7-rt.googleusercontent.com/slidesz/AGV_vUcluOeJ82dtkkSPzbEKz80KFxlNm0oyLbA9nCinXaoqBt42F9bJ7hzLJs8wCeLb0Z-0PGiLGP1nnfraCrqtH2MUwbTpYCJ-GYkbmYmhdGr3Kt8fFwdV5mQgTUwFmGZfWQ1oQa5XnQ9ZdeVuqPdy7i1JLNaixSuf=s2048?key=uvlss3X8heeqErbpd2EkjA&quot;&gt;&lt;/b&gt;" id="nbE1PKTETJ9Ci58N94wB-1">
-          <mxCell style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-            <mxGeometry x="630" y="-120" width="560" height="950" as="geometry" />
-          </mxCell>
-        </UserObject>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-2" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;회원 정보(사용자, 관리자)&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;MEMBER&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
           <mxGeometry y="120" width="300" height="370" as="geometry" />
         </mxCell>
@@ -1068,7 +1063,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-274" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;리뷰&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;REVIEW&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry y="1050" width="300" height="190" as="geometry" />
+          <mxGeometry x="930" y="960" width="300" height="190" as="geometry" />
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-275" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="nbE1PKTETJ9Ci58N94wB-274" vertex="1">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -1175,7 +1170,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-323" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;장바구니&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;CART&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="310" y="1060" width="300" height="130" as="geometry" />
+          <mxGeometry x="1241" y="960" width="300" height="130" as="geometry" />
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-324" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="nbE1PKTETJ9Ci58N94wB-323" vertex="1">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -1243,7 +1238,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-348" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;좋아요&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;LIKE&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry y="1251" width="300" height="90" as="geometry" />
+          <mxGeometry y="1020" width="300" height="90" as="geometry" />
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-349" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="nbE1PKTETJ9Ci58N94wB-348" vertex="1">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -1285,7 +1280,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-373" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;주문기록&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;BUY&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry y="1731" width="300" height="250" as="geometry" />
+          <mxGeometry x="1241" y="700" width="300" height="250" as="geometry" />
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-374" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="nbE1PKTETJ9Ci58N94wB-373" vertex="1">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -1431,7 +1426,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-2" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;쿠폰 프로모션&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;PROMOTION_COUPON&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry y="1351" width="300" height="170" as="geometry" />
+          <mxGeometry x="1241" y="340" width="300" height="170" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-3" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-2" vertex="1">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -1525,7 +1520,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-39" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;쿠폰&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;COUPON&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="310" y="1200" width="300" height="210" as="geometry" />
+          <mxGeometry x="1241" y="120" width="300" height="210" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-40" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-39" vertex="1">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -1645,7 +1640,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-91" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;주소&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;ADDR&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="310" y="1581" width="300" height="150.00000000000045" as="geometry" />
+          <mxGeometry x="930" y="120" width="300" height="150.00000000000045" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-92" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-91" vertex="1">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -1726,7 +1721,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-128" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;신고&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;REPORT&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry y="1531" width="300" height="190.00000000000045" as="geometry" />
+          <mxGeometry x="930" y="760" width="300" height="190.00000000000045" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-129" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-128" vertex="1">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -1833,7 +1828,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-150" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;알림메세지&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;NOTICE&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="310" y="1420" width="300" height="150.00000000000045" as="geometry" />
+          <mxGeometry x="620" y="660" width="300" height="150.00000000000045" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-151" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-150" vertex="1">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -1914,7 +1909,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-175" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;게시판&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;BOARD&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="620" y="820" width="300" height="250" as="geometry" />
+          <mxGeometry x="620" y="120" width="300" height="250" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-176" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-175" vertex="1">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -2060,7 +2055,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-209" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;블랙리스트&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;BLACKLIST&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="970" y="990" width="300" height="130" as="geometry" />
+          <mxGeometry x="620" y="820" width="300" height="130" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-210" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-209" vertex="1">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -2128,7 +2123,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-259" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;문의게시판&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;WINE_REPLYBOARD&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="620" y="1080" width="300" height="270" as="geometry" />
+          <mxGeometry x="620" y="380" width="300" height="270" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-260" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-259" vertex="1">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -2287,7 +2282,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-299" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;배너 프로모션&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;PROMOTION_BANNER&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
-          <mxGeometry x="620" y="1360" width="300" height="170" as="geometry" />
+          <mxGeometry x="1241" y="520" width="300" height="170" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-300" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-299" vertex="1">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -2381,7 +2376,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="uS8WrTH1hm0wXIOfCczE-11" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;정산&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;SETTLEMENT&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="970" y="1130" width="300" height="130" as="geometry" />
+          <mxGeometry x="620" y="960" width="300" height="130" as="geometry" />
         </mxCell>
         <mxCell id="uS8WrTH1hm0wXIOfCczE-12" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" vertex="1" parent="uS8WrTH1hm0wXIOfCczE-11">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -2449,7 +2444,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="uS8WrTH1hm0wXIOfCczE-27" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;정산 기록&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;SETTLEMENTRECORD&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="970" y="1270" width="300" height="130" as="geometry" />
+          <mxGeometry x="930" y="620" width="300" height="130" as="geometry" />
         </mxCell>
         <mxCell id="uS8WrTH1hm0wXIOfCczE-28" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" vertex="1" parent="uS8WrTH1hm0wXIOfCczE-27">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -2517,7 +2512,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="uS8WrTH1hm0wXIOfCczE-49" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;시음회(이벤트)&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;WINEEVENT&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="310" y="1740" width="300" height="170.00000000000045" as="geometry" />
+          <mxGeometry x="930" y="279" width="300" height="170.00000000000045" as="geometry" />
         </mxCell>
         <mxCell id="uS8WrTH1hm0wXIOfCczE-50" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" vertex="1" parent="uS8WrTH1hm0wXIOfCczE-49">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
@@ -2611,7 +2606,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="uS8WrTH1hm0wXIOfCczE-71" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;예약&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;WINERESERVE&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="310" y="1920" width="300" height="150.00000000000045" as="geometry" />
+          <mxGeometry x="930" y="459" width="300" height="150.00000000000045" as="geometry" />
         </mxCell>
         <mxCell id="uS8WrTH1hm0wXIOfCczE-72" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" vertex="1" parent="uS8WrTH1hm0wXIOfCczE-71">
           <mxGeometry y="30" width="300" height="20" as="geometry" />
