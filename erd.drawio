@@ -4,7 +4,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="nbE1PKTETJ9Ci58N94wB-2" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;회원 정보(사용자, 관리자)&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;MEMBER&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="nbE1PKTETJ9Ci58N94wB-2" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;회원 정보(사용자, 관리자)&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;MEMBER&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry y="120" width="300" height="370" as="geometry" />
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-3" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="nbE1PKTETJ9Ci58N94wB-2" vertex="1">
@@ -228,7 +228,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nbE1PKTETJ9Ci58N94wB-48" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;회원 정보(판매자)&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;MEMBER&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="nbE1PKTETJ9Ci58N94wB-48" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;회원 정보(판매자)&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;MEMBER&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="310" y="120" width="300" height="370" as="geometry" />
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-49" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="nbE1PKTETJ9Ci58N94wB-48" vertex="1">
@@ -452,7 +452,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nbE1PKTETJ9Ci58N94wB-94" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;와인&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;WINE&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="nbE1PKTETJ9Ci58N94wB-94" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;와인&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;WINE&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry y="500" width="300" height="510" as="geometry" />
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-95" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="nbE1PKTETJ9Ci58N94wB-94" vertex="1">
@@ -767,7 +767,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nbE1PKTETJ9Ci58N94wB-164" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;생산자&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;MAKER&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="nbE1PKTETJ9Ci58N94wB-164" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;생산자&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;MAKER&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="310" y="500" width="300" height="130" as="geometry" />
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-165" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="nbE1PKTETJ9Ci58N94wB-164" vertex="1">
@@ -835,7 +835,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nbE1PKTETJ9Ci58N94wB-210" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;생산지&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;NATION&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="nbE1PKTETJ9Ci58N94wB-210" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;생산지&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;NATION&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="310" y="640" width="300" height="150" as="geometry" />
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-211" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="nbE1PKTETJ9Ci58N94wB-210" vertex="1">
@@ -916,7 +916,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nbE1PKTETJ9Ci58N94wB-229" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;주요품종&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;GRAPE&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="nbE1PKTETJ9Ci58N94wB-229" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;주요품종&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;GRAPE&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="310" y="800" width="300" height="250" as="geometry" />
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-230" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="nbE1PKTETJ9Ci58N94wB-229" vertex="1">
@@ -1062,7 +1062,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nbE1PKTETJ9Ci58N94wB-274" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;리뷰&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;REVIEW&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="nbE1PKTETJ9Ci58N94wB-274" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;리뷰&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;REVIEW&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="930" y="960" width="300" height="190" as="geometry" />
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-275" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="nbE1PKTETJ9Ci58N94wB-274" vertex="1">
@@ -1169,7 +1169,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nbE1PKTETJ9Ci58N94wB-323" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;장바구니&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;CART&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="nbE1PKTETJ9Ci58N94wB-323" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;장바구니&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;CART&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="1241" y="960" width="300" height="130" as="geometry" />
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-324" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="nbE1PKTETJ9Ci58N94wB-323" vertex="1">
@@ -1237,7 +1237,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nbE1PKTETJ9Ci58N94wB-348" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;좋아요&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;LIKE&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="nbE1PKTETJ9Ci58N94wB-348" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;좋아요&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;LIKE&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry y="1020" width="300" height="90" as="geometry" />
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-349" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="nbE1PKTETJ9Ci58N94wB-348" vertex="1">
@@ -1279,7 +1279,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nbE1PKTETJ9Ci58N94wB-373" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;주문기록&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;BUY&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="nbE1PKTETJ9Ci58N94wB-373" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;주문기록&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;BUY&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="1241" y="700" width="300" height="250" as="geometry" />
         </mxCell>
         <mxCell id="nbE1PKTETJ9Ci58N94wB-374" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="nbE1PKTETJ9Ci58N94wB-373" vertex="1">
@@ -1425,7 +1425,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="rfII3sVC63B1gga1A4r7-2" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;쿠폰 프로모션&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;PROMOTION_COUPON&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="rfII3sVC63B1gga1A4r7-2" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;쿠폰 프로모션&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;PROMOTION_COUPON&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="1241" y="340" width="300" height="170" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-3" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-2" vertex="1">
@@ -1519,7 +1519,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="rfII3sVC63B1gga1A4r7-39" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;쿠폰&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;COUPON&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="rfII3sVC63B1gga1A4r7-39" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;쿠폰&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;COUPON&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="1241" y="120" width="300" height="210" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-40" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-39" vertex="1">
@@ -1639,7 +1639,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="rfII3sVC63B1gga1A4r7-91" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;주소&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;ADDR&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="rfII3sVC63B1gga1A4r7-91" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;주소&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;ADDR&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="930" y="120" width="300" height="150.00000000000045" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-92" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-91" vertex="1">
@@ -1720,7 +1720,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="rfII3sVC63B1gga1A4r7-128" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;신고&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;REPORT&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="rfII3sVC63B1gga1A4r7-128" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;신고&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;REPORT&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="930" y="760" width="300" height="190.00000000000045" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-129" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-128" vertex="1">
@@ -1827,7 +1827,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="rfII3sVC63B1gga1A4r7-150" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;알림메세지&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;NOTICE&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="rfII3sVC63B1gga1A4r7-150" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;알림메세지&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;NOTICE&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="620" y="660" width="300" height="150.00000000000045" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-151" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-150" vertex="1">
@@ -1908,7 +1908,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="rfII3sVC63B1gga1A4r7-175" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;게시판&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;BOARD&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="rfII3sVC63B1gga1A4r7-175" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;게시판&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;BOARD&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="620" y="120" width="300" height="250" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-176" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-175" vertex="1">
@@ -2054,7 +2054,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="rfII3sVC63B1gga1A4r7-209" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;블랙리스트&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;BLACKLIST&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="rfII3sVC63B1gga1A4r7-209" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;블랙리스트&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;BLACKLIST&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="620" y="820" width="300" height="130" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-210" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-209" vertex="1">
@@ -2122,7 +2122,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="rfII3sVC63B1gga1A4r7-259" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;문의게시판&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;WINE_REPLYBOARD&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="rfII3sVC63B1gga1A4r7-259" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;문의게시판&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;WINE_REPLYBOARD&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="620" y="380" width="300" height="270" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-260" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-259" vertex="1">
@@ -2281,7 +2281,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="rfII3sVC63B1gga1A4r7-299" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;배너 프로모션&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;PROMOTION_BANNER&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+        <mxCell id="rfII3sVC63B1gga1A4r7-299" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;배너 프로모션&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;PROMOTION_BANNER&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="1241" y="520" width="300" height="170" as="geometry" />
         </mxCell>
         <mxCell id="rfII3sVC63B1gga1A4r7-300" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="rfII3sVC63B1gga1A4r7-299" vertex="1">
@@ -2375,7 +2375,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="uS8WrTH1hm0wXIOfCczE-11" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;정산&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;SETTLEMENT&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="uS8WrTH1hm0wXIOfCczE-11" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;정산&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;SETTLEMENT&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="620" y="960" width="300" height="130" as="geometry" />
         </mxCell>
         <mxCell id="uS8WrTH1hm0wXIOfCczE-12" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" vertex="1" parent="uS8WrTH1hm0wXIOfCczE-11">
@@ -2443,7 +2443,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="uS8WrTH1hm0wXIOfCczE-27" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;정산 기록&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;SETTLEMENTRECORD&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="uS8WrTH1hm0wXIOfCczE-27" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;정산 기록&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;SETTLEMENTRECORD&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="930" y="620" width="300" height="130" as="geometry" />
         </mxCell>
         <mxCell id="uS8WrTH1hm0wXIOfCczE-28" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" vertex="1" parent="uS8WrTH1hm0wXIOfCczE-27">
@@ -2511,7 +2511,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="uS8WrTH1hm0wXIOfCczE-49" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;시음회(이벤트)&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;WINEEVENT&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="uS8WrTH1hm0wXIOfCczE-49" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;시음회(이벤트)&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;WINEEVENT&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="930" y="279" width="300" height="170.00000000000045" as="geometry" />
         </mxCell>
         <mxCell id="uS8WrTH1hm0wXIOfCczE-50" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" vertex="1" parent="uS8WrTH1hm0wXIOfCczE-49">
@@ -2605,7 +2605,7 @@
             <mxRectangle width="270" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="uS8WrTH1hm0wXIOfCczE-71" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;예약&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;WINERESERVE&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="uS8WrTH1hm0wXIOfCczE-71" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;예약&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;WINERESERVE&lt;/div&gt;" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#a20025;strokeColor=#6F0000;whiteSpace=wrap;verticalAlign=middle;fontSize=11;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="930" y="459" width="300" height="150.00000000000045" as="geometry" />
         </mxCell>
         <mxCell id="uS8WrTH1hm0wXIOfCczE-72" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;align=left;fontStyle=0;whiteSpace=wrap;html=1;verticalAlign=middle;" vertex="1" parent="uS8WrTH1hm0wXIOfCczE-71">
